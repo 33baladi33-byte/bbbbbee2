@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 14: Kaffee",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Altes Handwerk und alte Technik anschaulich präsentiert",
+    "b. Attraktive Kleinstadt - touristischer Geheimtipp",
+    "c. Ein altes Kloster als Feuerwache",
+    "d. Eine Universität mit langer Geschichte",
+    "e. Eliteschule für Schriftsteller",
+    "f. Entdeckung und Verbreitung des Kaffees",
+    "g. Kaffee macht die Leute süß",
+    "h. Klösterliche Strenge für berühmte Schüler",
+    "i. Mehr Ziegenmilch dank Energy-Drink",
+    "j. Ohne Kaffee geht hier nichts"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Das erste Kaffeehaus in Leipzig, 'Zum arabischen Coffee-Baum', öffnete 1685 seine Pforten. Seitdem ist der Kaffee in Sachsen zum beliebten Getränk geworden, das weder zu Hause auf Partys und Feiern noch beim Ausgehen fehlen darf. 'Kaffeesachsen' wurden früher die Bewohner des Landes zwischen Leipzig und polnischer Grenze scherzhaft von den anderen Deutschen genannt. Bevorzugt wird der Kaffee heiß und süß getrunken. Süße Ergänzungen wie Dresdner Stollen oder Leipziger Lerchen, beides traditionell gebackene Kuchenspezialitäten, gehören zum Kaffee wie das Tüpfelchen zum 'i'. Dabei wird das Gebäck auf echt sächsische Art 'gedibbscht', das heißt: Es wird in den Kaffee getunkt, bevor es gegessen wird. Die Sachsen schwören darauf, dass sowohl das Gebäck als auch der Kaffee so und nur so ihr volles Aroma entfalten.",
+      "correct": 9,
+      "highlightColor": 4
+    },
+    {
+      "text": "Text 2: Eppingen liegt etwa auf halbem Weg zwischen Karlsruhe und Heilbronn im Kraichgau, einer geschichtsträchtigen Region mit wunderschöner Landschaft und bodenständiger Kultur, die von Erholung suchenden Menschenmassen noch nicht überrollt ist. Die Altstadt des Städtchens ist ein einziges Museum: Über 100 Fachwerkhäuser mit ihrem romantisch anmutenden Muster aus braunen Holzbalken und weiß getünchtem Lehm können hier bewundert werden. Die bekanntesten davon sind das 'Baumannsche Haus' (erbaut 1582), heute ein Hotel, und die 'Alte Universität', heute ein Museum. Hier befand sich 1564/1565 die Heidelberger Universität, als in Heidelberg die Pest wütete, hierhin ausgelagert wurde. Im heutigen Museum kann man die Fachwerkbaukunst studieren. Seit 1993 findet im Juli und August der 'Carillonsommer' statt.",
+      "correct": 1,
+      "highlightColor": 9
+    },
+    {
+      "text": "Text 3: Das Kloster Maulbronn wurde 1147 von Zisterziensermönchen gegründet. Man sagt, ein Maulesel, den die Mönche auf ihren Wanderungen mitgeführt hatten, solle hier einen Brunnen gefunden haben und man habe daraufhin beschlossen, an dieser Stelle das Kloster zu bauen. Im 16. Jahrhundert wurde es im Verlauf der Reformation säkularisiert und zum Internat umfunktioniert. Heute von der UNESCO zum Weltkulturerbe der Menschheit erhoben, ist das Kloster ein Touristenmagnet. Maulbronn war besonders wegen seiner Klosterschule bekannt, die von namhaften Persönlichkeiten besucht wurde: Johannes Kepler lernte hier Latein und Mathematik, der Schriftsteller Hermann Hesse litt sehr unter der eisernen Disziplin und Härte, die hier herrschte. Hermann Hesse hat die Klosteranlage später in seinen Romanen 'Unterm Rad' und 'Narziß und Goldmund' zum Schauplatz gemacht.",
+      "correct": 7,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 4: Auf einer Anhöhe oberhalb des Bodensees liegt, ca. 10 km vom See entfernt in idyllischer ländlicher Umgebung, das ehemalige Zisterzienserkloster Salem. Innerhalb der weitläufigen Klosteranlage aus dem 12. Jahrhundert befinden sich heute mehrere Museen und das gotische Münster. Im Feuerwehrmuseum findet der interessierte Besucher alte Feuerwehrwagen, die noch von Pferden gezogen wurden, alte Geräte, Spritzen und Pumpen sowie mehrere Modellanlagen. Im Weinbaumuseum bekommt man einen Überblick über die Weinproduktion der Bodenseeregion. International bekannt ist jedoch das von Kurt Hahn und dem Prinzen Max von Baden 1920 gegründete Internat Salem, das von den Söhnen und Töchtern bekannter Familien aus ganz Europa besucht wurde und wird.",
+      "correct": 0,
+      "highlightColor": 6
+    },
+    {
+      "text": "Text 5: Vermutlich vor fast 900 Jahren, irgendwann im dreizehnten Jahrhundert, sollen die Menschen herausgefunden haben, was es mit dem Kaffee auf sich hat. Eine Legende erzählt von einem jemenitischen Ziegenhirten, dessen Ziegen sich nach dem Genuss der roten Beeren eines bestimmten Strauches merkwürdig lebendig und aufgedreht benommen haben sollen. Im Dorf habe der Dorfgelehrte dann herausgefunden, dass die Früchte, die bisher nur den Ziegen zu viel 'Energie' verholfen hatten, auch beim Menschen ihre Wirkung zeigten. Nach mehreren Experimenten habe man dann herausgefunden, dass die Beeren, wenn man sie trocknet und dann mit heißem Wasser aufkocht, am besten schmecken. Der Kaffee war erfunden. Wegen seiner berauschenden Wirkung, so eine Theorie, soll das Getränk dann arabisch qahwa genannt worden sein, was auch einen Wein bezeichnen konnte.",
+      "correct": 5,
+      "highlightColor": 2
+    }
+  ]
+}

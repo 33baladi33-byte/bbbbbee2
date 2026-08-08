@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 52: Autos",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Daumen hoch - aber gewusst wie!",
+    "b. Durch die Städte Osteuropas. Viel zu sehen für wenig Geld!",
+    "c. Was rastet, das rostet: Tipps für Stillstand und Bewegung.",
+    "d. Vom eigenen Wagen zum Car-Sharing. Autofahren damals und heute.",
+    "e. Tausch dich aus! Autos, Werkzeuge, Geräte & Co gemeinsam benützen.",
+    "f. Mein rechter Platz ist frei... Wie berechenbar sind Mitfahrgelegenheiten?",
+    "g. Die 5 Gefahren des Autostoppens.",
+    "h. Preiswert durch die Welt - Reisearten im Vergleich.",
+    "i. Urlaub zu Hause, Urlaub bei Fremden? Oder: Auf dem Sofa durch die Welt.",
+    "j. Fast geschenkt: Autos, die man sich leisten kann"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Wie wäre es, bei wildfremden Menschen einzuziehen und während der eigenen Reise dort zu übernachten? Wer nach unmittelbarer Bekanntschaft mit dem Reiseziel und seinen Gepflogenheiten lechzt, betreibt heute Couchsurfing. Private Gastgeber auf allen Kontinenten bieten im Internet eine Schlafgelegenheit an. Geben und Nehmen heißt das Prinzip des neuen Reisetrends: Wer bereits eine Couch in New York in Anspruch genommen hat, kann auch sein Sofa in St. Pölten für andere Touristen anbieten. Sechs Millionen Menschen weltweit wissen, wie sich so etwas anfühlt, denn sie alle sind Mitglieder bei www.couchsurfing.org, dem größten Online-Portal zur Vermittlung von kostenlosen Übernachtungsmöglichkeiten. Hier suchen Abenteuerlustige nach privaten Übernachtungsmöglichkeiten aus aller Welt. In über 100.000 Städten sind Couchsurfer angemeldet und dementsprechend ist die Wahrscheinlichkeit recht hoch, im Urlaub als Gast bei Fremden einzuziehen. Doch genau diesen Begriff vermeidet man auf der Homepage galant, aber bestimmt. Von ‚Fremden‘ ist hier nicht die Rede, vielmehr von ‚Freunden, die du noch nicht getroffen hast‘.",
+      "correct": 8,
+      "highlightColor": 2
+    },
+    {
+      "text": "Text 2: Darauf, zu einem Wildfremden ins Auto zu steigen, basiert die Geschäftsidee von Mitfahrplattformen im Internet. Ihr Prinzip: Wer mit dem Auto von A nach B fahren will und noch Plätze frei hat, sucht online oder via App nach Mitfahrern, um sein Auto zu füllen und sich die Benzinkosten zu teilen. Das dürfte funktionieren, denn solche Websites gibt es mittlerweile zuhauf. Neu sind Mitfahrbörsen nicht: Schon in den 1950ern wurde in Frankfurt am Main - ganz und gar offline - eine Mitfahrzentrale gegründet. Eigentlich wie Autostoppen, nur besser planbar. Mit dem Internet wurde die Organisation dann noch leichter. Heute weiß man vorab schon eine ganze Menge über die potenziellen Chauffeure: Sie haben Profile, auf denen sie nicht nur sich selbst, sondern auch ihr Auto präsentieren. Auch eine Ausweiskopie kann dem Profil beigefügt werden.",
+      "correct": 5,
+      "highlightColor": 9
+    },
+    {
+      "text": "Text 3: Langes Stehen tut selten gut, das gilt auch für Autos. Bei wenig genutzten Fahrzeugen kann unter anderem Rost an Blech und Bremsen entstehen. Damit der Wagen nach längerer Standzeit nicht nur anspringt, sondern auch verlässlich läuft, ist Vorsorge nötig. Früher wurde empfohlen, das Auto vollzutanken, damit kein Rost im Tank entsteht. Dieser Ratschlag erübrigt sich schon seit längerer Zeit, denn seit Mitte der 80er Jahre haben Autos meist einen Kunststofftank. Während es bei älteren Autos empfehlenswert sein kann, die Batterie auszubauen, verursache dies bei neueren Modellen häufig Probleme mit der Elektronik. Besonders wichtig ist eine geeignete Unterstellmöglichkeit. Wenn es ein teures Fahrzeug ist, sollten Sie überlegen, einen Stellplatz zu mieten. Die Fachleute raten außerdem dazu, etwas mehr Luft in die Reifen zu pumpen, weil schon die Temperaturunterschiede den Druck deutlich sinken lassen können. Damit der Wagen in Form bleibt, gilt aber eigentlich das Motto ‚Fahren, fahren, fahren‘. Wer sein Auto nicht selbst bewegt, kann dies andere für sich erledigen lassen. Solche Ersatz-Fahrer findet man auf Vermittlungsportalen im Internet.",
+      "correct": 2,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 4: Es gibt einen neuen Trend, der nicht nur in Deutschland, sondern weltweit Einzug hält: ‚Nutzen statt Besitzen‘ lautet er und umfasst so unterschiedliche Praktiken wie Wohnungstausch, Kleidertauschpartys, Autogemeinschaften, Gemeinschaftsgärten, Tauschringe für Werkzeuge, Drucker oder DVDs und vieles andere mehr. Das Internet macht's möglich: Tauschplattformen für Dinge, Wohnungen oder private Autos ermöglichen es, schnell und unkompliziert denjenigen zu finden, der (oder die) das hat, was ich brauche. Mit der Verbreitung digitaler Leih-, Miet- und Tauschmodelle entstehen neue Geschäftsformen, die sich auf einer neuen ‚Währung‘ gründen: Vertrauen. Vertrauen, dass der andere meine Dinge gut behandelt und mich nicht hinters Licht führt, obwohl ich den anderen noch nie gesehen habe.",
+      "correct": 4,
+      "highlightColor": 6
+    },
+    {
+      "text": "Text 5: Warum den teuren Zug oder Flieger nehmen, wenn es doch per Anhalter viel günstiger geht? Besonders junge Leute heben gerne den Daumen, um von A nach B zu kommen. Beim Autostoppen sollte man jedoch einige gesetzliche Regeln kennen. In Österreich ist Autostoppen auf Autobahnen oder Autostraßen - generell und unabhängig vom Alter - verboten. Auf Autobahn-Parkplätzen, Raststationen und an allen anderen Straßen ist an übersichtlichen Stellen das Autostoppen erlaubt. Es gilt jedoch, bundeslandspezifische Altersbestimmungen zu beachten. In Kärnten und Vorarlberg ist das Autostoppen unter 14, in der Steiermark unter 15 Jahren verboten. Wer im Ausland autostoppen will, sollte sich vorab mit rechtlichen Bestimmungen und landesüblichen Gewohnheiten vertraut machen. Beispielsweise setzen Autofahrer in manchen Ländern wie Rumänien, Indien und Mexiko eine Bezahlung voraus. In den USA, Kanada oder Australien kommt es auf den jeweiligen Bundesstaat an, ob Autostoppen erlaubt ist. In vielen afrikanischen Ländern wiederum ist Trampen selbstverständlich und ersetzt die oftmals fehlenden öffentlichen Verkehrsmittel.",
+      "correct": 0,
+      "highlightColor": 10
+    }
+  ]
+}

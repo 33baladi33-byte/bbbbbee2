@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 40: Auf dem Weg",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Auf dem Weg zu internationalen Wettkämpfen",
+    "b. Durch Wassergymnastik Verspannungen lösen",
+    "c. Ein tierischer Lernspaß für alle",
+    "d. Fit und gesund auch nach der Pensionierung",
+    "e. Gefahren beim Tauchen",
+    "f. Mit dem eigenen Pferd zu Olympia",
+    "g. Muskeln wie ein Gewichtheber",
+    "h. Neueröffnetes Internat für junge Sporttaucher",
+    "i. Schlank, fit und glücklich im Flug",
+    "j. Sport treiben wie ein Fisch unter Wasser"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Wir bieten Bewegungsförderung mit und auf Pferden zur Stärkung der körperlichen und geistigen Fitness. Ponys und Pferde stehen im Mittelpunkt dieses Programms. Sie zu beobachten, füttern, streicheln, putzen, führen oder reiten zu können, übt auf Teenies eine große Faszination aus. Spielerisch werden sie in Kontakt mit unseren Tieren gebracht und haben dann vielfältige Möglichkeiten, unter Anleitung Aufgaben für, mit oder auf den Pferden durchzuführen. Zudem können sie auf dem Gelände der Ranch weitere ungewohnte Bewegungs- und Wahrnehmungserfahrungen sammeln, z.B. auf dem Erlebnis-Parcours. Die Betreuung erfolgt durch einen Reitlehrer und qualifiziertes Personal. Unsere Sattel- und Kleiderkammer verfügt über alle notwendigen Utensilien.",
+      "correct": 2,
+      "highlightColor": 4
+    },
+    {
+      "text": "Text 2: Die Schwimm- und Sportfreunde 1905 e.V. gehörten in den 70er und 80er Jahren zu den besten Vereinen im deutschen Schwimmsport. Auch noch zu Beginn der 90er Jahre stellte der Verein Schwimmer für die Nationalmannschaft, die bei Weltmeisterschaften oder Olympischen Spielen für Deutschland an den Start gingen. Seit 2010 versuchen die Schwimm- und Sportfreunde, wieder an alte Zeit anzuknüpfen. Mit idealen Voraussetzungen, nämlich der vereinseigenen 50-Meter-Bahn im Sportpark Nord, dem Stadion, der großen Mehrfachsporthalle über dem Bad, einem sehr gut eingerichteten Kraftraum und einer idealen Betreuung durch zwei ganztags angestellte Trainer, stellten sich in den letzten Jahren wieder Erfolge auf Landes- und Bundesebene ein. Die Sportler können auch das Teilzeitinternat nutzen.",
+      "correct": 0,
+      "highlightColor": 9
+    },
+    {
+      "text": "Text 3: In unserem modernen Studio bieten wir Ihnen alle Arten von Gesundheits-, Kraft- und Fitnesstraining an. Wer selbst im Rentenalter noch einen durchtrainierten Körper haben möchte, der sollte schon in jungen Jahren das Ausdauertraining nicht vernachlässigen. Aber auch wer spät mit dem Sport beginnt, fühlt sich nach dem Training einfach besser. Um auch im Alter noch mit allen Problemen des Alltags klarzukommen, ist ein Ausdauertraining wirklich wichtig. Deshalb haben wir für Sie zum Beispiel moderne Trainingsgeräte, die Ihren Herzschlag kontrollieren. Auch bei Rückenschmerzen hilft das Fitnessstudio. Acht von zehn Deutschen haben Rückenschmerzen, aber sie werden beim Arzt selten richtig behandelt. Die Gründe für die Rückenprobleme liegen darin, dass die Muskeln nicht ausreichend trainiert sind.",
+      "correct": 3,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 4: Das Trampolin ist ein einzigartiges Trainingsgerät, das die Möglichkeit bietet, auch bei verschiedenen körperlichen Einschränkungen ein umfassendes Trainingsprogramm zu absolvieren. Die Übungen auf dem Trampolin haben vielfältige positive Effekte auf den Körper und den gesamten Organismus. Neben einer Gewichtsabnahme (der Kalorienverbrauch ist ähnlich hoch wie beim Joggen) und der Straffung des Körpergewebes werden Muskeln gelockert, Verspannungen lösen sich und der komplette Bewegungsapparat wird nicht so hart belastet wie bei herkömmlichen Sportarten. Ein weiterer wichtiger Effekt für den Körper ist die Unterstützung des Lymphflusses. Aber auch Geist und Seele werden positiv beeinflusst.",
+      "correct": 8,
+      "highlightColor": 6
+    },
+    {
+      "text": "Text 5: Sporttauchen ist eine fantastische Natursportart. In den Vereinen und Tauchschulen des Verbandes Deutscher Sporttaucher wird das immer wieder faszinierende Sporttauchen mit verschiedenen Schwerpunkten angeboten. Dort wird auch Tauchfitness aufgebaut und regelmäßig trainiert. Sie können sich in allen Bereichen von gut geschulten Trainern ausbilden lassen und die Welt unter Wasser kennen lernen. Im Sporttauchen sollte man sich auf jeden Fall durch regelmäßiges Training 'tauchfit' halten. Eine ausreichende Kondition unter Wasser ist sehr wichtig, denn untrainiert ist man als Sporttaucher ein Risiko für sich und andere. Ziel des Tauchtrainings ist ebenfalls das Lernen der richtigen Technik für das Atmen und das Beherrschen der Techniken für das Abtauchen.",
+      "correct": 9,
+      "highlightColor": 10
+    }
+  ]
+}

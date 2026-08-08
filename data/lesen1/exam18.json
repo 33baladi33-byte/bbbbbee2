@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 18: Trampolin",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Viele Trampoline haben erhebliche Sicherheitsmängel",
+    "b. Traditionelle Nachrichtenmedien immer noch gefragt",
+    "c. Soziale Medien ersetzen alte Informationsquellen",
+    "d. Schüler bereiten Nachrichtensendungen vor",
+    "e. Mit Nachrichten im Unterricht arbeiten",
+    "f. Medienkonsum fördert ungesunde Lebensweise",
+    "g. Kritik an der Nachrichtensprache",
+    "h. Jugendliche konsumieren mehr Fett und Zucker",
+    "i. Informationen leichter verstehen",
+    "j. Fachleute warnen vor unsachgemäßer Nutzung von Sprunggeräten"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Die meisten Menschen verbinden den Begriff 'Barrierefreiheit' mit dem Zugang zu Gebäuden oder Transportmitteln. Dabei betrifft Barrierefreiheit viel mehr Bereiche unseres Alltags, so zum Beispiel auch die Informations- und Kommunikationstechnologie. Die APA, die Austria Presse Agentur, hat deshalb einen Nachrichtendienst in einfacher und leicht verständlicher Sprache ins Leben gerufen. Er wendet sich an Menschen mit Lese- oder Lernschwierigkeiten oder die die deutsche Sprache noch nicht so gut beherrschen. Für diesen Nachrichtendienst werden die wichtigsten Meldungen des Tages für die Niveaustufen A2 und B1 geschrieben. Interessenten können sich die Texte fünfmal pro Woche am späten Nachmittag per E-Mail schicken lassen oder über eine besondere Informationsplattform bekommen.",
+      "correct": 8,
+      "highlightColor": 0
+    },
+    {
+      "text": "Text 2: Die WHO, die Weltgesundheitsorganisation, warnt vor den Folgen ungesunder Werbung im Internet. Kinder und Jugendliche treffen beim Nutzen der sozialen Medien häufig auf Anzeigen für ungesunde Lebensmittel wie Süßigkeiten oder salzige und fettreiche Snacks. So werden Übergewicht und damit zusammenhängende Krankheiten im Erwachsenenalter gefördert, mahnt die Organisation. Sie fordert deshalb Regierungen dazu auf, diese Werbung zum Schutze der Kinder stärker zu begrenzen. Die WHO weist außerdem auf die Gefahr von Bewegungsmangel im Zusammenhang mit den neuen Medien hin. Kleinkinder sollten sich mindestens drei Stunden pro Tag bewegen und so wenig Zeit wie möglich vor einem Bildschirm verbringen.",
+      "correct": 5,
+      "highlightColor": 8
+    },
+    {
+      "text": "Text 3: Schülerinnen und Schüler sollen im Schulunterricht auch den Umgang mit Nachrichten lernen. Das forderten kürzlich in Wien die Teilnehmenden an einer Konferenz zur politischen Bildung von Jugendlichen. Das Ziel dabei ist, jungen Menschen den kritischen Umgang mit den Inhalten und der Präsentation von Nachrichten beizubringen. Heute ist der Zugriff auf Nachrichtensendungen so einfach wie noch nie. Viele Nachrichtensendungen können mindestens eine Woche lang im Internet abgerufen werden. Schülerinnen und Schüler können sie so zur eigenen Arbeit nutzen oder gemeinsam in der Klasse besprechen. Die Konferenz nannte auch gleich konkrete Fragen für die Analyse von Nachrichtensendungen.",
+      "correct": 4,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 4: Mit dem Trampolin den Körper in Schwung bringen - für viele Menschen ist das Sprunggerät eine gute Möglichkeit, sich mit viel Spaß und ohne allzu großen Aufwand zu bewegen. Besonders beliebt ist das Trampolin bei Kindern. Expertinnen und Experten betonen auch die Vorteile des Hüpfens auf dem Trampolin. Die Bewegung auf dem Trampolin fördert nicht nur die Beweglichkeit, sondern auch die Koordination. Allerdings ist sie nicht ganz ungefährlich. Orthopäden weisen auf die extrem hohe Unfallgefahr hin. Die Ärzteschaft möchte Kindern und Eltern keineswegs die Freude am Trampolinspringen verderben. Vielmehr möchte sie dazu aufrufen, einige Sicherheitsregeln zu befolgen. Eine harte, ebene Stellfläche und ein Sicherheitsnetz seien unverzichtbar.",
+      "correct": 9,
+      "highlightColor": 3
+    },
+    {
+      "text": "Text 5: Die Klage, dass Jugendliche und junge Erwachsene kein Interesse mehr an Nachrichten haben, ist unbegründet. So lautet zumindest eine der Schlussfolgerungen aus einer Studie zum durchschnittlichen Medienkonsum junger Menschen mit dem Schwerpunkt Nachrichten. Demnach lesen oder hören in Österreich nahezu 50% der Personen unter 30 Jahren täglich Nachrichten. Viele der Befragten gaben an, dass sie sich nicht auf die Inhalte der sozialen Medien verlassen möchten, da ihre Glaubwürdigkeit oft angezweifelt wird. Den klassischen Medien wie Nachrichtensendungen oder Tageszeitungen wird hingegen eher geglaubt. Soziale Netzwerke können herkömmliche Nachrichtenquellen nicht ersetzen.",
+      "correct": 1,
+      "highlightColor": 10
+    }
+  ]
+}

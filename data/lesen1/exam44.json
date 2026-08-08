@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 44: Fisch",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Das Geheimnis des schnellen Schwimmens",
+    "b. Extremer Lebensraum",
+    "c. Fische im Fokus der Forscher von der Technischen Universität in Berlin",
+    "d. Wie wird Technik in der Natur eingesetzt",
+    "e. Bioniker erforschen die Wüstennatur",
+    "f. Ein Fisch in den Dünen",
+    "g. Die Ursachen für den Wassermangel",
+    "h. Rasante Flucht",
+    "i. Trinkwasser aus Nebel",
+    "j. Auf der Suche nach verborgenen Details"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Willkommen in der Wüste. Die Sonne brennt gnadenlos. Endlose Weite. Nur Sand und Geröll, so weit das Auge reicht. Kein Baum, kein Strauch, kein noch so winziges Tier. Bilder wie diese kommen wohl den meisten in den Sinn, wenn sie an die Wüste denken. Doch diese Vorstellung stimmt nicht ganz. Denn so hart und lebensfeindlich die Bedingungen in der Wüste auch sind – es gibt einige Überlebenskünstler, die es selbst hier schaffen, zu existieren. Um in der Wüste zu überleben, mussten sie sich im Laufe der Jahrmillionen perfekt an die harten Lebensbedingungen anpassen. Sie wurden zu ausgesprochenen Spezialisten. Von ihnen können Wissenschaftler jede Menge lernen. Und so zieht es jedes Jahr Bioniker aus vielen Ländern der Erde in die entlegenen Wüsten der Welt. Auf der Suche nach kleinen, aber wirksamen Tricks für das Leben in einer extremen Umgebung.",
+      "correct": 1,
+      "highlightColor": 3
+    },
+    {
+      "text": "Text 2: Denn Bioniker entwickeln technische Anlagen nach dem Vorbild der Natur – der Begriff Bionik setzt sich zusammen aus den Wörtern 'Biologie' und 'Technik'. Ihre Aufgabe: die Pflanzen und Tiere erst genau beobachten, kleinste Details entdecken und deren Geheimnisse lüften. Warum kann ein Gecko an der Wand hochlaufen? Wie kann ein Kolibri rückwärts fliegen? Wenn die Bioniker die Abläufe verstanden haben, fängt der größte Teil ihrer Arbeit erst an. Dann versuchen sie, aus dem Gelernten eine technische Anwendung zu entwickeln. Auch die besonderen Eigenschaften von Wüstentieren eignen sich dafür, wie die folgenden Beispiele zeigen.",
+      "correct": 9,
+      "highlightColor": 8
+    },
+    {
+      "text": "Text 3: Der Sandfisch ist eigentlich gar kein Fisch, sondern eine kleine Echse. Doch seinen Namen hat er sich redlich verdient. Denn er kann ausgezeichnet schwimmen. Zwar nicht im Wasser, dafür aber umso besser im Sand der Sahara. Droht dem wenige Zentimeter großen Tier Gefahr, dann verschwindet es rasend schnell im Wüstensand, nur um Augenblicke später einige Meter entfernt wieder aufzutauchen. Was im Wasser jedes Kind beherrscht, scheint im Sand unmöglich. Doch nicht für den Sandfisch. Denn er hat ein winziges Geheimnis: Seine Haut erscheint nur auf den ersten Blick ganz glatt. Unter dem Mikroskop fanden Wissenschaftler der Technischen Universität Berlin winzige Grate auf seiner Haut, nur wenige Nanometer groß. Genau diese Grate verhindern, dass der Sand an der Haut des Sandfisches hängen bleibt. Die Forscher konnten es kaum glauben und bauten in ihrem Labor eine Oberfläche mit vergleichbarer Struktur nach. Und siehe da: an einer vollkommen glatten Oberfläche bleibt der Sand förmlich kleben, an der mit den kleinen Erhebungen findet er keinen Halt. Die Idee für eine technische Umsetzung dieser Oberfläche ließ nicht lange auf sich warten. So arbeiten die Forscher am 'Institut für Bionik und Evolutionstechnik' der TU Berlin etwa an besonderen Leitungsrohren. Mit einer 'Sandfisch-Haut' im Inneren können die Rohre ein für alle Mal vor einer Verstopfung bewahrt werden.",
+      "correct": 5,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 4: Das größte Problem aller Wüstenbewohner ist die Wasserbeschaffung. In allen Wüsten der Erde herrscht fast ständig akuter Wassermangel. In vielen fällt jahrelang kein einziger Regentropfen vom Himmel. In einigen Regionen der Atacama-Wüste in Südamerika soll es seit mehreren hundert Jahren keinen Niederschlag mehr gegeben haben. Der Nebeltrinker-Käfer hat seine ganz eigene Strategie gegen den Wassermangel entwickelt. Er lebt in der Namib-Wüste im Südwesten Afrikas. Viele Tage im Jahr krabbelt er emsig die Sanddünen hinauf, macht eine Art Kopfstand und wartet auf den Nebel, der vom Atlantik her über den Rand der Wüste zieht. Dabei senkt er den Kopf und hebt sein Hinterteil in die Höhe. Die Flüssigkeit des Nebels kondensiert an seinem nur anderthalb Zentimeter langen Körper und läuft über eine kleine Vertiefung auf seinem Rücken direkt in sein Maul. Hier liegt die technische Anwendung auf der Hand: Wassergewinnung aus Nebel. Tatsächlich wird diese Methode auch schon einige Jahre genutzt. In der Nähe des Dorfes El Tofo in Chile wurden sogenannte Nebelnetze errichtet. Pro Nebeltag kondensieren hier bis zu 11.000 Liter frisches Wasser an den Netzen, eine stolze Ausbeute.",
+      "correct": 8,
+      "highlightColor": 6
+    },
+    {
+      "text": "Text 5: Beispiel Nummer drei: die Rollerspinne. Auch sie lebt in der Wüste Namib und wurde erst vor wenigen Jahren entdeckt. Die Wissenschaftler waren ziemlich verblüfft, als sie die ungewöhnliche Fluchtmethode des Achtbeiners sahen: einfach die Beine anwinkeln und dann wie ein Rad die Sanddünen hinunterrollen. Die Bioniker filmten die Spinne mehrmals und schauten sich das Video unzählige Male an. Dann war ihnen klar: Mit ihren Vorderbeinen stößt sich die Spinne während des Rollens immer wieder vom Boden ab. Dadurch kullert sie nicht einfach nur passiv den Abhang hinunter. Vielmehr kann sie durch diese Methode auf ihrer Flucht wieder ordentlich an Tempo zulegen. Doch welche technische Anwendung soll dabei herausspringen? Hier beweisen die Forscher Mut zur Vision: An der TU Berlin soll ein Mars-Auto entstehen, das im unwegsamen Gelände fahren kann.",
+      "correct": 7,
+      "highlightColor": 10
+    }
+  ]
+}

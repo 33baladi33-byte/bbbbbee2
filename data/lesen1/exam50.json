@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 50: Computer",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Jeder kann Netzreporter werden",
+    "b. Historisches Wissen ohne Mühe",
+    "c. Hotels online vermarkten",
+    "d. Sprachen lernen per Computer",
+    "e. Neues Hotelangebot spart Geschäftsleuten Zeit",
+    "f. Verschenken Sie Ihr Geld nicht an den Staat!",
+    "g. Neuer Computerkurs an der Volkshochschule",
+    "h. Elektronischer Weg aus dem Steuerlabyrinth",
+    "i. Onlinebibliothek für Referate und Kurznachrichten",
+    "j. Pädagogen gegen Internetdienste"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: ‚Auf meinen elektronischen Steuerberater kann ich mich hundertprozentig verlassen‘, erklärt Rainer Wust, Inhaber einer kleinen Elektronikfirma in Hamburg. Die Steuererstattung, die er für das vergangene Jahr vom Finanzamt erhielt, stimmte völlig mit dem überein, was sein Steuersparprogramm ausgerechnet hatte. Immer mehr Deutsche sparen sich den teuren Gang zum Steuerberater und setzen auf Computerprogramme. Die Vorteile liegen auf der Hand: Am heimischen Rechner lassen sich alle steuerrelevanten Daten bequem in die richtigen Formulare eingeben und per Internet an das Finanzamt schicken. Das Programm fragt nach wichtigen Zahlen, kennt Steuerspartipps und hilft zuverlässig durch den Steuerdschungel – ohne Terminabsprachen und langwierige Sitzungen beim Steuerberater, wie das früher üblich war. In einigen Fällen muss man aber trotzdem noch Belege und andere Unterlagen beim Finanzamt einreichen – und zwar per herkömmlicher Post.",
+      "correct": 7,
+      "highlightColor": 4
+    },
+    {
+      "text": "Text 2: Kundenberaterin Sabine E. ist ständig auf Achse. Als Repräsentantin einer großen Plastikgeschirrfirma für Süddeutschland besucht sie Messen, Ausstellungen und Kunden, um den Verkauf anzukurbeln. Heute München, morgen Stuttgart, übermorgen Mainz – Sabine E. ist an das Leben einer modernen Geschäftsnomadin gewöhnt. Umso mehr schätzt sie den Service, den eine immer größere Zahl an Hotels Geschäftsreisenden wie ihr anbietet: das Hotelzimmer mit komplettem Büroservice. Dem Hotelgast stehen nicht nur Internetzugang und Telefon kostenlos zur Verfügung, er kann auch Kopien in Auftrag geben, Dokumente ausdrucken lassen oder schnell noch vom Zimmer aus ein Fax verschicken. ‚Für mich hat das viele Vorteile‘, sagt Frau E. ‚Meine Aufträge und Abrechnungen kann ich jetzt oft schon während meiner Kundentermine in mein Notebook eintippen und dann am Abend per E-Mail versenden. Unterlagen kann ich auch zwischendurch ausdrucken und Verträge unterschreiben und verschicken. Das spart mir viel Zeit, die ich jetzt dafür nutze, um auch mal abends auszugehen und die Gastronomie der Stadt, in der ich mich gerade befinde, kennenzulernen.‘",
+      "correct": 4,
+      "highlightColor": 9
+    },
+    {
+      "text": "Text 3: Ein Referat für den Geschichtsunterricht über Karl den Großen zur nächsten Woche – kein Problem. Mussten sich Schüler früher durch Berge von Sachbüchern kämpfen, Lexika wälzen und die Nachmittage in den Lesesälen der Bibliotheken verbringen, genügt heute ein Mausklick auf die Webseite eines Onlinediensts, der kostenlos oder für wenig Geld für Schüler fertige Referate zu fast jedem Thema liefert. Statt im staubigen Bibliothekssaal zu sitzen, entspannt sich der Schüler von heute im Schwimmbad vom Schulstress. Und trägt im Unterricht ein Referat vor, von dem er oft nicht einmal das Thema geschweige denn Details kennt, was spätestens bei Nachfragen der Lehrer schließlich auffällt. Die Praxis, fertige Referate per Internet anzubieten, stößt bei Lehrern und Schulpolitikern auf Kritik. Sie fordern deshalb einhellig Maßnahmen gegen die Anbieter, die zwar Schülern die Arbeit abnehmen, aber nichts zur Wissensvermittlung beitragen.",
+      "correct": 9,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 4: Wer könnte interessantere Meldungen aus allen Ecken des World Wide Web liefern als die Internetnutzer selbst? Deshalb sind auf vielen Nachrichtenportalen keine Nachrichtenprofis am Werk, sondern ganz normale Surfer, die selbst zu Onlinereportern werden. Das Prinzip solcher Seiten ist genial einfach: Wer irgendwo im Netz eine Meldung aufspürt, die auch andere Surfer interessieren könnte, schreibt eine kurze Zusammenfassung und reicht diese einfach ein. Dort wird dann vom Betreiber nur geprüft, ob der angegebene Link, also die Fundstelle im Netz, auch funktioniert und die Quelle seriös ist. Auf diese Weise können Falschmeldungen aussortiert werden. Nach erfolgreicher Prüfung wird aus dem Internetfundstück auch schon eine Nachricht. Wer die Meldungen liest, kann dann selbst an der Quelle überprüfen, ob er den Informationen vertraut.",
+      "correct": 0,
+      "highlightColor": 6
+    },
+    {
+      "text": "Text 5: Zu Beginn des Englischkurses fragt Verena Baum ihre Mitlernenden nach ihren Namen, wie es in einem Sprachkurs eben üblich ist. Doch statt auf einem harten Schulstuhl sitzt sie ganz bequem auf ihrem körpergerechten Schreibtischstuhl zu Hause vor ihrem PC. Vor zwei Jahren startete eine Sprachenschule vor den Toren von Frankfurt am Main auf Initiative einer pfiffigen Kursleiterin ein Pilotprojekt: Überall Englisch. Die Lernenden eignen sich ihre Sprachkenntnisse über ein Computerprogramm an, das extra für dieses Projekt entwickelt wurde. Per Internet treten sie in Dialog mit den anderen Kursteilnehmern und üben und kommunizieren gemeinsam auf Englisch. Alle sechs bis acht Wochen trifft man sich aber nach Möglichkeit an der Schule zum Austausch, zur Lernkontrolle und natürlich, um die Fragen zu beantworten, auf die der PC keine persönliche Antwort wusste. Für Verena Baum und die meisten anderen Teilnehmer an Überall Englisch war es zuerst ungewohnt, sich nicht in einem Kursraum zu treffen. Aber: ‚Das war eine tolle Erfahrung, und das Lernen hat großen Spaß gemacht.‘",
+      "correct": 3,
+      "highlightColor": 10
+    }
+  ]
+}

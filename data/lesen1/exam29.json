@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 29: Kindertelefon",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Neue Kinderhandys auf den Markt gebracht",
+    "b. Profi-Tipps für bessere Urlaubsbilder",
+    "c. Moderne schnurlose Geräte vermindern die Strahlenbelastung",
+    "d. Mehr Mut zum Fotografieren!",
+    "e. Handy im Ausland: aufpassen und tricksen!",
+    "f. Kinder-Überwachung für Eltern per Handy wird geplant",
+    "g. Tipps zum Telefonieren mit weniger Strahlung",
+    "h. Der neue Euro-Tarif",
+    "i. Handy-TV zur Fußball-WM 2006",
+    "j. Mobiler Fernsehgenuss wird zum Alltag"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Vielen Menschen verursachen sie ein mulmiges Gefühl: Die meisten Schnurlos-Telefone strahlen auch dann, wenn man gar nicht telefoniert. Vor allem DECT-Geräte (Digital Enhanced Cordless Telecommunications - digital verbesserte schnurlose Kommunikation) sind deshalb in die Kritik geraten. Allmählich nehmen Hersteller die Bedenken ernst und bieten Geräte an, die das Bundesamt für Strahlenschutz (BfS) als 'bedingt strahlungsarm' einstuft. Stehen diese Telefone auf der Ladestation, wird die Sendeleistung von Handgerät und Basis abgeschaltet oder radikal vermindert. Voraussetzung: Nur ein Mobilteil ist angemeldet. Einige Modelle reduzieren die Strahlung auch, wenn man nahe der Basisstation telefoniert.",
+      "correct": 2,
+      "highlightColor": 5
+    },
+    {
+      "text": "Text 2: Wenn Kinder ein Handy haben, dann ist das schön und gut. Doch was, wenn der Filius nicht dran geht? Wenn er möglicherweise etwas Besseres zu tun hat, als zurückzurufen? Und noch schlimmer, wenn sich Heranwachsende im prüden Amerika schmutzige Bilder auf dem Handydisplay anschauen? Das schreit nach Kontrolle. Und genau die will Motorolas CEO Edward Zander den Eltern über ihre Kinder geben: Sie sollen jederzeit wissen, wo sie (oder deren Mobiltelefon) sind und was sie damit tun. Verbunden werden soll die Einführung von einem solchen Handy mit einer Reihe von Merkmalen, die junge Menschen ansprechen, wie zum Beispiel mit dem für nächsten Monat anvisierten Start des iTunes-Handys.",
+      "correct": 5,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 3: Wer unter Palmen liegt, greift gern zum Handy. Doch trotz neuer Preisobergrenzen bleibt das ein teurer Spaß! Die Verbraucherzentrale Schleswig-Holstein erklärt, wie Sie richtig wählen. Bis 30. Juli müssen alle europäischen Mobilfunkanbieter den neuen 'Eurotarif' anbieten. Er gilt in allen EU-Staaten und schreibt Preislimits von maximal 49 Cent/Min. für eigene Anrufe bzw. maximal 24 Cent für ankommende Gespräche vor. Aber aufgepasst: Falle 1: kein Rabatt im Juli/August! Falle 2: Mehrwertsteuer! Zu den Kosten für abgehende bzw. angenommene Anrufe kommen noch 19% Mehrwertsteuer dazu. Falle 3: Alte Sondertarife! Bis 20 Prozent der Handy-Nutzer haben Sonderverträge für Auslandsgespräche.",
+      "correct": 4,
+      "highlightColor": 7
+    },
+    {
+      "text": "Text 4: Manche Momente muss man einfach festhalten - mit einem Foto. Doch dessen Qualität hängt von vielen Faktoren ab: der Kamera, den Verhältnissen vor Ort und der Erfahrung des Fotografen. Für ein paar schöne Erinnerungsfotos sich aber eine teure Profi-Ausrüstung zuzulegen, lohnt selten. Vom Pauken schwieriger technischer Details ganz zu schweigen. Das ist heute auch längst nicht mehr nötig. Schon mit normalen Digitalkameras lassen sich wunderbare Bilder schießen - mit ein paar Tricks: Abwechslungsreiche Motivwahl, Nähe und Distanz, Perspektive und Technik, Licht und Schatten. Die meisten Urlauber fotografieren gerne Sehenswürdigkeiten mit ihren Liebsten. Schaut man sich die Bilder später an, sind sie oft eine Variation des ewig Gleichen.",
+      "correct": 1,
+      "highlightColor": 10
+    },
+    {
+      "text": "Text 5: Es gibt in Deutschland wohl kaum eine bessere Chance für die Einführung von Handy-TV als die Fußball-WM 2006. Doch ein rechtzeitiger Start ist ungewiss. Die Problemfelder sind vielschichtig. Drei Standards kämpfen darum, das erste deutsche Mobilfernsehen zu sein: UMTS, DMB und DVB-H. Und das möglichst pünktlich zum 9. Juni 2006, dem Start der Fußball-WM. Dieser Dreikampf wird von Experten jedoch kritisch betrachtet. In Südostasien floriert dieser Markt doch schon seit vielen Monaten. In Korea beispielsweise gehört der mobile Fernsehgenuss zum Alltag. Bis zu zwei Stunden täglich schauen Besitzer der kleinen TV-Handys dort unterwegs auf die Mini-Mattscheibe.",
+      "correct": 9,
+      "highlightColor": 3
+    }
+  ]
+}

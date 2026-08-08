@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 49: Wetter",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Eine ungewöhnliche Geschenkidee",
+    "b. Gut informiert mit neuer Wetter-App",
+    "c. Heftiger Sturm sorgt für Verkehrschaos in Deutschland",
+    "d. Junge Erfinder zeigen ihr Können",
+    "e. Kostenlose Wetter-Apps sind nicht empfehlenswert",
+    "f. Präzise Vorhersage von Stürmen durch neue Messinstrumente",
+    "g. Schüler erfinden App und gewinnen Wettbewerb",
+    "h. Sturm richtet schwere Schäden an Flughäfen an",
+    "i. Vorhersage von Stürmen ist schwierig",
+    "j. Warum Tiefs immer weibliche Namen haben"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Kyrill, Friederike, Lothar oder Xaver – all dies sind Namen von Stürmen, die in Deutschland und Europa in den vergangenen Jahrzehnten für Schlagzeilen gesorgt haben. Aber wie kommen Stürme eigentlich zu ihren Namen? Die Antwort auf diese Frage findet man beim Institut für Meteorologie in Berlin. Hier werden bereits seit 1954 Namen für alle Hoch- und Tiefdruckgebiete vergeben, die das Wetter in Deutschland mitbestimmen. Zunächst hatten alle Tiefs weibliche Namen und alle Hochs männliche. Seit Ende der 90er-Jahre wird abgewechselt: In einigen Jahren tragen die Tiefs männliche Namen, in anderen weibliche. Seit 2002 haben alle Bürgerinnen und Bürger außerdem eine ganz besondere Möglichkeit: Sie können ein Hoch oder ein Tief ‚kaufen‘, ihm einen Namen geben oder es sogar verschenken. Der Deutsche Wetterdienst und die Medien übernehmen diesen Namen dann und verwenden ihn in den Wetterberichten. So können sie einem lieben Menschen eine originelle Überraschung bereiten oder sich selbst eine Freude machen.",
+      "correct": 0,
+      "highlightColor": 5
+    },
+    {
+      "text": "Text 2: Der Jugendwettbewerb ‚Naturwissenschaft & Technik‘ geht in die nächste Runde. Auch in diesem Jahr haben Schülerinnen und Schüler wieder die Möglichkeit, ihre Erfindungen der Öffentlichkeit zu präsentieren. Eine Jury bewertet die Wettbewerbsbeiträge und wählt die fünf besten aus. Auch das Publikum vor Ort darf abstimmen und einen ‚Publikumsliebling‘ wählen. Insgesamt sind Sachpreise im Wert von 3000 Euro zu gewinnen, gesponsert von Unternehmen aus der Region. Teilnehmen können Schülerteams aller Schularten ab der fünften Klasse. Mit dabei ist diesmal auch ein Team des Thomas-Mann-Gymnasiums in Neustadt. Die Oberstufe hat eine neue Wetter-App entwickelt, mit der sie in diesem Jahr die Jury und das Publikum überzeugen möchte. Der Schulleiter des Thomas-Mann-Gymnasiums, Bernd Giesinger, ist stolz auf die Schülerinnen und Schüler: ‚Ich freue mich sehr über das Engagement dieser jungen Menschen, die ihre Zeit und Kreativität nutzen, um unsere gemeinsame Zukunft zu gestalten.‘",
+      "correct": 3,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 3: Am gestrigen Abend fegte Sturmtief Charlotte über Deutschland hinweg und legte große Teile des Landes lahm. Mit Spitzengeschwindigkeiten von 140 Kilometern pro Stunde sei Charlotte einer der stärksten Stürme der vergangenen Jahre, sagte Meteorologe Andreas Fischer. Insbesondere in Hessen, Nordrhein-Westfalen und im Saarland sind wegen umgestürzter Bäume unzählige Straßen und Bahnstrecken blockiert. Viele Züge konnten gestern nicht mehr weiterfahren und Hunderte Bahnreisende saßen zum Teil bis spät in die Nacht auf freier Strecke fest. In Hessen wurde der Bahnverkehr zeitweise komplett eingestellt. An den Flughäfen Frankfurt, Düsseldorf und Köln/Bonn kam es zu zahlreichen Verspätungen und Flugausfällen. Ankommende Maschinen wurden teilweise zu anderen Flughäfen umgeleitet. Von dort gestaltete sich die Weiterfahrt für viele Reisende allerdings ebenfalls sehr schwierig. Die Aufräumarbeiten laufen derzeit auf Hochtouren und werden noch einige Zeit in Anspruch nehmen. Im Moment ist es noch nicht absehbar, wie lange es dauern wird, bis alle Strecken wieder frei sind.",
+      "correct": 2,
+      "highlightColor": 9
+    },
+    {
+      "text": "Text 4: Soll ich einen Pullover anziehen oder reicht ein T-Shirt? Muss man einen Schirm mitnehmen oder braucht man eine Sonnenbrille? Jedes Smartphone hat heutzutage eine vorinstallierte Wetter-App, aber genaue Wettervorhersagen liefern die meisten nicht. Es gibt aber gute Alternativen. Wer einen zuverlässigen Wetterdienst für sein Smartphone oder Tablet sucht, ist mit der neuen App Wetterwissen bestens beraten. Schon in der kostenlosen Version bietet die App umfangreiche Daten zur aktuellen Wetterlage, leicht verständliche Prognosen und Unwetterwarnungen. Der Regenradar zeigt Ihnen genau, wo sich Regenwolken bilden und ob diese in Ihre Richtung ziehen oder nicht. Für 1,99 Euro gibt es ein Premium-Abo mit zusätzlichen Wetter-Videos und Informationen zu Wintersport und Badewetter. Die App ist in der Premium-Version werbefrei, in der kostenlosen Version wird am unteren Rand Werbung eingeblendet, die viele Nutzer aber nicht als störend wahrnehmen. Die App punktet außerdem mit einem modernen Design und schafft es damit ganz klar in die Top 10 der Wetter-Apps.",
+      "correct": 1,
+      "highlightColor": 10
+    },
+    {
+      "text": "Text 5: Zehn Jahre ist es her, dass sich aus einem scheinbar harmlosen Tiefdruckgebiet schnell und überraschend der gefährliche Sturm Tinka entwickelte, der in Norddeutschland immense Schäden anrichtete und als einer der teuersten Stürme in die Geschichte einging. Den Wetterdiensten wurde damals vorgeworfen, die Entwicklung des Tiefdruckgebietes nicht richtig berechnet und die Bevölkerung nicht rechtzeitig gewarnt zu haben. Obwohl die Messinstrumente immer präziser geworden sind, lassen sich manche Wetterereignisse wie zum Beispiel Gewitter und Stürme nur schwer vorhersagen. Ein Sturm kann von vielen Faktoren abhängig sein und entwickelt sich oft kurzfristig. Daher kann es passieren, dass die Prognosen völlig verschieden ausfallen, manchmal sogar auch ganz falsch sind. Um dies zu vermeiden, vergleichen Meteorologen möglichst viele Wetterlagen. Je mehr Übereinstimmungen es gibt, desto wahrscheinlicher ist es, dass ihre Prognose zutrifft. Mit einer Trefferquote von etwa 80 Prozent kann die Entwicklung eines Sturms inzwischen auch recht gut eingeschätzt werden – aber eben nicht zu 100 Prozent.",
+      "correct": 8,
+      "highlightColor": 7
+    }
+  ]
+}

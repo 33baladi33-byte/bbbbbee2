@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 31: Alpen (التعديل 1)",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Freizeitsport in den Alpen",
+    "b. Mädchen geben mehr Geld für Zigaretten aus als Jungen",
+    "c. Hochgebirge als Skiparadies",
+    "d. Höhenluft - gut fürs Herz",
+    "e. Vereine wirken positiv auf Jugendliche",
+    "f. Lehrer berichten von ihren Erfahrungen mit dem Rauchen",
+    "g. Rauchverbot in Sportvereinen",
+    "h. Studenten engagieren sich gegen das Rauchen",
+    "i. Zigaretten gegen Alleinsein",
+    "j. Zum Leistungssport in die Berge"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Seit einigen Jahren schon gibt es das bundesweite Projekt 'Aufklärung gegen Tabak'. Ins Leben gerufen hat es ein Medizinstudent. Mittlerweile machen rund 500 Studenten in 23 deutschen Städten mit Schülern der sechsten bis achten Klasse die Gefahren des Rauchens auf. 'Unser Ziel ist es, die Kinder möglichst früh anzusprechen und präventiv zu arbeiten', erklärt Alisha Haney, die im vierten Semester in Heidelberg Medizin studiert. 'Dabei ist es auch hilfreich, dass wir Studenten den Kindern auf Augenhöhe sind und nicht wie alte Lehrer. Da wir selbst noch so jung sind, verstehen wir leichter Gespräche auf Augenhöhe.' Die Medizinstudenten wollen alle Möglichkeiten nutzen, um ihr während des Studiums erworbenes Wissen an die Schüler weiterzugeben.",
+      "correct": 7,
+      "highlightColor": 4
+    },
+    {
+      "text": "Text 2: Urlaub in den Bergen ist sehr gesund. Das fanden jetzt Wissenschaftler am Anatomischen Zentrum der Universität Köln heraus. Besonders die Höhenlagen um die 2.000 Meter wirken sich messbar positiv auf die Gesundheit aus. Die 'dünnere Luft' in Hochgebirgslagen bewirkt eine Senkung des Blutdrucks und des Pulsschlages, eine verbesserte Leistungsfähigkeit des Herzens und damit eine Stärkung der Funktion von Herz, Lunge und Kreislauf. Wichtig sei es aber, in den ersten Tagen auf eine ausreichende Akklimatisierung zu achten. Denn etwa eine Woche benötigt der Körper, um sich an die neuen klimatischen Bedingungen im Gebirge anzupassen.",
+      "correct": 3,
+      "highlightColor": 9
+    },
+    {
+      "text": "Text 3: Schlechte Haut, übler Atem, leere Brieftasche. Das ist eigentlich ziemlich 'uncool'. Und doch dauert es ziemlich lange, bis junge Raucher begriffen haben, dass Rauchen nicht hält, was viele Jugendliche in ihrer Phantasie damit verbinden: Freiheit und Attraktivität - der Glimmstängel macht 'cool' und begehrenswert. Stress und Leistungsdruck verschwinden angeblich, sobald man nur an der Zigarette zieht. Doch das Gegenteil ist der Fall: Die zuerst genannten Negativfolgen stellen sich oft schneller ein als gedacht. Häufig ist es aber dann schon zu spät, denn das Entwöhnen von der Sucht ist ein langwieriger und oft auch schmerzhafter Weg.",
+      "correct": 1,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 4: Sport im Hochgebirge? Da denkt man zuallererst an Wintersport: Skifahren, Rodeln, Eislaufen. Doch auch im Sommer ist das Hochgebirge ein Ort, an dem man sich vielfältig sportlich betätigen kann: Wandern, Klettern oder Schwimmen in einem der zahlreichen kristallklaren Bergseen erfreuen sich großer Beliebtheit bei Jung und Alt. In Deutschland ist Hochgebirgssport vor allem in den Alpenregionen im südlichen Bayern möglich. Es muss jedoch nicht unbedingt gleich Deutschlands höchster Berg - die Zugspitze - sein, die man als Ziel ansteuert. Auch rund um Oberstdorf, Füssen, Berchtesgaden oder rund um den Tegernsee bieten sich viele Möglichkeiten.",
+      "correct": 0,
+      "highlightColor": 6
+    },
+    {
+      "text": "Text 5: Sportvereine spielen eine immer wichtigere soziale Rolle für junge Leute in Deutschland. Das haben neueste Untersuchungen ans Licht gebracht. Ging man früher in einen Sportverein, um Fußball zu spielen, zu reiten oder zu turnen, geben die Clubs heute vielen Jugendlichen ein zweites Zuhause. Hier treffen sich Freunde, hier kümmert sich jemand um sie, hier haben sie eine Aufgabe. Zuhause fühlen sie sich einsam und überflüssig. Die Eltern arbeiten und sind nicht da, die Kommunikation mit dem Fernseher oder dem Computer ist eine recht einseitige Angelegenheit. Jugendliche, die in Sportvereinen Mitglied sind, sind geselliger, werden weniger gewalttätig, leben gesundheitsbewusster, rauchen deutlich weniger.",
+      "correct": 4,
+      "highlightColor": 10
+    }
+  ]
+}

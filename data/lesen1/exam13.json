@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 13: das Benzin",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Benzingeld sparen: Tipp vom Tankwart",
+    "b. Die wichtigsten Erste-Hilfe-Ratschläge",
+    "c. Einmal die Welt als Ganzes sehen",
+    "d. Einmal um die Welt ohne einen Tropfen Benzin",
+    "e. Fliegen statt fahren",
+    "f. Innerdeutsche Reisen besonders beliebt",
+    "g. Frau im All",
+    "h. Schweizer nutzen Solartaxis",
+    "i. Steigende Spritpreise: die Tricks der Autofahrer",
+    "j. Die richtige Unfallversicherung"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Aussteigen, tanken, wegfahren: Wenn die Benzinpreise steigen, ist wieder Hochsaison bei den Benzindieben. Früh morgens und abends schlagen sie besonders gerne zu. Viele setzen auf den Schutz der Dunkelheit. Vor Weihnachten und im Januar und Februar häufen sich die Fälle. Auch am Monatsende, wenn das Geld knapp wird, steigt die Zahl der Benzindiebstähle. Doch sparen lässt sich durch Benzinklau nicht. Fast alle Täter werden von der Polizei gefasst. Schließlich gibt es an jeder Tankstelle eine Kamera, die das Autokennzeichen aufgenommen hat. Tankwart Kurt Jochimsen aus Emden zeigt uns einen Fall aus seiner großen Videosammlung. Ein Wagen mit zwei Insassen fährt an die Zapfsäule. Der Fahrer tankt, seine Frau geht in den Shop. Sie kauft dort zwei Cola und bezahlt. Aber nicht das Benzin. Der Mann hat inzwischen voll getankt und wartet im Wagen. 'Hier sehen Sie: Die Frau kommt raus, steigt ein und das Fahrzeug fährt davon. Hinterher heißt es dann, ich habe doch glatt vergessen, das Benzin zu bezahlen', erklärt Kurt Jochimsen. Bei der Polizei kennt man diese Ausreden. Polizeihauptkommissar Werner Knips: 'Vergessen gilt nicht, es gibt immer eine Anzeige. Und dann wird es richtig teuer.'",
+      "correct": 8,
+      "highlightColor": 5
+    },
+    {
+      "text": "Text 2: Viele Autofahrer, die in einen Unfall verwickelt sind, sind so aufgeregt, dass sie vergessen, was zu tun ist. Der Versicherungsexperte Klaus Lenhoff gibt die wichtigsten Tipps: 1. Unfallstelle absichern: Warnblinkanlage einschalten und Warndreieck in 100 Metern Entfernung aufstellen. 2. Rettung aus dem Gefahrenbereich: alle Unfallbeteiligten aus dem Gefahrenbereich retten. Eingeschlossene befreien und Brände sofort bekämpfen. 3. Rettungskräfte informieren: bei schweren Unfällen und wenn es Verletzte gibt, die Polizei (Ruf 110) oder die Rettungsleitstelle (Ruf 112) informieren. Dabei an 'die fünf W's' denken: Wo ist es passiert? Was ist passiert? Wie viele Verletzte? Welche Verletzungen? Warten sie auf Rückfragen. 4. Verletzten Hilfe leisten. 5. Lokalisierung auf der Autobahn. 6. Beweismittel sichern. 7. Verkehrsfluss wiederherstellen. 8. Zeugen notieren. 9. Vorsicht bei Aussagen. 10. Versicherung des Unfallgegners ermitteln.",
+      "correct": 1,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 3: Hast du schon mal mit dem Gedanken gespielt, Pilotin zu werden? Nicht? Dann geht es euch wahrscheinlich wie den meisten Mädchen oder Frauen. Warum wollen eigentlich so wenige Frauen Pilotinnen werden? Nur weil der Beruf angeblich ein typischer Männerberuf ist? Wir haben eine Pilotin getroffen: Monique Bellin ist 39 Jahre alt, wohnt im Süden Frankfurts und ist Pilotin. 'Schon seit früher Kindheit habe ich mich für die Fliegerei interessiert. Es hat mich schon immer fasziniert, dass es mit Hilfe technischer Mittel möglich ist, die Schwerkraft zu überwinden und die Welt aus der Vogelperspektive zu betrachten. Und irgendwann wollte ich diese Technik dann auch selbst beherrschen', so Bellin. Seit sie in diesem Beruf arbeite, habe sich ihre Einstellung zu vielen Dingen verändert: 'Ich bin toleranter als vor meinem Fliegerleben - vielleicht weil ich versuche, mein Umfeld aus anderen Perspektiven zu betrachten.'",
+      "correct": 2,
+      "highlightColor": 7
+    },
+    {
+      "text": "Text 4: Der Schweizer Louis Palmer hat eine Weltumrundung mit seinem 'Solartaxi' fast abgeschlossen. Er habe bereits 47000 km mit seinem Solarauto zurückgelegt, sagte Palmer bei einem Stopp in Paris. 'Nun habe ich fast den ganzen Planeten umrundet, ohne einen Tropfen Benzin zu brauchen.' Die Batterien des bis zu 90 Stundenkilometer schnellen Solarmobils können Energie für eine Reichweite von 400 km speichern. 'Das Wetter spielt keine Rolle', sagte Palmer. 'Es kann mehrere Tage in Folge regnen, ich fahre ohne Probleme weiter.' Palmer war mit seinem dreirädrigen 'Taxi' im Juli in Luzern gestartet. Seitdem hat er Europa, Asien, Australien, Neuseeland und Nordamerika durchquert. Er zieht einen Anhänger mit sechs Quadratmetern Solarzellen hinter sich her und die Sonnenenergie treibt das Gefährt an.",
+      "correct": 3,
+      "highlightColor": 10
+    },
+    {
+      "text": "Text 5: Die Bundesregierung und ihre Spitzenbeamten sind auf Dienstreisen gern mit dem Flugzeug unterwegs - aber nicht nur, wenn es um Fernreisen geht, sondern auch bei kurzen Inlandsreisen. Wie aus der Antwort des Innenministeriums auf eine Frage eines Abgeordneten hervorgeht, gab die Bundesregierung im letzten Jahr 7,7 Millionen Euro für innendeutsche Flugreisen aus. Fahrkarten der Bahn hingegen schlugen lediglich mit 3,2 Millionen zu Buche. Der Vergleich mit anderen Jahren zeigt aber, dass sich die meisten Politiker bemühen, immer häufiger vom Flugzeug auf die Bahn umzusteigen. Eine Ausnahme bildet das Kanzleramt (Flugkosten um 30% erhöht gegenüber dem Vorjahr) sowie ausgerechnet das Ressort des Bundesumweltministers (plus 7%).",
+      "correct": 4,
+      "highlightColor": 0
+    }
+  ]
+}

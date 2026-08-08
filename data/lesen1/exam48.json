@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 48: Farben in der Wohnung",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Farbberatung durch den Gärtner oder die Floristin",
+    "b. Farben in der Wohnung als Therapie",
+    "c. Gesünder durch kräftige, leuchtende Farben in der Wohnung",
+    "d. Kräuter als Zimmerpflanzen",
+    "e. Kräuter bringen Farbe in Wohnräume",
+    "f. Möbel als Energiequellen der Zukunft",
+    "g. Pflanzen machen den Wohnraum gesünder",
+    "h. Wohnen in Harmonie mit den Kräften der Natur",
+    "i. Zimmerpflanzen sind selten krank",
+    "j. Zimmerpflanzen sorgen für gute Stimmung bei Menschen"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Wohnen in Harmonie mit den Kräften der Natur. Feng Shui - wortlich: 'Wind Wasser' - ist die taoistische Lehre vom Leben im Einklang mit der Umgebung. Seit Jahrhunderten wird Feng Shui in China und anderen fernöstlichen Kulturen praktiziert, inzwischen ist es auch bei uns beliebt. Wohnen mit Feng Shui bedeutet ein Gleichgewicht herzustellen - beginnend bei der Auswahl des Grundstucks, der Anordnung von Türen und Fenstern und der Gestaltung der Wohnräume. Türen und Fenster leiten den Energiefluss wie Schleusen, die Position der Möbel lässt die positive Energie weiterströmen oder behindert sie. Wie man vorhandene Energie-Störungen durch einfaches Umstellen der Möbel beseitigen kann, zeigen Feng-Shui-erfahrene Innenarchitekten.",
+      "correct": 7,
+      "highlightColor": 2
+    },
+    {
+      "text": "Text 2: Farben in der Wohnung als Therapie. Farben haben eine starkere Wirkung auf Menschen, als viele vermuten. Der Einfluss der Farben ist sogar so groß, dass er für therapeutische Zwecke genutzt wird. Bei der farblichen Gestaltung einer neuen Wohnung sollte man zuerst einmal zurückhaltend sein. Ist der Raum nämlich in knalligem Rot oder blendendem Gelb gestrichen, müssen die Möbel und andere Gegenstände farblich darauf abgestimmt sein, da sonst eine unruhige oder aggressive Atmosphäre entstehen kann. Weiß gestrichene Wände stehen hingegen zwar in dem Ruf, langweilig zu sein, sie lassen sich aber mit allen Möbeln, Stoffen und Dekorationsgegenständen kombinieren und schaffen so leicht eine gemütliche und für das Auge ansprechende Atmosphäre.",
+      "correct": 1,
+      "highlightColor": 9
+    },
+    {
+      "text": "Text 3: Pflanzen machen den Wohnraum gesünder. Wert so hohen natürlichen Schwankungen unterliegt wie die Luftfeuchte. Witterung, Temperaturunterschiede, Wohngewohnheiten, alles sorgt für ständiges Auf und Ab. Als Mittelwert kann 40-60 % angenommen werden. Die relative Luftfeuchtigkeit sollte in Wohnräumen nie dauerhaft unter 30 % oder über 70 % liegen. In den meisten Wohnräumen ist die Luft zu trocken. Die Luftfeuchtigkeit beträgt nur 20 %. Besonders Zentralheizungen und Klimaanlagen trocknen die Luft aus und wirbeln Staub, Keime und Schadstoffe auf. Atemwegserkrankungen und Allergien sind oft die Folge. Auslöser sind meist Keime oder Bakterien, die bei trockener Luft gut gedeihen. Gegen üble Gerüche und zu hohe Lufttrockenheit helfen am besten Pflanzen. Sie geben Wasserdampf an die Umgebung ab und sorgen für ein gutes Raumklima.",
+      "correct": 6,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 4: Kräuter als Zimmerpflanzen. Frische Kräuter machen jedes Essen zum Genuss. Man braucht keinen großen Garten, um sich für den Eigenbedarf aromatische Gewürzpflanzen selbst ziehen zu können. Die meisten dieser Kräuter gedeihen nämlich auch im Blumentopf auf dem Balkon oder auf der Fensterbank. Dabei sind natürlich solche Pflanzen, die im Freien wachsen können, durch den Einfluss des Sonnenlichts aromatischer als solche, die nur hinter Glas wachsen können. Die Pflanzen im Zimmer brauchen auch mehr Pflege als ihre Kollegen an der frischen Luft. Wegen der Lufttrockenheit in den Wohnungen müssen sie z.B. viel häufiger gegossen werden als Freilandpflanzen, auch sind sie weniger widerstandsfähig gegen Schädlinge und Pflanzenkrankheiten.",
+      "correct": 3,
+      "highlightColor": 8
+    },
+    {
+      "text": "Text 5: Zimmerpflanzen sorgen für gute Stimmung bei Menschen. Bei der Wohnraumgestaltung lässt sich viel erreichen mit der richtigen Auswahl der Zimmerpflanzen. Es müssen nicht nur grünblättrige Gummibäume oder Palmen sein, die einen Raum verschönern - vielfältige Blatt- und Blütenfarben machen selbst trostlos wirkende Räume farbenfroh und fröhlich. So können Blühpflanzen auf der Fensterbank auch im Herbst oder Winter die Bewohner in gute Laune versetzen. Grünpflanzen beruhigen zudem und man fühlt sich beim Anblick der Natur in der eigenen Wohnung einfach ruhiger und ausgeglichener. Bedenken Sie aber: Pflanzen müssen am richtigen Platz stehen, wenn man lange an ihnen Freude haben möchte. Viele Gärtnereien oder Blumengeschäfte bieten daher einen Beratungsservice an.",
+      "correct": 9,
+      "highlightColor": 10
+    }
+  ]
+}

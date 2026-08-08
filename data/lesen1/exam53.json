@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 53: Evolution",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Anzahl und Rolle der Arten noch unklar",
+    "b. Veränderte Wanderwege von Zugvögeln",
+    "c. Wetterbedingungen könnten den Zerfall von Hochkulturen beschleunigt haben",
+    "d. Klimawandel erschwerte die Evolution",
+    "e. Optimistische Projekte, um das Artensterben aufzuhalten",
+    "f. Störungen des biologischen Rhythmus von Zugvögeln",
+    "g. Der Mensch ist am Aussterben von Tierarten schuld",
+    "h. Keine neuen Erkenntnisse über den Niedergang der Hochkultur",
+    "i. Evolution durch klimatische Veränderungen begünstigt",
+    "j. Neue Studie belegt Verwandtschaft zwischen Säugetieren"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Die zunehmende Klimaveränderung macht sich bereits in der Tierwelt bemerkbar. So müssen Zugvögel ihre Eier früher legen, um sich an die wärmeren Frühjahrstemperaturen in ihren gewohnten Brutregionen anzupassen. Bei bestimmten Arten ist das Zugverhalten aber nicht nur abhängig vom Klima, sondern auch von anderen Reizen, wie zum Beispiel der Länge der Tage. Diesen Vogelarten fällt es besonders schwer, die Eiablage an die geänderten klimatischen Bedingungen anzupassen. Zugvögel, die eine besonders lange Strecke zwischen ihren Überwinterungsplätzen und den Brutstätten zurücklegen müssen, sind durch das Zusammenspiel von Temperaturänderung und anderen, unveränderten Außenbedingungen besonders leicht zu verwirren. Denn der Zeitpunkt für den Abflug aus den Überwinterungsregionen wird von Einflüssen bestimmt, die nichts mit der Temperatur zu haben. Einige Auslöser für die Wanderung sind auch genetisch bedingt. Die Tiere kehren in der Regel dann zurück, wenn es die meisten Insekten als Nahrung für ihren Nachwuchs gibt.",
+      "correct": 5,
+      "highlightColor": 4
+    },
+    {
+      "text": "Text 2: Das Klima hatte einen entscheidenden Einfluss auf die Entwicklung des Menschen, vermuten Wissenschaftler. Sie stellten einen Klimakalender des Menschen zusammen, demzufolge fünf dramatische Klimaänderungen zur Evolution des Menschen beigetragen haben. Die Klimawandlungen hätten diese drastisch beschleunigt. Die Notwendigkeit, sich an neue Umstände anzupassen, habe die Entwicklung des Gehirns beschleunigt und zum aufrechten Gang beigetragen. Auch die Entwicklung von verschiedenen Arbeitsgeräten sei teilweise durch den Klimawandel bedingt, denn die Veränderungen der Umweltbedingungen fielen zeitlich mit dem Erscheinen der ersten Vorfahren des Menschen in den betroffenen Gebieten zusammen. Sucht man nach einem Merkmal, das den Menschen vom Tierreich abhebt, so ist das vermutlich eine außerordentliche Unabhängigkeit gegenüber den Launen der Natur. Einer Hypothese zufolge war es das stetig wechselnde Klima, das den Mensch zum Menschen machte. Die ungewissen und sich ändernden Lebensbedingungen seien demnach während der letzten sechs Millionen Jahre der entscheidende Faktor in der Evolution des Menschen gewesen.",
+      "correct": 8,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 3: Fast dreizehn Jahrhunderte lang blühte die Hochkultur der Maya, bis es zu ihrem Zusammenbruch kam. Fachleute diskutieren seit Jahrzehnten, was den plötzlichen Kollaps auslöste: Kriege, Hunger oder das Klima? Eine neue Studie spricht für Letzteres: Anhaltende Trockenheit führte demnach zum Untergang - zumindest indirekt. Rund um Christi Geburt entwickelte sich im Süden und Südosten Mexikos sowie in Teilen von Guatemala, Belize und Honduras die Hochkultur der Maya. In ihren Inschriften sind Kriege, Hochzeiten und Thronfolgen exakt festgehalten. Das Ende dieser Aufzeichnungen markiert auch den Beginn des Niedergangs: Zwischen dem 8. und dem 10. Jahrhundert wurden viele Städte aufgegeben und die Bevölkerung ging drastisch zurück. Für diesen Kollaps gibt es heute mehrere Erklärungen: Lange Zeit vermutete man vor allem blutige Auseinandersetzungen, Invasionen und soziale Konflikte dahinter, auch Epidemien und Naturkatastrophen standen als mögliche Auslöser zur Diskussion. Erst in den letzten zwanzig Jahren mehren sich die Stimmen, dass eine Veränderung des Klimas die Triebfeder für den Untergang der Hochkultur gewesen sein könnte.",
+      "correct": 2,
+      "highlightColor": 7
+    },
+    {
+      "text": "Text 4: Experten nehmen an, dass Tag für Tag rund 100 Tierarten aussterben. Sie gehen davon aus, dass innerhalb der nächsten 20 Jahre weltweit ein Viertel aller bislang bekannten Arten ausgestorben sein wird. Der Mensch treibt dieses Artensterben stark voran: Die Zerstörung von natürlichem Lebensraum, Umweltverschmutzung und Krankheiten gefährden Tiere und Pflanzen. Ohne das Einwirken des Menschen auf die verschiedenen Ökosysteme der ganzen Welt würden pro Jahr höchstens 25 Arten aussterben. Neben dem eigentlichen Verlust der jeweiligen Art hat das Aussterben der Tiere Folgen für das gesamte Ökosystem: Sein natürliches Gleichgewicht wird gestört. Wenn eine Art stirbt, sterben auch andere abhängige Arten.",
+      "correct": 6,
+      "highlightColor": 10
+    },
+    {
+      "text": "Text 5: Wie eng eine Art mit ihrem Lebensraum verbunden ist, zeigt sich oft erst, wenn sie nicht mehr da ist. War sie ein wichtiges Glied in der Nahrungskette, dann verschwinden plötzlich auch andere Lebewesen. Darüber, wie viele Arten es überhaupt gibt, gibt es unterschiedliche Schätzungen. Wissenschaftler gehen jedoch davon aus, dass der größte Teil noch gar nicht entdeckt ist. Das jetzige Tempo vorausgesetzt, würde es noch mehrere hundert Jahre dauern, bis alle Arten beschrieben sind. Wir kennen nur knapp zwei Millionen von geschätzten 30 Millionen Arten. Von sehr vielen Arten wissen wir nichts über ihre Rolle im Ökosystem – und schon gar nicht, in welcher Weise sie für den Menschen nützlich sein könnten. Aber immer mehr Lebensräume und damit Artenbestände werden ausgelöscht. Die Vereinten Nationen schätzen, dass täglich 130 Tier- und Pflanzenarten aussterben.",
+      "correct": 0,
+      "highlightColor": 3
+    }
+  ]
+}

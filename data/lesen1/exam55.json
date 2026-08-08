@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 55: Wohnen",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Experte sagt Wohnungsnot in Städten voraus",
+    "b. Selbstbestimmtes Leben im Alter für viele zu teuer",
+    "c. Wie man zusätzlichen Wohnraum nutzen kann",
+    "d. Hausbesitz schränkt in der Mobilität ein",
+    "e. Wohnentwürfe so divers wie die Menschen",
+    "f. Ansprüche an Wohnfläche altersabhängig",
+    "g. Neuer Trend könnte für Steigerung der Einwohnerzahl sorgen",
+    "h. Für leistbares Wohnen werden lange Wartezeiten akzeptiert",
+    "i. Landleben gibt neue Energie",
+    "j. Wohnbedürfnisse der Jugend bisher vernachlässigt"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Wer im Alter nicht mehr alleine ein eigenständiges und selbstbestimmtes Leben führen möchte, begibt sich auf die Suche nach einer entsprechenden Unterkunft. Konventionell geführte Einrichtungen und Seniorenresidenzen haben alle allerdings den großen Nachteil, dass die dort herrschenden Regeln Sie und andere Bewohner einschränken und diesen außerdem wenig Beschäftigungsmöglichkeiten geboten werden. Für viele Ältere beziehungsweise deren unmittelbare Angehörige ist zudem finanzielle Leistbarkeit ein ausschlaggebendes Thema, denn die durchschnittliche Pension erlaubt keine allzu hohen Ausgaben. Eine günstigere Alternative bietet nun ein neues, aus einer Kooperation entstandenes Wohnprojekt.",
+      "correct": 1,
+      "highlightColor": 3
+    },
+    {
+      "text": "Text 2: Als junger Mensch in Wien auf Wohnungssuche zu sein, ist allenfalls eine große Herausforderung. Wer ein Studium an der Universität oder Fachhochschule aufnimmt oder gerade einen Ausbildungsplatz in der Hauptstadt Österreich erhalten hat, dem fehlen allzu oft die finanziellen Mittel, um ein halbwegs annehmbares Quartier zu finden. Die anfänglichen Kosten, die bereits vor dem Einzug in die neue Wohnung fällig sind, können durch die geforderte Kaution von meist drei Bruttomonatsmieten sowie die Vermittlungsgebühren für Maklerbüros enorm hoch werden. Um eine günstige Gemeindewohnung beantragen zu können, muss man bereits mehrere Jahre in Wien hauptgemeldet sein, und auch dann ist Geduld gefragt. Bei einer Anmeldung sind zudem gleich alle Suchkriterien festzulegen, also etwa Wunschbezirk und Quadratmeteranzahl. Für jene, die gerade die ersten selbstständigen Schritte tun, lässt sich allerdings die Zukunft kaum so genau vorausplanen, Gemeindewohnungen sind daher meist keine Option. Die Stadt Wien will nun in den kommenden Jahren zunehmend Wohnprojekte mit flexiblen Vertragsbedingungen und kurzen Kündigungsfristen fördern und sich damit stärker an der Situation junger Leute orientieren.",
+      "correct": 9,
+      "highlightColor": 8
+    },
+    {
+      "text": "Text 3: Wohnen wie immer? Laut Ansicht des renommierten Zukunftsforschers Adrian Gregorius wird sich innerhalb der nächsten paar Jahrzehnte ein Wandel in unserer Wohnkultur vollziehen, der durch die Bevölkerungszunahme in den Städten bedingt wird. Die Konzentration eines großen Anteils der Bevölkerung im Stadtgebiet sieht Gregorius - im deutlich wahrnehmbaren Gegensatz zum ungebremsten Landschaftsverbrauch in den umliegenden Regionen - jedoch keineswegs grundsätzlich als Problem. Vielmehr sei das Leben in der Stadt, wenn es richtig geplant und umgesetzt werde, sowohl ressourcen- als auch energieschonend. Des Weiteren entfalle der klimaschädliche und stressige Berufsverkehr und eine private Autonutzung werde weitgehend überflüssig, da die gesamte städtische Infrastruktur vor Ort zur Verfügung stehe. Nicht nur die Dichte, sondern auch die veränderten Gesellschaftsstrukturen werden es daher erforderlich machen, das Konzept des Wohnens in privaten und flexibel gemeinschaftlich nutzbaren Räumen adäquat anzupassen sowie Naturflächen im Nahbereich neu zu gestalten. Einheitslösungen könne es dabei nicht geben, so der Zukunftsforscher. Unterschiedliche Lebens-, Bau- und Wohnformen müssten der Vielfalt der Stadtbewohner Rechnung tragen.",
+      "correct": 4,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 4: Dass sich die Menschen einmal danach sehnen würden, möglichst wenig Wohnfläche zur Verfügung zu haben, hätte wohl niemand vermutet. Eine neue, von den Vereinigten Staaten ausgehende Bewegung zielt nun darauf ab, sich von überflüssigen Materialien und Dingen zu trennen und nur mehr das zu behalten, was auf einer Fläche von 15 bis 20 Quadratmetern Platz findet. Die sogenannten Tiny Houses, also kleinen Häuser, erfreuen sich auch in Österreich immer größerer Beliebtheit, da ihre Anschaffungskosten gering sind und sie bei Bedarf auch per LKW an einen anderen Standort gebracht werden können. Dadurch ist man als Besitzer eines solchen Eigenheims sehr flexibel, was die Wahl des Wohnorts anbelangt. Es bedarf nur eines kleinen Stellplatzes, der für eine bestimmte Zeit gemietet oder gepachtet wird. Besonders vonseiten ländlicher Gemeinden, die stark vom Abzug Einheimischer betroffen sind, besteht großes Interesse daran, dass auf diese Art Personen in entlegeneren Ortschaften wieder ansässig werden. Deswegen wurden mancherorts - oftmals auf Initiative der Bürgermeister - bereits Vermittlungsbörsen für Interessierte eingerichtet.",
+      "correct": 6,
+      "highlightColor": 5
+    },
+    {
+      "text": "Text 5: Wer hat insgeheim nicht jenen Tag herbeigesehnt, an dem die Kinder endlich selbstständig werden, eigenes Geld verdienen, das gemeinsame Zuhause verlassen und man das eigene Leben wieder in die Hand nehmen kann? Für viele Eltern ist jedoch das Fehlen des Nachwuchses in den heimischen vier Wänden letztendlich ein richtiger Schlag, der das Ende eines Lebensabschnitts signalisiert, in welchem man als Versorger gebraucht wurde. Zu alledem gesellt sich der Umstand, dass man sich des eigenen Älterwerdens zunehmend bewusst wird. Tatsächlich kommt nun also eine schwierige, oftmals zu Depressionen führende Phase der Umorientierung auf die Eltern zu. Um das Gefühl von Einsamkeit und Leere zu überwinden, entschließt sich so manches Paar zu dem durchaus radikalen Schritt, das nun für zwei ältere Personen viel zu große Heim zu veräußern und sich etwas Kleineres und Günstigeres zu suchen, das besser zu den neuen Gegebenheiten passt, anstatt die vorhandenen, nun freistehenden Räumlichkeiten im Familienheim umzugestalten oder für einen eventuellen Besuch der Kinder.",
+      "correct": 5,
+      "highlightColor": 10
+    }
+  ]
+}

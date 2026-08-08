@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 27: Geld",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Ausstellung über Finanzmetropole",
+    "b. Fachinformationen für Finanzprofis",
+    "c. Finanz-ABC für Anfänger",
+    "d. Interessante Tätigkeit wichtiger als hohes Gehalt",
+    "e. Lehrreicher Rundgang zu Finanzwissen",
+    "f. Sammelgefäße als Ausstellungsobjekte",
+    "g. Sparbüchsen - nun wieder in Mode",
+    "h. Vertrauen zeigt sich auf dem Konto",
+    "i. Wie Kinder den Umgang mit Geld lernen",
+    "j. Wie man Kinder zum Sparen motiviert"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Spardosen sind Sammelbehälter, Dekoration oder Kinderspielzeug - und zwar seit Jahrhunderten. Und obwohl bargeldloses Bezahlen immer mehr in Mode kommt, sind sie bis heute nicht aus den Kinderzimmern verschwunden. Das Spardosen-Museum im Haus Kemnade zeigt 1200 Exemplare aus dem Mittelalter bis zum 20. Jahrhundert. Daneben widmet sich das Museum der Geschichte des Geldes. In zwei Räumen sind Münzen, Scheine und weitere Tauschmittel aus der ganzen Welt ausgestellt. Die Sammlung von Spardosen reicht von schweren Gefäßen aus Eisen über kunstvoll verzierte Truhen und Kutschen bis zu Mickey-Mäusen aus Blech. 'Um 1900 erlebten Spardosen einen Boom', erzählt Museumsleiter Jürgen Stollmann.",
+      "correct": 5,
+      "highlightColor": 3
+    },
+    {
+      "text": "Text 2: Wer beim leisen Klirren von Geldstücken ein prickelndes Gefühl verspürt, ist in der neuen Sonderausstellung 'Die Sprache des Geldes' im Berliner Museum für Kommunikation richtig. Auf ungewöhnliche Weise nähert sich diese kleine Schau dem Geld als Dreh- und Angelpunkt einer globalisierten Welt. Im Museum machen die Besucher auf 450 Quadratmetern eine Tour durch eine fiktive Stadt: Auf dem 'Marktplatz' erfahren sie, warum sich zuerst Münzen und viel später Scheine als Zahlungsmittel durchsetzen. Bei den Stationen 'Bank' und 'Börse' lernen sie das Prinzip kennen, das in guten Zeiten dahintersteht: Vertrauen in den Wert des Geldes. In der Station 'Einkaufszentrum' geht es dagegen um die heutige Konsumgesellschaft.",
+      "correct": 4,
+      "highlightColor": 9
+    },
+    {
+      "text": "Text 3: Darum geht es, zu begreifen, wie Wirtschaft funktioniert und der Finanzsektor arbeitet. Der englische Journalist John Lanchester nimmt alle jene neugierigen Laien, denen die Fachsprache rund ums Geld bislang verwirrend erschien, bei der Hand. So schildert er in seinem Buch 'Die Sprache des Geldes und warum wir sie nicht verstehen', wie er sich als Außenseiter dem Thema genähert hat. Geld habe eine eigene Sprache, erklärt Lanchester. Wer diese nicht lerne, könne nicht mitreden. Und so erläutert er im ersten Teil seines Buches die Besonderheiten dieser Sprache. Den zweiten Teil bildet ein alphabetisches Glossar, in dem Fachwörter und Namen in kurzen Artikeln erläutert werden.",
+      "correct": 2,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 4: Eine neue Untersuchung des Instituts der deutschen Wirtschaft bestätigt eine Tatsache, über die sich Sozialwissenschaftler und Psychologen schon lange einig sind: Die Höhe des Einkommens allein macht nicht glücklich. Wie zufrieden ein Arbeitnehmer ist, hängt demnach nicht in erster Linie vom Lohn oder der Tätigkeit ab, sondern davon, wie emotional stabil, belastbar und selbstsicher er ist. Für die Studie hat die Ökonomin Mara Ewers die Zusammenhänge zwischen der Lebens- und Arbeitszufriedenheit, dem Bruttostundenlohn, der Anzahl der Bildungsjahre und dem Gesundheitszustand untersucht. Sie fand heraus, dass 53 Prozent der Bundesbürger, die sich emotional als besonders stabil bezeichnen, auch im Job sehr zufrieden sind.",
+      "correct": 7,
+      "highlightColor": 6
+    },
+    {
+      "text": "Text 5: Über Geld sprechen viele Deutsche nicht gerne - selbst Verwandte oder Lebenspartner haben oft keine Ahnung, was sich auf den Konten ihrer Nächsten tut. Dabei spielt Geld bei den meisten Entscheidungen eine wichtige Rolle, und zwar auch in der Familie. Es ist heutzutage zum Glück üblich, dass Kinder spielerisch ein Gefühl für Geld entwickeln: Zwei Drittel der Vier- bis Fünfjährigen bekommen mittlerweile Taschengeld. Doch die Offenheit von Eltern sollte noch weiter gehen: Denn die Erziehung prägt entscheidend das spätere Verhältnis der Kinder zu Geld, wie Studien belegen. Vorteilhaftes Finanzverhalten nennen Forscher das und setzen es mit der Fähigkeit gleich, Geld sinnvoll einzuteilen oder zu sparen.",
+      "correct": 8,
+      "highlightColor": 10
+    }
+  ]
+}

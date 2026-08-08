@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 9: Grundschule",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. An deutschen Grundschulen sind männliche Lehrkräfte selten",
+    "b. Bildungsexperten warnen: Deutsche Lehrer sind schlecht ausgebildet",
+    "c. Bildungsforscher: Lehrermangel wird in Deutschland nicht eintreten",
+    "d. Die Zahl der männlichen Lehrkräfte an Grundschulen nimmt zu",
+    "e. Experten befürchten zunehmenden Lehrermangel in Deutschland",
+    "f. Gewerkschaft erwartet Lehrermangel in Berlin",
+    "g. GEW befürchtet Abwanderung von gut ausgebildeten Lehrkräften aus Berlin",
+    "h. Immer mehr Berliner wandern aus",
+    "i. Immer weniger Frauen machen ein Grundschullehrer-Studium",
+    "j. Vorausschauende Politiker verhindern Lehrermangel in Berlin"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Berlin wird in 10 Jahren rund 5.000 Lehrkräfte weniger brauchen als derzeit. Für den Unterricht an den Schulen werden dann, wie die Gewerkschaft Erziehung und Wissenschaft (GEW) errechnet hat, noch etwa 25.500 von heute 30.000 Pädagogen benötigt. Die Gewerkschaft befürchtet zugleich, dass bis zu diesem Zeitpunkt zu wenig Nachwuchskräfte ausgebildet werden und es deshalb zu einer dramatischen Unterversorgung kommt. Nach Meinung der GEW steuert die Hauptstadt bei der Personalausstattung der Schulen auf ein Fiasko zu, weil in den nächsten 10 Jahren mehr als 10.000 Lehrkräfte aus Altersgründen in den Ruhestand gehen. Außerdem würden jährlich zirka 400 Lehrer die Berliner Schulen verlassen, so dass nach Ansicht der GEW letztlich 9.000 Stellen fehlen.",
+      "correct": 5,
+      "highlightColor": 4
+    },
+    {
+      "text": "Text 2: Wer sich in Berlin um eine Stelle als Lehrer bewirbt, muss hart im Nehmen sein. 'Während man in Hamburg respektvoll behandelt wird, rechnen Vertreter der Berliner Schulverwaltung den Bewerbern vor, wie teuer Lehrer sind. Da fühlt man sich nicht richtig gewollt', sagt Maria Schütz. Die 27-jährige gehört zu den rund 500 Referendaren, die in zwei Wochen mit ihrem Studium fertig werden. Maria Schütz, die ihr Examen mit der Note 1,5 bestanden hat und unbedingt in Berlin unterrichten wollte, hat mit ihrer Bewerbung leidvolle Erfahrungen hinter sich. 'Während man in Hamburg sofort eine feste Stelle im Beamtenverhältnis angeboten hat, konnte mir in Berlin keiner zusagen, dass ich im nächsten Schuljahr gebraucht werde.' Die junge Frau hat das gute Angebot aus Hamburg einer unsicheren Zukunft in Berlin vorgezogen.",
+      "correct": 6,
+      "highlightColor": 9
+    },
+    {
+      "text": "Text 3: Eltern klagen über Stundenausfall und Schulleiter über fehlende Bewerber. Doch es könnte noch schlimmer werden. Der Verband Bildung und Erziehung (VBE) rechnet in den nächsten 15 Jahren mit einem 'gewaltigen Lehrermangel' in Deutschland. Der Verbandsvorsitzende Ludwig Eckinger sagte am Donnerstag, er gehe für diesen Zeitraum von bis zu 400.000 Lehrern aus, die aus Altersgründen aus dem Schuldienst ausscheiden. Auf 100 pensionierte Lehrer kämen jedoch nur 50 neue Kollegen. Der Lehrernotstand kommt nicht überraschend, Forscher sagten ihn längst voraus. Und auch die Konferenz der Kultusminister präsentierte schon vor fünf Jahren beunruhigende Zahlen: Es werden an deutschen Schulen 70.000 Pädagogen fehlen.",
+      "correct": 4,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 4: Bildungspolitiker und Lehrervertreter wollen Abiturienten scharenweise in den Lehrerberuf locken. Sie sollen große Lücken schließen, die durch Pensionierungen entstehen. Doch das Versprechen vom sicheren Job lässt sich womöglich nicht einlösen - es basiere auf falschen Annahmen, sagen Essener Bildungsforscher. Die Arbeitsgruppe Bildungsforschung/Bildungsplanung unter der Leitung des Wissenschaftlers Klaus Klemm kommt in ihrem Bericht zu einem ganz anderen Ergebnis. Während die Kultusministerkonferenz mit 70.000 fehlenden Lehrern rechnet und der Philologenverband gar mit 80.000, errechnete die Forschungsgruppe, dass es zu einer insgesamt ausgeglichenen Bilanz zwischen Nachfrage und Angebot auf dem Lehrer-Arbeitsmarkt kommen werde.",
+      "correct": 2,
+      "highlightColor": 6
+    },
+    {
+      "text": "Text 5: Mädchen haben tendenziell bessere Noten und stellen 56 Prozent der Abiturienten. Dagegen sind zwei Drittel der Schulabbrecher und drei Viertel der Sonderschüler Jungen. Liegt die Ursache in der Grundschule, wo von den knapp 200.000 Lehrkräften nur rund 26.000 männlich sind? An der Grundschule sind Männer eine Rarität. Wer sich dorthin verirrt, arbeitet allein unter Frauen. Im Schuljahr 1990/1991 unterrichtete noch ein Drittel Männer an Grundschulen, im Schuljahr 2006/2007 liegt der Frauenanteil an den Grundschullehrern bei 86,9 Prozent, während an weiterführenden Schulen das Geschlechterverhältnis nahezu ausgeglichen ist. Auch die Familienministerin vermisst die Männer an den Grundschulen.",
+      "correct": 0,
+      "highlightColor": 10
+    }
+  ]
+}

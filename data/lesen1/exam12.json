@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 12: Insekten (التعديل 1)",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Neue Insektenart in Frankreich",
+    "b. Kleine Insekten können Krankheiten bringen",
+    "c. Bauern sind gezwungen Gift gegen schädliche Insekten einzusetzen",
+    "d. Neue Mittel gegen Mücken",
+    "e. Neue Studie: Nicht nur Ameisen und Bienen erkennen sich selbst",
+    "f. Probleme beim Versuchsaufbau: Studie gescheitert",
+    "g. Rhein nach Chemieunfall noch immer tot",
+    "h. Rückblick: Fischsterben im Rhein",
+    "i. Um die Zukunft der Nordsee ist es schlecht bestellt",
+    "j. WWF zieht positive Bilanz für die Nordsee"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Heute und morgen tagt in Göteborg die Internationale Nordseekonferenz (INK), an der Regierungsvertreter der acht Nordsee-Anrainerstaaten teilnehmen. Der World Wide Fund For Nature (WWF) kritisierte in diesem Zusammenhang, dass dies das letzte Treffen dieser Art sei. Künftig sollen Fragen der Nordsee auf europäischer Ebene behandelt werden. Der WWF befürchtet, dass die Berücksichtigung ökologischer Belange der Nordsee künftig im europäischen Rahmen vernachlässigt werde: 'Es sieht nicht gut aus für die Nordsee'.",
+      "correct": 8,
+      "highlightColor": 3
+    },
+    {
+      "text": "Text 2: Für immer wird eine der größten Umweltkatastrophen mit dem Namen des damals in Basel ansässigen Chemiekonzerns Sandoz verbunden bleiben. 1986 führte ein Brand in einer Lagerhalle des Konzerns zu einer Verunreinigung des Rheins mit 20 Tonnen hochgiftiger Pestizide und Insektizide. Auf einer Länge von 450 Kilometern kam es zu einem gigantischen Fischsterben. Vor allem Aale waren betroffen. Trinkwasser konnte nicht mehr aus dem Fluss gewonnen werden. Der öffentliche Druck führte zu großen Investitionen für den Gewässerschutz. Heute spricht die Internationale Kommission zum Schutz des Rheins wieder von 'guter Wasserqualität'.",
+      "correct": 7,
+      "highlightColor": 9
+    },
+    {
+      "text": "Text 3: Der Klimawandel bringt es in Verbindung mit der Globalisierung mit sich, dass auch in Deutschland Tiere heimisch werden, die hier zuvor nicht beobachtet wurden. Zu diesen Neuankömmlingen gehören auch exotische Stechmücken, beispielsweise der japanische Bushmosquito. Mit den exotischen Stechmücken kommen auch neue Infektionserreger nach Deutschland, die möglicherweise auch bisher unbekannte Krankheiten beim Menschen auslösen können. Eine Forschergruppe identifizierte jetzt einige bisher nur in Afrika und Asien vorkommende Erreger.",
+      "correct": 1,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 4: Forscher haben bei Versuchen im Bronx Zoo in New York eine neue Erkenntnis über Elefanten erlangt: Sie können sich selbst im Spiegel erkennen. Zumindest eines von drei Versuchstieren versuchte, einen auf seinem Kopf aufgemalten Fleck, der im Spiegelbild zu sehen war, zu entfernen. Bisher war unter anderem von Affen, Delfinen und Elstern ein ähnliches Verhalten bekannt. Den Grund für das Scheitern früherer Tests mit Elefanten sieht ein Wissenschaftler im Versuchsaufbau.",
+      "correct": 4,
+      "highlightColor": 6
+    },
+    {
+      "text": "Text 5: Die anhaltenden außergewöhnlich hohen Temperaturen haben in Südfrankreich eine Tierplage bisher unbekannten Ausmaßes ausgelöst. Bei den Plagegeistern handelt es sich um Unmengen von zwei bis drei Zentimeter langen Heuschrecken, sogenannte Rote Scharrschrecken. Die dunklen Insekten fressen Felder und Wiesen kahl und haben innerhalb von rund sechs Wochen die Landschaft in eine trostlose Steppe verwandelt. Die Landwirte der Region sind bereits verzweifelt, denn ihre gesamte Ernte ist verloren. Der Einsatz von Gift gegen die Heuschrecken ist sehr riskant.",
+      "correct": 2,
+      "highlightColor": 10
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 34: الانتخابات والمرأة الروسية",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Der heutige Anteil von Frauen im Medizinstudium",
+    "b. Die Frauen in der Französischen Revolution",
+    "c. Eine Pionierin der akademischen Frauenausbildung",
+    "d. Entwicklung des Frauenstimmrechts",
+    "e. Frauen erreichen zunehmend bessere Noten im Studium",
+    "f. Geschlechtsspezifische Entscheidungen an der Wahlurne",
+    "g. Studentinnen auf der Überholspur",
+    "h. Umfrage verspricht Erfolg der grünen Wahlkandidatin",
+    "i. Vorkämpferinnen für das Frauenwahlrecht",
+    "j. Wieder Demonstrationen für freie Wahlen"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: In Russland 1843 als Tochter eines Bauern geboren, schaffte es Nadeschda Suslowa ins Gymnasium. Mit 16 Jahren erhielt sie ihr Diplom als Hauslehrerin. Das war der höchste Abschluss, den eine Frau damals in Russland erreichen konnte. Doch Nadeschda wollte mehr. Die junge Frau wollte Ärztin werden. Weil es ihr in Russland aber nicht erlaubt war, eine Hochschule zu besuchen, ging sie ins Ausland. An der Universität Zürich konnten Frauen schon seit einigen Jahren Vorlesungen besuchen. Nadeschda Suslowa war die erste Frau, die sich ordentlich an der Universität einschreiben durfte, und gleichzeitig die erste Russin an der Züricher Universität. Am 14. Dezember 1867 machte die damals 24-Jährige ihr Examen. Sie war die erste promovierte Ärztin in der Schweiz und in Russland.",
+      "correct": 2,
+      "highlightColor": 5
+    },
+    {
+      "text": "Text 2: Dass Frauen wählen und gewählt werden dürfen, ist heutzutage selbstverständlich. Doch das war nicht immer so. Überall auf der Welt mussten sie lange erbittert um ihr Wahlrecht streiten. In Europa war die Französin Olympe de Gouges eine der ersten Frauen, die sich aktiv für das Wahlrecht der Bürgerinnen einsetzten. Sie forderte zu Zeiten der Französischen Revolution die rechtliche, politische und soziale Gleichstellung der Frau. Dies wurde zur Grundlage für die Einführung des Frauenwahlrechts in Europa. Frankreich gehörte allerdings nicht zu den ersten Ländern, in denen das Wahlrecht für Frauen realisiert wurde. Das geschah zuerst 1838 in der britischen Kolonie Pitcairn, einer Insel im südlichen Pazifik.",
+      "correct": 3,
+      "highlightColor": 9
+    },
+    {
+      "text": "Text 3: Das Wahlverhalten von Frauen hat sich in den letzten Jahrzehnten verändert: In den 50er Jahren wählten verheiratete Frauen oft noch so wie ihre Männer. Vor allem in der Mittelschicht zeigten sie eine deutliche Vorliebe für konservative Parteien. Die politischen Unruhen von 1968 hingegen hinterließen ihre Spuren im Wahlverhalten der Frauen. Sie wählten nun deutlich weniger konservativ und stimmten für Parteien, die sie in ihrem Anspruch auf Gleichberechtigung und Selbstständigkeit unterstützten. Auch heute wählen Männer und Frauen in vielen Ländern unterschiedlich. Frauen scheinen für radikale Parteien weniger Sympathie aufzubringen als Männer, während ihnen Gleichberechtigung ein großes Anliegen ist. Die Sorge um die Umwelt schlägt sich in einem höheren Anteil an Frauenstimmen für grüne Parteien nieder.",
+      "correct": 5,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 4: In den vergangenen Jahrzehnten hat sich das Geschlechterverhältnis bei Studierenden stark verändert. Nicht nur bei Studienanfängern sind Frauen in der Mehrzahl, sondern auch unter jenen, die ein Hochschulstudium abschließen. Doch das ist noch nicht alles: Weibliche Studierende absolvieren das Studium schneller als ihre Kommilitonen und schließen es auch häufiger erfolgreich ab. Allerdings ist die Erfolgs- und Abschlussquote nicht in allen Studienrichtungen gleich. Am größten ist der Abstand beim Musikstudium: Mehr als 70 Prozent der Frauen schließen es tatsächlich ab, während rund 50 Prozent der männlichen Studienanfänger es abbrechen. Unterschiedliche Erfolgsquoten der Geschlechter lassen sich an den meisten Universitäten beobachten.",
+      "correct": 6,
+      "highlightColor": 2
+    },
+    {
+      "text": "Text 5: 'Suffragetten' - so nannte man Anfang des 19. Jahrhunderts die Frauen, die sich in Großbritannien für das allgemeine Frauenwahlrecht einsetzten. Der Begriff kommt von 'suffrage', was im Französischen und im Englischen 'Wahlrecht' bedeutet. Emmeline Pankhurst und ihre Töchter zählen zu den bekanntesten Persönlichkeiten der britischen Frauenbewegung. Sie setzten zunächst auf die Methode des passiven Widerstandes. Als der erhoffte Erfolg ausblieb und Gesetzesänderungen abgelehnt wurden, griffen sie zu immer härteren Mitteln, bis hin zu Brand- und Bombenanschlägen. Pankhurst wurde immer wieder verhaftet und eingesperrt. Ihr Kampf für das Wahlrecht der Frauen wurde durch den Ersten Weltkrieg unterbrochen.",
+      "correct": 8,
+      "highlightColor": 10
+    }
+  ]
+}

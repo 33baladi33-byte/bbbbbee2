@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 50: Bäder",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Am Strand im Dienst – mehr Sicherheit für Urlauber",
+    "b. Bäder, Seen und Natur – im hessischen Paradies",
+    "c. Freiheit und Natur – nach sechs Wochen harter Arbeit",
+    "d. Jugendliche arbeiten für Jugendliche",
+    "e. Kinderarbeit in Deutschland: Jugendliche werden zur Arbeit gezwungen",
+    "f. Nach harter Arbeit durch nordische Gewässer",
+    "g. Schaden an Kreuzfahrtschiff verhindert Weiterfahrt",
+    "h. Urlaub an deutschen Seen immer gefährlicher",
+    "i. Wegen Niedrigwasser: vom Fluss auf die Straße",
+    "j. Zu Gast bei den Fürsten"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Entdecken Sie interessante Städte und Regionen. Im Herzen Deutschlands liegen wunderbare Landschaften, mit einem für deutsche Verhältnisse sehr milden Klima – und keine typischen 'Touristenziele'. Von der Stadt Gießen ausgehend kann man in den hessischen Kreisen Bergstraße und Waldeck-Frankenberg viele Orte entdecken, die noch ein Geheimtipp sind. Vor allem gilt dies für den Kreis Waldeck-Frankenberg. Wer nicht gerade in Hessen wohnt, wird kaum wissen, wo diese Region eigentlich liegt. Es ist ein herrliches Stück Deutschland ohne besonders große Städte, eine Gegend, die Natur pur bietet. Daher wundert es nicht, dass man hier einige Kurorte findet wie Bad Arolsen oder Bad Wildungen oder den Luftkurort Edertal-Kleinern. Der zwölf Quadratkilometer große Edersee gehört zu den vier schönen 'blauen Augen' des Kreises.",
+      "correct": 1,
+      "highlightColor": 3
+    },
+    {
+      "text": "Text 2: Pferde waren schon immer Melanie Schilles Leidenschaft. 'Und jetzt kann ich Hobby und Beruf miteinander verbinden', freut sich die Beamtin aus Hannover. In diesem Jahr verstärkt sie die Strandwache an der Nordseeküste. Ihr Arbeitsplatz ist der Strand: Mit 'Magnus', einem 11-jährigen Pferd, patrouilliert sie dort, wo die Kleinen Sandburgen bauen, Urlauber bei einem Buch entspannen oder sich in die kühlen Fluten stürzen. Melanie Schille und ihr Hannoveraner sind eine Attraktion in dem Ferienort. 'Wir sorgen für mehr Sicherheit am Strand', erklären Melanie Schille und Rüdiger Teichmann. Sie suchen im Watt nach Vermissten, klären über Gefahren auf, verhindern Diebstähle und Sachbeschädigungen. Nachweislich gingen die Delikte zurück, seit es die Streife hoch zu Ross gibt.",
+      "correct": 0,
+      "highlightColor": 9
+    },
+    {
+      "text": "Text 3: Ein neuer Urlaubstrend setzt sich durch: Statt faul am Strand zu liegen, wird man aktiv. Ein besonders beliebtes Ziel ist Schweden: So kann man am Ufer des Flusses Klarälven in der Provinz Värmland selbst ein Floß bauen. Das dauert drei bis sechs Stunden, anschließend macht man darauf Urlaub. 'Das ist Abenteuerurlaub pur', schwärmt Johan Bengtson, der mit seiner Frau und den drei Kindern zum zweiten Mal Floßferien macht. 'Sich auf dem Fluss treiben lassen und in der Wildnis leben – dieses Gefühl ist super!' Seit zehn Jahren veranstaltet Marie Junler von der Agentur Vildmark i Värmland die Holzfloßtrips. Mindestens zwei Erwachsene sind nötig, um ein Floß zu bauen, einer allein packt das nicht. Nach drei Stunden ist es geschafft.",
+      "correct": 5,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 4: Von 9 bis 15 Uhr arbeitet Sebastian Keller (18) in einem Altenwohnheim in Hamburg-Altona: Er kümmert sich um die Essensausgabe, putzt die Küche und dann ist noch Zeit, um den Senioren vorzulesen oder mit ihnen Karten zu spielen. Zur selben Zeit putzen Rebecca (12) und Christiane (13) den Eingang des Hamburger 'Michels', der wohl bekanntesten Kirche der Stadt, und Friderike (17) füttert schon frühmorgens Kühe, Schweine und Hühner auf einem Bio-Bauernhof bei Wedel. 'Endlich mal ein sinnvoller Job', sagen die fünf übereinstimmend. Sie stehen stellvertretend für etwa 100.000 Jugendliche, die beim 'Sozialen Tag' mitgemacht haben. Der Verein 'Hamburgs Schüler helfen' (HSH) wurde von Jugendlichen im Jahr 2004 gegründet – und seitdem findet jedes Jahr im August der 'Soziale Tag' statt.",
+      "correct": 3,
+      "highlightColor": 6
+    },
+    {
+      "text": "Text 5: Die Windjacken waren schon eingepackt, die Koffer geschlossen. Thomas Meurer (64) und Wiebke Fuchs (62) aus Hannover freuten sich auf ihre Flusskreuzfahrt mit der 'MS Eurostar' von Potsdam nach Prag. Stattliche 2500 Euro kostete die Reise pro Person, und beide hatten lange gespart, um sich das leisten zu können. Doch aus der Kreuzfahrt wurde eine Bustour. Meurer berichtet, was er erlebt hat: 'Wir waren am Abend auf das Schiff gegangen und hatten unsere Kabinen bezogen. Am nächsten Morgen ging es los. Aber schon bald machte das Schiff wieder fest und alle Gäste mussten von Bord.' Wiebke Fuchs ergänzt: 'Der Fluss hatte einfach zu wenig Wasser, da konnten wir mit dem großen Kreuzfahrtschiff nicht weiterfahren!' Per Bus ging es nach Prag.",
+      "correct": 8,
+      "highlightColor": 10
+    }
+  ]
+}

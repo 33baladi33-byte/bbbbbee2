@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 7: Insel",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Deutscher Forscher startet Expedition auf Vogelinsel in Südamerika",
+    "b. Die beliebtesten Reiseziele unter den europäischen Inseln",
+    "c. Fernreisen in eine unberührte Tierwelt",
+    "d. Geführte Bootsausflüge zu einsamen Badebuchten",
+    "e. Grüne Geisterinsel in Asien",
+    "f. Immer mehr Reiseunternehmen streichen Thailand aus ihrem Angebot",
+    "g. Inseln zählen weltweit zu den wichtigsten Reisedestinationen",
+    "h. Nachhaltiger Tourismus auf chinesischen Inseln",
+    "i. Tierparadies auf einer Nordseeinsel",
+    "j. Umstrittener Umgang mit Tieren als Touristenmagnet"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Die Shengsi-Inseln liegen im Ostchinesischen Meer. Nicht einmal 20 der rund 400 Inseln sind bewohnt, und manche, auf denen einst Menschen lebten, wurden wieder verlassen. Ein altes Dorf auf der nun unbewohnten Insel Shengsan ist zu einer Sehenswürdigkeit geworden. Die Einwohner haben das ehemalige Fischerdorf auf der viereinhalb Quadratkilometer großen Insel längst verlassen. Sie sind aus wirtschaftlichen Gründen auf das Festland gezogen. Dort ist es für sie leichter, ihren Fischfang zu verarbeiten und zu verkaufen. Das Dorf aber, das sie zurückgelassen haben, ist in kürzester Zeit von der Natur zurückerobert worden. Farne und Gräser überwuchern Häuser und Wege. Die Grenzen zwischen den von Menschenhand geschaffenen Gebäuden und dem umgebenden Urwald verschwinden. An diesem Ort lebt keine Menschenseele mehr.",
+      "correct": 4,
+      "highlightColor": 0
+    },
+    {
+      "text": "Text 2: Der Reiseveranstalter TOURIMARS hat kürzlich eine Befragung durchgeführt. Er wollte wissen, welche Inseln in Europa unter Reisenden besonders populär sind. Nach dieser Umfrage führt die griechische Insel Santorin die Liste an. Auf Platz zwei steht Madeira, die grüne Insel im Atlantik. Mit Kreta und Zakynthos schaffen es an dritter und vierter Stelle noch zwei weitere griechische Inseln in die Liste. Platz fünf nimmt die Badeinsel Fuerteventura ein. Rang sechs kommt der britischen Kanalinsel Jersey zu. Mallorca folgt auf Platz sieben, gefolgt von der italienischen Insel Capri und der Kanareninsel Teneriffa. Gerade noch in die Top Ten schaffte es auch die französische Mittelmeerinsel Korsika, die sowohl für Wanderer als auch für Badeurlauber interessant ist.",
+      "correct": 1,
+      "highlightColor": 8
+    },
+    {
+      "text": "Text 3: Das ostfriesische Memmert ist für seltene Vögel reserviert. Auf der Düneninsel, die vor ein paar Jahrhunderten aus der Nordsee aufgetaucht ist, leben Zigtausende von Vögeln. Nur der Inselvogt lebt zeitweise dort. Von Anfang März bis Ende Oktober ist der Forscher das einzige menschliche Wesen auf der kleinen Vogelschutzinsel im Wattenmeer. Im Auftrag des Landes Niedersachsen ist der Inselvogt zuständig für den Schutz von Natur und Vögeln auf Memmert. Von Mai bis Ende Juli ist Brutzeit auf der Insel. 100.000 Tiere, Vertreter von 60 verschiedenen Vogelarten, kommen Jahr für Jahr zum Brüten nach Memmert. Während dieser Zeit besteht ein absolutes Betretungsverbot. Ab August, dem Ende der Brutzeit, haben auch Urlauber für kurze Zeit die Chance auf einen Besuch, aber ausschließlich im Rahmen einer geführten Expedition.",
+      "correct": 8,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 4: Die südamerikanischen Galapagosinseln locken nicht mit weißen Sandstränden und Palmen. Dennoch sind sie das Ziel so mancher Reisesehnsüchte. Für viele Menschen gelten die fernen Inseln als eine Art Paradies. Und tatsächlich kommt man wohl nirgendwo sonst ungezähmten Tieren so nahe wie auf diesen Inseln: Auf den unbewohnten Galapagosinseln verhalten sich die Tiere so, als ob es keine Menschen gäbe. Für die Besucher genauso faszinierend wie für die Entdeckungsreisenden früherer Jahrhunderte ist dabei die Zutraulichkeit, die sich die Tiere durch das Fehlen von natürlichen Feinden auf den Inseln bewahrt haben. Man kann das ganze Jahr über zu den Galapagosinseln reisen. Die bewohnten Inseln kann man dabei ganz gut allein besuchen. Anders sieht es bei den unbewohnten Inseln aus. Hier lassen die Behörden seit einigen Jahren nur eine begrenzte Zahl an Schiffen zu, und ohne Führer ist das Betreten nicht erlaubt.",
+      "correct": 2,
+      "highlightColor": 4
+    },
+    {
+      "text": "Text 5: Dass Elefanten in Thailand teurer sein können als ein 3er-BMW in München, liegt an ihrem enormen wirtschaftlichen Potenzial: Sie sind eine der Hauptattraktionen der thailändischen Tourismusindustrie. Jeder dritte Besucher des Landes möchte mit Elefanten in Kontakt kommen oder hat das bereits hinter sich, zeigt die Umfrage einer Tierschutzgruppe. Die Organisation schätzt, dass in dem Land mehr als 2000 Elefanten im Einsatz sind, um die Nachfrage der Urlauber zu bedienen - so viele wie in keinem anderen Land der Welt. Was für die Besitzer ein gutes Geschäft ist, steht immer häufiger bei Tierschützern in der Kritik: Elefantenreiten sei die grausamste Tierattraktion der Welt. Mehr als 100 Reiseveranstalter haben solche Angebote schon aus den Katalogen gestrichen. Dies feiern Tierschützer als Sieg: 'Elefanten sind Wildtiere, keine Entertainer.'",
+      "correct": 9,
+      "highlightColor": 10
+    }
+  ]
+}

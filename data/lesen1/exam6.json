@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 6: Impfung",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. WHO gibt neue Empfehlungen für Grippe-Impfung heraus",
+    "b. Neue Erkenntnisse über artübergreifende Krankheitserreger",
+    "c. Kontroverse um den Zugang zu Forschungsergebnissen",
+    "d. Hoffnung auf einen allumfassenden Grippeschutz",
+    "e. Hinweise auf eingeschränkten Erfolg von Influenza-Impfungen",
+    "f. Gesetz verpflichtet Forscher zur Veröffentlichung ihrer Ergebnisse",
+    "g. Geschlechtsspezifische Übertragung von Grippeviren",
+    "h. Endlich eine universelle Grippe-Impfung auf dem Markt",
+    "i. Durchschlagender Erfolg der diesjährigen Grippeimpfung",
+    "j. Die häufigsten Kinderkrankheiten in der Grundschule"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Immer wieder überspringen Krankheitserreger aus dem Tierreich die Artengrenze und werden auch dem Menschen gefährlich. Allerdings galt die Gruppe der Adenoviren bislang als ungefährlich. Manche verursachen beim Menschen verschiedene Probleme, von Schnupfen über Durchfall bis zur Lungenentzündung. Andere machen bestimmte Tiere krank. Darüber hinaus wurde bekannt, dass solche Viren an einer Spaltung zwischen Menschen und Tieren arbeiten können. Erst vor kurzem sollen Fälle bekannt geworden sein, in denen ein amerikanischer Primatenzoo seine Tiere mit 25 von insgesamt 27 identifizierten Adenoviren des Menschen infiziert hat. Nur vier darunter sind bisher bekannt gewesen. Als Auslöser für die Infektion wird die enge Beziehung zwischen Tier und Mensch gesehen. Die Experten empfehlen, Adenoviren künftig sorgfältiger zu beobachten, um rechtzeitig auf mögliche Gefahren für den Menschen aufmerksam zu werden.",
+      "correct": 1,
+      "highlightColor": 3
+    },
+    {
+      "text": "Text 2: Virologen ist es gelungen, den Vogelgrippe-Erreger hochansteckend zu machen. Nun empfiehlt das US-Gesundheitsministerium Fachzeitschriften, die entsprechenden Daten nicht zu veröffentlichen, weil Terroristen mit ihrer Hilfe Biowaffen basteln könnten. Nur die Ergebnisse der Versuche sollen erscheinen, nicht aber Einzelheiten über die Arbeitsweise der Forscher oder Details über die Beschaffenheit der Viren. Das Ministerium stützt seine Entscheidung auf die Empfehlungen des unabhängigen Expertengremiums NSABB. Es ist das erste Mal, dass das Gremium eine solche Empfehlung ausgesprochen hat. Ihr vorausgegangen war eine wochenlange Diskussion darüber, wie Forscher mit heiklen Erkenntnissen umgehen sollen: Alles offenlegen oder brisante Versuche unterlassen und erst recht nicht veröffentlichen? Für die betroffenen Forscher steht die Freiheit der Forschung und der Presse auf dem Spiel.",
+      "correct": 2,
+      "highlightColor": 9
+    },
+    {
+      "text": "Text 3: Ein neuer Impfstoff gegen Grippe könnte in Zukunft sämtliche Varianten der Krankheit abdecken und damit die jährliche Spritze überflüssig machen. Der Stoff bekämpft die stets gleichen Proteine im Inneren der Grippeviren statt wie derzeitige Substanzen die sich ständig ändernden an der Außenhülle. Ein Forscherteam der Universität Oxford hat den Impfstoff erstmals an Menschen getestet. Weitere Studien sollen folgen. Es kann Jahre dauern, bis die Substanz eine Zulassung bekommt. Doch die Forscher sind optimistisch. Derzeit müssen jedes Jahr neue Impfstoffe für die Grippesaison entwickelt werden, weil sich die Virenhülle so schnell wandelt. Da der neue Stoff an den stabileren inneren Proteinen der Viren ansetzt, könnte das in Zukunft überflüssig werden.",
+      "correct": 3,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 4: Breitet sich die Grippe in einer Schule aus, sind es besonders geschlechtshomogene Gruppen, in denen das Virus schnell neue Opfer findet. Denn wie US-Mediziner herausgefunden haben, stecken Buben vor allem Buben an und Mädchen in erster Linie Mädchen. Infektionen innerhalb eines Geschlechts passieren dreimal häufiger als über die Geschlechtergrenzen hinweg. Innerhalb derselben Schulklasse sind Übertragungen fünfmal häufiger als zu einer Parallelklasse und 25 Mal häufiger als zu Schülern anderer Schulstufen, fanden die Forscher bei Untersuchungen an einer Volksschule heraus. Ein weiterer interessanter Befund: Ob ein Kind neben einem bereits infizierten Schulkollegen saß oder nicht, machte keinen Unterschied bei der Ausbreitung der Influenza.",
+      "correct": 6,
+      "highlightColor": 5
+    },
+    {
+      "text": "Text 5: Da sich Influenzaviren immer wieder verändern, unternimmt die Weltgesundheitsorganisation WHO jedes Jahr Anstrengungen, um die gerade umlaufenden Grippeviren zu identifizieren, anhand derer Pharmaunternehmen dann gezielt Impfstoffe herstellen können. Die Entwicklung solcher Impfstoffe nimmt allerdings bis zu neun Monate in Anspruch. Daher kann es vorkommen, dass sich die während der Influenzasaison umlaufenden Viren von denen unterscheiden, die für die Herstellung des Impfstoffes verwendet wurden. Prinzipiell ist also jedes Jahr eine erneute Impfung notwendig. Eine neue Studie liefert Anhaltspunkte dafür, dass die tatsächliche Wirksamkeit von Grippeimpfstoffen geringer ist als bisher angenommen. Denn in der Studie zeigte sich, dass gängige Grippeimpfstoffe nur 59 von 100 Grippefällen verhindern konnten.",
+      "correct": 4,
+      "highlightColor": 7
+    }
+  ]
+}

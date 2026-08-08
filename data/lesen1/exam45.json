@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Frauen im Arbeitsmarkt",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Schlechtere Chancen für Frauen am Arbeitsmarkt",
+    "b. Schnell essen macht dick",
+    "c. Neue Broschüre: Studieren im Ausland",
+    "d. Was tun nach der Schule? Neue Ausbildungsmöglichkeiten",
+    "e. Initiative: Frauen für Männerberufe begeistern",
+    "f. Immer mehr Frauen machen Karriere im technischen Bereich",
+    "g. Experiment in Florida: Schlank in zwölf Stunden",
+    "h. Ernährungstipps kostenlos am Telefon",
+    "i. Schweizer Frauen kämpfen für mehr Rechte im Beruf",
+    "j. Wissenschaftler warnen: Immer mehr dicke Mädchen in Österreich!"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Ein hochwertiger Schulabschluss gilt gemeinhin als Schlüssel zum Berufsein- und -aufstieg. Das ist aber nur bedingt richtig, denn sonst hätten die Frauen auf dem Arbeitsmarkt längst die Nase vorn. Mehr als die Hälfte aller Absolventen an höheren Schulen ist weiblich. Trotz besserer Qualifikation haben Frauen aber das Nachsehen. Zu diesem Schluss kommt eine Untersuchung des städtischen Frauenreferates zur Ausbildungssituation von Frauen und Mädchen in Frankfurt. Eine Erklärung für die schlechte Lage von weiblichen Arbeitskräften ist aber auch die Tatsache, dass Frauen nach wie vor für Familie und Kindererziehung auf Karriere verzichten.",
+      "correct": 0,
+      "highlightColor": 4
+    },
+    {
+      "text": "Text 2: Übergewicht könnte erheblich durch Krankheiten, aber auch durch falsche Essgewohnheiten bedingt sein. Psychiater der Universität Florida haben jetzt das schnelle Essen als mögliche Ursache für Fettleibigkeit entdeckt. Die Wissenschaftler untersuchten, was genau im Hirn bei der Nahrungsaufnahme passiert. Zu diesem Zweck bekamen Testpersonen nach einer zwölfstündigen Fastenzeit eine Zuckerlösung zu trinken. Zuerst zeigte sich verstärkte Gehirntätigkeit, ausgelöst durch Schlucken, Geruch und Geschmack. Dann, zehn Minuten später, signalisierte das Gehirn, dass der Körper genug habe. Bei Menschen, die zu schnell essen, ist dieses Signal stark verzögert. Daher dürfte das Sprichwort 'Iss langsam, Kind!' tatsächlich eine Weisheit sein.",
+      "correct": 1,
+      "highlightColor": 9
+    },
+    {
+      "text": "Text 3: Wenn Sie mehr über richtige Ernährung und das ideale Gewicht wissen wollen, informieren Sie der Fonds 'Gesundes Österreich' und der Verein für Konsumenteninformation. Unter 0 810 810 27 werden gratis firmenunabhängige, wissenschaftlich fundierte Informationen über ausgewogene und gesunde Ernährung angeboten. Die Verantwortlichen reagieren damit auf den erschreckenden Trend, dass die Zahl der dicken Menschen, darunter vor allem Kinder, immer mehr zunimmt. In den vergangenen 15 Jahren habe sich die Zahl übergewichtiger Kinder und Jugendlichen mehr als verdoppelt. Bewegungsmangel und fettes Essen seien die Hauptgründe dafür.",
+      "correct": 7,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 4: Das Arbeitsamt Berlin hat seine beiden Informationshefte 'Alternative zum Studium' neu aufgelegt. Auf 200 Seiten zeigt die Behörde neue Ausbildungsmöglichkeiten für junge Frauen und Männer nach der Schule außerhalb der Universitäten. Ein Heft befasst sich mit betriebswirtschaftlichen Ausbildungen bzw. fremdsprachlichen Angeboten im sozialen Bereich, das andere mit dem technisch-naturwissenschaftlichen Bereich. Mit diesen Broschüren geht auch eine Informationswoche einher, die die hohe Zahl an Studienbewerbern in Deutschland reduzieren helfen und andere Wege einer guten Berufsausbildung für junge Leute aufzeigen soll.",
+      "correct": 3,
+      "highlightColor": 2
+    },
+    {
+      "text": "Text 5: Junge Frauen in der Schweiz sollen nun mehr Chancen für eine offene Berufswahl haben. Mit einer Motivationskampagne wollen die Fachleute zum Umdenken anregen und neue Horizonte öffnen. 'Von wem würden Sie lieber Ihr Auto reparieren lassen?' oder 'Wem vertrauen Sie eher eine Herzoperation an?', heißt es unter jeweils zwei Portraits einer Frau und eines Mannes. Die Plakate sollen für den 'kleinen Unterschied' im Kopf sensibilisieren, wonach Frauen nicht dasselbe zugetraut wird wie Männern. Immer noch ergreifen junge Frauen typische Frauenberufe wie Textilverkäuferin oder Sekretärin. Mit einem Internetwettbewerb soll das Thema 'Frauen und Technik' fokussiert werden, im Speziellen der Informationssektor, der in der Schweiz noch ganz in Männerhand ist.",
+      "correct": 4,
+      "highlightColor": 10
+    }
+  ]
+}

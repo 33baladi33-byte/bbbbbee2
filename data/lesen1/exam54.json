@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 54: Gedächtnis",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Mehr Aufnahmefähigkeit durch Mnemotechnik",
+    "b. Mit Mnemotechniken zum Erfolg",
+    "c. Leichter lernen mit selbst gemachten Apps",
+    "d. Leichtes Lernen am Computer",
+    "e. Brainfood: Power für Kopf und Körper",
+    "f. Durch Faulenzen leichter lernen",
+    "g. Lernen mit Kohlenhydraten",
+    "h. Wie Sie Ihr Gedächtnis richtig trainieren",
+    "i. Lernen ohne Anstrengung",
+    "j. Mit Hirnjogging zur besseren Gedächtnisleistung"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Das Kunstwort ‚Mnemo‘-Technik tritt seit dem 19. Jahrhundert an die Stelle des Begriffes ‚Gedächtniskunst‘. Sinn und Ziel der Mnemotechnik (aus dem Griechischen: ‚Gedächtnis‘, ‚Erinnerung‘) ist die reichhaltige Aufnahme von Informationen und deren gute Verarbeitung. Daraus kristallisiert sich ein bewusstes ‚sich Erinnern‘ - und zwar auf Dauer! Vulgo ‚Eselsbrücken‘ bauen, Reime bilden, innere Bilder entwickeln. Es handelt sich also um ein kluges Schema effektiven Lernens und Erinnerns. Eine wichtige Rolle dabei spielt die Assoziations-Technik. Will man sich eine Reihe verschiedener Dinge merken, ist es sinnvoll, sich diese bildhaft vorzustellen. Danach stellt man in Form einer lustigen oder schrecklichen Geschichte eine Verknüpfung her.",
+      "correct": 0,
+      "highlightColor": 5
+    },
+    {
+      "text": "Text 2: Stundenlanges Strebern? Das ist Geschichte. Lernen geht schneller und leichter, wenn man sich an sechs Tipps hält. Will man etwas Neues lernen, reichen wenige Minuten täglich pro Unterrichtsfach. Eine Anleitung nicht nur für Streber. Stundenlanges Lernen? Nein, danke, das kommt für die Schüler von Wilfried Helms nicht in Frage. ‚Wenige Minuten täglich reichen pro Unterrichtsfach, wenn man etwas Neues lernen will. Gerade wenn man Probleme in einem Fach hat, ist das genug‘, sagt der Gründer des Lernzentrums ‚Mind Unlimited‘. Einzige Bedingung: Wer wirklich etwas lernen und behalten will, braucht einen Überraschungseffekt - und ein Glücksgefühl. ‚Unser Gehirn ist im Grunde ein fauler Sack‘, erklärt Helms, ‚deshalb lernt es nur, wenn es einen Grund hat.‘ Das heißt, wenn es wachgerüttelt wird, weil eine neue Aufgabe verlangt wird. Das Wachrütteln von Schülerköpfen gelingt aber nur, wenn Eltern oder Lehrer eine gute Beziehung zu den Kindern haben. Denn erst die sorgt dafür, dass der Schüler nicht gleichgültig vor dem Stoff sitzt. Nur dann schüttet der Körper Stoffe aus, durch die sich das Gehirn aufs Büffeln einstellt. Das ist der Überraschungseffekt.",
+      "correct": 6,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 3: Wer ein digitales Quiz zusammenstellen wollte, brauchte noch vor kurzem viel Zeit und technisches Know-how. Doch das sind ‚Tempi passati‘ - dank Michael Hielscher von der Pädagogischen Hochschule Bern. Ein Wort-Bild-Memory zu basteln, ist kinderleicht: Man tippt dazu einen Begriff ins Onlineformular ein. Danach sucht man ein passendes Bild im Wikimedia-Fundus, oder man lädt ein eigenes hoch. Und weiter geht es zum nächsten Begriff... Dank der kostenlosen Website Learningapps.org kann heute jedermann eigene Lerneinheiten erstellen und im Web publizieren. Noch vor zwei, drei Jahren musste man auf dem Weg zum eigenen Onlinequiz mehr Hürden nehmen: Es waren besondere Informatikkenntnisse erforderlich und oft war das mit viel Geld und Zeit verbunden. Zwar gibt es heute einige kostenlose E-Learning-Plattformen. Diese sind aber oft so umständlich zu bedienen, dass der Großteil der Lehrer und Kursleiter sie ignoriert.",
+      "correct": 2,
+      "highlightColor": 9
+    },
+    {
+      "text": "Text 4: Es ist eine Schwäche unseres Gehirns: Je älter man wird, desto schwerer wird es, sich Dinge zu merken. Viele Hirnjogging-Produkte versprechen eine bessere Gedächtnisleistung - viele davon sind jedoch nutzlos. Was aber hilft wirklich? Gedächtnisforscher wissen: Reines Auswendiglernen ist nicht genug. ‚Jeden Tag ein Kreuzworträtsel lösen heißt noch nicht, dass Sie sich den Einkaufzettel besser merken können.‘, so Hans Georg Nehen, Professor an der Memory-Clinic in Essen. Sinnvoll seien andere einfache Übungen. ‚Wenn Sie an der roten Ampel stehen, gehen Sie in Gedanken Ihren Weg zurück. Wie viele Kreuzungen haben Sie passiert?‘ Oder man stellt sich vor dem geistigen Auge vor, wie viele Kreuzungen noch kommen. ‚Schon eine geringe Trainingsdauer ist effizient‘, betont Nehen, der auch dem Bundesverband Gedächtnistraining vorsitzt. Das sieht Markus Hofmann ähnlich: ‚Es aktiviert das Hirn, sich jeden Tag neuen geistigen Aufgaben zu stellen.‘ Nicht immer dasselbe zu machen - das sei pures Gehirnjogging, sagt der Gedächtnistrainer aus München. ‚Putzen Sie sich mal mit links die Zähne, fahren Sie einen anderen Weg zur Arbeit, drehen Sie die Zeitung zum Lesen auf den Kopf oder dirigieren Sie bei Ihrer Lieblings-CD mit.‘",
+      "correct": 7,
+      "highlightColor": 10
+    },
+    {
+      "text": "Text 5: Mit der richtigen Ernährung werden Sie zwar nicht schlauer, doch der Verzehr bestimmter Lebensmitteln soll die Konzentration und Leistungsfähigkeit steigern und Stress reduzieren. Blaubeeren, Nüsse, Avocados, Lachs und Hülsenfrüchte schmecken nicht nur unglaublich gut, sondern sind wahre Energielieferanten fürs Gehirn: Brainfood. Natürlich werden wir durch Lebensmittel nicht schlauer, die in ihnen steckenden Vitamine und Mineralstoffe können jedoch Leistungstiefs, Konzentrationsschwächen, Gereiztheit und Müdigkeit vorbeugen. Zuallererst gilt: viel trinken. Nur mit ausreichend Flüssigkeit sind ausreichende Sauerstoffversorgung und die Durchblutung von Kopf und Körper gewährleistet. Leichte Kopfschmerzen, Konzentrationsschwierigkeiten und Müdigkeit können erste Anzeichen für einen Flüssigkeitsmangel sein. Mindestens 2 Liter kalorienarmer Getränke sollten über den Tag verteilt getrunken werden: Am besten Wasser oder kalorienarme Säfte und Kräutertees. Mehr Kraft erhält der Kopf auch durch Zucker, der langsam ins Blut abgegeben wird, z.B. aus Kohlenhydraten, wie sie in Vollkornprodukten stecken. Auch die Kohlenhydrate aus Hülsenfrüchten werden erst aufgespalten und dann vom Körper aufgenommen, was für einen konstanten Blutzuckerspiegel sorgt.",
+      "correct": 4,
+      "highlightColor": 8
+    }
+  ]
+}

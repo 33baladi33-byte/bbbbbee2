@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 49: Baby TV",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Neue Richtlinie für Zertifizierung von Medikamenten für Kinder",
+    "b. Neue Verfahren in der Kinderheilkunde",
+    "c. Gefahren zu hohen Fernsehkonsums bei Kindern",
+    "d. Alternative Heilverfahren: Wie gut sind sie wirklich?",
+    "e. Naturkosmetik aus Geschwisterhand",
+    "f. Kinder bekommen immer mehr Medikamente",
+    "g. Studie: Schulkinder treiben zu wenig Sport",
+    "h. Schlechte Noten fürs Baby-TV",
+    "i. Kinder und Jugendliche: Risikofaktor Übergewicht",
+    "j. Neueste Forschungsergebnisse zur Wirkung von Ginseng"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Fernsehen ist der Sprachentwicklung bei Kleinkindern nicht förderlich. Sie sind bunt und lustig, die Teletubbys, die am Bildschirm auch deutsche Kinder beglücken. Doch gute Sprachlehrer für Babys sind sie nicht – so das Ergebnis einer US-amerikanischen Studie. 'Manche Eltern mögen davon träumen, dass ihre Kinder die ersten Worte beim Fernsehen lernen', sagt eine Linguistin, 'aber das funktioniert nicht.' Die Kommunikationsexpertin hat 48 Kleinkinder im Alter von 5 bis 24 Monaten getestet. Zuerst bekamen sie Gegenstände zu Gesicht, für die sie noch keine Worte hatten. Für das gezeigte Objekt erfanden die Forscher dann ein Fantasiewort. Babys, die das Wort direkt gelernt hatten, reagierten spätestens bei der dritten Wiederholung. Die jungen TV-Seher aber waren meist ratlos.",
+      "correct": 7,
+      "highlightColor": 5
+    },
+    {
+      "text": "Text 2: Pharmakologen am Universitätsklinikum Tübingen haben kürzlich bei einer Auswertung von 1,6 Millionen Rezeptverordnungen für Kinder und Jugendliche festgestellt, dass in gut 13 Prozent der Fälle das jeweils verschriebene Medikament gar nicht eigens für Kinder zugelassen war oder in einer für sie nicht getesteten Dosierung verwendet wurde. In Kinderkliniken sind etwa 50 Prozent, auf Intensivstationen für Neugeborene sogar bis zu 90 Prozent der verabreichten Medikamente nicht speziell für Kinder konzipiert. Noch bedenklicher: Je kleiner und je kränker ein Kind ist, desto mehr dieser 'Off-Label'-Verordnungen hat es zu erwarten.",
+      "correct": 0,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 3: Alternative Heilverfahren können vor allem bei leichten Erkrankungen hilfreich sein. Dabei gilt es, Nützliches von Scharlatanerie zu unterscheiden. Viele sprechen noch von 'alternativer' Heilkunde. Doch inzwischen ist für die etwa 400 Heilverfahren jenseits der Schulmedizin der Ausdruck 'Komplementärmedizin' üblich geworden. Denn die Akupunkteure, Aromatherapeuten, anthroposophischen Mediziner, Pflanzenheilkundler, Homöopathen und viele andere begreifen ihre besonderen Methoden meist als Ergänzung der herkömmlichen Medizin und nicht als deren Ersatz. In dieser Funktion ist die Komplementärmedizin heute weithin akzeptiert. Auch in der Kinderheilkunde sind die Verfahren beliebt.",
+      "correct": 3,
+      "highlightColor": 2
+    },
+    {
+      "text": "Text 4: Die eine liebt Flora und Fauna, die andere hat ein Händchen für Kommunikation und Marketing: Zusammen betreiben die Schwestern Henrike Rodemeier und Gesine Wischmann Deutschlands einzige Ginseng-Farm im niedersächsischen Bockhorn. Als studierte Agraringenieurin ist die 38-jährige Rodemeier für den Anbau zuständig. Die vier Jahre ältere Schwester vertreibt über ihre Firma Florafarm die aus den Wurzeln gewonnenen Arzneimittel. Zudem entwickelte die gelernte Pharmareferentin eine eigene Ginseng-Kosmetiklinie. Den Anfang hatte ihr Vater Heinrich Wischmann bereits vor 24 Jahren gemacht: Er gab die unrentable traditionelle Landwirtschaft auf und konzentrierte sich auf den Anbau von Ginsengwurzeln.",
+      "correct": 4,
+      "highlightColor": 10
+    },
+    {
+      "text": "Text 5: Kinder essen zu viel Fast Food, aber zu wenig Obst und Gemüse, so eine Expertin vom Deutschen Institut für Ernährungsmedizin und Diätetik in Bad Aachen. Nach Angabe der Deutschen Gesellschaft für Ernährung sind 10 bis 20 Prozent aller Schulkinder und Jugendlichen übergewichtig, Tendenz steigend. Übergewicht kann schon im frühen Alter zu Folgeerkrankungen wie Hypertonie, Fettstoffwechselstörungen, Diabetes oder Gallensteinleiden führen. Zu den Ursachen gehören eine oftmals zu hohe tägliche Energie- und Fettzufuhr und mangelnde Bewegung. Das D.I.E.T. rät daher allen Eltern, ihren Kindern von klein auf eine gesunde Kost zu bieten. Durch einen regelmäßigen Mahlzeitenrhythmus im Tagesablauf kann außerdem unkontrolliertes 'Zwischendurchessen' vermieden werden.",
+      "correct": 8,
+      "highlightColor": 6
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 16: Programmierer (التعديل 1)",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Automobilindustrie schafft neue Arbeitsplätze",
+    "b. Berufswahl: Jugendliche werden stark von ihrem gesellschaftlichen Umfeld geprägt",
+    "c. Diskussion über schulische Berufsorientierung",
+    "d. Förderwochenende für junge Softwareentwickler",
+    "e. Immer mehr Frauen ergreifen technische Berufe",
+    "f. Immer mehr Jugendliche werden Programmierer",
+    "g. Mehr Bemühungen um weiblichen Nachwuchs gefordert",
+    "h. Spannende Gewinne für wissenschaftliche Nachwuchstalente",
+    "i. Studienabsolventen technischer Fächer sehen ihre Zukunft meist in der Fahrzeugbranche",
+    "j. Verleihung des Jugendnobelpreises in Stockholm"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Martina Lux hat ein Hobby, mit dem sie im Kreis ihrer Freundinnen ziemlich allein steht: Sie programmiert in ihrer Freizeit. 'Mich hat immer schon interessiert, wie Computerprogramme eigentlich funktionieren', sagt die 17-Jährige. Außerdem habe sie großen Spaß an logischem Denken. Ihr Informatiklehrer erzählte ihr von einem Workshop in Berlin: Bei 'Jugend programmiert' traf Martina von letztem Freitag bis Sonntag mit gleichgesinnten Jungen und Mädchen zwischen zwölf und 18 Jahren zusammen, um gemeinsam Programme zu entwickeln. Dabei standen ihnen erfahrene Informatiker zur Seite. In 15 Gruppen entwickelten die jungen Nachwuchsprogrammierer ihre Projekte.",
+      "correct": 3,
+      "highlightColor": 5
+    },
+    {
+      "text": "Text 2: 'Jugend forscht' ist ein bundesweiter Nachwuchswettbewerb für junge Menschen bis zum Alter von 21 Jahren, bei dem besondere Leistungen in Mathematik, Technik, Naturwissenschaften und Informatik ausgezeichnet werden. Neben Geldpreisen werden auch einige Sonderpreise vergeben, die bei den Jugendlichen ganz besonders begehrt sind. Dazu gehört die Teilnahme an internationalen Wettbewerben, bei denen die jungen Forscher Fachleuten aus aller Welt ihre Projekte vorstellen können. Auch Einladungen zu Studienreisen und Kongressen im Ausland sind für viele Teilnehmer besonders attraktiv. Im Rahmen von 'Jugend forscht' wird sogar eine Reise zur Nobelpreisverleihung in Stockholm angeboten.",
+      "correct": 7,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 3: Die Industriellenvereinigung beklagt in einer jüngsten Pressemitteilung den deutlichen Mangel an Fachkräften in den Naturwissenschaften und technischen Berufen. Dieser Fachkräftemangel sei besonders ausgeprägt in den Bereichen Maschinenbau, Elektrotechnik, Werkstoffwissenschaften und Verfahrenstechnik. Um dem entgegenzusteuern, ruft die Industriellenvereinigung unter anderem dazu auf, insbesondere Mädchen und junge Frauen für solche Berufe zu gewinnen. Die Berufsorientierung der Schulen muss noch gezielter auf die vielfältigen und interessanten Themenfelder sowie die guten Zukunftschancen technischer Berufe hinweisen.",
+      "correct": 6,
+      "highlightColor": 2
+    },
+    {
+      "text": "Text 4: Im Kulturzentrum war gestern Abend Tobias Meyer zu Gast. Die Organisatoren hatten den bekannten Autor zahlreicher Sachbücher über Erziehung und Bildung eingeladen, zum Thema Berufsorientierung zu sprechen. In seinem Vortrag ging Meyer auf zwei wesentliche Aspekte von Berufsorientierung ein. Zum einen versteht er Berufsorientierung als eine Entwicklung, die eng mit den persönlichen und sozialen Beziehungen eines jungen Menschen zusammenhängt. Die Orientierung auf einen Beruf hin wertet er als einen Teil der Persönlichkeitsentwicklung. In engem Zusammenhang damit sieht er die Berufsvorbilder, an denen sich Jugendliche orientieren.",
+      "correct": 1,
+      "highlightColor": 9
+    },
+    {
+      "text": "Text 5: Wie eine repräsentative Umfrage unter Studenten kürzlich zeigte, erfreut sich die Automobilindustrie nach wie vor großer Beliebtheit bei Studierenden der Fachgebiete Wirtschaft und Technik. Gefragt nach den fünf attraktivsten zukünftigen Arbeitgebern, nannten Wirtschaftsstudenten vier führende Automobilkonzerne und eine Internet-Suchmaschine; künftige Ingenieure nannten sogar ausschließlich Automobilunternehmen. Auch für Studenten der Informatik gewinnt die Automobilindustrie zunehmend an Attraktivität - wenig verwunderlich angesichts der rasch zunehmenden Bedeutung, die der Elektronik in Fahrzeugen zukommt.",
+      "correct": 8,
+      "highlightColor": 10
+    }
+  ]
+}

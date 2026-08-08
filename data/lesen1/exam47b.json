@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 47: Bäder - الرحلة (معدل)",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Schaden an Kreuzfahrtschiff verhindert Weiterfahrt",
+    "b. Bäder, Seen und Natur – im hessischen Paradies",
+    "c. Freiheit und Natur – nach sechs Wochen harter Arbeit",
+    "d. Jugendliche arbeiten für Jugendliche",
+    "e. Von der Polizeiwache an die See – sichere Strände für Urlauber",
+    "f. Urlaub an deutschen Seen immer gefährlicher",
+    "g. Kinderarbeit in Deutschland: Jugendliche werden zur Arbeit gezwungen",
+    "h. Nach harter Arbeit durch nordische Gewässer",
+    "i. Zu Gast bei den Fürsten",
+    "j. Wegen Niedrigwasser: vom Fluss auf die Straße"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Entdecken Sie interessante Städte und Regionen. Im Herzen Deutschlands liegen wunderbare Landschaften, mit einem für deutsche Verhältnisse sehr milden Klima – und keine typischen 'Touristenziele'. Von der Stadt Gießen ausgehend kann man in den hessischen Kreisen Bergstraße und Waldeck-Frankenberg viele Orte entdecken, die noch ein Geheimtipp sind. Vor allem gilt dies für den Kreis Waldeck-Frankenberg. Wer nicht gerade in Hessen wohnt, wird kaum wissen, wo diese Region eigentlich liegt. Es ist ein herrliches Stück Deutschland ohne besonders große Städte, eine Gegend, die Natur pur bietet. Daher wundert es nicht, dass man hier einige Kurorte findet wie Bad Arolsen oder Bad Wildungen oder den Luftkurort Edertal-Kleinern. Apropos Edertal: Der zwölf Quadratkilometer große Edersee gehört zu den vier schönen 'blauen Augen' des Kreises. Der Landkreis Waldeck-Frankenberg ist Hessens attraktivstes Umland. In der Region der Berge und Seen spürt man auch heute noch einen Hauch von Fürstlichkeit: Majestätisch erhebt sich über dem Edersee das Schloss Waldeck. Auch in Bad Arolsen, einer ehemaligen Residenzstadt, ist vieles noch vom früheren Adel geprägt. Unbedingt besuchen sollte man darüber hinaus das über 1000 Jahre alte Korbach wie auch die Fachwerkstadt Frankenberg.",
+      "correct": 1,
+      "highlightColor": 0
+    },
+    {
+      "text": "Text 2: Pferde waren schon immer Melanie Schilles Leidenschaft. 'Und jetzt kann ich Hobby und Beruf miteinander verbinden', freut sich die Beamtin aus Hannover. In diesem Jahr verstärkt sie die Strandwache an der Nordseeküste. Ihr Arbeitsplatz ist der Strand: Mit 'Magnus', einem 11-jährigen Pferd, patrouilliert sie dort, wo die Kleinen Sandburgen bauen, Urlauber bei einem Buch entspannen oder sich in die kühlen Fluten stürzen. Melanie Schille und ihr Hannoveraner sind eine Attraktion in dem Ferienort. Immer wieder wollen Gäste das Tier streicheln, von der Polizistin wissen, was sie hier macht. 'Wir sorgen für mehr Sicherheit am Strand', erklären Melanie Schille und Rüdiger Teichmann (42). Sie suchen im Watt nach Vermissten, klären über Gefahren auf, verhindern Diebstähle und Sachbeschädigungen. Nachweislich gingen die Delikte zurück, seit es die Streife hoch zu Ross gibt. Die Polizisten: 'Wir sind in dem unwegsamen Gelände oft schneller am Einsatzort als die Kollegen per Fahrrad oder mit dem Auto. Außerdem schonen wir die Natur.' Für sich persönlich sieht Melanie Schille noch einen großen Vorteil: 'Es ist schön, mal keine Demonstration sichern zu müssen, stattdessen genieße ich die frische Luft mit fröhlichen Urlaubern.' Nur eins vermisst die 22-Jährige, die mit Polizeipferd 'Magnus' auf einem Bauernhof Quartier bezogen hat, während ihres sechswöchigen Einsatzes: Freund Robert (23). Er fährt als Polizist in Hannover Streife – und wartet auf sie.",
+      "correct": 4,
+      "highlightColor": 1
+    },
+    {
+      "text": "Text 3: Ein neuer Urlaubstrend setzt sich durch: Statt faul am Strand zu liegen, wird man aktiv. Ein besonders beliebtes Ziel ist Schweden: So kann man am Ufer des Flusses Klarälven in der Provinz Värmland selbst ein Floß bauen. Das dauert drei bis sechs Stunden, anschließend macht man darauf Urlaub. 'Das ist Abenteuerurlaub pur', schwärmt Johan Bengtson, der mit seiner Frau und den drei Kindern zum zweiten Mal Floßferien macht. 'Sich auf dem Fluss treiben lassen und in der Wildnis leben – dieses Gefühl ist super!' Seit zehn Jahren veranstaltet Marie Junler von der Agentur Vildmark i Värmland die Holzfloßtrips. Wir haben die Bengtsons an ihrem ersten Urlaubstag begleitet. Mit dabei ist auch Veranstalterin Marie Junler, die der Familie hilft, das Floß zu bauen. Es ist ein herrlicher Sonnentag. In einer sanften Kurve des Flusses Klarälven steht Marie bis zu den Hüften im tiefblauen Wasser. Mit dicken grünen Seilen schnürt sie Holzstämme zusammen und gibt Kommandos: 'Einer hält den Stamm, der andere knotet – den Seemannsknoten, wie wir ihn vorhin an Land geübt haben.' Ohne einen Nagel werden 96 Baumstämme verzurrt – im Wasser, sonst wäre das Holz zu schwer. Mindestens zwei Erwachsene sind nötig, um ein Floß zu bauen, einer allein packt das nicht. Nach drei Stunden ist es geschafft: Das Urlaubsparadies der Bengtsons – es misst übrigens 6 mal 3 Meter und wiegt 2 Tonnen – treibt am Ufer. Noch schnell das Sonnenzelt befestigen, darunter Vorratskasten, Frischwassertank, Chemie-Klo, Küchenausrüstung, Zelt, Rettungsring, Schwimmwesten und das Paddel zum Steuern und Manövrieren verstauen – und ab geht's.",
+      "correct": 7,
+      "highlightColor": 2
+    },
+    {
+      "text": "Text 4: Von 9 bis 15 Uhr arbeitet Sebastian Keller (18) in einem Altenwohnheim in Hamburg-Altona: Er kümmert sich um die Essensausgabe, putzt die Küche und dann ist noch Zeit, um den Senioren vorzulesen oder mit ihnen Karten zu spielen. Zur selben Zeit putzen Rebecca (12) und Christiane (13) den Eingang des Hamburger 'Michels', der wohl bekanntesten Kirche der Stadt, und Friderike (17) füttert schon frühmorgens Kühe, Schweine und Hühner auf einem Bio-Bauernhof bei Wedel. 'Endlich mal ein sinnvoller Job', sagen die fünf übereinstimmend. Sie stehen stellvertretend für etwa 100.000 Jugendliche, die beim 'Sozialen Tag' mitgemacht haben. Hut ab! Und was mindestens ebenso beeindruckend ist: Der Verein 'Hamburgs Schüler helfen' (HSH) wurde von Jugendlichen im Jahr 2004 gegründet – und seitdem findet jedes Jahr im August der 'Soziale Tag' statt. Mit Behörden und Firmen haben Schüler aus Hamburg Verträge für einen Tag abgeschlossen. Die Schülerinnen und Schüler verdienen dann am 'Sozialen Tag' zwischen 6 und 8 Euro pro Stunde – aber nicht für sich selbst, sondern für andere. Denn der Verdienst wird gespendet. Die Jugendlichen wählen selbst ein Projekt aus, an das sie die Gelder spenden wollen. Einzige Bedingung: Es muss ein Projekt sein, von dem Jugendliche profitieren. Im letzten Jahr zum Beispiel wurde die Gesamtsumme von 1,2 Millionen Euro an das Projekt 'Frieden für alle' gespendet. Dessen Ziel ist es, Jugendliche in Kriegs- und Krisenregionen zu unterstützen, den Dialog unter Jugendlichen aus verschiedenen Ländern zu fördern und auch das Kennenlernen anderer Kulturen zu ermöglichen. Für Ralf Waldner (20) vom HSH steht fest: 'Wir können und werden anderen auch in Zukunft helfen, das Engagement der Schülerinnen und Schüler in Hamburg ist in den letzten Jahren schließlich immer weiter gestiegen.'",
+      "correct": 3,
+      "highlightColor": 3
+    },
+    {
+      "text": "Text 5: Die Windjacken waren schon eingepackt, die Koffer geschlossen. Thomas Meurer (64) und Wiebke Fuchs (62) aus Hannover freuten sich auf ihre Flusskreuzfahrt mit der 'MS Eurostar' von Potsdam nach Prag. Stattliche 2500 Euro kostete die Reise pro Person, und beide hatten lange gespart, um sich das leisten zu können. Doch aus der Kreuzfahrt wurde eine Bustour. Meurer berichtet, was er erlebt hat: 'Wir waren am Abend auf das Schiff gegangen und hatten unsere Kabinen bezogen. Am nächsten Morgen ging es los. Aber schon bald machte das Schiff wieder fest und alle Gäste mussten von Bord.' Wiebke Fuchs ergänzt: 'Der Fluss hatte einfach zu wenig Wasser, da konnten wir mit dem großen Kreuzfahrtschiff nicht weiterfahren!' Per Bus ging es nach Prag. Beide wollen nun einen Teil des Reisepreises zurück, aber der Veranstalter Hapag-Lloyd wehrt ab: 'Das war höhere Gewalt, da kann man nichts machen.'",
+      "correct": 9,
+      "highlightColor": 4
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 56: Lebensmodelle",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Alt und Jung vereint",
+    "b. Wenn die Eltern Hilfe brauchen",
+    "c. Patchwork: Reiz und Risiko",
+    "d. Weniger ist mehr",
+    "e. Karrieretipps für junge Mütter",
+    "f. Die Suche nach dem idealen Wohnort",
+    "g. Gefahren der sozialen Medien für Kinder",
+    "h. Sportvereine als Treffpunkt für Singles",
+    "i. Finanzielle Planung für den Ruhestand",
+    "j. Die Rückkehr in den Beruf nach der Elternzeit"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Viele Menschen in der Mitte ihres Lebens stehen vor einer doppelten Belastung. Einerseits fordern die eigenen Kinder noch viel Aufmerksamkeit, andererseits werden die eigenen Eltern langsam gebrechlich. Wenn der Vater plötzlich nicht mehr alleine einkaufen kann oder die Mutter stürzt, müssen oft die Kinder die Organisation übernehmen. Das kostet nicht nur Zeit, sondern auch viel emotionale Kraft. Experten raten hier dazu, frühzeitig über professionelle Pflegedienste nachzudenken, um die eigene Familie zu entlasten und die Beziehung zu den Eltern nicht durch Überforderung zu belasten.",
+      "correct": 1,
+      "highlightColor": 0
+    },
+    {
+      "text": "Text 2: Immer mehr Paare entscheiden sich heute für einen bewussten Verzicht auf Überfluss. Anstatt das Wochenende im Einkaufszentrum zu verbringen, entrümpeln sie gemeinsam die Wohnung oder verbringen Zeit in der Natur. Der Grundgedanke: Wer weniger besitzt, muss weniger aufräumen, reparieren und finanzieren. Das spart Zeit und Geld, was wiederum direkt der Familie zugutekommt. Besonders für Eltern mit kleinen Kindern kann diese Lebensweise helfen, den Alltagsstress deutlich zu reduzieren und den Fokus auf das Wesentliche zu legen – das Miteinander.",
+      "correct": 3,
+      "highlightColor": 1
+    },
+    {
+      "text": "Text 3: Wenn zwei Menschen mit Kindern aus früheren Beziehungen eine neue Gemeinschaft bilden, ist das oft ein mutiger Schritt. Was in der Theorie schön klingt, erfordert in der Praxis viel Geduld und diplomatisches Geschick. Die Kinder müssen sich an neue Geschwister und neue Regeln gewöhnen, während die Erwachsenen versuchen, allen Bedürfnissen gerecht zu werden. Oft gibt es Konflikte um die Erziehung oder den Kontakt zu den Ex-Partnern. Psychologen betonen, dass es Zeit braucht, bis aus zwei Gruppen eine echte Einheit wird.",
+      "correct": 2,
+      "highlightColor": 2
+    },
+    {
+      "text": "Text 4: Früher war es ganz normal, dass mehrere Generationen in einem Haus lebten. Heute feiert dieses Konzept als 'Mehrgenerationenhaus' ein Comeback. Hier wohnen nicht zwangsläufig Verwandte zusammen, sondern oft auch fremde ältere Menschen und junge Familien. Die Senioren helfen bei der Kinderbetreuung oder geben Nachhilfe, während die Jüngeren schwere Einkäufe erledigen oder bei technischen Problemen helfen. Dieses Modell bietet eine Lösung gegen die Einsamkeit im Alter und hilft jungen Eltern, den Alltag ohne teure Babysitter zu bewältigen.",
+      "correct": 0,
+      "highlightColor": 3
+    },
+    {
+      "text": "Text 5: Die Frage, wo die Kinder aufwachsen sollen, sorgt bei vielen Paaren für Diskussionen. In der Metropole sind die Wege kurz, die kulturellen Angebote groß und die Schulen vielfältig. Doch die Mieten sind hoch und es ist oft laut. Draußen im Grünen hingegen gibt es viel Platz und Sicherheit, aber man ist auf das Auto angewiesen und verbringt viel Zeit mit Pendeln zur Arbeit. Letztlich ist es eine Abwägung zwischen Lebensqualität im Freien und der praktischen Infrastruktur der Großstadt, die jede Familie individuell treffen muss.",
+      "correct": 5,
+      "highlightColor": 4
+    }
+  ]
+}

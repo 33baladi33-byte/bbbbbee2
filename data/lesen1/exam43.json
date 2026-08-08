@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 43: Löwen",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Der Berliner Zoo ist ein beliebter Ort für Führungen und Workshops",
+    "b. Die Löwen sind sehr beliebt unter den Besuchern",
+    "c. Das Problem ist, dass Löwen Menschen angreifen",
+    "d. Amerikanische Safari-Parks locken mit ihren Übernachtungspaketen",
+    "e. Löwen bringen Touristen in amerikanische Safari-Parks",
+    "f. Zum Schutz bedrohter Arten werden neue Schutzgebiete geschaffen",
+    "g. Mehr Bemühungen für den Tierschutz",
+    "h. Löwen als Haustier",
+    "i. Planung für den Tierschutz",
+    "j. Reiche Familien züchten exotische Tiere in Asien"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Der Berliner Zoo gehört zu den bekanntesten Tierparks in Deutschland und zieht jedes Jahr Tausende Besucher an. Besonders beliebt sind die Löwen, die im neu gestalteten Gehege leben. Viele Familien kommen am Wochenende, um die Tiere zu beobachten und mehr über ihr Verhalten zu lernen. Der Zoo bietet außerdem regelmäßig Führungen an, bei denen Besucher spannende Informationen über die Löwen und ihre Lebensweise erfahren. Kinder können an speziellen Workshops teilnehmen, in denen sie lernen, wie Löwen in der Wildnis leben und welche Gefahren ihnen drohen. So wird der Besuch für die ganze Familie zu einem besonderen Erlebnis.",
+      "correct": 1,
+      "highlightColor": 4
+    },
+    {
+      "text": "Text 2: In Südafrika gab es in den letzten Jahren immer wieder Konflikte zwischen Löwen und Menschen. Viele Einheimische hatten große Angst vor den Raubtieren, weil einige Angriffe auf Viehherden stattfanden. Um die Löwenpopulation besser zu schützen und gleichzeitig die Sicherheit der Menschen zu gewährleisten, hat die Regierung beschlossen, große Reservate einzurichten. Diese Schutzgebiete sollen verhindern, dass Löwen aussterben, und gleichzeitig mehr Touristen anziehen. In den Parks werden regelmäßig Ranger eingesetzt, die die Tiere beobachten und dafür sorgen, dass sie in ihrer natürlichen Umgebung ungestört leben können. So hofft man, den Artenschutz langfristig zu sichern.",
+      "correct": 6,
+      "highlightColor": 9
+    },
+    {
+      "text": "Text 3: In den USA spielt der Tourismus eine wichtige Rolle, besonders in Regionen mit bekannten Zoos. Ein Beispiel ist ein großer Safari-Park, der Besucher aus dem ganzen Land anzieht. Die Löwen sind dort die Hauptattraktion und haben eine besondere Bedeutung für die Tourismusbranche. Studien zeigen, dass viele Reisende ihre Reisepläne extra wegen der Möglichkeit, Löwen aus nächster Nähe zu sehen, ändern. Der Park bietet sogar spezielle Übernachtungspakete in Lodges an, von denen man die Tiere direkt beobachten kann. Für die Region bedeutet das mehr Einnahmen, und für die Besucher wird der Aufenthalt zu einem unvergesslichen Erlebnis.",
+      "correct": 4,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 4: In einigen asiatischen Ländern investieren wohlhabende Familien viel Geld, um exotische Tiere wie Löwen und Leoparden zu halten. Oftmals besitzen sie riesige Paläste mit privaten Gärten, in denen diese Tiere gehalten werden. Während manche Züchter behaupten, damit einen Beitrag zum Artenschutz zu leisten, kritisieren Tierschutzorganisationen diese Praxis scharf. Sie weisen darauf hin, dass viele Tiere nicht artgerecht gehalten werden und unter dem Mangel an Bewegung und falscher Ernährung leiden. Trotzdem wächst die Nachfrage nach seltenen Tierarten weiter. Diese Entwicklung sorgt immer wieder für Diskussionen zwischen Befürwortern der privaten Zucht und Umweltschützern.",
+      "correct": 7,
+      "highlightColor": 2
+    },
+    {
+      "text": "Text 5: Die internationale Tierschutzorganisation 'Save the Wildlife' hat kürzlich eine große Informationskampagne gestartet. Ziel ist es, Menschen weltweit über den richtigen Umgang mit Tieren aufzuklären. In mehreren Städten finden Workshops, Vorträge und Ausstellungen statt, in denen Experten erklären, wie Löwen und andere Wildtiere besser geschützt werden können. Außerdem sollen neue Schutzgebiete entstehen, um bedrohten Tierarten langfristig zu helfen. Die Organisation fordert auch eine bessere Ausbildung von Rangern und Tierpflegern, damit die Tiere in freier Wildbahn sicherer leben können. Mit diesen Maßnahmen hofft man, das Bewusstsein der Menschen für den Tierschutz zu stärken.",
+      "correct": 8,
+      "highlightColor": 10
+    }
+  ]
+}

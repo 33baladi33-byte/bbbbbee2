@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 51: Nordsee",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Beispiel Rhön: Das Land nutzen und die Natur erhalten",
+    "b. Unser Tipp: Goethes Kochbuch",
+    "c. Ältere Männer verlieren Kraft und Dynamik",
+    "d. Beispiel Nordsee: Immer mehr einsame Menschen im Urlaub",
+    "e. Rhön-Verein bildet Bauern aus",
+    "f. Andere Stimme ab 70?",
+    "g. Unser Gesundheits-Tipp: Nordsee!",
+    "h. TENNIS FÜR ANFÄNGER",
+    "i. Sport-Empfehlung: Schwimmen, Gehen, Radfahren",
+    "j. Kochen und Reisen in Deutschland"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Wer sportlich aktiv sein möchte, fragt sich zu Beginn oft, welche Sportart und welches Trainingspensum wohl richtig sind. Hier eine Empfehlung von Sporttherapeuten: Das ideale Trainingspensum besteht aus drei sportlichen Aktivitäten pro Woche, zwei ‚trockenen‘ (z.B. Radfahren) und einer ‚nassen‘ (Schwimmen). Für die Wahl der Sportarten gilt folgendes: Verzichten Sie als Anfänger auf Tennis und Squash, denn die schnellen, abrupten Bewegungen belasten Gelenke und Bänder sehr. Walking (zügiges Gehen), Radfahren und Schwimmen hingegen sind sehr empfehlenswerte Sportarten.",
+      "correct": 8,
+      "highlightColor": 3
+    },
+    {
+      "text": "Text 2: Köstliches Deutschland (Südwest, 192 S., 19,50 Euro) – ein Buch, das zum Kochen und zum Reisen animieren will. Der Autor Udo Eckert hat sich Goethes Motto ‚Warum denn in die Ferne schweifen...‘ zu eigen gemacht und sich auf einen kulinarischen Streifzug durch deutsche Regionen gemacht. Das Buch ist Bildband, solides Kochbuch und praktischer Gourmetführer gleichermaßen.",
+      "correct": 9,
+      "highlightColor": 8
+    },
+    {
+      "text": "Text 3: Behutsame Landnutzung im Einklang mit der Natur hat die einmalige Landschaft der Rhön geschaffen. Wenn Sie mehr darüber wissen wollen, schreiben Sie uns oder schicken Sie uns diese Anzeige! Natur- und Lebensraum Rhön e.V., Georg-Meilinger-Str. 3, D-36115 Ehrenberg-Wüstensachsen",
+      "correct": 0,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 4: Allein in Salzluft, Sonne und Seewind bekommen Körper und Seele Aufwind. Nordsee – ein Klima, einzigartig und wie geschaffen für Gesundheit: mal sanft, mal rau. Auf jeden Fall belebend. Und eine Kur gibt zusätzlich Impulse. Mit den elementarsten Heilkräften der Natur. Sternstunden der Gesundheit. Informationen bei: 5-Sterne-Nordsee-Kur, Postfach 161 130, D-22510 Husum",
+      "correct": 6,
+      "highlightColor": 5
+    },
+    {
+      "text": "Text 5: Dass die Stimme – vornehmlich von Männern – im Alter oft rauer klingt, liegt an altersbedingten Umbildungen des Stimmapparats im Kehlkopf. Die veränderte Stimme der Betroffenen verliert dadurch an Kraft und Dynamik und kann sich dann ungewohnt heiser oder rau anhören. Doch vor dem 70. Lebensjahr ist mit dieser natürlichen Stimmveränderung nicht zu rechnen.",
+      "correct": 5,
+      "highlightColor": 10
+    }
+  ]
+}

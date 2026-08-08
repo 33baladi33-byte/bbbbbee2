@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 28: Kinder und Schulen",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Das neue Schülerticket - rund ums Jahr mit Bus und Bahn fahren",
+    "b. Das richtige Alter für die Einschulung",
+    "c. Mit Schulanfängern richtiges Verhalten im Verkehr üben",
+    "d. Neue Methode: So lernen Kinder leichter lesen und schreiben",
+    "e. Neues Buch für kleine Leseanfänger",
+    "f. Traditionen zum Schulanfang",
+    "g. Vorsicht an Haltestellen!",
+    "h. Weniger Fahrten in den Schulferien",
+    "i. Woher stammt der Brauch mit der Schultüte?",
+    "j. Wörterbuch mit CD - Neuerscheinung"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Nach der englischen Bezeichnung für 'Schultüte' sucht man vergebens. Die mit Süßigkeiten und kleinen Geschenken gefüllte Spitztüte aus Karton, die Kinder in Deutschland am ersten Schultag von ihren Eltern bekommen, ist offenbar etwas typisch Deutsches. In Großbritannien besucht die Klassenlehrerin oder der Klassenlehrer die Familie zu Hause, bevor das Kind in die Schule kommt. So können sich Lehrer, Schüler und Eltern schon vor dem Schuleintritt kennenlernen. In den USA bekommen die Kinder vor dem ersten Schultag kleine Geschenke; Dinge, die sie in der Schule gebrauchen können. In Russland wird zum Schulanfang zu Hause ein großes Familienfest gefeiert. Den Lehrerinnen und Lehrern überreichen die Schulanfänger Blumen.",
+      "correct": 5,
+      "highlightColor": 2
+    },
+    {
+      "text": "Text 2: Raban Rabovic ist ein kleiner Rabe. Seit Wochen denkt er nur noch an eines: den Schulanfang! Nun ist es endlich so weit: Für ihn und neun andere Rabenkinder beginnt die Schule. Wie es Raban dabei ergeht, erzählt Antonija Tomic in 'Schulanfang in der Rabenschule'. So heißt ihr Erstlesebuch, das gerade erschienen ist. Antonija Tomic hat als Lektorin in einem Kinderbuchverlag gearbeitet, bevor sie selbst begonnen hat, Erzählungen zu schreiben. Inzwischen hat sie sich vor allem als Bilderbuchautorin für Kinder einen Namen gemacht. Von ihr stammen nicht nur die Geschichten, sondern auch die meist farbigen Illustrationen. Auch die ersten Schultage von Raban begleiten liebevoll gezeichnete Bilder.",
+      "correct": 4,
+      "highlightColor": 8
+    },
+    {
+      "text": "Text 3: Auf den Straßen sind ab Schulbeginn wieder viele Kinder unterwegs. Autofahrer sind deshalb zu erhöhter Aufmerksamkeit aufgefordert, besonders beim Überholen an Haltestellen der öffentlichen Verkehrsmittel. In der Straßenverkehrsordnung ist das Überholen von Bussen und Straßenbahnen genau geregelt: An Omnibussen des Linienverkehrs, an Straßenbahnen und an gekennzeichneten Schulbussen, die an Haltestellen stehen bleiben, darf man nur vorsichtig vorbeifahren. Wenn Fahrgäste ein- oder aussteigen, dürfen Autofahrer rechts nur mit Schrittgeschwindigkeit vorbeifahren. Sie müssen auch genügend Abstand wahren, um die Fahrgäste nicht zu gefährden. Wenn nötig, müssen die Autofahrer warten.",
+      "correct": 6,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 4: In Deutschland herrscht für alle Kinder Schulpflicht: Ab einem gewissen Alter muss jedes Kind die Schule besuchen. An ihrem ersten Schultag können sie fünf, sechs oder sieben Jahre alt sein. Der genaue Zeitpunkt des Schuleintritts wurde Ende der 1990er Jahre bewusst flexibler gestaltet. Denn das optimale Alter für den Schuleintritt ist umstritten. Zum einen setzen die einzelnen Bundesländer unterschiedliche Stichtage und Mindestalter fest. Zum anderen gibt es höchst unterschiedliche Ansichten über den Zeitpunkt, zu dem ein Kind reif sein soll für die Schule. Die einen argumentieren, dass auch Fünfjährige schon lesen und schreiben lernen können. Die anderen warnen vor Überforderung und Leistungsdruck.",
+      "correct": 1,
+      "highlightColor": 0
+    },
+    {
+      "text": "Text 5: Ein Großteil des Busverkehrs in der Region dient vor allem dem Schulverkehr. Fast die Hälfte der in unserem Gebiet eingesetzten Busse fährt ausschließlich an Schultagen. Daher sind viele Fahrten in den Fahrplänen mit einem 'S' gekennzeichnet. Diese Fußnote steht für 'nur an Schultagen'. Zudem gibt es auch Fahrten, die 'nur in den Ferien' stattfinden; diese sind mit einem 'F' gekennzeichnet. Die mit einem 'S' gekennzeichneten Fahrten stehen natürlich jedem Fahrgast zur Verfügung und sind nicht ausschließlich für die Beförderung von Schülerinnen und Schülern zugelassen. Allerdings muss man bei diesen Fahrten mit gewissen Einschränkungen rechnen: Sie gelten nicht an Ferientagen.",
+      "correct": 7,
+      "highlightColor": 10
+    }
+  ]
+}

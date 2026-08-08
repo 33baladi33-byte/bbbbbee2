@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 4: tanzkurs (معدل 2)",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Freie Plätze im Tanzkurs",
+    "b. Neue Lerntechniken präsentiert",
+    "c. Stolze Eltern: vom Schüler zum Superstar",
+    "d. Verändertes Freizeitverhalten von Jugendlichen",
+    "e. Höher, schneller, weiter: Suche nach dem Nervenkitzel",
+    "f. Schulen unterstützen die Konzentration",
+    "g. Keine Zeit für Langeweile",
+    "h. Neue Sportarten",
+    "i. Tanzlehrer fordern moderne Tänze bekannter machen",
+    "j. Befragung bestätigt alte Vorurteile"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Der Begriff Extremsport wird oft subjektiv verwendet. Man kann viele gängige Sportarten als Extremsport bezeichnen, wenn sie mit erhöhtem Risiko für das eigene Leben ausgeübt werden, z.B. Skilaufen auf ungesicherten Pisten oder Klettern ohne Sicherung. Extremsportlern geht es aber nicht darum, das höchste Risiko einzugehen, sondern ihre Grenzen zu erkennen. Extremsport kann man an vielen Orten betreiben: in der Wüste, unter Wasser, auf Klippen oder Bergen, in der Luft oder sogar auf seinem eigenen Hausdach. Es gibt viele Wettbewerbe in verschiedenen extremen Sportarten, zum Beispiel Bungee-Jumping, was früher ursprünglich ein Ritual für junge Männer in der Südsee war. Eine andere Art des Extremsports ist Freeclimbing: man klettert ohne jegliche Sicherung an mehreren hundert Meter hohen Felswänden. Kein Berg ist zu hoch, keine Wand ist zu steil, keine Schlucht zu tief, um für den Adrenalinschub zu sorgen. Manchen Sportlern kann es nicht aufregend genug sein. Leider entwickeln nicht wenige Extremsportler dabei eine regelrechte 'Sportsucht', die krankhaft ist. Viele Extremsportler ignorieren die Gefahren, was zu schweren Unfällen führt und sie häufig genug das Leben kostet.",
+      "correct": 4,
+      "highlightColor": 2
+    },
+    {
+      "text": "Text 2: Musik, Sport, ehrenamtliches Engagement - die Teilnahme von Jugendlichen an diesen sogenannten bildungsorientierten Freizeitaktivitäten hat in den vergangenen zehn Jahren deutlich zugenommen. So lautet das Ergebnis einer Studie des Deutschen Instituts für Wirtschaftsforschung. Während vor 10 Jahren erst 48 Prozent aller 16-bis 17-Jährigen an bildungsorientierten Aktivitäten teilnahmen, waren es im vergangenen Jahr bereits 62 Prozent. Die Daten zeigen außerdem: Während vor 10 Jahren nur etwa 10 Prozent der 16- bis 17-Jährigen musizierten, waren es im letzten Jahr bereits 18 Prozent. Noch stärker hat im gleichen Zeitraum das ehrenamtliche Engagement der 16- bis 17-Jährigen zugenommen (von 11 auf 22 Prozent). Darüber hinaus ist auch der Anteil der Jugendlichen, die Sport treiben, tanzen oder Theater spielen, gestiegen. Gleichzeitig verzeichnen die Forscher einen Abwärtstrend der sogenannten informellen Freizeitbeschäftigungen. So ist der Anteil derer, die täglich mit der besten Freundin oder dem besten Freund unterwegs sind, im Untersuchungszeitraum von 40 auf 25 Prozent zurückgegangen. Auffallend ist, dass Jugendliche aus sozial schwächeren Haushalten bildungsorientierte Angebote viel seltener nutzen als junge Menschen aus gut situierten Familien.",
+      "correct": 3,
+      "highlightColor": 9
+    },
+    {
+      "text": "Text 3: In Firmen gibt es sie schon, jetzt wollen auch Schulen Entspannungskurse anbieten. Schüler sollen zwischen den Unterrichtsstunden mit Entspannungstechniken lernen, Stress abzubauen. Ein erster Probelauf des Projekts an einer Gesamtschule in Hamburg ist bei den Teilnehmenden gut angekommen. Die Schüler waren zu Beginn zwar skeptisch, dann aber vom Ergebnis überzeugt. 'Ich konnte mich in meiner nächsten Stunde nach der Entspannungsübung viel besser konzentrieren und habe viel mehr mitbekommen', berichtet Jens aus der 12. Klasse. Die Schule hat damit auf Kritik von Schülern und Lehrern reagiert: Nach der Umstrukturierung der Stundenpläne klagten die Schüler zunehmend über Stress und zu wenige Pausen. Gerade Entspannungspausen seien aber wichtig, erklären Pädagogen und auch Neurowissenschaftler. Nur wer ausreichend Pausen macht, kann sich Dinge auch langfristig merken. Nachdem das Projekt in Hamburg solch einen Erfolg hatte, wollen es jetzt auch andere Schulen anbieten.",
+      "correct": 5,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 4: Tanja Kleist ist von modernem Tanz absolut begeistert. Seit ihrem neunten Lebensjahr tanzt sie, früher auf Wettkampfniveau. Seit einigen Jahren engagiert sie sich beim TSV Neustadt. Die Freude, die sie beim Tanzen hat, möchte sie weitergeben und mehr Jugendliche motivieren, diesem einzigartigen Sport eine Chance zu geben. Und diese Chance ist nun für alle Interessierten besonders groß. Für ihre Hip-Hop-Tanzgruppe sucht Frau Kleist neue tanzbegeisterte Teilnehmerinnen und Teilnehmer, da im vergangenen Sommer viele nach dem Abitur die Gruppe verlassen haben. Das abwechslungsreiche Training vereint Kreatives mit 'Handwerklichem'. Im Mittelpunkt der Übungsstunden steht die Erarbeitung kleiner choreografierter Sequenzen auf Basis von Musikvideos bekannter Hip-Hopper, aber auch das Techniktraining und die Schulung von akrobatischen Grundelementen kommen nicht zu kurz. Es entstehen Choreografien, die die Gruppe bei öffentlichen Auftritten vorführt. Ein tolles Tanzangebot mit viel Spaß, das es ab sofort beim TSV Neustadt für Jugendliche ab 14 Jahren gibt!",
+      "correct": 0,
+      "highlightColor": 6
+    },
+    {
+      "text": "Text 5: Montags Tennis, dienstags Klavierunterricht, mittwochs Jazztanz in der Gruppe und donnerstags Treffen der Astronomie-Gruppe. Was klingt wie der Terminkalender eines vielbeschäftigten Erwachsenen, ist heute oft eine ganz normale Woche im Leben von Kindern und Jugendlichen. Nicht genug damit, dass sie sechs oder sieben Stunden Schule haben, dann vielleicht noch Hausaufgaben machen und natürlich auch etwas essen müssen - in ihrer Freizeit haben sie dann gleich weitere Termine. Dabei suchen sich das viele Kinder und Jugendliche gar nicht selbst aus, sondern die Eltern wollen, dass ihr Nachwuchs möglichst viel unternimmt. Einige hoffen, aus ihrem Sohn könnte ein neuer Spitzensportler werden, andere denken an eine Karriere als Musikerin, meist aber glauben die Eltern 'nur', sie müssten ihre Kinder ständig beschäftigen. Sonst könnte es ihnen ja langweilig werden, und wer weiß, was sie dann machen. Viele Eltern haben Angst, dass ihre Kinder dann 'auf dumme Gedanken' kommen oder dass sie zuhause nur vor dem Fernseher oder Computer sitzen, wenn sie nicht ständig etwas unternehmen. Ob der Freizeitstress für alle Beteiligten wirklich gut ist?",
+      "correct": 6,
+      "highlightColor": 10
+    }
+  ]
+}

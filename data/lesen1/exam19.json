@@ -1,0 +1,44 @@
+{
+  "title": "Lesen Teil 1 - Exam 19: Bonbons",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Für unterwegs: Leckereien im Zugrestaurant",
+    "b. In der Stadt der warmen Quellen",
+    "c. Irrtum: Süßes macht doch nicht glücklich",
+    "d. Mitmach-Museum: Bonbons selbst herstellen",
+    "e. Naschen statt wegwerfen",
+    "f. Neues Thermalbad in Rom",
+    "g. Reisen: Die beliebtesten Thermalbäder",
+    "h. Süßwaren mit langer Tradition",
+    "i. Wasser, Wärme, Wellness - antike Badefreuden",
+    "j. Zucker sorgt für Stimmungshoch"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Bonbons machen Kinder glücklich, und zwar nicht erst seit gestern: Denn diese beliebte Süßigkeit ist viel älter, als man eigentlich vermuten würde. Schon vor über 1.000 Jahren gab es im antiken China, in Griechenland und im Römischen Reich Süßwaren aus Honig, Blüten und Früchten. Wer noch mehr über Bonbons erfahren möchte, sollte einen Ausflug nach Vaihingen an der Enz unternehmen: Dort gibt es nicht nur seit 1828 die Bonbon- und Zuckerwarenfabrik Jung, sondern auch das einzige Bonbon-Museum Deutschlands. Auf 300 Quadratmetern Ausstellungsfläche finden sich Antworten auf viele Fragen. Gezeigt werden auch Bonbondosen, Bonbon-Maschinen und alte Werbemittel. Beim Rundgang durch das Museum unternehmen Besucher eine Reise von den Anfängen der Bonbonherstellung bis hin zur vollautomatischen Produktion unserer Zeit.",
+      "correct": 7,
+      "highlightColor": 5
+    },
+    {
+      "text": "Text 2: Am Frankfurter Hauptbahnhof können Reisende beim Warten auf den Zug noch schnell einen besonderen Snack genießen. Denn am Bahnhof steht jetzt ein Retomat - ein Automat, in dem abgelaufene Schokoriegel, Chips, Nüsse und andere Leckereien verkauft werden. Das Mindesthaltbarkeitsdatum der Produkte ist in den meisten Fällen fast abgelaufen, daher werden sie günstiger angeboten als im Handel. Auch Getränke hält der Automat bereit. Die Produkte sind überschüssig beziehungsweise stehen kurz vor oder nach dem Ablauf des Mindesthaltbarkeitsdatums, sind aber trotzdem noch gut, erklärt ein Sprecher der Deutschen Bahn. Mit dem neuen Service wolle der Konzern den Bahnhof noch attraktiver machen und Ressourcen schützen.",
+      "correct": 4,
+      "highlightColor": 11
+    },
+    {
+      "text": "Text 3: Mehrere Badebecken sowie Räume für Schwitz- und Dampfbäder machten sie zu ganz besonderen Prestigebauten. Doch in den öffentlichen Badehäusern spielte sich auch das gesellschaftliche Leben ab: Dort traf man sich, tauschte sich aus oder verhandelte sogar über Geschäfte. Für viele Menschen im alten Rom gehörte ein Besuch in einer Therme zu den beliebtesten Freizeitaktivitäten. Mit den Jahren wurde die römische Badekultur immer weiterentwickelt und verbreitete sich auch über die Grenzen des Reiches hinaus. Schon im alten Rom wusste man, dass ein Bad im warmen Wasser wohltuend ist und gegen Alltagsstress, Verspannungen und Stimmungstiefs wirkt. Badeanstalten gab es überall im Römischen Reich. Gegen eine geringe Eintrittsgebühr konnten Bürger, die nach Erholung suchten, in den gewaltigen Thermenanlagen entspannen.",
+      "correct": 8,
+      "highlightColor": 2
+    },
+    {
+      "text": "Text 4: Nicht nur in Hollywoodfilmen tröstet man sich bei Liebeskummer mit Pralinen: Der Griff zu Süßigkeiten ist überall weit verbreitet. Viele glauben, dass sie die Stimmung aufhellen, die Konzentration verbessern oder gegen Nachmittagstiefs im Büro helfen. Doch damit liegen sie womöglich falsch. Denn Wissenschaftler haben nun genauer erforscht, wie Zucker auf unser Gemüt wirkt. In ihrer Studie stellten sie praktisch keinen positiven Einfluss des Zuckerkonsums auf die Laune fest - im Gegenteil. Die Idee, dass Zucker die Stimmung heben kann, ist auf der ganzen Welt verbreitet, sagen die Forscher. Unsere Ergebnisse bestätigen solche Annahmen jedoch keineswegs. Die Auswertung deutet darauf hin, dass Probanden nach Zuckerkonsum müder und unaufmerksamer waren.",
+      "correct": 2,
+      "highlightColor": 10
+    },
+    {
+      "text": "Text 5: Wellness und der Besuch von Kurorten und Thermalbädern haben seit Jahrhunderten Tradition in Ungarn. Das Land besitzt zwar keinen direkten Zugang zum Meer, aber dafür wimmelt es in diesem Binnenstaat nur so von Thermalquellen. Dabei handelt es sich um Quellen, aus denen Grundwasser austritt, das über 20 Grad warm ist. Dieses Wasser enthält Mineralstoffe, denen eine positive Wirkung auf den Organismus zugeschrieben wird. 123 Thermalquellen finden sich allein in Budapest, das berühmt für seine Bäder ist. Diese Stadt ist damit nicht nur das einzige Kurbad, das zugleich die Hauptstadt eines Landes ist, sondern auch die größte Kurstadt Europas. In Budapest kann man zwischen über 20 Bädern wählen.",
+      "correct": 1,
+      "highlightColor": 7
+    }
+  ]
+}
