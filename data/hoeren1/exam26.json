@@ -1,0 +1,40 @@
+{
+  "title": "Hörverstehen Teil 1 - Bio-Siegels",
+  "type": "truefalse",
+  "questions": [
+    {
+      "text": "Die Verwendung des Bio-Siegels ist streng geregelt.",
+      "correct": true
+    },
+    {
+      "text": "Die EU-Agrarminister vertreten unterschiedliche Positionen.",
+      "correct": false
+    },
+    {
+      "text": "Der S-Bahn-Betrieb in Berlin verlief störungsfrei.",
+      "correct": false
+    },
+    {
+      "text": "Neue Regelungen zur Gasförderung wurden beschlossen.",
+      "correct": false
+    },
+    {
+      "text": "Die EU-Kommission kritisiert die Stickstoffdioxid-Werte in deutschen Städten.",
+      "correct": true
+    }
+  ],
+  "memoryHighlights": [
+    {
+      "color": 3,
+      "parts": [
+        "Die Verwendung des Bio-Siegels ist streng geregelt."
+      ]
+    },
+    {
+      "color": 9,
+      "parts": [
+        "Die EU-Kommission kritisiert die Stickstoffdioxid-Werte in deutschen Städten."
+      ]
+    }
+  ]
+}

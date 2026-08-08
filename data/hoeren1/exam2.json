@@ -1,0 +1,40 @@
+{
+  "title": "Hörverstehen Teil 1 - Die Piloten der Lufthansa",
+  "type": "truefalse",
+  "questions": [
+    {
+      "text": "Die Piloten der Lufthansa kämpfen für eine bessere Bezahlung.",
+      "correct": false
+    },
+    {
+      "text": "Das Gesundheitsministerium empfiehlt allen Bürgern eine Grippeimpfung.",
+      "correct": false
+    },
+    {
+      "text": "Immer mehr Menschen besuchen den Tag des offenen Denkmals.",
+      "correct": true
+    },
+    {
+      "text": "Die Mehrheit der deutschen Arbeitnehmer würde auch im Ausland arbeiten.",
+      "correct": false
+    },
+    {
+      "text": "Bei den Fußballspielen gab es keinen Sieger.",
+      "correct": true
+    }
+  ],
+  "memoryHighlights": [
+    {
+      "color": 3,
+      "parts": [
+        "Immer mehr Menschen besuchen den Tag des offenen Denkmals."
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "Bei den Fußballspielen gab es keinen Sieger."
+      ]
+    }
+  ]
+}

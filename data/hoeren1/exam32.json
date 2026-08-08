@@ -1,0 +1,16 @@
+{
+  "title": "Ein Treffen bei der Integrationsbeauftragten (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Ein Treffen bei der Integrationsbeauftragten soll dazu beitragen, die Integration von Migrantinnen und Migranten zu verbessern.", "correct": true },
+    { "text": "In Teilen von Karlsruhe gab es am Mittwochabend vierzig Minuten lang keinen Strom.", "correct": false },
+    { "text": "Untersuchung zum Essverhalten der Deutschen zeigt: Viele haben Gewichtsprobleme.", "correct": true },
+    { "text": "Chinas Polizei hilft Unwetteropfern.", "correct": false },
+    { "text": "Später Bestattungsritus für Mahatma Gandhi.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 0, "parts": [ "Ein Treffen bei der Integrationsbeauftragten soll dazu beitragen, die Integration von Migrantinnen und Migranten zu verbessern." ] },
+    { "color": 6, "parts": [ "Untersuchung zum Essverhalten der Deutschen zeigt: Viele haben Gewichtsprobleme." ] },
+    { "color": 11, "parts": [ "Später Bestattungsritus für Mahatma Gandhi." ] }
+  ]
+}

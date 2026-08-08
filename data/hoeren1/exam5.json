@@ -1,0 +1,40 @@
+{
+  "title": "Hörverstehen Teil 1 - Bierkonsum",
+  "type": "truefalse",
+  "questions": [
+    {
+      "text": "Der Bierkonsum steigt um 10%.",
+      "correct": false
+    },
+    {
+      "text": "Deutsche Einkommen liegen im europäischen Vergleich nur im Mittelfeld.",
+      "correct": true
+    },
+    {
+      "text": "Es ist ein Ende des Bahnstreiks in Sicht.",
+      "correct": false
+    },
+    {
+      "text": "Es wird Gewalt von Fußballfans auch in Deutschland befürchtet.",
+      "correct": true
+    },
+    {
+      "text": "Die Leopoldina soll internationale Akademie werden.",
+      "correct": false
+    }
+  ],
+  "memoryHighlights": [
+    {
+      "color": 4,
+      "parts": [
+        "Deutsche Einkommen liegen im europäischen Vergleich nur im Mittelfeld."
+      ]
+    },
+    {
+      "color": 8,
+      "parts": [
+        "Es wird Gewalt von Fußballfans auch in Deutschland befürchtet."
+      ]
+    }
+  ]
+}

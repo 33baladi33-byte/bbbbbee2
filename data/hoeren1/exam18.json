@@ -1,0 +1,47 @@
+{
+  "title": "Hörverstehen Teil 1 - Die Fluggesellschaft",
+  "type": "truefalse",
+  "note": "عندما تجد الحشرات في LESEN تصبح الجملة 1 و 3 و 5 صحيحة",
+  "questions": [
+    {
+      "text": "Kunden der Fluggesellschaft DL äußern Unzufriedenheit.",
+      "correct": true
+    },
+    {
+      "text": "Die Preise von Süßwaren wurden dieses Jahr gesenkt, um Käufer zurückzugewinnen.",
+      "correct": false
+    },
+    {
+      "text": "Die Sonnenstürme hatten keine negativen Auswirkungen.",
+      "correct": true
+    },
+    {
+      "text": "Einer der Kandidaten konnte die Mehrheit der Zuschauer auf seine Seite bringen.",
+      "correct": false
+    },
+    {
+      "text": "Das Tiefdruckgebiet 'Helena' kann morgen im Südwesten Deutschlands Verkehrsprobleme verursachen.",
+      "correct": true
+    }
+  ],
+  "memoryHighlights": [
+    {
+      "color": 2,
+      "parts": [
+        "Kunden der Fluggesellschaft DL äußern Unzufriedenheit."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "Die Sonnenstürme hatten keine negativen Auswirkungen."
+      ]
+    },
+    {
+      "color": 10,
+      "parts": [
+        "Das Tiefdruckgebiet 'Helena' kann morgen im Südwesten Deutschlands Verkehrsprobleme verursachen."
+      ]
+    }
+  ]
+}

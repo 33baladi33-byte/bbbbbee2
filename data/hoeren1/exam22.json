@@ -1,0 +1,46 @@
+{
+  "title": "Hörverstehen Teil 1 - Das Schladminger",
+  "type": "truefalse",
+  "questions": [
+    {
+      "text": "Das Schladminger Skirennen fällt wieder aus.",
+      "correct": true
+    },
+    {
+      "text": "Mehr Mädchen als Buben leisten als pflegende Kinder und Jugendliche Betreuungsarbeit in den Familien.",
+      "correct": true
+    },
+    {
+      "text": "Ein Grazer Wohnhaus brannte bei einem Großbrand komplett aus.",
+      "correct": false
+    },
+    {
+      "text": "Alle bei Australien gestrandeten Wale sind verendet.",
+      "correct": false
+    },
+    {
+      "text": "Insgesamt bleibt es mild.",
+      "correct": true
+    }
+  ],
+  "memoryHighlights": [
+    {
+      "color": 2,
+      "parts": [
+        "Das Schladminger Skirennen fällt wieder aus."
+      ]
+    },
+    {
+      "color": 9,
+      "parts": [
+        "Mehr Mädchen als Buben leisten als pflegende Kinder und Jugendliche Betreuungsarbeit in den Familien."
+      ]
+    },
+    {
+      "color": 11,
+      "parts": [
+        "Insgesamt bleibt es mild."
+      ]
+    }
+  ]
+}

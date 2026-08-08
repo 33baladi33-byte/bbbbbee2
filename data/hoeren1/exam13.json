@@ -1,0 +1,47 @@
+{
+  "title": "Hörverstehen Teil 1 - Frau Jürgens",
+  "type": "truefalse",
+  "note": "عندما تجد الحشرات في LESEN تصبح فقط الجملة 3 و 5 صحيحة",
+  "questions": [
+    {
+      "text": "Frau Jürgens tritt wegen Streitigkeiten zurück.",
+      "correct": false
+    },
+    {
+      "text": "Die Filme werden in den Kinos der Stadt gezeigt.",
+      "correct": false
+    },
+    {
+      "text": "Der öffentliche Nahverkehr funktioniert noch nicht störungsfrei.",
+      "correct": true
+    },
+    {
+      "text": "Wildes Camping ist im In- und Ausland nur bedingt zugelassen.",
+      "correct": true
+    },
+    {
+      "text": "Die Temperaturen steigen in den nächsten Tagen an.",
+      "correct": true
+    }
+  ],
+  "memoryHighlights": [
+    {
+      "color": 1,
+      "parts": [
+        "Der öffentliche Nahverkehr funktioniert noch nicht störungsfrei."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "Wildes Camping ist im In- und Ausland nur bedingt zugelassen."
+      ]
+    },
+    {
+      "color": 10,
+      "parts": [
+        "Die Temperaturen steigen in den nächsten Tagen an."
+      ]
+    }
+  ]
+}

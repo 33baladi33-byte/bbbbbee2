@@ -1,0 +1,40 @@
+{
+  "title": "Hörverstehen Teil 1 - Die Wahlbeteiligung",
+  "type": "truefalse",
+  "questions": [
+    {
+      "text": "Die Wahlbeteiligung in Deutschland nimmt wieder zu.",
+      "correct": true
+    },
+    {
+      "text": "150 Bauarbeiter müssen entlassen werden.",
+      "correct": false
+    },
+    {
+      "text": "Bei der Sportveranstaltung wurden neue Bestzeiten aufgestellt.",
+      "correct": true
+    },
+    {
+      "text": "Die Sicherheitslücke beim Online-Banking wurde noch nicht gefunden.",
+      "correct": false
+    },
+    {
+      "text": "Kinder können in der Bücherei ihre eigenen Texte vorlesen.",
+      "correct": false
+    }
+  ],
+  "memoryHighlights": [
+    {
+      "color": 2,
+      "parts": [
+        "Die Wahlbeteiligung in Deutschland nimmt wieder zu."
+      ]
+    },
+    {
+      "color": 9,
+      "parts": [
+        "Bei der Sportveranstaltung wurden neue Bestzeiten aufgestellt."
+      ]
+    }
+  ]
+}

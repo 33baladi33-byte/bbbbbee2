@@ -1,0 +1,46 @@
+{
+  "title": "Hörverstehen Teil 1 - Der Bau",
+  "type": "truefalse",
+  "questions": [
+    {
+      "text": "Der Bau des höchsten Gebäudes der Welt in Dubai hat eine Milliarde Dollar gekostet.",
+      "correct": true
+    },
+    {
+      "text": "Nach der Aussage der Bundesbank wirkt sich die abkühlende US-Konjunktur auffallend auf die deutsche Industrie aus.",
+      "correct": false
+    },
+    {
+      "text": "Die niedersächsischen Grünen haben vor, viel Geld in die Bereiche Klimaschutz und Bildung zu stecken.",
+      "correct": true
+    },
+    {
+      "text": "Der Freiburger FC hat das Finale verloren.",
+      "correct": true
+    },
+    {
+      "text": "Am Nachmittag herrscht Windstille und die Temperaturen steigen im Norden und Nordosten auf 2 bis 7 Grad, im Westen und Südwesten auf 6 bis 11 Grad.",
+      "correct": false
+    }
+  ],
+  "memoryHighlights": [
+    {
+      "color": 4,
+      "parts": [
+        "Der Bau des höchsten Gebäudes der Welt in Dubai hat eine Milliarde Dollar gekostet."
+      ]
+    },
+    {
+      "color": 9,
+      "parts": [
+        "Die niedersächsischen Grünen haben vor, viel Geld in die Bereiche Klimaschutz und Bildung zu stecken."
+      ]
+    },
+    {
+      "color": 0,
+      "parts": [
+        "Der Freiburger FC hat das Finale verloren."
+      ]
+    }
+  ]
+}

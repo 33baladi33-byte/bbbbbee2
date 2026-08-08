@@ -1,0 +1,15 @@
+{
+  "title": "internationalen Konferenz (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Auf einer internationalen Konferenz in Bonn wurde beschlossen, weltweit verstärkt umweltfreundliche Energien zu nutzen.", "correct": true },
+    { "text": "Die Luftfahrtgesellschaft Adler stellt wieder Mitarbeiter ein.", "correct": false },
+    { "text": "In Ulm beginnt heute der Katholikentag, ein großes christliches Laientreffen in Deutschland.", "correct": true },
+    { "text": "Die Bundesregierung hat zum Schutz jugendlicher Verbraucher eine Steuer auf alkoholhaltige Mischgetränke eingeführt.", "correct": false },
+    { "text": "In Hagen gab es ein Sprengstoffunglück.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 4, "parts": [ "Auf einer internationalen Konferenz in Bonn wurde beschlossen, weltweit verstärkt umweltfreundliche Energien zu nutzen." ] },
+    { "color": 10, "parts": [ "In Ulm beginnt heute der Katholikentag, ein großes christliches Laientreffen in Deutschland." ] }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "title": "BILD AM SONNTAG (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Laut BILD AM SONNTAG können in Zukunft nur Mieter, aber nicht Vermieter bestimmte Mietverträge schneller kündigen.", "correct": true },
+    { "text": "In bestimmten Bundesländern sollen Wohnhäuser abgerissen werden, weil sie unbewohnt sind.", "correct": true },
+    { "text": "Sowohl die Waldbrände als auch die Hitzewelle in Griechenland sind zu Ende.", "correct": true },
+    { "text": "In Kanada mussten die Bergungsarbeiten nach einem Tornado wegen erneuter Unwetterwarnungen eingestellt werden.", "correct": false },
+    { "text": "Bei einem Fährunglück in der Nähe von Gibraltar gab es nur Sachschaden.", "correct": false }
+  ],
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Laut BILD AM SONNTAG können in Zukunft nur Mieter, aber nicht Vermieter bestimmte Mietverträge schneller kündigen."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "In bestimmten Bundesländern sollen Wohnhäuser abgerissen werden, weil sie unbewohnt sind."
+      ]
+    },
+    {
+      "color": 10,
+      "parts": [
+        "Sowohl die Waldbrände als auch die Hitzewelle in Griechenland sind zu Ende."
+      ]
+    }
+  ]
+}

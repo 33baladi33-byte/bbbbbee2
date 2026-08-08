@@ -1,0 +1,25 @@
+{
+  "title": "Studentenparty in Frankreich (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Bayern und Nordrhein-Westfalen erhalten zukünftig jedes Jahr 2,3 Milliarden Euro für den Bau neuer Autobahnen.", "correct": false },
+    { "text": "Wegen hoher Minustemperaturen findet in ganz Russland kein Unterricht statt.", "correct": false },
+    { "text": "Bei einer Studentenparty in Frankreich gibt es Tote und Verletzte.", "correct": true },
+    { "text": "Das Bundesfinanzministerium hat im letzten Jahr die Steuern gesenkt.", "correct": false },
+    { "text": "Die Regierung plant eine Änderung bei der Führerschein-Probezeit.", "correct": true }
+  ],
+  "memoryHighlights": [
+    {
+      "color": 4,
+      "parts": [
+        "Bei einer Studentenparty in Frankreich gibt es Tote und Verletzte."
+      ]
+    },
+    {
+      "color": 9,
+      "parts": [
+        "Die Regierung plant eine Änderung bei der Führerschein-Probezeit."
+      ]
+    }
+  ]
+}

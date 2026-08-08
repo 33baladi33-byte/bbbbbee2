@@ -1,0 +1,31 @@
+{
+  "title": "Die Zahl der Arbeitslosen (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Die Zahl der Arbeitslosen in Deutschland hat sich im Mai verringert.", "correct": true },
+    { "text": "Mexiko und Russland wollen ihre Zusammenarbeit in den Bereichen Wirtschaft und Finanzen weiter vertiefen.", "correct": true },
+    { "text": "Der deutsche Einzelhandel ist mit den Ergebnissen des Sommerschlussverkaufs sehr zufrieden.", "correct": false },
+    { "text": "Der Präsident der Weltbank äußerte sich besorgt über Entwicklungshilfe für die so genannte 'Dritte Welt'.", "correct": true },
+    { "text": "Bei einer Explosion im Erich-Kästner-Kinderdorf starben vier Jugendliche.", "correct": false }
+  ],
+  "memoryHighlights": [
+    {
+      "color": 5,
+      "parts": [
+        "Die Zahl der Arbeitslosen in Deutschland hat sich im Mai verringert."
+      ]
+    },
+    {
+      "color": 11,
+      "parts": [
+        "Mexiko und Russland wollen ihre Zusammenarbeit in den Bereichen Wirtschaft und Finanzen weiter vertiefen."
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Der Präsident der Weltbank äußerte sich besorgt über Entwicklungshilfe für die so genannte 'Dritte Welt'."
+      ]
+    }
+  ]
+}

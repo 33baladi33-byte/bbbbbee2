@@ -1,0 +1,15 @@
+{
+  "title": "Meeresküsten (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Laut einer Studie wurden seit Jahresbeginn in Deutschland und China deutlich mehr Autos verkauft.", "correct": false },
+    { "text": "An den deutschen Meeresküsten soll in Zukunft mehr Windkraft produziert werden.", "correct": true },
+    { "text": "Jede Polizeidienststelle kann ab sofort selbst entscheiden, welche Tätowierungen Ihre Bewerberinnen und Bewerber haben dürfen.", "correct": false },
+    { "text": "Durch Luftverschmutzung und Ascheregen sind im Osten Australiens zahlreiche Tiere ums Leben gekommen.", "correct": false },
+    { "text": "Ein aufmerksamer Nachbar verhindert den geplanten Einbruch in ein Wohnhaus.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 0, "parts": [ "An den deutschen Meeresküsten soll in Zukunft mehr Windkraft produziert werden." ] },
+    { "color": 6, "parts": [ "Ein aufmerksamer Nachbar verhindert den geplanten Einbruch in ein Wohnhaus." ] }
+  ]
+}

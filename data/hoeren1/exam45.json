@@ -1,0 +1,15 @@
+{
+  "title": "Nach Ansicht mancher (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Die Waldbrände in Südkalifornien sind noch nicht unter Kontrolle.", "correct": false },
+    { "text": "Nach Ansicht mancher Politiker führt eine Reduzierung der Arbeitszeit unweigerlich zu einem Verlust an Wohlstand.", "correct": true },
+    { "text": "Deutschland und Frankreich wollen ihre wirtschaftliche Zusammenarbeit verbessern.", "correct": false },
+    { "text": "In verschiedenen Berufszweigen sind noch Lehrstellen frei.", "correct": true },
+    { "text": "Die DDR-Sportlerin Katja Kaiser erhielt vom Nationalen Olympischen Komitee Schmerzensgeld.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": [ "Nach Ansicht mancher Politiker führt eine Reduzierung der Arbeitszeit unweigerlich zu einem Verlust an Wohlstand." ] },
+    { "color": 7, "parts": [ "In verschiedenen Berufszweigen sind noch Lehrstellen frei." ] }
+  ]
+}

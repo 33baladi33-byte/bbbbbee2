@@ -1,0 +1,15 @@
+{
+  "title": "Bei der Sportveranstaltung (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Die ÖBB wollen ihre Kooperation mit den Schweizer Bundesbahnen (SBB) ausbauen.", "correct": false },
+    { "text": "Aufgrund eines Unfalls kam es zu einem Großaufgebot von Einsatzwägen.", "correct": true },
+    { "text": "Baden bereitet den Antrag für die Aufnahme als 'Kleine historische Stadt' vor.", "correct": false },
+    { "text": "Bei der Sportveranstaltung 'Stilecht' sind Fahrräder aller Arten vertreten.", "correct": true },
+    { "text": "In den nächsten Wochen sind österreichweit starke Niederschläge zu erwarten.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 5, "parts": [ "Aufgrund eines Unfalls kam es zu einem Großaufgebot von Einsatzwägen." ] },
+    { "color": 9, "parts": [ "Bei der Sportveranstaltung 'Stilecht' sind Fahrräder aller Arten vertreten." ] }
+  ]
+}

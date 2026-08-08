@@ -1,0 +1,40 @@
+{
+  "title": "Hörverstehen Teil 1 - Europäische Union",
+  "type": "truefalse",
+  "questions": [
+    {
+      "text": "In der Europäischen Union verzeichnet man weniger jugendliche Arbeitslose.",
+      "correct": true
+    },
+    {
+      "text": "Das Bundesarbeitsministerium bemüht sich um ausländische Arbeitnehmer bestimmter Berufsgruppen.",
+      "correct": true
+    },
+    {
+      "text": "Die 'Lange Nacht der Musik' findet am Odeonsplatz in München statt.",
+      "correct": false
+    },
+    {
+      "text": "Im 'Tal der goldenen Mumien' wurden bisher fast 10.000 Tote gefunden.",
+      "correct": false
+    },
+    {
+      "text": "Die Gefahr schwerer Unwetter ist nun vorbei.",
+      "correct": false
+    }
+  ],
+  "memoryHighlights": [
+    {
+      "color": 3,
+      "parts": [
+        "In der Europäischen Union verzeichnet man weniger jugendliche Arbeitslose."
+      ]
+    },
+    {
+      "color": 9,
+      "parts": [
+        "Das Bundesarbeitsministerium bemüht sich um ausländische Arbeitnehmer bestimmter Berufsgruppen."
+      ]
+    }
+  ]
+}

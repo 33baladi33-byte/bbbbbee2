@@ -1,0 +1,46 @@
+{
+  "title": "Hörverstehen Teil 1 - Wetter in den Alpen (Mittel)",
+  "type": "truefalse",
+  "questions": [
+    {
+      "text": "Die Wetterlage in den Alpen wird sich verbessern.",
+      "correct": false
+    },
+    {
+      "text": "Die Fans, die das Spiel unterstützten, waren überrascht.",
+      "correct": true
+    },
+    {
+      "text": "Eine Familie von Pandas kommt im Park an.",
+      "correct": true
+    },
+    {
+      "text": "Urlaub in Deutschland kostet weniger.",
+      "correct": false
+    },
+    {
+      "text": "Erzieherinnen verlangen bessere Bezahlung.",
+      "correct": true
+    }
+  ],
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Die Fans, die das Spiel unterstützten, waren überrascht."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Eine Familie von Pandas kommt im Park an."
+      ]
+    },
+    {
+      "color": 11,
+      "parts": [
+        "Erzieherinnen verlangen bessere Bezahlung."
+      ]
+    }
+  ]
+}

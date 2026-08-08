@@ -1,0 +1,16 @@
+{
+  "title": "In Frankfurt haben Manager (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "München wurde wieder zur Stadt mit der höchsten Lebensqualität in Deutschland gewählt.", "correct": true },
+    { "text": "In Frankfurt haben Manager darüber diskutiert, was Unternehmen tun müssen, um zukünftig weiterhin erfolgreich zu sein.", "correct": true },
+    { "text": "Nach Worten des Ministers fördert mobiles Arbeiten das Wirtschaftswachstum und die Produktivität.", "correct": true },
+    { "text": "Da es im Sommer in Katar zu heiß ist, sind die europäischen Fußballclubs mit der Entscheidung der Fifa, die WM 2022 im Winter austragen zu lassen, zufrieden.", "correct": false },
+    { "text": "Das Wetter bleibt in den nächsten Tagen kühl und unbeständig.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 3, "parts": [ "München wurde wieder zur Stadt mit der höchsten Lebensqualität in Deutschland gewählt." ] },
+    { "color": 9, "parts": [ "In Frankfurt haben Manager darüber diskutiert, was Unternehmen tun müssen, um zukünftig weiterhin erfolgreich zu sein." ] },
+    { "color": 4, "parts": [ "Nach Worten des Ministers fördert mobiles Arbeiten das Wirtschaftswachstum und die Produktivität." ] }
+  ]
+}

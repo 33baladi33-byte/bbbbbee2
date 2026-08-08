@@ -1,0 +1,40 @@
+{
+  "title": "Hörverstehen Teil 1 - Nicht sicher",
+  "type": "truefalse",
+  "questions": [
+    {
+      "text": "Es ist nicht sicher, ob es erneut zu diesem Problem kommen kann.",
+      "correct": true
+    },
+    {
+      "text": "Hamburgs Politiker befürworteten den Bau des Einkaufszentrums nicht.",
+      "correct": false
+    },
+    {
+      "text": "Zwischen Frankreich und Deutschland wurde ein neuer Hochgeschwindigkeitszug genommen.",
+      "correct": false
+    },
+    {
+      "text": "Die Produkte von TipTop sind in Deutschland nicht mehr so gefragt.",
+      "correct": true
+    },
+    {
+      "text": "Ingrid Thieme wird sich an der kommenden WM beteiligen.",
+      "correct": false
+    }
+  ],
+  "memoryHighlights": [
+    {
+      "color": 3,
+      "parts": [
+        "Es ist nicht sicher, ob es erneut zu diesem Problem kommen kann."
+      ]
+    },
+    {
+      "color": 8,
+      "parts": [
+        "Die Produkte von TipTop sind in Deutschland nicht mehr so gefragt."
+      ]
+    }
+  ]
+}

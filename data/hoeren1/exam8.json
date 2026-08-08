@@ -1,0 +1,46 @@
+{
+  "title": "Hörverstehen Teil 1 - Weniger Vögel, Viele Kunden",
+  "type": "truefalse",
+  "questions": [
+    {
+      "text": "Viele Kunden würden für bessere Serviceleistungen der Paketdienste höhere Gebühren zahlen.",
+      "correct": false
+    },
+    {
+      "text": "Nach dem Unfall konnten beide Schiffe nicht fortsetzen.",
+      "correct": false
+    },
+    {
+      "text": "Europaweit gibt es immer weniger Vögel.",
+      "correct": true
+    },
+    {
+      "text": "Die Polizei hat auf der Autobahn ein dort verbotenes Fahrzeug entdeckt.",
+      "correct": true
+    },
+    {
+      "text": "Bei dem Festival konnte man Konzerte an verschiedenen Orten besuchen.",
+      "correct": true
+    }
+  ],
+  "memoryHighlights": [
+    {
+      "color": 2,
+      "parts": [
+        "Europaweit gibt es immer weniger Vögel."
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "Die Polizei hat auf der Autobahn ein dort verbotenes Fahrzeug entdeckt."
+      ]
+    },
+    {
+      "color": 11,
+      "parts": [
+        "Bei dem Festival konnte man Konzerte an verschiedenen Orten besuchen."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "title": "Hörverstehen Teil 1 - Der Fluggesellschaft (Mittel)",
+  "type": "truefalse",
+  "note": "عندما تجد الحشرات في LESEN تصبح الجملة 1 و 3 و 5 صحيحة",
+  "questions": [
+    {
+      "text": "Die Fluggesellschaft DL fliegt z. B. Rostock nicht mehr an.",
+      "correct": true
+    },
+    {
+      "text": "Süßwaren wurden dieses Jahr angeboten, um Käufer zurückzugewinnen.",
+      "correct": false
+    },
+    {
+      "text": "Die Sonnenstürme hatten keine negativen Auswirkungen.",
+      "correct": true
+    },
+    {
+      "text": "Einer der Kandidaten konnte die Mehrheit der Zuschauer für sich gewinnen.",
+      "correct": false
+    },
+    {
+      "text": "Das Tiefdruckgebiet 'Helena' kann morgen im Südwesten Deutschlands Verkehrsprobleme verursachen.",
+      "correct": true
+    }
+  ],
+  "memoryHighlights": [
+    {
+      "color": 1,
+      "parts": [
+        "Die Fluggesellschaft DL fliegt z. B. Rostock nicht mehr an."
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "Die Sonnenstürme hatten keine negativen Auswirkungen."
+      ]
+    },
+    {
+      "color": 11,
+      "parts": [
+        "Das Tiefdruckgebiet 'Helena' kann morgen im Südwesten Deutschlands Verkehrsprobleme verursachen."
+      ]
+    }
+  ]
+}

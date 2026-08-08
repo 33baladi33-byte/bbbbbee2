@@ -1,0 +1,16 @@
+{
+  "title": "Laut Statistischem Bundesamt (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Laut Statistischem Bundesamt müssen junge Leute mit fehlenden Berufserfahrungen häufig ein zeitlich begrenztes Arbeitsverhältnis eingehen.", "correct": true },
+    { "text": "Auf der Autobahn Richtung Stuttgart kam es zum Unfall, weil das Tempolimit überschritten wurde.", "correct": false },
+    { "text": "Die chinesische Botschaft in München wählte die Namen für die zwei Pandabären aus.", "correct": false },
+    { "text": "Sowohl Asien als auch Europa tragen zur Verschmutzung der Meere durch Plastikmüll bei.", "correct": true },
+    { "text": "Das neuartige Ampelsystem zur Verbesserung der Sicherheit von Fußgängern befindet sich aktuell in der Testphase.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 2, "parts": [ "Laut Statistischem Bundesamt müssen junge Leute mit fehlenden Berufserfahrungen häufig ein zeitlich begrenztes Arbeitsverhältnis eingehen." ] },
+    { "color": 8, "parts": [ "Sowohl Asien als auch Europa tragen zur Verschmutzung der Meere durch Plastikmüll bei." ] },
+    { "color": 0, "parts": [ "Das neuartige Ampelsystem zur Verbesserung der Sicherheit von Fußgängern befindet sich aktuell in der Testphase." ] }
+  ]
+}

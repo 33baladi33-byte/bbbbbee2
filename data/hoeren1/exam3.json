@@ -1,0 +1,46 @@
+{
+  "title": "Hörverstehen Teil 1 - Die Stadt Friedrichsberg",
+  "type": "truefalse",
+  "questions": [
+    {
+      "text": "Die Stadt Friedrichsberg lädt zu einer Preisverleihung ein.",
+      "correct": false
+    },
+    {
+      "text": "Die Alte Brücke ist zum Jahresbeginn wieder befahrbar.",
+      "correct": true
+    },
+    {
+      "text": "Der Wanderer wurde verarztet und in Sicherheit gebracht.",
+      "correct": true
+    },
+    {
+      "text": "In dem Unternehmen kommt es zu Kündigungen.",
+      "correct": false
+    },
+    {
+      "text": "Man kann nach einer Registrierung an einem Gruppenlauf teilnehmen.",
+      "correct": true
+    }
+  ],
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Die Alte Brücke ist zum Jahresbeginn wieder befahrbar."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Der Wanderer wurde verarztet und in Sicherheit gebracht."
+      ]
+    },
+    {
+      "color": 11,
+      "parts": [
+        "Man kann nach einer Registrierung an einem Gruppenlauf teilnehmen."
+      ]
+    }
+  ]
+}

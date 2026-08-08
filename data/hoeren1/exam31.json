@@ -1,0 +1,15 @@
+{
+  "title": "Deutsche Filmmuseum (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Die Quote der Hochschulabsolventen in Deutschland ist auf den internationalen Durchschnittswert von 32% angestiegen.", "correct": false },
+    { "text": "Berufspendler kritisieren unnötige Wartezeiten und Kosten der täglichen Fahrten.", "correct": true },
+    { "text": "Der Deutsche Bauernverband ist mit den diesjährigen Ernteerträgen im Allgemeinen zufrieden.", "correct": false },
+    { "text": "Das Deutsche Filmmuseum möchte die Besucherzahlen in Zukunft erhöhen.", "correct": true },
+    { "text": "Die Laufroute des Mainzer Gutenberg-Marathons führt traditionell nach Wiesbaden.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 3, "parts": [ "Berufspendler kritisieren unnötige Wartezeiten und Kosten der täglichen Fahrten." ] },
+    { "color": 9, "parts": [ "Das Deutsche Filmmuseum möchte die Besucherzahlen in Zukunft erhöhen." ] }
+  ]
+}

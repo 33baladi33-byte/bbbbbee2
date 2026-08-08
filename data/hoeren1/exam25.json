@@ -1,0 +1,46 @@
+{
+  "title": "Hörverstehen Teil 1 - Die Bundesländer",
+  "type": "truefalse",
+  "questions": [
+    {
+      "text": "Die Bundesländer sollen in Zukunft Geld für alternative Energien bekommen.",
+      "correct": true
+    },
+    {
+      "text": "Wenn man im Internet etwas kaufen möchte, sollte man seine Identität nachweisen müssen.",
+      "correct": true
+    },
+    {
+      "text": "Bei einem Überfall wurde ein Schiff gezwungen, Richtung Küste zu fahren.",
+      "correct": false
+    },
+    {
+      "text": "Laut Tourismusminister soll man einen Geparden-Urlaub auf Gran Canaria absagen.",
+      "correct": false
+    },
+    {
+      "text": "Es ist noch nicht entschieden, wie lange der Streik dauern soll.",
+      "correct": true
+    }
+  ],
+  "memoryHighlights": [
+    {
+      "color": 1,
+      "parts": [
+        "Die Bundesländer sollen in Zukunft Geld für alternative Energien bekommen."
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "Wenn man im Internet etwas kaufen möchte, sollte man seine Identität nachweisen müssen."
+      ]
+    },
+    {
+      "color": 11,
+      "parts": [
+        "Es ist noch nicht entschieden, wie lange der Streik dauern soll."
+      ]
+    }
+  ]
+}

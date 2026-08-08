@@ -1,0 +1,17 @@
+{
+  "title": "Für die Polizei in Berlin (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Innenstädte werden immer weniger interessant.", "correct": true },
+    { "text": "Für die Polizei in Berlin gab es einen schwierigen Fall.", "correct": true },
+    { "text": "Der Düsseldorfer Flughafen möchte bald neue Flugziele anbieten.", "correct": false },
+    { "text": "Musiker gaben ein Konzert für einen guten Zweck.", "correct": true },
+    { "text": "Deutsche Wintersportler sind bei den Olympischen Spielen erfolgreich.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": [ "Innenstädte werden immer weniger interessant." ] },
+    { "color": 7, "parts": [ "Für die Polizei in Berlin gab es einen schwierigen Fall." ] },
+    { "color": 10, "parts": [ "Musiker gaben ein Konzert für einen guten Zweck." ] },
+    { "color": 5, "parts": [ "Deutsche Wintersportler sind bei den Olympischen Spielen erfolgreich." ] }
+  ]
+}

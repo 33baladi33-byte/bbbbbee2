@@ -1,0 +1,15 @@
+{
+  "title": "Bauern warnen (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Spektakulärer Drogenfund: Polizei entdeckt Kokain auf einem Frachtschiff.", "correct": false },
+    { "text": "Bauern warnen: Zu viel Umweltschutz gefährdet die Existenz vieler Bauernhöfe.", "correct": true },
+    { "text": "Verschiedene Verkehrsverbände einigen sich mit der Automobilindustrie auf ein Tempolimit.", "correct": false },
+    { "text": "Deutliche Unterschiede bei den Gehältern zwischen ost- und westdeutschen Bundesländern.", "correct": true },
+    { "text": "Ein Raucher hat einen Brand in einem mehrstöckigen Wohnhaus verursacht.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 3, "parts": [ "Bauern warnen: Zu viel Umweltschutz gefährdet die Existenz vieler Bauernhöfe." ] },
+    { "color": 10, "parts": [ "Deutliche Unterschiede bei den Gehältern zwischen ost- und westdeutschen Bundesländern." ] }
+  ]
+}

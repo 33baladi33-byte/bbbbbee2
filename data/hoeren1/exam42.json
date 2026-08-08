@@ -1,0 +1,15 @@
+{
+  "title": "Das Bundesfamilienministerium (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "In Zukunft wird es schwieriger sein, Bauvorhaben des Bundes – wie Autobahnen oder Schienenwege – zu verhindern.", "correct": false },
+    { "text": "Eine weitere Verlängerung der Lebensarbeitszeit würde keine ernsthaften sozialen Probleme verursachen.", "correct": true },
+    { "text": "Der auf der Nordsee in Seenot geratene Fischkutter ist inzwischen gefunden worden.", "correct": false },
+    { "text": "Das Bundesfamilienministerium betrachtet den Ausbau der Familienpolitik als abgeschlossen.", "correct": true },
+    { "text": "Für Kinder, die sich im Kindergarten beim Spielen verletzen, haftet nicht automatisch die Einrichtung.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 2, "parts": [ "Eine weitere Verlängerung der Lebensarbeitszeit würde keine ernsthaften sozialen Probleme verursachen." ] },
+    { "color": 8, "parts": [ "Das Bundesfamilienministerium betrachtet den Ausbau der Familienpolitik als abgeschlossen." ] }
+  ]
+}

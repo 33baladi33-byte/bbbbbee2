@@ -1,0 +1,15 @@
+{
+  "title": "Die tschechische Stadt Pilsen (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Die tschechische Stadt Pilsen ist europäische Kulturhauptstadt 2015.", "correct": true },
+    { "text": "In der Nähe von St. Veit an der Glan gab es einen Autounfall mit einem Toten.", "correct": true },
+    { "text": "Den Film 'Everest' kann man schon jetzt in allen europäischen Kinos sehen.", "correct": false },
+    { "text": "Nach Gewittern wird es im Nordwesten Österreichs wieder wärmer.", "correct": false },
+    { "text": "Wassermänner haben in dieser Woche rundum Glück in Beruf, Gesundheit und Liebe.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 5, "parts": [ "Die tschechische Stadt Pilsen ist europäische Kulturhauptstadt 2015." ] },
+    { "color": 11, "parts": [ "In der Nähe von St. Veit an der Glan gab es einen Autounfall mit einem Toten." ] }
+  ]
+}

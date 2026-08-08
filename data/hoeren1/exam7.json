@@ -1,0 +1,46 @@
+{
+  "title": "Hörverstehen Teil 1 - Deutsches Schiff",
+  "type": "truefalse",
+  "questions": [
+    {
+      "text": "Ein deutsches Schiff ist am Südpol eingefroren, aber Menschen kamen nicht zu Schaden.",
+      "correct": true
+    },
+    {
+      "text": "Die Firma Brain International ist in wirtschaftliche Schwierigkeiten geraten.",
+      "correct": true
+    },
+    {
+      "text": "Die Europäische Union will Gesetze zur Kontrolle sozialer Netzwerke erlassen.",
+      "correct": false
+    },
+    {
+      "text": "Mit einem neuen Gesetz wollen die österreichischen Banken Sparkonten wieder attraktiver machen.",
+      "correct": false
+    },
+    {
+      "text": "Nach den Bürgermeisterwahlen in Bensheim bleibt die CDU weiterhin an der Regierung.",
+      "correct": true
+    }
+  ],
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Ein deutsches Schiff ist am Südpol eingefroren, aber Menschen kamen nicht zu Schaden."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Die Firma Brain International ist in wirtschaftliche Schwierigkeiten geraten."
+      ]
+    },
+    {
+      "color": 10,
+      "parts": [
+        "Nach den Bürgermeisterwahlen in Bensheim bleibt die CDU weiterhin an der Regierung."
+      ]
+    }
+  ]
+}

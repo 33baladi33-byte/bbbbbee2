@@ -1,0 +1,40 @@
+{
+  "title": "Hörverstehen Teil 1 - Erdbeben",
+  "type": "truefalse",
+  "questions": [
+    {
+      "text": "Nach dem Erdbeben meldeten viele Bürger Schäden bei Polizei und Feuerwehr.",
+      "correct": true
+    },
+    {
+      "text": "Eltern müssen sich neuerdings über den Impfschutz für ihre Kinder beraten lassen.",
+      "correct": false
+    },
+    {
+      "text": "Verkehrsbehinderungen drohen in den nächsten Wochen besonders samstags und sonntags.",
+      "correct": false
+    },
+    {
+      "text": "Pipelines tragen maßgeblich zur Umweltverschmutzung in Schleswig-Holstein bei.",
+      "correct": false
+    },
+    {
+      "text": "Anfang nächster Woche ist mit einer erhöhten Ozonbelastung zu rechnen.",
+      "correct": true
+    }
+  ],
+  "memoryHighlights": [
+    {
+      "color": 2,
+      "parts": [
+        "Nach dem Erdbeben meldeten viele Bürger Schäden bei Polizei und Feuerwehr."
+      ]
+    },
+    {
+      "color": 9,
+      "parts": [
+        "Anfang nächster Woche ist mit einer erhöhten Ozonbelastung zu rechnen."
+      ]
+    }
+  ]
+}
