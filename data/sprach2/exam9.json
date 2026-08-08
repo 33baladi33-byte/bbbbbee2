@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 9: Online-Sprachkurse",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Online-Sprachkurse & Co. – Wie lernt man heute am besten eine Sprache?\n\nEs gibt inzwischen zahlreiche Online-Sprachkurse und  .__( 1 )__. mit Smartphones kann man Sprachen lernen. Eine weitere Lernmöglichkeit ist zum Beispiel eine Tandem-Partnerschaft  .__( 2 )__. einem Muttersprachler. Welche Vorteile und Nachteile haben die unterschiedlichen Methoden?\nEs gibt inzwischen zahlreiche Online-Lernportale, die leicht zu überblicken und zu bedienen sind. Der Vorteil: Man kann die Wörter nicht nur lesen,  .__( 3 )__. gleichzeitig auch hören. Außerdem kann man Wörter nachsprechen,  .__( 4 )__. dass ein ganzer Kurs zuhört. Auch Lerntipps bekommt man bei Online-Portalen, beispielsweise diesen: Vokabeln sollte man lieber mehrmals täglich in Fünf-Minuten-Blöcken wiederholen,  .__( 5 )__. sie in einer Stunde alle auf einmal zu lernen.\nWer auch unterwegs lernen möchte, kann es mit einer Smartphone-App versuchen, einem kleinen Programm, das auf dem Handy läuft. Viele Programme gibt es kostenlos, andere kosten zwischen einem und mehreren Euro. Die kleinen Helfer sind  .__( 6 )__. gut zum Vokabellernen geeignet – mehr aber meist nicht. Das spielerische Vokabeltraining macht zwar Spaß,  .__( 7 )__. Satzbau oder andere Grammatikthemen werden allenfalls kurz angesprochen. Ein richtiges Gespräch kann man mit dieser Methode erst recht nicht üben. Dafür  .__( 8 )__. man besser in einen Kurs gehen oder einen Tandem-Partner suchen.\nEin Tandem-Partner ist ein Muttersprachler, der die Grammatik erklärt, die Aussprache verbessert und seinerseits die Muttersprache des anderen lernen möchte.\nDer schnellste Weg,  .__( 9 )__. einen passenden Tandem-Partner zu finden, ist die Online-Suche: Muttersprache, Zielsprache und Wohnort eingeben,  .__( 10 )__. werden alle Treffer angezeigt. Man trifft sich beispielsweise in einem Restaurant, schickt sich Nachrichten oder E-Mails und erklärt sich gegenseitig die eigene Sprache.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["aber", "anstatt", "besonders", "für", "kaum", "mit", "müsste", "ohne", "schon", "so", "sogar", "sollte", "sondern", "um", "von"],
+      "correct": "sogar",
+      "memoryHighlight": {
+        "before": "Kurse und",
+        "connector": "sogar",
+        "after": "mit Smartphones",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["aber", "anstatt", "besonders", "für", "kaum", "mit", "müsste", "ohne", "schon", "so", "sogar", "sollte", "sondern", "um", "von"],
+      "correct": "mit",
+      "memoryHighlight": {
+        "before": "Partnerschaft",
+        "connector": "mit",
+        "after": "einem Muttersprachler",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["aber", "anstatt", "besonders", "für", "kaum", "mit", "müsste", "ohne", "schon", "so", "sogar", "sollte", "sondern", "um", "von"],
+      "correct": "sondern",
+      "memoryHighlight": {
+        "before": "nur lesen,",
+        "connector": "sondern",
+        "after": "gleichzeitig auch",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["aber", "anstatt", "besonders", "für", "kaum", "mit", "müsste", "ohne", "schon", "so", "sogar", "sollte", "sondern", "um", "von"],
+      "correct": "ohne",
+      "memoryHighlight": {
+        "before": "nachsprechen,",
+        "connector": "ohne",
+        "after": "dass ein",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["aber", "anstatt", "besonders", "für", "kaum", "mit", "müsste", "ohne", "schon", "so", "sogar", "sollte", "sondern", "um", "von"],
+      "correct": "anstatt",
+      "memoryHighlight": {
+        "before": "wiederholen,",
+        "connector": "anstatt",
+        "after": "sie in",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["aber", "anstatt", "besonders", "für", "kaum", "mit", "müsste", "ohne", "schon", "so", "sogar", "sollte", "sondern", "um", "von"],
+      "correct": "besonders",
+      "memoryHighlight": {
+        "before": "Helfer sind",
+        "connector": "besonders",
+        "after": "gut zum",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["aber", "anstatt", "besonders", "für", "kaum", "mit", "müsste", "ohne", "schon", "so", "sogar", "sollte", "sondern", "um", "von"],
+      "correct": "aber",
+      "memoryHighlight": {
+        "before": "Spaß,",
+        "connector": "aber",
+        "after": "Satzbau oder",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["aber", "anstatt", "besonders", "für", "kaum", "mit", "müsste", "ohne", "schon", "so", "sogar", "sollte", "sondern", "um", "von"],
+      "correct": "sollte",
+      "memoryHighlight": {
+        "before": "Dafür",
+        "connector": "sollte",
+        "after": "man besser",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["aber", "anstatt", "besonders", "für", "kaum", "mit", "müsste", "ohne", "schon", "so", "sogar", "sollte", "sondern", "um", "von"],
+      "correct": "um",
+      "memoryHighlight": {
+        "before": "Weg,",
+        "connector": "um",
+        "after": "einen passenden",
+        "color": 2
+      }
+    },
+    {
+      "id": 10,
+      "options": ["aber", "anstatt", "besonders", "für", "kaum", "mit", "müsste", "ohne", "schon", "so", "sogar", "sollte", "sondern", "um", "von"],
+      "correct": "schon",
+      "memoryHighlight": {
+        "before": "eingeben,",
+        "connector": "schon",
+        "after": "werden alle",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["aber", "anstatt", "besonders", "für", "kaum", "mit", "müsste", "ohne", "schon", "so", "sogar", "sollte", "sondern", "um", "von"]
+}

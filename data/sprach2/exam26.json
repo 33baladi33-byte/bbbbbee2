@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 26: Teamarbeit als Schlüssel zum Erfolg (معدل)",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Nicht nur Menschen sind in der Lage, bei der Lösung einer Aufgabe mit anderen zusammenzuarbeiten. Ein deutsch-britisches Forscherteam konnte eindrücklich ......(1)......, dass auch Schimpansen ......(2)...... echter Teamarbeit fähig sind. Die Wissenschaftler gaben zwei Schimpansen gemeinsam die Aufgabe, Trauben aus einer Kiste zu holen. ......(3)...... bekam einer der beiden Affen zwei Werkzeuge. Um die Aufgabe zu meistern, musste er aber eines ......(4)...... an seine Artgenossen weitergeben. Zehn von zwölf Schimpansen taten dies auch, und in über 70 Prozent der Versuche ......(5)...... es sogar das richtige Werkzeug gewesen, berichten die Forscher.\nZiel der Untersuchung war es, herauszufinden, wo die Fähigkeit des Menschen zur Zusammenarbeit herkommt und ob diese Eigenschaft ......(6)...... beim Menschen vorhanden ist. Dass einige Tierarten zusammenarbeiten, beispielsweise bei der Jagd, war bekannt. Unklar war aber bisher, wie viel Teamarbeit bewusst erfolgt. In dem Versuch musste der eine Affe Trauben mit einer Harke durch eine Öffnung in einer Kiste auf eine Platte schubsen. Der andere Affe musste dann mit einem Stock die Platte anheben, damit die Trauben auf den Boden fielen und die Affen sie fressen ......(7)...... Bei den einzelnen Affen dauerte es unterschiedlich lange, bis ein Werkzeug weitergegeben wurde. Hatte einer es jedoch einmal getan, gab er in 97 Prozent der folgenden Versuche wieder ein Werkzeug weiter. Diese Studie ......(8)...... erste Hinweise darauf, dass Schimpansen bei einer gemeinsamen Aufgabe auf die Handlungen ihres Partners Acht ......(9)...... können. Den Affen scheint bewusst zu sein, dass ihr Artgenosse wichtig ist, um an die Trauben zu kommen. Daraus schließen die Forscher: Genau ......(10)...... den Menschen sei es den Affen möglich, strategisch zusammenzuarbeiten.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["zu", "wie", "sei", "nur", "nachweisen", "mussten", "liefert", "konnten", "haben", "geben", "förderte", "erbringen", "dazu", "davon", "bekanntlich"],
+      "correct": "nachweisen",
+      "memoryHighlight": {
+        "before": "konnte",
+        "connector": "nachweisen",
+        "after": ", dass auch",
+        "color": 5
+      }
+    },
+    {
+      "id": 2,
+      "options": ["zu", "wie", "sei", "nur", "nachweisen", "mussten", "liefert", "konnten", "haben", "geben", "förderte", "erbringen", "dazu", "davon", "bekanntlich"],
+      "correct": "zu",
+      "memoryHighlight": {
+        "before": "Schimpansen",
+        "connector": "zu",
+        "after": "echter Teamarbeit",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["zu", "wie", "sei", "nur", "nachweisen", "mussten", "liefert", "konnten", "haben", "geben", "förderte", "erbringen", "dazu", "davon", "bekanntlich"],
+      "correct": "dazu",
+      "memoryHighlight": {
+        "before": "holen.",
+        "connector": "dazu",
+        "after": "bekam einer",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["zu", "wie", "sei", "nur", "nachweisen", "mussten", "liefert", "konnten", "haben", "geben", "förderte", "erbringen", "dazu", "davon", "bekanntlich"],
+      "correct": "davon",
+      "memoryHighlight": {
+        "before": "eines",
+        "connector": "davon",
+        "after": "an seine",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["zu", "wie", "sei", "nur", "nachweisen", "mussten", "liefert", "konnten", "haben", "geben", "förderte", "erbringen", "dazu", "davon", "bekanntlich"],
+      "correct": "sei",
+      "memoryHighlight": {
+        "before": "Versuche",
+        "connector": "sei",
+        "after": "es sogar",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["zu", "wie", "sei", "nur", "nachweisen", "mussten", "liefert", "konnten", "haben", "geben", "förderte", "erbringen", "dazu", "davon", "bekanntlich"],
+      "correct": "nur",
+      "memoryHighlight": {
+        "before": "Eigenschaft",
+        "connector": "nur",
+        "after": "beim Menschen",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["zu", "wie", "sei", "nur", "nachweisen", "mussten", "liefert", "konnten", "haben", "geben", "förderte", "erbringen", "dazu", "davon", "bekanntlich"],
+      "correct": "konnten",
+      "memoryHighlight": {
+        "before": "sie",
+        "connector": "konnten",
+        "after": ". Bei den",
+        "color": 4
+      }
+    },
+    {
+      "id": 8,
+      "options": ["zu", "wie", "sei", "nur", "nachweisen", "mussten", "liefert", "konnten", "haben", "geben", "förderte", "erbringen", "dazu", "davon", "bekanntlich"],
+      "correct": "liefert",
+      "memoryHighlight": {
+        "before": "Studie",
+        "connector": "liefert",
+        "after": "erste Hinweise",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["zu", "wie", "sei", "nur", "nachweisen", "mussten", "liefert", "konnten", "haben", "geben", "förderte", "erbringen", "dazu", "davon", "bekanntlich"],
+      "correct": "geben",
+      "memoryHighlight": {
+        "before": "Acht",
+        "connector": "geben",
+        "after": "können. Den",
+        "color": 2
+      }
+    },
+    {
+      "id": 10,
+      "options": ["zu", "wie", "sei", "nur", "nachweisen", "mussten", "liefert", "konnten", "haben", "geben", "förderte", "erbringen", "dazu", "davon", "bekanntlich"],
+      "correct": "wie",
+      "memoryHighlight": {
+        "before": "Genau",
+        "connector": "wie",
+        "after": "den Menschen",
+        "color": 6
+      }
+    }
+  ],
+  "allOptions": ["zu", "wie", "sei", "nur", "nachweisen", "mussten", "liefert", "konnten", "haben", "geben", "förderte", "erbringen", "dazu", "davon", "bekanntlich"]
+}

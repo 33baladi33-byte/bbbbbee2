@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 35: Maßgeschneidert nach Bodyscanning",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Haben Sie sich schon einmal ......(1)....... geärgert, dass Sie zwar in vielen Geschäften viele schöne Kleidungsstücke sehen konnten, Ihnen aber dann bei der Anprobe keines gepasst hat? Dann geht es Ihnen wie zurzeit der Mehrheit der deutschen Bevölkerung: Die Kleidungsstücke, die in den Modehäusern angeboten werden, gibt es fast ......(2)....... noch in den falschen Größen.\nEine Untersuchung des Textilforschungszentrums Hohenstein brachte nun ......(3)....... Licht, dass die Modeproduzenten den Grund dafür, dass viele Konfektionsgrößen offenbar ......(4)....... den Kundinnen noch den Kunden passen, in der körperlichen Entwicklung der Bevölkerung in Deutschland suchen ......(5)....... . Seit den 1960er Jahren seien die Deutschen im Durchschnitt um bis zu acht Zentimeter sowohl größer als auch dicker geworden. Die Länge der Arme habe zugenommen, besonders aber an den Hüften hätten die Deutschen beträchtlich zugelegt. ......(6)....... der Handel natürlich daran interessiert ist, die Kleidungsstücke in den richtigen Größen in ausreichender Zahl zu produzieren, wurde jetzt ein neues Projekt geplant, ......(7)....... Aufschluss darüber geben soll, welche Größen die Kunden eigentlich brauchen.\nDie neue Body-Scan-Technologie soll Männer und Frauen neu vermessen. Mehrere Kameras tasten mit Laserlicht die menschlichen Körper ab und erstellen ein dreidimensionales Ebenbild der gescannten Person. Diese dreidimensionalen Bilder ......(8)....... es ermöglichen, in Zukunft genauere Informationen über die durchschnittliche Körpergröße zu erhalten.\nÄhnliche Messungen werden auch in Großbritannien, den Niederlanden, den skandinavischen Ländern, Frankreich und den USA vorgenommen. Mehr als zwei Millionen Euro wollen die Modefirmen dafür investieren, das Ergebnis lohnt sich aber für sie auf jeden Fall.\nAls Kundinnen und Kunden ......(9)....... wir uns außerdem darauf freuen, ......(10)....... sich als Nebenprodukt der Körpervermessung in den verschiedenen Ländern die Modefirmen vielleicht endlich dafür entscheiden, weltweit gleiche Nummern für gleiche Größen einzuführen. Dann ist ein Kleidungsstück mit der Nummer 26 überall gleich groß, ob in Nord- oder Südeuropa, in Amerika oder Asien.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["ans", "als", "da", "darüber", "darum", "das", "dass", "dürfen", "ins", "müssen", "nur", "sollen", "sondern", "sowie", "weder"],
+      "correct": "darüber",
+      "memoryHighlight": {
+        "before": "schon einmal",
+        "connector": "darüber",
+        "after": "geärgert, dass",
+        "color": 3
+      }
+    },
+    {
+      "id": 2,
+      "options": ["ans", "als", "da", "darüber", "darum", "das", "dass", "dürfen", "ins", "müssen", "nur", "sollen", "sondern", "sowie", "weder"],
+      "correct": "nur",
+      "memoryHighlight": {
+        "before": "gibt es",
+        "connector": "nur",
+        "after": "noch in",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["ans", "als", "da", "darüber", "darum", "das", "dass", "dürfen", "ins", "müssen", "nur", "sollen", "sondern", "sowie", "weder"],
+      "correct": "ans",
+      "memoryHighlight": {
+        "before": "nun",
+        "connector": "ans",
+        "after": "Licht, dass",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["ans", "als", "da", "darüber", "darum", "das", "dass", "dürfen", "ins", "müssen", "nur", "sollen", "sondern", "sowie", "weder"],
+      "correct": "weder",
+      "memoryHighlight": {
+        "before": "offenbar",
+        "connector": "weder",
+        "after": "den Kundinnen",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["ans", "als", "da", "darüber", "darum", "das", "dass", "dürfen", "ins", "müssen", "nur", "sollen", "sondern", "sowie", "weder"],
+      "correct": "müssen",
+      "memoryHighlight": {
+        "before": "suchen",
+        "connector": "müssen",
+        "after": ". Seit den",
+        "color": 11
+      }
+    },
+    {
+      "id": 6,
+      "options": ["ans", "als", "da", "darüber", "darum", "das", "dass", "dürfen", "ins", "müssen", "nur", "sollen", "sondern", "sowie", "weder"],
+      "correct": "da",
+      "memoryHighlight": {
+        "before": "zugelegt.",
+        "connector": "da",
+        "after": "der Handel",
+        "color": 4
+      }
+    },
+    {
+      "id": 7,
+      "options": ["ans", "als", "da", "darüber", "darum", "das", "dass", "dürfen", "ins", "müssen", "nur", "sollen", "sondern", "sowie", "weder"],
+      "correct": "das",
+      "memoryHighlight": {
+        "before": "geplant,",
+        "connector": "das",
+        "after": "Aufschluss darüber",
+        "color": 8
+      }
+    },
+    {
+      "id": 8,
+      "options": ["ans", "als", "da", "darüber", "darum", "das", "dass", "dürfen", "ins", "müssen", "nur", "sollen", "sondern", "sowie", "weder"],
+      "correct": "sollen",
+      "memoryHighlight": {
+        "before": "Bilder",
+        "connector": "sollen",
+        "after": "es ermöglichen",
+        "color": 2
+      }
+    },
+    {
+      "id": 9,
+      "options": ["ans", "als", "da", "darüber", "darum", "das", "dass", "dürfen", "ins", "müssen", "nur", "sollen", "sondern", "sowie", "weder"],
+      "correct": "dürfen",
+      "memoryHighlight": {
+        "before": "Kunden",
+        "connector": "dürfen",
+        "after": "wir uns",
+        "color": 6
+      }
+    },
+    {
+      "id": 10,
+      "options": ["ans", "als", "da", "darüber", "darum", "das", "dass", "dürfen", "ins", "müssen", "nur", "sollen", "sondern", "sowie", "weder"],
+      "correct": "dass",
+      "memoryHighlight": {
+        "before": "freuen,",
+        "connector": "dass",
+        "after": "sich als",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["ans", "als", "da", "darüber", "darum", "das", "dass", "dürfen", "ins", "müssen", "nur", "sollen", "sondern", "sowie", "weder"]
+}

@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 12: Deutschland – ein Paradies für Kinder? (معدل 2)",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "17 Millionen Kinder leben in Deutschland. Verglichen mit der Bevölkerungszahl von ungefähr 80 Millionen ist das fast ein Viertel der Einwohner. Doch nur für jedes zehnte Kind unter drei Jahren steht ein Betreuungsplatz in einer Kindertagesstätte .......(1)....... Verfügung. Die Folge: Nur etwas mehr als die Hälfte der Mütter dieser Kinder ist berufstätig – und nur ein Viertel kann ganztägig zur Arbeit gehen.\nUm dem entgegenzuwirken, gibt es in Deutschland die dreijährige Elternzeit, die es einem Elternteil ermöglichen soll, drei Jahre bei dem Kind zu Hause zu bleiben. Das hat den Vorteil, dass der zu Hause bleibende Elternteil seinen Arbeitsplatz nicht verliert. .......(2)....... wird die Elternzeit für viele Eltern in finanzieller Hinsicht zu einem gravierenden Problem. Außerdem gilt die Elternzeit nur für Angestellte. Mütter zum Beispiel, die vor der Geburt ihres Kindes selbstständig waren und mit dem Baby zu Hause bleiben wollen, stehen weit schlechter da. Kind und Karriere zu .......(3)....... ist daher in Deutschland für die meisten Mütter so gut wie unmöglich. Dies scheinen die Hauptgründe dafür zu sein, warum in Deutschland zurzeit weltweit die wenigsten Kinder geboren werden.\nDoch auch andere Dinge machen Familien mit Kindern in Deutschland das Leben schwer: In Restaurants zum Beispiel sind Kinder selten willkommen. Sie sitzen eben nicht still am Tisch, sondern stören mit ihrem Lachen und lauten Sprechen die anderen (kinderlosen) Gäste. Bei den kinderlosen Erwachsenen werden andere Maßstäbe angelegt. Obwohl diese selbst häufig lautstark telefonieren, stört das .......(4).......: Telefonate sind eben wichtiger als Kinder. In zahlreichen deutschen Städten wie Mainz strengen Anwohner Prozesse gegen Kindergärten und Spielplätze an, .......(5)....... die Kinder die Ruhe der benachbarten (kinderlosen) Hausbewohner stören. Die Folge: Spielplätze .......(6)....... von Gerichts wegen geschlossen. An Wiesen, auf denen früher Kinder tobten und Ball spielten, stehen nun Schilder: Betreten und spielen verboten. Bei Zuwiderhandlung drohen Geldstrafen.\nEltern, die mit der Deutschen Bahn mit ihren Kindern reisen möchten, haben schlechte Karten. In den meisten Zügen sind die Gänge so angeordnet, .......(7)....... mit einem Kinderwagen kein Durchkommen ist. Und in den Mutter-Kind-Abteilen haben .......(8)....... schon andere Reisende breitgemacht, die nicht einsehen, warum sie Müttern mit Kind Platz machen sollten. Schließlich hätten sie ja eine Fahrkarte gekauft und damit Anspruch .......(9)....... einen Platz. In vielen Berichten in Zeitungen oder im Fernsehen, die sich mit Kindern, ihrer Erziehung oder mit dem Schulsystem befassen, spricht man in Deutschland gerne von „Problemen“. Man meint .......(10)....... die Kinder. Kann eine Gesellschaft, in der ein Kind als ein Problemfall angesehen wird, ein Paradies für Kinder sein?",
+  "options": [
+    {
+      "id": 1,
+      "options": ["auf", "sich", "dabei", "niemanden", "vereinbaren", "dass", "davon", "dennoch", "doch", "jedoch", "zur", "obwohl", "werden", "die", "weil"],
+      "correct": "zur",
+      "memoryHighlight": {
+        "before": "Kindertagesstätte.",
+        "connector": "zur",
+        "after": "Verfügung.",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["auf", "sich", "dabei", "niemanden", "vereinbaren", "dass", "davon", "dennoch", "doch", "jedoch", "zur", "obwohl", "werden", "die", "weil"],
+      "correct": "dennoch",
+      "memoryHighlight": {
+        "before": "verliert.",
+        "connector": "dennoch",
+        "after": "wird die",
+        "color": 8
+      }
+    },
+    {
+      "id": 3,
+      "options": ["auf", "sich", "dabei", "niemanden", "vereinbaren", "dass", "davon", "dennoch", "doch", "jedoch", "zur", "obwohl", "werden", "die", "weil"],
+      "correct": "vereinbaren",
+      "memoryHighlight": {
+        "before": "zu",
+        "connector": "vereinbaren",
+        "after": "ist daher",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["auf", "sich", "dabei", "niemanden", "vereinbaren", "dass", "davon", "dennoch", "doch", "jedoch", "zur", "obwohl", "werden", "die", "weil"],
+      "correct": "niemanden",
+      "memoryHighlight": {
+        "before": "das",
+        "connector": "niemanden",
+        "after": ": Telefonate",
+        "color": 6
+      }
+    },
+    {
+      "id": 5,
+      "options": ["auf", "sich", "dabei", "niemanden", "vereinbaren", "dass", "davon", "dennoch", "doch", "jedoch", "zur", "obwohl", "werden", "die", "weil"],
+      "correct": "weil",
+      "memoryHighlight": {
+        "before": "an,",
+        "connector": "weil",
+        "after": "die Kinder",
+        "color": 9
+      }
+    },
+    {
+      "id": 6,
+      "options": ["auf", "sich", "dabei", "niemanden", "vereinbaren", "dass", "davon", "dennoch", "doch", "jedoch", "zur", "obwohl", "werden", "die", "weil"],
+      "correct": "werden",
+      "memoryHighlight": {
+        "before": "Spielplätze",
+        "connector": "werden",
+        "after": "von Gerichts",
+        "color": 3
+      }
+    },
+    {
+      "id": 7,
+      "options": ["auf", "sich", "dabei", "niemanden", "vereinbaren", "dass", "davon", "dennoch", "doch", "jedoch", "zur", "obwohl", "werden", "die", "weil"],
+      "correct": "dass",
+      "memoryHighlight": {
+        "before": "angeordnet,",
+        "connector": "dass",
+        "after": "mit einem",
+        "color": 11
+      }
+    },
+    {
+      "id": 8,
+      "options": ["auf", "sich", "dabei", "niemanden", "vereinbaren", "dass", "davon", "dennoch", "doch", "jedoch", "zur", "obwohl", "werden", "die", "weil"],
+      "correct": "sich",
+      "memoryHighlight": {
+        "before": "haben",
+        "connector": "sich",
+        "after": "schon andere",
+        "color": 5
+      }
+    },
+    {
+      "id": 9,
+      "options": ["auf", "sich", "dabei", "niemanden", "vereinbaren", "dass", "davon", "dennoch", "doch", "jedoch", "zur", "obwohl", "werden", "die", "weil"],
+      "correct": "auf",
+      "memoryHighlight": {
+        "before": "Anspruch",
+        "connector": "auf",
+        "after": "einen Platz",
+        "color": 7
+      }
+    },
+    {
+      "id": 10,
+      "options": ["auf", "sich", "dabei", "niemanden", "vereinbaren", "dass", "davon", "dennoch", "doch", "jedoch", "zur", "obwohl", "werden", "die", "weil"],
+      "correct": "dabei",
+      "memoryHighlight": {
+        "before": "meint",
+        "connector": "dabei",
+        "after": "die Kinder",
+        "color": 2
+      }
+    }
+  ],
+  "allOptions": ["auf", "sich", "dabei", "niemanden", "vereinbaren", "dass", "davon", "dennoch", "doch", "jedoch", "zur", "obwohl", "werden", "die", "weil"]
+}

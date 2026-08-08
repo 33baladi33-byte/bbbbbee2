@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 39: Lernen ist kein Privileg der Jugend",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Senioren sind heute höchst ......(1)...... aktiv und nutzen vielfach die Chance, sich der so genannten dritten Lebensphase Wünsche oder Träume zu erfüllen. Dazu gehören oft Weiterbildung oder in der Jugend verpasste Bildung.\nDie Folge: Das Seniorenstudium, wie es ......(2)...... verschiedenen deutschen Universitäten angeboten wird, erfreut sich zunehmender Beliebtheit. ......(3)...... in Trier waren im vergangenen Sommersemester über 130 Personen der Altersgruppe 50+ als Gasthörer eingeschrieben und nahmen am regulären Lehrbetrieb teil.\nBesonders gefragt waren allgemeinbildende Veranstaltungen aus den Fächern Geschichte, Kunstgeschichte und Politik. ......(4)...... folgten die neueren Sprach- und Literaturwissenschaften sowie Themen aus Philosophie, Psychologie und Pädagogik. Angebote aus den Sozial-, Wirtschafts-, Geo- und Rechtswissenschaften wurden dagegen weniger häufig gewählt. Hier finden sich insbesondere solche Seniorenstudierende wieder, die gezielt an der Vertiefung ihres fachspezifischen Wissens arbeiten.\nDer größte Teil der studierenden Senioren besteht übrigens aus Frauen. Die Gründe dafür ......(5)...... sein, dass Frauen in ihren jüngeren Lebensjahren häufig ......(6)...... eine berufliche Karriere verzichteten. ......(7)...... setzten sie sich für die Familie und insbesondere für ihre Kinder ein. Nun sind die Kinder erwachsen und aus dem Haus, die Frauen verspüren den Wunsch, ihre geistigen Fähigkeiten, deren Einsatz in den \"Familienjahren\" häufig zu ......(8)...... gekommen war, wieder zu trainieren und zu erweitern.\nMännern hingegen konnten häufiger während ihres Arbeitslebens ihre Karriere verwirklichen, sich weiterbilden, ihr Wissen in gesellschaftlich angesehener Weise an den Mann (weniger an die Frau) bringen. ......(9)...... dessen sehen sie keine Veranlassung, ihren Lebensabend an einer Weiterbildungsinstitution oder gar an einer Universität zu verbringen.\nLernen ist kein Privileg der Jugend! Vielmehr besteht gerade in Bezug auf das Bildungsangebot für ältere Menschen ein riesiger Bedarf. Er wird gespeist ......(10)...... die Vitalität und die hohe Bildungsmotivation der heutigen \"Alten\". Mit der wachsenden Fitness der Generation 50+ wächst auch das Interesse, neues Wissen zu erwerben, neue Kompetenzen zu entwickeln und bisher eventuell vernachlässigte Ressourcen zu aktivieren. Gleichzeitig tragen Bildungsaktivitäten wesentlich dazu bei, dass immer mehr Menschen ihre kognitive Leistungsfähigkeit und psychische Gesundheit bis ins hohe Alter erhalten können.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["allein", "an", "auf", "aufgrund", "darauf", "durch", "dürften", "einzige", "knapp", "kurz", "möchten", "rege", "stattdessen", "während", "wegen"],
+      "correct": "rege",
+      "memoryHighlight": {
+        "before": "höchst",
+        "connector": "rege",
+        "after": "aktiv und",
+        "color": 3
+      }
+    },
+    {
+      "id": 2,
+      "options": ["allein", "an", "auf", "aufgrund", "darauf", "durch", "dürften", "einzige", "knapp", "kurz", "möchten", "rege", "stattdessen", "während", "wegen"],
+      "correct": "an",
+      "memoryHighlight": {
+        "before": "es",
+        "connector": "an",
+        "after": "verschiedenen deutschen",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["allein", "an", "auf", "aufgrund", "darauf", "durch", "dürften", "einzige", "knapp", "kurz", "möchten", "rege", "stattdessen", "während", "wegen"],
+      "correct": "allein",
+      "memoryHighlight": {
+        "before": "Beliebtheit.",
+        "connector": "allein",
+        "after": "in Trier",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["allein", "an", "auf", "aufgrund", "darauf", "durch", "dürften", "einzige", "knapp", "kurz", "möchten", "rege", "stattdessen", "während", "wegen"],
+      "correct": "darauf",
+      "memoryHighlight": {
+        "before": "Politik.",
+        "connector": "darauf",
+        "after": "folgten die",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["allein", "an", "auf", "aufgrund", "darauf", "durch", "dürften", "einzige", "knapp", "kurz", "möchten", "rege", "stattdessen", "während", "wegen"],
+      "correct": "dürften",
+      "memoryHighlight": {
+        "before": "dafür",
+        "connector": "dürften",
+        "after": "sein, dass",
+        "color": 11
+      }
+    },
+    {
+      "id": 6,
+      "options": ["allein", "an", "auf", "aufgrund", "darauf", "durch", "dürften", "einzige", "knapp", "kurz", "möchten", "rege", "stattdessen", "während", "wegen"],
+      "correct": "auf",
+      "memoryHighlight": {
+        "before": "häufig",
+        "connector": "auf",
+        "after": "eine berufliche",
+        "color": 4
+      }
+    },
+    {
+      "id": 7,
+      "options": ["allein", "an", "auf", "aufgrund", "darauf", "durch", "dürften", "einzige", "knapp", "kurz", "möchten", "rege", "stattdessen", "während", "wegen"],
+      "correct": "stattdessen",
+      "memoryHighlight": {
+        "before": "verzichteten.",
+        "connector": "stattdessen",
+        "after": "setzten sie",
+        "color": 8
+      }
+    },
+    {
+      "id": 8,
+      "options": ["allein", "an", "auf", "aufgrund", "darauf", "durch", "dürften", "einzige", "knapp", "kurz", "möchten", "rege", "stattdessen", "während", "wegen"],
+      "correct": "kurz",
+      "memoryHighlight": {
+        "before": "häufig zu",
+        "connector": "kurz",
+        "after": "gekommen war",
+        "color": 2
+      }
+    },
+    {
+      "id": 9,
+      "options": ["allein", "an", "auf", "aufgrund", "darauf", "durch", "dürften", "einzige", "knapp", "kurz", "möchten", "rege", "stattdessen", "während", "wegen"],
+      "correct": "aufgrund",
+      "memoryHighlight": {
+        "before": "bringen.",
+        "connector": "aufgrund",
+        "after": "dessen sehen",
+        "color": 6
+      }
+    },
+    {
+      "id": 10,
+      "options": ["allein", "an", "auf", "aufgrund", "darauf", "durch", "dürften", "einzige", "knapp", "kurz", "möchten", "rege", "stattdessen", "während", "wegen"],
+      "correct": "durch",
+      "memoryHighlight": {
+        "before": "gespeist",
+        "connector": "durch",
+        "after": "die Vitalität",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["allein", "an", "auf", "aufgrund", "darauf", "durch", "dürften", "einzige", "knapp", "kurz", "möchten", "rege", "stattdessen", "während", "wegen"]
+}

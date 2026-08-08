@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 46: Die Rückkehr des Nachtzugs",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Warum die Klimadebatte Schlafwagen wieder in  .__( 1 )__. bringt.\nDer Zug heißt \"Nightjet\", aber  .__( 2 )__. so schnell wie mit dem Flugzeug ist es nicht. Eine Bahnreise von Wien nach Brüssel verursacht nur einen Bruchteil des CO2-Ausstoßes eines Fluges. Bis Dezember soll als 28. Nachtzug-Linie eine von Wien und München nach Amsterdam hinzukommen. \"Wenn wir mehr Schlafwagen hätten, könnten wir das Angebot rasch deutlich  .__( 3 )__.\", sagt Bernhard Rieder von der ÖBB. Fünf Jahre dauert es vom Beschluss für einen neuen Zug bis zur Inbetriebnahme, auch weil Aufträge europaweit ausgeschrieben werden müssen. Man könne sie aber inzwischen kostendeckend betreiben. Pro Schlafwagen sei ein \"Night Steward\" an Bord.  .__( 4 )__. seien in der Regel acht Mitarbeiter in einem Nachtzug unterwegs, tagsüber seien es nur zwei - plus die Lokführer. Die Bahn betont, es gebe auch Züge, die in der Nacht fahren, aber mit Sitzplätzen. Wer das mal gemacht hat, kommt gerädert am Zielort an. Am 15. Dezember hat die Bahn in Kooperation mit den ÖBB auf den Strecken Zürich-Berlin und Zürich-Hamburg eine  .__( 5 )__. Intercity-Nachtverbindung gestartet.\n\"Daher investieren wir in den kommenden Jahren rund zwölf Milliarden Euro in unsere Fahrzeugflotte, die allein im Fernverkehr auf insgesamt 600 Züge anwachsen wird.\" Dazu sollen auch rund tausend zusätzliche Mitarbeiter  .__( 6 )__. werden. \"Wenn die Deutsche Bahn nicht will, ist das bedauernswert.\" Er sehe aber kein Hindernis, warum nicht  .__( 7 )__. dieses Angebot bei Nachtzügen übernehmen sollten - ihnen dürften nur keine Steine in den Weg gelegt werden. Sie betonen, mit einem Nachtzug gebe es die Chance die vielen Flugreisen, die im Rahmen der Ratspräsidentschaft zwischen Berlin und Brüssel anfallen werden,  .__( 8 )__. ein klimafreundliches Mobilitätsangebot zu reduzieren. Bisher müssten viele das Flugzeug nutzen, weil sie mit den aktuellen Zugverbindungen für Reisen zwischen Berlin und Brüssel nur tagsüber reisen können, damit sechs bis acht Stunden Zeit verlieren und in der Regel einen Tag vorher anreisen müssen. Am liebsten würden sie es sehen, wenn so dieser neue Nachtzug in den blau-gelben Europafarben  .__( 9 )__. wäre. Und der Nachtzug weckt bei vielen Menschen auch die Sehnsucht nach ungewöhnlichen Fernreisen. Der Nachtzug der Deutschen Bahn wurde  .__( 10 )__. damals hoher Verluste 2016 eingestellt.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["ALS", "NEUE", "FORM", "MODE", "EINSTEHEN", "AUSWEITEN", "WEGEN", "GANZ", "INSGESAMT", "GESTALTET", "KONKURRENTEN", "DURCH", "EIN", "EINGESTELLT", "KUNDEN"],
+      "correct": "MODE",
+      "memoryHighlight": {
+        "before": "in",
+        "connector": "MODE",
+        "after": "bringt. Der",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["ALS", "NEUE", "FORM", "MODE", "EINSTEHEN", "AUSWEITEN", "WEGEN", "GANZ", "INSGESAMT", "GESTALTET", "KONKURRENTEN", "DURCH", "EIN", "EINGESTELLT", "KUNDEN"],
+      "correct": "GANZ",
+      "memoryHighlight": {
+        "before": "aber",
+        "connector": "GANZ",
+        "after": "so schnell",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["ALS", "NEUE", "FORM", "MODE", "EINSTEHEN", "AUSWEITEN", "WEGEN", "GANZ", "INSGESAMT", "GESTALTET", "KONKURRENTEN", "DURCH", "EIN", "EINGESTELLT", "KUNDEN"],
+      "correct": "AUSWEITEN",
+      "memoryHighlight": {
+        "before": "deutlich",
+        "connector": "AUSWEITEN",
+        "after": ", sagt Bernhard",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["ALS", "NEUE", "FORM", "MODE", "EINSTEHEN", "AUSWEITEN", "WEGEN", "GANZ", "INSGESAMT", "GESTALTET", "KONKURRENTEN", "DURCH", "EIN", "EINGESTELLT", "KUNDEN"],
+      "correct": "INSGESAMT",
+      "memoryHighlight": {
+        "before": "Bord.",
+        "connector": "INSGESAMT",
+        "after": "seien in",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["ALS", "NEUE", "FORM", "MODE", "EINSTEHEN", "AUSWEITEN", "WEGEN", "GANZ", "INSGESAMT", "GESTALTET", "KONKURRENTEN", "DURCH", "EIN", "EINGESTELLT", "KUNDEN"],
+      "correct": "NEUE",
+      "memoryHighlight": {
+        "before": "eine",
+        "connector": "NEUE",
+        "after": "Intercity-Nachtverbindung",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["ALS", "NEUE", "FORM", "MODE", "EINSTEHEN", "AUSWEITEN", "WEGEN", "GANZ", "INSGESAMT", "GESTALTET", "KONKURRENTEN", "DURCH", "EIN", "EINGESTELLT", "KUNDEN"],
+      "correct": "EINGESTELLT",
+      "memoryHighlight": {
+        "before": "Mitarbeiter",
+        "connector": "EINGESTELLT",
+        "after": "werden. \"Wenn",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["ALS", "NEUE", "FORM", "MODE", "EINSTEHEN", "AUSWEITEN", "WEGEN", "GANZ", "INSGESAMT", "GESTALTET", "KONKURRENTEN", "DURCH", "EIN", "EINGESTELLT", "KUNDEN"],
+      "correct": "KONKURRENTEN",
+      "memoryHighlight": {
+        "before": "nicht",
+        "connector": "KONKURRENTEN",
+        "after": "dieses Angebot",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["ALS", "NEUE", "FORM", "MODE", "EINSTEHEN", "AUSWEITEN", "WEGEN", "GANZ", "INSGESAMT", "GESTALTET", "KONKURRENTEN", "DURCH", "EIN", "EINGESTELLT", "KUNDEN"],
+      "correct": "DURCH",
+      "memoryHighlight": {
+        "before": "werden,",
+        "connector": "DURCH",
+        "after": "ein klimafreundliches",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["ALS", "NEUE", "FORM", "MODE", "EINSTEHEN", "AUSWEITEN", "WEGEN", "GANZ", "INSGESAMT", "GESTALTET", "KONKURRENTEN", "DURCH", "EIN", "EINGESTELLT", "KUNDEN"],
+      "correct": "GESTALTET",
+      "memoryHighlight": {
+        "before": "wäre.",
+        "connector": "GESTALTET",
+        "after": "Und der",
+        "color": 2
+      }
+    },
+    {
+      "id": 10,
+      "options": ["ALS", "NEUE", "FORM", "MODE", "EINSTEHEN", "AUSWEITEN", "WEGEN", "GANZ", "INSGESAMT", "GESTALTET", "KONKURRENTEN", "DURCH", "EIN", "EINGESTELLT", "KUNDEN"],
+      "correct": "WEGEN",
+      "memoryHighlight": {
+        "before": "wurde",
+        "connector": "WEGEN",
+        "after": "damals hoher",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["ALS", "NEUE", "FORM", "MODE", "EINSTEHEN", "AUSWEITEN", "WEGEN", "GANZ", "INSGESAMT", "GESTALTET", "KONKURRENTEN", "DURCH", "EIN", "EINGESTELLT", "KUNDEN"]
+}

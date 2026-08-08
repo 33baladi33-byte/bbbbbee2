@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 31: Joggen: Mehr als nur Laufen",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Auto, Rolltreppe, Fahrstuhl - das moderne Leben ist ......(1)....... geworden. Ein Großteil der Bevölkerung verbringt den Tag sitzend. Zum Leidwesen unseres Körpers, denn das geht zu Lasten der Gesundheit. Herz-Kreislauf-Erkrankungen ......(2)....... in den westlichen Industrieländern mittlerweile die Todesursache Nummer Eins. Dennoch: Rund zehn Millionen Menschen in Deutschland joggen, etwa acht Millionen gehen Inline-Skaten oder Rad fahren, jeder Dritte schwimmt. Wer regelmäßig, richtig und vor allem in Maßen trainiert, fördert Gesundheit, Körper- und Selbstbewusstsein.\nZahlreiche Sportarten bieten einen einfachen und abwechslungsreichen Einstieg auch für Ungeübte. Vom Klassiker Jogging bis hin zu Walking, Radfahren, Schwimmen, Aerobic, Inline-Skating und Langlauf im Winter. Wichtig ist ......(3)....... richtig zu trainieren, den Körper nicht zu überfordern - vor allem nach einer längeren 'Sportpause'! Empfehlenswert ist aerobes Herz-Kreislauf-Training, das bedeutet Ausdauertraining ......(4)....... Verbrennung von Sauerstoff. Dreimal in der Woche 30 bis 40 Minuten genügen. Dabei ......(5)....... der Puls kontrolliert werden. Der Richtwert ist hier 180 minus Lebensalter. Dann wird auch Fett verbrannt, der Körper nicht überfordert.\n......(6)....... mehr Menschen den Schritt in ein aktiveres Leben wagen sollten, machen zahlreiche Studien deutlich: Rund 40 Prozent ......(7)....... Deutschen bringen zu viel auf die Waage, jeder zehnte ist sogar stark fettleibig - Tendenz steigend. Auch vor Kindern und Jugendlichen macht diese Entwicklung nicht halt. Oft fehlt die Zeit für regelmäßiges Essen, Sport und Entspannung. Der Körper quittiert dies meist mit Herz-Kreislauf-Erkrankungen, nicht selten mit ......(8)....... Herzinfarkt - auch, und immer häufiger ......(9)....... Frauen.\nAusdauersport hingegen wirkt auf Herz, Gefäße, Muskeln, Körpergewicht, Hormone und Stimmungen. Stress wird wegtrainiert, Krankheiten geheilt und vorgebeugt. Zusammen mit der richtigen Ernährung minimiert sich das Risiko, einen Herzinfarkt oder Schlaganfall zu erleiden, ......(10)....... Milch und Milchprodukte, pflanzliche Lebensmittel wie Vollkornprodukte, Obst, Gemüse, Salat, magere Wurst und Käsesorten unterstützen das richtige Training.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["erheblich", "schnell", "immer", "wird", "dass", "einem", "aller", "sollte", "ist", "sind", "bequem", "unter", "bei", "dabei", "wie"],
+      "correct": "bequem",
+      "memoryHighlight": {
+        "before": "Leben ist",
+        "connector": "bequem",
+        "after": "geworden. Ein",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["erheblich", "schnell", "immer", "wird", "dass", "einem", "aller", "sollte", "ist", "sind", "bequem", "unter", "bei", "dabei", "wie"],
+      "correct": "sind",
+      "memoryHighlight": {
+        "before": "Erkrankungen",
+        "connector": "sind",
+        "after": "in den",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["erheblich", "schnell", "immer", "wird", "dass", "einem", "aller", "sollte", "ist", "sind", "bequem", "unter", "bei", "dabei", "wie"],
+      "correct": "immer",
+      "memoryHighlight": {
+        "before": "Wichtig ist",
+        "connector": "immer",
+        "after": "richtig zu",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["erheblich", "schnell", "immer", "wird", "dass", "einem", "aller", "sollte", "ist", "sind", "bequem", "unter", "bei", "dabei", "wie"],
+      "correct": "unter",
+      "memoryHighlight": {
+        "before": "Ausdauertraining",
+        "connector": "unter",
+        "after": "Verbrennung von",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["erheblich", "schnell", "immer", "wird", "dass", "einem", "aller", "sollte", "ist", "sind", "bequem", "unter", "bei", "dabei", "wie"],
+      "correct": "sollte",
+      "memoryHighlight": {
+        "before": "Dabei",
+        "connector": "sollte",
+        "after": "der Puls",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["erheblich", "schnell", "immer", "wird", "dass", "einem", "aller", "sollte", "ist", "sind", "bequem", "unter", "bei", "dabei", "wie"],
+      "correct": "dass",
+      "memoryHighlight": {
+        "before": "überfordert.",
+        "connector": "dass",
+        "after": "mehr Menschen",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["erheblich", "schnell", "immer", "wird", "dass", "einem", "aller", "sollte", "ist", "sind", "bequem", "unter", "bei", "dabei", "wie"],
+      "correct": "aller",
+      "memoryHighlight": {
+        "before": "Prozent",
+        "connector": "aller",
+        "after": "Deutschen bringen",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["erheblich", "schnell", "immer", "wird", "dass", "einem", "aller", "sollte", "ist", "sind", "bequem", "unter", "bei", "dabei", "wie"],
+      "correct": "einem",
+      "memoryHighlight": {
+        "before": "mit",
+        "connector": "einem",
+        "after": "Herzinfarkt -",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["erheblich", "schnell", "immer", "wird", "dass", "einem", "aller", "sollte", "ist", "sind", "bequem", "unter", "bei", "dabei", "wie"],
+      "correct": "bei",
+      "memoryHighlight": {
+        "before": "häufiger",
+        "connector": "bei",
+        "after": "Frauen. Ausdauersport",
+        "color": 2
+      }
+    },
+    {
+      "id": 10,
+      "options": ["erheblich", "schnell", "immer", "wird", "dass", "einem", "aller", "sollte", "ist", "sind", "bequem", "unter", "bei", "dabei", "wie"],
+      "correct": "wie",
+      "memoryHighlight": {
+        "before": "erleiden,",
+        "connector": "wie",
+        "after": "Milch und",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["erheblich", "schnell", "immer", "wird", "dass", "einem", "aller", "sollte", "ist", "sind", "bequem", "unter", "bei", "dabei", "wie"]
+}

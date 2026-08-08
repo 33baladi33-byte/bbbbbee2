@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 41: Wie TV-Bilder die Fantasie von Kindern prägen",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Werden Kinder und Jugendliche ......(1)...... brutale, von Gewalt geprägte Medieninhalte gewaltbereiter? Zumindest prägen Bilder aus Kino und Fernsehen massiv ihre Fantasie. Das zeigt eine Studie von Forschern der Universität Bonn. ......(2)...... allem Jungen scheinen für extrem gewalttätige Bilder empfänglich zu sein.\n\"Unsere Studie zeigt in der Tat, wie sehr Medienbilder inzwischen die Fantasie von Kindern beeinflussen\", erklärt Professor Volker Ladenthin von der Universität Bonn. \"Also auch jene Fantasie, mit der sie ihr späteres Handeln planen.\" Ladenthin hat zusammen mit seinen Forscherkollegen untersucht, ......(3)...... Bilder in den Köpfen von Kindern herumgeistern. Die Wissenschaftler ließen nach Angaben knapp 300 Schüler der Klassenstufen 7 und 8 zu einem klassischen Märchenanfang einen Schluss schreiben. Die Fantasien der Jungen und Mädchen ......(4)...... sich deutlich: So beendeten Schüler ihre Märchen oft in wahren Blutorgien. Die Schülerinnen ......(5)...... das Märchen dagegen meist gewaltfrei enden, verwendeten aber stattdessen gerne Anleihen an romantischen Fernsehsendungen. \"Unsere Studie kann und will nicht nach den Ursachen von konkreten Gewaltverbrechen jugendlicher Täter fragen\", betont die an der Studie mitwirkende Medienwissenschaftlerin Jessica von Wülfing. Das Experiment zeige jedoch, ......(6)...... sehr Bilder aus den Medien die Vorstellungswelt ......(7)...... Jugendlichen prägen.\n\"Das ist eine gefährliche Entwicklung\", warnt Ladenthin, auf den die Idee zu dem Projekt zurückgeht: \"In der Jugend lernt man das Vokabular, ......(8)...... dem man die Welt begreift. Wenn darin bestimmte Vokabeln fehlen - Mitgefühl, Liebe, aber auch Mitleid oder Schuld -, führt das zu Defiziten in der Wahrnehmung und in letzter Konsequenz auch im eigenen Verhalten\". Wer nie Musik gehört hat, kann keine Vorstellung davon entwickeln, ......(9)...... Musik überhaupt ist. Ähnlich kann man in Horrorfilmen und Schießspielen vieles lernen, aber kein Mitgefühl. Sind die Jungen mit den brutalsten Märchen also allesamt potenzielle Gewalttäter? Sicherlich nicht, relativiert der Bonner Erziehungswissenschaftler. Gefährlich werde es aber ......(10)......, wenn positive Alternativbilder fehlten: Dann bleibe das Vokabular lückenhaft. Aufgabe der Schule sei es daher, Gegenbilder anzubieten. Und ganz klar ist das Fazit: Der Fernseher gehört nicht ins Kinderzimmer.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["aus", "dann", "durch", "jene", "ließen", "machten", "mit", "so", "unterschieden", "veränderten", "von", "vor", "was", "welche", "wie"],
+      "correct": "durch",
+      "memoryHighlight": {
+        "before": "Jugendliche",
+        "connector": "durch",
+        "after": "brutale, von",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["aus", "dann", "durch", "jene", "ließen", "machten", "mit", "so", "unterschieden", "veränderten", "von", "vor", "was", "welche", "wie"],
+      "correct": "vor",
+      "memoryHighlight": {
+        "before": "Bonn.",
+        "connector": "vor",
+        "after": "allem Jungen",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["aus", "dann", "durch", "jene", "ließen", "machten", "mit", "so", "unterschieden", "veränderten", "von", "vor", "was", "welche", "wie"],
+      "correct": "welche",
+      "memoryHighlight": {
+        "before": "untersucht,",
+        "connector": "welche",
+        "after": "Bilder in",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["aus", "dann", "durch", "jene", "ließen", "machten", "mit", "so", "unterschieden", "veränderten", "von", "vor", "was", "welche", "wie"],
+      "correct": "unterschieden",
+      "memoryHighlight": {
+        "before": "Mädchen",
+        "connector": "unterschieden",
+        "after": "sich deutlich",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["aus", "dann", "durch", "jene", "ließen", "machten", "mit", "so", "unterschieden", "veränderten", "von", "vor", "was", "welche", "wie"],
+      "correct": "ließen",
+      "memoryHighlight": {
+        "before": "Schülerinnen",
+        "connector": "ließen",
+        "after": "das Märchen",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["aus", "dann", "durch", "jene", "ließen", "machten", "mit", "so", "unterschieden", "veränderten", "von", "vor", "was", "welche", "wie"],
+      "correct": "wie",
+      "memoryHighlight": {
+        "before": "jedoch,",
+        "connector": "wie",
+        "after": "sehr Bilder",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["aus", "dann", "durch", "jene", "ließen", "machten", "mit", "so", "unterschieden", "veränderten", "von", "vor", "was", "welche", "wie"],
+      "correct": "von",
+      "memoryHighlight": {
+        "before": "Vorstellungswelt",
+        "connector": "von",
+        "after": "Jugendlichen prägen",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["aus", "dann", "durch", "jene", "ließen", "machten", "mit", "so", "unterschieden", "veränderten", "von", "vor", "was", "welche", "wie"],
+      "correct": "mit",
+      "memoryHighlight": {
+        "before": "Vokabular,",
+        "connector": "mit",
+        "after": "dem man",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["aus", "dann", "durch", "jene", "ließen", "machten", "mit", "so", "unterschieden", "veränderten", "von", "vor", "was", "welche", "wie"],
+      "correct": "was",
+      "memoryHighlight": {
+        "before": "entwickeln,",
+        "connector": "was",
+        "after": "Musik überhaupt",
+        "color": 2
+      }
+    },
+    {
+      "id": 10,
+      "options": ["aus", "dann", "durch", "jene", "ließen", "machten", "mit", "so", "unterschieden", "veränderten", "von", "vor", "was", "welche", "wie"],
+      "correct": "dann",
+      "memoryHighlight": {
+        "before": "aber",
+        "connector": "dann",
+        "after": ", wenn positive",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["aus", "dann", "durch", "jene", "ließen", "machten", "mit", "so", "unterschieden", "veränderten", "von", "vor", "was", "welche", "wie"]
+}

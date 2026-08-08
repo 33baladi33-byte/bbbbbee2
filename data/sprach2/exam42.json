@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 42: Städte vor dem Infarkt",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Schon immer haben Menschen ......(1)....... geträumt, jederzeit mobil zu sein. Deswegen ist es nicht verwunderlich, dass das Auto das beliebteste Verkehrsmittel weltweit geworden ist. Es ist nicht nur die uneingeschränkte Mobilität, die das Auto so attraktiv macht, sondern auch die Symbolik, die dem Auto anhängt: ......(2)....... Auto fährt, hat in seinem Leben etwas erreicht. Nicht selten soll die Größe eines Autos den gesellschaftlichen Status des Fahrers widerspiegeln.\nDer Wunsch nach einem \"Auto für jeden\" ist zwar für viele Menschen Realität geworden, er hat aber auf der anderen Seite auch viele Probleme hervorgebracht. Denn die meisten Großstädte sind zu einer Zeit entstanden, als es noch keine Autos gab. Daraus folgt, ......(3)....... für so viele Fahrzeuge der Platz nicht mehr ausreicht. Die Straßen sind ......(4)....... nicht breit genug, es gibt zu wenig Parkplätze. Staus und langes Suchen nach einem Platz, wo man sein Gefährt loswerden kann, rauben vielen städtischen Autofahrern inzwischen den letzten Nerv.\nIn einigen Großstädten stehen die Fahrzeuge inzwischen länger, als sie ......(5)....... Manche Orte in der Stadt lassen sich zu Fuß schneller erreichen als mit dem Auto. Der Verkehrsinfarkt tritt ein: Nichts geht mehr, ......(6)....... die Zahl der Straßenfahrzeuge ist zu groß geworden.\nHinzu kommen noch die durch den Verkehr erzeugten Umweltprobleme. Die Erwärmung der Luft führt ......(7)......., dass sich das Klima verändert. Ruß und Feinstaub sind die Ursache dafür, dass immer mehr Großstädter an Atemwegserkrankungen leiden. Und schließlich benötigen immer mehr Fahrzeuge immer mehr Energie, die weltweit aber gleichzeitig immer knapper und damit teurer wird.\n......(8)....... dem Verkehrsinfarkt zuvorzukommen und nicht tatenlos zuzusehen, wie der Verkehr zu einem immer größeren Problem wird, haben einige Großstädte damit begonnen, den öffentlichen Personennahverkehr auszubauen. Eigene Spuren für Busse und Straßenbahnen werden eingerichtet, damit die öffentlichen Verkehrsmittel beschleunigt und damit attraktiv werden. In den großen Metropolen ......(9)....... sich die Tunnel der U-Bahnen immer weiter durch das Erdreich.\nDiese Maßnahmen sind recht teuer. Doch langsam setzt sich das Bewusstsein dafür durch, dass das ungebremste Anwachsen des Individualverkehrs in eine Sackgasse führt, aus der wieder herauszukommen noch viel Überzeugungsarbeit ......(10)....... wird.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["dass", "davon", "dazu", "denn", "fahren", "graben", "hiermit", "klauen", "kosten", "oft", "reiben", "so", "um", "wenn", "wer"],
+      "correct": "davon",
+      "memoryHighlight": {
+        "before": "Menschen",
+        "connector": "davon",
+        "after": "geträumt, jederzeit",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["dass", "davon", "dazu", "denn", "fahren", "graben", "hiermit", "klauen", "kosten", "oft", "reiben", "so", "um", "wenn", "wer"],
+      "correct": "wer",
+      "memoryHighlight": {
+        "before": "anhängt:",
+        "connector": "wer",
+        "after": "Auto fährt",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["dass", "davon", "dazu", "denn", "fahren", "graben", "hiermit", "klauen", "kosten", "oft", "reiben", "so", "um", "wenn", "wer"],
+      "correct": "dass",
+      "memoryHighlight": {
+        "before": "folgt,",
+        "connector": "dass",
+        "after": "für so",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["dass", "davon", "dazu", "denn", "fahren", "graben", "hiermit", "klauen", "kosten", "oft", "reiben", "so", "um", "wenn", "wer"],
+      "correct": "oft",
+      "memoryHighlight": {
+        "before": "Straßen sind",
+        "connector": "oft",
+        "after": "nicht breit",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["dass", "davon", "dazu", "denn", "fahren", "graben", "hiermit", "klauen", "kosten", "oft", "reiben", "so", "um", "wenn", "wer"],
+      "correct": "fahren",
+      "memoryHighlight": {
+        "before": "als sie",
+        "connector": "fahren",
+        "after": ". Manche Orte",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["dass", "davon", "dazu", "denn", "fahren", "graben", "hiermit", "klauen", "kosten", "oft", "reiben", "so", "um", "wenn", "wer"],
+      "correct": "denn",
+      "memoryHighlight": {
+        "before": "mehr,",
+        "connector": "denn",
+        "after": "die Zahl",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["dass", "davon", "dazu", "denn", "fahren", "graben", "hiermit", "klauen", "kosten", "oft", "reiben", "so", "um", "wenn", "wer"],
+      "correct": "dazu",
+      "memoryHighlight": {
+        "before": "führt",
+        "connector": "dazu",
+        "after": ", dass sich",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["dass", "davon", "dazu", "denn", "fahren", "graben", "hiermit", "klauen", "kosten", "oft", "reiben", "so", "um", "wenn", "wer"],
+      "correct": "um",
+      "memoryHighlight": {
+        "before": "wird.",
+        "connector": "um",
+        "after": "dem Verkehrsinfarkt",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["dass", "davon", "dazu", "denn", "fahren", "graben", "hiermit", "klauen", "kosten", "oft", "reiben", "so", "um", "wenn", "wer"],
+      "correct": "graben",
+      "memoryHighlight": {
+        "before": "Metropolen",
+        "connector": "graben",
+        "after": "sich die",
+        "color": 2
+      }
+    },
+    {
+      "id": 10,
+      "options": ["dass", "davon", "dazu", "denn", "fahren", "graben", "hiermit", "klauen", "kosten", "oft", "reiben", "so", "um", "wenn", "wer"],
+      "correct": "kosten",
+      "memoryHighlight": {
+        "before": "Überzeugungsarbeit",
+        "connector": "kosten",
+        "after": "wird.",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["dass", "davon", "dazu", "denn", "fahren", "graben", "hiermit", "klauen", "kosten", "oft", "reiben", "so", "um", "wenn", "wer"]
+}

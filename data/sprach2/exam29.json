@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 29: Ausbildung mit über 30",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Die gelernte Krankenschwester Jaqueline Delgado drückt mit 38 Jahren noch einmal die Schulbank. ......(1)......, sie hat sich für einen beruflichen Neustart entschieden. Da ihr früherer Beruf ihr keinen Spaß mehr machte, begann sie eine Berufsausbildung bei der Polizei. Ihr Ziel: Sie ......(2)....... in den Streifendienst gehen.\nMit über 30 noch einmal einen ganz neuen Job zu erlernen - lange Zeit war das kaum möglich. Arbeitgeber suchten nur junge Berufseinsteiger. ......(3)....... es heute in vielen Branchen aber an Nachwuchs fehlt, geben sie öfter auch Älteren eine ......(4)....... .\nThomas Neuendorfer, der stellvertretende Sprecher der Polizei Berlin, erklärt, ......(5)......., sein Arbeitgeber gerne Ältere ausbildet: \"Sie haben in ihrem Berufsleben Erfahrungen gesammelt, die der Polizei und auch den Bürgern der Stadt zu Gute kommen\". Sie seien häufig emotional reifer, außerdem bereit, Verantwortung zu ......(6)......., und motiviert, die Ausbildung erfolgreich abzuschließen. Zudem ......(7)....... sie die Jüngeren unterstützen und ihnen als Vorbild dienen. Davon profitieren dann auch die Arbeitgeber. Gegen die Einstellung von Älteren spreche nur, dass sie dem Unternehmen kürzer vor ......(8)....... stehen. ......(9)....... haben ältere Azubis in vielen Bereichen Möglichkeiten: in kaufmännischen oder in gewerblich-technischen Berufen, im Gesundheitswesen oder vor allem in der Gastronomie.\nWenn das Azubi-Gehalt nicht für den Lebensunterhalt reicht, hilft die Arbeitsagentur. Der Betrag wird dabei nicht nach dem Alter festgelegt, ......(10)....... es wird der individuelle, konkrete Bedarf ermittelt. Im August schließt Delgado ihre Ausbildung ab. In dem künftigen Polizei-Job wird sie ihr medizinisches Wissen, ihre Menschenkenntnis sowie ihre spanischen und englischen Sprachkenntnisse wohl gut gebrauchen können.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["auswahl", "chance", "da", "dagegen", "denn", "durften", "könnten", "möchte", "sollte", "sondern", "trotzdem", "übernehmen", "verfügung", "warum", "ziehen"],
+      "correct": "denn",
+      "memoryHighlight": {
+        "before": "Schulbank.",
+        "connector": "denn",
+        "after": "sie hat",
+        "color": 5
+      }
+    },
+    {
+      "id": 2,
+      "options": ["auswahl", "chance", "da", "dagegen", "denn", "durften", "könnten", "möchte", "sollte", "sondern", "trotzdem", "übernehmen", "verfügung", "warum", "ziehen"],
+      "correct": "möchte",
+      "memoryHighlight": {
+        "before": "Sie",
+        "connector": "möchte",
+        "after": "in den",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["auswahl", "chance", "da", "dagegen", "denn", "durften", "könnten", "möchte", "sollte", "sondern", "trotzdem", "übernehmen", "verfügung", "warum", "ziehen"],
+      "correct": "da",
+      "memoryHighlight": {
+        "before": "Einsteiger.",
+        "connector": "da",
+        "after": "es heute",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["auswahl", "chance", "da", "dagegen", "denn", "durften", "könnten", "möchte", "sollte", "sondern", "trotzdem", "übernehmen", "verfügung", "warum", "ziehen"],
+      "correct": "chance",
+      "memoryHighlight": {
+        "before": "eine",
+        "connector": "chance",
+        "after": ". Thomas Neuendorfer",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["auswahl", "chance", "da", "dagegen", "denn", "durften", "könnten", "möchte", "sollte", "sondern", "trotzdem", "übernehmen", "verfügung", "warum", "ziehen"],
+      "correct": "warum",
+      "memoryHighlight": {
+        "before": "erklärt,",
+        "connector": "warum",
+        "after": "sein Arbeitgeber",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["auswahl", "chance", "da", "dagegen", "denn", "durften", "könnten", "möchte", "sollte", "sondern", "trotzdem", "übernehmen", "verfügung", "warum", "ziehen"],
+      "correct": "übernehmen",
+      "memoryHighlight": {
+        "before": "Verantwortung zu",
+        "connector": "übernehmen",
+        "after": ", und motiviert",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["auswahl", "chance", "da", "dagegen", "denn", "durften", "könnten", "möchte", "sollte", "sondern", "trotzdem", "übernehmen", "verfügung", "warum", "ziehen"],
+      "correct": "könnten",
+      "memoryHighlight": {
+        "before": "Zudem",
+        "connector": "könnten",
+        "after": "sie die",
+        "color": 8
+      }
+    },
+    {
+      "id": 8,
+      "options": ["auswahl", "chance", "da", "dagegen", "denn", "durften", "könnten", "möchte", "sollte", "sondern", "trotzdem", "übernehmen", "verfügung", "warum", "ziehen"],
+      "correct": "verfügung",
+      "memoryHighlight": {
+        "before": "vor",
+        "connector": "verfügung",
+        "after": "stehen. Trotzdem",
+        "color": 4
+      }
+    },
+    {
+      "id": 9,
+      "options": ["auswahl", "chance", "da", "dagegen", "denn", "durften", "könnten", "möchte", "sollte", "sondern", "trotzdem", "übernehmen", "verfügung", "warum", "ziehen"],
+      "correct": "trotzdem",
+      "memoryHighlight": {
+        "before": "stehen.",
+        "connector": "trotzdem",
+        "after": "haben ältere",
+        "color": 6
+      }
+    },
+    {
+      "id": 10,
+      "options": ["auswahl", "chance", "da", "dagegen", "denn", "durften", "könnten", "möchte", "sollte", "sondern", "trotzdem", "übernehmen", "verfügung", "warum", "ziehen"],
+      "correct": "sondern",
+      "memoryHighlight": {
+        "before": "festgelegt,",
+        "connector": "sondern",
+        "after": "es wird",
+        "color": 2
+      }
+    }
+  ],
+  "allOptions": ["auswahl", "chance", "da", "dagegen", "denn", "durften", "könnten", "möchte", "sollte", "sondern", "trotzdem", "übernehmen", "verfügung", "warum", "ziehen"]
+}

@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 43: Es ist erst 6 Uhr morgens",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Es ist erst 6 Uhr morgens, und draußen herrscht noch Dunkelheit. ......(1)...... in der riesigen, hell erleuchteten Halle, in der sich Kisten mit Obst und Gemüse meterhoch stapeln, wird schon lange gearbeitet. \"Vor ein paar Stunden war hier noch viel mehr Betrieb\", sagt Jens Rogall. Er ......(2)...... einen Berliner Großmarkt, auf dem Einkäufer von Supermärkten, Geschäften oder Restaurants frisches Obst und Gemüse besorgen.\nDie Ware hat oft schon eine lange Reise zurückgelegt, bis sie auf dem Großmarkt ......(3)...... . Die meisten Früchte werden ......(4)...... auf dem Land-, Luft- oder Seeweg aus wärmeren Ländern nach Deutschland transportiert. Wenn die Ware per Schiff nach Europa gebracht wird, kommt sie in großen Seehäfen wie Rotterdam oder Hamburg an. Von dort aus geht es mit dem Lastwagen weiter. Auf seinem Weg ......(5)...... das empfindliche Obst und Gemüse keinesfalls Schaden nehmen. \"Nichts ist schlimmer ......(6)...... verdorbene Ware\", sagt Rogall.\nAuf dem Großmarkt schauen sich die Käufer alles ......(7)...... an. Für makellose Salatköpfe, Beeren und Kräuter zahlen sie höhere Preise, krumme Gurken oder verwachsene Kartoffeln ......(8)...... sie dagegen günstiger. Diese werden später nicht in Geschäften zum Verkauf angeboten, ......(9)...... direkt verarbeitet. \"Es ist egal, wie Gurken aussehen, die ohnehin im Fertigsalat landen\", erklärt Rogall. Wenn die Preisverhandlungen erfolgreich ......(10)...... sind, werden die Paletten voller Obst und Gemüse hinaus zu den Lieferwagen gebracht. Die Fahrer müssen dann zügig zu den Geschäften und Restaurants fahren, um die Ware abzuliefern.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["darf", "erwerben", "ankommt", "nämlich", "doch", "abgeschlossen", "genau", "leitet", "sondern", "als", "mehr", "während", "von", "wie", "zu"],
+      "correct": "doch",
+      "memoryHighlight": {
+        "before": "Dunkelheit.",
+        "connector": "doch",
+        "after": "in der",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["darf", "erwerben", "ankommt", "nämlich", "doch", "abgeschlossen", "genau", "leitet", "sondern", "als", "mehr", "während", "von", "wie", "zu"],
+      "correct": "leitet",
+      "memoryHighlight": {
+        "before": "Er",
+        "connector": "leitet",
+        "after": "einen Berliner",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["darf", "erwerben", "ankommt", "nämlich", "doch", "abgeschlossen", "genau", "leitet", "sondern", "als", "mehr", "während", "von", "wie", "zu"],
+      "correct": "ankommt",
+      "memoryHighlight": {
+        "before": "Großmarkt",
+        "connector": "ankommt",
+        "after": ". Die meisten",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["darf", "erwerben", "ankommt", "nämlich", "doch", "abgeschlossen", "genau", "leitet", "sondern", "als", "mehr", "während", "von", "wie", "zu"],
+      "correct": "nämlich",
+      "memoryHighlight": {
+        "before": "werden",
+        "connector": "nämlich",
+        "after": "auf dem",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["darf", "erwerben", "ankommt", "nämlich", "doch", "abgeschlossen", "genau", "leitet", "sondern", "als", "mehr", "während", "von", "wie", "zu"],
+      "correct": "darf",
+      "memoryHighlight": {
+        "before": "Weg",
+        "connector": "darf",
+        "after": "das empfindliche",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["darf", "erwerben", "ankommt", "nämlich", "doch", "abgeschlossen", "genau", "leitet", "sondern", "als", "mehr", "während", "von", "wie", "zu"],
+      "correct": "als",
+      "memoryHighlight": {
+        "before": "schlimmer",
+        "connector": "als",
+        "after": "verdorbene Ware",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["darf", "erwerben", "ankommt", "nämlich", "doch", "abgeschlossen", "genau", "leitet", "sondern", "als", "mehr", "während", "von", "wie", "zu"],
+      "correct": "genau",
+      "memoryHighlight": {
+        "before": "Käufer alles",
+        "connector": "genau",
+        "after": "an. Für",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["darf", "erwerben", "ankommt", "nämlich", "doch", "abgeschlossen", "genau", "leitet", "sondern", "als", "mehr", "während", "von", "wie", "zu"],
+      "correct": "erwerben",
+      "memoryHighlight": {
+        "before": "Kartoffeln",
+        "connector": "erwerben",
+        "after": "sie dagegen",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["darf", "erwerben", "ankommt", "nämlich", "doch", "abgeschlossen", "genau", "leitet", "sondern", "als", "mehr", "während", "von", "wie", "zu"],
+      "correct": "sondern",
+      "memoryHighlight": {
+        "before": "angeboten,",
+        "connector": "sondern",
+        "after": "direkt verarbeitet",
+        "color": 2
+      }
+    },
+    {
+      "id": 10,
+      "options": ["darf", "erwerben", "ankommt", "nämlich", "doch", "abgeschlossen", "genau", "leitet", "sondern", "als", "mehr", "während", "von", "wie", "zu"],
+      "correct": "abgeschlossen",
+      "memoryHighlight": {
+        "before": "erfolgreich",
+        "connector": "abgeschlossen",
+        "after": "sind, werden",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["darf", "erwerben", "ankommt", "nämlich", "doch", "abgeschlossen", "genau", "leitet", "sondern", "als", "mehr", "während", "von", "wie", "zu"]
+}

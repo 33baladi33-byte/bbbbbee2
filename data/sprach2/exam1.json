@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 1: Das Fahrrad",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Das Fahrrad: ernsthafte Konkurrenz fürs Auto?\n\nWelches Fortbewegungsmittel, denken Sie, wird in Deutschland am häufigsten benutzt? Natürlich das Automobil. Volkswagen, Porsche, Mercedes Benz, BMW, Audi: in  .__( 1 )__.einem anderen Land gibt es so viele Automobilfabriken wie in Deutschland, spielt die Automobilindustrie eine so große Rolle. Nahezu jeder Haushalt verfügt über mindestens ein Auto, das Auto spielt im Leben der Deutschen eine große Rolle, sowohl als Fortbewegungsmittel zum Arbeitsplatz oder in den Urlaub als auch als Statussymbol: Zeig mir dein Auto und ich weiß, wer du bist.\n\nDoch hat das Autofahren auch Schattenseiten. Mangelnde Bewegungsmöglichkeiten, gesundheitliche Probleme und Stress bringen zumindest in den Großstädten immer mehr Autofahrer dazu, sich vom Automobil freizumachen und  .__( 2 )__.ein anderes Verkehrsmittel umzusteigen, das in dem Ruf steht, gesünder zu sein als das Auto: das Fahrrad. Nicht nur in der Freizeit, sondern auch auf dem Weg zum Arbeitsplatz wird das Rad benutzt. \"Ich habe keine Lust, Morgen für Morgen im Stau zu stehen und Zeit zu verlieren\", sagt Bettina Meier 25. \"Da ist es viel entspannter, auf den zumeist gut ausgebauten Fahrradwegen an den im Stau wartenden Fahrzeugen  .__( 3 )__.und ausgeruht am Arbeitsplatz anzukommen.\"\n\nDass Fahrradfahren um einiges gesünder ist, als hinter dem Lenkrad zu sitzen, bestätigen auch die Mediziner. Wer Fahrrad fährt  .__( 4 )__.zu sitzen, bringt seinen Blutkreislauf in Schwung, stärkt die Abwehrkräfte des Körpers und trainiert seinen Körper. Auch die Bewegung an der frischen Luft tut Menschen gut, die sich sonst die meiste Zeit  .__( 5 )__.geschlossener Räume in Büros, Schulen oder Fabriken aufhalten .__( 6 )__.\n\nAuch die Geschäftswelt hat die Fahrradfahrer als Kunden entdeckt. Ein breites Angebot  .__( 7 )__. Zubehör für Fahrräder von schicken Radfelgen über sportliche Mehrganggetriebe, mit denen Berge kein Problem mehr darstellen, bis zur Designer-Trinkflasche machen aus dem einfachen Fahrrad ein exklusives Fahrzeug. Und natürlich darf bei keinem Fahrradfahrer eine aufwändige Sicherheitsausstattung mehr fehlen: Schutzhelme, Ellenbogen- und Knieschützer, die das Fahrrad im Falle eines Unfalls fast so sicher wie einen Panzer machen .__( 8 )__. \n\nNur wenn es regnet – und das passiert in Deutschland leider nicht so selten –,  .__( 9 )__.sind die Autoschlangen wieder länger.  .__( 10 )__.einen praktischen Wetterschutz für Radfahrer haben die Geschäfte noch nicht im Angebot.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["an", "auf", "beinahe", "dafür", "dann", "denn", "dürfen", "fast", "innerhalb", "kaum", "müssen", "sollen", "statt", "vor", "vorbei"],
+      "correct": "kaum",
+      "memoryHighlight": {
+        "before": "BMW, Audi: in",
+        "connector": "kaum",
+        "after": "einem anderen Land",
+        "color": 0
+      }
+    },
+    {
+      "id": 2,
+      "options": ["an", "auf", "beinahe", "dafür", "dann", "denn", "dürfen", "fast", "innerhalb", "kaum", "müssen", "sollen", "statt", "vor", "vorbei"],
+      "correct": "auf",
+      "memoryHighlight": {
+        "before": "und",
+        "connector": "auf",
+        "after": "ein anderes Verkehrsmittel",
+        "color": 1
+      }
+    },
+    {
+      "id": 3,
+      "options": ["an", "auf", "beinahe", "dafür", "dann", "denn", "dürfen", "fast", "innerhalb", "kaum", "müssen", "sollen", "statt", "vor", "vorbei"],
+      "correct": "vorbei",
+      "memoryHighlight": {
+        "before": "Fahrzeugen",
+        "connector": "vorbei",
+        "after": "und ausgeruht",
+        "color": 2
+      }
+    },
+    {
+      "id": 4,
+      "options": ["an", "auf", "beinahe", "dafür", "dann", "denn", "dürfen", "fast", "innerhalb", "kaum", "müssen", "sollen", "statt", "vor", "vorbei"],
+      "correct": "statt",
+      "memoryHighlight": {
+        "before": "fährt",
+        "connector": "statt",
+        "after": "zu sitzen",
+        "color": 3
+      }
+    },
+    {
+      "id": 5,
+      "options": ["an", "auf", "beinahe", "dafür", "dann", "denn", "dürfen", "fast", "innerhalb", "kaum", "müssen", "sollen", "statt", "vor", "vorbei"],
+      "correct": "innerhalb",
+      "memoryHighlight": {
+        "before": "Zeit",
+        "connector": "innerhalb",
+        "after": "geschlossener Räume",
+        "color": 4
+      }
+    },
+    {
+      "id": 6,
+      "options": ["an", "auf", "beinahe", "dafür", "dann", "denn", "dürfen", "fast", "innerhalb", "kaum", "müssen", "sollen", "statt", "vor", "vorbei"],
+      "correct": "müssen",
+      "memoryHighlight": {
+        "before": "aufhalten",
+        "connector": "müssen",
+        "after": "Auch die",
+        "color": 5
+      }
+    },
+    {
+      "id": 7,
+      "options": ["an", "auf", "beinahe", "dafür", "dann", "denn", "dürfen", "fast", "innerhalb", "kaum", "müssen", "sollen", "statt", "vor", "vorbei"],
+      "correct": "an",
+      "memoryHighlight": {
+        "before": "Angebot",
+        "connector": "an",
+        "after": "Zubehör für",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["an", "auf", "beinahe", "dafür", "dann", "denn", "dürfen", "fast", "innerhalb", "kaum", "müssen", "sollen", "statt", "vor", "vorbei"],
+      "correct": "sollen",
+      "memoryHighlight": {
+        "before": "machen",
+        "connector": "sollen",
+        "after": "Nur wenn",
+        "color": 7
+      }
+    },
+    {
+      "id": 9,
+      "options": ["an", "auf", "beinahe", "dafür", "dann", "denn", "dürfen", "fast", "innerhalb", "kaum", "müssen", "sollen", "statt", "vor", "vorbei"],
+      "correct": "dann",
+      "memoryHighlight": {
+        "before": "selten",
+        "connector": "dann",
+        "after": "sind die",
+        "color": 8
+      }
+    },
+    {
+      "id": 10,
+      "options": ["an", "auf", "beinahe", "dafür", "dann", "denn", "dürfen", "fast", "innerhalb", "kaum", "müssen", "sollen", "statt", "vor", "vorbei"],
+      "correct": "denn",
+      "memoryHighlight": {
+        "before": "länger",
+        "connector": "denn",
+        "after": "einen praktischen",
+        "color": 9
+      }
+    }
+  ],
+  "allOptions": ["an", "auf", "beinahe", "dafür", "dann", "denn", "dürfen", "fast", "innerhalb", "kaum", "müssen", "sollen", "statt", "vor", "vorbei"]
+}

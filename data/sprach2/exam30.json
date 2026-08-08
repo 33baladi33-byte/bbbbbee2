@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 30: Verlernen die Deutschen die Höflichkeit?",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Höflichkeit gehört zu den Dingen, die allmählich verschwinden.“ Drei von vier Deutschen ......(1)....... dieser Behauptung zu: Früher waren die Menschen höflicher, ......(2)....... einer Umfrage zufolge 75 Prozent der Befragten. Genauso viele denken, dass junge Leute zu wenig Respekt vor älteren Menschen haben.\nÄrgert sich da möglicherweise nur die ältere Generation über den Verlust überholter Umgangsformen? Keineswegs: Glaubt man der Studie, besteht der Wunsch ......(3)....... gewissen Höflichkeitsformen altersübergreifend.\nKlare Spielregeln für ein höfliches ......(4)....... – In einer immer weniger von Formalität und offiziellen Hierarchien geprägten Welt sucht man sie oft ......(5)....... – Da wäre zum Beispiel die Frage nach dem Du oder Sie. ......(6)....... die Hälfte der Deutschen gibt zu, regelmäßig verunsichert zu sein, wie sie ihr Gegenüber ansprechen sollen. Während es jüngere Menschen zum Beispiel als normal oder sogar angenehm empfinden ......(7)......., vom Kellner geduzt zu werden, kann es älteren Semestern den Restaurantbesuch vermiesen. Nur ein Viertel der Befragten kann sich damit anfreunden, besonders Ältere ......(8)....... – sich am ungefragten Duzen.\nÜber andere Umgangsformen herrscht hingegen Konsens bei Jung und Alt: Den Sitzplatz in der Bahn Älteren oder Schwangeren anzubieten, finden 94 Prozent wichtig. 95 Prozent legen Wert auf Pünktlichkeit. Für immerhin 78 Prozent erfordert es die Höflichkeit, dass Männer Frauen die Tür aufhalten und ihnen den Vortritt ......(9)....... . Unhöflich finden es 91 Prozent, wenn jemand während einer Unterhaltung auf das Handy schaut.\nAngesichts von so viel Einigkeit über den angemessenen Umgang miteinander stellt sich freilich die Frage, warum so wenig davon im Alltag zu sehen ist. Wenn man weiß, was ......(10)....... gehört, kann es doch nicht so schwer sein, sich daran zu halten.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["fein", "gut", "lassen", "man", "meinen", "miteinander", "mögen", "nach", "nacheinander", "nehmen", "sich", "sinnlos", "stimmen", "stören", "vergeblich"],
+      "correct": "stimmen",
+      "memoryHighlight": {
+        "before": "Deutschen",
+        "connector": "stimmen",
+        "after": "dieser Behauptung",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["fein", "gut", "lassen", "man", "meinen", "miteinander", "mögen", "nach", "nacheinander", "nehmen", "sich", "sinnlos", "stimmen", "stören", "vergeblich"],
+      "correct": "meinen",
+      "memoryHighlight": {
+        "before": "höflicher,",
+        "connector": "meinen",
+        "after": "einer Umfrage",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["fein", "gut", "lassen", "man", "meinen", "miteinander", "mögen", "nach", "nacheinander", "nehmen", "sich", "sinnlos", "stimmen", "stören", "vergeblich"],
+      "correct": "nach",
+      "memoryHighlight": {
+        "before": "Wunsch",
+        "connector": "nach",
+        "after": "gewissen Höflichkeitsformen",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["fein", "gut", "lassen", "man", "meinen", "miteinander", "mögen", "nach", "nacheinander", "nehmen", "sich", "sinnlos", "stimmen", "stören", "vergeblich"],
+      "correct": "miteinander",
+      "memoryHighlight": {
+        "before": "höfliches",
+        "connector": "miteinander",
+        "after": "– In einer",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["fein", "gut", "lassen", "man", "meinen", "miteinander", "mögen", "nach", "nacheinander", "nehmen", "sich", "sinnlos", "stimmen", "stören", "vergeblich"],
+      "correct": "vergeblich",
+      "memoryHighlight": {
+        "before": "oft",
+        "connector": "vergeblich",
+        "after": "– Da wäre",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["fein", "gut", "lassen", "man", "meinen", "miteinander", "mögen", "nach", "nacheinander", "nehmen", "sich", "sinnlos", "stimmen", "stören", "vergeblich"],
+      "correct": "gut",
+      "memoryHighlight": {
+        "before": "Sie.",
+        "connector": "gut",
+        "after": "die Hälfte",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["fein", "gut", "lassen", "man", "meinen", "miteinander", "mögen", "nach", "nacheinander", "nehmen", "sich", "sinnlos", "stimmen", "stören", "vergeblich"],
+      "correct": "mögen",
+      "memoryHighlight": {
+        "before": "empfinden",
+        "connector": "mögen",
+        "after": ", vom Kellner",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["fein", "gut", "lassen", "man", "meinen", "miteinander", "mögen", "nach", "nacheinander", "nehmen", "sich", "sinnlos", "stimmen", "stören", "vergeblich"],
+      "correct": "stören",
+      "memoryHighlight": {
+        "before": "Ältere",
+        "connector": "stören",
+        "after": "– sich am",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["fein", "gut", "lassen", "man", "meinen", "miteinander", "mögen", "nach", "nacheinander", "nehmen", "sich", "sinnlos", "stimmen", "stören", "vergeblich"],
+      "correct": "lassen",
+      "memoryHighlight": {
+        "before": "Vortritt",
+        "connector": "lassen",
+        "after": ". Unhöflich finden",
+        "color": 2
+      }
+    },
+    {
+      "id": 10,
+      "options": ["fein", "gut", "lassen", "man", "meinen", "miteinander", "mögen", "nach", "nacheinander", "nehmen", "sich", "sinnlos", "stimmen", "stören", "vergeblich"],
+      "correct": "sich",
+      "memoryHighlight": {
+        "before": "was",
+        "connector": "sich",
+        "after": "gehört, kann",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["fein", "gut", "lassen", "man", "meinen", "miteinander", "mögen", "nach", "nacheinander", "nehmen", "sich", "sinnlos", "stimmen", "stören", "vergeblich"]
+}

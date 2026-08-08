@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 36: Maßgeschneidert nach Bodyscanning (معدل)",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Maßgeschneidert nach Bodyscanning\nHaben Sie sich schon einmal ......(1)...... aufgeregt, dass Sie zwar in vielen Geschäften viele schöne Kleidungsstücke sehen konnten, Ihnen aber dann bei der Anprobe keines gepasst hat? Dann geht es Ihnen wie zurzeit der Mehrheit der deutschen Bevölkerung: Die Kleidungsstücke, die in den Modehäusern angeboten werden, gibt es fast ......(2)...... noch in den falschen Größen.\nEine Untersuchung des Textilforschungszentrums Hohenstein ......(3)...... nun zu der folgenden Erkenntnis: Der Grund dafür, dass viele Konfektionsgrößen offenbar ......(4)...... den Kundinnen noch den Kunden passen, sei die körperliche Entwicklung der Bevölkerung in Deutschland. Seit den 1960er Jahren seien die Deutschen im Durchschnitt um bis zu acht Zentimeter sowohl größer als auch dicker geworden.\nDie Länge der Arme ......(5)...... zugenommen, besonders aber an den Hüften hätten die Deutschen beträchtlich zugelegt.\n......(6)...... man natürlich daran interessiert ist, Kleidungsstücke in den richtigen Größen und in ausreichender Zahl zu produzieren, soll jetzt neu ermittelt werden, welche Größen die Kunden eigentlich brauchen. Dazu wurde ein neues Verfahren entwickelt, ......(7)...... Männer und Frauen neu vermessen soll. Bei der Body-Scan-Technologie tasten mehrere Kameras mit Laserlicht die menschlichen Körper ab und erstellen ein dreidimensionales Ebenbild der gescannten Person. Diese dreidimensionalen Bilder ......(8)...... es ermöglichen, in Zukunft genauere Informationen über die durchschnittliche Körpergröße zu erhalten.\nÄhnliche Messungen werden auch in Großbritannien, den Niederlanden, den skandinavischen Ländern, Frankreich und den USA vorgenommen. Mehr als zwei Millionen Euro wollen die Modefirmen dafür investieren, das Ergebnis lohnt sich aber für sie auf jeden Fall.\nAls Kundinnen und Kunden dürfen wir uns außerdem darauf freuen, ......(9)...... sich als Nebenprodukt der Körpervermessung in den verschiedenen Ländern die Modefirmen vielleicht endlich dafür entscheiden, weltweit gleiche Nummern für gleiche Größen einzuführen. Dann ist ein Kleidungsstück mit der Nummer 36 überall ......(10)...... groß, ob in Nord- oder Südeuropa, in Amerika oder Asien.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["als", "da", "darüber", "darum", "das", "dass", "gleich", "habe", "ins", "kam", "nur", "sollen", "sondern", "sowie", "weder"],
+      "correct": "darüber",
+      "memoryHighlight": {
+        "before": "schon einmal",
+        "connector": "darüber",
+        "after": "aufgeregt, dass",
+        "color": 5
+      }
+    },
+    {
+      "id": 2,
+      "options": ["als", "da", "darüber", "darum", "das", "dass", "gleich", "habe", "ins", "kam", "nur", "sollen", "sondern", "sowie", "weder"],
+      "correct": "nur",
+      "memoryHighlight": {
+        "before": "gibt es",
+        "connector": "nur",
+        "after": "noch in",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["als", "da", "darüber", "darum", "das", "dass", "gleich", "habe", "ins", "kam", "nur", "sollen", "sondern", "sowie", "weder"],
+      "correct": "kam",
+      "memoryHighlight": {
+        "before": "Hohenstein",
+        "connector": "kam",
+        "after": "nun zu",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["als", "da", "darüber", "darum", "das", "dass", "gleich", "habe", "ins", "kam", "nur", "sollen", "sondern", "sowie", "weder"],
+      "correct": "weder",
+      "memoryHighlight": {
+        "before": "offenbar",
+        "connector": "weder",
+        "after": "den Kundinnen",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["als", "da", "darüber", "darum", "das", "dass", "gleich", "habe", "ins", "kam", "nur", "sollen", "sondern", "sowie", "weder"],
+      "correct": "habe",
+      "memoryHighlight": {
+        "before": "Arme",
+        "connector": "habe",
+        "after": "zugenommen, besonders",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["als", "da", "darüber", "darum", "das", "dass", "gleich", "habe", "ins", "kam", "nur", "sollen", "sondern", "sowie", "weder"],
+      "correct": "da",
+      "memoryHighlight": {
+        "before": "zugelegt.",
+        "connector": "da",
+        "after": "man natürlich",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["als", "da", "darüber", "darum", "das", "dass", "gleich", "habe", "ins", "kam", "nur", "sollen", "sondern", "sowie", "weder"],
+      "correct": "das",
+      "memoryHighlight": {
+        "before": "entwickelt,",
+        "connector": "das",
+        "after": "Männer und",
+        "color": 4
+      }
+    },
+    {
+      "id": 8,
+      "options": ["als", "da", "darüber", "darum", "das", "dass", "gleich", "habe", "ins", "kam", "nur", "sollen", "sondern", "sowie", "weder"],
+      "correct": "sollen",
+      "memoryHighlight": {
+        "before": "Bilder",
+        "connector": "sollen",
+        "after": "es ermöglichen",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["als", "da", "darüber", "darum", "das", "dass", "gleich", "habe", "ins", "kam", "nur", "sollen", "sondern", "sowie", "weder"],
+      "correct": "dass",
+      "memoryHighlight": {
+        "before": "freuen,",
+        "connector": "dass",
+        "after": "sich als",
+        "color": 2
+      }
+    },
+    {
+      "id": 10,
+      "options": ["als", "da", "darüber", "darum", "das", "dass", "gleich", "habe", "ins", "kam", "nur", "sollen", "sondern", "sowie", "weder"],
+      "correct": "gleich",
+      "memoryHighlight": {
+        "before": "überall",
+        "connector": "gleich",
+        "after": "groß, ob",
+        "color": 6
+      }
+    }
+  ],
+  "allOptions": ["als", "da", "darüber", "darum", "das", "dass", "gleich", "habe", "ins", "kam", "nur", "sollen", "sondern", "sowie", "weder"]
+}

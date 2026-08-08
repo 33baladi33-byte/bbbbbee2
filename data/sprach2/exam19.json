@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 19: Die wichtigsten Regeln auf der Skipiste",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Wer beim Skifahren fahrlässig einen anderen Sportler verletzt oder gefährdet, muss auch mit rechtlichen Folgen  .__( 1 )__. Das Strafgesetzbuch ist sowohl auf der Straße als auch auf der Piste  .__( 2 )__.. Laut Gesetz gibt es Freiheitsstrafen bis zu 3 Monaten oder eine entsprechende Geldstrafe. Bei schwerer Körperverletzung sieht das Gesetz Freiheitsstrafen bis zu 6 Monaten  .__( 3 )__.. Der deutsche Skiverband hat eine Pistenordnung erarbeitet, die bei gerichtlichen Entscheidungen angewandt wird. Jeder Wintersportler  .__( 4 )__.. diese Regeln kennen:\nJeder Skifahrer muss sich stets  .__( 5 )__.. verhalten, dass er keinen anderen gefährdet oder schädigt. Er muss die Zeichen und Hinweisschilder an der Piste kennen und beachten. Er muss die eigene Geschwindigkeit und Fahrweise seinem Können und dem Gelände sowie den herrschenden Wetterverhältnissen  .__( 6 )__..\nEin von hinten kommender Skifahrer muss seine Fahrspur so wählen, dass er vor ihm fahrende Skifahrer nicht gefährdet. Überholen darf man rechts oder links,  .__( 7 )__.. immer in einem Abstand, der dem überholten Skifahrer genug Raum für seine Bewegungen lässt. Aufsteigende Skifahrer dürfen nur den  .__( 8 )__.. der Abfahrtstrecke benutzen. Dasselbe gilt für einen Skifahrer, der zu Fuß absteigt. Bei schlechten Sichtverhältnissen ist die Benutzung des Pistenrands verboten und der Skifahrer muss diesen verlassen. Niemand sollte sich an unübersichtlichen oder engen Stellen aufhalten. Gestürzte Skifahrer müssen eine solche  .__( 9 )__.. so schnell wie möglich freimachen. Bei Unfällen ist jeder zur Hilfeleistung verpflichtet. Jeder Zeuge oder Verantwortliche muss bei einem Unfall außerdem seine Personalien  .__( 10 )__.\nDurch Beachtung dieser Regeln ist die Sicherheit auf den Pisten deutlich gestiegen.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["zwar", "vor", "stelle", "sollte", "so", "rechnen", "rand", "kann", "gültig", "gelten", "einordnen", "darf", "anpassen", "angeben", "allerdings"],
+      "correct": "rechnen",
+      "memoryHighlight": {
+        "before": "Folgen",
+        "connector": "rechnen",
+        "after": ". Das Strafgesetzbuch",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["zwar", "vor", "stelle", "sollte", "so", "rechnen", "rand", "kann", "gültig", "gelten", "einordnen", "darf", "anpassen", "angeben", "allerdings"],
+      "correct": "gültig",
+      "memoryHighlight": {
+        "before": "Piste",
+        "connector": "gültig",
+        "after": ". Laut Gesetz",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["zwar", "vor", "stelle", "sollte", "so", "rechnen", "rand", "kann", "gültig", "gelten", "einordnen", "darf", "anpassen", "angeben", "allerdings"],
+      "correct": "vor",
+      "memoryHighlight": {
+        "before": "Monaten",
+        "connector": "vor",
+        "after": ". Der deutsche",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["zwar", "vor", "stelle", "sollte", "so", "rechnen", "rand", "kann", "gültig", "gelten", "einordnen", "darf", "anpassen", "angeben", "allerdings"],
+      "correct": "sollte",
+      "memoryHighlight": {
+        "before": "Wintersportler",
+        "connector": "sollte",
+        "after": "diese Regeln",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["zwar", "vor", "stelle", "sollte", "so", "rechnen", "rand", "kann", "gültig", "gelten", "einordnen", "darf", "anpassen", "angeben", "allerdings"],
+      "correct": "so",
+      "memoryHighlight": {
+        "before": "sich stets",
+        "connector": "so",
+        "after": "verhalten, dass",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["zwar", "vor", "stelle", "sollte", "so", "rechnen", "rand", "kann", "gültig", "gelten", "einordnen", "darf", "anpassen", "angeben", "allerdings"],
+      "correct": "anpassen",
+      "memoryHighlight": {
+        "before": "Wetterverhältnissen",
+        "connector": "anpassen",
+        "after": ". Ein von",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["zwar", "vor", "stelle", "sollte", "so", "rechnen", "rand", "kann", "gültig", "gelten", "einordnen", "darf", "anpassen", "angeben", "allerdings"],
+      "correct": "allerdings",
+      "memoryHighlight": {
+        "before": "oder links,",
+        "connector": "allerdings",
+        "after": "immer in",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["zwar", "vor", "stelle", "sollte", "so", "rechnen", "rand", "kann", "gültig", "gelten", "einordnen", "darf", "anpassen", "angeben", "allerdings"],
+      "correct": "rand",
+      "memoryHighlight": {
+        "before": "nur den",
+        "connector": "rand",
+        "after": "der Abfahrtstrecke",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["zwar", "vor", "stelle", "sollte", "so", "rechnen", "rand", "kann", "gültig", "gelten", "einordnen", "darf", "anpassen", "angeben", "allerdings"],
+      "correct": "stelle",
+      "memoryHighlight": {
+        "before": "solche",
+        "connector": "stelle",
+        "after": "so schnell",
+        "color": 2
+      }
+    },
+    {
+      "id": 10,
+      "options": ["zwar", "vor", "stelle", "sollte", "so", "rechnen", "rand", "kann", "gültig", "gelten", "einordnen", "darf", "anpassen", "angeben", "allerdings"],
+      "correct": "angeben",
+      "memoryHighlight": {
+        "before": "Personalien",
+        "connector": "angeben",
+        "after": ". Durch Beachtung",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["zwar", "vor", "stelle", "sollte", "so", "rechnen", "rand", "kann", "gültig", "gelten", "einordnen", "darf", "anpassen", "angeben", "allerdings"]
+}

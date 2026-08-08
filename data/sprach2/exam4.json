@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 4: Jugend diskutiert - mach mit!",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Den Wettbewerb \"Jugend diskutiert\" gibt es bereits  .__( 1 )__. Herbst 2002. Für das kommende Jahr werden nun wieder Schülerinnen und Schüler gesucht, die an dem Wettbewerb teilnehmen möchten.  .__( 2 )__. immer bereiten sich die Teilnehmer dann im Unterricht auf \"Jugend diskutiert\" vor.\nDu fragst dich,  .__( 3 )__. du teilnehmen solltest? Ganz einfach: \"Jugend diskutiert\" bringt dich weiter! Sich einmischen, mitreden, überzeugen - bei der Vorbereitung im Unterricht trainierst du viele Fähigkeiten, die dir in der Schule und im Alltag helfen. Im Austausch mit den anderen entwickelst du deine Persönlichkeit weiter und profitierst langfristig.  .__( 4 )__. bietet dir \"Jugend diskutiert\" die Chance, im Wettstreit mit anderen weiterzukommen. Zuerst werden die besten einer Schule ermittelt, die dann  .__( 5 )__. Regionalwettbewerben teilnehmen. Die Sieger der Regionalwettbewerbe treten im Bundesfinale an.  .__( 6 )__. Preise kann man professionelle Trainings gewinnen.\n .__( 7 )__. \"Jugend diskutiert\" kannst du viel lernen. Du hast bessere Chancen im Unterricht und bei Referaten, denn du trainierst, frei zu sprechen und Dinge anschaulich und verständlich zu beschreiben. Du gewinnst mehr Selbstbewusstsein,  .__( 8 )__. du lernst, wie man das Wort ergreift und auf sich aufmerksam macht. Du kannst überzeugen, da du eigene Argumente finden und die Argumente anderer genau prüfen kannst. Die Sichtweisen der anderen zeigen dir darüber hinaus,  .__( 9 )__. du vielleicht selbst noch nicht gesehen hast. Du überzeugst bei Auftritten, Prüfungen und Bewerbungen, da du sicher auftrittst.\n .__( 10 )__. das alles im Unterricht gelernt hat, kann gemeinsam mit anderen viel bewegen! Schließlich ist der Wettbewerb \"Jugend diskutiert\" auch eine Chance, Jugendliche aus ganz Deutschland kennenzulernen und neue Freundschaften zu knüpfen.\nWeitere Informationen zu Anmeldung und Teilnahme gibt es im Internet.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["als", "an", "ausserdem", "bei", "darunter", "die", "nachdem", "obwohl", "seit", "vor", "warum", "was", "weil", "wer", "wie"],
+      "correct": "seit",
+      "memoryHighlight": {
+        "before": "bereits",
+        "connector": "seit",
+        "after": "Herbst 2002",
+        "color": 7
+      }
+    },
+    {
+      "id": 2,
+      "options": ["als", "an", "ausserdem", "bei", "darunter", "die", "nachdem", "obwohl", "seit", "vor", "warum", "was", "weil", "wer", "wie"],
+      "correct": "wie",
+      "memoryHighlight": {
+        "before": "vor.",
+        "connector": "wie",
+        "after": "immer bereiten",
+        "color": 2
+      }
+    },
+    {
+      "id": 3,
+      "options": ["als", "an", "ausserdem", "bei", "darunter", "die", "nachdem", "obwohl", "seit", "vor", "warum", "was", "weil", "wer", "wie"],
+      "correct": "warum",
+      "memoryHighlight": {
+        "before": "dich,",
+        "connector": "warum",
+        "after": "du teilnehmen",
+        "color": 9
+      }
+    },
+    {
+      "id": 4,
+      "options": ["als", "an", "ausserdem", "bei", "darunter", "die", "nachdem", "obwohl", "seit", "vor", "warum", "was", "weil", "wer", "wie"],
+      "correct": "ausserdem",
+      "memoryHighlight": {
+        "before": "langfristig.",
+        "connector": "ausserdem",
+        "after": "bietet dir",
+        "color": 4
+      }
+    },
+    {
+      "id": 5,
+      "options": ["als", "an", "ausserdem", "bei", "darunter", "die", "nachdem", "obwohl", "seit", "vor", "warum", "was", "weil", "wer", "wie"],
+      "correct": "an",
+      "memoryHighlight": {
+        "before": "dann",
+        "connector": "an",
+        "after": "Regionalwettbewerben teilnehmen",
+        "color": 11
+      }
+    },
+    {
+      "id": 6,
+      "options": ["als", "an", "ausserdem", "bei", "darunter", "die", "nachdem", "obwohl", "seit", "vor", "warum", "was", "weil", "wer", "wie"],
+      "correct": "als",
+      "memoryHighlight": {
+        "before": "an.",
+        "connector": "als",
+        "after": "Preise kann",
+        "color": 0
+      }
+    },
+    {
+      "id": 7,
+      "options": ["als", "an", "ausserdem", "bei", "darunter", "die", "nachdem", "obwohl", "seit", "vor", "warum", "was", "weil", "wer", "wie"],
+      "correct": "bei",
+      "memoryHighlight": {
+        "before": "gewinnen.",
+        "connector": "bei",
+        "after": "\"Jugend diskutiert\"",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["als", "an", "ausserdem", "bei", "darunter", "die", "nachdem", "obwohl", "seit", "vor", "warum", "was", "weil", "wer", "wie"],
+      "correct": "weil",
+      "memoryHighlight": {
+        "before": "Selbstbewusstsein,",
+        "connector": "weil",
+        "after": "du lernst",
+        "color": 3
+      }
+    },
+    {
+      "id": 9,
+      "options": ["als", "an", "ausserdem", "bei", "darunter", "die", "nachdem", "obwohl", "seit", "vor", "warum", "was", "weil", "wer", "wie"],
+      "correct": "was",
+      "memoryHighlight": {
+        "before": "hinaus,",
+        "connector": "was",
+        "after": "du vielleicht",
+        "color": 8
+      }
+    },
+    {
+      "id": 10,
+      "options": ["als", "an", "ausserdem", "bei", "darunter", "die", "nachdem", "obwohl", "seit", "vor", "warum", "was", "weil", "wer", "wie"],
+      "correct": "wer",
+      "memoryHighlight": {
+        "before": "auftrittst.",
+        "connector": "wer",
+        "after": "das alles",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["als", "an", "ausserdem", "bei", "darunter", "die", "nachdem", "obwohl", "seit", "vor", "warum", "was", "weil", "wer", "wie"]
+}

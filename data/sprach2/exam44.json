@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 44: Die Katzen",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Sitz, Platz, Pfötchen geben: Nur die wenigsten Katzen befolgen Kommandos. Dabei sind sie durchaus in der ......(1)......., ihren Namen aus anderen Wörtern herauszuhören, berichtet ein japanisches Forschungsteam im Fachblatt \"Scientific Reports\". Nach eigenen ......(2)....... haben sie den ersten experimentellen Nachweis geliefert, dass Katzen Laute von Menschen verstehen können. Erst als ihnen ihr eigener Name vorgespielt wurde, zeigten die meisten Versuchstiere eine Reaktion. Sie bewegten beispielsweise ihre Ohren oder drehten den Kopf. Der Effekt war auch zu beobachten, wenn nicht der Katzenbesitzer selbst zu seinem Tier sprach, ......(3)....... eine fremde Person. Lebten mehrere Katzen in einem Haushalt, konnten einige Katzen ihren Namen von ......(4)....... ihrer Artgenossen unterscheiden. Die Forscher hatten das ......(5)....... von 78 Katzen untersucht. ......(6)....... spielten sie den Tieren vier japanische Wörter vom Band vor, die ähnlich klangen wie der Name der Katze. Dabei nahm die Aufmerksamkeit der Katzen immer ......(7)....... ab. Doch wenn die Tiere ihren Namen und einzelne Gesten verstehen, warum ist es ......(8)....... schwierig, ihnen Tricks beizubringen? Laut Turner sei dies durchaus möglich, allerdings verlören die meisten Halter schnell die Geduld. Biologe Dennis Turner hält die japanische Studie für 'seriös durchgeführt'. Die Ergebnisse aus Japan seien sicher auch auf deutsche Katzen übertragbar, so Turner. \"Ich bin von dem Ergebnis allerdings nicht überrascht. Katzen sind sehr intelligente und lernfähige Tiere - ......(9)....... sie bereit sind mitzumachen\", sagt Turner, der nicht an der Studie beteiligt war. Aus vorherigen Untersuchungen ist ......(10)......., dass Katzen es verstehen, wenn Menschen mit dem Finger den Weg zum Fressnapf zeigen. Zudem ändern zumindest einige Katzen ihr Verhalten, je nachdem, ob ihr Herrchen grimmig oder fröhlich schaute.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["angaben", "bekannt", "bloß", "da", "dagegen", "denen", "lage", "obwohl", "sofern", "sondern", "verhalten", "weil", "weiter", "ziel", "zunächst"],
+      "correct": "lage",
+      "memoryHighlight": {
+        "before": "der",
+        "connector": "lage",
+        "after": ", ihren Namen",
+        "color": 3
+      }
+    },
+    {
+      "id": 2,
+      "options": ["angaben", "bekannt", "bloß", "da", "dagegen", "denen", "lage", "obwohl", "sofern", "sondern", "verhalten", "weil", "weiter", "ziel", "zunächst"],
+      "correct": "angaben",
+      "memoryHighlight": {
+        "before": "eigenen",
+        "connector": "angaben",
+        "after": "haben sie",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["angaben", "bekannt", "bloß", "da", "dagegen", "denen", "lage", "obwohl", "sofern", "sondern", "verhalten", "weil", "weiter", "ziel", "zunächst"],
+      "correct": "sondern",
+      "memoryHighlight": {
+        "before": "sprach,",
+        "connector": "sondern",
+        "after": "eine fremde",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["angaben", "bekannt", "bloß", "da", "dagegen", "denen", "lage", "obwohl", "sofern", "sondern", "verhalten", "weil", "weiter", "ziel", "zunächst"],
+      "correct": "denen",
+      "memoryHighlight": {
+        "before": "von",
+        "connector": "denen",
+        "after": "ihrer Artgenossen",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["angaben", "bekannt", "bloß", "da", "dagegen", "denen", "lage", "obwohl", "sofern", "sondern", "verhalten", "weil", "weiter", "ziel", "zunächst"],
+      "correct": "verhalten",
+      "memoryHighlight": {
+        "before": "das",
+        "connector": "verhalten",
+        "after": "von 78",
+        "color": 11
+      }
+    },
+    {
+      "id": 6,
+      "options": ["angaben", "bekannt", "bloß", "da", "dagegen", "denen", "lage", "obwohl", "sofern", "sondern", "verhalten", "weil", "weiter", "ziel", "zunächst"],
+      "correct": "zunächst",
+      "memoryHighlight": {
+        "before": "untersucht.",
+        "connector": "zunächst",
+        "after": "spielten sie",
+        "color": 4
+      }
+    },
+    {
+      "id": 7,
+      "options": ["angaben", "bekannt", "bloß", "da", "dagegen", "denen", "lage", "obwohl", "sofern", "sondern", "verhalten", "weil", "weiter", "ziel", "zunächst"],
+      "correct": "weiter",
+      "memoryHighlight": {
+        "before": "immer",
+        "connector": "weiter",
+        "after": "ab. Doch",
+        "color": 8
+      }
+    },
+    {
+      "id": 8,
+      "options": ["angaben", "bekannt", "bloß", "da", "dagegen", "denen", "lage", "obwohl", "sofern", "sondern", "verhalten", "weil", "weiter", "ziel", "zunächst"],
+      "correct": "bloß",
+      "memoryHighlight": {
+        "before": "ist es",
+        "connector": "bloß",
+        "after": "schwierig, ihnen",
+        "color": 2
+      }
+    },
+    {
+      "id": 9,
+      "options": ["angaben", "bekannt", "bloß", "da", "dagegen", "denen", "lage", "obwohl", "sofern", "sondern", "verhalten", "weil", "weiter", "ziel", "zunächst"],
+      "correct": "sofern",
+      "memoryHighlight": {
+        "before": "-",
+        "connector": "sofern",
+        "after": "sie bereit",
+        "color": 6
+      }
+    },
+    {
+      "id": 10,
+      "options": ["angaben", "bekannt", "bloß", "da", "dagegen", "denen", "lage", "obwohl", "sofern", "sondern", "verhalten", "weil", "weiter", "ziel", "zunächst"],
+      "correct": "bekannt",
+      "memoryHighlight": {
+        "before": "ist",
+        "connector": "bekannt",
+        "after": ", dass Katzen",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["angaben", "bekannt", "bloß", "da", "dagegen", "denen", "lage", "obwohl", "sofern", "sondern", "verhalten", "weil", "weiter", "ziel", "zunächst"]
+}

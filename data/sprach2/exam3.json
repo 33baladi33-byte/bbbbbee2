@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 3: Man(n) kocht selbst",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Selbst ist der Mann. Von der Wahrheit dieser alten deutschen Redewendung haben Frauen Generationen lang geträumt, wenn es um typische Hausarbeiten wie Waschen, Putzen oder Kochen ging. Zumindest bei Letzterem scheint sich jedoch in der letzten Jahren vieles zu ändern.  .__( 1 )__. , immer mehr Männer in Deutschland greifen jetzt selbst zum Kochtopf. Ein Grund  .__( 2 )__. diese Entwicklung mag sein, dass es immer mehr Ein-Personen-Haushalte in Deutschland gibt. Es ist einfach niemand anderes da, der die Kocharbeit übernehmen könnte. Und Hunger zwingt bekanntlich zum Handeln. Andererseits ist das Kochen inzwischen ein allgemein akzeptiertes Hobby geworden, besonders unter Männern. Doch welch ein Unterschied besteht  .__( 3 )__. den Ansprüchen einer traditionellen Hausfrau und denen eines Hobbykochs, was die Ausstattung der Küche angeht! Nicht  .__( 4 )__. Topf darf es für den selbsternannten Drei-Sterne-Küchenchef sein: Gebürsteter Edelstahl mit versiegelter Antihaftbeschichtung und integrierter digitaler Temperaturanzeige ist der Mindeststandard für einen echten kochenden Mann. Alles andere gilt als stillos.\nDie zweite Voraussetzung  .__( 5 )__. , dass die Gerichte auch gelingen, ist das Wissen, wie man welche Speise am besten zubereitet. Zu diesem Zweck bieten die Buchhandlungen Berge von Kochbüchern an - mit Rezepten von Alaska bis Zimbabwe, mit oder ohne Fleisch, für zu Dicke und zu Dünne. Jetzt hängt es nur noch  .__( 6 )__. ab, was der Hobbykoch aus den Kochideen der Buchautoren macht. Wird es ein exzellentes Mahl oder wäre unser \"Chefkoch\" nicht doch lieber zum Dönerstand um die Ecke gegangen? Überraschungen gehören zum Kochen dazu. Helfen die Bücher nicht  .__( 7 )__. , bieten zum Beispiel die Volkshochschulen zahlreiche Kochkurse an, die in der Regel - zumeist von kochwilligen Männern - gut besucht sind. Das Kursangebot umfasst neben deutscher Hausmannskost wie Schnitzel, Krautwickel oder Rinderbraten zumeist auch die mediterrane und die asiatische Küche. Das führt  .__( 8 )__. , dass man(n) zu Hause immer öfter international kocht.\nDas größte Problem der Hobbyköche ist aber,  .__( 9 )__. es viel zu aufwändig ist, für sich alleine zu kochen. Daher sind zurzeit Internetseiten wie www.allein-kochen-ist-doof.de beliebt, wo sich Hobbyköche und -köchinnen Kochpartner für das gemeinsame Kochen und Essen suchen können. Das Interessante  .__( 10 )__. ist, dass dabei unsere männlichen Chefköche feststellen müssen, dass es andere Menschen gibt, die mit vielleicht weniger Aufwand genauso gut ein Festmahl zubereiten können wie sie: nämlich die Frauen.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["dafür", "daher", "damit", "daran", "dass", "davon", "dazu", "denn", "für", "gegen", "irgendein", "was", "weiter", "zu", "zwischen"],
+      "correct": "denn",
+      "memoryHighlight": {
+        "before": "ändern.",
+        "connector": "denn",
+        "after": "immer mehr",
+        "color": 3
+      }
+    },
+    {
+      "id": 2,
+      "options": ["dafür", "daher", "damit", "daran", "dass", "davon", "dazu", "denn", "für", "gegen", "irgendein", "was", "weiter", "zu", "zwischen"],
+      "correct": "für",
+      "memoryHighlight": {
+        "before": "Grund",
+        "connector": "für",
+        "after": "diese Entwicklung",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["dafür", "daher", "damit", "daran", "dass", "davon", "dazu", "denn", "für", "gegen", "irgendein", "was", "weiter", "zu", "zwischen"],
+      "correct": "zwischen",
+      "memoryHighlight": {
+        "before": "besteht",
+        "connector": "zwischen",
+        "after": "den Ansprüchen",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["dafür", "daher", "damit", "daran", "dass", "davon", "dazu", "denn", "für", "gegen", "irgendein", "was", "weiter", "zu", "zwischen"],
+      "correct": "irgendein",
+      "memoryHighlight": {
+        "before": "Nicht",
+        "connector": "irgendein",
+        "after": "Topf darf",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["dafür", "daher", "damit", "daran", "dass", "davon", "dazu", "denn", "für", "gegen", "irgendein", "was", "weiter", "zu", "zwischen"],
+      "correct": "dafür",
+      "memoryHighlight": {
+        "before": "Voraussetzung",
+        "connector": "dafür",
+        "after": ", dass die",
+        "color": 11
+      }
+    },
+    {
+      "id": 6,
+      "options": ["dafür", "daher", "damit", "daran", "dass", "davon", "dazu", "denn", "für", "gegen", "irgendein", "was", "weiter", "zu", "zwischen"],
+      "correct": "davon",
+      "memoryHighlight": {
+        "before": "nur noch",
+        "connector": "davon",
+        "after": "ab, was",
+        "color": 4
+      }
+    },
+    {
+      "id": 7,
+      "options": ["dafür", "daher", "damit", "daran", "dass", "davon", "dazu", "denn", "für", "gegen", "irgendein", "was", "weiter", "zu", "zwischen"],
+      "correct": "weiter",
+      "memoryHighlight": {
+        "before": "nicht",
+        "connector": "weiter",
+        "after": ", bieten zum",
+        "color": 8
+      }
+    },
+    {
+      "id": 8,
+      "options": ["dafür", "daher", "damit", "daran", "dass", "davon", "dazu", "denn", "für", "gegen", "irgendein", "was", "weiter", "zu", "zwischen"],
+      "correct": "dazu",
+      "memoryHighlight": {
+        "before": "führt",
+        "connector": "dazu",
+        "after": ", dass man(n)",
+        "color": 2
+      }
+    },
+    {
+      "id": 9,
+      "options": ["dafür", "daher", "damit", "daran", "dass", "davon", "dazu", "denn", "für", "gegen", "irgendein", "was", "weiter", "zu", "zwischen"],
+      "correct": "dass",
+      "memoryHighlight": {
+        "before": "aber,",
+        "connector": "dass",
+        "after": "es viel",
+        "color": 6
+      }
+    },
+    {
+      "id": 10,
+      "options": ["dafür", "daher", "damit", "daran", "dass", "davon", "dazu", "denn", "für", "gegen", "irgendein", "was", "weiter", "zu", "zwischen"],
+      "correct": "daran",
+      "memoryHighlight": {
+        "before": "Interessante",
+        "connector": "daran",
+        "after": "ist, dass",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["dafür", "daher", "damit", "daran", "dass", "davon", "dazu", "denn", "für", "gegen", "irgendein", "was", "weiter", "zu", "zwischen"]
+}

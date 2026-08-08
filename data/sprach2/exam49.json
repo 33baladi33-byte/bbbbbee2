@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 49: Theater für Kinder und Jugendliche (المعدل 2)",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Theater fördert nicht nur die Kreativität, __( 1 )__ auch die Körpererfahrung von Kindern. Der Verein \"Jugendhilfe Düsseldorf e. V.\" arbeitet __( 2 )__ vielen Jahren in der Jugendförderung, und deshalb unterstützt er auch ein neues Theaterprojekt für Kinder. Üben und spielen werden die Teilnehmer im Jugendzentrum. Das Jugendzentrum ist eine Einrichtung des städtischen Jugendamtes und kümmert sich um Kinder, Jugendliche und junge Volljährige, die wegen familiärer und anderer Probleme Hilfe __( 3 )__ .\nBis zu zwanzig Mädchen und Jungen __( 4 )__ ab dem kommenden Jahr die Welt des Theaters kennenlernen. __( 5 )__ Ende des Projekts werden die Nachwuchsschauspieler bei einem Theaterfestival auftreten, was sicher ein Höhepunkt für alle Teilnehmer sein wird.\nGeleitet wird die Gruppe vom Schauspieler Wolfgang Neuhausen. Er arbeitet mit dem Jugendzentrum zusammen und wird von zwei Theaterpädagogen unterstützt. Allen Mitarbeitern ist __( 6 )__ wichtig, dass die Kinder auf der Bühne Anerkennung für ihre Leistung bekommen. Ohne die finanzielle Unterstützung wäre das Vorhaben unmöglich, __( 7 )__ bei der Stadt keine Gelder vorhanden waren.\nDieses Theaterprojekt ist nicht das erste, das gefördert wird. Im vergangenen Jahr erhielt das Theaterprojekt \"Schiller - das wilde, freie Leben\" finanzielle Unterstützung. Allerdings ist nicht nur Geld wichtig: Der Verein kümmert sich auch darum, die Projekte __( 8 )__ zu machen. In verschiedenen Theaterhäusern der Stadt werden Plakate aufgehängt, mit denen der Verein für das Jugendtheater wirbt. Man hofft, __( 9 )__ diese Weise noch mehr Unterstützer zu finden.\nAuch unsere Leser können die Jugendlichen unterstützen: Aktuell sammelt das Jugendzentrum Spenden, __( 10 )__ weitere Projekte finanzieren zu können. Außerdem werden für die Theaterproben und die Aufführungen noch ehrenamtliche Helfer gesucht.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["aber", "am", "am", "auf", "bekannt", "brauchen", "da", "es", "für", "mit", "noch", "seit", "sondern", "um", "von", "werden"],
+      "correct": "sondern",
+      "memoryHighlight": {
+        "before": "nur die",
+        "connector": "sondern",
+        "after": "auch die",
+        "color": 3
+      }
+    },
+    {
+      "id": 2,
+      "options": ["aber", "am", "am", "auf", "bekannt", "brauchen", "da", "es", "für", "mit", "noch", "seit", "sondern", "um", "von", "werden"],
+      "correct": "seit",
+      "memoryHighlight": {
+        "before": "arbeitet",
+        "connector": "seit",
+        "after": "vielen Jahren",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["aber", "am", "am", "auf", "bekannt", "brauchen", "da", "es", "für", "mit", "noch", "seit", "sondern", "um", "von", "werden"],
+      "correct": "brauchen",
+      "memoryHighlight": {
+        "before": "Hilfe",
+        "connector": "brauchen",
+        "after": ". Bis zu",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["aber", "am", "am", "auf", "bekannt", "brauchen", "da", "es", "für", "mit", "noch", "seit", "sondern", "um", "von", "werden"],
+      "correct": "werden",
+      "memoryHighlight": {
+        "before": "Jungen",
+        "connector": "werden",
+        "after": "ab dem",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["aber", "am", "am", "auf", "bekannt", "brauchen", "da", "es", "für", "mit", "noch", "seit", "sondern", "um", "von", "werden"],
+      "correct": "am",
+      "memoryHighlight": {
+        "before": "kennenlernen.",
+        "connector": "am",
+        "after": "Ende des",
+        "color": 11
+      }
+    },
+    {
+      "id": 6,
+      "options": ["aber", "am", "am", "auf", "bekannt", "brauchen", "da", "es", "für", "mit", "noch", "seit", "sondern", "um", "von", "werden"],
+      "correct": "es",
+      "memoryHighlight": {
+        "before": "ist",
+        "connector": "es",
+        "after": "wichtig, dass",
+        "color": 4
+      }
+    },
+    {
+      "id": 7,
+      "options": ["aber", "am", "am", "auf", "bekannt", "brauchen", "da", "es", "für", "mit", "noch", "seit", "sondern", "um", "von", "werden"],
+      "correct": "da",
+      "memoryHighlight": {
+        "before": "unmöglich,",
+        "connector": "da",
+        "after": "bei der",
+        "color": 8
+      }
+    },
+    {
+      "id": 8,
+      "options": ["aber", "am", "am", "auf", "bekannt", "brauchen", "da", "es", "für", "mit", "noch", "seit", "sondern", "um", "von", "werden"],
+      "correct": "bekannt",
+      "memoryHighlight": {
+        "before": "Projekte",
+        "connector": "bekannt",
+        "after": "zu machen",
+        "color": 2
+      }
+    },
+    {
+      "id": 9,
+      "options": ["aber", "am", "am", "auf", "bekannt", "brauchen", "da", "es", "für", "mit", "noch", "seit", "sondern", "um", "von", "werden"],
+      "correct": "auf",
+      "memoryHighlight": {
+        "before": "hofft,",
+        "connector": "auf",
+        "after": "diese Weise",
+        "color": 6
+      }
+    },
+    {
+      "id": 10,
+      "options": ["aber", "am", "am", "auf", "bekannt", "brauchen", "da", "es", "für", "mit", "noch", "seit", "sondern", "um", "von", "werden"],
+      "correct": "um",
+      "memoryHighlight": {
+        "before": "Spenden,",
+        "connector": "um",
+        "after": "weitere Projekte",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["aber", "am", "am", "auf", "bekannt", "brauchen", "da", "es", "für", "mit", "noch", "seit", "sondern", "um", "von", "werden"]
+}

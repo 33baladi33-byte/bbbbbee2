@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 13: Das Schicksal des Braunbären",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Klimatische Veränderungen seit der letzten Kaltzeit könnten für den stetigen Rückgang der Braunbärenzahl in Europa verantwortlich sein. Wie eine aktuelle Studie nahelegt, haben vor allem steigende Wintertemperaturen ......(1)....... der vergangen 12000 Jahre die Fortpflanzungsrate der Tiere verringert, was entscheidend zu deren Verschwinden beigetragen hat. Zudem wurden durch die Klimaveränderung größere Flächen für den Ackerbau nutzbar. ......(2)....... wurde der Lebensraum der Tiere verkleinert. Es ist längst unumstritten, ......(3)....... das Verschwinden der Braunbären mit der Landnutzung durch den Menschen zusammenhängt.\nEin internationales Expertenteam untersuchte nun die Rolle des Klimas beim Rückgang der Bärenzahl. In den letzten Jahren ist Wintertemperatur in weiten Teilen Europas ......(4)....... zwei bis vier Grad angestiegen. In der Folge bekamen die Braunbären weniger ......(5)......., und ihre Zahl schrumpfte. Der Grund ......(6)....... ist, dass Braunbären bei steigenden Wintertemperaturen mehr Energie für ihre Winterruhe verbrauchen. Braunbärenweibchen benötigen ihre Energiereserven auch für die Fortpflanzung, ......(7)....... sie bringen im Winter ihre Jungen zur Welt. Wird mehr Energie für die Winterruhe verbraucht, bleibt nicht so viel für die Fortpflanzung übrig, und gibt es weniger Nachwuchs. Steigende Wintertemperaturen könnten auch direkt für das Schicksal des Braunbären wichtig gewesen sein. Wärmer Winter begünstigten nämlich auch die menschlichen ......(8)....... in die Naturlandschaften und damit in den Lebensraum der Braunbären.\nAm Ende der letzten Eiszeit war der Braunbär ......(9)....... überall in Europa heimisch. Ein großes Aussterben gab es in Südwesteuropa vor 7000 bis 5000 Jahren. Richtig bergab ......(10)....... es mit dem Braunbären aber vor etwa 2000 Jahren, als sich die Wälder lichteten.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["begriffe", "dadurch", "dafür", "dass", "denn", "eingriffe", "ging", "kam", "nachkommen", "noch", "sodass", "sowie", "um", "vorkommen", "während"],
+      "correct": "während",
+      "memoryHighlight": {
+        "before": "Temperaturen",
+        "connector": "während",
+        "after": "der vergangen",
+        "color": 2
+      }
+    },
+    {
+      "id": 2,
+      "options": ["begriffe", "dadurch", "dafür", "dass", "denn", "eingriffe", "ging", "kam", "nachkommen", "noch", "sodass", "sowie", "um", "vorkommen", "während"],
+      "correct": "dadurch",
+      "memoryHighlight": {
+        "before": "nutzbar.",
+        "connector": "dadurch",
+        "after": "wurde der",
+        "color": 8
+      }
+    },
+    {
+      "id": 3,
+      "options": ["begriffe", "dadurch", "dafür", "dass", "denn", "eingriffe", "ging", "kam", "nachkommen", "noch", "sodass", "sowie", "um", "vorkommen", "während"],
+      "correct": "dass",
+      "memoryHighlight": {
+        "before": "unumstritten,",
+        "connector": "dass",
+        "after": "das Verschwinden",
+        "color": 4
+      }
+    },
+    {
+      "id": 4,
+      "options": ["begriffe", "dadurch", "dafür", "dass", "denn", "eingriffe", "ging", "kam", "nachkommen", "noch", "sodass", "sowie", "um", "vorkommen", "während"],
+      "correct": "um",
+      "memoryHighlight": {
+        "before": "Europas",
+        "connector": "um",
+        "after": "zwei bis",
+        "color": 9
+      }
+    },
+    {
+      "id": 5,
+      "options": ["begriffe", "dadurch", "dafür", "dass", "denn", "eingriffe", "ging", "kam", "nachkommen", "noch", "sodass", "sowie", "um", "vorkommen", "während"],
+      "correct": "nachkommen",
+      "memoryHighlight": {
+        "before": "weniger",
+        "connector": "nachkommen",
+        "after": ", und ihre",
+        "color": 1
+      }
+    },
+    {
+      "id": 6,
+      "options": ["begriffe", "dadurch", "dafür", "dass", "denn", "eingriffe", "ging", "kam", "nachkommen", "noch", "sodass", "sowie", "um", "vorkommen", "während"],
+      "correct": "dafür",
+      "memoryHighlight": {
+        "before": "Grund",
+        "connector": "dafür",
+        "after": "ist, dass",
+        "color": 7
+      }
+    },
+    {
+      "id": 7,
+      "options": ["begriffe", "dadurch", "dafür", "dass", "denn", "eingriffe", "ging", "kam", "nachkommen", "noch", "sodass", "sowie", "um", "vorkommen", "während"],
+      "correct": "denn",
+      "memoryHighlight": {
+        "before": "Fortpflanzung,",
+        "connector": "denn",
+        "after": "sie bringen",
+        "color": 3
+      }
+    },
+    {
+      "id": 8,
+      "options": ["begriffe", "dadurch", "dafür", "dass", "denn", "eingriffe", "ging", "kam", "nachkommen", "noch", "sodass", "sowie", "um", "vorkommen", "während"],
+      "correct": "eingriffe",
+      "memoryHighlight": {
+        "before": "menschlichen",
+        "connector": "eingriffe",
+        "after": "in die",
+        "color": 11
+      }
+    },
+    {
+      "id": 9,
+      "options": ["begriffe", "dadurch", "dafür", "dass", "denn", "eingriffe", "ging", "kam", "nachkommen", "noch", "sodass", "sowie", "um", "vorkommen", "während"],
+      "correct": "noch",
+      "memoryHighlight": {
+        "before": "war",
+        "connector": "noch",
+        "after": "überall in",
+        "color": 6
+      }
+    },
+    {
+      "id": 10,
+      "options": ["begriffe", "dadurch", "dafür", "dass", "denn", "eingriffe", "ging", "kam", "nachkommen", "noch", "sodass", "sowie", "um", "vorkommen", "während"],
+      "correct": "ging",
+      "memoryHighlight": {
+        "before": "bergab",
+        "connector": "ging",
+        "after": "es mit",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["begriffe", "dadurch", "dafür", "dass", "denn", "eingriffe", "ging", "kam", "nachkommen", "noch", "sodass", "sowie", "um", "vorkommen", "während"]
+}

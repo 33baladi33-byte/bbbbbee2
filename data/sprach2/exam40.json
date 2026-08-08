@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 40: Lernen ist kein Privileg der Jugend (معدل)",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Senioren sind heute höchst rege, aktiv und ......(1)...... vielfach die Chance, sich in der sogenannten dritten Lebensphase Wünsche oder Träume zu erfüllen. Dazu gehört oft Weiterbildung oder in der Jugend verpasste Bildung.\nDie Folge: Das Seniorenstudium, wie es an verschiedenen deutschen Universitäten ......(2)...... wird, erfährt eine zunehmende Beliebtheit. Allein in Trier waren im vergangenen Sommersemester über 130 Personen der Altersgruppe 50+ ......(3)...... Gasthörer eingeschrieben und nahmen am regulären Lehrbetrieb teil.\nBesonders gefragt waren allgemeinbildende Veranstaltungen aus den Fächern Geschichte, Kunstgeschichte und Politik. Darauf folgten die neueren Sprach- und Literaturwissenschaften sowie Themen aus Philosophie, Psychologie und Pädagogik. Angebote aus den Sozial-, Wirtschafts- und Rechtswissenschaften wurden ......(4)...... weniger häufig gewählt. Hier finden sich insbesondere solche Seniorstudierende wieder, die gezielt an der Vertiefung ihres fachspezifischen Wissen arbeiten.\nDer größte Teil der studierenden Senioren besteht übrigens aus Frauen. Die Gründe dafür ......(5)...... sein, dass Frauen in ihren jüngeren Lebensjahren häufig auf eine eigene Karriere verzichten. Stattdessen setzen sie sich ......(6)...... die Familie und ihre Kinder ein.\nWenn die Kinder ......(7)...... und aus dem Haus sind, verspüren die Frauen den Wunsch, ihre geistigen Fähigkeiten, deren Einsatz in den Familienjahren häufig zu kurz gekommen war, wieder zu trainieren und zu erweitern.\nMänner hingegen konnten häufiger ......(8)...... ihres Arbeitslebens ihre Karriere verwirklichen, sich weiterbilden, ihr Wissen in gesellschaftlich angesehener Weise an den Mann (weniger an die Frau) bringen. ......(9)...... sehen sie keine Veranlassung, ihren Lebensabend an einer Weiterbildungsinstitution oder gar an einer Universität zu verbringen.\nLernen ist kein Privileg der Jugend! Vielmehr besteht gerade in Bezug auf das Bildungsangebot für ältere Menschen ein riesiger Bedarf. Er wird gespeist aus der Vitalität und der hohen Bildungsmotivation der heutigen „Alten“. Mit der wachsenden Generation 60+ wächst auch das Interesse, neues Wissen zu erwerben, ......(10)...... Kompetenzen zu entwickeln und bisher eventuell vernachlässigte Ressourcen zu aktivieren. Gleichzeitig tragen Bildungsaktivitäten wesentlich dazu bei, dass immer mehr Menschen ihre kognitive Leistungsfähigkeit und psychische Gesundheit bis ins hohe Alter erhalten können.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["als", "angeboten", "dagegen", "daher", "einzige", "erwachsen", "für", "könnten", "nutzen", "während", "auf", "weil", "genommen", "deshalb", "durch"],
+      "correct": "nutzen",
+      "memoryHighlight": {
+        "before": "und",
+        "connector": "nutzen",
+        "after": "vielfach die",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["als", "angeboten", "dagegen", "daher", "einzige", "erwachsen", "für", "könnten", "nutzen", "während", "auf", "weil", "genommen", "deshalb", "durch"],
+      "correct": "angeboten",
+      "memoryHighlight": {
+        "before": "Universitäten",
+        "connector": "angeboten",
+        "after": "wird, erfährt",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["als", "angeboten", "dagegen", "daher", "einzige", "erwachsen", "für", "könnten", "nutzen", "während", "auf", "weil", "genommen", "deshalb", "durch"],
+      "correct": "als",
+      "memoryHighlight": {
+        "before": "50+",
+        "connector": "als",
+        "after": "Gasthörer eingeschrieben",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["als", "angeboten", "dagegen", "daher", "einzige", "erwachsen", "für", "könnten", "nutzen", "während", "auf", "weil", "genommen", "deshalb", "durch"],
+      "correct": "dagegen",
+      "memoryHighlight": {
+        "before": "wurden",
+        "connector": "dagegen",
+        "after": "weniger häufig",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["als", "angeboten", "dagegen", "daher", "einzige", "erwachsen", "für", "könnten", "nutzen", "während", "auf", "weil", "genommen", "deshalb", "durch"],
+      "correct": "könnten",
+      "memoryHighlight": {
+        "before": "dafür",
+        "connector": "könnten",
+        "after": "sein, dass",
+        "color": 11
+      }
+    },
+    {
+      "id": 6,
+      "options": ["als", "angeboten", "dagegen", "daher", "einzige", "erwachsen", "für", "könnten", "nutzen", "während", "auf", "weil", "genommen", "deshalb", "durch"],
+      "correct": "für",
+      "memoryHighlight": {
+        "before": "sich",
+        "connector": "für",
+        "after": "die Familie",
+        "color": 3
+      }
+    },
+    {
+      "id": 7,
+      "options": ["als", "angeboten", "dagegen", "daher", "einzige", "erwachsen", "für", "könnten", "nutzen", "während", "auf", "weil", "genommen", "deshalb", "durch"],
+      "correct": "erwachsen",
+      "memoryHighlight": {
+        "before": "Kinder",
+        "connector": "erwachsen",
+        "after": "und aus",
+        "color": 8
+      }
+    },
+    {
+      "id": 8,
+      "options": ["als", "angeboten", "dagegen", "daher", "einzige", "erwachsen", "für", "könnten", "nutzen", "während", "auf", "weil", "genommen", "deshalb", "durch"],
+      "correct": "während",
+      "memoryHighlight": {
+        "before": "häufiger",
+        "connector": "während",
+        "after": "ihres Arbeitslebens",
+        "color": 2
+      }
+    },
+    {
+      "id": 9,
+      "options": ["als", "angeboten", "dagegen", "daher", "einzige", "erwachsen", "für", "könnten", "nutzen", "während", "auf", "weil", "genommen", "deshalb", "durch"],
+      "correct": "daher",
+      "memoryHighlight": {
+        "before": "bringen.",
+        "connector": "daher",
+        "after": "sehen sie",
+        "color": 6
+      }
+    },
+    {
+      "id": 10,
+      "options": ["als", "angeboten", "dagegen", "daher", "einzige", "erwachsen", "für", "könnten", "nutzen", "während", "auf", "weil", "genommen", "deshalb", "durch"],
+      "correct": "einzige",
+      "memoryHighlight": {
+        "before": "erwerben,",
+        "connector": "einzige",
+        "after": "Kompetenzen zu",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["als", "angeboten", "dagegen", "daher", "einzige", "erwachsen", "für", "könnten", "nutzen", "während", "auf", "weil", "genommen", "deshalb", "durch"]
+}

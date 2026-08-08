@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 18: Der Hund als intelligentes Wesen",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Hunde sind beliebte Begleiter vieler Menschen. Gerade in den Großstädten Deutschlands und Österreichs gibt es eine große Anzahl an Hundebesitzern, die das Tier als Freund, manchmal sogar als Helfer schätzen. Bislang galt die Auffassung, Hunde seien zwar treu, aber  .__( 1 )__. ihre Intelligenz betrifft, eher mit geringen Begabungen ausgestattet. Doch  .__( 2 )__. haben wissenschaftliche Experimente  .__( 3 )__. der Universität Wien und am Max-Planck-Institut in Leipzig die Hundeehre gerettet und bewiesen: Der Hund ist ein außerordentlich intelligentes Lebewesen und kommt in einer Vielzahl von Strategien, die er anwendet, an menschliche Denkmuster durchaus heran.\nFriederike Range von der Universität Wien setzte ihren Hund vor einen Computer. Der Hund sollte  .__( 4 )__. verschiedenen Bildern, von denen jeweils zwei auf dem Monitor zu sehen waren, das richtige auswählen und  .__( 5 )__. entweder einen Menschen oder eine Landschaft erkennen. Der Monitor war mit einem Touchscreen ausgestattet,  .__( 6 )__. der Hund mit der Schnauze auf das jeweils richtige Bild tippen konnte. Lag er richtig, bekam er ein Stück Trockenfutter als Belohnung, lag er falsch, wurde der Bildschirm kurz rot und zeigte gleich im Anschluss das nächste Bilderpaar.\nDas Ergebnis war verblüffend. Der Hund hing  .__( 7 )__. mit einer ähnlichen Begeisterung und Ausdauer am Bildschirm wie manch Jugendlicher an der Playstation, sondern er war auch bei seinen Entscheidungen äußerst treffsicher. Die Leipziger Forscherin Juliane Kaminski setzte ihren Hund vor zwei Gefäße, von  .__( 8 )__. eins Futter enthielt, das andere nicht. Danach schaute sie in die Richtung des Behälters, in dem das Fleischstück lag. Der Hund beobachtete sie dabei und interpretierte die menschliche Mimik richtig.\nDasselbe Experiment mit dem gleichen Ergebnis wurde mit Hundebabys wiederholt. Daraus schließen die Forscher in Leipzig,  .__( 9 )__. bestimmte Muster menschlicher Gestik und Mimik von den Hunden sehr treffsicher interpretiert werden können und diese Fähigkeiten bereits seit langem bei Hunden vorhanden sein müssen. Man kann also mit Recht annehmen, dass die Interpretationsfähigkeit menschlicher Mimik und Gestik bei den Hunden genetisch verankert ist.\nÄhnliche Experimente mit Wölfen, die als die Vorfahren des Haushundes gelten, brachten  .__( 10 )__. vergleichbaren Resultate. Ein weiterer Beweis also dafür, dass der Hund diese Fähigkeiten gelernt und verinnerlicht haben muss.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["an", "aus", "darauf", "das", "eins", "dass", "dem", "denen", "jetzt", "keine", "nicht nur", "so dass", "später", "was", "zu"],
+      "correct": "was",
+      "memoryHighlight": {
+        "before": "treu, aber",
+        "connector": "was",
+        "after": "ihre Intelligenz",
+        "color": 3
+      }
+    },
+    {
+      "id": 2,
+      "options": ["an", "aus", "darauf", "das", "eins", "dass", "dem", "denen", "jetzt", "keine", "nicht nur", "so dass", "später", "was", "zu"],
+      "correct": "jetzt",
+      "memoryHighlight": {
+        "before": "betrifft.",
+        "connector": "jetzt",
+        "after": "haben wissenschaftliche",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["an", "aus", "darauf", "das", "eins", "dass", "dem", "denen", "jetzt", "keine", "nicht nur", "so dass", "später", "was", "zu"],
+      "correct": "an",
+      "memoryHighlight": {
+        "before": "Experimente",
+        "connector": "an",
+        "after": "der Universität",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["an", "aus", "darauf", "das", "eins", "dass", "dem", "denen", "jetzt", "keine", "nicht nur", "so dass", "später", "was", "zu"],
+      "correct": "aus",
+      "memoryHighlight": {
+        "before": "sollte",
+        "connector": "aus",
+        "after": "verschiedenen Bildern",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["an", "aus", "darauf", "das", "eins", "dass", "dem", "denen", "jetzt", "keine", "nicht nur", "so dass", "später", "was", "zu"],
+      "correct": "darauf",
+      "memoryHighlight": {
+        "before": "und",
+        "connector": "darauf",
+        "after": "entweder einen",
+        "color": 11
+      }
+    },
+    {
+      "id": 6,
+      "options": ["an", "aus", "darauf", "das", "eins", "dass", "dem", "denen", "jetzt", "keine", "nicht nur", "so dass", "später", "was", "zu"],
+      "correct": "so dass",
+      "memoryHighlight": {
+        "before": "ausgestattet,",
+        "connector": "so dass",
+        "after": "der Hund",
+        "color": 4
+      }
+    },
+    {
+      "id": 7,
+      "options": ["an", "aus", "darauf", "das", "eins", "dass", "dem", "denen", "jetzt", "keine", "nicht nur", "so dass", "später", "was", "zu"],
+      "correct": "nicht nur",
+      "memoryHighlight": {
+        "before": "hing",
+        "connector": "nicht nur",
+        "after": "mit einer",
+        "color": 8
+      }
+    },
+    {
+      "id": 8,
+      "options": ["an", "aus", "darauf", "das", "eins", "dass", "dem", "denen", "jetzt", "keine", "nicht nur", "so dass", "später", "was", "zu"],
+      "correct": "denen",
+      "memoryHighlight": {
+        "before": "Gefäße, von",
+        "connector": "denen",
+        "after": "eins Futter",
+        "color": 2
+      }
+    },
+    {
+      "id": 9,
+      "options": ["an", "aus", "darauf", "das", "eins", "dass", "dem", "denen", "jetzt", "keine", "nicht nur", "so dass", "später", "was", "zu"],
+      "correct": "dass",
+      "memoryHighlight": {
+        "before": "Leipzig,",
+        "connector": "dass",
+        "after": "bestimmte Muster",
+        "color": 6
+      }
+    },
+    {
+      "id": 10,
+      "options": ["an", "aus", "darauf", "das", "eins", "dass", "dem", "denen", "jetzt", "keine", "nicht nur", "so dass", "später", "was", "zu"],
+      "correct": "keine",
+      "memoryHighlight": {
+        "before": "brachten",
+        "connector": "keine",
+        "after": "vergleichbaren Resultate",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["an", "aus", "darauf", "das", "eins", "dass", "dem", "denen", "jetzt", "keine", "nicht nur", "so dass", "später", "was", "zu"]
+}

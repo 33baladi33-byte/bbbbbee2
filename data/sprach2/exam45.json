@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 45: Teleshopping – nicht immer gut und günstig",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Zu Hause bequem vor dem Fernseher sitzen und einkaufen – das hört sich doch gut an! Gut schon – aber ist es auch günstig?\nDie Stiftung Warentest hat sich im Interesse der Kundinnen und Kunden drei große Anbieter einmal genauer angeschaut: Qualität ......(1)...... enttäuschend, Preise ziemlich hoch, rechtliche Rahmenbedingungen und Service im Wesentlichen in Ordnung, Werbung grell und nervig – so etwa lautet das Fazit, das die Stiftung Warentest zum Thema Teleshopping nach dem Test von drei großen Anbietern ......(2)......\nGenau wie die Stiftung Warentest sind auch die Verbraucherzentralen auf der Seite der Kunden. Die Juristin der sächsischen Verbraucherzentrale, Bettina Dittrich, meint zu der Untersuchung von Stiftung Warentest: „Das deckt sich im Wesentlichen mit den Erfahrungen, die wir ......(3)...... Beschwerdefällen machen“, und ergänzt, „doch nicht immer und überall läuft es damit problemlos.“\nGegenwärtig beschäftigen sie mehrere Beschwerden von Verbrauchern, die bei einem ausländischen Teleshoppinganbieter eingekauft hatten. Da wird für fristgerecht zurückgesandte Waren der Kaufpreis nicht erstattet, ......(4)...... es erfolgt nur eine Gutschrift – und das nicht einmal in voller ......(5)...... Dabei beruft man sich offenbar auf die geltenden Allgemeinen Geschäftsbedingungen. Zumindest werden diese teilweise der Warenlieferung mitgeschickt.\nGanz ......(6)...... davon gilt natürlich deutsches Recht, wenn sich ausländische Unternehmen über deutsche Fernsehkanäle in deutscher Sprache an deutsche Verbraucher ......(7)...... „Teleshoppingkäufe sind im rechtlichen Sinne Fernabsatzverträge, bei denen Verbraucher ein gesetzliches Widerrufs- oder Rückgaberecht von 2 Wochen haben“, sagt die Juristin und ergänzt, „dieses Recht gilt ......(8)...... unbefristet, wenn keine ordnungsgemäße Widerrufs- oder Rückgabebelehrung erfolgt ist.“\nDaher rät die Verbraucherzentrale den Verbrauchern, beim Teleshopping ......(9)...... konsequent ihre Rechte durchzusetzen wie bei anderen Verbraucherverträgen auch. ......(10)...... hilft die Verbraucherzentrale Sachsen mit Tipps und Informationen.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["aber", "abgesehen", "bei", "beschloss", "dabei", "deutlich", "eher", "genauso", "höhe", "nach", "rechnung", "sogar", "sondern", "wenden", "zog"],
+      "correct": "eher",
+      "memoryHighlight": {
+        "before": "Qualität",
+        "connector": "eher",
+        "after": "enttäuschend, Preise",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["aber", "abgesehen", "bei", "beschloss", "dabei", "deutlich", "eher", "genauso", "höhe", "nach", "rechnung", "sogar", "sondern", "wenden", "zog"],
+      "correct": "zog",
+      "memoryHighlight": {
+        "before": "Anbietern",
+        "connector": "zog",
+        "after": "Genau wie",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["aber", "abgesehen", "bei", "beschloss", "dabei", "deutlich", "eher", "genauso", "höhe", "nach", "rechnung", "sogar", "sondern", "wenden", "zog"],
+      "correct": "bei",
+      "memoryHighlight": {
+        "before": "wir",
+        "connector": "bei",
+        "after": "Beschwerdefällen machen",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["aber", "abgesehen", "bei", "beschloss", "dabei", "deutlich", "eher", "genauso", "höhe", "nach", "rechnung", "sogar", "sondern", "wenden", "zog"],
+      "correct": "sondern",
+      "memoryHighlight": {
+        "before": "erstattet,",
+        "connector": "sondern",
+        "after": "es erfolgt",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["aber", "abgesehen", "bei", "beschloss", "dabei", "deutlich", "eher", "genauso", "höhe", "nach", "rechnung", "sogar", "sondern", "wenden", "zog"],
+      "correct": "höhe",
+      "memoryHighlight": {
+        "before": "voller",
+        "connector": "höhe",
+        "after": "Dabei beruft",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["aber", "abgesehen", "bei", "beschloss", "dabei", "deutlich", "eher", "genauso", "höhe", "nach", "rechnung", "sogar", "sondern", "wenden", "zog"],
+      "correct": "abgesehen",
+      "memoryHighlight": {
+        "before": "Ganz",
+        "connector": "abgesehen",
+        "after": "davon gilt",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["aber", "abgesehen", "bei", "beschloss", "dabei", "deutlich", "eher", "genauso", "höhe", "nach", "rechnung", "sogar", "sondern", "wenden", "zog"],
+      "correct": "wenden",
+      "memoryHighlight": {
+        "before": "Verbraucher",
+        "connector": "wenden",
+        "after": "„Teleshoppingkäufe sind",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["aber", "abgesehen", "bei", "beschloss", "dabei", "deutlich", "eher", "genauso", "höhe", "nach", "rechnung", "sogar", "sondern", "wenden", "zog"],
+      "correct": "sogar",
+      "memoryHighlight": {
+        "before": "gilt",
+        "connector": "sogar",
+        "after": "unbefristet, wenn",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["aber", "abgesehen", "bei", "beschloss", "dabei", "deutlich", "eher", "genauso", "höhe", "nach", "rechnung", "sogar", "sondern", "wenden", "zog"],
+      "correct": "genauso",
+      "memoryHighlight": {
+        "before": "Teleshopping",
+        "connector": "genauso",
+        "after": "konsequent ihre",
+        "color": 2
+      }
+    },
+    {
+      "id": 10,
+      "options": ["aber", "abgesehen", "bei", "beschloss", "dabei", "deutlich", "eher", "genauso", "höhe", "nach", "rechnung", "sogar", "sondern", "wenden", "zog"],
+      "correct": "dabei",
+      "memoryHighlight": {
+        "before": "auch.",
+        "connector": "dabei",
+        "after": "hilft die",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["aber", "abgesehen", "bei", "beschloss", "dabei", "deutlich", "eher", "genauso", "höhe", "nach", "rechnung", "sogar", "sondern", "wenden", "zog"]
+}

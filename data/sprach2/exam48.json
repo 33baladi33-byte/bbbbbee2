@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 48: Theaterprojekt für Kinder (المعدل 1)",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Theater fördert nicht nur die Kreativität, __( 1 )__ auch die Körpererfahrung von Kindern. Der Verein „Jugendhilfe Düsseldorf e. V.“ arbeitet __( 2 )__ vielen Jahren in der Jugendförderung, und deshalb unterstützt er auch ein neues Theaterprojekt für Kinder. Üben und spielen werden die Teilnehmer im Jugendzentrum. Das Jugendzentrum ist eine Einrichtung des städtischen Jugendamtes und kümmert sich um Kinder, Jugendliche und junge Volljährige, die __( 3 )__ familiärer und anderer Probleme Hilfe benötigen.\nBis zu zwanzig Mädchen und Jungen werden __( 4 )__ dem kommenden Jahr die Welt des Theaters kennenlernen. Am Ende __( 5 )__ Projekts werden die Nachwuchsschauspieler bei einem Theaterfestival auftreten, was sicher ein Höhepunkt für alle Teilnehmer sein wird.\nGeleitet wird die Gruppe vom Schauspieler __( 6 )__ Neuhausen. Er arbeitet mit dem Jugendzentrum zusammen und wird von zwei Theaterpädagogen unterstützt. Allen Mitarbeitern ist es wichtig, dass die Kinder auf der Bühne Anerkennung für ihre Leistung bekommen. Ohne die finanzielle Unterstützung wäre das Vorhaben unmöglich, da bei der Stadt __( 7 )__ Gelder vorhanden waren.\nDieses Theaterprojekt ist nicht das erste, das gefördert wird. Im vergangenen Jahr erhielt das Theaterprojekt „Schiller – das wilde, freie Leben“ finanzielle Unterstützung. Allerdings ist nicht nur Geld wichtig: Der Verein kümmert sich auch darum, die Projekte bekannt zu machen. In verschiedenen Theaterhäusern der Stadt werden Plakate __( 8 )__ , mit denen der Verein für das Theaterjahr wirbt. Man hofft, __( 9 )__ diese Weise noch mehr Unterstützer zu finden.\nAuch unsere Leser können das Jugendzentrum unterstützen: Aktuell sammelt das Jugendzentrum Spenden, um weitere Projekte finanzieren zu können. Außerdem werden für die Veranstaltungen und die Aufführungen __( 10 )__ ehrenamtliche Helfer gesucht.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["aber", "anstatt", "besonders", "für", "kaum", "mit", "müsste", "ohne", "schon", "so", "sogar", "sollte", "sondern", "um", "von"],
+      "correct": "sondern",
+      "memoryHighlight": {
+        "before": "nur die",
+        "connector": "sondern",
+        "after": "auch die",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["aber", "anstatt", "besonders", "für", "kaum", "mit", "müsste", "ohne", "schon", "so", "sogar", "sollte", "sondern", "um", "von"],
+      "correct": "seit",
+      "memoryHighlight": {
+        "before": "arbeitet",
+        "connector": "seit",
+        "after": "vielen Jahren",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["aber", "anstatt", "besonders", "für", "kaum", "mit", "müsste", "ohne", "schon", "so", "sogar", "sollte", "sondern", "um", "von"],
+      "correct": "wegen",
+      "memoryHighlight": {
+        "before": "die",
+        "connector": "wegen",
+        "after": "familiärer und",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["aber", "anstatt", "besonders", "für", "kaum", "mit", "müsste", "ohne", "schon", "so", "sogar", "sollte", "sondern", "um", "von"],
+      "correct": "ab",
+      "memoryHighlight": {
+        "before": "werden",
+        "connector": "ab",
+        "after": "dem kommenden",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["aber", "anstatt", "besonders", "für", "kaum", "mit", "müsste", "ohne", "schon", "so", "sogar", "sollte", "sondern", "um", "von"],
+      "correct": "des",
+      "memoryHighlight": {
+        "before": "Ende",
+        "connector": "des",
+        "after": "Projekts werden",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["aber", "anstatt", "besonders", "für", "kaum", "mit", "müsste", "ohne", "schon", "so", "sogar", "sollte", "sondern", "um", "von"],
+      "correct": "Wolfgang",
+      "memoryHighlight": {
+        "before": "Schauspieler",
+        "connector": "Wolfgang",
+        "after": "Neuhausen. Er",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["aber", "anstatt", "besonders", "für", "kaum", "mit", "müsste", "ohne", "schon", "so", "sogar", "sollte", "sondern", "um", "von"],
+      "correct": "keine",
+      "memoryHighlight": {
+        "before": "Stadt",
+        "connector": "keine",
+        "after": "Gelder vorhanden",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["aber", "anstatt", "besonders", "für", "kaum", "mit", "müsste", "ohne", "schon", "so", "sogar", "sollte", "sondern", "um", "von"],
+      "correct": "aufgehängt",
+      "memoryHighlight": {
+        "before": "Plakate",
+        "connector": "aufgehängt",
+        "after": ", mit denen",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["aber", "anstatt", "besonders", "für", "kaum", "mit", "müsste", "ohne", "schon", "so", "sogar", "sollte", "sondern", "um", "von"],
+      "correct": "auf",
+      "memoryHighlight": {
+        "before": "hofft,",
+        "connector": "auf",
+        "after": "diese Weise",
+        "color": 2
+      }
+    },
+    {
+      "id": 10,
+      "options": ["aber", "anstatt", "besonders", "für", "kaum", "mit", "müsste", "ohne", "schon", "so", "sogar", "sollte", "sondern", "um", "von"],
+      "correct": "noch",
+      "memoryHighlight": {
+        "before": "Aufführungen",
+        "connector": "noch",
+        "after": "ehrenamtliche Helfer",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["ab", "auf", "aufgehängt", "da", "des", "es", "keine", "noch", "seit", "sondern", "um", "wegen", "Wolfgang"]
+}

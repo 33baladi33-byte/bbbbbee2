@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 33: Der klügste Freund des Menschen (معدل)",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Seit jeher gilt der Hund ......(1)....... als treuer Begleiter des Menschen, besondere Leistungen auf dem Gebiet der Intelligenz wurden ihm jedoch sehr viel seltener zugesprochen. Jetzt beweisen aber Untersuchungen, die etwa zeitgleich an der Eötvös-Loránd-Universität in Budapest, an der Harvard Universität und am Max-Planck-Institut für evolutionäre Anthropologie in Leipzig durchgeführt ......(2)......., dass die beliebten Vierbeiner offenbar mehr verstehen und leisten können, als man bislang glaubte.\nIn speziell ausgearbeiteten Lerntests mit Hunden, Schimpansen und Gorillas wurde die Kommunikationsfähigkeit der Tiere getestet. In allen Tests schnitten die Hunde besser ab als die Affen. Hunde lesen kommunikative Informationen besonders an den Augen ......(3)......., aber sie reagieren auch ......(4)....... die Stimme und die Körpersprache eines Menschen.\nGanz besonders der Blickkontakt ......(5)....... für Hunde ein wichtiges Instrument, um Informationen über den \"Gesprächspartner\" zu erhalten. Diese Fähigkeit habe sich im Verlaufe der Domestizierung der Hunde durch den Menschen immer weiter ausgebildet und sei jetzt in den Genen der Hunde fest verankert, so die Aussage der Forscher.\nHunden wird jetzt auch bescheinigt, dass sie ein Verständnis für Objekte entwickelt haben. Die Forscher versteckten vor den Augen ihrer Probanden Spielzeuge entweder hinter einer Wand oder in einem Behälter. ......(6)....... der Behälter nach dem Öffnen leer, suchten die Hunde auch hinter der Wand nach dem Spielzeug.\nHundetrainer, die in anerkannten Hundeschulen arbeiten, wissen schon lange Erstaunliches über die Fähigkeiten ihrer Schüler zu berichten. Ein Beispiel für die erstaunlichen Leistungen, die ein Hund zustande zu bringen vermag, ist der Blindenhund. Er kann nach den entsprechenden Trainings blinden Menschen sicher den Weg zeigen, er achtet auf den Straßenverkehr, er leitet sie ......(7)....... Hindernisse herum.\nNach neuesten Erkenntnissen wurden die ersten Hunde vor etwa 15.000 Jahren in Ostasien domestiziert. Nach umfangreichen Erbgutuntersuchungen geht man ......(8)....... aus, dass alle heute bekannten Hunderassen von etwas fünf weiblichen Wölfen abstammen. Als Ursprungsland der heutigen Hunderassen nimmt man China an.\nHundebesitzer von heute können also stolz ......(9)....... sein, nicht nur einen anhänglichen, ......(10)....... auch einen intelligenten Begleiter bei sich zu haben.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["ab", "aber", "an", "auf", "darauf", "darüber", "davon", "sei", "seien", "sondern", "über", "um", "war", "wurden", "zwar"],
+      "correct": "zwar",
+      "memoryHighlight": {
+        "before": "gilt der",
+        "connector": "zwar",
+        "after": "als treuer",
+        "color": 2
+      }
+    },
+    {
+      "id": 2,
+      "options": ["ab", "aber", "an", "auf", "darauf", "darüber", "davon", "sei", "seien", "sondern", "über", "um", "war", "wurden", "zwar"],
+      "correct": "wurden",
+      "memoryHighlight": {
+        "before": "durchgeführt",
+        "connector": "wurden",
+        "after": ", dass die",
+        "color": 8
+      }
+    },
+    {
+      "id": 3,
+      "options": ["ab", "aber", "an", "auf", "darauf", "darüber", "davon", "sei", "seien", "sondern", "über", "um", "war", "wurden", "zwar"],
+      "correct": "ab",
+      "memoryHighlight": {
+        "before": "Augen",
+        "connector": "ab",
+        "after": ", aber sie",
+        "color": 4
+      }
+    },
+    {
+      "id": 4,
+      "options": ["ab", "aber", "an", "auf", "darauf", "darüber", "davon", "sei", "seien", "sondern", "über", "um", "war", "wurden", "zwar"],
+      "correct": "auf",
+      "memoryHighlight": {
+        "before": "reagieren auch",
+        "connector": "auf",
+        "after": "die Stimme",
+        "color": 9
+      }
+    },
+    {
+      "id": 5,
+      "options": ["ab", "aber", "an", "auf", "darauf", "darüber", "davon", "sei", "seien", "sondern", "über", "um", "war", "wurden", "zwar"],
+      "correct": "sei",
+      "memoryHighlight": {
+        "before": "Blickkontakt",
+        "connector": "sei",
+        "after": "für Hunde",
+        "color": 1
+      }
+    },
+    {
+      "id": 6,
+      "options": ["ab", "aber", "an", "auf", "darauf", "darüber", "davon", "sei", "seien", "sondern", "über", "um", "war", "wurden", "zwar"],
+      "correct": "war",
+      "memoryHighlight": {
+        "before": "Behälter.",
+        "connector": "war",
+        "after": "der Behälter",
+        "color": 7
+      }
+    },
+    {
+      "id": 7,
+      "options": ["ab", "aber", "an", "auf", "darauf", "darüber", "davon", "sei", "seien", "sondern", "über", "um", "war", "wurden", "zwar"],
+      "correct": "um",
+      "memoryHighlight": {
+        "before": "leitet sie",
+        "connector": "um",
+        "after": "Hindernisse herum",
+        "color": 11
+      }
+    },
+    {
+      "id": 8,
+      "options": ["ab", "aber", "an", "auf", "darauf", "darüber", "davon", "sei", "seien", "sondern", "über", "um", "war", "wurden", "zwar"],
+      "correct": "davon",
+      "memoryHighlight": {
+        "before": "geht man",
+        "connector": "davon",
+        "after": "aus, dass",
+        "color": 3
+      }
+    },
+    {
+      "id": 9,
+      "options": ["ab", "aber", "an", "auf", "darauf", "darüber", "davon", "sei", "seien", "sondern", "über", "um", "war", "wurden", "zwar"],
+      "correct": "darauf",
+      "memoryHighlight": {
+        "before": "stolz",
+        "connector": "darauf",
+        "after": "sein, nicht",
+        "color": 6
+      }
+    },
+    {
+      "id": 10,
+      "options": ["ab", "aber", "an", "auf", "darauf", "darüber", "davon", "sei", "seien", "sondern", "über", "um", "war", "wurden", "zwar"],
+      "correct": "sondern",
+      "memoryHighlight": {
+        "before": "nur einen",
+        "connector": "sondern",
+        "after": "auch einen",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["ab", "aber", "an", "auf", "darauf", "darüber", "davon", "sei", "seien", "sondern", "über", "um", "war", "wurden", "zwar"]
+}

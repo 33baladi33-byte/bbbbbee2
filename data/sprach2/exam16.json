@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 16: Was genau sind eigentlich Bio-Lebensmittel (معدل)",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Überall gibt es inzwischen Bio-Lebensmittel – aber häufig fehlen den Käufern Hintergrundinformationen. So fragen sich viele Verbraucher beispielsweise, .......(1)....... Bio-Produkte denn wirklich gesünder sind als herkömmliche Produkte. Skepsis macht sich breit, spätestens wenn wieder einmal ein Skandal in den Nachrichten ist. .......(2)....... sind Bio-Produkte teurer, und den Aufpreis will man nur zahlen, wenn man sicher ist, dass die Bio-Lebensmittel die bessere Wahl sind.\nDer Informationsdienst des Bundesministeriums für Ernährung, Landwirtschaft und Verbraucherschutz gibt darüber eine eindeutige Auskunft: Bio-Lebensmittel sind gesünder. Sie .......(3)....... weniger Nitrat, mehr Nährstoffe und sind besser geeignet, wenn man Allergien hat. Doch Bio-Lebensmittel sind nicht nur gut für die Gesundheit. Bei vielen Verbrauchern steht ein ökologisches Bewusstsein .......(4)....... ihrem Einkaufsverhalten. Bio-Verbraucher machen sich Gedanken über die Herkunft der Lebensmittel, denn die umweltfreundliche Landwirtschaft ist besser für Tiere und Pflanzen, weil sie unsere Umwelt .......(5).......\nUnd viele Bio-Verbraucher wollen als gesunde Menschen in einer gesunden Umwelt leben und auch der nächsten Generation eine gute gesunde Umwelt hinterlassen. Bio-Lebensmittel kommen .......(6)....... ökologischer Landwirtschaft, die im Einklang mit der Natur steht. Die Mindestrichtlinien der Bio-Landwirtschaft beinhalten eine artgerechte Tierhaltung: Alle Tiere müssen ausreichend Platz haben, es gibt keine langen Tiertransporte, keine Gentechnik. Die Produkte werden möglichst in der näheren Umgebung verkauft, beispielsweise .......(7)....... Wochenmärkten oder in Bio-Supermärkten.\nAußerdem dürfen weder Kunstdünger noch chemische Schädlingsbekämpfungsmittel .......(8)....... werden. Wenn zum Beispiel ein Bio-Kuchen gebacken werden soll, dann dürfen .......(9)....... nur Bio-Lebensmittel, wie etwa Bio-Eier, Bio-Mehl oder Bio-Zucker, benutzt werden. Für Bio-Produkte gibt es übrigens auch ein Zertifikat, das Bio-Siegel. Diese Richtlinien garantieren, .......(10)....... die Produkte wirklich \"bio\" sind.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["wirklich", "wenn", "von", "verwendet", "überlassen", "ob", "hinter", "entlastet", "enthalten", "dass", "belastet", "außerdem", "an", "auf", "aus"],
+      "correct": "ob",
+      "memoryHighlight": {
+        "before": "beispielsweise,",
+        "connector": "ob",
+        "after": "Bio-Produkte denn",
+        "color": 5
+      }
+    },
+    {
+      "id": 2,
+      "options": ["wirklich", "wenn", "von", "verwendet", "überlassen", "ob", "hinter", "entlastet", "enthalten", "dass", "belastet", "außerdem", "an", "auf", "aus"],
+      "correct": "außerdem",
+      "memoryHighlight": {
+        "before": "ist.",
+        "connector": "außerdem",
+        "after": "sind Bio-Produkte",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["wirklich", "wenn", "von", "verwendet", "überlassen", "ob", "hinter", "entlastet", "enthalten", "dass", "belastet", "außerdem", "an", "auf", "aus"],
+      "correct": "enthalten",
+      "memoryHighlight": {
+        "before": "Sie",
+        "connector": "enthalten",
+        "after": "weniger Nitrat",
+        "color": 2
+      }
+    },
+    {
+      "id": 4,
+      "options": ["wirklich", "wenn", "von", "verwendet", "überlassen", "ob", "hinter", "entlastet", "enthalten", "dass", "belastet", "außerdem", "an", "auf", "aus"],
+      "correct": "hinter",
+      "memoryHighlight": {
+        "before": "Bewusstsein",
+        "connector": "hinter",
+        "after": "ihrem Einkaufsverhalten",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["wirklich", "wenn", "von", "verwendet", "überlassen", "ob", "hinter", "entlastet", "enthalten", "dass", "belastet", "außerdem", "an", "auf", "aus"],
+      "correct": "entlastet",
+      "memoryHighlight": {
+        "before": "Umwelt",
+        "connector": "entlastet",
+        "after": "Und viele",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["wirklich", "wenn", "von", "verwendet", "überlassen", "ob", "hinter", "entlastet", "enthalten", "dass", "belastet", "außerdem", "an", "auf", "aus"],
+      "correct": "aus",
+      "memoryHighlight": {
+        "before": "kommen",
+        "connector": "aus",
+        "after": "ökologischer Landwirtschaft",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["wirklich", "wenn", "von", "verwendet", "überlassen", "ob", "hinter", "entlastet", "enthalten", "dass", "belastet", "außerdem", "an", "auf", "aus"],
+      "correct": "auf",
+      "memoryHighlight": {
+        "before": "beispielsweise",
+        "connector": "auf",
+        "after": "Wochenmärkten oder",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["wirklich", "wenn", "von", "verwendet", "überlassen", "ob", "hinter", "entlastet", "enthalten", "dass", "belastet", "außerdem", "an", "auf", "aus"],
+      "correct": "verwendet",
+      "memoryHighlight": {
+        "before": "dürfen weder",
+        "connector": "verwendet",
+        "after": "werden. Wenn",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["wirklich", "wenn", "von", "verwendet", "überlassen", "ob", "hinter", "entlastet", "enthalten", "dass", "belastet", "außerdem", "an", "auf", "aus"],
+      "correct": "wirklich",
+      "memoryHighlight": {
+        "before": "dürfen",
+        "connector": "wirklich",
+        "after": "nur Bio-Lebensmittel",
+        "color": 1
+      }
+    },
+    {
+      "id": 10,
+      "options": ["wirklich", "wenn", "von", "verwendet", "überlassen", "ob", "hinter", "entlastet", "enthalten", "dass", "belastet", "außerdem", "an", "auf", "aus"],
+      "correct": "dass",
+      "memoryHighlight": {
+        "before": "garantieren,",
+        "connector": "dass",
+        "after": "die Produkte",
+        "color": 4
+      }
+    }
+  ],
+  "allOptions": ["wirklich", "wenn", "von", "verwendet", "überlassen", "ob", "hinter", "entlastet", "enthalten", "dass", "belastet", "außerdem", "an", "auf", "aus"]
+}

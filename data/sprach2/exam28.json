@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 28: Wie Handschrift wieder cool wird",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Der sogenannte SMS-Daumen ist es, den Kinder heutzutage feinmotorisch zu Höchstleistungen bringen. Das Handgelenk hingegen schmerzt relativ schnell, ......(1)...... Handschrift ungewohnt ist. Vor allem ältere Kinder haben mit dem Schreiben in der Schule ......(2)...... mehr Probleme - auch weil viel am Computer getippt wird. Dennoch gibt es einen neuen Trend, der mit Handschrift zu ......(3)...... hat: Unter dem Hashtag \"Lettering\" finden sich auf Instagram über zwölf Millionen Beiträge, und auch Kalligrafie findet in Workshops guten Anklang.\nErfahrungen ......(4)...... hat die Wiener Designerin und Kalligrafin Claudia Dzengel gemacht, die Schrift- und Kalligrafie-Workshops für Kinder und Erwachsene veranstaltet. Auf ......(5)...... Weise vermittelt die Künstlerin das Thema Schrift aus unterschiedlichen Zeitepochen bis hin zum handgezeichneten modernen Alphabet. Der Künstlerin, die manchmal auch Kinder erlebt, die einen Stift nicht richtig halten können, ist wichtig, ......(6)...... Kinder die Freude am Schreiben wiederentdecken.\nGerade im Alter zwischen 13 und 15 biete die Auseinandersetzung mit Schrift eine Möglichkeit, die eigene Handschrift zu beurteilen und zu ......(7)......, zu entwickeln - als eine Übung, sich selbst auszudrücken, sich seiner bewusst zu werden.\nDer Rhythmus macht den individuellen Ausdruck beim Schreiben mit der Hand aus. Es nützt wenig, an einzelnen Buchstaben zu üben\", so Dzengel. Zu Beginn lässt sie ihre Schüler daher nur Elemente von Buchstaben schreiben, bis ihnen das flüssig von der Hand ......(8)...... So wird auch die Feinmotorik wieder gestärkt, die vielen Kindern abhandengekommen ist.\" Die Schülerinnen und Schüler lernen mit Kalligrafie und Lettering nebenbei auch, coole Einladungen und Logos zu gestalten. Die Verbindung ......(9)...... Schrift und Bild lässt sich also auch im Alltag anwenden. Lettering etwa ist das Zeichnen von Buchstaben, um sie danach zu dekorieren. Besonders beliebt sei derzeit das Schreiben mit Brush-Pens, so Dzengel. Mit klassischem Schönschreiben, wie es früher unterrichtet und von einigen auch gefürchtet ......(10)......, hat das alles nichts zu tun.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["damit", "das", "dass", "figuren", "für", "geht", "gestalten", "immer", "nie", "spielerische", "suchen", "tun", "von", "weil", "wurde"],
+      "correct": "weil",
+      "memoryHighlight": {
+        "before": "schnell,",
+        "connector": "weil",
+        "after": "Handschrift ungewohnt",
+        "color": 3
+      }
+    },
+    {
+      "id": 2,
+      "options": ["damit", "das", "dass", "figuren", "für", "geht", "gestalten", "immer", "nie", "spielerische", "suchen", "tun", "von", "weil", "wurde"],
+      "correct": "immer",
+      "memoryHighlight": {
+        "before": "Schule",
+        "connector": "immer",
+        "after": "mehr Probleme",
+        "color": 8
+      }
+    },
+    {
+      "id": 3,
+      "options": ["damit", "das", "dass", "figuren", "für", "geht", "gestalten", "immer", "nie", "spielerische", "suchen", "tun", "von", "weil", "wurde"],
+      "correct": "tun",
+      "memoryHighlight": {
+        "before": "zu",
+        "connector": "tun",
+        "after": "hat: Unter",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["damit", "das", "dass", "figuren", "für", "geht", "gestalten", "immer", "nie", "spielerische", "suchen", "tun", "von", "weil", "wurde"],
+      "correct": "damit",
+      "memoryHighlight": {
+        "before": "Erfahrungen",
+        "connector": "damit",
+        "after": "hat die",
+        "color": 6
+      }
+    },
+    {
+      "id": 5,
+      "options": ["damit", "das", "dass", "figuren", "für", "geht", "gestalten", "immer", "nie", "spielerische", "suchen", "tun", "von", "weil", "wurde"],
+      "correct": "spielerische",
+      "memoryHighlight": {
+        "before": "Auf",
+        "connector": "spielerische",
+        "after": "Weise vermittelt",
+        "color": 9
+      }
+    },
+    {
+      "id": 6,
+      "options": ["damit", "das", "dass", "figuren", "für", "geht", "gestalten", "immer", "nie", "spielerische", "suchen", "tun", "von", "weil", "wurde"],
+      "correct": "dass",
+      "memoryHighlight": {
+        "before": "wichtig,",
+        "connector": "dass",
+        "after": "Kinder die",
+        "color": 4
+      }
+    },
+    {
+      "id": 7,
+      "options": ["damit", "das", "dass", "figuren", "für", "geht", "gestalten", "immer", "nie", "spielerische", "suchen", "tun", "von", "weil", "wurde"],
+      "correct": "gestalten",
+      "memoryHighlight": {
+        "before": "zu",
+        "connector": "gestalten",
+        "after": ", zu entwickeln",
+        "color": 11
+      }
+    },
+    {
+      "id": 8,
+      "options": ["damit", "das", "dass", "figuren", "für", "geht", "gestalten", "immer", "nie", "spielerische", "suchen", "tun", "von", "weil", "wurde"],
+      "correct": "geht",
+      "memoryHighlight": {
+        "before": "Hand",
+        "connector": "geht",
+        "after": ". So wird",
+        "color": 2
+      }
+    },
+    {
+      "id": 9,
+      "options": ["damit", "das", "dass", "figuren", "für", "geht", "gestalten", "immer", "nie", "spielerische", "suchen", "tun", "von", "weil", "wurde"],
+      "correct": "von",
+      "memoryHighlight": {
+        "before": "Verbindung",
+        "connector": "von",
+        "after": "Schrift und",
+        "color": 7
+      }
+    },
+    {
+      "id": 10,
+      "options": ["damit", "das", "dass", "figuren", "für", "geht", "gestalten", "immer", "nie", "spielerische", "suchen", "tun", "von", "weil", "wurde"],
+      "correct": "wurde",
+      "memoryHighlight": {
+        "before": "gefürchtet",
+        "connector": "wurde",
+        "after": ", hat das",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["damit", "das", "dass", "figuren", "für", "geht", "gestalten", "immer", "nie", "spielerische", "suchen", "tun", "von", "weil", "wurde"]
+}

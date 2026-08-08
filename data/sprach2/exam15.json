@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 15: Was steckt hinter Bio?",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Überall gibt es inzwischen Bio-Lebensmittel – aber häufig fehlen den Käufern Hintergrundinformationen. Viele Verbraucher fragen sich beispielsweise, .....(1)..... Bio-Produkte nun auch wirklich die gesünderen sind. Skepsis macht sich breit, spätestens wenn wieder einmal ein Skandal in den Nachrichten ist. .....(2)..... sind Bio-Produkte teurer – und den Aufpreis will man nur zahlen, wenn man sicher ist, dass die Bio-Lebensmittel die bessere Wahl sind. Der Informationsdienst der Bundesministeriums für Ernährung, Landwirtschaft und Verbraucherschutz gibt darüber eine eindeutige Auskunft: Bio-Lebensmittel sind gesünder. Sie .....(3)..... weniger Nitrat, mehr Nährstoffe und sind besser geeignet, wenn man Allergien hat.\nDoch Bio-Lebensmittel sind nicht nur gut für die Gesundheit. Bei vielen Verbrauchern steht .....(4)..... ihrem Einkaufsverhalten ein ökologisches Bewusstsein. Bio-Verbraucher machen sich Gedanken über die Herkunft der Lebensmittel, denn auch die umweltfreundliche Landwirtschaft ist besser für Tiere und Pflanzen, kurz: Sie .....(5)..... unsere Umwelt. Und viele Bio-Verbraucher wollen als gesunde Menschen in einer gesunden Umwelt leben und auch der nächsten Generation eine gesunde Umwelt hinterlassen.\nBio-Lebensmittel kommen .....(6)..... ökologischer Landwirtschaft, die im Einklang mit der Natur steht. Die Mindestrichtlinien der Bio-Landwirtschaft beinhalten eine artgerechte Tierhaltung: Alle Tiere müssen ausreichend Platz haben, es gibt keine langen Tiertransporte, keine Gentechnik. Die Produkte werden möglichst in der näheren Umgebung verkauft, beispielsweise .....(7)..... Wochenmärkten oder in Bio-Supermärkten. Außerdem dürfen weder Kunstdünger noch chemische Schädlingsbekämpfungsmittel .....(8)..... werden.\nWenn die Bio-Lebensmittel weiterverarbeitet werden – beispielsweise aus Bio-Eiern, Bio-Mehl und Bio-Zucker ein Bio-Kuchen gebacken wird –, dürfen .....(9)..... nur Bio-Lebensmittel benutzt werden.\nFür Bio-Produkte gibt es übrigens auch ein Zertifikat, das Bio-Siegel. Diese Richtlinien garantieren, .....(10)..... die Produkte wirklich \"bio\" sind.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["an", "auf", "aus", "außerdem", "dass", "enthalten", "entlastet", "für", "hinter", "ob", "sogar", "sondern", "verwendet", "wenn", "wirklich"],
+      "correct": "ob",
+      "memoryHighlight": {
+        "before": "beispielsweise,",
+        "connector": "ob",
+        "after": "Bio-Produkte nun",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["an", "auf", "aus", "außerdem", "dass", "enthalten", "entlastet", "für", "hinter", "ob", "sogar", "sondern", "verwendet", "wenn", "wirklich"],
+      "correct": "außerdem",
+      "memoryHighlight": {
+        "before": "ist.",
+        "connector": "außerdem",
+        "after": "sind Bio-Produkte",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["an", "auf", "aus", "außerdem", "dass", "enthalten", "entlastet", "für", "hinter", "ob", "sogar", "sondern", "verwendet", "wenn", "wirklich"],
+      "correct": "enthalten",
+      "memoryHighlight": {
+        "before": "Sie",
+        "connector": "enthalten",
+        "after": "weniger Nitrat",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["an", "auf", "aus", "außerdem", "dass", "enthalten", "entlastet", "für", "hinter", "ob", "sogar", "sondern", "verwendet", "wenn", "wirklich"],
+      "correct": "hinter",
+      "memoryHighlight": {
+        "before": "steht",
+        "connector": "hinter",
+        "after": "ihrem Einkaufsverhalten",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["an", "auf", "aus", "außerdem", "dass", "enthalten", "entlastet", "für", "hinter", "ob", "sogar", "sondern", "verwendet", "wenn", "wirklich"],
+      "correct": "entlastet",
+      "memoryHighlight": {
+        "before": "Sie",
+        "connector": "entlastet",
+        "after": "unsere Umwelt",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["an", "auf", "aus", "außerdem", "dass", "enthalten", "entlastet", "für", "hinter", "ob", "sogar", "sondern", "verwendet", "wenn", "wirklich"],
+      "correct": "aus",
+      "memoryHighlight": {
+        "before": "kommen",
+        "connector": "aus",
+        "after": "ökologischer Landwirtschaft",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["an", "auf", "aus", "außerdem", "dass", "enthalten", "entlastet", "für", "hinter", "ob", "sogar", "sondern", "verwendet", "wenn", "wirklich"],
+      "correct": "auf",
+      "memoryHighlight": {
+        "before": "beispielsweise",
+        "connector": "auf",
+        "after": "Wochenmärkten oder",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["an", "auf", "aus", "außerdem", "dass", "enthalten", "entlastet", "für", "hinter", "ob", "sogar", "sondern", "verwendet", "wenn", "wirklich"],
+      "correct": "verwendet",
+      "memoryHighlight": {
+        "before": "dürfen weder",
+        "connector": "verwendet",
+        "after": "werden. Wenn",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["an", "auf", "aus", "außerdem", "dass", "enthalten", "entlastet", "für", "hinter", "ob", "sogar", "sondern", "verwendet", "wenn", "wirklich"],
+      "correct": "wirklich",
+      "memoryHighlight": {
+        "before": "dürfen",
+        "connector": "wirklich",
+        "after": "nur Bio-Lebensmittel",
+        "color": 2
+      }
+    },
+    {
+      "id": 10,
+      "options": ["an", "auf", "aus", "außerdem", "dass", "enthalten", "entlastet", "für", "hinter", "ob", "sogar", "sondern", "verwendet", "wenn", "wirklich"],
+      "correct": "dass",
+      "memoryHighlight": {
+        "before": "garantieren,",
+        "connector": "dass",
+        "after": "die Produkte",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["an", "auf", "aus", "außerdem", "dass", "enthalten", "entlastet", "für", "hinter", "ob", "sogar", "sondern", "verwendet", "wenn", "wirklich"]
+}

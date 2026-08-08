@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 34: Manipulierte Bilder",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Im Internet, in sozialen Netzwerken und der Werbung werden wir mit einer ......(1)....... von Fotos konfrontiert. Klar ist: Viele von ihnen sind keine wirklichen Originale, Bildbearbeitungsprogramme machen es sogar für Laien ......(2)....... einfach, Fotos zu verändern. Meist sind die Manipulationen harmlos, ......(3)....... die Möglichkeiten der Bildbearbeitung lassen sich natürlich auch für Betrügereien oder Meinungsmache missbrauchen. In diesem Zusammenhang ......(4)....... sich die Frage, inwieweit Betrachtern solche Manipulationen auffallen. Können Sie erkennen, dass an einem Bild etwas merkwürdig ist, oder sogar die manipulierte Stelle finden? ......(5)....... Fragen sind nun Forscher der University of Warwick (UK) nachgegangen. Sie entwickelten dazu ein Online-Testsystem, bei dem die Teilnehmer den manipulierten Bereich auf Fotos erkennen sollten.\nDie Auswertungen ergaben: Die ......(6)....... Teilnehmer waren nur eher zufällig in der Lage, ein manipuliertes Bild zu identifizieren. Oft hatten sie das vage Gefühl, dass mit einem der Bilder etwas nicht stimmt. Nur in 45 Prozent der Fälle konnten sie tatsächlich ......(7)....... bestimmen, wo das Bild verändert worden war. Selbst ein falscher Schattenwurf oder andere ......(8)....... Abweichungen wurden nicht besser erkannt als nachvollziehbare Manipulationen wie beispielsweise künstliche Farbveränderungen.\nBilder haben einen starken Einfluss auf unsere Erinnerungen, so die Forscher. Können Menschen also nicht zwischen echten und gefälschten Details auf Fotos ......(9)......., so können manipulierte Bilder entscheidend beeinflussen, woran wir uns zu erinnern glauben. Die Ergebnisse dokumentierten ......(10)......., dass wir recht leicht auf Fake-Fotos und damit auch auf ihre manipulierten Botschaften reinfallen können. Aufbauend auf ihren Ergebnissen wollen die Forscher nun konkrete Ratschläge erarbeiten, die dem Betrachter helfen sollen, Fotomanipulationen besser zu erkennen.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["aber", "abgrenzen", "als", "diesen", "flut", "korrekt", "meisten", "recht", "reisend", "somit", "stellt", "unlogische", "unterscheiden", "verschieden", "zwar"],
+      "correct": "flut",
+      "memoryHighlight": {
+        "before": "einer",
+        "connector": "flut",
+        "after": "von Fotos",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["aber", "abgrenzen", "als", "diesen", "flut", "korrekt", "meisten", "recht", "reisend", "somit", "stellt", "unlogische", "unterscheiden", "verschieden", "zwar"],
+      "correct": "recht",
+      "memoryHighlight": {
+        "before": "sogar für",
+        "connector": "recht",
+        "after": "einfach, Fotos",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["aber", "abgrenzen", "als", "diesen", "flut", "korrekt", "meisten", "recht", "reisend", "somit", "stellt", "unlogische", "unterscheiden", "verschieden", "zwar"],
+      "correct": "aber",
+      "memoryHighlight": {
+        "before": "harmlos,",
+        "connector": "aber",
+        "after": "die Möglichkeiten",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["aber", "abgrenzen", "als", "diesen", "flut", "korrekt", "meisten", "recht", "reisend", "somit", "stellt", "unlogische", "unterscheiden", "verschieden", "zwar"],
+      "correct": "stellt",
+      "memoryHighlight": {
+        "before": "Zusammenhang",
+        "connector": "stellt",
+        "after": "sich die",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["aber", "abgrenzen", "als", "diesen", "flut", "korrekt", "meisten", "recht", "reisend", "somit", "stellt", "unlogische", "unterscheiden", "verschieden", "zwar"],
+      "correct": "diesen",
+      "memoryHighlight": {
+        "before": "finden?",
+        "connector": "diesen",
+        "after": "Fragen sind",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["aber", "abgrenzen", "als", "diesen", "flut", "korrekt", "meisten", "recht", "reisend", "somit", "stellt", "unlogische", "unterscheiden", "verschieden", "zwar"],
+      "correct": "meisten",
+      "memoryHighlight": {
+        "before": "Die",
+        "connector": "meisten",
+        "after": "Teilnehmer waren",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["aber", "abgrenzen", "als", "diesen", "flut", "korrekt", "meisten", "recht", "reisend", "somit", "stellt", "unlogische", "unterscheiden", "verschieden", "zwar"],
+      "correct": "korrekt",
+      "memoryHighlight": {
+        "before": "tatsächlich",
+        "connector": "korrekt",
+        "after": "bestimmen, wo",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["aber", "abgrenzen", "als", "diesen", "flut", "korrekt", "meisten", "recht", "reisend", "somit", "stellt", "unlogische", "unterscheiden", "verschieden", "zwar"],
+      "correct": "unlogische",
+      "memoryHighlight": {
+        "before": "andere",
+        "connector": "unlogische",
+        "after": "Abweichungen wurden",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["aber", "abgrenzen", "als", "diesen", "flut", "korrekt", "meisten", "recht", "reisend", "somit", "stellt", "unlogische", "unterscheiden", "verschieden", "zwar"],
+      "correct": "unterscheiden",
+      "memoryHighlight": {
+        "before": "nicht",
+        "connector": "unterscheiden",
+        "after": ", so können",
+        "color": 2
+      }
+    },
+    {
+      "id": 10,
+      "options": ["aber", "abgrenzen", "als", "diesen", "flut", "korrekt", "meisten", "recht", "reisend", "somit", "stellt", "unlogische", "unterscheiden", "verschieden", "zwar"],
+      "correct": "somit",
+      "memoryHighlight": {
+        "before": "dokumentierten",
+        "connector": "somit",
+        "after": ", dass wir",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["aber", "abgrenzen", "als", "diesen", "flut", "korrekt", "meisten", "recht", "reisend", "somit", "stellt", "unlogische", "unterscheiden", "verschieden", "zwar"]
+}

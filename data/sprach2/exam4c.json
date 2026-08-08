@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 4: Jugend diskutiert – mach mit! (2 المعدل)",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Den Wettbewerb \"Jugend diskutiert\" gibt es bereits .__( 1 )__. Herbst 2002. Für das kommende Jahr werden nun wieder Schülerinnen und Schüler gesucht, die an dem Wettbewerb .__( 2 )__. möchten. Wie immer bereiten sich die Teilnehmer dann im Unterricht auf \"Jugend diskutiert\" vor.\nDu fragst dich, .__( 3 )__. du teilnehmen solltest? Ganz einfach: \"Jugend diskutiert\" bringt dich weiter! Sich einmischen, mitreden, überzeugen – bei der Vorbereitung im Unterricht trainierst du viele Fähigkeiten, die dir in der Schule und im Alltag helfen. Im Austausch mit den anderen entwickelst du deine Persönlichkeit weiter und profitierst langfristig. .__( 4 )__. bietet dir \"Jugend diskutiert\" die Chance, im Wettstreit mit anderen weiterzukommen. Zuerst werden die besten einer Schule ermittelt, die dann an Regionalwettbewerben teilnehmen. Die Sieger der Regionalwettbewerbe treten .__( 5 )__. Bundesfinale an. Als Preise kann man professionelle Trainings gewinnen. .__( 6 )__. \"Jugend diskutiert\" kannst du viel lernen. Du hast bessere Chancen im Unterricht und bei Referaten, denn du trainierst, frei zu sprechen und Dinge anschaulich und verständlich zu beschreiben. Du gewinnst mehr Selbstbewusstsein, weil du lernst, wie man das Wort ergreift und auf sich aufmerksam .__( 7 )__. . Du kannst überzeugen, da du .__( 8 )__. Argumente finden und die Argumente anderer genau .__( 9 )__. kannst. Die Sichtweisen der anderen zeigen dir darüber hinaus, was du vielleicht selbst noch nicht gesehen hast. Du überzeugst bei Auftritten, Prüfungen und Bewerbungen, da du sicher auftrittst.\nWer das alles im Unterricht gelernt hat, kann gemeinsam mit anderen viel bewegen! Schließlich ist der Wettbewerb \"Jugend diskutiert\" auch eine .__( 10 )__., Jugendliche aus ganz Deutschland kennenzulernen und neue Freundschaften zu knüpfen.\nWeitere Informationen zu Anmeldung und Teilnahme gibt es im Internet.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["seit", "vor", "bei", "an"],
+      "correct": "seit",
+      "memoryHighlight": {
+        "before": "gibt es bereits",
+        "connector": "seit",
+        "after": "Herbst 2002",
+        "color": 0
+      }
+    },
+    {
+      "id": 2,
+      "options": ["teilnehmen", "mitmachen", "besuchen", "kommen"],
+      "correct": "teilnehmen",
+      "memoryHighlight": {
+        "before": "an dem Wettbewerb",
+        "connector": "teilnehmen",
+        "after": "möchten",
+        "color": 1
+      }
+    },
+    {
+      "id": 3,
+      "options": ["warum", "wann", "was", "wer"],
+      "correct": "warum",
+      "memoryHighlight": {
+        "before": "Du fragst dich,",
+        "connector": "warum",
+        "after": "du teilnehmen solltest",
+        "color": 2
+      }
+    },
+    {
+      "id": 4,
+      "options": ["Außerdem", "Deshalb", "Trotzdem", "Denn"],
+      "correct": "Außerdem",
+      "memoryHighlight": {
+        "before": "langfristig.",
+        "connector": "Außerdem",
+        "after": "bietet dir",
+        "color": 3
+      }
+    },
+    {
+      "id": 5,
+      "options": ["im", "am", "beim", "zum"],
+      "correct": "im",
+      "memoryHighlight": {
+        "before": "treten",
+        "connector": "im",
+        "after": "Bundesfinale an",
+        "color": 4
+      }
+    },
+    {
+      "id": 6,
+      "options": ["Bei", "Mit", "Für", "Ohne"],
+      "correct": "Bei",
+      "memoryHighlight": {
+        "before": "gewinnen.",
+        "connector": "Bei",
+        "after": "\"Jugend diskutiert\"",
+        "color": 5
+      }
+    },
+    {
+      "id": 7,
+      "options": ["macht", "hat", "ist", "wird"],
+      "correct": "macht",
+      "memoryHighlight": {
+        "before": "auf sich aufmerksam",
+        "connector": "macht",
+        "after": ".",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["eigene", "andere", "gleiche", "neue"],
+      "correct": "eigene",
+      "memoryHighlight": {
+        "before": "da du",
+        "connector": "eigene",
+        "after": "Argumente finden",
+        "color": 7
+      }
+    },
+    {
+      "id": 9,
+      "options": ["prüfen", "finden", "sehen", "hören"],
+      "correct": "prüfen",
+      "memoryHighlight": {
+        "before": "Argumente anderer genau",
+        "connector": "prüfen",
+        "after": "kannst",
+        "color": 8
+      }
+    },
+    {
+      "id": 10,
+      "options": ["Chance", "Zeit", "Idee", "Möglichkeit"],
+      "correct": "Chance",
+      "memoryHighlight": {
+        "before": "auch eine",
+        "connector": "Chance",
+        "after": ", Jugendliche",
+        "color": 9
+      }
+    }
+  ],
+  "allOptions": ["seit", "vor", "bei", "an", "teilnehmen", "mitmachen", "besuchen", "kommen", "warum", "wann", "was", "wer", "Außerdem", "Deshalb", "Trotzdem", "Denn", "im", "am", "beim", "zum", "Bei", "Mit", "Für", "Ohne", "macht", "hat", "ist", "wird", "eigene", "andere", "gleiche", "neue", "prüfen", "finden", "sehen", "hören", "Chance", "Zeit", "Idee", "Möglichkeit"]
+}

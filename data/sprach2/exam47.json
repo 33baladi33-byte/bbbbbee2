@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 47: Die Reise im Schlafwagen",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Lange sah es so aus, als würde er ganz verschwinden: Die Rede ist vom Nachtzug. In den letzten Jahrzehnten wurde er immer mehr von Billigfliegen verdrängt und viele Angebote wurden ......(1)...... . Noch in den 1990er Jahren fuhren allerdings Nachtzüge von Deutschland aus direkt bis nach Venedig, Stockholm oder Warschau. Heute sind die Österreichischen Bundesbahnen der größte Nachtzuganbieter in Europa. Und das Geschäft läuft: Das Angebot gewinne kontinuierlich neue ......(2)...... , erklärt Sprecher Olaf Heise.\nDie Zahl der Flugreisen steigt zwar weiter an, aber aus ......(3)...... des Umweltschutzes rücken andere Transportmittel wieder stärker in den Fokus. Kommt der Nachtzug also wieder in ......(4)...... ? Und könnten komfortable Schlafwagen tatsächlich dem Flugzeug als Reisemittel ......(5)...... machen?\nStefan Wiese, der als passionierter Bahnfahrer ein Blog für Zugreisende betreibt, ist skeptisch: „In den engen Schlafabteilen ist es manchmal ......(6)...... schön ungemütlich und stickig.“ ......(7)...... schrecke die lange Reisezeit viele ab. Mit dem Flugzeug schaffe man es in 90 Minuten von München nach Rom, mit der Bahn brauche man 13 Stunden.\nDennoch: Es muss nicht immer das Flugzeug sein. ......(8)...... umweltschonendes Transportmittel ist der Nachtzug aktueller denn je. Zumal er auch einige romantische Vorstellungen weckt: Vor den Zugfenstern ziehen malerische Landschaften vorbei, ......(9)...... man von dem sanften Rattern des Zuges in den Schlaf gewiegt wird.\nSicher ist jedenfalls: Wer schon bedauert hatte, dass mit dem Verschwinden des Nachtzugs ein Stück Reisekultur verlorengehen könnte, war etwas ......(10)...... . Als sanfte Alternative zum Fliegen hat er durchaus eine Zukunft.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["WÄHREND", "VOREILIG", "MODE", "KUNDEN", "KONKURRENZ", "GRÜNDEN", "GESAMT", "GENAU", "GANZ", "FORM", "EINGESTELLT", "EINGESETZT", "EIN", "AUSSERDEM", "ALS"],
+      "correct": "EINGESTELLT",
+      "memoryHighlight": {
+        "before": "wurden",
+        "connector": "EINGESTELLT",
+        "after": ". Noch in",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["WÄHREND", "VOREILIG", "MODE", "KUNDEN", "KONKURRENZ", "GRÜNDEN", "GESAMT", "GENAU", "GANZ", "FORM", "EINGESTELLT", "EINGESETZT", "EIN", "AUSSERDEM", "ALS"],
+      "correct": "KUNDEN",
+      "memoryHighlight": {
+        "before": "neue",
+        "connector": "KUNDEN",
+        "after": ", erklärt Sprecher",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["WÄHREND", "VOREILIG", "MODE", "KUNDEN", "KONKURRENZ", "GRÜNDEN", "GESAMT", "GENAU", "GANZ", "FORM", "EINGESTELLT", "EINGESETZT", "EIN", "AUSSERDEM", "ALS"],
+      "correct": "GRÜNDEN",
+      "memoryHighlight": {
+        "before": "aus",
+        "connector": "GRÜNDEN",
+        "after": "des Umweltschutzes",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["WÄHREND", "VOREILIG", "MODE", "KUNDEN", "KONKURRENZ", "GRÜNDEN", "GESAMT", "GENAU", "GANZ", "FORM", "EINGESTELLT", "EINGESETZT", "EIN", "AUSSERDEM", "ALS"],
+      "correct": "MODE",
+      "memoryHighlight": {
+        "before": "in",
+        "connector": "MODE",
+        "after": "? Und könnten",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["WÄHREND", "VOREILIG", "MODE", "KUNDEN", "KONKURRENZ", "GRÜNDEN", "GESAMT", "GENAU", "GANZ", "FORM", "EINGESTELLT", "EINGESETZT", "EIN", "AUSSERDEM", "ALS"],
+      "correct": "KONKURRENZ",
+      "memoryHighlight": {
+        "before": "Reisemittel",
+        "connector": "KONKURRENZ",
+        "after": "machen? Stefan",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["WÄHREND", "VOREILIG", "MODE", "KUNDEN", "KONKURRENZ", "GRÜNDEN", "GESAMT", "GENAU", "GANZ", "FORM", "EINGESTELLT", "EINGESETZT", "EIN", "AUSSERDEM", "ALS"],
+      "correct": "GANZ",
+      "memoryHighlight": {
+        "before": "manchmal",
+        "connector": "GANZ",
+        "after": "schön ungemütlich",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["WÄHREND", "VOREILIG", "MODE", "KUNDEN", "KONKURRENZ", "GRÜNDEN", "GESAMT", "GENAU", "GANZ", "FORM", "EINGESTELLT", "EINGESETZT", "EIN", "AUSSERDEM", "ALS"],
+      "correct": "AUSSERDEM",
+      "memoryHighlight": {
+        "before": "stickig.\"",
+        "connector": "AUSSERDEM",
+        "after": "schrecke die",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["WÄHREND", "VOREILIG", "MODE", "KUNDEN", "KONKURRENZ", "GRÜNDEN", "GESAMT", "GENAU", "GANZ", "FORM", "EINGESTELLT", "EINGESETZT", "EIN", "AUSSERDEM", "ALS"],
+      "correct": "ALS",
+      "memoryHighlight": {
+        "before": "sein.",
+        "connector": "ALS",
+        "after": "umweltschonendes Transportmittel",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["WÄHREND", "VOREILIG", "MODE", "KUNDEN", "KONKURRENZ", "GRÜNDEN", "GESAMT", "GENAU", "GANZ", "FORM", "EINGESTELLT", "EINGESETZT", "EIN", "AUSSERDEM", "ALS"],
+      "correct": "WÄHREND",
+      "memoryHighlight": {
+        "before": "vorbei,",
+        "connector": "WÄHREND",
+        "after": "man von",
+        "color": 2
+      }
+    },
+    {
+      "id": 10,
+      "options": ["WÄHREND", "VOREILIG", "MODE", "KUNDEN", "KONKURRENZ", "GRÜNDEN", "GESAMT", "GENAU", "GANZ", "FORM", "EINGESTELLT", "EINGESETZT", "EIN", "AUSSERDEM", "ALS"],
+      "correct": "VOREILIG",
+      "memoryHighlight": {
+        "before": "etwas",
+        "connector": "VOREILIG",
+        "after": ". Als sanfte",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["WÄHREND", "VOREILIG", "MODE", "KUNDEN", "KONKURRENZ", "GRÜNDEN", "GESAMT", "GENAU", "GANZ", "FORM", "EINGESTELLT", "EINGESETZT", "EIN", "AUSSERDEM", "ALS"]
+}

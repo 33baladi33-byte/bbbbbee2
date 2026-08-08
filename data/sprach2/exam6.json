@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 6: Umgang mit Haustieren",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Ist der Umgang mit Haustieren gesund für Kleinkinder?\n\nKleine Kinder, die in der Gesellschaft von Haustieren wie Hund und Katze leben, sind einer Studie aus Finnland zufolge seltener krank  .__( 1 )__. Kinder in Haushalten ohne Tiere.\nDie Studie wurde in der  .__( 2 )__. Woche in einem amerikanischen Fachmagazin veröffentlicht. Es wurden  .__( 3 )__. keine Erklärungen für diese Tatsache geliefert, aber die Vermutung wurde geäußert, dass der Kontakt zu Hunden das Immunsystem der Kleinkinder stärke. Hunde haben nämlich  .__( 4 )__. die täglichen Spaziergänge draußen viel Kontakt zu möglichen Krankheitserregern und trainieren vielleicht so das Immunsystem der Kinder. Auch Katzen, die die Möglichkeit haben, nach draußen zu gehen, haben demnach  .__( 5 )__. Wirkung auf die Gesundheit der Kinder, wenngleich in geringerem Maße.\nFür die Studie  .__( 6 )__. in Finnland 397 Babys über den Zeitraum von der neunten Lebenswoche bis zu ihrem ersten Geburtstag beobachtet. Dabei hatten die mit Hund oder Katze aufwachsenden Kinder ein um 30 %  .__( 7 )__. Risiko für Erkrankungen der Atemwege. Es fiel auf, dass bei diesen Kindern Ohrenentzündungen  .__( 8 )__. auftraten.\nDie Studie kommt daher zu dem Schluss, dass die Gesundheit von Kindern in Gesellschaft von Tieren  .__( 9 )__. besser sei. Frühere Untersuchungen aus den USA hatten das genaue  .__( 10 )__. der jetzigen Ergebnisse ergeben. Ob diese Unterschiede mit den unterschiedlichen Lebens- und Umweltbedingungen der beiden Länder zusammenhängen, ist noch unklar.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["zwar", "wurden", "wie", "weniger", "waren", "vergangenen", "um", "geringeres", "gegenteil", "gegensatz", "früheren", "durch", "dieselbe", "deutlich", "als"],
+      "correct": "als",
+      "memoryHighlight": {
+        "before": "krank",
+        "connector": "als",
+        "after": "Kinder in",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["zwar", "wurden", "wie", "weniger", "waren", "vergangenen", "um", "geringeres", "gegenteil", "gegensatz", "früheren", "durch", "dieselbe", "deutlich", "als"],
+      "correct": "vergangenen",
+      "memoryHighlight": {
+        "before": "in der",
+        "connector": "vergangenen",
+        "after": "Woche in",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["zwar", "wurden", "wie", "weniger", "waren", "vergangenen", "um", "geringeres", "gegenteil", "gegensatz", "früheren", "durch", "dieselbe", "deutlich", "als"],
+      "correct": "zwar",
+      "memoryHighlight": {
+        "before": "wurden",
+        "connector": "zwar",
+        "after": "keine Erklärungen",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["zwar", "wurden", "wie", "weniger", "waren", "vergangenen", "um", "geringeres", "gegenteil", "gegensatz", "früheren", "durch", "dieselbe", "deutlich", "als"],
+      "correct": "durch",
+      "memoryHighlight": {
+        "before": "nämlich",
+        "connector": "durch",
+        "after": "die täglichen",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["zwar", "wurden", "wie", "weniger", "waren", "vergangenen", "um", "geringeres", "gegenteil", "gegensatz", "früheren", "durch", "dieselbe", "deutlich", "als"],
+      "correct": "dieselbe",
+      "memoryHighlight": {
+        "before": "demnach",
+        "connector": "dieselbe",
+        "after": "Wirkung auf",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["zwar", "wurden", "wie", "weniger", "waren", "vergangenen", "um", "geringeres", "gegenteil", "gegensatz", "früheren", "durch", "dieselbe", "deutlich", "als"],
+      "correct": "wurden",
+      "memoryHighlight": {
+        "before": "Studie",
+        "connector": "wurden",
+        "after": "in Finnland",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["zwar", "wurden", "wie", "weniger", "waren", "vergangenen", "um", "geringeres", "gegenteil", "gegensatz", "früheren", "durch", "dieselbe", "deutlich", "als"],
+      "correct": "geringeres",
+      "memoryHighlight": {
+        "before": "um 30 %",
+        "connector": "geringeres",
+        "after": "Risiko für",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["zwar", "wurden", "wie", "weniger", "waren", "vergangenen", "um", "geringeres", "gegenteil", "gegensatz", "früheren", "durch", "dieselbe", "deutlich", "als"],
+      "correct": "weniger",
+      "memoryHighlight": {
+        "before": "Ohrenentzündungen",
+        "connector": "weniger",
+        "after": "auftraten. Die",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["zwar", "wurden", "wie", "weniger", "waren", "vergangenen", "um", "geringeres", "gegenteil", "gegensatz", "früheren", "durch", "dieselbe", "deutlich", "als"],
+      "correct": "deutlich",
+      "memoryHighlight": {
+        "before": "Tieren",
+        "connector": "deutlich",
+        "after": "besser sei",
+        "color": 2
+      }
+    },
+    {
+      "id": 10,
+      "options": ["zwar", "wurden", "wie", "weniger", "waren", "vergangenen", "um", "geringeres", "gegenteil", "gegensatz", "früheren", "durch", "dieselbe", "deutlich", "als"],
+      "correct": "gegenteil",
+      "memoryHighlight": {
+        "before": "genaue",
+        "connector": "gegenteil",
+        "after": "der jetzigen",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["zwar", "wurden", "wie", "weniger", "waren", "vergangenen", "um", "geringeres", "gegenteil", "gegensatz", "früheren", "durch", "dieselbe", "deutlich", "als"]
+}

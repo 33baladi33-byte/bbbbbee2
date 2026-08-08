@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 7: Liebesgrüße aus der Kühltruhe",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Wer sich einen Mann angeln will, sollte einen Blick in dessen Tiefkühlfach werfen. Einer Studie zufolge kann man ......(1)....... des Inhalts des Tiefkühlfachs den Charakter seines Besitzers erkennen. Die Meinungsforscher unterscheiden fünf Kategorien ......(2)....... Single-Männern: den spontanen Typ, den Bequemen, den Kreativen, ......(3)....... den Cocktail- und den Gourmet-Typen. Am häufigsten gibt es in Deutschland den spontanen Typ. Er hat neben kompletten Gerichten auch tiefgekühlte Produkte wie Brokkoligemüse oder Putenfilet in der Truhe, ......(4)....... denen er eine Mahlzeit zusammenstellen kann. Dieser Typ liebt die Abwechslung auf dem Teller und auch sonst im Leben. Da wird es vermutlich auch in der Liebe nicht langweilig.\nHauptgewinn für jede Frau ist aber der Gourmet-Typ. In seinem Tiefkühlfach liegen Produkte wie Garnelen, Muscheln oder Ente. Dieser Typ liebt es, Frauen zu verwöhnen. Der Nachteil liegt ......(5)....... der Hand: Dieser Typ Single-Mann ist selten.\nWas man in der Teifkühltruhe von bequemen Single-Männern findet, kann man leicht erraten, denn diese Männer haben gar keine Lust zu kochen. Ihnen ist es sogar zu ......(6)......., zwei Tüten zu öffnen statt nur einer. ......(7)....... kaufen diese Männer am häufigsten komplette Gerichte, die sie nur noch in die Mikrowelle oder den Backofen stellen müssen. Aber ob sie so das Herz einer Frau erobern können? Zumindest Frauen sehen das wohl ......(8)....... skeptisch.\nDoch egal, ......(9)....... welcher Kategorie ein Mann gehört – eines haben alle gemeinsam: Sie kaufen immer mehr Tiefkühlkost. Warum das so ist, kann die Studie nicht beantworten – da kann man nur raten: Einige haben vermutlich wenig Zeit zum Kochen, andere ......(10)....... eher keine Lust. Dabei wäre das doch der beste Weg, um eine Frau zu erobern.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["Anhand", "Anstrengend", "Auf", "Aus", "Eher", "Fast", "Folglich", "in", "kaum", "Langweilig", "Sowie", "von", "wegen", "Wohl", "Zu"],
+      "correct": "Anhand",
+      "memoryHighlight": {
+        "before": "man",
+        "connector": "Anhand",
+        "after": "des Inhalts",
+        "color": 9
+      }
+    },
+    {
+      "id": 2,
+      "options": ["Anhand", "Anstrengend", "Auf", "Aus", "Eher", "Fast", "Folglich", "in", "kaum", "Langweilig", "Sowie", "von", "wegen", "Wohl", "Zu"],
+      "correct": "von",
+      "memoryHighlight": {
+        "before": "Kategorien",
+        "connector": "von",
+        "after": "Single-Männern:",
+        "color": 4
+      }
+    },
+    {
+      "id": 3,
+      "options": ["Anhand", "Anstrengend", "Auf", "Aus", "Eher", "Fast", "Folglich", "in", "kaum", "Langweilig", "Sowie", "von", "wegen", "Wohl", "Zu"],
+      "correct": "sowie",
+      "memoryHighlight": {
+        "before": "Kreativen,",
+        "connector": "sowie",
+        "after": "den Cocktail-",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["Anhand", "Anstrengend", "Auf", "Aus", "Eher", "Fast", "Folglich", "in", "kaum", "Langweilig", "Sowie", "von", "wegen", "Wohl", "Zu"],
+      "correct": "aus",
+      "memoryHighlight": {
+        "before": "Truhe,",
+        "connector": "aus",
+        "after": "denen er",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["Anhand", "Anstrengend", "Auf", "Aus", "Eher", "Fast", "Folglich", "in", "kaum", "Langweilig", "Sowie", "von", "wegen", "Wohl", "Zu"],
+      "correct": "auf",
+      "memoryHighlight": {
+        "before": "liegt",
+        "connector": "auf",
+        "after": "der Hand:",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["Anhand", "Anstrengend", "Auf", "Aus", "Eher", "Fast", "Folglich", "in", "kaum", "Langweilig", "Sowie", "von", "wegen", "Wohl", "Zu"],
+      "correct": "anstrengend",
+      "memoryHighlight": {
+        "before": "sogar zu",
+        "connector": "anstrengend",
+        "after": ", zwei Tüten",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["Anhand", "Anstrengend", "Auf", "Aus", "Eher", "Fast", "Folglich", "in", "kaum", "Langweilig", "Sowie", "von", "wegen", "Wohl", "Zu"],
+      "correct": "folglich",
+      "memoryHighlight": {
+        "before": "einer.",
+        "connector": "folglich",
+        "after": "kaufen diese",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["Anhand", "Anstrengend", "Auf", "Aus", "Eher", "Fast", "Folglich", "in", "kaum", "Langweilig", "Sowie", "von", "wegen", "Wohl", "Zu"],
+      "correct": "eher",
+      "memoryHighlight": {
+        "before": "wohl",
+        "connector": "eher",
+        "after": "skeptisch. Doch",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["Anhand", "Anstrengend", "Auf", "Aus", "Eher", "Fast", "Folglich", "in", "kaum", "Langweilig", "Sowie", "von", "wegen", "Wohl", "Zu"],
+      "correct": "zu",
+      "memoryHighlight": {
+        "before": "egal,",
+        "connector": "zu",
+        "after": "welcher Kategorie",
+        "color": 2
+      }
+    },
+    {
+      "id": 10,
+      "options": ["Anhand", "Anstrengend", "Auf", "Aus", "Eher", "Fast", "Folglich", "in", "kaum", "Langweilig", "Sowie", "von", "wegen", "Wohl", "Zu"],
+      "correct": "wohl",
+      "memoryHighlight": {
+        "before": "andere",
+        "connector": "wohl",
+        "after": "eher keine",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["Anhand", "Anstrengend", "Auf", "Aus", "Eher", "Fast", "Folglich", "in", "kaum", "Langweilig", "Sowie", "von", "wegen", "Wohl", "Zu"]
+}

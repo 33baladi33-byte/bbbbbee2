@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 38: Im Restaurant (معدل)",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Eine unterhaltsame, schöne und gesellige Zeit. Das stellt man sich unter einem guten Essen vor. Störend wirkt da der anschauliche Erlebnisbericht der letzten Operation im Krankenhaus oder das Klingeln des Handys. Sowohl Gastgeber als auch Gast sollen alles dafür tun, dass das gemeinsame Essen Freude macht. Das Handy stellt man selbstverständlich ab.\nDas Essen beginnt, wenn der Gastgeber zur Serviette greift oder zum Gruß sein Glas erhebt. Besonders bei Kindern ein unbeliebtes Thema: die richtige Körperhaltung beim Essen. Die Arme ......(1)...... nicht auf den Tisch und die Hände nicht unter den Tisch. Man sitzt gerade, ohne unruhig hin und her zu rücken. Die Beine werden nebeneinander gestellt, nicht übereinander gelegt. Die Schuhe ......(2)...... in jedem Fall an.\nNur keine Angst vor guten Restaurants mit ihrem Luxus! Denn je besser die Küche, umso aufmerksamer ist in der Regel das Personal. Doch schon die korrekte Anrede der Bedienung bereitet so ......(3)...... Probleme. Die Bedienung ......(4)...... der Anrede \"Fräulein\" an den Tisch zu rufen, ist in Zeiten der Gleichberechtigung veraltet. \"Herr Ober\" oder \"Bedienung\" ist ......(5)...... zwar korrekt, aber in der Zwischenzeit auch eher unüblich. Am besten versucht man sich Blickkontakt zu verschaffen, um mit einem kleinen ......(6)...... mit der Hand den Kellner an den Tisch zu bitten.\nZudem gibt es zwischen Gast und Service eine Zeichensprache. Schließt der Gast die Speisekarte und legt sie auf den Tisch, ist dies für den Kellner das Signal, die Bestellung aufzunehmen. Wenn man mit dem Essen ......(7)...... ist, platziert man das Besteck parallel nebeneinander auf den rechten Tellerrand. Der Kellner wird dann abräumen. Macht man hingegen nur eine Pause, wird es gekreuzt oder offen auf den Teller gelegt.\nBeim Bezahlen ist ......(8)...... wichtig, wenn einer der Gäste die Kosten übernehmen möchte, macht er dies dem Kellner ......(9)...... . Ein \"Bringen Sie mir bitte die Rechnung\" reicht da völlig aus. Möchte man hingegen getrennt bezahlen, ......(10)...... durchaus üblich ist, teilt man dies ebenfalls rechtzeitig der Bedienung mit. In Deutschland gibt man, je nach Zufriedenheit mit dem Service und der Höhe der Gesamtsumme zwischen drei und zehn Prozent Trinkgeld. Ist man mit dem Service unzufrieden gewesen, gibt man kein Trinkgeld.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["als", "behält", "bereit", "bleibt", "dagegen", "fertig", "gehören", "jeder", "klar", "manchem", "mit", "taktgefühl", "tipp", "was", "wink"],
+      "correct": "gehören",
+      "memoryHighlight": {
+        "before": "Die Arme",
+        "connector": "gehören",
+        "after": "nicht auf",
+        "color": 2
+      }
+    },
+    {
+      "id": 2,
+      "options": ["als", "behält", "bereit", "bleibt", "dagegen", "fertig", "gehören", "jeder", "klar", "manchem", "mit", "taktgefühl", "tipp", "was", "wink"],
+      "correct": "behält",
+      "memoryHighlight": {
+        "before": "Schuhe",
+        "connector": "behält",
+        "after": "in jedem",
+        "color": 8
+      }
+    },
+    {
+      "id": 3,
+      "options": ["als", "behält", "bereit", "bleibt", "dagegen", "fertig", "gehören", "jeder", "klar", "manchem", "mit", "taktgefühl", "tipp", "was", "wink"],
+      "correct": "manchem",
+      "memoryHighlight": {
+        "before": "bereitet so",
+        "connector": "manchem",
+        "after": "Probleme. Die",
+        "color": 4
+      }
+    },
+    {
+      "id": 4,
+      "options": ["als", "behält", "bereit", "bleibt", "dagegen", "fertig", "gehören", "jeder", "klar", "manchem", "mit", "taktgefühl", "tipp", "was", "wink"],
+      "correct": "mit",
+      "memoryHighlight": {
+        "before": "Bedienung",
+        "connector": "mit",
+        "after": "der Anrede",
+        "color": 9
+      }
+    },
+    {
+      "id": 5,
+      "options": ["als", "behält", "bereit", "bleibt", "dagegen", "fertig", "gehören", "jeder", "klar", "manchem", "mit", "taktgefühl", "tipp", "was", "wink"],
+      "correct": "dagegen",
+      "memoryHighlight": {
+        "before": "Bedienung\" ist",
+        "connector": "dagegen",
+        "after": "zwar korrekt",
+        "color": 1
+      }
+    },
+    {
+      "id": 6,
+      "options": ["als", "behält", "bereit", "bleibt", "dagegen", "fertig", "gehören", "jeder", "klar", "manchem", "mit", "taktgefühl", "tipp", "was", "wink"],
+      "correct": "wink",
+      "memoryHighlight": {
+        "before": "kleinen",
+        "connector": "wink",
+        "after": "mit der",
+        "color": 7
+      }
+    },
+    {
+      "id": 7,
+      "options": ["als", "behält", "bereit", "bleibt", "dagegen", "fertig", "gehören", "jeder", "klar", "manchem", "mit", "taktgefühl", "tipp", "was", "wink"],
+      "correct": "fertig",
+      "memoryHighlight": {
+        "before": "Essen",
+        "connector": "fertig",
+        "after": "ist, platziert",
+        "color": 11
+      }
+    },
+    {
+      "id": 8,
+      "options": ["als", "behält", "bereit", "bleibt", "dagegen", "fertig", "gehören", "jeder", "klar", "manchem", "mit", "taktgefühl", "tipp", "was", "wink"],
+      "correct": "taktgefühl",
+      "memoryHighlight": {
+        "before": "Bezahlen ist",
+        "connector": "taktgefühl",
+        "after": "wichtig, wenn",
+        "color": 3
+      }
+    },
+    {
+      "id": 9,
+      "options": ["als", "behält", "bereit", "bleibt", "dagegen", "fertig", "gehören", "jeder", "klar", "manchem", "mit", "taktgefühl", "tipp", "was", "wink"],
+      "correct": "klar",
+      "memoryHighlight": {
+        "before": "dies dem",
+        "connector": "klar",
+        "after": ". Ein \"Bringen",
+        "color": 6
+      }
+    },
+    {
+      "id": 10,
+      "options": ["als", "behält", "bereit", "bleibt", "dagegen", "fertig", "gehören", "jeder", "klar", "manchem", "mit", "taktgefühl", "tipp", "was", "wink"],
+      "correct": "was",
+      "memoryHighlight": {
+        "before": "bezahlen,",
+        "connector": "was",
+        "after": "durchaus üblich",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["als", "behält", "bereit", "bleibt", "dagegen", "fertig", "gehören", "jeder", "klar", "manchem", "mit", "taktgefühl", "tipp", "was", "wink"]
+}

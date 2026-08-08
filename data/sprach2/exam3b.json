@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 3: Man(n) kocht selbst (معدل)",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Immer mehr deutsche Männer nehmen die Töpfe selbst in die Hand\nSelbst ist der Mann. Von der Wahrheit dieser alten deutschen Redewendung haben Frauen Generationen lang geträumt, wenn es um typische Hausarbeiten wie Waschen, Putzen oder Kochen ging. Zumindest bei Letzterem scheint sich jedoch in den letzten Jahren vieles zu ändern, denn immer mehr Männer in Deutschland greifen jetzt selbst .__( 1 )__. Kochlöffel. Ein Grund .__( 2 )__. diese Entwicklung mag sein, dass es immer mehr Ein-Personen-Haushalte in Deutschland gibt. Es ist einfach niemand anderes da, der die Kocharbeit übernehmen könnte. Und Hunger zwingt bekanntlich zum Handeln. Andererseits ist das Kochen inzwischen allgemein akzeptiertes Hobby geworden, besonders unter Männern. Doch welch ein Unterschied besteht .__( 3 )__. den Ansprüchen einer traditionellen Hausfrau und .__( 4 )__. eines Hobbykochs, was die Ausstattung der Küche angeht! Nicht irgendein Topf darf es für den selbsternannten Drei-Sterne-Küchenchef sein: Gebürsteter Edelstahl mit versiegelter Antihaftbeschichtung und integrierter digitaler Temperaturanzeige ist der Mindeststandard für einen echten kochenden Mann. Alles andere gilt .__( 5 )__. stillos.\nDie zweite Voraussetzung dafür, dass die Gerichte auch gelingen, ist das Wissen, wie man welche Speise am besten zubereitet. Zu diesem Zweck bieten die Buchhandlungen Berge von Kochbüchern an – mit Rezepten von Alaska bis Zimbabwe, mit oder ohne Fleisch, für zu Dicke und zu Dünne. Jetzt hängt es nur noch .__( 6 )__. ab, was der Hobbykoch aus den Kochideen der Buchautoren macht. Wird es ein exzellentes Mahl oder wäre unser \"Chefkoch\" nicht doch lieber zum Dönerstand .__( 7 )__. die Ecke gegangen? Überraschungen gehören zum Kochen dazu. Helfen die Bücher nicht weiter, bieten zum Beispiel die Volkshochschulen zahlreiche Kochkurse an, die in der Regel – zumeist von kochwilligen Männern – gut besucht sind. Das Kursangebot umfasst neben deutscher Hausmannskost wie Schnitzel, Krautwickel oder Rinderbraten zumeist auch die mediterrane und die asiatische Küche. Das führt .__( 8 )__., dass man(n) zu Hause immer öfter international kocht.\nDas größte Problem der Hobbyköche ist aber, .__( 9 )__. es viel zu aufwändig ist, für sich alleine zu kochen. Daher sind zurzeit Internetseiten wie www.allein-kochen-ist-doof.de beliebt, wo sich Hobbyköche und -köchinnen Kochpartner für das gemeinsame Kochen und Essen suchen können. Das Interessante daran ist, dass dabei unsere männlichen Chefköche feststellen müssen, dass es andere Menschen gibt, die mit vielleicht weniger Aufwand .__( 10 )__. gut ein Festmahl zubereiten können wie sie: nämlich die Frauen.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["zum", "für", "gegen", "um", "zwischen", "als", "dazu", "davon", "dass", "denen", "genauso", "daher", "damit", "was"],
+      "correct": "zum",
+      "memoryHighlight": {
+        "before": "greifen jetzt selbst",
+        "connector": "zum",
+        "after": "Kochlöffel",
+        "color": 0
+      }
+    },
+    {
+      "id": 2,
+      "options": ["zum", "für", "gegen", "um", "zwischen", "als", "dazu", "davon", "dass", "denen", "genauso", "daher", "damit", "was"],
+      "correct": "für",
+      "memoryHighlight": {
+        "before": "Ein Grund",
+        "connector": "für",
+        "after": "diese Entwicklung",
+        "color": 1
+      }
+    },
+    {
+      "id": 3,
+      "options": ["zum", "für", "gegen", "um", "zwischen", "als", "dazu", "davon", "dass", "denen", "genauso", "daher", "damit", "was"],
+      "correct": "zwischen",
+      "memoryHighlight": {
+        "before": "besteht",
+        "connector": "zwischen",
+        "after": "den Ansprüchen",
+        "color": 2
+      }
+    },
+    {
+      "id": 4,
+      "options": ["zum", "für", "gegen", "um", "zwischen", "als", "dazu", "davon", "dass", "denen", "genauso", "daher", "damit", "was"],
+      "correct": "denen",
+      "memoryHighlight": {
+        "before": "traditionellen Hausfrau und",
+        "connector": "denen",
+        "after": "eines Hobbykochs",
+        "color": 3
+      }
+    },
+    {
+      "id": 5,
+      "options": ["zum", "für", "gegen", "um", "zwischen", "als", "dazu", "davon", "dass", "denen", "genauso", "daher", "damit", "was"],
+      "correct": "als",
+      "memoryHighlight": {
+        "before": "gilt",
+        "connector": "als",
+        "after": "stillos",
+        "color": 4
+      }
+    },
+    {
+      "id": 6,
+      "options": ["zum", "für", "gegen", "um", "zwischen", "als", "dazu", "davon", "dass", "denen", "genauso", "daher", "damit", "was"],
+      "correct": "davon",
+      "memoryHighlight": {
+        "before": "hängt es nur noch",
+        "connector": "davon",
+        "after": "ab, was",
+        "color": 5
+      }
+    },
+    {
+      "id": 7,
+      "options": ["zum", "für", "gegen", "um", "zwischen", "als", "dazu", "davon", "dass", "denen", "genauso", "daher", "damit", "was"],
+      "correct": "um",
+      "memoryHighlight": {
+        "before": "zum Dönerstand",
+        "connector": "um",
+        "after": "die Ecke gegangen",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["zum", "für", "gegen", "um", "zwischen", "als", "dazu", "davon", "dass", "denen", "genauso", "daher", "damit", "was"],
+      "correct": "dazu",
+      "memoryHighlight": {
+        "before": "Das führt",
+        "connector": "dazu",
+        "after": ", dass man(n)",
+        "color": 7
+      }
+    },
+    {
+      "id": 9,
+      "options": ["zum", "für", "gegen", "um", "zwischen", "als", "dazu", "davon", "dass", "denen", "genauso", "daher", "damit", "was"],
+      "correct": "dass",
+      "memoryHighlight": {
+        "before": "aber,",
+        "connector": "dass",
+        "after": "es viel",
+        "color": 8
+      }
+    },
+    {
+      "id": 10,
+      "options": ["zum", "für", "gegen", "um", "zwischen", "als", "dazu", "davon", "dass", "denen", "genauso", "daher", "damit", "was"],
+      "correct": "genauso",
+      "memoryHighlight": {
+        "before": "weniger Aufwand",
+        "connector": "genauso",
+        "after": "gut ein Festmahl",
+        "color": 9
+      }
+    }
+  ],
+  "allOptions": ["zum", "für", "gegen", "um", "zwischen", "als", "dazu", "davon", "dass", "denen", "genauso", "daher", "damit", "was"]
+}

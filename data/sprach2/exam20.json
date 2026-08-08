@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 20: Kaffee und Kuchen – ein Stück Tradition",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "In England zelebriert man um 17 Uhr die Teatime, in Deutschland trifft man sich am Sonntagnachmittag  .__( 1 )__. Kaffee und Kuchen. Schon unsere Großeltern haben diese Tradition zu schätzen gewusst.  .__( 2 )__. lange es den Brauch in der uns bekannten Form gibt, ist jedoch nicht bekannt.  .__( 3 )__. ist nur, dass sich dieses Getränk im 17. Jahrhundert in Europa als Genussmittel verbreitete.  .__( 4 )__. entstanden zahlreiche Kaffeehäuser – erst in Italien, dann in anderen Ländern. Das erste Café in Deutschland wurde im Jahr 1673 in Bremen eröffnet.\nDie Kaffeehäuser begannen schnell, zu dem bitteren Kaffee süße Speisen zu servieren. Dort wurde jedoch nicht nur gespeist und getrunken,  .__( 5 )__. man konnte in Gesellschaft sein, und es fanden sogar kleine Konzerte statt. So wurde 1732 die berühmte Kaffeekantate  .__( 6 )__. Johann Sebastian Bach in dem Leipziger Kaffeehaus „Zimmermann“ uraufgeführt.\nDas schwarze Getränk war zu dieser Zeit aber noch ein Luxusgut, das sich nur Adelige und wohlhabende Bürger leisten  .__( 7 )__. Erst mit der Industrialisierung wurde es für den Großteil der Bevölkerung erschwinglich. 1965 wurde Kaffee zum ersten Mal vor Bier zum Lieblingsgetränk der Deutschen gekürt – und ist es  .__( 8 )__. heute geblieben.\nGegen Ende des 20. Jahrhunderts kam noch einmal Bewegung in die deutsche Kaffeewelt: Spezialitäten  .__( 9 )__. alle Welt wie Café au Lait oder Latte Macchiato wurden beliebter, die Zubereitungsarten vielfältiger. Der klassischen Filterkaffeemaschine setzten seitdem Espressokocher oder Kaffeevollautomaten  .__( 10 )__. häufiger Konkurrenz. Die Auswahl ist also größer geworden, doch die Liebe der Deutschen zu Kaffee und Kuchen bleibt nach wie vor unverändert.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["sicher", "zu", "sondern", "wie", "damals", "bis", "konnten", "von", "aus", "immer", "zu", "sehr", "auch", "in", "mit"],
+      "correct": "zu",
+      "memoryHighlight": {
+        "before": "Sonntagnachmittag",
+        "connector": "zu",
+        "after": "Kaffee und",
+        "color": 5
+      }
+    },
+    {
+      "id": 2,
+      "options": ["sicher", "zu", "sondern", "wie", "damals", "bis", "konnten", "von", "aus", "immer", "zu", "sehr", "auch", "in", "mit"],
+      "correct": "wie",
+      "memoryHighlight": {
+        "before": "gekannt.",
+        "connector": "wie",
+        "after": "lange es",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["sicher", "zu", "sondern", "wie", "damals", "bis", "konnten", "von", "aus", "immer", "zu", "sehr", "auch", "in", "mit"],
+      "correct": "sicher",
+      "memoryHighlight": {
+        "before": "bekannt.",
+        "connector": "sicher",
+        "after": "ist nur",
+        "color": 2
+      }
+    },
+    {
+      "id": 4,
+      "options": ["sicher", "zu", "sondern", "wie", "damals", "bis", "konnten", "von", "aus", "immer", "zu", "sehr", "auch", "in", "mit"],
+      "correct": "damals",
+      "memoryHighlight": {
+        "before": "verbreitete.",
+        "connector": "damals",
+        "after": "entstanden zahlreiche",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["sicher", "zu", "sondern", "wie", "damals", "bis", "konnten", "von", "aus", "immer", "zu", "sehr", "auch", "in", "mit"],
+      "correct": "sondern",
+      "memoryHighlight": {
+        "before": "nicht nur",
+        "connector": "sondern",
+        "after": "man konnte",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["sicher", "zu", "sondern", "wie", "damals", "bis", "konnten", "von", "aus", "immer", "zu", "sehr", "auch", "in", "mit"],
+      "correct": "von",
+      "memoryHighlight": {
+        "before": "Kaffeekantate",
+        "connector": "von",
+        "after": "Johann Sebastian",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["sicher", "zu", "sondern", "wie", "damals", "bis", "konnten", "von", "aus", "immer", "zu", "sehr", "auch", "in", "mit"],
+      "correct": "konnten",
+      "memoryHighlight": {
+        "before": "leisten",
+        "connector": "konnten",
+        "after": ". Erst mit",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["sicher", "zu", "sondern", "wie", "damals", "bis", "konnten", "von", "aus", "immer", "zu", "sehr", "auch", "in", "mit"],
+      "correct": "bis",
+      "memoryHighlight": {
+        "before": "und ist es",
+        "connector": "bis",
+        "after": "heute geblieben",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["sicher", "zu", "sondern", "wie", "damals", "bis", "konnten", "von", "aus", "immer", "zu", "sehr", "auch", "in", "mit"],
+      "correct": "aus",
+      "memoryHighlight": {
+        "before": "Spezialitäten",
+        "connector": "aus",
+        "after": "alle Welt",
+        "color": 1
+      }
+    },
+    {
+      "id": 10,
+      "options": ["sicher", "zu", "sondern", "wie", "damals", "bis", "konnten", "von", "aus", "immer", "zu", "sehr", "auch", "in", "mit"],
+      "correct": "immer",
+      "memoryHighlight": {
+        "before": "setzten seitdem",
+        "connector": "immer",
+        "after": "häufiger Konkurrenz",
+        "color": 4
+      }
+    }
+  ],
+  "allOptions": ["sicher", "zu", "sondern", "wie", "damals", "bis", "konnten", "von", "aus", "immer", "auch", "in", "mit", "sehr"]
+}

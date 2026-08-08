@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 27: Wie Handschrift wieder cool wird (معدل)",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Mit dem sogenannten SMS-Daumen erbringen Kinder heutzutage Höchstleistungen. Das Handgelenk hingegen schmerzt schnell, ......(1)...... Schreiben mit der Hand ungewohnt ist. Kinder haben damit in der Schule ......(2)...... mehr Probleme.\nDennoch gibt es einen neuen Trend, der mit Handschrift zu ......(3)...... hat: Unter dem Hashtag Lettering finden sich auf Instagram über zwölf Millionen Beiträge.\nBeim Lettering werden Buchstaben auf kunstvolle Weise gezeichnet und danach dekoriert. Vom klassischen Schönschreiben, wie es früher unterrichtet und von einigen auch gefürchtet ......(4)......, ist das alles weit entfernt. Die Verbindung ......(5)...... Schrift und Bild lässt sich auch im Alltag anwenden.\nErfahrungen ......(6)...... hat auch die Wiener Designerin Nina Holler gemacht, die Schrift-Workshops für Kinder und Erwachsene anbietet. Auf ......(7)...... Weise vermittelt die Künstlerin das Thema Schrift aus unterschiedlichen Zeitepochen bis hin zum handgezeichneten modernen Alphabet. So will sie dem persönlichen sprachlichen Ausdruck wieder mehr Tiefe verleihen. Der Künstlerin ist es ein Anliegen, ......(8)...... Kinder die Freude am Schreiben wieder entdecken. Die Schülerinnen und Schüler lernen durch Lettering nebenbei auch, coole Einladungen und Logos zu ......(9)...... Der Rhythmus mache den individuellen Ausdruck beim Schreiben mit der Hand aus. Es nütze wenig, an einzelnen Elementen von Buchstaben zu schreiben, bis ihnen das flüssig von der Hand ......(10)...... So wird die Feinmotorik wieder gestärkt, die vielen Kindern abhandengekommen ist.\nGerade Jugendlichen im Alter zwischen 13 und 15 Jahren bietet die Auseinandersetzung mit Schrift eine Möglichkeit, die eigene Handschrift zu beurteilen und zu entwickeln. So sollen sie neue Wege finden, um sich auszudrücken.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["damit", "das", "dass", "figuren", "für", "geht", "gestalten", "immer", "nie", "spielerische", "suchen", "tun", "von", "weil", "wurde"],
+      "correct": "weil",
+      "memoryHighlight": {
+        "before": "schmerzt schnell,",
+        "connector": "weil",
+        "after": "Schreiben mit",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["damit", "das", "dass", "figuren", "für", "geht", "gestalten", "immer", "nie", "spielerische", "suchen", "tun", "von", "weil", "wurde"],
+      "correct": "immer",
+      "memoryHighlight": {
+        "before": "Schule",
+        "connector": "immer",
+        "after": "mehr Probleme",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["damit", "das", "dass", "figuren", "für", "geht", "gestalten", "immer", "nie", "spielerische", "suchen", "tun", "von", "weil", "wurde"],
+      "correct": "tun",
+      "memoryHighlight": {
+        "before": "zu",
+        "connector": "tun",
+        "after": "hat: Unter",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["damit", "das", "dass", "figuren", "für", "geht", "gestalten", "immer", "nie", "spielerische", "suchen", "tun", "von", "weil", "wurde"],
+      "correct": "wurde",
+      "memoryHighlight": {
+        "before": "gefürchtet",
+        "connector": "wurde",
+        "after": ", ist das",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["damit", "das", "dass", "figuren", "für", "geht", "gestalten", "immer", "nie", "spielerische", "suchen", "tun", "von", "weil", "wurde"],
+      "correct": "von",
+      "memoryHighlight": {
+        "before": "Verbindung",
+        "connector": "von",
+        "after": "Schrift und",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["damit", "das", "dass", "figuren", "für", "geht", "gestalten", "immer", "nie", "spielerische", "suchen", "tun", "von", "weil", "wurde"],
+      "correct": "damit",
+      "memoryHighlight": {
+        "before": "Erfahrungen",
+        "connector": "damit",
+        "after": "hat auch",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["damit", "das", "dass", "figuren", "für", "geht", "gestalten", "immer", "nie", "spielerische", "suchen", "tun", "von", "weil", "wurde"],
+      "correct": "spielerische",
+      "memoryHighlight": {
+        "before": "Auf",
+        "connector": "spielerische",
+        "after": "Weise vermittelt",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["damit", "das", "dass", "figuren", "für", "geht", "gestalten", "immer", "nie", "spielerische", "suchen", "tun", "von", "weil", "wurde"],
+      "correct": "dass",
+      "memoryHighlight": {
+        "before": "Anliegen,",
+        "connector": "dass",
+        "after": "Kinder die",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["damit", "das", "dass", "figuren", "für", "geht", "gestalten", "immer", "nie", "spielerische", "suchen", "tun", "von", "weil", "wurde"],
+      "correct": "gestalten",
+      "memoryHighlight": {
+        "before": "zu",
+        "connector": "gestalten",
+        "after": ". Der Rhythmus",
+        "color": 2
+      }
+    },
+    {
+      "id": 10,
+      "options": ["damit", "das", "dass", "figuren", "für", "geht", "gestalten", "immer", "nie", "spielerische", "suchen", "tun", "von", "weil", "wurde"],
+      "correct": "geht",
+      "memoryHighlight": {
+        "before": "Hand",
+        "connector": "geht",
+        "after": ". So wird",
+        "color": 5
+      }
+    }
+  ],
+  "allOptions": ["damit", "das", "dass", "figuren", "für", "geht", "gestalten", "immer", "nie", "spielerische", "suchen", "tun", "von", "weil", "wurde"]
+}
