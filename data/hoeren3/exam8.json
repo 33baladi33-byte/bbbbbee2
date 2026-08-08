@@ -1,0 +1,15 @@
+{
+  "title": "Hörverstehen Teil 3 - Ehrenamts",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Man kann am 'Tag des Ehrenamts' probeweise mithelfen.", "correct": true },
+    { "text": "Die Skateboard-Vorführung fällt dieses Mal aus.", "correct": false },
+    { "text": "Vor Passwort-Programmen wird gewarnt.", "correct": false },
+    { "text": "Es wird empfohlen, mit dem Fahrrad zum Volkspark zu fahren.", "correct": false },
+    { "text": "Wenn man das Training ausprobieren möchte, muss man vorher Bescheid sagen.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 6, "parts": [ "Man kann am 'Tag des Ehrenamts' probeweise mithelfen." ] },
+    { "color": 11, "parts": [ "Wenn man das Training ausprobieren möchte, muss man vorher Bescheid sagen." ] }
+  ]
+}

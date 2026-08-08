@@ -1,0 +1,15 @@
+{
+  "title": "Hörverstehen Teil 3 - Für das Konzert mit Romano (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Der Software-Service von Macrohard steht rund um die Uhr zur Verfügung.", "correct": false },
+    { "text": "Für das Konzert mit Romano Castelli gibt es noch Karten ab 200 Euro.", "correct": false },
+    { "text": "Über den neuen Tarif von T-Upline können Sie sich im Internet informieren.", "correct": true },
+    { "text": "Weil das Schwerpunktthema 'Japan' lautet, treten im Park des Museums für Völkerkunde in diesem Jahr nur japanische Musiker auf.", "correct": false },
+    { "text": "Bei dem Festival gibt es nicht nur folkloristische Unterhaltung, sondern auch kulinarische Spezialitäten aus dem In- und Ausland.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 0, "parts": [ "Über den neuen Tarif von T-Upline können Sie sich im Internet informieren." ] },
+    { "color": 8, "parts": [ "Bei dem Festival gibt es nicht nur folkloristische Unterhaltung, sondern auch kulinarische Spezialitäten aus dem In- und Ausland." ] }
+  ]
+}

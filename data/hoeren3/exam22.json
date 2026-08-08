@@ -1,0 +1,15 @@
+{
+  "title": "Hörverstehen Teil 3 - Trainingsausfahrten",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Trainingsausfahrten mit dem Rennvelo samstags empfehlen sich nur für besonders geübte Radfahrer.", "correct": false },
+    { "text": "Auf dem Blumenmarkt in Groningen kann man auch Gartenzubehör kaufen.", "correct": true },
+    { "text": "In der Zooschule wird Unterricht nicht nur für Schüler, sondern auch für Rentner erteilt.", "correct": false },
+    { "text": "Ein Markt wird Ende Juli für Kinder bis 16 Jahre in Stuttgart veranstaltet, wo sie ihre alten Bücher und Spielzeuge verkaufen können.", "correct": true },
+    { "text": "Auf der A94 zwischen München und Burghausen muss man langsam fahren, weil sich auf der Straße Gegenstände befinden.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 9, "parts": [ "Auf dem Blumenmarkt in Groningen kann man auch Gartenzubehör kaufen." ] },
+    { "color": 11, "parts": [ "Ein Markt wird Ende Juli für Kinder bis 16 Jahre in Stuttgart veranstaltet, wo sie ihre alten Bücher und Spielzeuge verkaufen können." ] }
+  ]
+}

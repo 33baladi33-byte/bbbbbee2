@@ -1,0 +1,16 @@
+{
+  "title": "Hörverstehen Teil 3 - Für ein Konzert (in der ganzen Stadt)",
+  "type": "truefalse",
+  "note": "الكلمة المفتاحية (in der ganzen Stadt) موجودة في الجملة الثانية",
+  "questions": [
+    { "text": "Für ein Konzert morgen Abend kann man noch im Internet Karten kaufen.", "correct": true },
+    { "text": "Heute ist das Busfahren in der ganzen Stadt umsonst.", "correct": false },
+    { "text": "Bei dem Filmfestival werden internationale Kinderfilme gezeigt.", "correct": true },
+    { "text": "Das Busunternehmen Schneider kündigt neue Fernbusverbindungen an.", "correct": false },
+    { "text": "Man kann eine kostenlose Probestunde vereinbaren.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 7, "parts": [ "Für ein Konzert morgen Abend kann man noch im Internet Karten kaufen." ] },
+    { "color": 11, "parts": [ "Bei dem Filmfestival werden internationale Kinderfilme gezeigt." ] }
+  ]
+}

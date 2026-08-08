@@ -1,0 +1,15 @@
+{
+  "title": "Hörverstehen Teil 3 - Musikfestivals",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Während des Musikfestivals 'Sound of Frankfurt' gibt es verbilligte Fahrkarten für alle öffentlichen Verkehrsmittel.", "correct": true },
+    { "text": "Sie gehen am 3. Juli ins Konzert, weil Sie die beiden Leipziger Klaviervirtuosen hören möchten.", "correct": false },
+    { "text": "Am Wochenende können Sie sich in Naumburg über die Bekämpfung von Krankheiten bei Apfelbäumen informieren.", "correct": true },
+    { "text": "Im Handwerksmuseum werden Kleidungsstücke ausgestellt.", "correct": false },
+    { "text": "Die Autobahn A5 ist zwischen Baden-Baden und Rastatt in beiden Richtungen gesperrt.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 3, "parts": [ "Während des Musikfestivals 'Sound of Frankfurt' gibt es verbilligte Fahrkarten für alle öffentlichen Verkehrsmittel." ] },
+    { "color": 9, "parts": [ "Am Wochenende können Sie sich in Naumburg über die Bekämpfung von Krankheiten bei Apfelbäumen informieren." ] }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Hörverstehen Teil 3 - Fundbüro",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Sie müssen nicht persönlich beim Fundbüro nachfragen.", "correct": true },
+    { "text": "Die Wettervorhersage können Sie nach den Mittagsnachrichten hören.", "correct": true },
+    { "text": "Sie dürfen Ihr Rad spontan im Zug mitnehmen.", "correct": false },
+    { "text": "Am Donnerstag sehen Sie das deutsche Team im Halbfinale.", "correct": false },
+    { "text": "Während der Sperrung kann man die üblichen Bushaltestellen benutzen.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 4, "parts": [ "Sie müssen nicht persönlich beim Fundbüro nachfragen." ] },
+    { "color": 10, "parts": [ "Die Wettervorhersage können Sie nach den Mittagsnachrichten hören." ] },
+    { "color": 1, "parts": [ "Während der Sperrung kann man die üblichen Bushaltestellen benutzen." ] }
+  ]
+}

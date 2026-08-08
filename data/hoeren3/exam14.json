@@ -1,0 +1,17 @@
+{
+  "title": "Hörverstehen Teil 3 - Ausgang 26",
+  "type": "truefalse",
+  "note": "عندما تجد الليمون في LESEN تصبح الجملة 4 خاطئة",
+  "questions": [
+    { "text": "Sie sollen zum Ausgang 26 kommen.", "correct": true },
+    { "text": "Um die zuständige Abteilung zu erreichen, müssen Sie die 3 wählen.", "correct": false },
+    { "text": "Bei der Service-Nummer bekommen Sie Karten für eine Führung.", "correct": false },
+    { "text": "Sie können sich am Sonntag um ein Uhr bewerben.", "correct": true },
+    { "text": "In der Bäckerstraße dürfen Sie nicht fahren.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 6, "parts": [ "Sie sollen zum Ausgang 26 kommen." ] },
+    { "color": 11, "parts": [ "Sie können sich am Sonntag um ein Uhr bewerben." ] },
+    { "color": 2, "parts": [ "In der Bäckerstraße dürfen Sie nicht fahren." ] }
+  ]
+}

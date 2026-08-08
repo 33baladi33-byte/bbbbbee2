@@ -1,0 +1,14 @@
+{
+  "title": "Hörverstehen Teil 3 - Die Literaturmesse für Kleinverleger (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Die Literaturmesse für Kleinverleger findet zum ersten Mal statt.", "correct": false },
+    { "text": "Bei dem Wettkampf machte Saskia Winzer alles richtig.", "correct": false },
+    { "text": "Am Samstag ist den ganzen Tag mit Sonne zu rechnen.", "correct": false },
+    { "text": "Das Theaterstück wird zum ersten Mal am Stadttheater aufgeführt.", "correct": false },
+    { "text": "Während des Unterhaltungsprogramms gibt es auch Kinderbetreuung.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": [ "Während des Unterhaltungsprogramms gibt es auch Kinderbetreuung." ] }
+  ]
+}

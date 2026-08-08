@@ -1,0 +1,17 @@
+{
+  "title": "Hörverstehen Teil 3 - Blutspenden",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Ihre Tochter kann am Freitag verschiedene Sportarten testen.", "correct": true },
+    { "text": "Sie können sich im Internet zum Blutspenden anmelden.", "correct": false },
+    { "text": "Heute müssen Sie auf den Bus ausweichen.", "correct": true },
+    { "text": "Sie müssen das Bad früher verlassen.", "correct": true },
+    { "text": "Für einen Termin müssen Sie anrufen.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 5, "parts": [ "Ihre Tochter kann am Freitag verschiedene Sportarten testen." ] },
+    { "color": 10, "parts": [ "Heute müssen Sie auf den Bus ausweichen." ] },
+    { "color": 0, "parts": [ "Sie müssen das Bad früher verlassen." ] },
+    { "color": 9, "parts": [ "Für einen Termin müssen Sie anrufen." ] }
+  ]
+}

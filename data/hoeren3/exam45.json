@@ -1,0 +1,15 @@
+{
+  "title": "Hörverstehen Teil 3 - Auf der Viktoriabrücke (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Die nächtlichen Temperaturen gehen in der ganzen Region auf null Grad zurück.", "correct": false },
+    { "text": "An der Abendkasse sind die Karten für das Konzert der Gruppe Sing Slow günstiger als im Vorverkauf.", "correct": false },
+    { "text": "Auf der Viktoriabrücke kann wegen Bauarbeiten stadteinwärts nur eine Fahrbahn genutzt werden.", "correct": true },
+    { "text": "Wenn man den Eindruck hat, man hat zu viel für den Strom bezahlt, wählt man die 2.", "correct": true },
+    { "text": "Beim Fest in Bergheim finden Darbietungen von internationalen Theatergruppen statt.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 6, "parts": [ "Auf der Viktoriabrücke kann wegen Bauarbeiten stadteinwärts nur eine Fahrbahn genutzt werden." ] },
+    { "color": 11, "parts": [ "Wenn man den Eindruck hat, man hat zu viel für den Strom bezahlt, wählt man die 2." ] }
+  ]
+}

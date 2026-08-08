@@ -1,0 +1,15 @@
+{
+  "title": "Hörverstehen Teil 3 - Im Süden Deutschlands regnen",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Im Süden Deutschlands wird es nachmittags regnen.", "correct": true },
+    { "text": "Die Busse verkehren zu anderen Zeiten als die Regionalzüge.", "correct": false },
+    { "text": "Auf der A3 von Würzburg nach Frankfurt gibt es aufgrund eines Unfalls eine Vollsperrung.", "correct": false },
+    { "text": "Wenn Sie über Ihre Autoversicherung sprechen wollen, müssen Sie die 1 wählen.", "correct": true },
+    { "text": "Ihr Bekannter ist jederzeit telefonisch erreichbar.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 2, "parts": [ "Im Süden Deutschlands wird es nachmittags regnen." ] },
+    { "color": 10, "parts": [ "Wenn Sie über Ihre Autoversicherung sprechen wollen, müssen Sie die 1 wählen." ] }
+  ]
+}

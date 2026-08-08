@@ -1,0 +1,15 @@
+{
+  "title": "Hörverstehen Teil 3 - Im Süden Deutschlands Schnee",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Morgen muss man im Süden Deutschlands mit Schnee rechnen.", "correct": true },
+    { "text": "Die zwei Jungen sind von zu Hause weggelaufen.", "correct": false },
+    { "text": "Am Samstag können Sie einen Mitarbeiter der Firma anrufen.", "correct": false },
+    { "text": "Wegen einer Demonstration ist es verboten, in die Nürnberger Altstadt zu fahren.", "correct": false },
+    { "text": "Die historische elektrische Eisenbahn wird im Dezember wie gewohnt fahren.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 4, "parts": [ "Morgen muss man im Süden Deutschlands mit Schnee rechnen." ] },
+    { "color": 9, "parts": [ "Die historische elektrische Eisenbahn wird im Dezember wie gewohnt fahren." ] }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Hörverstehen Teil 3 - Das Fest (mit Frankfurt)",
+  "type": "truefalse",
+  "note": "في حالة سماع الكلمة المفتاحية 'mit Frankfurt' هي في وسط المقطع الصوتي",
+  "questions": [
+    { "text": "Heute kann man vormittags das Fest besuchen.", "correct": true },
+    { "text": "Die Wiese beginnt um 8 Uhr...", "correct": false },
+    { "text": "Eintrittskarten für Jugendliche kosten 13,50 €.", "correct": true },
+    { "text": "Die Fahrkarte ist in bestimmten Zügen gültig.", "correct": false },
+    { "text": "Am Sonntag können Kinder ein Theaterstück anschauen.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 3, "parts": [ "Heute kann man vormittags das Fest besuchen." ] },
+    { "color": 10, "parts": [ "Eintrittskarten für Jugendliche kosten 13,50 €." ] },
+    { "color": 11, "parts": [ "Am Sonntag können Kinder ein Theaterstück anschauen." ] }
+  ]
+}

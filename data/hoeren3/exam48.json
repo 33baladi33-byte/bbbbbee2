@@ -1,0 +1,16 @@
+{
+  "title": "Sie Hören Den Anrufbeantworter-Buchhandlung",
+  "type": "truefalse",
+  "note": "بالنسبه لهذا الموضوع لدي 2 اسماء والاكثر شهره هو Buchhandlung",
+  "questions": [
+    { "text": "Sie hören den Anrufbeantworter einer Buchhandlung.", "correct": true },
+    { "text": "Beim Jubiläumsfest im Schloss kann man selbst Musik machen.", "correct": false },
+    { "text": "Wer gerne und lange tanzt, sollte in Kulmbach Vorbei schauen.", "correct": false },
+    { "text": "Sie können sich für alle kurse auch über das Internet registrieren.", "correct": false },
+    { "text": "Internationale Künstler treten an verschiedenen Plätzen in Esens auf.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": [ "Sie hören den Anrufbeantworter einer Buchhandlung." ] },
+    { "color": 7, "parts": [ "Internationale Künstler treten an verschiedenen Plätzen in Esens auf." ] }
+  ]
+}

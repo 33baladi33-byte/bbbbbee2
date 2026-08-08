@@ -1,0 +1,16 @@
+{
+  "title": "Hörverstehen Teil 3 - Die Buchpräsentation (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Die Buchpräsentation beginnt laut Programm in 30 Minuten.", "correct": true },
+    { "text": "Patienten, die zu einer Nachbehandlung kommen, werden zu Schalter 3 gebeten.", "correct": false },
+    { "text": "Dienstags gibt es für einen Friseurbesuch zu Hause ein Sonderangebot.", "correct": false },
+    { "text": "Die Führungen im Tierpark beginnen in der Kassazone.", "correct": true },
+    { "text": "Die Besucher werden zum Mitmachen eingeladen.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 2, "parts": [ "Die Buchpräsentation beginnt laut Programm in 30 Minuten." ] },
+    { "color": 10, "parts": [ "Die Führungen im Tierpark beginnen in der Kassazone." ] },
+    { "color": 5, "parts": [ "Die Besucher werden zum Mitmachen eingeladen." ] }
+  ]
+}

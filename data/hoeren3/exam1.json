@@ -1,0 +1,14 @@
+{
+  "title": "Hörverstehen Teil 3 - Telefon",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Bei der Deutschen Telefon KG bekommen Sie nur Auskunft zu Telefonapparaten dieses Unternehmens.", "correct": true },
+    { "text": "Im Rahmen des 'BR3 Aquarena Weekends' in Starnberg können Sie jeden Abend ein Feuerwerk betrachten.", "correct": false },
+    { "text": "Die Trierer Domorganisten spielen am 6. Juli in Michelstadt.", "correct": false },
+    { "text": "Während des Musikfestivals 'Sound of Frankfurt' ist die Benutzung der U- und S-Bahnen gebührenfrei.", "correct": false },
+    { "text": "Sie haben eine ungültige Servicenummer gewählt und werden daher automatisch weiterverbunden.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 7, "parts": [ "Bei der Deutschen Telefon KG bekommen Sie nur Auskunft zu Telefonapparaten dieses Unternehmens." ] }
+  ]
+}

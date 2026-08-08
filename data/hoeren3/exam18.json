@@ -1,0 +1,16 @@
+{
+  "title": "Hörverstehen Teil 3 - Delikatessen",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Bis 14 Uhr können Sie Delikatessen aus verschiedenen Ländern kaufen.", "correct": false },
+    { "text": "Bis zum Start können Sie mit Ihrem Handy telefonieren.", "correct": true },
+    { "text": "Vorführungen mit Tieren werden nicht geboten.", "correct": true },
+    { "text": "Am Wochenende können Sie Musik im Schloss Mirabell hören.", "correct": true },
+    { "text": "Sie können Frau Dr. Schneider am Samstagabend anrufen.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 4, "parts": [ "Bis zum Start können Sie mit Ihrem Handy telefonieren." ] },
+    { "color": 10, "parts": [ "Vorführungen mit Tieren werden nicht geboten." ] },
+    { "color": 2, "parts": [ "Am Wochenende können Sie Musik im Schloss Mirabell hören." ] }
+  ]
+}

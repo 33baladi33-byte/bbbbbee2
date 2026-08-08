@@ -1,0 +1,15 @@
+{
+  "title": "Hörverstehen Teil 3 - Fahrschule",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Bei der Fahrschule kann man sich über das Internet anmelden.", "correct": true },
+    { "text": "Die Anruferin ist im Hinblick auf die Abfahrtszeit flexibel.", "correct": false },
+    { "text": "Für den Halb-Marathon kann man sich noch am Sonntag registrieren lassen.", "correct": false },
+    { "text": "Bei dem Flug nach Mallorca ändert sich die Abflugzeit.", "correct": true },
+    { "text": "In Halle D wird aus E-Books vorgelesen.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 5, "parts": [ "Bei der Fahrschule kann man sich über das Internet anmelden." ] },
+    { "color": 11, "parts": [ "Bei dem Flug nach Mallorca ändert sich die Abflugzeit." ] }
+  ]
+}

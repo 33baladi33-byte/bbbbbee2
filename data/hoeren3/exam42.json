@@ -1,0 +1,16 @@
+{
+  "title": "Hörverstehen Teil 3 - Das Treffen (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Das Treffen ist am Donnerstag.", "correct": true },
+    { "text": "Das Wetter bleibt schlecht und regnerisch; am Sonntagnachmittag leichte Wetterbesserung.", "correct": true },
+    { "text": "Die Firma ist direkt an der S-Bahn-Station.", "correct": false },
+    { "text": "Das Restaurant bietet Kaffee für 2 Euro 50 und Kuchen für 2 Euro.", "correct": false },
+    { "text": "Sprachprogramme für Deutsch gibt es in derselben Abteilung wie Computerspiele.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 0, "parts": [ "Das Treffen ist am Donnerstag." ] },
+    { "color": 7, "parts": [ "Das Wetter bleibt schlecht und regnerisch; am Sonntagnachmittag leichte Wetterbesserung." ] },
+    { "color": 11, "parts": [ "Sprachprogramme für Deutsch gibt es in derselben Abteilung wie Computerspiele." ] }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Hörverstehen Teil 3 - spätestens in Hannover (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Sie müssen spätestens in Hannover in den hinteren Zugteil umsteigen.", "correct": true },
+    { "text": "Wenn Sie für das Radio eine Geschichte über Ihren eigenen 18. Geburtstag schreiben, müssen Sie bei der Party keinen Eintritt bezahlen.", "correct": true },
+    { "text": "Ihrer Freundin geht es nicht gut.", "correct": true },
+    { "text": "Auf dem Festival wird auch Musik von Beethoven gespielt.", "correct": false },
+    { "text": "Sie können das Eisbärbaby jederzeit im Freien beobachten.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 3, "parts": [ "Sie müssen spätestens in Hannover in den hinteren Zugteil umsteigen." ] },
+    { "color": 9, "parts": [ "Wenn Sie für das Radio eine Geschichte über Ihren eigenen 18. Geburtstag schreiben, müssen Sie bei der Party keinen Eintritt bezahlen." ] },
+    { "color": 11, "parts": [ "Ihrer Freundin geht es nicht gut." ] }
+  ]
+}

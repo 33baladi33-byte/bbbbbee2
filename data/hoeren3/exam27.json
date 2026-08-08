@@ -1,0 +1,15 @@
+{
+  "title": "Hörverstehen Teil 3 - Radio Konzert",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Beim Klassik-Radio kann man Karten für ein Konzert in Frankfurt gewinnen.", "correct": true },
+    { "text": "Für den Engelberg-Lauf in Miltenberg ist eine frühzeitige Anmeldung erforderlich.", "correct": false },
+    { "text": "Der Radiosender Bayern 1 informiert auf seiner Website über das Sommernachtsfest.", "correct": true },
+    { "text": "Auf der A3 hat es in der Nähe von Erlangen einen Unfall gegeben.", "correct": false },
+    { "text": "Funk-Mobil bietet Dienstleistungen für Autofahrer an.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": [ "Beim Klassik-Radio kann man Karten für ein Konzert in Frankfurt gewinnen." ] },
+    { "color": 9, "parts": [ "Der Radiosender Bayern 1 informiert auf seiner Website über das Sommernachtsfest." ] }
+  ]
+}

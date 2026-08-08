@@ -1,0 +1,14 @@
+{
+  "title": "Hörverstehen Teil 3 - Nach einer Großdemonstration",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Nach einer Großdemonstration liegen in Frankfurt Gegenstände auf den Straßen.", "correct": false },
+    { "text": "Wer bei der Wanderung keinen Rucksack mitnehmen will, kann unterwegs etwas zu essen und zu trinken bekommen.", "correct": true },
+    { "text": "Bei der Volkshochschule Tübingen kann man sich für alle Kurse problemlos per E-Mail anmelden.", "correct": false },
+    { "text": "Im Klassikfunk kann man ab 20.15 Uhr CDs mit Musik von Verdi bestellen.", "correct": false },
+    { "text": "Kinder können während der Sommerferien im Römerkastell Saalburg übernachten.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 4, "parts": [ "Wer bei der Wanderung keinen Rucksack mitnehmen will, kann unterwegs etwas zu essen und zu trinken bekommen." ] }
+  ]
+}

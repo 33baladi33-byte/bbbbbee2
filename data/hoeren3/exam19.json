@@ -1,0 +1,16 @@
+{
+  "title": "Hörverstehen Teil 3 - Für ein Konzert (Bus gratis)",
+  "type": "truefalse",
+  "note": "الكلمة المفتاحية (dem Bus gratis) موجودة في الجملة الثانية",
+  "questions": [
+    { "text": "Für ein Konzert morgen Abend kann man noch im Internet Karten kaufen.", "correct": false },
+    { "text": "Man kann mit dem Bus gratis zum Fest fahren.", "correct": true },
+    { "text": "Bei dem Filmfestival werden internationale Kinderfilme gezeigt.", "correct": false },
+    { "text": "Das Busunternehmen Schneider kündigt neue Fernbusverbindungen an.", "correct": true },
+    { "text": "Man kann sich für eine kostenlose Probestunde anmelden.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 6, "parts": [ "Man kann mit dem Bus gratis zum Fest fahren." ] },
+    { "color": 11, "parts": [ "Das Busunternehmen Schneider kündigt neue Fernbusverbindungen an." ] }
+  ]
+}

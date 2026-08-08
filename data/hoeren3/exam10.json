@@ -1,0 +1,15 @@
+{
+  "title": "Hörverstehen Teil 3 - Demonstration",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Die Demonstration findet in Frankfurt vor der Alten Oper statt.", "correct": false },
+    { "text": "In der kommenden Saison wird eine Symphonie von Mahler aufgeführt.", "correct": true },
+    { "text": "Die Weltmeisterschaften im Eiskunstlauf finden in der Dortmunder Helmut-Körnig-Halle statt.", "correct": false },
+    { "text": "Die Autobahn A980 ist mit Schneeketten befahrbar.", "correct": false },
+    { "text": "Für die Vermittlung einer Mitfahrgelegenheit per E-Mail erhebt 'fahre mit' keine Gebühren.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 0, "parts": [ "In der kommenden Saison wird eine Symphonie von Mahler aufgeführt." ] },
+    { "color": 8, "parts": [ "Für die Vermittlung einer Mitfahrgelegenheit per E-Mail erhebt 'fahre mit' keine Gebühren." ] }
+  ]
+}

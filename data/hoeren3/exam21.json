@@ -1,0 +1,14 @@
+{
+  "title": "Hörverstehen Teil 3 - In Raum C23",
+  "type": "truefalse",
+  "questions": [
+    { "text": "In Raum C23 trägt ein bekannter Schriftsteller etwas vor.", "correct": false },
+    { "text": "Wenn Ihre Software nicht funktioniert, erhalten Sie über das Internet Unterstützung.", "correct": true },
+    { "text": "In der Stadtbibliothek präsentiert heute eine Hochschule ihr Angebot vor allem für Berufstätige.", "correct": false },
+    { "text": "Im Internet finden Sie auch Angebote für spezielle Zielgruppen.", "correct": false },
+    { "text": "Wenn man Dienstag oder Donnerstag jemanden persönlich sprechen möchte, braucht man einen Termin.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 5, "parts": [ "Wenn Ihre Software nicht funktioniert, erhalten Sie über das Internet Unterstützung." ] }
+  ]
+}

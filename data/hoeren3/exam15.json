@@ -1,0 +1,17 @@
+{
+  "title": "Hörverstehen Teil 3 - Ausgang 26 (Mittel)",
+  "type": "truefalse",
+  "note": "اذا كانت الكلمة المفتاحية في اخر جملة وليس الأولى",
+  "questions": [
+    { "text": "In der Bäckerstraße dürfen Sie nicht fahren.", "correct": true },
+    { "text": "Sie können sich am Sonntag um ein Uhr bewerben.", "correct": true },
+    { "text": "Bei der Service-Nummer bekommen Sie Karten für eine Führung.", "correct": false },
+    { "text": "Um die zuständige Abteilung zu erreichen, müssen Sie die 3 wählen.", "correct": false },
+    { "text": "Sie sollen zum Ausgang 26 kommen.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 8, "parts": [ "In der Bäckerstraße dürfen Sie nicht fahren." ] },
+    { "color": 11, "parts": [ "Sie können sich am Sonntag um ein Uhr bewerben." ] },
+    { "color": 3, "parts": [ "Sie sollen zum Ausgang 26 kommen." ] }
+  ]
+}

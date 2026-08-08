@@ -1,0 +1,15 @@
+{
+  "title": "Hörverstehen Teil 3 - Im August",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Im August gibt es jeden Tag eine Aufführung.", "correct": false },
+    { "text": "Zur Station Grünberg kommen Sie mit der U-Bahn-Linie 68.", "correct": false },
+    { "text": "In weniger dringlichen Fällen soll man eine Nachricht hinterlassen.", "correct": true },
+    { "text": "Am Mittwoch und Donnerstag können Sie Sachspenden vorbeibringen.", "correct": true },
+    { "text": "Nur an den Nachmittagen wird eine hohe Verkehrsdichte erwartet.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 0, "parts": [ "In weniger dringlichen Fällen soll man eine Nachricht hinterlassen." ] },
+    { "color": 7, "parts": [ "Am Mittwoch und Donnerstag können Sie Sachspenden vorbeibringen." ] }
+  ]
+}

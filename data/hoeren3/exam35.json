@@ -1,0 +1,17 @@
+{
+  "title": "Hörverstehen Teil 3 - Der Christkindlesmarkt in Nürnberg (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Der Christkindlesmarkt in Nürnberg bietet einen speziellen Geschenk-Dienst für Kinder an.", "correct": true },
+    { "text": "Auf dem deutsch-französischen Bauernmarkt in Hochspeyer werden ökologische Projekte vorgestellt.", "correct": true },
+    { "text": "In Heilsheim findet heute Abend ein Jodelkurs statt.", "correct": false },
+    { "text": "Auf der A5 gibt es hinter Karlsruhe mehrere Verkehrsbehinderungen.", "correct": true },
+    { "text": "Wenn Ihr Computer nicht mehr hochfährt, können Sie die Nummer 70 17 17 wählen, um Hilfe von Computer World zu erhalten.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 4, "parts": [ "Der Christkindlesmarkt in Nürnberg bietet einen speziellen Geschenk-Dienst für Kinder an." ] },
+    { "color": 11, "parts": [ "Auf dem deutsch-französischen Bauernmarkt in Hochspeyer werden ökologische Projekte vorgestellt." ] },
+    { "color": 0, "parts": [ "Auf der A5 gibt es hinter Karlsruhe mehrere Verkehrsbehinderungen." ] },
+    { "color": 9, "parts": [ "Wenn Ihr Computer nicht mehr hochfährt, können Sie die Nummer 70 17 17 wählen, um Hilfe von Computer World zu erhalten." ] }
+  ]
+}

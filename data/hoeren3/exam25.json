@@ -1,0 +1,16 @@
+{
+  "title": "Hörverstehen Teil 3 - Das Fest (ohne Frankfurt)",
+  "type": "truefalse",
+  "note": "في حالة سماع الكلمة المفتاحية 'ohne Frankfurt' هي في وسط المقطع الصوتي",
+  "questions": [
+    { "text": "Heute kann man vormittags das Fest besuchen.", "correct": true },
+    { "text": "Der Verkauf beginnt um 9 Uhr morgens.", "correct": false },
+    { "text": "Jugendliche Eintrittskarten kosten 13,50 €.", "correct": true },
+    { "text": "Die Fahrkarte ist in bestimmten Zügen gültig.", "correct": false },
+    { "text": "Am Sonntag können Kinder ein Theaterstück anschauen.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 0, "parts": [ "Heute kann man vormittags das Fest besuchen." ] },
+    { "color": 7, "parts": [ "Jugendliche Eintrittskarten kosten 13,50 €." ] }
+  ]
+}
