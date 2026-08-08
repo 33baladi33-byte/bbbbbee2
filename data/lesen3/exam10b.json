@@ -1,0 +1,150 @@
+{
+  "title": "Lesen Teil 3 - Exam 10: Ganztageausflug (معدل)",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "Neues Angebot der VHS Ab dem kommenden Monat bietet die Volkshochschule in Zusammenarbeit mit der Bürgerschaft in unserem Stadtteil Führungen an. Alle Interessierten können an fünf Wochenenden den Stadtteil erkunden. Die Führungen richten sich besonders an neue Bürger oder solche, die bald hierher ziehen wollen. Bei den etwa zweistündigen Spaziergängen lernen Sie alle wichtigen Einrichtungen von Behörden über das kulturelle, sportliche und auch das gastronomische Angebot kennen und können auch Kontakte zu anderen knüpfen. Die Teilnahme ist kostenfrei, es wird aber um vorherige Anmeldung über die Homepage der VHS gebeten.",
+      "correct": 7,
+      "highlightColor": 0
+    },
+    {
+      "id": "b",
+      "text": "Essen erleben Gesunde Ernährung ist wichtig, auch schon für die Kleinen. Nur wer von Anfang an lernt, wie frisches Gemüse und Obst schmecken, wie man mit einfachen Mitteln und auch wenig Zeit leckere Gerichte zubereiten kann, wird sich dauerhaft gesund ernähren. Deshalb bietet die Kochschule 'Kochlöffel' ab sofort Kochkurse für Eltern und Kinder ab sechs Jahren an. Die Kurse werden zu unterschiedlichen Tageszeiten angeboten und finden auch schon bei wenigen Anmeldungen statt. Nutzen Sie die Gelegenheit, mit Ihrem Kind gemeinsam zu kochen und dabei natürlich auch Spaß zu haben! Infos und Anmeldung: www.kochloeffel-kochschule.eu",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "c",
+      "text": "Kurzreise nach München Studienreisen Studius bietet Ihnen einen besonderen Ausflug an: Fahren Sie mit unserem modernen Reisebus am frühen Morgen von Köln nach München zum Deutschen Museum und nehmen Sie an einer exklusiven Führung teil, die sich auf die Geschichte der Technik konzentriert. Die Rückreise erfolgt am frühen Abend, so dass Sie in der Nacht wieder in Köln ankommen. Im Reisepreis sind der Eintritt sowie die Führung bereits enthalten. Ohne Übernachtung, daher besonders günstig! Begrenzte Plätze, buchen Sie schnell telefonisch unter 0221/809043 oder über unsere Homepage.",
+      "correct": 3,
+      "highlightColor": 1
+    },
+    {
+      "id": "d",
+      "text": "Entspannung am Wasser Von März bis September (bei schönem Wetter auch länger) können Sie bei unserem Bootsverleih 'Wasserfall' das Gefährt Ihrer Wahl ausleihen, um einen unvergesslichen Tag am und auf dem Baldeneysee zu verbringen. Mit einem Ruderboot oder Tretboot können Sie ein wenig Sport treiben und gleichzeitig die Natur genießen. Wenn Ihnen das zu anstrengend ist, können Sie auch ein Motorboot ausleihen. Voraussetzung ist der entsprechende Führerschein. Ausleihfristen: zwischen zwei und zwölf Stunden. Wir bieten auch Rabatte für Gruppen oder regelmäßige Besucher an. Fragen Sie uns einfach! Telefon 0201/185790",
+      "correct": 0,
+      "highlightColor": 2
+    },
+    {
+      "id": "e",
+      "text": "Als echter Hamburger… kennt man natürlich den Hafen der Hansestadt und seine Wirtschaftskraft. Für alle Interessierten, die darüber erst noch etwas erfahren wollen, bietet das Bildungszentrum Buxtehude am nächsten Freitag einen zweistündigen Vortrag an, in dem man Wissenswertes über die wirtschaftliche Bedeutung des Hamburger Hafens erfährt. Von der Gründung des Freihafens bis zu den heutigen modernen Anlagen wird die spannende Entwicklung des größten deutschen Hafens unter ökonomischen Aspekten dargelegt. Weitere Informationen und Anmeldung im Internet unter www.buxtehude.eu.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "f",
+      "text": "Schiffe versenken, Marmorkuchen und selbstgebastelte Papierhüte Das bietet Ihnen unser Service 'Kinderfeiern leicht gemacht'. Mit uns wird jeder Kindergeburtstag zum Erfolg, auch wenn Sie selbst nur wenig Zeit für die Vorbereitung haben. Wir übernehmen auf Wunsch die Dekoration, liefern Speisen und Getränke (beispielsweise Kuchen/Kekse, Salate, Frikadellen und vieles mehr), planen lustige Spiele und bringen auch alles mit, was für die Spiele gebraucht wird. Weitere Informationen unter 01805/7131192.",
+      "correct": 2,
+      "highlightColor": 3
+    },
+    {
+      "id": "g",
+      "text": "Hamburger & Co. Sie mögen Fast Food? Sie glauben aber, dass Fast Food nicht gesund sein kann? Wir zeigen Ihnen das Gegenteil. Lernen Sie viele Gerichte aus den USA in unserem Kochkurs 'Hamburger & Co.' neu kennen. An drei Wochenenden zeigen wir Ihnen, dass man Hamburger auch so zubereiten kann, dass sie gar nicht so viele Kalorien haben. Und schmecken werden sie natürlich auch. Anmeldung bis nächsten Samstag telefonisch unter 0800/1398700.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "h",
+      "text": "Nur auf Reisen lernt der Mensch Seit fast fünf Jahrzehnten bietet die überregionale Bildungsakademie 'Lernform e.V.' allen interessierten Bürgerinnen und Bürgern Ausflüge zu wichtigen Orten der deutschen Geschichte an. Anlässlich unseres Jubiläums veranstalten wir in den kommenden Monaten nun auch mehrtägige Fahrten in große deutsche Städte, um uns dort mit der Geschichte und Entwicklung der Stadt zu beschäftigen. Die Reisen führen beispielsweise nach Berlin, Köln oder München. Informieren Sie sich jetzt oder buchen Sie sofort unter www.ba-lernform.eu.",
+      "correct": 8,
+      "highlightColor": 4
+    },
+    {
+      "id": "i",
+      "text": "Die bewegte Geschichte eines Stadtteils Unser Stadtteil kann auf eine bewegte Geschichte zurückblicken. Die Mitarbeiter des Stadtteil-Archivs wollen deshalb ein Buch veröffentlichen, in dem die Geschichte lebendig und für Alt- und Neu-Bürger anschaulich wird. Noch bis Jahresende bittet das Archiv alle Bürger, persönliche Erinnerungen einzureichen, sei es in Form kurzer Geschichten oder in Form von Fotos. Auch historische Zeitungsartikel sind willkommen, da nicht alle Zeitungen im Archiv vorhanden sind. Melden Sie sich einfach persönlich im Archiv am Dreiringplatz.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "j",
+      "text": "Deutschland aus einer anderen Perspektive Lernen Sie die schönsten deutschen Landschaften vom Fluss aus mit einer unserer Flusskreuzfahrten kennen. Auf geräumigen modernen Schiffen fahren Sie über Rhein, Mosel oder Donau, sehen die wunderschöne Natur längs der Flüsse und besichtigen auch die kleinen Ortschaften bei Ausflügen an Land. Wir haben Angebote für Reisende aller Altersklassen, für Individual- oder Gruppenreisende. Fordern Sie unser Informationsmaterial an unter der Rufnummer 0800/4455992",
+      "correct": 4,
+      "highlightColor": 5
+    },
+    {
+      "id": "k",
+      "text": "Unser Stadtteil ist lebendig Deshalb planen wir, im kommenden Jahr auf allen Plätzen des Stadtteils ein Fest durchzuführen. Noch stehen wir am Anfang unserer Planung, sammeln Ideen und suchen vor allem weitere Helfer. Wer möchte das Fest und unseren Stadtteil mitgestalten, Ideen entwickeln oder die konkrete Planung übernehmen? Noch ist alles möglich! Wir, die Einwohner unseres Stadtteils, wollen unsere Plätze noch schöner, bunter und lebendiger machen. Wir freuen uns über jeden Helfer, für das Fest und für die Umsetzung unserer Pläne. Wer mitmachen möchte, kann sich per E-Mail melden bei a.yildrim@online.eu.",
+      "correct": 5,
+      "highlightColor": 6
+    },
+    {
+      "id": "l",
+      "text": "Technik - spannend und verständlich Sie kennen die typische Kinderfrage: 'Wie geht das?' Oder Sie haben selbst als Kind einmal eine Uhr geöffnet, weil Sie wissen wollten, was darin war. Kinder sind neugierig, Kinder interessieren sich für Technik - und zwar nicht nur, wenn sie damit spielen können. Kinder wollen auch wissen, wie die Sachen funktionieren, aber leider können nicht alle Erwachsenen das gut erklären. Deshalb wurde jetzt in Oberhausen das erste Technik-Museum für Kinder eröffnet. Besucher zwischen 6 und 12 Jahren erfahren dort (natürlich in Begleitung eines Erwachsenen) spielerisch oder bei kindgerechten Führungen alles, was sie über Technik wissen wollen. Informationen: www.technik-museum-oberhausen.de.",
+      "correct": 9,
+      "highlightColor": 7
+    }
+  ],
+  "situations": [
+    "Sie möchten einen Ganztagesausflug machen und sich dabei bewegen.",
+    "Sie möchten eine Fahrt durch den Hamburger Hafen buchen.",
+    "Ihr Sohn möchte einen Kindergeburtstag feiern und braucht Hilfe bei der Organisation.",
+    "Sie interessieren sich für Technikgeschichte.",
+    "Ein Freund möchte gerne eine Schiffsreise machen.",
+    "Sie möchten helfen, Ihren Stadtteil zu gestalten",
+    "Sie wollen mit einer Bekannten essen gehen. Sie mag amerikanische Küche.",
+    "Sie sind neu in der Stadt und möchten Ihren Stadtteil kennenlernen",
+    "Ein Freund möchte mehr über die Geschichte deutscher Städte erfahren.",
+    "Sie möchten etwas mit Ihrer 6-jährigen Nichte unternehmen, die gerne ins Museum geht."
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (b, e, g, i). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Neues Angebot der VHS",
+        "Sie sind neu in der Stadt und möchten Ihren Stadtteil kennenlernen"
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Kurzreise nach München",
+        "Sie interessieren sich für Technikgeschichte."
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Entspannung am Wasser",
+        "Sie möchten einen Ganztagesausflug machen und sich dabei bewegen."
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Schiffe versenken, Marmorkuchen und selbstgebastelte Papierhüte",
+        "Ihr Sohn möchte einen Kindergeburtstag feiern und braucht Hilfe bei der Organisation."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Nur auf Reisen lernt der Mensch",
+        "Ein Freund möchte mehr über die Geschichte deutscher Städte erfahren."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Deutschland aus einer anderen Perspektive",
+        "Ein Freund möchte gerne eine Schiffsreise machen."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "Unser Stadtteil ist lebendig",
+        "Sie möchten helfen, Ihren Stadtteil zu gestalten"
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "Technik - spannend und verständlich",
+        "Sie möchten etwas mit Ihrer 6-jährigen Nichte unternehmen, die gerne ins Museum geht."
+      ]
+    }
+  ]
+}

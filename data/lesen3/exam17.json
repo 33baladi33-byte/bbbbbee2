@@ -1,0 +1,143 @@
+{
+  "title": "Lesen Teil 3 - Exam 16: Die Tochter einer Bekannten wird vier Jahre alt",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "Expedition ins Reich der Schneeleoparden Schneeleoparden zählen zu den seltensten Großkatzen der Erde. Weltweit leben nur noch 4000 bis 6400 dieser Tiere in freier Wildbahn. Welchen Gefahren sind sie ausgesetzt? Und wie können wir sie schützen? Die interaktive Ausstellung 'Expedition Schneeleopard' nimmt die Besucher mit auf eine Reise in das Reich der seltenen Großkatzen. Mitmach-Ausstellung wird zu einem Erlebnis für Groß und Klein. Die Ausstellung ist bis zum 23. Januar im Zoologischen Forschungsmuseum Bonn, Di bis So von 10 bis 18 Uhr zu sehen.",
+      "correct": 8,
+      "highlightColor": 0
+    },
+    {
+      "id": "b",
+      "text": "Alte Jeans, Blusen oder Kleider hat jeder bei sich im Schrank. Ob das gute Stück zu eng ist, aus der Mode gekommen ist – werfen muss man es nicht. Aus alten Sachen lässt sich wunderbar Neues kreieren: vom Stuhlbezug bis zur trendigen Weste. Mit diesem Ratgeber nähen Anfänger Schritt für Schritt ihre neuen Accessoires aus alten Jeans. Autorin Amélie Betker widmet sich seit über fünfzehn Jahren Mode-Accessoires und teilt ihr Wissen und ihre Begeisterung fürs Nähen weiter. Amélie Betker: Aus alt mach neu! Kreative Nähprojekte für ausgediente Kleidungsstücke. Paperback, 144 Seiten, 14,99 €",
+      "correct": 5,
+      "highlightColor": 1
+    },
+    {
+      "id": "c",
+      "text": "Blauer Stoff mit Historie Am 20. Mai 1873 meldete der Amerikaner Levi Strauss das Patent auf die Blue Jeans an. Die Ausstellung 'Blue Jeans – von der Arbeiterkleidung zum Laufsteg' zeigt, wie sich die weltberühmte Hose im Laufe der Zeit entwickelte. Präsentiert werden Fotos, Filme und Zeitschriften, alte Jeans-Originale und neue Designerstücke. Modemuseum Düsseldorf 24. November bis 10. März, Dienstag bis Sonntag von 10 bis 19 Uhr. Eintritt: Erwachsene: 9 Euro, Kinder und Jugendliche: 5 Euro.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "d",
+      "text": "Es ist ein sonniger Herbsttag, doch plötzlich fällt im Zauberland unerwartet Schnee. Während sich ihre Freunde in das Schneegetümmel stürzen, wundert sich Prinzessin Mina: Woher kommt der viele Schnee bloß? Und was hat es mit einem kleinen Schneefuchs, den sie am Waldrand gesehen hat? Kurz entschlossen macht sich Prinzessin Mina auf die Suche nach dem kleinen Fuchs. Eine warmherzige und stimmungsvoll illustrierte Wintergeschichte für kleine und große Prinzessinnen und Prinzen! Elisabeth Heller: Schnee im Zauberland. Für Kinder ab drei Jahren, gebundenes Buch, 52 Seiten, 17,90 €",
+      "correct": 0,
+      "highlightColor": 2
+    },
+    {
+      "id": "e",
+      "text": "Schnee in der Kunst Ein Muss für alle Schneeliebhaber: Der Band zeigt, wie sich Künstler von 1800 bis heute vom Schnee inspirieren ließen. Künstlerischen Ausdruck findet der Schnee in Gemälden der Romantik, des Impressionismus, Symbolismus und der Neuen Sachlichkeit. Schneemotive von der Frühzeit der Fotografie bis heute sowie ausgewählte Texte zur zeitgenössischen Kunst spannen den Bogen bis in die Gegenwart. Schnee in der Kunst, von Nadja Schwenzer, 312 Seiten, 200 Abbildungen gebunden mit Schutzumschlag, 39,80 €",
+      "correct": 6,
+      "highlightColor": 3
+    },
+    {
+      "id": "f",
+      "text": "Märchenlandschaft aus Schnee und Eis Der beliebte Kurort Oberstdorf liegt am Fuße der Allgäuer Hochalpen. Winterwanderer kommen hier auf ihre Kosten: Auf den Wanderwegen gelangt man schnell in stille, verschneite Landschaft. Wir bieten einen Wanderurlaub in der Gruppe mit fünf leichten bis moderaten Winterwanderungen rund um Oberstdorf. Übernachtung in einem komfortablen Vier-Sterne-Hotel mit Wellnessbereich und Innenpool, 8 Tage mit Halbpension ab 988 €. Infos unter: www.winterwanderwoche-oberstdorf.net",
+      "correct": 4,
+      "highlightColor": 4
+    },
+    {
+      "id": "g",
+      "text": "Wintersport im Wandel der Zeit Ob auf Skiern, Schlittschuhen oder Snowboards, vor der Haustür oder im Winterurlaub in den Alpen: Sport und Spiel im Schnee sind für viele der Inbegriff eines großen Wintervergnügens. Dazu gehören auch private Fotos, die zeigen, wie sich Wintersport im letzten Jahrhundert entwickelt hat: vom einfachen Ausrüstungsstück und Kleidung bis zum Hightech-Ski. Die Ausstellung zeigt, wie die kalte Jahreszeit in den Mittelpunkt gerückt ist. Erlebnis-Ausstellung für die ganze Familie. Termin: von 27.11. bis 27.02., Dienstag bis Sonntag, von 11 bis 17 Uhr. Historisches Museum Prenzlau",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "h",
+      "text": "Atemberaubende Fotos leicht gemacht Sie möchten Fotos machen, die einzigartig sind? Melden Sie sich für unser Seminar an. Dort lernen Sie die besten Techniken für Landschaftsfotografie. Teilnahme nur nach vorheriger Zahlung. Begrenzter Zugang nur für fünf Personen. Kontaktieren Sie uns für weitere Informationen. Jetzt anmelden: www.nt-pictures.net",
+      "correct": 1,
+      "highlightColor": 5
+    },
+    {
+      "id": "i",
+      "text": "Nähen statt Einkaufsstress Die Suche nach einer perfekt sitzenden Jeans kann manchmal zum Albtraum werden: Stundenlang zieht man durch die Geschäfte, probiert eine Hose nach der anderen an. Warum also nicht einfach Jeans selbst nähen? Das ist einfacher, als es klingt. Buchen Sie unseren Online-Nähkurs für alle. Sie werden überrascht sein, wie viel Freude das Nähen macht und wie schnell Sie Ihre neue Hose in der Hand halten.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "j",
+      "text": "Tolle Aufnahmen in einer spektakulären Landschaft Smaragdgrünes Wasser, majestätische Felswände und mit ein wenig Glück – ein hellblauer Himmel. Diesen Traum findet man an der südlichsten Spitze Deutschlands: Die Rede ist vom Königssee in Bayern – der ideale Ort für unseren Workshop Landschaftsfotografie. Programmpunkte: Einführung zur Landschaftsfotografie, Arbeit mit natürlichem Licht, Bildkomposition, Persönliches Feedback zu den Fotos. Kurs für Fortgeschrittene, maximal 5 Teilnehmer. Leitung: Jenny Holzhausen, Landschaftsfotografin und Buchautorin. Termin: Samstag, 04.06.2022, von 9 Uhr bis 17 Uhr. Preis: 99 €. Treffpunkt: Seestraße 3, 83471 Schönau am Königssee.",
+      "correct": 3,
+      "highlightColor": 6
+    },
+    {
+      "id": "k",
+      "text": "Die Schneekönigin Es ist ein kalter, verschneiter Wintertag. Da bekommt der junge Kai Besuch von der Schneekönigin – und sie nimmt ihn mit in ihr eisiges Reich. Die mutige Gerda versucht alles, um Kai zu retten. Das Familien-Musical 'Die Schneekönigin' basiert auf dem bekannten Märchen von Hans-Christian Andersen. Unter der Regie von Bastian Nüchtermeier ist eine aufwendige Bühnenshow entstanden. Kinder ab 5 Jahren und Erwachsene sind eingeladen, in eine magische Welt einzutauchen. Die Schneekönigin, das Musical. Konzertsaal Jena, Sonntag, 4.12., 15 Uhr. Tickets ab 19,95 €",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "l",
+      "text": "Lieblingsorte Der Eiffelturm in Paris, Urlaubsorte der Kindheit, der Wald hinter dem Haus oder das Sofa daheim: An Lieblingsorten fühlt man sich wohl und man besucht diese gerne. Sie inspirieren aber auch Maler, Schriftsteller und Fotografen. Und vielleicht auch Sie? Bei diesem Fotowettbewerb suchen wir Ihre Aufnahmen von besonderen Orten. Belohnt werden die besten Fotos mit tollen Preisen und einer Veröffentlichung in unserem Magazin. Einsendeschluss: am 30. Juni. Mehr Infos: www.fotomagazin-linse.net",
+      "correct": null,
+      "highlightColor": null
+    }
+  ],
+  "situations": [
+    "Die Tochter einer Bekannten wird vier Jahre alt. Sie möchten ihr etwas zum Geburtstag mitbringen",
+    "Ein Bekannter hat sich einen Fotoapparat gekauft und möchte die Grundlagen der Fotografie erlernen",
+    "Ein Bekannter möchte eine mehrtägige Reise unternehmen und dabei einen Fotokurs machen.",
+    "Eine Bekannte kann gut fotografieren und hat bereits einige Kurse gemacht. Sie würde gerne neue kreative Techniken kennenlernen",
+    "Ein Freund würde gerne im Winter verreisen. Er möchte viel Zeit an der frischen Luft verbringen und sich bewegen.",
+    "Eine Freundin hat viele Kleidungsstücke, die sie nicht mehr trägt. Sie sucht Anregungen, was sie damit machen könnte.",
+    "Sie besuchen einen Freund, der sich für Malerei interessiert. Sie möchten ihm ein passendes Geschenk mitbringen.",
+    "Sie fahren gerne Ski und möchten mit Ihrer Familie Wintersport machen.",
+    "Sie möchten mit Ihrem zwölfjährigen Sohn eine Ausstellung besuchen. Er interessiert sich für Tiere.",
+    "Sie treffen sich an einem Sonntagnachmittag mit einer Freundin, die sich gerne mit Mode und ihrer Geschichte beschäftigt. Sie möchten mit ihr etwas unternehmen"
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (c, e, g, i, k, l). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Expedition ins Reich der Schneeleoparden",
+        "Sie möchten mit Ihrem zwölfjährigen Sohn eine Ausstellung besuchen. Er interessiert sich für Tiere."
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Alte Jeans, Blusen oder Kleider",
+        "Eine Freundin hat viele Kleidungsstücke, die sie nicht mehr trägt. Sie sucht Anregungen."
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Es ist ein sonniger Herbsttag",
+        "Die Tochter einer Bekannten wird vier Jahre alt. Sie möchten ihr etwas zum Geburtstag mitbringen"
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Schnee in der Kunst",
+        "Sie besuchen einen Freund, der sich für Malerei interessiert. Sie möchten ihm ein passendes Geschenk mitbringen."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Märchenlandschaft aus Schnee und Eis",
+        "Ein Freund würde gerne im Winter verreisen. Er möchte viel Zeit an der frischen Luft verbringen und sich bewegen."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Atemberaubende Fotos leicht gemacht",
+        "Ein Bekannter hat sich einen Fotoapparat gekauft und möchte die Grundlagen der Fotografie erlernen"
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "Tolle Aufnahmen in einer spektakulären Landschaft",
+        "Eine Bekannte kann gut fotografieren und hat bereits einige Kurse gemacht. Sie würde gerne neue kreative Techniken kennenlernen"
+      ]
+    }
+  ]
+}

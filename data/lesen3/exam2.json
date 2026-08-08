@@ -1,0 +1,157 @@
+{
+  "title": "Lesen Teil 3 - Exam 2: Filme - Fernsehprogramme (معدل)",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "Ullrich Kasten und Hans-Hermann Hertle schildern in ihrer hervorragenden Dokumentation anhand von Archivmaterial minutiös sämtliche Stationen des Mauerbaus. Sie erzählen die Vorgeschichte der Berlin-Krise und beleuchten die Hintergründe der Teilung Deutschlands. Ferner haben sie Zeitzeugen nach ihren Reaktionen auf das einschneidende Ereignis befragt. Zu Wort kommen in dem Film nicht nur namhafte Vertreter der internationalen Politik, sondern auch Grenzsoldaten, Flüchtlinge und Angehörige von Maueropfern",
+      "correct": 6,
+      "highlightColor": 0
+    },
+    {
+      "id": "b",
+      "text": "Ob Klassik, Rock'n'Roll oder Jazz, Joja Wendt, Hamburger Pianist mit enormen Entertainer-Qualitäten, variiert bekannte Songs und stellt seine Fingerfertigkeit auch in eigenen Kompositionen unter Beweis. Stargast in dem heutigen Fernseh-Special ist die Schlagersängerin Michelle mit dem Titel 'Ich schicke dir jetzt einen Engel'.",
+      "correct": 2,
+      "highlightColor": 1
+    },
+    {
+      "id": "c",
+      "text": "Gut kochen kann Amanda nicht. Folglich steht ihr kleines, von der Mutter geerbtes Restaurant in Manhattan kurz vor dem Aus. Da entflieht plötzlich ein Krebs aus ihrem Einkaufskorb und sorgt mit seinen Zauberkünsten für lukullische Sensationen. Tom, Manager eines Gourmet-Restaurants an der Fifth Avenue, kommt als einer der ersten in deren Genuss. Amanda hat sich in ihn verliebt, als der schon bekannte Krebs unter Toms Hosenbein flüchtet. Seine Zauber-kräfte werden dringend gebraucht, denn Tom gehört zu den Männern, die ziemlich viel Angst vor Liebesbeziehungen haben.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "d",
+      "text": "Aus Sorge um die nationale Sicherheit versteckt der amerikanische Geheimdienst den genialen, aber vermeintlich psychisch kranken Physiker Arthur Vincenti. Der völlig verrückte New Yorker Psychiater Dr. Snow erhält den Auftrag, ihn zu heilen. Immer nachts wird er mit verbundenen Augen zu dem Versteck gebracht. Aber auch einige Gangster sind nicht untätig. Sie haben es auf das Wissen des Geheimnisträgers Vincenti abgesehen, das sie fremden Spionen verkaufen möchten.",
+      "correct": 7,
+      "highlightColor": 2
+    },
+    {
+      "id": "e",
+      "text": "Er schreit wie am Spieß, wenn er lange Hosen tragen soll, und lacht sich kaputt, wenn er die Katze in eine Mülltüte gesteckt hat. Alles ist einfacher, als sich um den 5-jährigen Calvin zu kümmern. Doch sein liebevoller Vater Russell, der den Jungen allein erzieht, meistert sämtliche Katastrophen mit Bravour und Geduld. Weil sich Kind und Karriere nicht unter einen Hut bringen ließen, verlor der Jurist einen tollen Job in einer renommierten Chicagoer Anwaltskanzlei. Jetzt sitzt er mit seinem Sohn in einem Dorf in Kansas und arbeitet in der Kanzlei eines Freundes. Die Bekanntschaft mit der attraktiven Beth bringt neuen Schwung in sein Leben. Doch da taucht Russells Ex-Ehefrau wieder auf.",
+      "correct": 5,
+      "highlightColor": 3
+    },
+    {
+      "id": "f",
+      "text": "Hier in Berlin bei meinen Freunden habe ich mein Zuhause hinter mir gelassen. Hier geht's mir gut. Ich bin endlich frei, sagt Sascha. Der 16-Jährige ist einer der Jugendlichen, die hierzulande auf der Straße leben. Sie schlafen in Notunterkünften, Treppenhäusern und U-Bahn-Stationen, betteln tagsüber Passanten um Kleingeld an. Peter Schmidt hat Sascha mehrere Wochen lang begleitet und ihn nach seinen Wünschen und Hoffnungen gefragt. Zudem beleuchtet der Filmautor die individuelle Geschichte des Jugendlichen.",
+      "correct": 8,
+      "highlightColor": 4
+    },
+    {
+      "id": "g",
+      "text": "Mit Sandalen und T-Shirt hängen sie in den Felswänden, ihr Handy halten sie für eine Lebensversicherung, die Alpen für einen Freizeitpark. Vierzig Menschen verunglücken jedes Jahr tödlich am Montblanc, bis zu eintausend Einsätze fliegt die Bergwacht Chamonix pro Saison. Filmer Oliver Baumgart begleitet die Retter zwei Wochen lang.",
+      "correct": 9,
+      "highlightColor": 5
+    },
+    {
+      "id": "h",
+      "text": "'Schwere Jungs' bildet den Auftakt zu einer sechsteiligen Reihe mit Actionkomödien: Hau-drauf-Filme, wie sie schon unzählige Male mit dem Schläger-Duo Terence Hill und Bud Spencer über den Bildschirm flimmerten. Die beiden Gauner Joe und Bob fliehen aus dem Gefängnis und finden als Mönche getarnt Unterschlupf in einer Missionsstation.",
+      "correct": 3,
+      "highlightColor": 6
+    },
+    {
+      "id": "i",
+      "text": "Nach den Weltcup-Siegen in Willingen und Sapporo stehen die Chancen für das österreichische Team gut, beim Skispringen ganz weit vorn zu landen. Überflieger Gregor Schlierenzauer und sein Mannschaftskollege Thomas Morgenstern sind jedenfalls in blendender Verfassung. Die deutschen Springer Martin Schmitt und Jörg Ritzerfeld werden sich anstrengen müssen. Übertragung von der 120-Meter-Skisprungschanze im Utah Olympic Park.",
+      "correct": 1,
+      "highlightColor": 7
+    },
+    {
+      "id": "j",
+      "text": "Man darf gespannt sein, wie viel Spott die für ihre spitzen Zungen bekannten Basler Fasnächtler für das vergangene Jahr übrig haben. DRS überträgt die Straßenfasnacht, den Umzug der Pfeifen- und Trommlergruppen, die ihre Themen präsentieren, live. Die fachkundigen Kommentare zum Karneval am Oberrhein liefern Robert Pichler und der Basler Fastnachtsjournalist Roger Thiriet.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "k",
+      "text": "Dreizehn Alben hat die vielköpfige korsische Gruppe 'I Muvrini' um die Brüder Jean-Francois und Alain Bernardini bereits veröffentlicht. Hierzulande galten die 'wilden Schafe' noch bis vor Kurzem als Geheimtipp. Inzwischen sind die Musiker mit ihrer Mischung aus korsischer Folklore, afrikanischen und keltischen Elementen, aber auch aus Jazz, Pop und Cajun bei uns bekannt.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "l",
+      "text": "Man sollte meinen, Schauspieler Hendrik Höfgen wäre gegen unmoralische Angebote gefeit. Schließlich feierte er zur Zeit der Weimarer Republik große Erfolge in der Rolle des Mephisto. Der Mann müsste also wissen, wie schnell es gehen kann, dass man seine Seele verkauft. Als die Nazis die Macht ergreifen, stellt Höfgen seine Kunst ganz in den Dienst der neuen Herrscher. Und bald wird er zum Intendanten des Staatstheaters ernannt. Das Drama um Kunst und Politik entstand nach dem gleichnamigen Roman von Klaus Mann.",
+      "correct": 0,
+      "highlightColor": 8
+    }
+  ],
+  "situations": [
+    "Ein Bekannter möchte einen Film sehen, der nach dem Werk eines Schriftstellers gedreht wurde.",
+    "Ihre Bekannten verfolgen gern sportliche Wettkämpfe.",
+    "Sie suchen eine abwechslungsreiche Musiksendung mit Klaviermusik.",
+    "Sie mögen Filme mit viel Action und viel Spaß. Ihre Lieblingshelden können auch mal zuschlagen.",
+    "Ein Bekannter interessiert sich für koreanische Geschichte.",
+    "Sie mögen Familienkomödien, besonders mit frechen Kindern.",
+    "Eine Bekannte interessiert sich für informative Beiträge zur neueren Geschichte.",
+    "Sie sehen gern spannende, aber auch spaßige Agentenfilme.",
+    "Sie würden gern etwas über Großstadtjugendliche erfahren, die am Rand der Gesellschaft leben.",
+    "Sie möchten im nächsten Urlaub bergsteigen und sich über die Risiken informieren."
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (c, j, k). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Ullrich Kasten und Hans-Hermann Hertle schildern",
+        "Eine Bekannte interessiert sich für informative Beiträge zur neueren Geschichte."
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Ob Klassik, Rock'n'Roll oder Jazz",
+        "Sie suchen eine abwechslungsreiche Musiksendung mit Klaviermusik."
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Aus Sorge um die nationale Sicherheit",
+        "Sie sehen gern spannende, aber auch spaßige Agentenfilme."
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Er schreit wie am Spieß",
+        "Sie mögen Familienkomödien, besonders mit frechen Kindern."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Hier in Berlin bei meinen Freunden",
+        "Sie würden gern etwas über Großstadtjugendliche erfahren, die am Rand der Gesellschaft leben."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Mit Sandalen und T-Shirt",
+        "Sie möchten im nächsten Urlaub bergsteigen und sich über die Risiken informieren."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "'Schwere Jungs' bildet den Auftakt",
+        "Sie mögen Filme mit viel Action und viel Spaß."
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "Nach den Weltcup-Siegen",
+        "Ihre Bekannten verfolgen gern sportliche Wettkämpfe."
+      ]
+    },
+    {
+      "color": 8,
+      "parts": [
+        "Man sollte meinen, Schauspieler Hendrik Höfgen",
+        "Ein Bekannter möchte einen Film sehen, der nach dem Werk eines Schriftstellers gedreht wurde."
+      ]
+    }
+  ]
+}

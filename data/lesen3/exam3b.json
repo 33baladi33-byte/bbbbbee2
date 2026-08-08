@@ -1,0 +1,143 @@
+{
+  "title": "Lesen Teil 3 - Exam 3: Sport Ist Gesund اعلانات (معدل)",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "Die Nachfrage nach individueller Farb- und Stilberatung ist groß. Denn wer heute im Geschäfts- wie auch im Privatleben erfolgreich sein möchte, muss sich in Outfit und Benehmen vorteilhaft präsentieren können. Der Leitfaden zeigt Ihnen, wie Sie sich selbst am besten in Szene setzen. Von der passenden und farblich stimmigen Garderobe über Make-up und Accessoires bis zu modernen Umgangsformen. Nutzen Sie also diesen 'Kurs' als Eintrittskarte in diese reizvolle Welt der Selbstdarstellung. Sie werden garantiert mit einem überzeugenden und gewinnenden persönlichen Auftritt davon profitieren.",
+      "correct": 5,
+      "highlightColor": 0
+    },
+    {
+      "id": "b",
+      "text": "Die meisten Menschen kennen keine Strategien, wie sie ihr Lernverhalten und die Fähigkeit, sich Informationen zu merken, gezielt trainieren können. Dieses Buch gibt zunächst einen Überblick, wie das menschliche Gedächtnis funktioniert, und bietet dann eine Fülle von Techniken an, mit denen auch Ungeübte sich das Lernen und Arbeiten leichter machen können.",
+      "correct": 3,
+      "highlightColor": 1
+    },
+    {
+      "id": "c",
+      "text": "Dieses erstmals 1788 erschienene Buch handelt von dem Umgang der Menschen miteinander und gibt Ratschläge, wie man sich im Umgang mit Menschen verschiedenster Alters- und Rangstufen richtig verhält. Es definiert, was Gutes und was schlechtes Verhalten ist, und galt so lange Zeit als ein Leitfaden für 'richtiges' Benehmen.",
+      "correct": 7,
+      "highlightColor": 2
+    },
+    {
+      "id": "d",
+      "text": "Tim Gallwey entwickelte die Theorie vom Tennis-Spiel, das sich im Kopf abspielt. Er zeigt, wie jeder sein Leben frei von Angst und mit Eleganz spielen kann, ohne in Selbstzweifel oder Unkonzentriertheit zu verfallen. Das Gallwey'sche Tennisspiel setzt ungeahnte Energien frei und zeigt das grenzenlose Potential des menschlichen Körpers und Geistes, wenn es darum geht, seine Lebensziele zu verfolgen und zu erreichen.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "e",
+      "text": "Jeder Mensch kann seine kommunikativen Möglichkeiten entdecken und damit sein Leben bereichern. Die Themen des Buches sind: Die Grundlagen der Kommunikation, Rede und Vortrag, Gespräche erfolgreich führen, Sicherheit gewinnen und Redeängste überwinden, Zeitmanagement für Redner und Konferenzleiter und vieles mehr. Ein ausführlicher Praxisteil mit zahlreichen Übungen ermöglicht es dem Leser, seine rhetorischen Fähigkeiten zu trainieren.",
+      "correct": 9,
+      "highlightColor": 3
+    },
+    {
+      "id": "f",
+      "text": "Gute Umgangsformen sind wieder 'in'. Aber gilt das auch in der Schule? Auf humorvolle Weise erzählt die Autorin aus ihrem Alltag als Lehrerin an einer Realschule. Von gutem Benehmen kann da nicht immer die Rede sein - übrigens auch nicht bei den Eltern.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "g",
+      "text": "Frieder Schulze 'Reden wir miteinander oder aneinander vorbei?' Manche Missverständnisse entstehen, wenn Menschen miteinander reden, besonders im privaten Bereich erleben wir das oft. Wenn Kommunikation erfolgreich sein soll, ist die Fähigkeit erforderlich, den anderen zu durchschauen und seelische Vorgänge und menschliche Probleme zu erkennen. Viele Beispiele zeigen, wie psychologische Aspekte menschliche Kommunikation verkomplizieren können und wie man damit am besten klar kommen kann.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "h",
+      "text": "Der Körper lügt nicht, Gesten und Gebärden decken die Ebene des Unbewusstsein auf: Wer einen erhobenen Zeigefinger oder eine gerümpfte Nase sieht, versteht sofort, was der Gesprächspartner meint, auch wenn der mit Worten etwas anderes sagt. Dieses Buch gibt einen anschaulichen Überblick über die Signale, die wir ständig mit unserem Körper senden, und hilft uns zu verstehen, was jemand in Wahrheit gerade denkt und meint.",
+      "correct": 4,
+      "highlightColor": 4
+    },
+    {
+      "id": "i",
+      "text": "Rolph Barth 'Basiswissen: Bewerbungstraining' Die Konkurrenz auf dem Arbeitsmarkt um immer knapper werdende freie Stellen ist groß. Umso wichtiger ist es zu wissen, wie man sich richtig bewirbt. Dieses Buch gibt Arbeitsuchenden umfassende Informationen zur erfolgreichen Bewerbung und bereitet optimal auf das Vorstellungsgespräch vor. Im Übungsteil werden gute Formulierungen für das Anschreiben und das sichere Auftreten des Bewerbers im Gespräch trainiert.",
+      "correct": 6,
+      "highlightColor": 5
+    },
+    {
+      "id": "j",
+      "text": "Brigitte Hübner 'Richtig präsentieren' Dieses Buch ist ein Leitfaden für alle, die Teamsitzungen, Besprechungen, Workshops und Konferenzen durchführen. Anhand vieler praktischer Beispiele erhält der Leser Anregungen zum gekonnten Visualisieren, zur gut geplanten und sicher durchgeführten Präsentation und zur effektiv gestalteten Besprechung. Es zeigt, wie durch den Einsatz von Bildern und Grafiken Präsentationen aufgelockert und Informationen besser verstanden werden können.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "k",
+      "text": "Helga Sinn-Krummacher 'Delfin oder Delphin? So schreibt man das jetzt richtig' Dieses Trainingsbuch ist für den Arbeitsplatz und für zu Hause gedacht. Auf humorvolle Art werden die neuen Rechtschreibregeln der deutschen Sprache vorgestellt und eingeübt. Es enthält außerdem die neue amtliche Wortliste zur Rechtschreibung und die neuen Zeichensetzungsregeln.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "l",
+      "text": "Viele Menschen wissen nicht mehr, wo Ihnen der Kopf steht. Zu viele Termine und Aufgaben stellen Sie unter ständigen Zeitdruck. Mit Zeitmanagement lernen Sie, wie Sie Ihre Zeit so einteilen können, dass Sie wieder Zeit zum Leben haben. Sie erkennen Ihre persönlichen Zeitdiebe, Sie lernen, Prioritäten und erreichbare Ziele zu setzen. Durch das Führen eines Zeitplanbuchs lernen Sie wieder (und dauerhaft), aus der Zeitfalle herauszukommen.",
+      "correct": 1,
+      "highlightColor": 6
+    }
+  ],
+  "situations": [
+    "Eine Bekannte interessiert sich für Bücher über den Tennissport.",
+    "Ein befreundetes Ehepaar steht andauernd unter Stress und möchte wieder mehr Zeit für sich und andere haben.",
+    "Eine Bekannte möchte ihre Wohnung renovieren und sucht Tipps zu Tapeten und Wandfarben.",
+    "Eine Studentin sucht Informationen, wie sie besser und systematischer lernen kann.",
+    "Ein Bekannter möchte wissen, welche Botschaften durch Gestik und Mimik transportiert werden.",
+    "Eine Bekannte möchte ihren Kleidungsstil verbessern.",
+    "Ein Bekannter ist sich noch unsicher, wie er sich bei einem Vorstellungsgespräch am besten präsentiert.",
+    "Ein Bekannter schreibt an einer Hausarbeit über Höflichkeit und Benimmregeln in früheren Jahrhunderten.",
+    "Ein Bekannter möchte lernen, wie man gute Geschäftsbriefe schreibt.",
+    "Eine Bekannte ist sehr verunsichert, weil sie auf Konferenzen immer wieder Angst hat, frei zu sprechen."
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (d, f, g, j, k). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Die Nachfrage nach individueller Farb- und Stilberatung",
+        "Eine Bekannte möchte ihren Kleidungsstil verbessern."
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Die meisten Menschen kennen keine Strategien",
+        "Eine Studentin sucht Informationen, wie sie besser und systematischer lernen kann."
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Dieses erstmals 1788 erschienene Buch",
+        "Ein Bekannter schreibt an einer Hausarbeit über Höflichkeit und Benimmregeln in früheren Jahrhunderten."
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Jeder Mensch kann seine kommunikativen Möglichkeiten entdecken",
+        "Eine Bekannte ist sehr verunsichert, weil sie auf Konferenzen immer wieder Angst hat, frei zu sprechen."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Der Körper lügt nicht, Gesten und Gebärden",
+        "Ein Bekannter möchte wissen, welche Botschaften durch Gestik und Mimik transportiert werden."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Rolph Barth 'Basiswissen: Bewerbungstraining'",
+        "Ein Bekannter ist sich noch unsicher, wie er sich bei einem Vorstellungsgespräch am besten präsentiert."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "Viele Menschen wissen nicht mehr, wo Ihnen der Kopf steht",
+        "Ein befreundetes Ehepaar steht andauernd unter Stress und möchte wieder mehr Zeit für sich und andere haben."
+      ]
+    }
+  ]
+}

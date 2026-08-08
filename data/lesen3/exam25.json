@@ -1,0 +1,150 @@
+{
+  "title": "Lesen Teil 3 - Exam 24: Gartenbau",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "Die 'Gärten der Welt' sind zehn Themengärten, die im Erholungspark Marzahn angelegt sind. Auf 43 Hektar laden sie zu einer Reise durch verschiedene Teile der Welt und Epochen ein: Zu besichtigen sind chinesische, japanische, europäische und auch orientalische Gartenkunst. Brücken, Brunnen, Pavillons und Gebäude wie ein chinesisches Teehaus zeigen die Bautradition der verschiedenen Gartenkulturen. Über das Parkgelände verteilen sich Wiesen, Blumenbeete, Spiel- und Liegewiesen.",
+      "correct": 3,
+      "highlightColor": 0
+    },
+    {
+      "id": "b",
+      "text": "Nach rechts, nach links oder geradeaus? Der in einer idyllischen Landschaft gelegene Irrgarten in Vilpian lädt Groß und Klein, Jung und Alt ein, sich auf die Suche nach dem richtigen Weg zu begeben. Kinder und Erwachsene irren durch zahlreiche Gänge und Sackgassen zwischen hohen Hecken. Und nicht alle Wege führen zum Aussichtsturm in der Mitte. Doch bisher hat noch jeder hinausgefunden. Mit einer Weglänge von 4 km bietet das Labyrinth Spannung und Nervenkitzel auch für Erwachsene. Ein Freizeitspaß für die ganze Familie.",
+      "correct": 9,
+      "highlightColor": 1
+    },
+    {
+      "id": "c",
+      "text": "Obst und Gemüse im Garten anbauen - das ist auch möglich, wenn Sie in der Stadt leben. Wenn Ihnen ein paar Blumenkästen auf dem Balkon nicht genug sind, Sie gerne draußen Ihre Freizeit verbringen und sich auf Ihrer Wiese sonnen möchten - dann werden Sie Mitglied im Kleingartenverein Engers. Wir verfügen über eine Anlage mit insgesamt 103 Kleingärten. Zum Jahresende werden einige Gärten frei, die neu vergeben werden können. Wenn Sie gerne einen Kleingarten bewirtschaften möchten, nehmen Sie mit uns Kontakt auf.",
+      "correct": 7,
+      "highlightColor": 2
+    },
+    {
+      "id": "d",
+      "text": "Palmen in der Großstadt Mitten in Frankfurt können Besucher Pflanzen und Gewächse aus allen Teilen der Welt entdecken. Zwischen Spazierwegen, Liegewiesen, Grünflächen und Blumenbeeten finden sich in dem 1868 gegründeten Palmengarten verschiedene thematische Gärten und Gewächshäuser. Wenn der Besucher das 18 m hohe Palmenhaus betritt, findet er sich in einer subtropischen Landschaft mit riesigen Palmen wieder. In großzügigen Käfigen flattern Papageien, Kakadus und Nymphensittiche; tropische Fische lassen sich in Aquarien bestaunen. Ein ständig wechselndes Ausstellungsprogramm bietet Blumenschauen, Führungen, Vorträge und Konzerte.",
+      "correct": 8,
+      "highlightColor": 3
+    },
+    {
+      "id": "e",
+      "text": "Baden und Schwimmen ist nicht nur gesund, sondern bereitet Kindern und Erwachsenen viel Freude! Und das nicht erst seit gestern: Schon im Mittelalter kannte man Badestuben oder erfrischte sich bei einem Flussbad im Main. Badehäuser und Schwimmbäder gehören zum Stadtbild und legen Zeugnis ab von der Kultur und Architektur ihrer Epoche. Die kulturhistorische Ausstellung 'Badekultur in Frankfurt' zeigt anhand vieler Fotos, Abbildungen und Karten die lange Tradition des Badewesens in der Stadt. Sie ist noch bis September im ehemaligen Karmeliterkloster zu besichtigen.",
+      "correct": 2,
+      "highlightColor": 4
+    },
+    {
+      "id": "f",
+      "text": "Erholung vom Alltagsstress und Ruhe findet man im Garten, bei der Arbeit an der frischen Luft. Doch seit Jahrhunderten beflügeln Gärten auch die Phantasie der Maler und lassen diese zwar nicht zum Spaten, aber doch zum Pinsel greifen. Die Ausstellung 'Gartenglück' widmet sich Gartenbildern: Die Kuratoren haben über 100 herausragende Gemälde und Zeichnungen aus Museen und Privatsammlungen zusammengetragen. Zu sehen sind Exponate vom Mittelalter bis zur Gegenwart. Diese zeigen, welche Bedeutung dieser idyllische Ort für Künstler hatte: In ihren Werken halten sie die Schönheit der vom Menschen gestalteten Natur fest.",
+      "correct": 6,
+      "highlightColor": 5
+    },
+    {
+      "id": "g",
+      "text": "Blumenaquarelle Blumen gehören in der Malerei zu den beliebtesten Motiven. Sie faszinieren durch ihre Farben, zieren Fensterbänke und Balkons, finden sich auch in der Großstadt in Parkanlagen. Wir haben sie zwar immer vor Augen, doch es ist nicht leicht, sie bildlich festzuhalten. In diesem Kurs lernen Sie, wie Ihnen dies gelingt: Sie erfahren, wie man Blumen und Blüten detailgetreu und lebendig farbig darstellen kann. Grundkenntnisse zu Aquarellmaltechniken und Erfahrung in der Aquarellmalerei sind für die Teilnahme notwendig.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "h",
+      "text": "Meisterwerke der Gartenarchitektur Gärten sind Paradiese von Menschenhand: Natur und Architektur werden eins. Von den Gärten der Antike ausgehend, präsentiert dieser Bildband große historische Gartentypen, darunter den italienischen, französischen und englischen Garten ebenso wie die Wunderwelt des chinesischen Gartens sowie die japanische Gartenkunst. Spektakuläre Fotografien erlauben auch Einblicke in kleine private Gärten und verborgene königliche Hofgärten. Den Abschluss bilden Gärten der Moderne.",
+      "correct": 1,
+      "highlightColor": 6
+    },
+    {
+      "id": "i",
+      "text": "Einen Garten ganz nach den eigenen Vorstellungen anlegen, Gemüse anbauen, die Schönheit von Blumen und Ziersträuchern genießen: Das wünschen sich viele Hobbygärtner. Das Buch 'Gartenbau heute' gibt Anfängern wie auch erfahrenen Gärtnern wertvolle Anleitungen zur praktischen Umsetzung. Es enthält zahlreiche Beispiele, umfangreiches Bildmaterial sowie graphische Darstellungen. Der Autor ist Gartenbau-Ingenieur und erklärt alles über Gartenstile, die Planung und den Entwurf eines Gartens bis hin zur Bepflanzung. Außerdem werden Hinweise zur modernen Gartenarchitektur gegeben.",
+      "correct": 5,
+      "highlightColor": 7
+    },
+    {
+      "id": "j",
+      "text": "Im Kletterwald Höhr-Grenzhausen erwartet Kletterfreunde ein Abenteuer der besonderen Art. Fünf Routen mit unterschiedlichen Schwierigkeitsgraden führen in bis zu 18 m Höhe. Erwachsene und Jugendliche ab 14 Jahren finden hier eine spannende Herausforderung in einer Welt aus Seilen, Brücken, Rutschen und Plattformen, und das alles inmitten einer traumhaften Waldkulisse. In unserem Seilpark erwarten Sie Unterhaltung, Bewegung in der freien Natur und vieles mehr. Klettererfahrung ist nicht notwendig. Die Kletterausrüstung wird gestellt und Sie werden von einem professionellen Trainer begleitet.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "k",
+      "text": "Wer flattert denn da in meinem Garten herum? Vögel zu beobachten macht vielen Hobby-Gärtnern große Freude. In dem Ratgeber 'Gefiederte Gäste im Garten' finden Sie ausführliche Porträts der verschiedenen Arten und zahlreiche nützliche Ratschläge. Außerdem erfahren Sie, wie Sie Gartenvögel durch Nistkästen, Futter, das Schaffen von Trink- und Badeplätzen unterstützen und sie vor Gefahren schützen können. Das Buch informiert auch über typische Verhaltensweisen der Vögel und liefert faszinierende Einblicke in die heimische Vogelwelt.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "l",
+      "text": "Der Botanische Garten in Koblenz bildet seit vielen Jahren erfolgreich Gärtner aus. Zu den zahlreichen Vorteilen, die dieser Ausbildungsplatz zu bieten hat, gehört die Vielfalt seltener Pflanzenarten, die die Auszubildenden dort entdecken und studieren können. Außerdem arbeiten sie in einem Team aus erfahrenen Gärtnern, die ihnen beratend zur Seite stehen. Voraussetzung für die Ausbildung ist ein Realschulabschluss. Die Ausbildung dauert in der Regel drei Jahre. Da die meisten Arbeiten im Freien erfolgen, sind körperliche Fitness und Freude an körperlicher Betätigung ebenfalls Voraussetzung für diese Tätigkeit.",
+      "correct": null,
+      "highlightColor": null
+    }
+  ],
+  "situations": [
+    "Ein Bekannter hat Gartenbau studiert und sucht eine Stelle als Gartenbau-Ingenieur in einem Botanischen Garten.",
+    "Ein Kollege sammelt Bücher über Gartengestaltung in unterschiedlichen Ländern und Epochen.",
+    "Eine Kollegin interessiert sich für Kultur- und Stadtgeschichte.",
+    "Ihr Nachbar beschäftigt sich gerne mit Architektur. Er möchte an einem freien Nachmittag spazierengehen und dabei interessante Bauwerke ansehen.",
+    "Ihr Onkel möchte auf einer Weltreise berühmte Park- und Gartenanlagen besichtigen.",
+    "Ihre Mutter möchte den Garten neu gestalten und sucht Tipps aus der Praxis.",
+    "Ihre Nichte studiert Kunst und möchte sich Bilder mit Naturmotiven ansehen.",
+    "Ihre Schwester sucht einen Garten, in dem sie sich von ihrem anstrengenden Beruf erholen kann.",
+    "Ihre Tante möchte exotische Vögel beobachten.",
+    "Sie möchten mit Ihrem zehnjährigen Sohn in der freien Natur einen abenteuerlichen und unterhaltsamen Nachmittag verbringen."
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (c, g, j, k). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Gärten der Welt",
+        "Ihr Nachbar beschäftigt sich gerne mit Architektur. Er möchte an einem freien Nachmittag spazierengehen und dabei interessante Bauwerke ansehen."
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Irrgarten in Vilpian",
+        "Sie möchten mit Ihrem zehnjährigen Sohn in der freien Natur einen abenteuerlichen und unterhaltsamen Nachmittag verbringen."
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Kleingartenverein Engers",
+        "Ihre Schwester sucht einen Garten, in dem sie sich von ihrem anstrengenden Beruf erholen kann."
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Palmen in der Großstadt",
+        "Ihre Tante möchte exotische Vögel beobachten."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Badekultur in Frankfurt",
+        "Eine Kollegin interessiert sich für Kultur- und Stadtgeschichte."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Gartenglück",
+        "Ihre Nichte studiert Kunst und möchte sich Bilder mit Naturmotiven ansehen."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "Meisterwerke der Gartenarchitektur",
+        "Ein Kollege sammelt Bücher über Gartengestaltung in unterschiedlichen Ländern und Epochen."
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "Gartenbau heute",
+        "Ihre Mutter möchte den Garten neu gestalten und sucht Tipps aus der Praxis."
+      ]
+    }
+  ]
+}

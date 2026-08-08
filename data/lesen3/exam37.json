@@ -1,0 +1,150 @@
+{
+  "title": "Teil 3 – Geschäftsreisen - رحلات العمل",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "Sicherheit heißt, Risiken zu vermeiden. Wir setzen noch einen Schritt davor an: Risiken sollten gar nicht erst entstehen. Dafür arbeiten wir in unserem Allianz-Zentrum für Technik. Und wenn doch etwas passiert: Ein Anruf genügt und wir helfen schnell und unbürokratisch, rund um die Uhr. Denn in der Allianz AutoPlus-Versicherung ist der Schutzbrief gleich mit drin. Und der Auslandsschadenschutz hilft Ihnen in vielen Ländern Europas zusätzlich, wenn Sie unverschuldet in einen Verkehrsunfall verwickelt werden. Nähere Informationen erhalten Sie im Internet unter www.allianz.de und bei einem Allianz-Fachmann in Ihrer Nähe.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "b",
+      "text": "Ein Fest für die Sinne! Bleiben Sie sich in den besten Jahren Ihres Lebens mit einer traumhaften Reise. Luxus ist, was man daraus macht! Und bei uns heißt das: eine Schiffsreise der absoluten Extraklasse – so traumhaft, wie man es sich immer gewünscht hat. Bereisen Sie damit die ganze Welt oder einen kleinen Teil von ihr – wählen Sie Ihr Lieblingsziel aus unserer vielfältigen Angebot. Natürlich inklusive Spitzengastronomie, Kino, Theater und Wellnessbereich – und das auf Flüssen sowie Meeren. Ganz locker und selbstverständlich ohne Kleiderzwang. www.a-rosa.de",
+      "correct": 4,
+      "highlightColor": 0
+    },
+    {
+      "id": "c",
+      "text": "Trigana bietet die komplette Reisewelt auf einen Klick! Von der Pauschalreise oder attraktiven Last-Minute-Angeboten bis hin zu Flügen, Hotels und Mietwagen: einfach online vergleichen, nach Belieben kombinieren und direkt buchen. Bequem von zu Hause aus – rund um die Uhr. Natürlich erfahren Sie bei Trigana auch alles Wissenswerte zu Ihrem Urlaubsziel: das Wetter, die schönsten Sehenswürdigkeiten, beste Restaurants und vieles mehr. Reisen Sie nicht auf gut Glück, sondern mit Trigana. Infos: www.trigana.de",
+      "correct": 3,
+      "highlightColor": 1
+    },
+    {
+      "id": "d",
+      "text": "EINFACH GUT STATT NUR GÜNSTIG. Was passiert, wenn sich Ihr Kind beim Spielen verletzt und zum Arzt muss, vielleicht sogar ins Krankenhaus? Selbstverständlich nicht die Krankenkasse die Kosten. Aber Sie möchten mehr – eine optimale Versorgung nicht nur für sich selbst, sondern die ganze Familie. Dann wählen Sie die Fürther Allgemeine als Ihre neue Krankenversicherung. Die Fürther Allgemeine mit dem Rundum-sorglos-Paket für die ganze Familie. Bleiben Sie bei Ihrem Kind, wenn es ins Krankenhaus muss – wir stehen Ihnen auch 24 Stunden am Tag unterstützend zur Seite – das und vieles mehr leistet die Fürther Allgemeine. Bei uns erhalten Sie nicht den günstigsten Tarif, sondern die beste Versorgung. www.fuerther-allgemeine.org",
+      "correct": 1,
+      "highlightColor": 2
+    },
+    {
+      "id": "e",
+      "text": "Leb wohl, Stau. Leb wohl, erfolglose Hotelsuche. Leb wohl, schlechter Restaurant-Tipp. Denn dank der aktiven Unterstützung von Assist müssen Sie als Fahrer viele unerfreuliche Seiten der Mobilität nicht mehr erleben. Assist informiert über aktuelle Verkehrssituation, gibt Stauwarnungen und empfiehlt Alternativrouten. Mit dem Mobilfunknetz ermittelt das System sogar Ihren Standort und leistet automatisch Hilfe. Gewünschte Informationen wie z. B. 3 Multirouten-Vergleiche mit aktueller Stauwarnung oder Branchenbuchs werden Ihnen per Datenübertragung direkt in Ihr Navigationssystem gesendet. Sie sehen: Als Fahrer auf das Wesentliche konzentrieren – mit Assist – jetzt bei Ihrem Autohändler.",
+      "correct": 0,
+      "highlightColor": 3
+    },
+    {
+      "id": "f",
+      "text": "SCHIFFSREISE ... mal anders! Entdecken Sie mit der ganzen Familie Deutschland neu. Auf unserem modernen Ausflugsschiff „Pippi Langstrumpf“ gibt es kleine wie große Tanzeinlagen, Restaurants, in denen man Anzug tragen muss – nein, das müssen Sie sich nicht vorstellen! Sie schippern ganz locker auf einem Schiff, ein Entdeckermuseum, in dem die Kleinen alles selbst machen können und Flüsse in Deutschland entdecken, während Sie sich eine echte Piratenrestaurant, in dem die kleinen Seeräuber kochen können. Da wird es nie langweilig! Und während sich unsere erfahrenen Betreuer um Ihre kleinen kümmern, können die Eltern ganz entspannt die Landschaft bewundern – oder doch mal einen Tee trinken. Nehmen Sie über Ihre Reisen mit der „Pippi Langstrumpf“ in Ihrem Reisebüro!",
+      "correct": 9,
+      "highlightColor": 4
+    },
+    {
+      "id": "g",
+      "text": "Bundeswertpapiere helfen in den Sattel. Ob große Dressurhoffnung, Tennistalent oder begabter Kicker: Damit Ihr Nachwuchs später auf dem Siegertreppchen landet, sollten Sie ihre familiären Förderung früh genug mit Bundeswertpapieren auf Trab bringen. Bundeswertpapiere mit Laufzeiten von ein bis zehn Jahren – jetzt umsteigen auf Bundeswertpapiere mit jährlicher Zinszahlung und absoluter Sicherheit abgesichert ist. Bundeswertpapiere erhalten Sie bei Kreditinstituten und allen Landeszentralbanken. www.bwonline.de",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "h",
+      "text": "Statistisch gesehen arbeitet ein Mensch 35,7 Jahre seines Lebens. Für uns ist Ihr Leben schon ein Startwerk. Es ist einzigartig. Daher bieten wir Ihnen eine Altersvorsorge, die sich persönlich auf Ihr Leben abstimmt ist. Gehen Sie an den Ruhestand wie Sie es wollen. Bauen Sie jederzeit Vermögen nach Ihren Vorstellungen auf. Sprechen Sie mit unseren kompetenten Partnern und entscheiden Sie selbst, wie lange Sie arbeiten wollen. Wir begleiten Sie. Wir sichern Sie. Ein Leben lang. www.AXIS.de",
+      "correct": 2,
+      "highlightColor": 5
+    },
+    {
+      "id": "i",
+      "text": "Für alle, die in Kellern nicht nur Discos suchen. Tauchen Sie dann doch einfach mal zur Historie von Speyer im Keller des Speyrer Doms. Oder besuchen Sie einer der zahlreichen Weinkeller, um ein gutes Glas zu trinken. Die Pfalz. www.suedlicheweinstrasse.de",
+      "correct": 6,
+      "highlightColor": 6
+    },
+    {
+      "id": "j",
+      "text": "Nicht genug Platz? Die Welt mitgestalten. Neue Möbel kaufen, Material für den Umbau in der Wohnung transportieren – das können die meisten Heimwerker und Familien mit dem richtigen Fahrzeug fahren, nämlich jetzt mit dem Vaneo. Mit bis zu 3.000 Litern Laderaum, zwei Schiebetüren und zahlreichen Sicherheitsmerkmalen ausgestattet. Und natürlich mit Platz für Sie und eine ganze Familie. Entdecken Sie Ihren Vaneo. www.autohaus-miltner.de",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "k",
+      "text": "Was immer Sie von einem kompakten Automobil erwarten – der Jazz übertrifft Ihre Vorstellungen. Angefangen bei seinem neuen 1.4 i-DSI-Motor, der auch äußerst niedrigen Kraftstoffverbrauch aufweist. Deshalb könnte der Tank besonders flach ausfallen – das bedeutet: weniger Gewicht, wo man ihn wohl am wenigsten erwartet: unter dem Fahrersitz. So gewinnen Sie enorm viel Platz spart. Und das ist der Grund, warum Ihnen der neue Jazz den größten und flexibelsten Innenraum seiner Klasse bietet – nicht nur für Sie selbst, sondern für die ganze Familie. Mehr Informationen dürfen Sie unter www.jazz.de erwarten.",
+      "correct": 7,
+      "highlightColor": 7
+    },
+    {
+      "id": "l",
+      "text": "„Die WK weiß, wie Vater Staat meine Rente fördert.“ Und das ist auch gut so, denn die Rentenreform lässt mehr Fragen offen, als sie beantwortet. Mit der Förder-Invest-Rente der WK können Sie das Beste aus dieser Reform machen. Wir sagen Ihnen, wie Sie heute Ihre gesetzliche Rente ergänzen, damit Sie nach Ihrem Arbeitsleben mit Mitte sechzig eine optimale Rente erhalten. Jahr für Jahr erhalten Sie außerdem Zulagen von Vater Staat. Viele Arbeitnehmer in der gesetzlichen Rentenversicherung können die staatliche Förderung in Anspruch nehmen – und sie sollten es, damit private Vorsorge nicht nur auf dem Papier Zukunft hat. www.wk.de",
+      "correct": null,
+      "highlightColor": null
+    }
+  ],
+  "situations": [
+    "Ein Bekannter möchte auf seinen Geschäftsreisen mit seinem Auto immer schnell vorankommen.",
+    "Eine bekannte Familie sucht eine leistungsstarke Krankenversicherung.",
+    "Ein Bekannter sucht eine private Rentenversicherung, die ihm etwas auszahlt, wenn er 50 ist.",
+    "Eine Bekannte möchte sich über Urlaubsangebote informieren, hat aber keine Zeit, in ein Reisebüro zu gehen.",
+    "Ihre Eltern möchten eine Kreuzfahrt im Mittelmeer unternehmen.",
+    "Ein Bekannter sucht für seine Cousine einen Sportverein, in dem junge Talente gefördert werden.",
+    "Ein Bekannter interessiert sich für Geschichte sowie Kultur und möchte Urlaub in einer deutschen Weinregion machen.",
+    "Sie suchen ein Auto mit Platz für bis zu 5 Personen, aber einem möglichst geringen Benzinverbrauch.",
+    "Sie möchten vor einer Auslandsreise eine Auslandskrankenversicherung für die ganze Familie abschließen.",
+    "Eine bekannte Familie möchte einen Urlaub machen, der auch für ihre 3- und 5-jährigen Kinder interessant ist."
+  ],
+  "note": "✅ تم تصحيح الخطأ الوحيد: الفقرة h (AXIS.de) أصبحت correct: 2 لأنها تتحدث عن Altersvorsorge (تأمين تقاعدي).",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Schiffsreise der absoluten Extraklasse",
+        "Ihre Eltern möchten eine Kreuzfahrt im Mittelmeer unternehmen."
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Trigana",
+        "Eine Bekannte möchte sich über Urlaubsangebote informieren, hat aber keine Zeit, in ein Reisebüro zu gehen."
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Fürther Allgemeine",
+        "Eine bekannte Familie sucht eine leistungsstarke Krankenversicherung."
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Assist",
+        "Ein Bekannter möchte auf seinen Geschäftsreisen mit seinem Auto immer schnell vorankommen."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Pippi Langstrumpf",
+        "Eine bekannte Familie möchte einen Urlaub machen, der auch für ihre 3- und 5-jährigen Kinder interessant ist."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "AXIS.de",
+        "Ein Bekannter sucht eine private Rentenversicherung, die ihm etwas auszahlt, wenn er 50 ist."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "suedlicheweinstrasse.de",
+        "Ein Bekannter interessiert sich für Geschichte sowie Kultur und möchte Urlaub in einer deutschen Weinregion machen."
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "Jazz ... kompakten Automobil",
+        "Sie suchen ein Auto mit Platz für bis zu 5 Personen, aber einem möglichst geringen Benzinverbrauch."
+      ]
+    }
+  ]
+}

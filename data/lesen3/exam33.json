@@ -1,0 +1,143 @@
+{
+  "title": "Lesen Teil 3 - Exam 32: ein paar Tage in Berlin - اعلانات قطار النوم ",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "Das Comedy Filmfest tourt auch dieses Jahr durch Deutschland. In Berlin startet es am 14. August mit der belgischen Produktion 'Schokolade und Pommes frites'. In dieser romantischen Komödie treffen zwei Charaktere aufeinander, die unterschiedlicher kaum sein könnten: Die zielstrebige, doch ein wenig schüchterne Marie hat sich mit einem Schokoladengeschäft ihren großen Traum verwirklicht. Alles läuft gut, bis auf der anderen Straßenseite der chaotische Lebenskünstler Michel einen Schnellimbiss eröffnet und Maries Leben reichlich durcheinanderwirbelt. 'Schokolade und Pommes frites': 14. August, 20 Uhr, Filmtheater Friedrichshain",
+      "correct": 7,
+      "highlightColor": 0
+    },
+    {
+      "id": "b",
+      "text": "Als die Bilder laufen lernten Dieser Band lädt Sie ein, eine bewegte Kinoepoche zu entdecken. In den Jahren von 1895 bis 1930 entwickelte sich das Kino in atemberaubendem Tempo zum Unterhaltungsmedium schlechthin. Autorin Greta Valentino geht zurück bis zu den ersten Filmen der Brüder Lumière und den Anfängen des Westerns und taucht anschließend ein in die schillernden 1920er Jahre, als der Stummfilm seine goldene Ära feierte und Filmpaläste wie Pilze aus dem Boden schossen. Die Autorin studierte Kunstgeschichte in Paris und Amsterdam. Sie veröffentlichte Bücher sowie zahlreiche Artikel über Kunst und Kino.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "c",
+      "text": "Berlin erleben Unsere Reise führt Sie in eine der abwechslungsreichsten Städte Deutschlands: Berlin. Mit historischen Bauwerken und Museen, breiten Prachtstraßen und Einkaufsmeilen sowie weitläufigen Parks und Gärten hat die Hauptstadt für jeden etwas zu bieten. Reisen Sie bequem mit der Deutschen Bahn und verbringen Sie aufregende Tage in Berlin. Übernachtung mit Frühstück im Hotel. Dauer: ab 4 Tage (Verlängerung möglich) Preis: ab 437 Euro pro Person im Doppelzimmer inklusive An- und Abreise mit der Deutschen Bahn. Mehr Infos unter: www.bergmann-reisen.info",
+      "correct": 9,
+      "highlightColor": 1
+    },
+    {
+      "id": "d",
+      "text": "Berlin Gendarmenmarkt Im März beginnen die Dreharbeiten für den Film 'Berlin Gendarmenmarkt'. Erzählt wird die Geschichte der sechzehnjährigen Ida, die Jugend und Erwachsenwerden im Berlin der Goldenen Zwanziger erlebt und von einer großen Karriere auf der Theaterbühne träumt. Die Romanvorlage für den Film lieferte die Schriftstellerin Marie Franck. Für kleinere Filmrollen oder als Komparsen werden noch Mitwirkende jeden Alters gesucht. Die Gage beträgt 75 € pro Drehtag. Bewerbungsschluss ist der 16. November. Infos und Bewerbung unter: www.film-gendarmenmarkt.info/casting",
+      "correct": 1,
+      "highlightColor": 2
+    },
+    {
+      "id": "e",
+      "text": "Berlin in den Zwanziger Jahren Dreigroschenoper, Bubikopf, Dada, Bauhausarchitektur. Dieser Bildband erweckt das Berlin der 1920er wieder zum Leben. In dieser Dekade war Berlin eine moderne, von Fortschritt und Freiheit berauschte Weltstadt, die für Künstler und Intellektuelle zum Sehnsuchtsort wurde. Autor Gereon Kutscher nimmt Sie mit auf einen Streifzug durch eine Epoche der kulturellen Blüte und der Lebenslust. Gereon Kutscher: Berlin in den Zwanziger Jahren, Hardcover, 126 Seiten, 28 €",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "f",
+      "text": "Eine Karte, 30 Häuser Ob Meisterwerke der Kunst, archäologische Schätze aus sechs Jahrtausenden oder technische Errungenschaften – das alles finden Sie in den Berliner Museen. Mit dem Museumspass öffnen sich Ihnen die Türen von über 30 Häusern, darunter die Alte Nationalgalerie, das Pergamonmuseum, das Museum für Naturkunde und die Neue Nationalgalerie. An drei aufeinanderfolgenden Tagen haben Sie damit freien Eintritt. Preis: 29 €, ermäßigt 14,50 €. Ticket hier online kaufen: https://shop.nmg.museum",
+      "correct": 0,
+      "highlightColor": 3
+    },
+    {
+      "id": "g",
+      "text": "Naturkundemuseum Erleben Sie auf einem spannenden Rundgang, wie sich das Leben auf der Erde im Laufe der Jahrmillionen entwickelt hat. Bestaunen Sie urzeitliche Fossilien, das größte Dinosaurierskelett der Welt sowie einen imposanten Eisbären. Doch das Naturkundemuseum in Leipzig hält noch viele weitere faszinierende Ausstellungsstücke bereit, die Jung und Alt gleichermaßen begeistern. Für Kinder ab 5 Jahren, Jugendliche und Erwachsene gibt es thematische Führungen, die Wissen lebendig vermitteln. Eintritt: 8 €, ermäßigt 5 €. Öffnungszeiten: Di-Fr: 9:30-18 Uhr, Sa, So und Feiertage: 10-18 Uhr. Naturkundemuseum Leipzig, Lindenallee 21, 04109 Leipzig",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "h",
+      "text": "Stadtführungen in Berlin Sie haben Freude daran, Geschichten lebendig zu erzählen, sind gerne unterwegs und möchten andere für besondere Plätze begeistern? Dann passen Sie perfekt zu uns. Wir organisieren Stadtführungen durch Berlin und suchen für eine längerfristige Zusammenarbeit (mindestens ein Jahr) engagierte neue Mitarbeiterinnen und Mitarbeiter. Wer kommunikativ ist und gerne mit Menschen arbeitet, kann sofort bei uns als Guide starten. Der Job wird auf 450-€-Basis angeboten, mit flexibler Zeiteinteilung und auch für Freiberufler geeignet. Interesse? Bewerbungen an: kontakt@berlin-entdecken-touren.de",
+      "correct": 3,
+      "highlightColor": 4
+    },
+    {
+      "id": "i",
+      "text": "Feiern wie in den Goldenen Zwanzigern Ein ausgelassenes Lebensgefühl und rauschende Nächte. So stellt man sich die 1920er Jahre vor, an die Filme wie 'Der große Gatsby' und Serien wie 'Babylon Berlin' immer wieder erinnern. Gehen Sie auf eine glamouröse Zeitreise und lassen Sie diese Ära wiederauferstehen. Wir haben dafür die passende Kleidung für Sie. In unserem Online-Shop finden Sie alles, was Sie für einen glänzenden Auftritt auf einer Mottoparty brauchen. Paillettenkleider und Kopfschmuck für Damen, Westen und Anzüge für Herren und Accessoires sowie Dekoartikel. www.golden20.com",
+      "correct": 8,
+      "highlightColor": 5
+    },
+    {
+      "id": "j",
+      "text": "Das etwas gemütlichere Berlin Der wenig bekannte Berliner Stadtteil Friedenau ist bis heute eher ein Geheimtipp. Das Viertel besticht durch prächtig geschmückte Wohnhäuser, kleine Villen und eine bunt gemischte Gastronomie. Kommen Sie mit auf eine kulinarisch-kulturelle Führung durch das charmante, ruhige Friedenau. Erfahren Sie mehr über die berühmten Gesichter dieses Stadtviertels, entdecken Sie wunderschöne Altbauten und lernen Sie die beeindruckenden Goerz-Höfe kennen. Unsere erfahrenen Stadtführer zeigen Ihnen außerdem spannende Orte zum Genießen, zum Beispiel ein italienisches Café, eine koreanische Snack-Bar und ein marokkanisches Bistro. 3 Stunden, ca. 3 km zu Fuß. Preis: 39 €, ermäßigt 20 €. Anmeldung unter: www.friedenau-touren.net",
+      "correct": 6,
+      "highlightColor": 6
+    },
+    {
+      "id": "k",
+      "text": "Sie lieben Filme? Dann machen Sie doch das Kino zu Ihrem Arbeitsplatz und werden Sie Teil unseres Teams! Das Metropolis Filmtheater Altenberg sucht eine Aushilfe als Urlaubsvertretung für die Monate Juli und August, 25 Stunden pro Woche. Zu Ihren Aufgaben gehören u. a. der Verkauf von Kinokarten, Popcorn und Getränken sowie die Einlasskontrolle und die Vorbereitung der Säle. Sie sind volljährig, zuverlässig und bereit, auch am Abend oder Wochenende zu arbeiten? Dann freuen wir uns auf Ihre Bewerbung mit kurzem Anschreiben und Lebenslauf per E-Mail. Metropolis Kino Altenberg, info@metropolis-altenberg.de",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "l",
+      "text": "Wer hat die Kokosnuss geklaut? Bei dieser Tour geht es ins Affenhaus! Beobachte Gorillas, Paviane und Co. bei der Futtersuche und finde heraus, was sie am liebsten fressen. Natürlich bleibt noch Zeit, bei anderen Zoo-Bewohnern vorbeizuschauen. Geh zusammen mit einem Guide auf eine besondere Entdeckungstour durch den Zoo Berlin. Spannende Tier-Fakten und exklusive Einblicke in den Zoo-Alltag warten auf dich! Führung für Kinder ab 8 Jahren. Zoologischer Garten Berlin, Hardenbergplatz 8, 10787 Berlin. Eintritt: Erwachsene 17,50 €, Kinder 9 €",
+      "correct": null,
+      "highlightColor": null
+    }
+  ],
+  "situations": [
+    "Ein Bekannter ist ein paar Tage in Berlin und würde sich gerne verschiedene Kunstausstellungen ansehen.",
+    "Eine Bekannte träumt davon, selbst einmal bei einem Film mitzuspielen.",
+    "Ein Freund würde sich gerne einen Dokumentarfilm über Tiere ansehen",
+    "Eine Freundin sucht einen Nebenjob. Sie würde dabei gerne viel Zeit draußen verbringen.",
+    "Ihr Cousin ist Student und sucht für die Sommermonate einen Nebenjob.",
+    "Ihre achtjährige Nichte interessiert sich für Tiere und Natur. Sie möchten ihr zum Geburtstag ein Buch schenken.",
+    "Sie möchten eine besondere Stadtführung in Berlin buchen",
+    "Sie möchten mit Freunden einen unterhaltsamen Film anschauen",
+    "Sie sind zu einer Kostüm-Party eingeladen und brauchen dafür etwas zum Anziehen.",
+    "Sie würden gerne mit Freunden eine mehrtägige Stadttour machen und suchen ein Angebot"
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (b, e, g, l). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Comedy Filmfest",
+        "Sie möchten mit Freunden einen unterhaltsamen Film anschauen"
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Berlin erleben",
+        "Sie würden gerne mit Freunden eine mehrtägige Stadttour machen und suchen ein Angebot"
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Berlin Gendarmenmarkt",
+        "Eine Bekannte träumt davon, selbst einmal bei einem Film mitzuspielen."
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Eine Karte, 30 Häuser",
+        "Ein Bekannter ist ein paar Tage in Berlin und würde sich gerne verschiedene Kunstausstellungen ansehen."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Stadtführungen in Berlin",
+        "Eine Freundin sucht einen Nebenjob. Sie würde dabei gerne viel Zeit draußen verbringen."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Feiern wie in den Goldenen Zwanzigern",
+        "Sie sind zu einer Kostüm-Party eingeladen und brauchen dafür etwas zum Anziehen."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "Das etwas gemütlichere Berlin",
+        "Sie möchten eine besondere Stadtführung in Berlin buchen"
+      ]
+    }
+  ]
+}

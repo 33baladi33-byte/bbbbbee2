@@ -1,0 +1,136 @@
+{
+  "title": "Lesen Teil 3 - Exam 24: المرشد السياحي (معدل)",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "Das Museum der Badekultur lädt große und kleine Besucher zu einer informativen und kurzweiligen Reise durch 2000 Jahre Badekultur ein. Die Besucher können römische Baderäume besichtigen. Sie erfahren auch, wie im Mittelalter auf Burgen und in Städten Körperpflege betrieben wurde und wie in Schlössern der Neuzeit gebadet wurde. Für Kinder ab 8 Jahren gibt es viel zu entdecken: Sie können die Ausstellung mithilfe eines Comics oder einer Museumsrallye erkunden. Multimediastationen führen spielerisch an die Geschichte des Badens heran. Museum der Badekultur, Andreas-Broicher-Platz 1, 53909 Zülpich.",
+      "correct": 0,
+      "highlightColor": 0
+    },
+    {
+      "id": "b",
+      "text": "Die Badrenovierung steht vor der Tür? Dann besuchen Sie unsere große Bäderausstellung. Hier finden Sie Anregungen, können Marktneuheiten entdecken und sich von unseren Fachleuten beraten lassen. Über 50 Musterbäder warten darauf, von Ihnen erkundet zu werden. Besuchen Sie unsere Bäder- und Fliesenwelt und flanieren Sie in entspannter Atmosphäre durch unsere Schaubäder. Gemeinsam finden wir eine maßgeschneiderte Lösung für Sie! Dauerhafte Freude an Ihrem neuen Traumbad garantiert! Markus Köfer GmbH & Co. KG, Sanitär- und Heizungshandlung, Georgstraße 3, 67059 Ludwigshafen.",
+      "correct": 8,
+      "highlightColor": 1
+    },
+    {
+      "id": "c",
+      "text": "Die Geschichte des Essens: Dessert Jede Epoche hatte ihre eigenen Rezepte, Zutaten und Techniken. Der Historiker und Ernährungswissenschaftler Dr. Lukas Romhelsheim stellt einige von ihnen in unserer Veranstaltungsreihe 'Die Geschichte des Essens' vor. Die Reihe berichtet Wissenswertes, Skurriles und Amüsantes aus den Küchen der Vergangenheit. Diesmal spricht er über Nachspeisen. Wir lernen unter anderem eines der ältesten erhaltenen Kuchenrezepte der Welt kennen, das um etwa 1400 vor Christus von den Sumerern in Keilschrift niedergeschrieben wurde. Mo, 8.10., 18:30 Uhr, Eintritt: 5 €. Kulturhaus Landau, Speyerer Str. 10, 76829 Landau in der Pfalz.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "d",
+      "text": "Echt sizilianisch! Genießen wie auf Italiens sonnigster Insel. Authentischer geht es nicht: 80 leckere Familienrezepte hat Stella Cascone aus der großen Sammlung ihrer Mutter Maria ausgewählt und in diesem außergewöhnlichen Kochbuch zusammengestellt. Vom Auberginenauflauf Parmigiana Catanese über die weltberühmte Torte Cassata bis zu den typischen Menüs für Familienfeiern und jahreszeitliche Feste hat Cascone - mit tatkräftiger Hilfe ihrer großen Familie - das Beste zusammengetragen, was die sizilianische Küche zu bieten hat. Viele Farbfotos machen das Buch zu einem wahren Augenschmaus. Genießen Sie die kulinarische Entdeckungsreise nach Sizilien! Gebundenes Buch, 39 €.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "e",
+      "text": "Ein Bad fürs Leben Sie planen ein neues Bad? In Ulrike Fergaus Buch 'Ein Bad fürs Leben' finden Sie eine Fülle von Anregungen. Lösungen für die unterschiedlichsten Raumgrößen und Lebenssituationen werden präsentiert. Zahlreiche Bäder werden anhand von Grundrissen und Fotos anschaulich und detailliert vorgestellt. Außerdem ausführliche praktische Informationen zu: Planung und Ausführung, barrierefreien Bädern, Licht, Farben, Materialien und Oberflächen, Ausstattungselementen, Installationen. Gebundenes Buch, 29 €.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "f",
+      "text": "Ein Blick hinter die Kulissen Entdecken Sie die Welt von 'Alpen-Naturkosmetik'. Besichtigen Sie unsere Fabrik im Allgäu und erfahren Sie mehr über unsere Kosmetik bei einer Führung. Wir zeigen Ihnen die Labore, die Produktionsstätte bis hin zur Verpackung. Seit 1903 stellt Alpen-Naturkosmetik hochwertige Seifen, Haut- und Zusatzprodukte und Cremes her. Jeder Gast erhält gratis ein Kosmetikpröbchen zum Kennenlernen. Firmenführungen jeden Freitag um 16 Uhr & Samstag um 13 Uhr (kostenfrei). Alpen-Naturkosmetik, Memminger Str. 67, 87439 Kempten.",
+      "correct": 6,
+      "highlightColor": 2
+    },
+    {
+      "id": "g",
+      "text": "Rom auf eigene Faust erkunden Wenn Sie alle Seiten der Tibermetropole selbstständig entdecken wollen, ist dieser Stadtführer Ihr idealer Begleiter. Sie finden: Informationen über die wichtigsten Sehenswürdigkeiten und Museen der Stadt, vier abwechslungsreiche Stadtspaziergänge, Shoppingtipps vom traditionellen Markt bis zu den schönsten Andenkengeschäften, die besten Lokale der Stadt und allerlei Wissenswertes über die römische Küche. Außerdem: praktische Infos zu Anreise, Unterkünften, Preisen, Stadtverkehr, Touren, Hilfe im Notfall. Dazu: kostenlose Web-App für Smartphone, Tablet und PC mit Stadtplanansichten. Taschenbuch, 220 Seiten, 19,90 €.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "h",
+      "text": "Rom bei Nacht Erleben Sie die Ewige Stadt nach Einbruch der Dunkelheit bei einer Besichtigungstour in einer kleinen Gruppe. Beginnen Sie Ihren Abend mit einer Pizza in einem klassischen römischen Restaurant und betrachten Sie die antiken Stätten und Monumente bei nächtlicher Beleuchtung. Besichtigen Sie das Kolosseum und spazieren Sie anschließend über die Piazza Navona. Vierstündige Tour zu den wichtigsten Sehenswürdigkeiten von Rom. Sehen Sie eine andere Seite der Stadt, genießen Sie einen Rundgang in den Gässchen. Kleingruppentour im Kleinbus, Hoteltransfers inbegriffen. Kontakt: info@rom-bei-nacht.de",
+      "correct": 4,
+      "highlightColor": 3
+    },
+    {
+      "id": "i",
+      "text": "Sie kennen Berlin wie Ihre Westentasche? Dann bewerben Sie sich bei uns. Wir suchen ab sofort Stadtführer (m/w). Bei uns erwarten Sie eine familiäre, angenehme Arbeitsatmosphäre und eine gute Bezahlung. Voraussetzungen: Sie haben eine Prüfung als Stadtführer abgelegt und mindestens ein Jahr lang Touren geleitet. Sie können gut mit Menschen umgehen. Sie verfügen über gute Deutschkenntnisse, ein gepflegtes Erscheinungsbild und viel Humor. Interesse? Dann schicken Sie uns Ihre Bewerbung. Wir freuen uns auf Sie! Stadtführungen Berlin GmbH, E-Mail: bw@stadtführungen-berlin.net",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "j",
+      "text": "Was aßen die Kelten und Römer? Was stand vor knapp 2000 Jahren im Hunsrück auf dem Speiseplan? Darüber informiert die Ausstellung 'Was aßen die Kelten und Römer?', die am 12. Mai im Archäologiepark Belginum in Morbach-Wederath eröffnet wird. Der Archäologiepark Belginum ist ein prähistorisch-spätrömisches Museum bei Wederath, das die Ergebnisse jahrzehntelanger archäologischer Ausgrabungen präsentiert. Die ehemals keltisch-römische Siedlung ist eine für Mitteleuropa einzigartige Fundstelle. Die Ausstellung ist bis zum 3. November zu sehen. Öffnungszeiten: 10 bis 17 Uhr, montags geschlossen. Archäologiepark Belginum, Keltenstraße 2, 54497 Morbach.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "k",
+      "text": "Werden Sie Botschafter unserer Stadt! Sie kennen sich gut in Koblenz aus, interessieren sich für die Geschichte von Stadt und Region und gehen gerne auf andere zu? Dann ist unsere Ausbildung zum Stadtführer das Richtige für Sie. Die Ausbildung umfasst 100 Stunden in Theorie und Praxis. Vorzugsweise suchen wir Teilnehmer, die eine Fremdsprache fließend beherrschen. Die Kosten liegen bei 400 €. Die Teilnehmer können im Anschluss an diese Ausbildung als Stadtführer von der Koblenz-Tourismus GmbH gebucht werden. Neben den klassischen 1,5-stündigen Stadtführungen bieten wir auch eine Fülle von Themenführungen an. Infos und Anmeldung: info@koblenz-tourismus.net",
+      "correct": 1,
+      "highlightColor": 4
+    },
+    {
+      "id": "l",
+      "text": "Zwei Meister am Herd in der Filmkomödie 'Zwei Meister am Herd' dreht sich alles um Gourmets, Sterne und feinste Zutaten. Spitzenkoch Clément hat keine Freude mehr am Kochen - und zu seinem Unglück haben sich gerade Restaurant-Kritiker angekündigt. Da trifft es sich gut, dass er die Bekanntschaft von Oskar macht. Der ist Koch aus Leidenschaft, hält sich aber eher schlecht als recht mit Gelegenheitsjobs in Kneipen und Schnellimbissen über Wasser. Werden die beiden zusammen die Kritiker überzeugen? Ein Feuerwerk aus Witz und Humor! Citykino, täglich um 16 und 20 Uhr.",
+      "correct": 9,
+      "highlightColor": 5
+    }
+  ],
+  "situations": [
+    "Eine Frau möchte mit ihrem 10-jährigen Sohn eine Aktivität durchführen und erhält bei dieser Aktivität Ermäßigungen.",
+    "Ihr Freund möchte als Stadtführer arbeiten und hat keine Erfahrungen.",
+    "Ihr Bruder möchte etwas über historische Geschichten über Städte hören.",
+    "Sie möchten Ihren Urlaub in Berlin verbringen und benötigen einen Stadtführer.",
+    "Sie möchten irgendwo einen Urlaub mit besonderen Aktivitäten verbringen.",
+    "Ihre Tante möchte bekannte Unterhaltungsmöglichkeiten in Rom besuchen oder sehen.",
+    "Sie möchten wissen, wie man aus der Natur gewonnene Kosmetik zubereitet.",
+    "Ihre Bekannte ist Köchin und sucht einen Job.",
+    "Ihre Schwester erneuert ihr Badezimmer und sucht nach modernen Badezimmermodellen.",
+    "Sie mögen leichte Unterhaltung und würden gerne mal wieder richtig lachen."
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (c, d, e, g, i, j). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Museum der Badekultur",
+        "Eine Frau möchte mit ihrem 10-jährigen Sohn eine Aktivität durchführen"
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Badrenovierung",
+        "Ihre Schwester erneuert ihr Badezimmer und sucht nach modernen Badezimmermodellen."
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Alpen-Naturkosmetik",
+        "Sie möchten wissen, wie man aus der Natur gewonnene Kosmetik zubereitet."
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Rom bei Nacht",
+        "Sie möchten irgendwo einen Urlaub mit besonderen Aktivitäten verbringen."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Ausbildung zum Stadtführer",
+        "Ihr Freund möchte als Stadtführer arbeiten und hat keine Erfahrungen."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Zwei Meister am Herd",
+        "Sie mögen leichte Unterhaltung und würden gerne mal wieder richtig lachen."
+      ]
+    }
+  ]
+}

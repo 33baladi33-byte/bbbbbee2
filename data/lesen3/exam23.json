@@ -1,0 +1,150 @@
+{
+  "title": "Lesen Teil 3 - Exam 22: Wein und Insekten",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "Auf unserer Homepage finden Sie nicht nur aktuelle Wetterberichte für Ihren Wohnort, sondern auch verlässliche Vorhersagen für Ihre Region, für Europa und die ganze Welt. Wir geben laufend zeitnahe Unwetterwarnungen und stündlich aktualisierte Daten zu Schneehöhen und Wasserpegeln. Allergiker und wetterfühlige Menschen bekommen bei uns gesundheitsbezogene Informationen zu Biowetter, Pollenflug oder Ozonwerten. Über unsere Seite haben Sie Zugang zu einem dichten Netz von Webcams in ganz Deutschland und den Grenzregionen. Durch eine Mitgliedschaft bei WetAkt.com profitieren Sie von unseren zahlreichen Apps.",
+      "correct": 2,
+      "highlightColor": 0
+    },
+    {
+      "id": "b",
+      "text": "Die beiden letzten Tage waren für die Winzer eine Katastrophe. Nachdem der Frühling überdurchschnittlich warm gewesen war, entfalteten sich die Reben viel früher als sonst. Deshalb traf der jüngste Kälteeinbruch die Blüten und Knospen besonders stark. Im Norden und Osten Frankreichs, in Deutschland und in der Schweiz wurden Temperaturen bis zu minus 8 Grad gemessen. Selbst in Italien, vor allem in der Toskana, wurden Minusgrade verzeichnet. Der Frost hat in der Chianti-Region große Schäden angerichtet. Details zur Entschädigung für Frostschäden im Weinbau finden Sie hier.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "c",
+      "text": "Wir bauen seit vier Generationen Wein an und haben vor einigen Jahren auf ökologischen Weinbau umgestellt. Unser Weingut liegt in den sanften Hügeln Apuliens. Für die Weinernte im Oktober suchen wir Helfer im Austausch gegen Verpflegung und Unterkunft. An fünf Tagen pro Woche hilfst du bei allen Tätigkeiten rund um den Wein. An deinen freien Tagen kannst du die wunderschöne Gegend erkunden. Du wohnst in einem eigenen Zimmer und hast auf Wunsch Familienanschluss. Neben Italienisch sprechen wir auch Deutsch und Englisch. Kontaktformular",
+      "correct": 5,
+      "highlightColor": 1
+    },
+    {
+      "id": "d",
+      "text": "23. November: Vortrag Zeinab Schmidt-Hussain, Dominikanerhaus, Stadtplatz 18. Die Klimaforscherin und Meteorologin Zeinab Schmidt-Hussain ist seit Anfang des Jahres die neue Leiterin des Silberberg-Observatoriums. Die junge Wissenschaftlerin hat bereits viel beachtete Forschungsergebnisse für unterschiedliche Bereiche der Klima- und Wetterkunde vorgelegt. In ihrem Vortrag spricht sie über ihre Zeit an einer Forschungsstation am Südpol, in der sie zwei Jahre verbracht hat. Sie zeigt außergewöhnliche Aufnahmen und berichtet dabei vom Alltag und den Arbeitsbedingungen bei Temperaturen, die auch im Sommer nicht über minus 40 Grad Celsius steigen. Beginn ist um 20:00 Uhr.",
+      "correct": 6,
+      "highlightColor": 2
+    },
+    {
+      "id": "e",
+      "text": "Sie sind auf der Suche nach dem besten Preis-Leistungs-Verhältnis? Dann sind Sie in unserem Online-Shop genau richtig! Bei uns finden Sie Sonderpreise, ohne auf Qualität verzichten zu müssen. Von Moselweinen bis zu französischem Rotwein halten wir das ganze Jahr über eine große Auswahl an attraktiven Sonderangeboten bereit. Wie das möglich ist? Wir kaufen große Mengen günstig ein und geben den niedrigen Preis an Sie weiter. Bei manchen Sorten sparen Sie bis zu 40 Prozent im Vergleich zum Preis im Geschäft.",
+      "correct": 8,
+      "highlightColor": 3
+    },
+    {
+      "id": "f",
+      "text": "Die afrikanische Schlafkrankheit wird durch die Tsetsefliege auf Tiere und Menschen übertragen. Die Krankheit, die mit Nervenschädigungen und hohem Fieber verbunden ist, kann zum Tod führen. Ein Forscherteam zeigte nun, wie sich die Schlafkrankheit durch den Klimawandel weiter ausdehnen könnte. Diese Wissenschaftler gingen davon aus, dass sich die Erde in den nächsten Jahrzehnten um mehr als fünf Grad erwärmen wird. Damit könnte die Tsetsefliege in Gebiete vordringen, die bisher zu kalt waren. Hier geht es zu dem Artikel.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "g",
+      "text": "Mit Temperaturen von bis zu minus 20 Grad und starken Sturmböen herrschen in weiten Teilen Europas extreme Winterbedingungen. Unter dem Einfluss des heftigen Windes wurden in den letzten Tagen Fahrbahnen zugeweht, und stellenweise türmt sich der Schnee meterhoch. Autos blieben liegen, und vielerorts mussten die Rettungskräfte ausrücken, um Menschen aus ihren Fahrzeugen zu befreien. Brücken und Straßen mussten komplett gesperrt, der Fährenverkehr zu den Inseln eingestellt werden. In manchen Gegenden ist die Stromversorgung vollständig zusammengebrochen. Es scheint wie ein Wunder, dass unter diesen Bedingungen noch keine Opfer zu beklagen sind.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "h",
+      "text": "Für Liebhaber französischer Weine, die es individuell mögen: Wir planen und organisieren für Sie maßgeschneiderte Urlaubsreisen in die bedeutendsten Weinbaugebiete Frankreichs, zum Beispiel nach Burgund, Bordeaux oder in die Champagne. Zu unseren Partnerbetrieben gehören nicht nur große Namen, sondern auch kleinere Winzer. Unsere Unterkunftsmöglichkeiten reichen von einfachen Gästehäusern in kleinen Weindörfern bis zum luxuriösen 5-Sterne-Hotel. Besichtigen Sie berühmte Weingüter, erfahren Sie Interessantes rund um den Weinbau, verkosten Sie die besten Weine und kaufen Sie Ihren Lieblingswein direkt vom Produzenten.",
+      "correct": 3,
+      "highlightColor": 4
+    },
+    {
+      "id": "i",
+      "text": "Das Städtische Museum beherbergt auch eine bedeutende Insektensammlung. Der Hobby-Insektenforscher Rüdiger Wildhaber hat sie seiner Heimatstadt vermacht. In den Schaukästen und auf vergrößerten Fotos können die Besucher die unglaubliche Formen- und Farbenvielfalt der Insekten bewundern. Bei den Jüngsten besonders beliebt sind die beiden übergroßen Modelle einer Biene und eines Marienkäfers. In kindgerechten Vorträgen erzählen unsere Mitarbeiterinnen und Mitarbeiter täglich von 15:00 bis 17:00 Uhr Wissenswertes über die spannende Welt der Insekten, die artenreichste Klasse der Tiere.",
+      "correct": 7,
+      "highlightColor": 5
+    },
+    {
+      "id": "j",
+      "text": "Der Sturm deckt das Dach Ihres Wohnhauses ab, nach den heftigen Regenfällen steht das Wasser in Ihrem Keller, oder die Schneelawine von Ihrem Dach verletzt Passanten: Unwetterschäden können sehr teuer werden. Wir helfen Ihnen, sich so gut wie möglich dagegen zu schützen. Erfahren Sie hier, welche Versicherungen wir Ihnen anbieten. Das Wetter können Sie nicht ändern, aber Sie können dazu beitragen, Schäden zu vermeiden. Hier lesen Sie, wie Sie Unwetterschäden vorbeugen können. Was tun, wenn doch ein Schaden auftritt? Das Vorgehen im Schadensfall erklären wir hier.",
+      "correct": 1,
+      "highlightColor": 6
+    },
+    {
+      "id": "k",
+      "text": "Weinverkostung - am 15. November, von 15.00 bis 19.00 Uhr, laden wir Genießer, Weinkenner und Fachleute zu unserer diesjährigen Weinverkostung ein. Wir freuen uns besonders, unseren Besucherinnen und Besuchern einen Riesling vorzustellen, der bei zwei internationalen Wettbewerben ausgezeichnet wurde. Auf unserem Weingut in dem alten Schloss an der Mosel erwarten Sie neben der Verkostung auch attraktive Sonderangebote, die ausschließlich für Besucherinnen und Besucher am Tag der offenen Tür reserviert sind. Weinverkostungen bieten wir auf Wunsch auch an anderen Tagen an. Für Gruppen ab 20 Personen, 30 bis 45 Minuten.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "l",
+      "text": "Insektenwelten - der neue Insektenführer. In keiner anderen Tiergruppe gibt es so viele Arten wie bei den Insekten. In rund 1500 Einträgen gibt dieses neue Bestimmungsbuch eine umfassende Übersicht über die Vielfalt der Insekten, die in Europa anzutreffen sind. Es umfasst Fotos und detaillierte Zeichnungen in Farbe, die die charakteristischen Merkmale der einzelnen Arten hervorheben. Eine Fülle von populärwissenschaftlichen Informationen im handlichen Taschenbuchformat - damit ist dieser Führer ein Muss für jeden Insektenliebhaber. Taschenbuch, 395 Seiten, 32,80 €.",
+      "correct": 0,
+      "highlightColor": 7
+    }
+  ],
+  "situations": [
+    "Ein Nachbar sucht ein illustriertes Buch, um Insektenarten erkennen zu können.",
+    "Ein Sturm hat Ihr Auto beschädigt. Sie möchten wissen, was Sie nun machen sollen",
+    "Eine Bekannte fährt in Urlaub und möchte wissen, wie das Wetter in Italien ist.",
+    "Freunde von Ihnen möchten auf einer Reise im Ausland an Weinproben teilnehmen.",
+    "Ihr Sohn möchte eine Weinbauschule besuchen.",
+    "Ihre Freundin interessiert sich für Bio-Weine und möchte Reisen und Arbeiten verbinden",
+    "Sie möchten gerne mehr über die Lebensbedingungen bei extremer Kälte erfahren",
+    "Sie planen für den Kindergeburtstag Ihrer Tochter einen lehrreichen Nachmittag.",
+    "Sie sollen im Internet günstigen Wein für ein Familienfest bestellen.",
+    "Sie suchen Informationen über den Klimawandel."
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (b, k). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Homepage ... Wetterberichte",
+        "Eine Bekannte fährt in Urlaub und möchte wissen, wie das Wetter in Italien ist."
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Wir bauen seit vier Generationen Wein an",
+        "Ihre Freundin interessiert sich für Bio-Weine und möchte Reisen und Arbeiten verbinden"
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Vortrag Zeinab Schmidt-Hussain",
+        "Sie möchten gerne mehr über die Lebensbedingungen bei extremer Kälte erfahren"
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Online-Shop ... Sonderpreise",
+        "Sie sollen im Internet günstigen Wein für ein Familienfest bestellen."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Für Liebhaber französischer Weine",
+        "Freunde von Ihnen möchten auf einer Reise im Ausland an Weinproben teilnehmen."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Städtische Museum ... Insektensammlung",
+        "Sie planen für den Kindergeburtstag Ihrer Tochter einen lehrreichen Nachmittag."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "Unwetterschäden",
+        "Ein Sturm hat Ihr Auto beschädigt. Sie möchten wissen, was Sie nun machen sollen"
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "Insektenwelten - der neue Insektenführer",
+        "Ein Nachbar sucht ein illustriertes Buch, um Insektenarten erkennen zu können."
+      ]
+    }
+  ]
+}

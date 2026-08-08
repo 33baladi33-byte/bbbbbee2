@@ -1,0 +1,150 @@
+{
+  "title": "Lesen Teil 3 - Exam 18: Aufräumen",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "Das große Aufräumbuch Mit ihrer Aufräummethode hat die aus dem Fernsehen bekannte Wohnberaterin und Bestsellerautorin Mila Komanek das Leben vieler Menschen verändert. Nun hat sie einen neuen, schön illustrierten Ratgeber erstellt. Ihr Tipp: Behalten Sie nur Gegenstände, die Ihnen wichtig sind! Ihre Schritt-für-Schritt-Anleitungen helfen Ihnen dabei, Dinge, die Sie nicht mehr brauchen, auszusortieren und wegzuwerfen: zum Beispiel alte Kleidung und Schuhe, Bücher und Papiere oder Kochrezepte, die Sie nie wieder verwenden. Aufräumen, sagt Mila Komanek, wie man perfekt Schubladen und Schränke organisiert. Denn sie ist überzeugt: Durch die richtige Ordnung in der Wohnung wird das ganze Leben leichter. Gebundene Ausgabe: 19 €",
+      "correct": 0,
+      "highlightColor": 0
+    },
+    {
+      "id": "b",
+      "text": "Einrichtungshaus Unterberg - das exklusive Möbelhaus im Zentrum der Stadt Hildesheim. Auf über 5 Etagen findet sich eine exzellente Auswahl erstklassiger, moderner Möbel. Wenn Sie Wert auf eine erlesene Wohnungseinrichtung legen, finden Sie bei uns alles nach Ihrem Geschmack. Erleben Sie eine der schönsten Möbelausstellungen Niedersachsens und lassen Sie sich inspirieren. Bei unserer Auswahl an neuen Möbeln legen wir großen Wert auf hervorragende Verarbeitung, beste Materialien und überzeugendes Design. Wir verkaufen Polstermöbel, Wohnzimmereinrichtungen, Garten- und Balkonmöbel, Garderoben und mehr. Einrichtungshaus Unterberg, Neue Straße 8, 31134 Hildesheim",
+      "correct": 3,
+      "highlightColor": 1
+    },
+    {
+      "id": "c",
+      "text": "Geschichten für Kinder Neu im Programm: Kinderbücher schreiben - der Basiskurs. Kinder sind besondere Leser. Sie wollen Spaß und Spannung erleben und neue Welten entdecken. Das ist eine große, aber auch schöne Herausforderung für Autoren. Unser Basiskurs vermittelt das notwendige handwerkliche Können dafür. Themen: kindgerechte Geschichten erzählen, ein Buchkonzept entwickeln, Figuren entwerfen, Illustrationen für Kinderbücher, Veröffentlichung und Verlagssuche. Für Einsteiger und Fortgeschrittene, für angehende Kinderbuchautoren und für alle, die nur mal reinschnuppern möchten. Schreibakademie Konstanz. Info und Kontakt: schreibakademie-konstanz.de",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "d",
+      "text": "Helden der Kindheit Pippi Langstrumpf, der kleine Wassermann und viele andere Helden aus Kinderbüchern sind im Historischen Museum zu Gast! Kommen Sie mit auf eine Entdeckungstour durch die Phantasiewelten der Kinderbuchliteratur des 20. und 21. Jahrhunderts. Ausgestellt werden zahlreiche Originalfiguren und Requisiten aus Verfilmungen und Puppenspielen. Die Ausstellung gibt auch Einblicke in die Arbeit von Kinderbuchautoren. Zahlreiche Spiele laden Kinder und Erwachsene zum Mitmachen ein. Historisches Museum Kassel, König-Zuse-Str. 3, 34123 Kassel",
+      "correct": 8,
+      "highlightColor": 2
+    },
+    {
+      "id": "e",
+      "text": "Henrike Derendorf: Das neue Wohnbuch. 1000 Ideen für ein schönes Zuhause Hier werden Wohnträume wahr! Wie plant man das ideale Wohnzimmer oder ein gemütliches Schlafzimmer und wie macht man das Beste aus kleinen Räumen? Passt die gelbe oder die blaue Tapete besser? Dieses Buch liefert die Antworten, führt in die Kunst der optimalen Raumgestaltung ein und erklärt verschiedene Stilrichtungen. Die Texte sind vielfältig, informativ und enthalten zahlreiche Hinweise von Experten. Ausführliche Produktinformationen und eine Hersteller- sowie Shop-Liste runden das Angebot dieses Wohnratgebers ab.",
+      "correct": 2,
+      "highlightColor": 3
+    },
+    {
+      "id": "f",
+      "text": "Heute schon an morgen denken Welche Trends werden das Wohnen in der Zukunft prägen? Wie werden wir im Alter leben? Wohngemeinschaften nicht nur für Studenten, sondern auch für Senioren, Mehrgenerationenhäuser oder ganz was anderes? Neue, innovative Wohnkonzepte werden immer wichtiger. In dem Vortrag werden einige gelungene Wohnprojekte vorgestellt, die zeigen, wie man in Zukunft und auch schon heute wohnen und leben kann. Referent: Dr. Anton Schroeter. Montag, 8.9., 19:30 Uhr. Teilnahmegebühr: 10 €, Anmeldung erforderlich. vhs-Zentrum, Am Marktplatz 8, 06108 Halle",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "g",
+      "text": "Katze, Papagei, Meerschweinchen - was ist erlaubt? Muss ich den Vermieter fragen, wenn ich mir ein Haustier anschaffen will? Was soll ich tun, wenn die Nachbarn sich beschweren? Diese und ähnliche Fragen stellen sich viele Mieter, die gerne Haustiere hätten. In unserer Vortragsreihe rund um das Mietrecht versuchen wir, sie zu beantworten. Unser nächster Vortrag findet am Dienstag, 7. Juli, um 19 Uhr statt. Die Juristin Dr. Ruth Weiß referiert über das Thema 'Tiere im Mietrecht'. Volkshochschule Bendorf, Hauptstr. 4, 56170 Bendorf",
+      "correct": 6,
+      "highlightColor": 4
+    },
+    {
+      "id": "h",
+      "text": "Kleine Helden gehen in den Büchern des Kinderbuchverlags Maus & Sandmann auf große Reise und erleben spannende Abenteuer. Die liebevoll illustrierten Geschichten vermitteln kindgerecht interessantes Wissen. Wir bieten Praktikanten die Möglichkeit, die verschiedenen Tätigkeiten im Verlagswesen kennenzulernen, z. B. redaktionelle Tätigkeiten, Planung, Lektorat, Marketing, Vertrieb. Wir suchen Studenten (m/w), die im Rahmen eines Praktikums im Bereich Pressearbeit tätig sein wollen. Voraussetzung ist, dass sie schon mindestens zwei Semester an einer Hochschule studiert haben. Kontakt: Kinderbuchverlag Maus & Sandmann, Schifferstr. 8, 09116 Chemnitz, www.maus-und-sandmann.de/praktikum",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "i",
+      "text": "Rat mal, wo die Tiere wohnen! Wie schlau sind Bienen? Welche Tiere leben im Garten? Der Zoologe Dirk Grisamke nimmt junge Forscher mit auf eine Entdeckungsreise vor Ort. Er lädt dazu ein, die Welt der heimischen Tiere zu erkunden und direkt vor der Haustür damit zu beginnen. Er begleitet uns zu den Tieren im Wald, im Garten, am Wasser und im Haus. Vom Rotkehlchen bis hin zum Fuchs kann man eine Menge Neues über Tiere erfahren. Für alle Kinder und Neugierigen ab 6 Jahren zum Vorlesen und Selberlesen. Gebundenes Buch, 18 €",
+      "correct": 9,
+      "highlightColor": 5
+    },
+    {
+      "id": "j",
+      "text": "Tiere hautnah erleben Bei uns finden heimische Wildtiere, aber auch Exoten aus aller Welt ein artgerechtes Zuhause. Auf Wanderwegen und Beobachtungsplattformen im Freigelände gibt es bei einem Rundgang viel zu bestaunen. Kamele reiten, auf Tuchfühlung mit den Affen gehen oder viele unserer Tiere lassen sich gerne mal streicheln. Auch das Füttern ist hier und da möglich. Sind Sie schon neugierig geworden? Dann nichts wie los! Öffnungszeiten: Dienstag bis Sonntag, 10 bis 18 Uhr. Preise: Erwachsene 2,50 €, Kinder 2 €. Wildpark Montabaur, Waldstr. 12, 56410 Montabaur",
+      "correct": 1,
+      "highlightColor": 6
+    },
+    {
+      "id": "k",
+      "text": "Willst du Tier-Experte werden? Dann komm ins Familienzentrum Linz. Bei fünf Treffen lernen wir alles über die Tiere in Haus und Hof und beantworten Fragen wie: Wo schlafen Kühe? Darf ich einen Hamster im Arm halten? Was fressen Kaninchen am liebsten? Außerdem machen wir spannende Ausflüge und am Ende bekommst du sogar ein Diplom. Tierärztin Karla Herbst lässt Kinder zwischen 7 und 10 Jahren mehr über die Bedürfnisse von Tieren erfahren. Wir freuen uns auf dich! Familienzentrum Linz in Zusammenarbeit mit dem Tierheim Linz, Teilnahmegebühr 4 €, Anmeldung info@familienzentrum-linz.net",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "l",
+      "text": "Wohnen in der Gründerzeit In einer Ausstellung im Schloss Britz erfahren die Besucher alles über die Wohnungseinrichtung in der Gründerzeit. Die originalen Möbel vermitteln anschaulich und lebendig das gehobene Lebensgefühl des ausgehenden 19. Jahrhunderts. In der Gründerzeit (1870 bis 1914) entstand eine besondere Wohnkultur. Das aufstrebende Bürgertum wollte seinen neu erworbenen Wohlstand in einer repräsentativen Architektur des Hauses und einer luxuriösen Innenausstattung mit hochwertigem Mobiliar zeigen. Öffnungszeiten: dienstags bis sonntags von 11 bis 18 Uhr. Eintritt: 3 Euro, ermäßigt 2 Euro, bis 12 Jahre frei. Schloss Britz, Alt-Britz 73, 12359 Berlin",
+      "correct": 4,
+      "highlightColor": 7
+    }
+  ],
+  "situations": [
+    "Alle Ihre Schränke sind voll mit Sachen und Sie haben kaum mehr Platz in der Wohnung. Sie suchen Ideen, wie Sie das ändern können.",
+    "Eine Bekannte möchte mit ihrer Familie einen Ausflug machen und dabei am liebsten Tiere beobachten",
+    "Eine Bekannte zieht um und sucht Tipps zu Einrichtung und Wandfarben.",
+    "Ihr Bruder sucht ein hochwertiges neues Sofa.",
+    "Ihr Vater interessiert sich für alte wertvolle Möbel",
+    "Ihre Cousine studiert und würde gern in eine Wohngemeinschaft ziehen.",
+    "Ihre Schwester möchte wissen, ob sie in ihre Mietwohnung einen Hund halten darf.",
+    "Ihre Tochter geht zur Schule und sucht einen Praktikumsplatz",
+    "Sie möchten eine Ausstellung besuchen, die auch für Ihre Kinder interessant ist.",
+    "Sie suchen ein Kinderbuch für Ihren siebenjährigen Sohn. Er möchte gerne mehr über Tiere erfahren"
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (c, k). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Das große Aufräumbuch",
+        "Alle Ihre Schränke sind voll mit Sachen und Sie haben kaum mehr Platz in der Wohnung."
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Einrichtungshaus Unterberg",
+        "Ihr Bruder sucht ein hochwertiges neues Sofa."
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Helden der Kindheit",
+        "Sie möchten eine Ausstellung besuchen, die auch für Ihre Kinder interessant ist."
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Das neue Wohnbuch",
+        "Eine Bekannte zieht um und sucht Tipps zu Einrichtung und Wandfarben."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Katze, Papagei, Meerschweinchen",
+        "Ihre Schwester möchte wissen, ob sie in ihre Mietwohnung einen Hund halten darf."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Rat mal, wo die Tiere wohnen!",
+        "Sie suchen ein Kinderbuch für Ihren siebenjährigen Sohn. Er möchte gerne mehr über Tiere erfahren"
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "Tiere hautnah erleben",
+        "Eine Bekannte möchte mit ihrer Familie einen Ausflug machen und dabei am liebsten Tiere beobachten"
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "Wohnen in der Gründerzeit",
+        "Ihr Vater interessiert sich für alte wertvolle Möbel"
+      ]
+    }
+  ]
+}

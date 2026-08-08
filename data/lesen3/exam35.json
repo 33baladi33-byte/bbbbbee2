@@ -1,0 +1,150 @@
+{
+  "title": "Lesen Teil 3 - Exam 34: Autos",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "Alles rund um das Thema Geld. Workshop für Verbraucherinnen und Verbraucher. Samstag, 7.7.: Möglichkeiten der Budgetplanung, Einnahmen und Ausgaben erfassen und analysieren, Einsparpotenziale erkennen, Schuldenfallen vermeiden. Samstag, 14.7.: Der finanzielle Blick in die Zukunft, Finanzentscheidungen planen und umsetzen, Sparen und anlegen, Kreditentscheidungen bewusst treffen, Schulden aktiv angehen. Referent: Diplom-Ökonom Martin Herges. Uhrzeit: jeweils 10 bis 15 Uhr. Teilnahmegebühr: 50 €. Akademie der DPV-Bank, Gustavstr. 12, 33659 Bielefeld",
+      "correct": 2,
+      "highlightColor": 0
+    },
+    {
+      "id": "b",
+      "text": "Die Geldschule: Sparen-Steuern-Altersvorsorge Nehmen Sie Ihre Finanzen selbst in die Hand: Ob Sie für Ihre Rente vorsorgen wollen oder einfach mehr sparen wollen - das neue Buch des Finanzexperten Kai Mueggenburg liefert Ihnen wertvolle Informationen. Es stellt Ihnen ein umfangreiches Basiswissen zum Thema Geld zur Verfügung. Außerdem bekommen Sie Tipps, wie Sie Ihre eigene Spar- und Investitionsstrategie erarbeiten können. Das Buch zeigt auf leicht verständliche Weise, wie man sein Geld einfach und gut anlegen kann. Es enthält außerdem Checklisten, eine Liste mit wichtigen Adressen und ein umfangreiches Glossar. Taschenbuch, 14,80 €",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "c",
+      "text": "Energiesparen im Haushalt Keine Frage: Die Energiekosten werden weiter steigen und das Haushaltsbudget strapazieren. Erfahren Sie, wie Sie Ihren Energieverbrauch senken können. Energieberater Jörg Schneid gibt Ihnen Tipps und steht für Fragen zur Verfügung. In dem Vortrag werden Grundlagen zum Stromsparen sowie zum richtigen Heizen und Lüften angesprochen. Eine kostenlose Veranstaltung in Kooperation mit der Verbraucherzentrale Schleswig-Holstein. Freitag, 18.9., 18:30 bis 20 Uhr. Volkshochschule Rendsburg, Alsenstr. 12, 24768 Rendsburg",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "d",
+      "text": "Energiesparen leicht gemacht Hohe Strompreise sind für viele eine Belastung. Wenn ein neues Gerät angeschafft werden muss, sollte man vor allem auf die Energiekosten achten: Denn ein billiges Gerät, das viel Strom verbraucht, wird mit der Zeit ziemlich teuer! Mit sparsamen Wäschetrocknern, Geschirrspülern etc. kann man dagegen die Kosten senken. Doch wie findet man die passenden Geräte? Wir haben die besten für Sie ausgewählt: Auf unserer Website finden Sie eine Liste und weiterführende Tipps. Dort können Sie kostenlos nach Geräten mit bestimmter Bauart, Größe oder Effizienz suchen. www.tech-check.de",
+      "correct": 5,
+      "highlightColor": 1
+    },
+    {
+      "id": "e",
+      "text": "Entspannt unterwegs in der Stadt und auf dem Land Ohne Auto lebt man einfacher und glücklicher. Und zwar nicht nur als Großstadtsingle, sondern auch als Familie auf dem Land. Davon ist Susanne Sonnental jedenfalls überzeugt. Seit fünf Jahren lebt sie mit ihrer Familie auf dem Dorf - und zwar ohne Auto. In dem Buch erzählt sie, wie ihr Alltag aussieht, und liefert viele nützliche Informationen. Sie zeigt jede Menge leicht umsetzbarer Alternativen. Taschenbuch, 12,90 €",
+      "correct": 8,
+      "highlightColor": 2
+    },
+    {
+      "id": "f",
+      "text": "Entdeckungsreise in die Welt der Technik Willkommen im Technikmuseum Walldorf. Begeben Sie sich auf eine Zeitreise und entdecken Sie die Meilensteine der Technikgeschichte. Unsere Hauptattraktionen sind die beiden Überschallflugzeuge Concorde und Tupolew Tu-144. Außerdem: weitere Flugzeuge, Oldtimer, historische Luxusautomobile und Rennwagen, Motorräder, nostalgische Rennräder und Dampfloks. Mehr als 3.000 Exponate auf einer Fläche von über 50.000 m². Für Kinder: Spielplatz, Fahrsimulatoren und Spieleparadies mit fahrbaren Mini-Autos. Öffnungszeiten: täglich von 9 bis 18 Uhr. Technikmuseum Walldorf, Schwetzinger Str. 23, 69190 Walldorf",
+      "correct": 0,
+      "highlightColor": 3
+    },
+    {
+      "id": "g",
+      "text": "Mobilität in der Stadt von morgen Erstmals in der Weltgeschichte leben mehr Menschen in Städten als auf dem Land. Welche Auswirkungen wird dieser Trend auf die Mobilität der Zukunft haben? Und welche Rolle wird das Auto dabei spielen? Über diese Fragen spricht Mobilitätsexperte Dr. Hans-Peter Grafemeyer: Fußgängerzonen, Fahrradfahren, öffentlicher Personennahverkehr, Bahn, Carsharing-Modelle - dies alles wird den Verkehr von morgen bestimmen. Der Vortrag bietet Informationen über innovative Technologien und neue Mobilitätsformen. Mittwoch, 08.09., 19 Uhr, Eintritt frei. Bürgerhaus Michelstadt, Freiburgstr. 3, 64720 Michelstadt",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "h",
+      "text": "Ohne Versicherung geht es nicht... Auf Versicherungen kann niemand verzichten. Die Versicherungsbranche bietet Arbeitsplätze mit Zukunft und hervorragende Jobaussichten! Wir suchen eine/n Auszubildende/n zum Versicherungskaufmann/zur Versicherungskauffrau. Sind Sie aufgeschlossen gegenüber Kunden und gut im Umgang mit dem Computer? Arbeiten Sie gerne im Büro wie auch im Außendienst? Sind Sie fit in Mathe und bringen Verständnis für Zahlen mit? Dann bewerben Sie sich bei uns! Weitere Informationen hier: Liga-Versicherung Deutschland AG, www.liga-versicherung.de/auszubildende",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "i",
+      "text": "Rasantes Abenteuer für Autofans Sie interessieren sich für Rennwagen und würden gerne selbst einmal mit Vollgas fahren? Unser Ferrari-Fahrtraining auf der Rollbahn eines Flugplatzes macht dies möglich. Vor dem Fahrtraining erläutern wir Ihnen die Sicherheitsregeln und geben Ihnen Hinweise für die Fahrt. Danach können Sie sich direkt ans Steuer setzen. Fahren Sie ein Traumauto ohne Geschwindigkeitsbegrenzung! Freuen Sie sich auf grenzenlosen Fahrspaß! Mindestalter 18 Jahre, gültiger Führerschein der Klasse B. Mehr Informationen hier: www.fahrtraining-flugplatz.net",
+      "correct": 3,
+      "highlightColor": 4
+    },
+    {
+      "id": "j",
+      "text": "Unkompliziert und spontan unterwegs sein? Wir haben die Lösung für Sie: Mieten Sie einfach ein Fahrzeug in Ihrer Nähe. Ob Kleinwagen, Kombi, Cabrio, E-Auto, Bus oder Transporter - wir haben die größte Auswahl an Carsharing-Autos in Nürnberg. Ihre Vorteile: günstiger als ein eigenes Fahrzeug, rund um die Uhr verfügbar, Kraftstoff, Wartung und Vollkasko inklusive, passendes Fahrzeug immer und jederzeit an Stationen in Ihrer Nähe verfügbar, einfache Online-Buchung, keine Grundkosten oder Mindestlaufzeit. Registrieren Sie sich einfach über unsere Smartphone-App und fahren Sie los. www.auto-to-go.net",
+      "correct": 6,
+      "highlightColor": 5
+    },
+    {
+      "id": "k",
+      "text": "Versteckte Kosten? Wollen Sie wissen, wie viel Strom Ihr Kühlschrank, Wasserkocher und Staubsauger benötigen? Haben Sie Stromfresser in Ihrer Wohnung, die die Kosten hochtreiben? Das Strommessgerät Smart Check 365 findet sie. Smart Check 365 misst zuverlässig den Verbrauch Ihrer Geräte und berechnet automatisch die Stromkosten. Auf dem hochauflösenden LCD-Display lassen sich alle Ergebnisse leicht ablesen. Einfach und sicher zu bedienen, aus sicherem und umweltfreundlichem Material. Ideal zur Überwachung des Stromverbrauchs in Ihrem Zuhause. 100 Prozent Zufriedenheitsgarantie! Smart Check 365, Preis: 17,99 €",
+      "correct": 9,
+      "highlightColor": 6
+    },
+    {
+      "id": "l",
+      "text": "Warum noch länger warten? Eine neue Küche, eine berufliche Weiterbildung oder ein modernes Heimkino: Wenn keine Rücklagen da sind, hilft ein Verbraucherkredit der Vergobank weiter. Finanzieren Sie Ihre Wünsche einfach in festen monatlichen Raten. Flexibel von 1.000 Euro bis 50.000 Euro, schnell und sicher. Ihre Vorteile: keine Anzahlung, günstige Zinssätze, individuelle Laufzeit und Raten nach Ihren Bedürfnissen, schon ab 50 € im Monat, schnelle Online-Kreditentscheidung und Auszahlung. Der günstige Weg, wie Sie sich Ihre Wünsche schnell erfüllen können. Sie haben Fragen? Vereinbaren Sie hier Ihren Beratungstermin. Tel: 0800 772930304, E-Mail: autokredit@vergobank.de",
+      "correct": 7,
+      "highlightColor": 7
+    }
+  ],
+  "situations": [
+    "Ein Bekannter interessiert sich für wertvolle alte Fahrzeuge.",
+    "Eine Nachbarin möchte für ihr neues Auto eine Versicherung abschließen.",
+    "Ihr Bruder möchte in einem Kurs sein Wissen über Finanzen erweitern.",
+    "Ihr Cousin würde gerne mal mit einem schnellen Sportwagen fahren.",
+    "Ihr Sohn interessiert sich für schnelle Autos. Sie suchen für ihn ein Buch mit Bildern.",
+    "Ihr Nachbar braucht einen neuen Kühlschrank und möchte sich über verschiedene Modelle informieren.",
+    "Ihre Schwester hat kein Auto. Für gelegentliche Fahrten sucht sie eine Alternative zu öffentlichen Verkehrsmitteln.",
+    "Sie brauchen bald neue Haushaltsgeräte, haben aber noch nicht genug Geld gespart.",
+    "Sie möchten auf Ihren PKW verzichten und suchen Tipps.",
+    "Sie hatten eine hohe Stromrechnung und möchten wissen, wie viel Energie die Geräte in Ihrem Haushalt verbrauchen."
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (b, c, g, h, k, l). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Workshop ... Budgetplanung",
+        "Ihr Bruder möchte in einem Kurs sein Wissen über Finanzen erweitern."
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Energiesparen leicht gemacht",
+        "Ihr Nachbar braucht einen neuen Kühlschrank und möchte sich über verschiedene Modelle informieren."
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Entspannt unterwegs ... ohne Auto",
+        "Sie möchten auf Ihren PKW verzichten und suchen Tipps."
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Technikmuseum Walldorf",
+        "Ein Bekannter interessiert sich für wertvolle alte Fahrzeuge."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Ferrari-Fahrtraining",
+        "Ihr Cousin würde gerne mal mit einem schnellen Sportwagen fahren."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Carsharing-Autos",
+        "Ihre Schwester hat kein Auto. Für gelegentliche Fahrten sucht sie eine Alternative."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "Smart Check 365",
+        "Sie hatten eine hohe Stromrechnung und möchten wissen, wie viel Energie die Geräte verbrauchen."
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "Verbraucherkredit der Vergobank",
+        "Sie brauchen bald neue Haushaltsgeräte, haben aber noch nicht genug Geld gespart."
+      ]
+    }
+  ]
+}

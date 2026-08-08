@@ -1,0 +1,150 @@
+{
+  "title": "Lesen Teil 3 - Exam 17: Tierdokumentationen",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "Auf den Spuren der Wildkatze Im Wildkatzendorf Hütscheroda, am Nationalpark Hainich gelegen, erfahren Sie alles über die scheuen Tiere. Hautnah beobachten können Sie sie in der Schauanlage 'Wildkatzenlichtung'. Hier wird auf Informationstafeln auch das 'Rettungsnetz für die Wildkatze' vorgestellt, eines der größten Naturschutzprojekte Europas. Täglich finden Schaufütterungen statt, für die man sich telefonisch anmelden kann. Für die Kleinen haben wir ein spannendes Angebot: Das Wildkatzendorf richtet Kindergeburtstage mit einem bunten Programm aus und bietet spezielle Kinderführungen an. Öffnungszeiten: täglich von 10 bis 18 Uhr.",
+      "correct": 4,
+      "highlightColor": 0
+    },
+    {
+      "id": "b",
+      "text": "Ausstellung im Park Schon zum dritten Mal stellen am Pfingst-Wochenende Künstler aus der Region im Kurpark Bad Homburg ihre Exponate aus. Gezeigt werden Zeichnungen, Keramik, Schmuck, Textilarbeiten sowie zahlreiche Holzskulpturen. Sie können mit den Künstlern ins Gespräch kommen und ihnen beim Arbeiten vor Ort über die Schulter blicken! Einen selbst gestalteten Bildband mit Werken der ausstellenden Künstler erhalten Sie in der Buchhandlung am Park und der Touristinformation für 30 €. Öffnungszeiten: 31. Mai und 1. Juni von 11 bis 19 Uhr. Der Eintritt ist frei!",
+      "correct": 8,
+      "highlightColor": 1
+    },
+    {
+      "id": "c",
+      "text": "Am 1. August zeigen wir den 90-minütigen Film 'Der Natur auf der Spur'. Dieser begleitet fünf der besten und erfolgreichsten Tierfilmer der Welt auf ihren Reisen rund um den Globus. Sie alle versuchen, vor beeindruckenden Naturkulissen außergewöhnliche Tieraufnahmen einzufangen. Die Leidenschaft für ihre Filme lässt die Filmemacher große Anstrengungen und Gefahren in Kauf nehmen. In dem Film erfahren Sie nicht nur, wie Tierfilmer arbeiten, sondern auch, welche technische Ausstattung sie einsetzen und wie die Dreharbeiten vorbereitet werden. Filmabend der VHS Buchholz, 1.8., Beginn: 19 Uhr. Eintritt: 5 €.",
+      "correct": 0,
+      "highlightColor": 2
+    },
+    {
+      "id": "d",
+      "text": "Entspannte Sommernächte Genießen Sie sechs Tage Filmvergnügen unter dem Sternenhimmel, in bequemen Liegestühlen vor einer nächtlichen Naturkulisse. Besuchen Sie unser Open-Air-Filmfestival mitten im Wald: von Montag, 17.08., bis Samstag, 22.08. im Waldpark Schlosshofen. Wir präsentieren Ihnen Komödien, Science-Fiction und Abenteuerfilme für Erwachsene und Kinder ab 12 Jahren. Das Filmprogramm erhalten Sie an allen Informationsstellen der Stadt Schlosshofen und im City-Kino. Eintritt: 12 €, ermäßigt 7 €.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "e",
+      "text": "Schon lange lebt Kaninchen Hoppi mit seiner Familie und vielen Freunden auf der Sonnenwiese. Doch eines Tages kauft der reiche Herr Großkopf die Wiese und will aus ihr einen Golfplatz machen... Müssen die Kaninchen sich nun eine neue Heimat suchen? So schnell lassen sie sich jedenfalls nicht verjagen. Hoppi schmiedet einen Plan, damit die Kaninchen ihr Zuhause behalten können. 'Hoppi gibt nicht auf' ist ein Animationsfilm mit liebenswerten tierischen Helden, vielen originellen Ideen und märchenhaften Abenteuern für Kinder ab 6 Jahren. Stadtkino, täglich um 15 Uhr.",
+      "correct": 3,
+      "highlightColor": 3
+    },
+    {
+      "id": "f",
+      "text": "Du bist gern kreativ und möchtest professionelle Mal- und Zeichentechniken erlernen? Dann haben wir genau das richtige Angebot für dich: 'Junge Künstler' - unser regelmäßiger Kurs für Nachwuchskünstler ab 10 Jahren. In einer kleinen Gruppe könnt ihr gemeinsam zeichnen und malen. Dozentin Rebecca Kling ist freischaffende Künstlerin und leitet Kreativkurse für Kinder und Jugendliche. Kurszeiten: jeden Dienstag von 14 bis 16 Uhr. Kunstatelier Rebecca Kling, Pestalozzistr. 53, 50767 Köln. Anmeldung und Infos: rebecca@kunstatelier-kling.net",
+      "correct": 6,
+      "highlightColor": 4
+    },
+    {
+      "id": "g",
+      "text": "Mit einem scharfen Blick fürs Detail gestaltete der deutsch-baltische Maler Jürgen Freiherr v. Wolffshausen seine Landschafts- und Tierbilder. Seine Liebe zur Natur, seine außergewöhnliche Beobachtungsgabe und seine präzise Maltechnik verleihen seinen Werken einen ganz besonderen Reiz. Sein Entdeckerdrang führte ihn u. a. nach Äthiopien. Die Ausstellung 'Natur im Porträt' präsentiert die Werke des Malers und seine Biographie und gibt außerdem naturkundliche Informationen. Museum Lüneburg, 19. Februar bis 10. Juni. Eintritt 3 €.",
+      "correct": 2,
+      "highlightColor": 5
+    },
+    {
+      "id": "h",
+      "text": "Spiel, Spaß, Nervenkitzel Für alle Kinder und Jugendliche, die am Ende der Ferien noch etwas erleben wollen. Sommerfest im Wildpark + Live-Musik, Bogenschießen, Axtwerfen, Baumklettern bis auf 20 Meter Höhe, Seilrutsche für Kinder, Riesenschaukel, Wettsägen, Kräuterbrot backen, Basteln für Kinder und noch vieles mehr! Wildpark Rittersbach, 12. und 13. September, von 10 bis 17 Uhr.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "i",
+      "text": "Noch nicht lange ist es her, dass Wildkatzen in Europa weitverbreitet waren. Heute sind sie fast überall verschwunden. Doch es gibt sie noch, auch wenn man sie nur selten zu Gesicht bekommt. 'Die Wildkatze in unseren Wäldern' geht der Frage nach, ob das Tier bei uns überhaupt wieder heimisch werden kann. Hat es überhaupt eine Chance in unserer dicht besiedelten Landschaft? Und leben in unseren Wäldern noch echte Wildkatzen oder vielleicht nur verwilderte Hauskatzen? Der Film berichtet außerdem über ein Projekt zur Rettung der Wildkatze. Am 10.5. zeigen wir die Dokumentation in unserer Reihe 'Filmabende im Rathaus' um 19 Uhr.",
+      "correct": 5,
+      "highlightColor": 6
+    },
+    {
+      "id": "j",
+      "text": "In der Dauerausstellung 'Wege in die Natur' erfahren Sie alles über den Nationalpark Bayerischer Wald, eine der größten zusammenhängenden Waldflächen Europas. Warum ist der Wald wichtig für uns? Und wer oder was lebt dort eigentlich? Über all das und noch viel mehr bekommen die Besucher beim Rundgang Informationen. In unserem Kino präsentieren wir außerdem ein abwechslungsreiches Filmprogramm. Ort: Besucherzentrum Nationalpark Bayerischer Wald. Öffnungszeiten: täglich von 9 bis 17 Uhr. Der Eintritt ist frei.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "k",
+      "text": "Heiße Rhythmen und kühle Drinks Am Samstag, dem 3. August, erwartet Sie im Waldschwimmbad Hainichen bei Rock am Pool ein Feuerwerk aus Musik und Unterhaltung. Einlass zum Konzert ist ab 18:30 Uhr. Die Bands 'Lion Poem' und 'Cosmos 1' heizen den Besuchern ordentlich ein. Das Konzert endet um 0:30 Uhr. Bis 23 Uhr können die Besucher baden oder Beach-Volleyball spielen. Das Jugendzentrum Hainichen hat ein Programm für Jugendliche mit Lagerfeuer und Spielen vorbereitet. Für Essen und Getränke zu moderaten Preisen ist gesorgt. Die Eintrittspreise: Erwachsene 8 €, Kinder und Jugendliche von 7 bis 14 Jahren 6 €.",
+      "correct": 9,
+      "highlightColor": 7
+    },
+    {
+      "id": "l",
+      "text": "Zeichenschule für Kinder Vom Kreis zum Schaf, vom Strich zum Krokodil: Mit Björn Henkels Buch 'Kinder zeichnen Tiere' lernen die Kleinen, Schritt für Schritt ihre Lieblingstiere zu zeichnen. Aus einfachen Grundelementen entstehen lustige Tiere: Schaf, Katze und Wellensittich, Igel, Biber, Eichhörnchen und Waschbär. Erfolg und Spaß sind garantiert. Björn Henkel zeigt, wie man den Pinsel oder einen Stift halten kann. Nach seinem Studium der Kunstgeschichte lebt er heute als selbständiger Autor und Illustrator in Bochum. Das Buch ist geeignet für Kinder zwischen 4 und 6 Jahren. Broschiert, 8 €.",
+      "correct": null,
+      "highlightColor": null
+    }
+  ],
+  "situations": [
+    "Ein Bekannter interessiert sich für Tierdokumentationen und würde gerne wissen, wie solche Filme entstehen.",
+    "Eine Bekannte würde gerne gemeinsam mit einer Gruppe im Wald wandern gehen.",
+    "Ihr Onkel möchte sich eine Ausstellung mit Gemälden ansehen.",
+    "Ihr siebenjähriger Neffe liebt phantasievolle Geschichten. Sie wollen nachmittags etwas mit ihm unternehmen.",
+    "Ihr Sohn wird nächste Woche zehn Jahre alt. Sie möchten ihn mit einer besonderen Feier überraschen.",
+    "Ihre 16-jährige Nichte interessiert sich für heimische Tierwelt und würde sich gerne einen Film ansehen.",
+    "Ihre zehnjährige Tochter zeichnet viel und möchte ihre Fähigkeiten weiter verbessern.",
+    "Sie möchten einen Vortrag über bedrohte Tiere und Naturschutz besuchen.",
+    "Sie suchen ein Geschenk für einen Freund, der sich für Kunst interessiert.",
+    "Sie würden gerne abends etwas mit Freunden draußen unternehmen und dabei sportlich aktiv sein."
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (b, d, e, j, k, l). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Auf den Spuren der Wildkatze",
+        "Ihr Sohn wird nächste Woche zehn Jahre alt. Sie möchten ihn mit einer besonderen Feier überraschen."
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Ausstellung im Park",
+        "Sie suchen ein Geschenk für einen Freund, der sich für Kunst interessiert."
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Der Natur auf der Spur",
+        "Ein Bekannter interessiert sich für Tierdokumentationen und würde gerne wissen, wie solche Filme entstehen."
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Hoppi gibt nicht auf",
+        "Ihr siebenjähriger Neffe liebt phantasievolle Geschichten. Sie wollen nachmittags etwas mit ihm unternehmen."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Junge Künstler",
+        "Ihre zehnjährige Tochter zeichnet viel und möchte ihre Fähigkeiten weiter verbessern."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Natur im Porträt",
+        "Ihr Onkel möchte sich eine Ausstellung mit Gemälden ansehen."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "Die Wildkatze in unseren Wäldern",
+        "Ihre 16-jährige Nichte interessiert sich für heimische Tierwelt und würde sich gerne einen Film ansehen."
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "Rock am Pool",
+        "Sie würden gerne abends etwas mit Freunden draußen unternehmen und dabei sportlich aktiv sein."
+      ]
+    }
+  ]
+}

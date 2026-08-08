@@ -1,0 +1,150 @@
+{
+  "title": "Lesen Teil 3 - Exam 6: Musik und Gitarre (معدل)",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "Sport, Theater & mehr... ...bieten wir Ihnen in unserem Online-Kartenshop. Wir sind spezialisiert auf Tickets für Sportveranstaltungen in Deutschland, Theaterkarten (auch im europäischen Ausland) und bieten Ihnen darüber hinaus auch Eintrittskarten zu bekannten Fernseh-Talkshows an. Sicher haben wir auch für Sie das passende Angebot. Wählen Sie Ihre Wunschplätze einfach im Internet aus und nur zwei Tage später erhalten Sie Ihre Karten mit der Post. Bequem, sicher, schnell. Selbstverständlich bieten wir Ihnen aber auch eine persönliche Beratung unter einer kostenfreien Rufnummer an. Schauen Sie doch gleich online vorbei! www.ticketprofis.eu",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "b",
+      "text": "Die Veranstaltungsprofis Seit mehr als zwanzig Jahren organisieren wir Messen (Buchmessen, Verbrauchermessen, Fahrradmessen, Automessen, Spielemessen) in ganz Europa. Wenn auch Sie sich für eine Tätigkeit im Bereich Messeorganisation und -durchführung interessieren, haben wir ein interessantes Angebot für Sie: Ab Herbst suchen wir für unser junges motiviertes Team Verstärkung. Wenn Sie eine abgeschlossene Ausbildung im Veranstaltungs- oder Logistiksektor haben, neben Ihrer Muttersprache noch mindestens eine weitere Sprache fließend beherrschen und reisefreudig sind, melden Sie sich bei uns! Weitere Informationen finden Sie auch auf unserer Website oder sprechen Sie unsere zuständige Mitarbeiterin, Frau Klimke, direkt an. www.die-veranstaltungsprofis.eu klimke@die-veranstaltungsprofis.eu",
+      "correct": 2,
+      "highlightColor": 0
+    },
+    {
+      "id": "c",
+      "text": "Gemeinsam mehr erleben Gruppenreisen bieten wir Ihnen bereits ab fünf Personen an - Städtereisen, Wellnesswochenenden und neu im Angebot auch Reisen zu kulturellen Veranstaltungen. Fahren Sie mit uns zum Beispiel Ende August zum Jazzfestival in Brandenburg (25.-29.8.) oder im darauffolgenden Monat zur Klassikwoche nach Wien. Von Anreise und Hotel (verschiedene Kategorien) bis hin zur Eintrittskarte organisieren wir für Sie alles. Genießen Sie entspannte Tage mit Werner Reisen GmbH. Weitere Informationen und auch Buchungsformulare finden Sie unter www.wernerreisen.eu. Oder rufen Sie uns an: 0800/9900100",
+      "correct": 1,
+      "highlightColor": 1
+    },
+    {
+      "id": "d",
+      "text": "Musikfestival Taubertal: 24. Juli bis 3. August Auch in diesem Jahr kommen wieder viele bekannte Bands und interessante neue Künstler. Das Festival ist schon längst ausverkauft, aber ihr könnt trotzdem noch hinkommen: Wir suchen noch Unterstützung für den Aufbau der Stände, die Betreuung der Musiker und auch für die Ticketkontrolle. Bewerbt euch einfach per E-Mail. Wichtig: Wenn ihr beim Festival arbeitet, könnt ihr zwar auch Musik hören, aber ihr habt keine Gelegenheit, euch die Auftritte in Ruhe anzusehen. Trotzdem macht die Arbeit viel Spaß, und ihr könnt die Musiker sogar hinter der Bühne sehen und kennenlernen. E-Mail: info@musikfestivaltaubertal.eu",
+      "correct": 7,
+      "highlightColor": 2
+    },
+    {
+      "id": "e",
+      "text": "Alle Veranstaltungen aus einer Hand Ob Jazz, Rock, Klassik, Musical: Bei uns finden Sie Veranstaltungen aus allen Musikbereichen! Reservieren Sie noch heute Karten für Ihre Lieblingsband, wählen Sie Ihren Platz online und drucken Sie Ihre Tickets sofort selbst aus. Oder kaufen Sie Geschenkgutscheine, die man ebenfalls bequem online einlösen kann: die ideale Möglichkeit für alle, die noch keine bestimmte Veranstaltung ausgesucht haben. Besuchen Sie gleich unseren Online-Shop. Bestellungen sind bei uns übrigens auch ohne Registrierung möglich! www.die-veranstaltungsspezialisten.eu",
+      "correct": 3,
+      "highlightColor": 3
+    },
+    {
+      "id": "f",
+      "text": "Mailänder Scala, Deutsche Oper Berlin und vieles mehr Der etwas andere Zugang zur Musik: Wir organisieren Besichtigungen von bekannten Opernhäusern oder Konzertsälen. Schauen Sie sich die Technik und Räume vor Ort an, nehmen Sie an einer interessanten Führung teil und lernen Sie so die Geschichte der Häuser und auch der Orchester kennen. Gerne organisieren wir nach Möglichkeit auch Treffen mit Musikern oder Konzertdirektoren, mit denen Sie spannende Gespräche führen und mehr über deren Arbeit erfahren können. Bitte haben Sie Verständnis, dass wir diese Treffen erst ab zehn Teilnehmern organisieren können. Weitere Informationen: Musikreisen Gerhardt, Tel 0800/223 997 880",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "g",
+      "text": "Wir organisieren Veranstaltungen in verschiedenen Größenordnungen - von der kleinen Familienfeier mit zehn Personen bis hin zu großen Firmenveranstaltungen mit mehreren Hundert Teilnehmern. Lehnen Sie sich zurück und wir machen die Arbeit! Alternativ bieten wir Ihnen aber auch unsere kompetente Beratung an, damit Sie Ihre Veranstaltung selbst planen können. Unsere Mitarbeiter kommen dann gerne zu Ihnen oder stehen Ihnen telefonisch und per E-Mail zur Verfügung. Sprechen Sie uns an: TMC GmbH, info@tmcgmbh.eu",
+      "correct": 6,
+      "highlightColor": 4
+    },
+    {
+      "id": "h",
+      "text": "Künstleragentur Lippmann Bei der Künstleragentur Lippmann sind über 100 Künstler registriert, die Sie für Veranstaltungen buchen können. Sie suchen einen Komiker? Kein Problem! Sie möchten auf Ihrer Veranstaltung Schauspieler auftreten lassen? Wir können sie vermitteln! Sie brauchen musikalische Untermalung? Bei uns sind einzelne Musiker ebenso registriert wie Bands. Melden Sie sich noch heute kostenlos und unverbindlich an und schauen Sie in Ruhe alle Angebote durch - einschließlich der Preise und freien Termine. Sicher finden Sie bei uns, was Sie suchen. www.agentur-lippmann.eu",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "i",
+      "text": "I Gitarre, Violine & Co. Im Musikverein Wohlklang lernen schon die ganz Kleinen den spielerischen Umgang mit Instrumenten. Aber auch für die 'größeren Kleinen' bieten wir Musikförderung und auch individuellen Unterricht an. In verschiedenen Gruppen (Alter von zwei bis acht Jahren) können Ihre Kinder bei uns Instrumente lernen, singen oder tanzen, kurz: Spaß mit Musik haben und auch selbst das Musizieren lernen. Die ersten beiden Probestunden bieten wir Ihnen kostenlos an, damit Sie und Ihre Kinder uns in Ruhe kennenlernen können. Vereinbaren Sie doch gleich einen Termin unter der 0800/5615 6514. Wohlklang e.V., Neue Straße 218, 77933 Lahr",
+      "correct": 5,
+      "highlightColor": 5
+    },
+    {
+      "id": "j",
+      "text": "Instrumente, Noten, Musikbücher Das Musikhaus Hohenzollern hat jetzt wieder besondere Angebote für alle Interessierten. Wir haben die Preise von allen Instrumenten bis kommenden Samstag reduziert. Auch zahlreiche Bücher und Notenhefte finden Sie ab sofort in unserem neuen Online-Shop zu günstigen Preisen. Unser Einstiegsangebot: alle Bestellungen im Online-Shop ohne Versandkosten! Schauen Sie sich doch mal im Internet um oder kommen Sie direkt bei uns vorbei. Wir freuen uns auf Ihren Besuch! Musikhaus Hohenzollern, Steeler Str. 789, 45276 Essen www.musikhaus-hohenzollern.eu",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "k",
+      "text": "Rhein/Ruhr-Festival Im kommenden Herbst findet zum ersten Mal das neue Rhein/Ruhr-Festival statt - und wir benötigen noch Hilfe. Im Rahmen des Festivals werden auf fünf unterschiedlichen Bühnen Künstler auftreten. Wir möchten verschiedene Stilrichtungen präsentieren, Solokünstler ebenso wie größere Musikgruppen. Und noch sind Plätze frei: Die Chance also für alle, die sich gerne bei unserem Festival präsentieren möchten. Kurzbewerbungen können ab sofort per E-Mail an office@rheinruhrfestival.eu gesendet werden. Bitte schicken Sie keine größeren Dateianhänge! Vielen Dan",
+      "correct": 9,
+      "highlightColor": 6
+    },
+    {
+      "id": "l",
+      "text": "Musiker gesucht Seit einem Jahr vermitteln wir 'Musiktandems' - Musiker suchen Musiker und geben sich gegenseitig Unterricht. Ob Instrument, Gesang, Komposition - alles wird gesucht! Registrieren Sie sich kostenlos auf unserer Homepage www.musiktandems.eu und finden Sie heute noch das Angebot, das Sie schon lange suchen. Wichtig: Sie können sich nur für das Musiktandem anmelden, wenn Sie selbst auch Unterricht anbieten können, also zum Beispiel ein Instrument spielen. Auf unserer Website finden Sie auch weitere Informationen zum Ablauf und können den Service kontaktieren.",
+      "correct": 0,
+      "highlightColor": 7
+    }
+  ],
+  "situations": [
+    "Ein Bekannter 55 Jahre alt spielt Gitarre und möchte ein weiteres Instrument lernen.",
+    "Ein Kollege möchte mit sechs Freunden eine mehrtägige Musikveranstaltung besuchen.",
+    "Ein Bekannter hat bei der Veranstaltung Frankfurt gearbeitet und sucht eine andere Stelle in diesem Bereich.",
+    "Sie möchten einer Freundin Eintrittskarten für eine Musikveranstaltung schenken.",
+    "Sie interessieren sich für Bücher und möchten eine Messe besuchen.",
+    "Die sechsjährige Tochter eines Nachbarn würde gerne mit anderen Kindern Musik machen.",
+    "Ein Bekannter muss eine Jubiläumsfeier organisieren und sucht Unterstützung.",
+    "Sie mögen Musik und möchten in diesem Bereich einen Job.",
+    "Ihre Nachbarin möchte ihre Violine verkaufen.",
+    "Eine Bekannte ist Musikerin und sucht Möglichkeiten, mit ihrer Gruppe aufzutreten."
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (a, f, h, j). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Die Veranstaltungsprofis",
+        "Ein Bekannter hat bei der Veranstaltung Frankfurt gearbeitet und sucht eine andere Stelle in diesem Bereich."
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Gemeinsam mehr erleben",
+        "Ein Kollege möchte mit sechs Freunden eine mehrtägige Musikveranstaltung besuchen."
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Musikfestival Taubertal",
+        "Sie mögen Musik und möchten in diesem Bereich einen Job."
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Alle Veranstaltungen aus einer Hand",
+        "Sie möchten einer Freundin Eintrittskarten für eine Musikveranstaltung schenken."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Wir organisieren Veranstaltungen in verschiedenen Größenordnungen",
+        "Ein Bekannter muss eine Jubiläumsfeier organisieren und sucht Unterstützung."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "I Gitarre, Violine & Co.",
+        "Die sechsjährige Tochter eines Nachbarn würde gerne mit anderen Kindern Musik machen."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "Rhein/Ruhr-Festival",
+        "Eine Bekannte ist Musikerin und sucht Möglichkeiten, mit ihrer Gruppe aufzutreten."
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "Musiker gesucht",
+        "Ein Bekannter 55 Jahre alt spielt Gitarre und möchte ein weiteres Instrument lernen."
+      ]
+    }
+  ]
+}

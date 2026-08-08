@@ -1,0 +1,150 @@
+{
+  "title": "Lesen Teil 3 - Exam 31: schnelle Wasserfahrzeuge",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "Auf den Höhen des Rheins Die Wanderung beginnt im Rheingau-Städtchen Rauenthal. Von hier aus geht es über die hügelige Taunuslandschaft - immer wieder mit Blick auf den Rhein - über die Hallgarter Zange nach Oestrich mit seinem historischen Ortskern und dem berühmten Alten Kran. Festes Schuhwerk ist unbedingt empfehlenswert. Gaststätten gibt es auf der Hallgarter Zange und in Oestrich. Von dort aus gibt es auch gute Busverbindungen nach Wiesbaden und Rüdesheim. Info unter: Wanderclub Die Wandervögel, Tel: 0611-45453326. Gruppentreff: samstags 13.00 Uhr, sonntags 11.00 Uhr, Bushaltestelle Rathaus Rauenthal",
+      "correct": 4,
+      "highlightColor": 0
+    },
+    {
+      "id": "b",
+      "text": "Eine Rheinfahrt, die ist lustig Eine Fahrt für Freunde nostalgischen Reisens: Mit dem 1908 gebauten Schaufelraddampfer Neptun fahren wir von Mainz vorbei am Binger Mäuseturm und an der Loreley in das Städtchen Sankt Goarshausen. Hier erwartet uns ein leckeres Abendessen mit Wein und Gesang. Da fehlt natürlich auch nicht die Loreley, die für uns von ihrem Felsen herabsteigt und alte Volksweisen und Lieder vorträgt. Zurück nach Mainz geht es dann mit einer historischen Dampflok. Information und Anmeldung bei: Touristen-Information Mittelrhein, Tel.: 06134-9988663",
+      "correct": 7,
+      "highlightColor": 1
+    },
+    {
+      "id": "c",
+      "text": "Der Wanderladen am Rathausplatz 4 in Wangen Wir haben alles, was Sie zum Wandern und Bergsteigen brauchen. Auf fast 200 m² finden Sie Markenprodukte bekannter Sportausstatter: Textilien, Pulsmessgeräte, Wanderkarten, Ausrüstungen für Freeclimbing, Nordic Walking, Trekking, Jogging usw. Kurzum: Wir bieten alles vom Spazierstock bis zum Stiefel. Natürlich bieten wir jedem Kunden unsere persönliche fachkundige Beratung an. Weitere Informationen zum Angebot sowie unseren Öffnungszeiten unter 01804-5532210 oder schauen Sie sich unsere Internetseite an: www.wanderladen.de",
+      "correct": 5,
+      "highlightColor": 2
+    },
+    {
+      "id": "d",
+      "text": "Mit dem Schiff nach Holland Ruhe, Erholung, Entspannung und dabei Kultur genießen und köstlich essen und trinken - das alles können Sie während unserer viertägigen Kreuzfahrt auf dem Rhein erleben. Auf einem unserer schwimmenden 4-Sterne-Hotels werden Sie sich sicher wohl fühlen. Alle Schiffe verfügen über Einzel- und Doppelzimmer mit Bad und WC, Restaurant, Bistro, Tanzcafé, Fitnessraum und einem Swimmingpool auf dem Sonnendeck. Start der Reise ist Frankfurt am Main. Etappenziele sind Koblenz, Köln und Düsseldorf. Unser Reiseziel Rotterdam erreichen wir am vierten Tag. Fordern Sie unseren Katalog an unter 0180-3287549",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "e",
+      "text": "Geschichte und Geschichten vom Rhein Die alten Römer und Germanen sowie die mittelalterlichen Burgherren sind längst Geschichte. Zahlreiche Sagen und Anekdoten ranken sich bis heute um Bauwerke und Menschen, die am Rhein gelebt haben; Schriftsteller und Dichter wurden zu Werken über und rund um den Rhein inspiriert. Die Stadtbibliothek Bingen hat diesen historischen wie unterhaltsamen Geschichten eine Ausstellung gewidmet, die täglich außer montags von 10 bis 18 Uhr im Bibliotheksgebäude besucht werden kann. Außerdem lesen jeden Sonntag um 20 Uhr im Juli und August Schriftsteller aus ihren Werken - mit Büchertisch und Autogrammstunden. Der Eintritt zu der Ausstellung ist frei, für die Lesungen beträgt er 8 Euro.",
+      "correct": 8,
+      "highlightColor": 3
+    },
+    {
+      "id": "f",
+      "text": "Der Rhein und seine Geschichte Das Geologische Institut der Johannes-Gutenberg-Universität Mainz bietet im kommenden Semester im Rahmen des Studium generale eine Vortragsreihe an zum Thema: Der Rhein und seine Geschichte. Was verraten uns bestimmte Gesteinsformationen im Untergrund? Wie kommen versteinerte Meeresbewohner als Fossilien in die rheinhessische Erde? Wie sah es hier vor Jahrmillionen aus? Die Vortragsreihe startet am 1. November und findet jeweils mittwochs um 18.30 Uhr im Auditorium maximum der Universität statt.",
+      "correct": 6,
+      "highlightColor": 4
+    },
+    {
+      "id": "g",
+      "text": "Edelstein-Erlebniswelt Edle Entspannung bieten Ihnen die Höhlen und Grotten der Edelstein-Erlebniswelt in Idar-Oberstein. Mit zauberhaften Licht- und Farbspielen präsentiert sich eine geheimnisvolle Höhlenlandschaft mit plätschernden Quellen und einem feurig glühenden Vulkan. Die Besucher können die Kraft der Kristalle und Mineralien spüren und so die Wunderwerke der Natur sinnlich erfahren.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "h",
+      "text": "Ohne Schuhwerk wandern Besuchen Sie Deutschlands ersten und einzigen Barfußpfad - ein Riesenspaß für jedes Alter. Der Barfußpfad in Bad Sobernheim zählt zu den beliebtesten Ausflugszielen an dem Fluss Nahe. Die wohltuende Kühle des Lehmbodens und der Wassertretbecken erfrischt müde und schwere Beine. Über verschiedene Geschicklichkeitsparcours gelangen Sie zur Nahefurt. Hier können Sie die Nahe mit Hilfe von zwei Halteseilen überqueren. Gehen Sie barfuß durch die Natur - ein unvergessliches Abenteuer!",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "i",
+      "text": "Ein Zoo für Jung und Alt Ein Besuch im Opel-Zoo bietet zu jeder Jahreszeit ein besonderes Erlebnis. In den monatlich stattfindenden pädagogischen Führungen für Kinder und Jugendliche erläutern unsere Zoopädagogen die verschiedensten zoologischen Themen. Darüber hinaus gibt es regelmäßig auch spezielle Ferienprogramme. Für die Kleinen gibt es auch einen Streichelzoo und einen großen Abenteuerspielplatz sowie Kamel- oder Ponyreiten. Für die Großen gibt es Picknick- und Grillplätze, ein Restaurant und vieles mehr. Ein Besuch im Opel-Zoo ist ein unvergessliches Erlebnis für Alt und Jung.",
+      "correct": 3,
+      "highlightColor": 5
+    },
+    {
+      "id": "j",
+      "text": "Tiere erleben Mehr als 600 Tiere haben im Safaripark eine neue Heimat gefunden. Hier wurde für sie ein Lebensraum geschaffen, der ihrer ursprünglichen natürlichen Umgebung weitgehend entspricht. Im Safaripark sitzen nicht die Tiere, sondern die Besucher 'hinter Gittern': Im eigenen Auto fährt man durch die großen Tiergehege. Oder man nutzt den Safari-Zug (2,50 € pro Person). Kostenlos ist der Affenzug, der durch das Affengehege fährt. 40 Berberaffen leben hier frei, klettern, springen, toben. Und die Besucher fahren in einer vergitterten Bahn gemächlich durch das Gehege.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "k",
+      "text": "Wattwanderung Zweimal täglich gibt das Wasser den Meeresboden frei - es ist die Zeit der Ebbe. Unter sachkundiger Führung können Wattwanderungen zum Beispiel zur Hallig Süderoog, zur Hallig Hooge oder zu Kulturspuren ehemaliger Siedlungen unternommen werden. Barfuß ist Wattwandern am schönsten. Dann spürt man den Wattboden unmittelbar. Wer empfindliche Füße hat, sollte sich ein paar alte Socken oder Turnschuhe anziehen. Wattwanderungen mit erfahrenen Wattführern sind sicherer und erlebnisreicher als auf eigene Faust loszuziehen. Deshalb sollten erste und größere Wattwanderungen in einer geführten Gruppe unternommen werden. Die Tour dauert jeweils 2-2½ Stunden.",
+      "correct": 1,
+      "highlightColor": 6
+    },
+    {
+      "id": "l",
+      "text": "Die Nordseeküste wirbt für sich am Rhein Besuch hat sich angesagt, und zwar vom 21. bis zum 23. April: Die Nordsee kommt nach Düsseldorf. Auf der Promenade am Altstadtufer präsentieren sich in einer Zeltlandschaft, verbunden mit einer Aktionsbühne, alle niedersächsischen Küstenorte und die sieben Ostfriesischen Inseln, die Reedereien, Fluggesellschaften und Hotels. Auf dem Rhein erwartet ein feuerroter Katamaran Besucher zu Sonderfahrten. Der CAT N° 1 - sonst auf der Nordsee unterwegs - ist zu besichtigen und zeigt auf dem Rhein seine Stärke: Stolze 12.633 PS schaffen flotte 40 Knoten, das sind 74 km/h - das schnellste Passagierschiff, das jemals den Rhein befuhr!",
+      "correct": 0,
+      "highlightColor": 7
+    }
+  ],
+  "situations": [
+    "Ein Kollege interessiert sich für schnelle Wasserfahrzeuge.",
+    "Ein Bekannter möchte barfuß am Meer spazieren gehen.",
+    "Eine Freundin sucht in Köln und Umgebung für vier Tage ein am Rhein gelegenes 4-Sterne-Hotel.",
+    "Ihre Nachbarn möchten, dass ihre 7- und 9-jährigen Töchter mehr über den Umgang mit Tieren lernen.",
+    "Ein befreundetes Ehepaar macht gern Tageswanderungen in Gesellschaft.",
+    "Eine Bekannte möchte gute Laufschuhe kaufen.",
+    "Ein Bekannter interessiert sich für die Geschichte der Erde und möchte sich weiterbilden.",
+    "Ihr Bruder interessiert sich für alte Fahrzeuge und möchte eine Tagesfahrt machen.",
+    "Ein Freund sammelt Bücher mit den Autogrammen der Autoren.",
+    "Eine Bekannte ist Goldschmiedin und sucht Schmucksteine für ihre Werkstatt."
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (i, j, k). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Auf den Höhen des Rheins",
+        "Ein befreundetes Ehepaar macht gern Tageswanderungen in Gesellschaft."
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Eine Rheinfahrt, die ist lustig",
+        "Ihr Bruder interessiert sich für alte Fahrzeuge und möchte eine Tagesfahrt machen."
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Der Wanderladen",
+        "Eine Bekannte möchte gute Laufschuhe kaufen."
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Geschichte und Geschichten vom Rhein",
+        "Ein Freund sammelt Bücher mit den Autogrammen der Autoren."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Der Rhein und seine Geschichte",
+        "Ein Bekannter interessiert sich für die Geschichte der Erde und möchte sich weiterbilden."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Opel-Zoo",
+        "Ihre Nachbarn möchten, dass ihre 7- und 9-jährigen Töchter mehr über den Umgang mit Tieren lernen."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "Wattwanderung",
+        "Ein Bekannter möchte barfuß am Meer spazieren gehen."
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "Die Nordseeküste wirbt für sich am Rhein",
+        "Ein Kollege interessiert sich für schnelle Wasserfahrzeuge."
+      ]
+    }
+  ]
+}

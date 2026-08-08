@@ -1,0 +1,150 @@
+{
+  "title": "Lesen Teil 3 - Exam 35: Möbel für die neue Wohnung",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "25 Jahre in Hamburg Wir feiern Geburtstag: 25 Jahre voller Emotionen und atemberaubender Musik! Am 2.12. wird 'Die Dschungelsaga' ein Vierteljahrhundert alt. Während die Zuschauer sich von der Welt der wilden Tiere begeistern lassen, sorgen rund 200 Mitarbeiter dafür, dass jede Vorstellung einzigartig ist. Wir laden Sie deshalb ein, einen Blick hinter die Bühne zu werfen. Unsere Mitarbeiter zeigen, wie die Show entsteht und erklären Ihnen ihre Aufgaben. Freuen Sie sich auf ganz besondere Einblicke in ein Erfolgsmusical! Jetzt Tickets buchen: www.dschungelsaga-wird-25.de",
+      "correct": 5,
+      "highlightColor": 0
+    },
+    {
+      "id": "b",
+      "text": "Das neue Palais – Möbel, Schmuck und Kunst Das Designkaufhaus 'Das neue Palais' ist eine einzigartige Ausstellungs- und Verkaufsplattform für junge Designer, innovative Labels und kreative Manufakturen. Auf rund 4.000 m² präsentieren sich Hersteller von Design-Unikaten und Kleinserien, Möbel- und Modelabels. Erlesene Manufakturen, kleine traditionelle Familienbetriebe, spezialisierte Händler und vielversprechende Newcomer bereichern das vielfältige Angebot. Das neue Palais, Bergmannstr. 8, 34121 Kassel",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "c",
+      "text": "Der perfekte Kleiderschrank Ihr Kleiderschrank ist voll und trotzdem wissen Sie nicht, was zusammenpasst? Modetrends wechseln schnell, und es ist schwer, die Kleidung zu finden, die perfekt den eigenen Typ unterstreicht. Autorin Miriam Lund hilft Ihnen herauszufinden, was Sie wirklich brauchen – und was nicht. Sie zeigt Ihnen, was Ihnen steht und wie man erfolgreich, ausstrahlend, bewusst konsumiert und herausragende Qualität erkennt. 'Der perfekte Kleiderschrank' hilft Ihnen, Schritt für Schritt eine Garderobe zusammenzustellen, die genau zu Ihnen passt. Gebundenes Buch, 19 €",
+      "correct": 1,
+      "highlightColor": 1
+    },
+    {
+      "id": "d",
+      "text": "Filmhit als Musikspektakel Die erfolgreiche Komödie 'Eine Chefin zum Fürchten' kehrt zurück – doch nicht ins Kino, sondern als Musical. Niemand Geringerer als Pop-Weltstar Sir Winston Ryan hat die Geschichte um die Chefredakteurin einer Modezeitschrift, die ihrer Assistentin das Leben schwer macht, musikalisch umgesetzt. 'Ich bin ein großer Fan des Films', erzählt der Brite. Die Geschichte blieb bei dieser Adaption unverändert: Nach dem Studium will die verträumte Amy als Journalistin in New York arbeiten und landet bei dem Modemagazin 'Classy', dort muss sie sich gegen ihre launische Chefredakteurin Daphne Harris durchsetzen. Noch bis zum 15.4. im Frankfurter www.showtime.biz oder an der Abendkasse",
+      "correct": 9,
+      "highlightColor": 2
+    },
+    {
+      "id": "e",
+      "text": "www.selbstgemacht-info.net Geld mit dem eigenen Hobby verdienen Sie stricken, nähen oder basteln gerne und haben schon oft Ihre Freunde mit Ihren Kreationen begeistert? Dann sollten Sie den nächsten Schritt unternehmen: Selbstgemachtes kann man online perfekt vermarkten. Auf unserer Website stellen wir Ihnen die besten Internetplattformen für handgefertigte Produkte vor, erfahren Sie, wann es sich lohnt, einen eigenen Online-Shop zu eröffnen, informieren wir Sie über rechtliche Bestimmungen.",
+      "correct": 2,
+      "highlightColor": 3
+    },
+    {
+      "id": "f",
+      "text": "Ihr Kleiderschrank platzt aus allen Nähten? Kein Problem! Wir haben die Lösung: ein begehbarer Kleiderschrank. Dort können Sie alles unterbringen. Und das Beste: Ihr Schrank kann sich verändern – genau wie Ihre Garderobe: Mit unserem flexiblen Schranksystem können Sie jederzeit die Innenausstattung erweitern. Um Ihren Kleiderschrank zu planen, kommen wir gerne zu Ihnen nach Hause. Gestalten Sie Ihr neues Möbelstück ganz nach Ihren Vorstellungen. Beratungstermin: kostenlos! www.flex-meubelsysteme.net",
+      "correct": 0,
+      "highlightColor": 4
+    },
+    {
+      "id": "g",
+      "text": "Minimalismus im Kleiderschrank Keine Lust mehr auf teure Kleiderkäufe? Dann nähen Sie Ihre Basisgarderobe einfach selbst. Sie besteht aus nur 10 Teilen, die sich schnell anfertigen lassen: Ob Rock, T-Shirt, Bluse, Hose oder Jacke – alles lässt sich perfekt miteinander kombinieren, mal elegant, mal lässig, fürs Büro. Mit Schritt-für-Schritt-Anleitungen. Auch für Nähanfänger geeignet, Größe 32 bis 50, mit Schnittmusterbogen. Gebundenes Buch, 24,99 €",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "h",
+      "text": "Regionale Musicalstars gesucht Das Team des Erfolgskomponisten Mirko Graafe sucht Profis und talentierte Anfänger im Alter von 15 bis 60 Jahren für das neue Musical 'Fashion', das dieses Jahr in Bad Honnef Premiere feiern wird. An drei Casting-Terminen können Darsteller für Tanz, Gesang und Schauspiel zeigen, was sie können. Graafe sucht neben Profis auch noch unentdeckte Talente, die mit diesem Projekt gefördert werden könnten. Castings finden am 25. April in Köln, am 2. Mai in Bonn und am 23. Mai in Koblenz statt. Infos: www.fashion-musical.de/casting",
+      "correct": 3,
+      "highlightColor": 5
+    },
+    {
+      "id": "i",
+      "text": "Mode, Stars, Lifestyle Ob in New York, Paris oder Mailand: Wenn es um Trends aus der Modewelt geht, sind wir dabei! Wir sind ständig auf der Suche nach Neuigkeiten für unsere Leser. Du möchtest in den Medien arbeiten und den Arbeitsalltag bei einem internationalen Magazin kennenlernen? Dann ist ein Praktikum bei uns der beste Start in deine Karriere. Das solltest du mitbringen: mindestens Abitur, optimal: einige Semester Studium, selbstverfasste Artikel, Gespür für Mode und Trends, Teamfähigkeit und Aufgeschlossenheit. Schick deine Bewerbung einfach an: info@trendy.com - wir freuen uns auf dich!",
+      "correct": 7,
+      "highlightColor": 6
+    },
+    {
+      "id": "j",
+      "text": "Streifzug durch die Modewelt Paris war um 1900 das inspirierende Zentrum von Kunst, Mode und Lebensart und zog Künstler magisch an. Modeschöpfer kreierten zahlreiche Neuerungen in der Damenmode, und von der französischen Metropole aus verbreiteten sich die Trends. Ab Donnerstag ist Pariser Mode aus dieser Epoche im Museum für Angewandte Kunst in Rostock zu sehen. Gezeigt werden historische Kleidungsstücke und Accessoires. In Vitrinen werden außerdem Modeartikel der Zeit gezeigt sowie Tonaufnahmen und Dokumente. Täglich bis Sonntag von 10 bis 18 Uhr, Eintritt: 8 €, ermäßigt 5 €",
+      "correct": 6,
+      "highlightColor": 7
+    },
+    {
+      "id": "k",
+      "text": "Traumberuf Moderedakteurin Wenn Sie ihren Beruf nennen, bekommen viele ein leuchtende Augen. Kein Wunder: Gigantische Modenschauen in der ersten Reihe, USA-Trips und luxuriöse Designerroben sind für Alexa Chen Alltag. Die Hamburgerin ist Chefredakteurin der Zeitschrift 'Fashion & Style'. Als Modejournalistin ist sie immer auf der Suche nach Trends – und ganz vorne dabei. Doch was tatsächlich alles zu ihrem Beruf gehört, das weiß kaum jemand. Alexa Chen persönlich: Am 30.9. ist sie zu Gast in einer Talkrunde und erzählt von ihrem Berufsweg und dem Redaktionsalltag. Beginn: 19 Uhr, Ort: Rathaus, Blauer Saal, Eintritt kostenlos",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "l",
+      "text": "Wir suchen Student/-in Innenarchitektur/Möbeldesign Du hast eine Leidenschaft für Inneneinrichtung und möchtest mit deinen Entwürfen unser neues Programm im Bereich DIY-Parcs für Möbeldesign erweitern? Du entwickelst neue Ideen für Möbelstücke und planst, wie sie aus Holz, Metall und Kunststoff aufgebaut werden können. Dein Profil: Gestaltung im Handwerk bzw. vergleichbare kreative Ausbildung. Wir bieten dir ein Praktikum im Bereich Produktentwicklung oder handwerkliche Produktion mit kreativer Verantwortung. Bewerbung mit Kreativität und Eigeninitiative bitte an: Construct Baumarkt, 47020 Duisburg",
+      "correct": null,
+      "highlightColor": null
+    }
+  ],
+  "situations": [
+    "Eine Bekannte sucht Möbel für ihre neue Wohnung und wünscht sich viel Platz für ihre Kleidung.",
+    "Eine Freundin hat viele Sachen zum Anziehen, die sie nie trägt. Sie möchte einen guten Kleidungsstil entwickeln.",
+    "Eine Nachbarin ist sehr kreativ und stellt Kleidung selbst her. Sie überlegt, ob sie diese auch verkaufen könnte.",
+    "Ihr 18-jähriger Bruder singt gerne in seiner Freizeit und träumt davon, mal auf der Bühne zu stehen.",
+    "Ihr Sohn interessiert sich für die Gestaltung von Räumen und Möbeln und sucht einen Ausbildungsplatz oder einen passenden Studiengang.",
+    "Ihre Cousine schaut sich gerne Bühnenshows an und möchte wissen, welche Arbeiten hinter den Kulissen erledigt werden.",
+    "Ihre Schwester studiert Geschichte und interessiert sich für Zeitschriften von früher.",
+    "Ihre Tochter ist Studentin und würde gerne Moderedakteurin werden. Sie möchte erste Erfahrungen in diesem Beruf sammeln.",
+    "Sie interessieren sich für antike Möbel und möchten eine Ausstellung im Museum besuchen.",
+    "Sie möchten sich eine unterhaltsame Bühnenshow ansehen."
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (d, e, g, j, k). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "25 Jahre in Hamburg",
+        "Ihre Cousine schaut sich gerne Bühnenshows an und möchte wissen, welche Arbeiten hinter den Kulissen erledigt werden."
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Der perfekte Kleiderschrank",
+        "Eine Freundin hat viele Sachen zum Anziehen, die sie nie trägt. Sie möchte einen guten Kleidungsstil entwickeln."
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Filmhit als Musikspektakel",
+        "Sie möchten sich eine unterhaltsame Bühnenshow ansehen."
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Geld mit dem eigenen Hobby verdienen",
+        "Eine Nachbarin ist sehr kreativ und stellt Kleidung selbst her. Sie überlegt, ob sie diese auch verkaufen könnte."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "begehbarer Kleiderschrank",
+        "Eine Bekannte sucht Möbel für ihre neue Wohnung und wünscht sich viel Platz für ihre Kleidung."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Regionale Musicalstars gesucht",
+        "Ihr 18-jähriger Bruder singt gerne in seiner Freizeit und träumt davon, mal auf der Bühne zu stehen."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "Mode, Stars, Lifestyle",
+        "Ihre Tochter ist Studentin und würde gerne Moderedakteurin werden. Sie möchte erste Erfahrungen in diesem Beruf sammeln."
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "Streifzug durch die Modewelt",
+        "Ihre Schwester studiert Geschichte und interessiert sich für Zeitschriften von früher."
+      ]
+    }
+  ]
+}

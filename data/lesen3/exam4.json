@@ -1,0 +1,157 @@
+{
+  "title": "Lesen Teil 3 - Exam 4: kein Zeit",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "In Pollekes elfjährigem Leben scheint im Augenblick etwas falsch zu laufen. Es stört sie ja gar nicht, dass ihre Eltern geschieden sind. Sie hat ihren Papa sehr lieb, und sie hat eine prima Mama. Ihr Lehrer ist eigentlich auch ganz in Ordnung, aber muss der sich gleich in ihre Mama verlieben? Und dann ist Polleke sogar selbst schuld an allem. Aber sie gibt die Hoffnung nicht auf, dass am Ende doch alles gut wird, auch mit Mimun, dem liebsten Jungen auf der ganzen Erde und im ganzen Weltall... Datum: 01.11., Uhrzeit: 16.00 Uhr, Ort: Theaterwerkstatt, Alter: ab 9 Jahren",
+      "correct": 4,
+      "highlightColor": 0
+    },
+    {
+      "id": "b",
+      "text": "Rasmus und der Landstreicher Nach den Kinderbuch von Astrid Lindgren Rasmus ist in einem Kinderheim aufgewachsen, er hat keine Eltern. Eines Tages läuft er davon und will sich Eltern suchen. Die erste Nacht schläft er in einer Scheune im Stroh, und am Morgen entdeckt er neben sich Oskar. Oskar ist ein Landstreicher, der keine Wohnung hat. Zuerst hat Rasmus Angst vor ihm, aber schon bald merkt er, dass Oskar ein prächtiger Mensch ist. Gemeinsam suchen sie Eltern für Rasmus. Doch als sie endlich prima Eltern gefunden haben, da wollen die beiden sich nicht mehr trennen. Datum: 6.11., Uhrzeit: 15.00 Uhr, Ort Bürgerkino, Alter, ab 5 Jahren",
+      "correct": 5,
+      "highlightColor": 1
+    },
+    {
+      "id": "c",
+      "text": "Die Verfilmung des Buches 'Im Feld' handelt von einem jungen Mann, der bisher mit den Wölfen geheult hat. Er hat stets gemacht, was alle gemacht haben, und sich nach der Mehrheit gerichtet: Führerschein, Studium, Beruf, Freundin, iPod. In dieser Reihenfolge. Nun soll er plötzlich Vater werden. Doch der Antiheld ergreift die Flucht, um nachzudenken. Verfolgt von städtischen Beamten, der Polizei, den Reportern eines regionalen Hörfunksenders und seinen eigenen Ängsten, stürzt er sich in pointenreiche Analysen des Weltzustandes... Datum: 30.10. bis 01.11., Uhrzeit: 20.00 Uhr, Ort: Kinopolis",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "d",
+      "text": "Geschlossene Gesellschaft: Drama von Jean-Paul-Sartre Drei Personen, ein Mann und zwei Frauen, werden nach ihrem Tod in einem Zimmer eingesperrt, das keiner der drei jemals wieder verlassen und niemand anderes je betreten wird: Der Ort des Geschehens ist die Hölle. Alle drei sind sich bewusst, dass sie sich in der Hölle befinden, und machen sich auf das Schlimmste gefasst, aber die erwartete Folter und die körperlichen Qualen stellen sich nicht ein, nur eine leichte Hitze ist zu verspüren. Tastend versuchen Sie, voneinander den Grund für die Höllenfahrt zu erfahren, ohne jedoch ihre eigene Schuld zu offenbaren. Datum: 01.11., Uhrzeit: 20.00 Uhr, Ort: Euro Theater Central",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "e",
+      "text": "Beethovens Bonn Im Dezember 1770 erblickte Ludwig van Beethoven in der Bonngasse 20 das Licht der Welt. Wer ahnte damals, dass mit ihm ein musikalisches Genie geboren wurde, dessen Musik heute in aller Welt bekannt ist? Bis 1792 lebte Beethoven in Bonn, bevor er nach Wien ging und zu einem der berühmtesten Komponisten der Welt wurde. Es werden Orte und Plätze aufgesucht, wo der weltberühmte Komponist wirkte und die faszinierende Einblicke in das Alltagsleben dieses großen Bonners ermöglichen.",
+      "correct": 0,
+      "highlightColor": 2
+    },
+    {
+      "id": "f",
+      "text": "Radtour am Rhein Hinweis: Diese Tour ist nur von Gruppen auf Anfrage buchbar! Die Fahrräder sind mitzubringen. Die Tour wird vom ADFC angeboten und verläuft am Rhein, einem der geschichtsträchtigsten Flüsse der Welt. Er symbolisiert wie für viele Rheinanwohner auch für Bonn über Jahrhunderte hinweg bis auf den heutigen Tag die Lebensader der Stadt. Entlang des linksrheinischen Rheinufers sprechen die steinernen Zeitzeugen der Bonner Geschichte für sich, wobei auch die zukunftsweisenden Aspekte der Stadt nicht zu kurz kommen. Datum: 01.02. bis 31.12. Ort und Uhrzeit: nach Vereinbarung",
+      "correct": 6,
+      "highlightColor": 3
+    },
+    {
+      "id": "g",
+      "text": "Weihnachtsmarkt in Koblenz Über 100 festlich geschmückte Holzhäuschen, der Duft von Lebkuchen und Glühwein liegt in der Luft. Weihnachtsmelodien erklingen im malerischen Ambiente der historischen Altstadt unweit der Einkaufsstraßen: Das ist der Koblenzer Weihnachtsmarkt 2007. Alles, was das Herz in der Weihnachtszeit begehrte, findet sich hier wieder, denn auch in diesem Jahr warten wieder ein umfangreiches Angebot an Kunsthandwerk und Weihnachtsschmuck und eine riesige Auswahl an Geschenkartikeln auf die Besucher. Abgerundet durch Weihnachtsbäckerei und viele Attraktionen, wird der Besuch auf dem Koblenzer Weihnachtsmarkt zu einem Erlebnis, das Sie sich nicht entgehen lassen sollen. Datum: 23.11. - 23.12.. Ort: Fußgängerzone im Zentrum",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "h",
+      "text": "Drei Flöhe und das Jesuskind Im Jahr 1 machten sich drei Flöhe aus Deutschland auf den Weg nach Israel, um einmal so richtig zu entspannen. Leider war zu diesem Zeitpunkt eine Volkszählung im vollen Gange und die einzige Übernachtungsmöglichkeit fanden sie in einem Stall bei Bethlehem. Dass sie diese Unterkunft auch noch mit einem kleinen Kind teilen müssten, damit rechnete keiner der drei Flöhe. Und dass dieses Kind auch noch eine Berühmtheit war, machte die ganze Sache für die drei Flöhe zu einem aufregenden Abenteuer. Dieses neue Kinderstück aus der Feder von Dirk Zimmer erzählt die Weihnachtsgeschichte auf humorvolle und gefühlvolle Weise aus der Sicht der drei Flöhen. Datum: 26.11.-22.12.. Uhrzeit: jeweils. 15.00 Uhr. Ort: Innenhof des Rathauses. Alter: ab 5 Jahre",
+      "correct": 8,
+      "highlightColor": 4
+    },
+    {
+      "id": "i",
+      "text": "Weihnachtsshow 'Stille Nacht' trifft 'Last Christmas'. Gospel umarmt Soul, und Pop küsst Klassik. Als 1997 die Idee entstand, eine Weihnachtsshow zu entwickeln, die die schönsten Weihnachtslieder aller Zeiten und aller Genre in sich vereint, konnte sich keiner so recht vorstellen, dass diese Show einmal zur erfolgreichsten Weihnachtsshow Deutschlands avancieren würde. Seit zehn Jahren begeistert nun die Band 'Christmast Moments' von Thomas Schwab & Band das Publikum sowohl in den großen Konzerthallen der Republik (unter anderem Arena Trier, Phönixhalle Mainz) als auch vor den Fernsehern (ARD-Ausstrahlungen seit 2004). 'Christmas Moments' trifft mitten ins Herz und konnte in den letzten Jahren mehr als 500.000 Zuschauer begeistern.",
+      "correct": 3,
+      "highlightColor": 5
+    },
+    {
+      "id": "j",
+      "text": "Jazz vom Feinsten mit durchaus gewollten konservativen Zügen. Der Trompeter Lasse Lindgren ist einer der innovativen Spitzen-Trompeter der aktuellen Jazzszene in Schweden, der in vielen internationalen Bigbands und zusammen mit anderen berühmten Jazzmusikern gespielt hat. Von der Tageszeitung 'Svenska Dagbladet' wurde er als 'einer der kompetentesten Trompetenspieler dieses Landes' bezeichnet und Randy Brecker schrieb: 'Es ist so erfrischend, etwas zu hören, was wirklich originell ist! Lass Lindgren, Du bist ein wundervoller Spieler und Komponist'. Sein neuestes Projekt ist ein Glaubensbekenntnis an die Kraft und Energie des Jazz mit eigener Handschrift: Lasse Lindgren hat eine virtuose, immer transparente Hingabe zu seinem Instrument.",
+      "correct": 1,
+      "highlightColor": 6
+    },
+    {
+      "id": "k",
+      "text": "10 Jahre FÜR DIE KATZ Unglaublich! 10 Jahre ist es bereits her, seit FÜR DIE KATZ wie ein Faustschlag ins Licht der Öffentlichkeit traten und sich binnen kürzester Zeit in die Spitzenriege der deutschen Komiker katapultierten. Heute befinden sich die beiden mit Preisen überhäuften Weltbürger Benno Rex und Karl Salzburger auf dem vorläufigen Höhepunkt ihrer eindrucksvollen Karriere und gelten als die vielseitigsten, kreativsten und für Presse wie Fans schlichtweg lustigsten Komödianten Deutschlands. Ihre Wortschöpfungen und Charaktere erweisen sich immer wieder als richtungsweisende Leitsterne für die gesamte Comedy-Branche. Datum: 5.11., Uhrzeit: 20.00 Uhr. Ort: Haus des Kabaretts",
+      "correct": 9,
+      "highlightColor": 7
+    },
+    {
+      "id": "l",
+      "text": "Das Weihnachtsvarieté erwartet Sie auch in diesem Jahr mit atemberaubender Akrobatik, traumhafter Jonglage, ergänzt von Livemusikern. Seien Sie dabei und staunen Sie vielleicht mit Ihrer Familie, mit Ihren Lieblingskollegen oder der ganzen Firma oder einfach nur mit ihrem oder ihrer Liebsten. Karl-Heinz Helmschrot hat auch in diesem Jahr wieder eine faszinierende Gruppe von sehr unterschiedlichen Künstlern zusammengestellt. Zum 10-jährigen Jubiläum - 10 Künstler! Nicht zuständig ist er für Ihr leibliches Wohl! Dafür haben die Köche des Café Spitz wieder eine internationale Karte zusammengestellt, also freuen Sie sich auf Köstlichkeiten aus aller Welt. Datum: 9.12., Uhrzeit: 21.00 Uhr, Ort: Café Spitz",
+      "correct": 2,
+      "highlightColor": 8
+    }
+  ],
+  "situations": [
+    "Ihre Schwester interessiert sich für die Biographien großer Musiker",
+    "Sie lieben Auftritte von herausragenden Musikern",
+    "Sie möchten im Dezember essen gehen und ein buntes, künstlerisches Programm genießen",
+    "Sie möchten alte und neue Weihnachtslieder hören.",
+    "Sie möchten mit Ihrer zwölfjährigen Tochter ein altersgerechtes Theaterstück sehen.",
+    "Sie möchten zusammen mit Ihrem kleinen Neffen einen Kinderfilm sehen.",
+    "Sie wollen eine Stadtbesichtigung mit ein wenig Sport verbinden.",
+    "Sie wollen Ihrem Freund, der Tanztheater liebt, eine Eintrittskarte zum Geburtstag schenken.",
+    "Sie wollen mit Ihren Kindern eine etwas andere, eher lustige Seite von Weihnachten erleben.",
+    "Sie wollen mit Bekannten ausgehen um mal wieder herzhaft lachen."
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (c, d, g). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "In Pollekes elfjährigem Leben",
+        "Sie möchten mit Ihrer zwölfjährigen Tochter ein altersgerechtes Theaterstück sehen."
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Rasmus und der Landstreicher nach Astrid Lindgren",
+        "Sie möchten zusammen mit Ihrem kleinen Neffen einen Kinderfilm sehen."
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Beethovens Bonn",
+        "Ihre Schwester interessiert sich für die Biographien großer Musiker"
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Radtour am Rhein",
+        "Sie wollen eine Stadtbesichtigung mit ein wenig Sport verbinden."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Drei Flöhe und das Jesuskind",
+        "Sie wollen mit Ihren Kindern eine etwas andere, eher lustige Seite von Weihnachten erleben."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Weihnachtsshow 'Stille Nacht' trifft 'Last Christmas'",
+        "Sie möchten alte und neue Weihnachtslieder hören."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "Jazz vom Feinsten",
+        "Sie lieben Auftritte von herausragenden Musikern"
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "10 Jahre FÜR DIE KATZ",
+        "Sie wollen mit Bekannten ausgehen um mal wieder herzhaft lachen."
+      ]
+    },
+    {
+      "color": 8,
+      "parts": [
+        "Das Weihnachtsvarieté",
+        "Sie möchten im Dezember essen gehen und ein buntes, künstlerisches Programm genießen"
+      ]
+    }
+  ]
+}

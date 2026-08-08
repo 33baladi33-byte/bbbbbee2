@@ -1,0 +1,150 @@
+{
+  "title": "Lesen Teil 3 - Exam 28: Auf dem Weg anzeigen (معدل)",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "Didgeridoo - der klingende Stock Australiens (Samstag 9.30 - 19.30 Uhr) Erlernt werden die Herstellung und das Spiel auf diesem wahrscheinlich ältesten Blasinstrument der Welt. Von den Aborigines - den Ureinwohnern Australiens - zur Begleitung von Tanz und Gesang und bei Heilungsritualien verwendet, wird es heute als Musikinstrument in der Therapie sowie in Musikgruppen und Orchestern auf der ganzen Welt eingesetzt. Die heilende Wirkung des Didgeridoo-Spiels beruht darauf, dass durch die besondere Klangcharakteristik und die Zirkuläratmung, die es ermöglicht, den Ton beliebig lange ohne Unterbrechung zu halten, der Zugang zu einer gesteigerten Wahrnehmung erleichtert wird und man so einen Zustand tiefer Entspannung erreicht",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "b",
+      "text": "Deutsch im Beruf (Samstag 9:00 - 17.30 Uhr) Wie schreibt man heute richtig? Welche Regeln sind beim Telefonieren zu beachten? Worauf muss ich beim Schreiben von E-Mails achten? Wie gestalte ich Briefe am besten? Und wo hole ich mir Hilfe, wenn ich mir nicht sicher bin? Der Tageskurs soll kurz und bündig das Wichtigste bieten, worauf man aufpassen muss. Damit lassen sich sicher 80-90% der häufigsten Fehler vermeiden, was den Eindruck Ihrer Firma nach außen wesentlich verbessert. Ihr Chef wird bemerken, dass Sie hinzugelernt haben.",
+      "correct": 1,
+      "highlightColor": 0
+    },
+    {
+      "id": "c",
+      "text": "Xpert - Europäischer Computerpass (Dienstag, 18.15-21.15 Uhr, Dauer: 10 Wochen) In diesem Semester bietet die FAFA zum Einstieg in das Lehrgangssystem von Xpert das neue Pflichtmodul Win@internet 1 an. Im nächsten Halbjahr werden dann das Pflichtmodul Textverarbeitung Basics und das Wahlmodul Präsentation folgen. Wenn Sie sich prüfen lassen, wissen Sie, woraus ein einfaches Computersystem besteht, können Sie Windows bedienen und Ordner verwalten, haben Sie die Fähigkeit, die wichtigsten Internetdienste und E-Mail-Dienste anzuwenden und haben Einblick in die Gefahren, die sich aus der Nutzung ergeben.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "d",
+      "text": "Grundlagen der Pressearbeit für Vereine (Samstag, 10.00 - 12.00 Uhr) Nach welchen Kriterien haben Themen eine Chance, in die Medien zu gelangen? In diesem Seminar lernen Sie Grundlagen effektiver Pressearbeit kennen. Es wird aber nicht nur theoretisches Wissen vermittelt. Sie haben Gelegenheit zu praktischen Übungen und können lernen, eine aktuelle Pressemitteilung für Ihren Verein zu formulieren. Das Angebot richtet sich vor allem an Aktive in Vereinen und Initiativen, die neu in die Pressearbeit einsteigen wollen. Den Teilnehmenden wird ein zusätzliches späteres Treffen angeboten, um die Erfahrungen aus der ersten Anwendung der im Seminar erworbenen Kenntnisse auszutauschen.",
+      "correct": 2,
+      "highlightColor": 1
+    },
+    {
+      "id": "e",
+      "text": "Glücklich miteinander - wie Partnerschaft gelingt (Dienstag, 19.30 - 21.00 Uhr) Am Anfang der Partnerschaft sind wir verliebt und glücklich. Sehr bald allerdings gerät die Liebe in Gefahr - sowohl durch die Belastungen des Alltags als auch durch die beiderseitigen Fehler. Der Vortrag zeigt, worauf es in einer guten Partnerschaft ankommt, und stellt dazu die neuesten Forschungsergebnisse aus der Paarforschung vor. Außerdem berichtet die Referentin aus ihrer Praxis als Paar- und Familientherapeutin und gibt Hinweise, was die Partner selbst aktiv für ihre Liebe tun können. Die Veranstaltung findet in Kooperation mit dem Psychologischen Institut der Universität statt.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "f",
+      "text": "Entscheidungen leichter fällen (Samstag, 10.00 - 13.00 Uhr) 'Diese oder jene Wohnung nehmen und nach welchen Kriterien entscheiden?', 'Trotz schlechter Arbeitsmarktlage den Job wechseln oder lieber auf Nummer sicher gehen?'. Oder einfach nur: 'Was soll ich heute kochen?'. Entscheidungen müssen wir täglich treffen - einige fallen uns leichter, andere schwerer. Nicht selten ist man aber hinterher mit der Entscheidung unzufrieden und fragt sich, ob man nicht alles hätte anders machen sollen. Das muss nicht sein. Eine optimale Entscheidung zu treffen, lässt sich lernen. Unterschiedliche Techniken werden vorgestellt, gezielt geübt und man lernt, diese auf die individuelle Situation anzuwenden, so dass man in Zukunft jede Entscheidung leichter fällen kann.",
+      "correct": 5,
+      "highlightColor": 2
+    },
+    {
+      "id": "g",
+      "text": "Physiotherapie (Beginn: 1. September, 9.00 Uhr, Dauer: 4 Semester) Physiotherapie ist ein wichtiger Bestandteil der modernen Medizin. Die Physiotherapeutin, der Physiotherapeut kann mit vielen Behandlungskonzepten und Techniken zum Erhalt oder zur Wiederherstellung aller Funktionen der Patienten beitragen. Die Ausbildung endet mit einer staatlichen Prüfung. Nach bestandener Prüfung wird gemäß § 2 des 'Gesetzes über die Berufe in der Physiotherapie' die Erlaubnis zur Führung der Berufsbezeichnung 'Physiotherapeut/in' von den zuständigen Behörden erteilt. Um an der Ausbildung teilnehmen zu können, müssen Sie mindestens einen Realschulabschluss haben. Außerdem müssen Sie einen Eingangstest bei uns machen.",
+      "correct": 4,
+      "highlightColor": 3
+    },
+    {
+      "id": "h",
+      "text": "Außenwirtschaft- und länderkundliche Beraterin (täglich, 8.00 - 12.10 Uhr, Dauer: 10 Monate) Ziel ist es, an einer Tätigkeit im kaufmännischen Bereich interessierte Frauen mit Migrationshintergrund und zumindest guten Grundkenntnissen der deutschen Sprache auf eine Tätigkeit im Import/Exportbereich vorzubereiten und in eine feste Anstellung zu vermitteln. Durch die Aneignung der dafür erforderlichen sprachlichen und fachlichen Kompetenzen ist es möglich, den MigrantInnen einen beruflichen Einstieg in den Bereich Außenwirtschaft, eine Anknüpfung an eine bereits im Herkunftsland ausgeübte oder erlernte Tätigkeit, eine anschließende Regelausbildung im Außenhandel oder Import-Export-Bereich, eine Existenzgründung im Consultingbereich (als länderkundliche Beraterin) zu ermöglichen.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "i",
+      "text": "Referate und Hausarbeiten erfolgreich meistern (Mittwoch und Freitag, 18.30 - 21.00 Uhr, Dauer: 10 Wochen) Wie kann ich mich optimal an Lehrveranstaltungen beteiligen? Wie halte ich mündliche Referate? Was erwartet mich in einer mündlichen Prüfung? Wie soll eine E-Mail an Dozentinnen und Dozenten aussehen? Wie fertige ich Mitschriften und Exzerpte an? Wie schreibe ich eine Hausarbeit, wie zitiere ich? Wie schreibe ich schriftliche Klausuren? - Besonders في den ersten Semestern haben Anfänger ihre liebe Not mit den universitären Textsorten und Aufgabenstellungen. Mit den Schwerpunkten Referat und Hausarbeit bietet der Kurs Übungen, um Routine für schriftliche und mündliche Leistungsnachweise zu entwickeln. Das Lehrmaterial wird zu Kursbeginn bekannt gegeben. Kopierkosten werden mit dem Dozenten abgerechnet.",
+      "correct": 7,
+      "highlightColor": 4
+    },
+    {
+      "id": "j",
+      "text": "Souverän in Vorstellungsgesprächen (Freitag-Sonntag, 10.30 - 17.00 Uhr) Im Vorstellungsgespräch müssen Sie Ihren zukünftigen Arbeitgeber von Ihren Fähigkeiten und Ihrer Persönlichkeit überzeugen. Dieses Seminar vermittelt Ihnen, was im Vorstellungsgespräch von Ihnen erwartet wird, was Sie sagen oder nicht sagen sollten und wie Sie Ihr Profil darstellen. Mithilfe von Rollenspielen und Videoaufzeichnungen sehen Sie ein Bild von sich selbst. Sofort-Tipps und Feedback unterstützen eine Verhaltensänderung, die den Erfolg Ihres Vorstellungsgespräches unterstützt. Nachdem Sie viel geübt haben, werden Sie in Zukunft ohne Bauchschmerzen zum Vorstellungsgespräch gehen können.",
+      "correct": 9,
+      "highlightColor": 5
+    },
+    {
+      "id": "k",
+      "text": "Zeichnen für Anfänger (Samstag und Sonntag, 10.30 - 17.00 Uhr) Sind Sie auch der Meinung, dass Sie nicht zeichnen können? Dann sind Sie في diesem Kurs genau richtig! An verschiedenen Alltagsgegenständen schulen wir unsere Wahrnehmung und lernen, Proportionen, Licht und Schatten richtig zu erfassen und zeichnerisch wiederzugeben. Ihnen schwirrt der Kopf, wenn Sie Begriffe wie Horizontlinie oder Fluchtpunkt hören und leichte Verzweiflung erfasst Sie? Was es damit auf sich hat, erfahren Sie في zeichnerischen Übungen und lernen eckige Gegenstände, Innenräume und Hausansichten perspektivisch richtig darzustellen. Wir arbeiten mit Bleistift. Bitte mitbringen: Bleistifte HB, 2B, 4B, 6B, 8B, Radiergummi, Spitzer und Zeichenblock DIN A3.",
+      "correct": 3,
+      "highlightColor": 6
+    },
+    {
+      "id": "l",
+      "text": "Traditionelle thailändische Speisen (Samstag und Sonntag, 10.30 - 17.00 Uhr) Thailändische Gerichte sind dafür berühmt, viel Geschmack, gleichzeitig jedoch weniger Kalorien zu liefern. Die thailändische Küche bietet genussvolle und köstliche Speisen. Vorspeisen, Hauptgerichte und die berühmten Suppen und Salate werden gemeinsam zubereitet. Der Kurs soll ein Einstieg in die Feinheiten der thailändischen Küche sein. An jedem Kursabend wird ein vielseitiges und köstliches Menü zusammengestellt und anschließend gemeinsam gegessen. Angerichtet wird der Kurs durch landestypische Dekorationsideen. Bitte bringen Sie zwei Geschirrtücher, Vorratsdosen für Reste und Ihr eigenes Getränk mit. Die Lebensmittelkosten in Höhe von ca. 8 EUR pro Abend werden direkt mit den Dozenten abgerechnet.",
+      "correct": 6,
+      "highlightColor": 7
+    }
+  ],
+  "situations": [
+    "Ein Freund interessiert sich für Musikinstrumente des europäischen Mittelalters.",
+    "An Ihrem Arbeitsplatz müssen Sie viele deutsche Geschäftsbriefe schreiben, sind aber oft unsicher und suchen einen entsprechenden Kurs.",
+    "Ihr Freund ist Vorsitzender eines Golfclubs und muss immer wieder Informationen an die Medien geben. Er möchte diese Aufgabe professionell erledigen.",
+    "Eine Bekannte wird zur Erzieherin ausgebildet. Sie sucht einen Kurs, in dem sie die Fähigkeit zur bildlichen Darstellung entwickeln kann.",
+    "Sie suchen eine gesundheitliche Berufsausbildung, und Sie interessieren sich für alles, wo Sie viel mit Menschen zu tun haben.",
+    "Ihre Freundin zögert häufig, sich auf eine Sache festzulegen. Hat sie schließlich einen Entschluss gefasst, bereut sie diesen bisweilen",
+    "Sie wollen aus der fernöstlichen Küche Rezepte kennenlernen.",
+    "Sie beginnen gerade mit Ihrem Studium, beherrschen die wissenschaftlichen Arbeitstechniken noch nicht.",
+    "Sie sollen in Kürze Ihren Vortrag machen und suchen einen geeigneten Kurs",
+    "Sie haben sich auf eine Arbeitsstelle beworben und wollen sich gut vorbereiten, falls man Sie persönlich kennen lernen möchte."
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (c, e, h). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Deutsch im Beruf",
+        "An Ihrem Arbeitsplatz müssen Sie viele deutsche Geschäftsbriefe schreiben, sind aber oft unsicher und suchen einen entsprechenden Kurs."
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Grundlagen der Pressearbeit für Vereine",
+        "Ihr Freund ist Vorsitzender eines Golfclubs und muss immer wieder Informationen an die Medien geben."
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Entscheidungen leichter fällen",
+        "Ihre Freundin zögert häufig, sich auf eine Sache festzulegen. Hat sie schließlich einen Entschluss gefasst, bereut sie diesen bisweilen"
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Physiotherapie",
+        "Sie suchen eine gesundheitliche Berufsausbildung, und Sie interessieren sich für alles, wo Sie viel mit Menschen zu tun haben."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Referate und Hausarbeiten erfolgreich meistern",
+        "Sie beginnen gerade mit Ihrem Studium, beherrschen die wissenschaftlichen Arbeitstechniken noch nicht."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Souverän in Vorstellungsgesprächen",
+        "Sie haben sich auf eine Arbeitsstelle beworben und wollen sich gut vorbereiten, falls man Sie persönlich kennen lernen möchte."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "Zeichnen für Anfänger",
+        "Eine Bekannte wird zur Erzieherin ausgebildet. Sie sucht einen Kurs, in dem sie die Fähigkeit zur bildlichen Darstellung entwickeln kann."
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "Traditionelle thailändische Speisen",
+        "Sie wollen aus der fernöstlichen Küche Rezepte kennenlernen."
+      ]
+    }
+  ]
+}

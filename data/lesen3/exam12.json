@@ -1,0 +1,157 @@
+{
+  "title": "Lesen Teil 3 - Exam 11: Rechtsanwalt",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "Urlaub auf dem Sofa Im Urlaub zu Hause bleiben und sich auf dem Sofa ausruhen? Das fanden wir zu langweilig! Sofa ja, aber nicht das eigene - so lässt sich unsere Urlaubsidee zusammenfassen. Wenn Sie durch Deutschland, Frankreich, England oder andere europäische Länder reisen und dabei nicht nur Hotelzimmer, sondern ganz normale Leute kennenlernen wollen, dann buchen Sie jetzt bei uns. In unserer Datenbank bieten Menschen aus ganz Europa einen Schlafplatz für eine Person in ihrer Wohnung an - manchmal ein Zimmer, manchmal ein Sofa. Gegen eine geringe Gebühr kann man dort übernachten und das Frühstück ist auch mit dabei. So lernen Sie Länder, Städte, Menschen mal von einer ganz anderen Seite kennen! Infos und Buchung unter www.schlafplätzeineuropa.eu",
+      "correct": 3,
+      "highlightColor": 0
+    },
+    {
+      "id": "b",
+      "text": "Alte Möbel aufarbeiten Viele Menschen hängen an ihren alten Möbeln und möchten sie nicht gegen andere tauschen, obwohl sie die besten Tage schon hinter sich haben. Wir bieten Ihnen für wenig Geld die Restauration Ihrer Möbel an. Mit einer anderen Farbe wirken viele Stücke wieder wie neu! Und falls ein Anstrich nicht reicht, zeigt Ihnen unsere Werkstatt, was noch möglich ist: z.B. neue Türen an Schränken oder neue Bezüge für ihre Sessel und Sofas. Wir kommen gern zu Ihnen nach Hause und machen Ihnen ein kostenloses Angebot! www.schreiner.de",
+      "correct": 8,
+      "highlightColor": 1
+    },
+    {
+      "id": "c",
+      "text": "Kunstmarkt In unseren Ausstellungsräumen am Plantanenhof bieten wir an jedem ersten Samstag im Monat jungen Künstlerinnen und Künstlern die Möglichkeit, sich und einige ihrer Werke vorzustellen. Wenn Sie an einer Ausstellung interessiert sind, melden Sie sich bitte spätestens sechs Wochen vor dem gewünschten Termin bei uns an. Aber auch Besucher sind herzlich willkommen! Gegen einen geringen Eintritt erwartet Sie nicht nur neue Kunst, auch Kaffee und Tee werden serviert und natürlich haben Sie auch die Gelegenheit, ein Werk gleich zu kaufen und mitzunehmen. Weitere Informationen und Anmeldung unter: www.galeria.de",
+      "correct": 4,
+      "highlightColor": 2
+    },
+    {
+      "id": "d",
+      "text": "Die eigene Wohnung Für viele ist die eigene Wohnung ein Traum - aber es gibt auch Fragen und Probleme. Wir bieten extra für alle, die zum ersten Mal die eigenen vier Wände beziehen, Infoabende an, in denen sie alles Wichtige zur Haushaltsführung erfahren: Wie bewahrt man Lebensmittel richtig auf? Wie viele Vorräte braucht man? Wie putzt man richtig und welches Mittel ist am besten geeignet? Wie spart man Strom und Heizkosten? Erfahren Sie alles, was wichtig ist, von Omas Spar-Rezepte bis hin zu moderner Küchentechnik. Die Teilnahme ist kostenlos, um Anmeldung wird aber gebeten. AWO Kirchhellen, Tel. 0800 / 61619012",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "e",
+      "text": "Unser neues Wohnkonzept Unser Angebot: 1-Zimmerwohnungen mit kompletter Ausstattung, auch Telefon und Internet, außerdem morgens kostenlose Tageszeitung nach Wunsch sowie ein komplettes Frühstück. Alle Wohnungen verfügen über großzügige Arbeitsplätze sowie Drucker, Fax etc. In über 25 Städten buchbar. Außerdem auf Wunsch persönlicher Service (Kurierdienst, Abholung vom Bahnhof/Flughafen etc.). Wir gestalten Ihre Geschäftsreise so angenehm wie möglich - für alle, denen Hotels zu unpersönlich sind. Informationen unter: www.wohnkonzept.de",
+      "correct": 1,
+      "highlightColor": 3
+    },
+    {
+      "id": "f",
+      "text": "Ihr gutes Recht Wenn es um Rechtsfragen geht, kann es schnell teuer werden. Anwalt- und vielleicht auch Gerichtskosten werden fällig - von den Nerven, die man verliert, ganz zu schweigen. Wir bieten eine günstige und zuverlässige Alternative in allen Fragen rund um das Mietrecht: Ihre Miete wurde erhöht oder Ihr Vermieter repariert Schäden in der Wohnung nicht? Oder haben Sie eine Kündigung von Ihrem Vermieter erhalten, obwohl Sie immer pünktlich die Miete überwiesen haben und auch sonst alles in Ordnung war? Dann vereinbaren Sie einen kostenlosen Beratungstermin bei uns! Wenn wir Sie von unserem Angebot überzeugt haben, können Sie anschließend Mitglied in unserem Verein werden - für nur 75,00 Euro pro Jahr! Mieterschutzbund Brandenburg",
+      "correct": 6,
+      "highlightColor": 4
+    },
+    {
+      "id": "g",
+      "text": "Günstig wohnen in über 70 Städten in Deutschland Wir bieten Ihnen die preiswerte Alternative zum teuren Hotelzimmer: erleben Sie Deutschland und wohnen Sie in über 70 Städten von Flensburg bis Konstanz in einer unserer neuen Pensionen. Wir bieten gemütliche Mehrbettzimmer, einige auch mit Bad. Unsere Häuser sind jeweils zentral gelegen und somit gut zu erreichen. Wir bieten Ihnen zwar keine Mahlzeiten an, aber fast überall in der Nähe unserer Pensionen finden Sie kleine Cafés. Ideal für alle, die günstig reisen möchten! Weitere Informationen und Buchung unter www.pensionen.de",
+      "correct": 9,
+      "highlightColor": 5
+    },
+    {
+      "id": "h",
+      "text": "Zuhause bleiben und trotzdem was erleben Urlaub zu Hause - für viele das schönste Urlaubserlebnis! Wir haben Tipps, wie Sie Ihren Urlaub noch schöner machen können: Veranstaltungstipps (Konzerte, Theater, ...), Kurse (Kochkurse, Singen, Musikinstrumente, ...), Sport und Ausflugtipps für Ihre Region. Ob allein, zu zweit oder mit der ganzen Familie - bei uns finden Sie das Passende! Registrieren Sie sich jetzt und Sie können auswählen, welche Tipps wir Ihnen zuschicken sollen. Natürlich kostenlos! Infos und Registrierung unter www.urlaubzuhause.info",
+      "correct": 5,
+      "highlightColor": 6
+    },
+    {
+      "id": "i",
+      "text": "Guter Rat ist nicht teuer Probleme mit Arbeitgeber oder Vermieter? Hatten Sie einen Unfall und niemand will die Kosten für Ihren Krankenhausaufenthalt zahlen? In solchen Fragen ist es gut, wenn man einen Anwalt an seiner Seite hat - und ihn auch bezahlen kann. Schließen Sie deshalb unsere kostengünstige Rechtsschutzversicherung ab. Wir zahlen den Anwalt und die Gerichtskosten - je nach Tarif komplett oder zum Teil. Informieren Sie sich auch über unsere günstigen Familientarife! Rufen Sie an: Thüringer Versicherungen, Tel. 08074 55339. Wichtig: Sie können die Leistungen erst 6 Monate nach Vertragsabschluss in Anspruch nehmen!",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "j",
+      "text": "Kunst und Kultur für Einsteiger Nicht nur im Urlaub möchten viele Menschen in der Freizeit Neues ausprobieren. Wir bieten Schnupperkurse zu verschiedenen Freizeitaktivitäten an: Malen war schon immer Ihre Leidenschaft? Sie wollten schon lange probieren, welches Instrument zu Ihnen passt? Dann besuchen Sie einfach unsere Schnupperkurse 'Kurs und Kultur für Einsteiger'! Nur 60 Minuten pro Kurs, danach können Sie entscheiden, ob Sie einen anderen Kurs ausprobieren möchten oder sich gleich für einen 'richtigen' Kurs anmelden wollen. Malerei, Musik, Literatur, Geschichte stehen auf dem Programm. Informieren Sie sich jetzt: Kunst Schule Heckmann, Tel. 0800 444509434",
+      "correct": 7,
+      "highlightColor": 7
+    },
+    {
+      "id": "k",
+      "text": "Ihr kompetenter Partner für Rechtsberatung seit über 20 Jahren Ihre kompetente Rechtsberatung in ganz Deutschland! Unsere Anwälte vertreten Ihre Interessen zügig und zuverlässig im Bereich 'Arbeit'. Vom Arbeitsvertrag über Probleme am Arbeitsplatz bis hin zu Kündigungen oder auch Problemen bei der Zahlung des Arbeitslosengeldes unterstützen wir Sie sowohl vor Gericht als auch außerhalb. Unsere Erfahrung ist Ihr Vorteil. Natürlich ist eine Abrechnung über Ihre Rechtsschutzversicherung möglich, sprechen Sie uns einfach an und vereinbaren Sie einen Beratungstermin! Kanzlei Hummel und Schröder, Torstraße 211, 80121 München, Tel. 089 1234567.",
+      "correct": 0,
+      "highlightColor": 8
+    },
+    {
+      "id": "l",
+      "text": "Immer das richtige Möbel - ob Büro oder Wohnzimmer Egal, ob Sie beruflich oft unterwegs sind oder viel Wert auf ein gemütliches Zuhause legen: Sie wissen, dass es bei Möbeln und weiterer Ausstattung auf die Details ankommt. Wir bieten für jeden Bedarf das Richtige an: Schreibtische mit integrierten Kabeln für Telefon- oder Internetverbindungen, Sofas mit praktischer Bettfunktion und farblich passenden Leuchten. Wir bieten auch gebrauchte Möbel günstig an, natürlich nur in bestem Zustand. Schauen Sie sich unsere Ausstellung an! Möbel Weber GmbH, Am Langen Hahn 24, 42188 Dortmund.",
+      "correct": null,
+      "highlightColor": null
+    }
+  ],
+  "situations": [
+    "Einem Bekannten wurde die Arbeitsstelle gekündigt. Er möchte bei einem Anwalt um Rat fragen.",
+    "Ihr Bekannter ist beruflich oft unterwegs und sucht eine Alternative zu Hotels. Es soll dort aber Internetzugang und Frühstück geben.",
+    "Sie reisen gerne und oft und möchten nun Informationen zu einer Reiseversicherung.",
+    "Sie möchten durch Europa reisen und privat übernachten.",
+    "Eine Bekannte malt sehr gut und sucht eine Gelegenheit, anderen ihre Bilder zu zeigen oder sie zu verkaufen.",
+    "Sie möchten im Urlaub zwar nicht verreisen, aber trotzdem etwas unternehmen.",
+    "Sie haben Streit mit Ihrem Vermieter wegen der Nebenkosten und möchten sich beraten lassen.",
+    "Sie möchten ausprobieren, ob Ihnen Zeichnen Spaß macht.",
+    "Ihre Möbel sehen nicht mehr so gut aus. Daran möchten Sie etwas ändern",
+    "Sie möchten mit Freunden durch Deutschland reisen und dabei günstig übernachten."
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (d, i, l). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Urlaub auf dem Sofa",
+        "Sie möchten durch Europa reisen und privat übernachten."
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Alte Möbel aufarbeiten",
+        "Ihre Möbel sehen nicht mehr so gut aus. Daran möchten Sie etwas ändern"
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Kunstmarkt",
+        "Eine Bekannte malt sehr gut und sucht eine Gelegenheit, anderen ihre Bilder zu zeigen oder sie zu verkaufen."
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Unser neues Wohnkonzept",
+        "Ihr Bekannter ist beruflich oft unterwegs und sucht eine Alternative zu Hotels. Es soll dort aber Internetzugang und Frühstück geben."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Ihr gutes Recht",
+        "Sie haben Streit mit Ihrem Vermieter wegen der Nebenkosten und möchten sich beraten lassen."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Günstig wohnen in über 70 Städten in Deutschland",
+        "Sie möchten mit Freunden durch Deutschland reisen und dabei günstig übernachten."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "Zuhause bleiben und trotzdem was erleben",
+        "Sie möchten im Urlaub zwar nicht verreisen, aber trotzdem etwas unternehmen."
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "Kunst und Kultur für Einsteiger",
+        "Sie möchten ausprobieren, ob Ihnen Zeichnen Spaß macht."
+      ]
+    },
+    {
+      "color": 8,
+      "parts": [
+        "Ihr kompetenter Partner für Rechtsberatung",
+        "Einem Bekannten wurde die Arbeitsstelle gekündigt. Er möchte bei einem Anwalt um Rat fragen."
+      ]
+    }
+  ]
+}

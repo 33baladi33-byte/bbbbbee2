@@ -1,0 +1,157 @@
+{
+  "title": "Lesen Teil 3 - Exam 14: Hautprobleme",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "Ratgeber 'Was bei Erkältung hilft' Erkältungen gehören leider zum Leben. Sie kommen immer wieder wie Frühling, Sommer, Herbst und Winter. Jetzt ist wieder Erkältungssaison. Hier sind einige wichtige Tipps. Bei Fieber: mindestens 2-3 Liter Tee oder Wasser pro Tag trinken. Feuchte Wadenwickel können helfen. Ist das Fieber nach zwei Tagen nicht weg, unbedingt zum Arzt gehen. Bei Halsweh mit Salzwasser gurgeln (1 Glas Wasser, ein Teelöffel Salz) oder Salbeitee trinken.",
+      "correct": 2,
+      "highlightColor": 0
+    },
+    {
+      "id": "b",
+      "text": "Wir zeigen den Zähnen die Zähne! Für alle, die noch viel vorhaben: Sichern Sie sich Top-Leistung zu Top-Konditionen! Genießen Sie den maßgeschneiderten privaten Versicherungsschutz für Zähne und die zuverlässige Sicherheit der WORMSER. Da lohnt sich der Wechsel: bis zum 31.12. handeln und dauerhaft von Beitrags-Vorteil profitieren. Ein Leben lang! Mehr Informationen kostenfrei unter 0700/4332000.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "c",
+      "text": "Kochen und waschen um 1900 lautet das Thema, wenn Anita Krämer am kommenden Sonntag durch das Museum für Stadtgeschichte führt. Wie wurde damals gekocht und gewaschen? Wie haben unsere Ur-Ur-Großeltern damals gelebt? Kühlschrank, Mikrowelle und andere moderne Geräte gab es ja in jener Zeit noch nicht. Wie hat man Speisen haltbar gemacht? Wie wurde gebügelt? Auf all diese Fragen hat Frau Krämer eine Antwort. Auch Kinder sind herzlich willkommen. Sie werden auch erfahren, wie oft Kinder damals gewaschen wurden. Wie sah es mit der Zahnpflege aus? Eine spannende und unterhaltsame Reise in die Zeit von vor 100 Jahren. Der Eintritt ist frei. Die Führung findet immer in Gruppen von 10 Personen ab 10 Uhr zu jeder vollen Stunde statt. Museum für Stadtgeschichte, Alte Waldstraße 11.",
+      "correct": 6,
+      "highlightColor": 1
+    },
+    {
+      "id": "d",
+      "text": "Lesen, was gesund macht Jetzt in der neuen Apotheken-Revue: - Ohrprobleme: endlich wieder gut hören! - Hautpflege: gut geschützt durch jede Jahreszeit - Kampo: heilen mit traditioneller japanischer Medizin. Diese und noch viele weitere interessante Themen rund um Ihre Gesundheit, plus Rätselspaß und tollen Gewinnspiel. Alle 14 Tage neu in Ihrer Apotheke. Kostenlos!",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "e",
+      "text": "Nachhilfe Wenn es um den Computer geht, wissen viele Kinder längst besser Bescheid als Erwachsene. Fast die Hälfte (47%) der 10- bis 19-Jährigen, in deren Haushalt ein Computer steht, wird vom Vater, Mutter, aber auch von Oma und Opa um Rat gefragt. In der Heinrich-Mann-Schule geben computerbegeisterte Schüler jetzt jeden Samstag von 10-12 Uhr sogar extra Nachhilfekurse für Erwachsene. Start ist am kommenden Samstag, der Schülerservice ist kostenlos! Interessierte Schülerinnen und Schüler, die ihre Erfahrungen weitergeben möchten, können auch gern vorbeikommen und mitmachen.",
+      "correct": 3,
+      "highlightColor": 2
+    },
+    {
+      "id": "f",
+      "text": "Vienna CONEKT Versichern Sie Ihr Auto ab 35 Cent am Tag. Sparen Sie zusätzlich mit dem Bonusprogramm und bleiben Sie flexibel: Sie können jederzeit monatlich kündigen. Jetzt Beitrag direkt berechnen: vienna-conekt.de 018084-33556474. Mit der Vienna Conekt haben Sie direkt mehr Vorteile: immer günstig, immer erreichbar (24-Stunden-Schadenhotline), Ersatzwagengarantie.",
+      "correct": 9,
+      "highlightColor": 3
+    },
+    {
+      "id": "g",
+      "text": "Sofort-Versicherung Die Behandlung kommt vom Arzt. Die Fürsorge von Ihnen. Die Finanzspritze von uns. Der umfassende Schutz bei Krankheit und Unfall. Auch Liebe kann nicht verhindern, dass Ihr Haustier mal krank wird oder einen Unfall hat. Die dadurch notwendige Behandlung oder Operation kann schnell bis zu 1000 Euro kosten. Die neue care-securitas Tierschutzversicherung schützt Sie vor diesem Risiko. Kümmern Sie sich also um Ihren vierbeinigen Patienten - wir kümmern uns um die Kosten. Weitere Informationen unter www.care-securitas.de.",
+      "correct": 8,
+      "highlightColor": 4
+    },
+    {
+      "id": "h",
+      "text": "Kindertheater: warum teilen schwer und betteln grausam ist Dass es viel einfacher ist, egoistisch zu sein als mitfühlend, weiß fast jeder. Dass aber auch Menschen, die Hilfe brauchen, egoistisch sein können, zeigt das Stück 'Der gute Mensch von Sezuan' von Bertolt Brecht. Und er erzählt es so, dass auch Kinder es verstehen können. Im Theater an der Parkaue wird das Stück am Sonntag um 14 Uhr in der Originalfassung gezeigt. Regisseurin Claudia Kipfel: 'Dieses Stück kann man so lassen, wie es ist. Kinder verstehen es sofort.' Karten: 0179-666453110, für Kinder ab 8 Jahren. Preise: 12 Euro, Kinder bis 12 Jahre: 7 Euro.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "i",
+      "text": "Omnitamol 500 Tabletten Wann nehmen Sie Omnitamol? Bei leichten bis mäßig starken Schmerzen. Bei Fieber und Erkältungen. Wichtig: Nehmen Sie Omnitamol nur 3-4 Tage ein, danach gehen Sie bitte unbedingt zu Ihrem Arzt oder Zahnarzt, wenn Ihre Beschwerden sich nicht gebessert haben. Was ist bei Kindern zu berücksichtigen? Omnitamol 500 Tabletten sind nicht geeignet für Kinder unter 6 Jahren. Für Kinder bieten wir Ihnen gesonderte Präparate an. Fragen Sie Ihren Arzt oder Apotheker.",
+      "correct": 5,
+      "highlightColor": 5
+    },
+    {
+      "id": "j",
+      "text": "Neue Kleidung kann krank machen Das neue Hemd passt prima zur Lieblingsjeans. Warum also nicht gleich anziehen? Doch Vorsicht: Neue Textilien können Allergien und Hautreizungen auslösen, vor allem bei Kindern und Menschen mit empfindlicher Haut. Grund: Viele Textilien enthalten Farbstoffe oder andere Chemikalien. Tipp: neue Kleidungsstücke vor dem ersten Tragen waschen. Für Babys und Kleinkinder ist Second-Hand-Kleidung eine gute Alternative, da die Schadstoffe schon ausgewaschen sind.",
+      "correct": 0,
+      "highlightColor": 6
+    },
+    {
+      "id": "k",
+      "text": "Erkältungszeit = Theaterzeit Zu einem hoffentlich husten- und schnupfenfreien Nachmittag für die ganze Familie lädt das Puppentheater 'Die Langohren' am morgigen Sonntag um 15 Uhr ein. Das Ensemble um die professionelle Puppenspielerin Margit Hallmann spielt 'Hätschi, kleine Anna' und verspricht ein Theatererlebnis für Erwachsene und Kinder ab 6 Jahren. Die Veranstaltung ist fast ausverkauft. Es gibt noch Restkarten. Tickets unter Telefon (0564) 5404420.",
+      "correct": 1,
+      "highlightColor": 7
+    },
+    {
+      "id": "l",
+      "text": "Zusatz-Versicherung Liebe Leserin, lieber Leser, gepflegte Zähne hängen oft von den finanziellen Möglichkeiten des Patienten ab. Mit der Krankenkasse alleine kommt man nicht weit. Mit der DENTAL VERSICHERUNG 100Plus von WarnstädtHyper verdoppeln Sie bei Zahnersatz den Zuschuss Ihrer gesetzlichen Krankenkasse. Keine Altersbegrenzung, günstige Monatsbeiträge. Nutzen Sie noch heute diese wichtigen Vorteile. Rufen Sie an: 069-780086753 oder informieren Sie sich im Internet unter www.neue-zaehne.eu. Wir schicken Ihnen die Unterlagen zu.",
+      "correct": 4,
+      "highlightColor": 8
+    }
+  ],
+  "situations": [
+    "Ein Kollege hat seit ein paar Tagen Hautprobleme und weiß nicht, was die Ursache sein könnte.",
+    "Sie möchten etwas mit Ihrer 7-jährigen Tochter unternehmen.",
+    "Ihre Bekannte hat Fieber, möchte aber keine Tabletten nehmen.",
+    "Das Ehepaar, das unter Ihnen wohnt, möchte etwas über Computer lernen.",
+    "Sie wollen Informationen über eine Zahnversicherung, ohne telefonieren zu müssen.",
+    "Ihre Nachbarin ist seit einer Woche erkältet. Natürliche Heilmittel haben nicht geholfen.",
+    "Sie bekommen Besuch und möchten am Sonntagvormittag etwas Interessantes unternehmen.",
+    "Ihre Freundin interessiert sich für japanische Medizin. Sie suchen als Geburtstagsgeschenk ein Buch zu diesem Thema.",
+    "Sie haben ein Haustier, das im letzten Jahr viel Geld für den Tierarzt gekostet hat. Sie suchen eine Möglichkeit, Kosten zu sparen.",
+    "Sie möchten eine Versicherung für Ihren Neuwagen abschließen und sofort wissen, was es kostet."
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (b, i, k). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Ratgeber 'Was bei Erkältung hilft'",
+        "Ihre Bekannte hat Fieber, möchte aber keine Tabletten nehmen."
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Kochen und waschen um 1900",
+        "Sie bekommen Besuch und möchten am Sonntagvormittag etwas Interessantes unternehmen."
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Nachhilfe",
+        "Das Ehepaar, das unter Ihnen wohnt, möchte etwas über Computer lernen."
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Vienna CONEKT",
+        "Sie möchten eine Versicherung für Ihren Neuwagen abschließen und sofort wissen, was es kostet."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "care-securitas Tierschutzversicherung",
+        "Sie haben ein Haustier, das im letzten Jahr viel Geld für den Tierarzt gekostet hat."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Omnitamol 500 Tabletten",
+        "Ihre Nachbarin ist seit einer Woche erkältet. Natürliche Heilmittel haben nicht geholfen."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "Neue Kleidung kann krank machen",
+        "Ein Kollege hat seit ein paar Tagen Hautprobleme und weiß nicht, was die Ursache sein könnte."
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "Erkältungszeit = Theaterzeit",
+        "Sie möchten etwas mit Ihrer 7-jährigen Tochter unternehmen."
+      ]
+    },
+    {
+      "color": 8,
+      "parts": [
+        "Zusatz-Versicherung",
+        "Sie wollen Informationen über eine Zahnversicherung, ohne telefonieren zu müssen."
+      ]
+    }
+  ]
+}

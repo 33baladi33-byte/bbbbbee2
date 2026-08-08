@@ -1,0 +1,150 @@
+{
+  "title": "Lesen Teil 3 - Exam 29: Arbeitsorganisation",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "Schwiegermütter - Schwiegertöchter Problem oder Chance Der problemlose Umgang von Schwiegermüttern mit ihren Schwiegertöchtern ist nicht immer einfach. So entstehen zahlreiche Konflikte, die auf die Beziehung zwischen Sohn und Schwiegertochter übergreifen und diese belasten können. Mit Hilfe von anschaulichen Beispielen beschäftigen wir uns mit dem Spannungsfeld zwischen Schwiegermutter und Schwiegertochter und versuchen Wege des unkomplizierten Miteinanders und des Respekts voreinander zu finden. Samstag, 30.5. 10:00-20:00 Uhr Turmsaal 31,- Euro",
+      "correct": 2,
+      "highlightColor": 0
+    },
+    {
+      "id": "b",
+      "text": "Mit Männern Gespräche führen Ein Seminar für Frauen Dass Männer von Mars und Frauen von Venus kommen, wissen wir schon. Doch wie redet Frau mit ihm? In diesem Seminar analysieren wir, inwiefern Männer anders denken als Frauen und wie wir diese Erkenntnisse ausnutzen können. Wir erarbeiten, wie wir z.B. Konfliktgespräche mit Männern optimal vorbereiten können und wie Frau sich gegen ihn im Gespräch behaupten kann. Samstag, 23.4., 9:00-17:00, Sonntag, 24.4., 9:00-17:00, Raum VII, 78 Euro.",
+      "correct": 3,
+      "highlightColor": 1
+    },
+    {
+      "id": "c",
+      "text": "Kommunikation Fühlen Sie sich im Gespräch unsicher? Möchten Sie lernen, wie Sie sich klarer und verständlicher ausdrücken können? Wie Sie Ihren Standpunkt angemessen vertreten? In diesem Seminar lernen Sie, Ihr eigenes Gesprächsverhalten zu erkennen und zu verbessern. Sie lernen, effektiver und zielgerichteter mit anderen Menschen zu reden und sich durchzusetzen. Mo-Fr, 9:00-16:00 Uhr, Raum II, 290 Euro.",
+      "correct": 8,
+      "highlightColor": 2
+    },
+    {
+      "id": "d",
+      "text": "Flirten leicht gemacht Wer flirten kann, kommt leicht in Kontakt mit anderen. Nicht nur für die Partnersuche, sondern auch für das freundliche Miteinander ist Flirten wichtig: Babys und kleine Kinder flirten ganz mühelos, doch Erwachsene haben vergessen, wie man Augen, Lächeln und passende Wörter benutzt, um das Miteinander angenehmer zu machen. In spielerischer Form haben Sie die Gelegenheit, Ihre verschwundenen Fähigkeiten zur Annäherung und Kontaktaufnahme wiederzuentdecken und anzuwenden. 5 Freitage ab 3.3., 18:00-21:00 Uhr, Turmsaal, 130 Euro.",
+      "correct": 6,
+      "highlightColor": 3
+    },
+    {
+      "id": "e",
+      "text": "Zeitmanagement Über Stress und Zeitdruck klagt fast jeder. Doch das betrifft nicht nur den Arbeitsplatz, immer mehr Menschen spüren den Zeitdruck auch zu Hause. In diesem Seminar lernen wir, mit der Zeit 'sparsamer' umzugehen. Wir sprechen darüber, was uns wichtig ist, lernen Prioritäten zu setzen, Zeitdiebe zu erkennen und den Tagesablauf effektiv zu planen. Diese Schritte werden uns zu mehr Zufriedenheit und Ausgeglichenheit führen und am Arbeitsplatz wie im Alltag das Leben erleichtern. Samstag, 9:00-18:00 Uhr, Raum IX, 115 Euro.",
+      "correct": 0,
+      "highlightColor": 4
+    },
+    {
+      "id": "f",
+      "text": "Tai Chi Chuan Tai Chi Chuan ist eine uralte chinesische Methode, um das seelische Gleichgewicht wiederzufinden. Die Kunst des Schattenboxens entwickelte sich zur Heilgymnastik. Langsame, weiche, fließende Bewegungen führen zu innerer Ruhe und Ausgeglichenheit. Stress wird abgebaut und Sie werden wieder frei für Ruhe und Harmonie. Die Übungen sind für Jung und Alt geeignet. 15 Dienstage ab 7.3., 19:30-21:00 Uhr, Akademie-Fitnessraum, 63 Euro.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "g",
+      "text": "Keine Angst vorm Autofahren für Teilnehmerinnen und Teilnehmer mit Führerschein, Klasse B Haben Sie Ängste vor bestimmten Fahrsituationen, z.B. vor dem Einparken, Überholen oder Fahrstreifenwechsel? Wir wollen versuchen, Ihren Ängsten auf den Grund zu kommen und sie zu lösen. Es spielt keine Rolle, ob Sie Führerscheinneuling sind oder schon lange Auto fahren oder eine lange Fahrpause gemacht haben. Fahrpraktischer Teil am Nachmittag. Samstag, 30.5., 9:00-16:30 Uhr, ADAC-Übungsplatz, 80 Euro",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "h",
+      "text": "Mit Hunden sprechen Seit langer Zeit bemühen sich die Menschen, Hunden klarzumachen, was sie von ihnen erwarten. Der Hund folgt nicht, was er tut. In diesem Seminar erlernen Sie die 'Sprache der Hunde'. Anhand von Videoaufzeichnungen studieren Sie seine Körpersprache und seine Reaktionen. Wenn Hund und Mensch sich gegenseitig verstehen, wird Druck überflüssig. Freitag, 29.5., 17:30-21:30 Uhr, Raum XII, 26 Euro.",
+      "correct": 9,
+      "highlightColor": 5
+    },
+    {
+      "id": "i",
+      "text": "Mitarbeitergespräche führen Seminar für Führungskräfte Die Führung von Mitarbeitern bedeutet, mit den Mitarbeitern zu sprechen. Klare Worte sind der Schlüssel zu einer erfolgreichen Zusammenarbeit, egal, ob Sie Informationen weitergeben oder Konflikte zu lösen versuchen. Nur wenn Ihr Gesprächspartner weiß, was Sie meinen, wird er so reagieren, wie Sie es sich vorgestellt haben. Dazu gehören natürlich auch Feedback-Techniken, mit denen Sie überprüfen können, ob Sie richtig verstanden wurden. 2 Samstage ab 13.2., 12:30-20:30 Uhr, Turmsaal, 180 Euro.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "j",
+      "text": "Hilfe mein Haustier ist krank! Was ist, wenn Ihr vierbeiniger Liebling krank wird? In diesem Seminar erlernen Sie, wie Sie Krankheiten beim Tier erkennen und wie Sie erste Hilfe leisten können. Sie bekommen Tipps zur Fütterung und Pflege des kleinen Patienten und lernen, wie Sie Ihren kranken Liebling am besten zum Tierarzt transportieren können. Praktische Übungen am Stofftier stehen auch auf dem Programm. Donnerstag, 17.6., 17:30-21:00 Uhr, Raum III, 12 Euro.",
+      "correct": 1,
+      "highlightColor": 6
+    },
+    {
+      "id": "k",
+      "text": "Überwinde deinen inneren Schweinehund Gehören Sie auch zu denjenigen, die unangenehme Dinge lieber hinauszögern? Die bis kurz vor dem Abgabetermin mit Ihrer Steuererklärung warten? Die immer Ausreden finden, wenn es darum geht, den Kleiderschrank aufzuräumen, einen wichtigen Anruf zu tätigen oder zum Arzt zu gehen? Probieren Sie in diesem Seminar Strategien aus, die Ihnen helfen, Unangenehmes sofort zu erledigen. Samstag, 12.5., 15.00-19.00 Uhr, Sonntag, 13.5., 10.00-15.00 Uhr, Raum VI, 65 Euro.",
+      "correct": 5,
+      "highlightColor": 7
+    },
+    {
+      "id": "l",
+      "text": "Handykurs für Senioren In diesem Kurs werden die Funktionen und die Handhabung der modernen kleinen Informationsgeräte vorgestellt und erklärt. Auf folgende Fragen wird eingegangen: -Was ist ein Vertrags- und was ein Kartenhandy? -Wie schalte ich das Gerät ein und aus? -Wie telefoniere ich damit? -Wie versende und empfange ich eine SMS? -Wie kann ich ins Internet? -Wie benutzt man das integrierte Telefonbuch? 3 Mittwoche ab 30.5., 16.00 - 18.00 Uhr, Raum II, 45 Euro.",
+      "correct": null,
+      "highlightColor": null
+    }
+  ],
+  "situations": [
+    "Eine Kollegin kann ihren Arbeitsbereich nicht gut strukturieren und hat deshalb Probleme, ihre Aufgaben rechtzeitig zu erledigen",
+    "Ein Bekannter hat einen kranken Hund und sucht tierärztliche Hilfe.",
+    "Eine Bekannte möchte ihre Beziehung zur Mutter des Mannes verändern.",
+    "Ein Freund möchte etwas über Konfliktgespräche mit Frauen erfahren.",
+    "Eine Bekannte sucht einen Kurs, um in ihrer Freizeit aktiv etwas gegen ihren Stress tun zu können",
+    "Eine Freundin schiebt Dinge, die ihr keinen Spaß machen, immer vor sich her.",
+    "Ein Bekannter möchte leichter Kontakt zu anderen Menschen finden.",
+    "Eine Freundin möchte den Führerschein machen",
+    "Eine Freundin möchte Strategien erlernen, wie man wirkungsvoller argumentiert und dadurch leichter seine Ziele erreicht.",
+    "Ein Bekannter hat eine Hundepension. Er glaubt, dass er die ihm anvertrauten Tiere oft missversteht."
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (d, f, g, i, j, l). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Schwiegermütter - Schwiegertöchter",
+        "Eine Bekannte möchte ihre Beziehung zur Mutter des Mannes verändern."
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Mit Männern Gespräche führen",
+        "Ein Freund möchte etwas über Konfliktgespräche mit Frauen erfahren."
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Kommunikation",
+        "Eine Freundin möchte Strategien erlernen, wie man wirkungsvoller argumentiert und dadurch leichter seine Ziele erreicht."
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Flirten leicht gemacht",
+        "Ein Bekannter möchte leichter Kontakt zu anderen Menschen finden."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Zeitmanagement",
+        "Eine Kollegin kann ihren Arbeitsbereich nicht gut strukturieren und hat deshalb Probleme, ihre Aufgaben rechtzeitig zu erledigen"
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Mit Hunden sprechen",
+        "Ein Bekannter hat eine Hundepension. Er glaubt, dass er die ihm anvertrauten Tiere oft missversteht."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "Hilfe mein Haustier ist krank!",
+        "Ein Bekannter hat einen kranken Hund und sucht tierärztliche Hilfe."
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "Überwinde deinen inneren Schweinehund",
+        "Eine Freundin schiebt Dinge, die ihr keinen Spaß machen, immer vor sich her."
+      ]
+    }
+  ]
+}

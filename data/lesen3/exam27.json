@@ -1,0 +1,150 @@
+{
+  "title": "Lesen Teil 3 - Exam 26: Einwanderung",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "14.01. - 10:00 Uhr (VOX) McLeods Töchter 19/1 Ein Italiener zum Verlieben Jodi schwebt im siebten Himmel: Sie hat den charismatischen und gut aussehenden Italiener Alberto kennengelernt und ihm auch gleich einen Job auf Drover's Run verschafft. Meg ist die stürmische Beziehung zwischen den beiden jedoch ein Dorn im Auge, und als sie schließlich herausfindet, dass Alberto sich illegal in Australien aufhält, sieht sie ihren Verdacht bestätigt: Alberto hat sich nur an ihre Tochter herangemacht, um an eine Aufenthaltsgenehmigung zu kommen. Um sicherzugehen, soll Becky den ahnungslosen Alberto nun testen, doch der erweist sich als äußerst standfest. Es scheint, als würde er Jodi tatsächlich von ganzem Herzen lieben. Zu dumm, dass Jodi ihren Freund nach dem Test aus Beckys Zimmer kommen sieht und ihn wutentbrannt bei der Einwanderungsbehörde anzeigt...",
+      "correct": 0,
+      "highlightColor": 0
+    },
+    {
+      "id": "b",
+      "text": "14.01. - 16:00 Uhr (VOX) auf und davon - Mein Auslandstagebuch Folge 88 Ein Jahr im Ausland - für junge Menschen ein großer Traum. Viele deutsche Jugendliche gehen deshalb als Au-pair oder Austauschschüler in die Ferne. In der Dokumentation 'auf und davon - Mein Auslandstagebuch' begleitet VOX junge Menschen, die zum ersten Mal in ihrem Leben ihre Familien, ihre Freunde und ihre Heimat verlassen...",
+      "correct": 1,
+      "highlightColor": 1
+    },
+    {
+      "id": "c",
+      "text": "SPIEGEL TV Thema: Die Chemie des Todes - Mördersuche im Labor, Teil 3 Mord verjährt nie. Auch wenn der Täter nur wenige, unsichtbare Spuren hinterlässt und die Ermittlungsarbeit oft langwierig ist - meist ist die Mördersuche im Labor erfolgreich. Verbrechen, die noch vor wenigen Jahren zu den Akten gelegt werden mussten, werden heute von Forensikern mithilfe modernster Kriminaltechnik aufgeklärt. Oft genügen mikroskopisch kleine Partikel, um das brutale Geschehen zu rekonstruieren und den Mörder zu überführen. Im Rahmen der dreiteiligen Reihe 'Die Chemie des Todes - Mördersuche im Labor' werden wahre Fälle rekonstruiert. Ermittler, Rechtsmediziner und Profiler schildern, welche wissenschaftlichen und technischen Methoden sie anwenden, um auch die mysteriösesten Mordfälle zu lösen.",
+      "correct": 3,
+      "highlightColor": 2
+    },
+    {
+      "id": "d",
+      "text": "16.01.2008 - 22:50 Uhr BBC Exklusiv Thema: Wildes Wetter, Teil 2: Kälte und Hitze Das Wetter ist eines der wenigen Naturphänomene, das uns nach wie vor Rätsel aufgibt. Selbst mit modernster Wissenschaft lässt es sich nur bedingt voraussagen, selten beeinflussen und nie kontrollieren. Diese zweiteilige Dokumentation führt die Zuschauer zu den entlegensten Orten der Erde und zeigt, wie das Wetter funktioniert - aufregende Computeranimationen und seltenes Archivmaterial bieten einen neuen Blick auf die weltumspannende Wettermaschine und enthüllen oft verblüffende Zusammenhänge...",
+      "correct": 4,
+      "highlightColor": 3
+    },
+    {
+      "id": "e",
+      "text": "Jamie At Home (RTL2) Samstags Jamie Oliver ist zurück an Heim und Herd! In den drei zehn neuen Folgen stellt er wie immer großartige Rezepte vor, verwendet aber diesmal Zutaten für seine fantastischen Gerichte, die er in seinem eigenen Garten angebaut hat. Von perfekten Kartoffeln zu saftigen Erdbeeren, von leckeren Tomaten bis zum frisch geernteten Pizzabelag, ist 'Jamie At Home' ein unkomplizierter Ratgeber, wie man das Beste von Mutter Natur persönlich serviert bekommt - ohne dass man dafür in den Bio-Supermarkt gehen muss. Mithilfe von Gärtner Brian hat er den Garten seines Hauses in Essex umgebaut und seine Leidenschaft, sein eigenes Gemüse anzubauen, entdeckt, und nun will er zeigen, wie einfach es ist, sich mit selbst angebauten Produkten gesund zu ernähren. In jeder Sendung wird eine andere Gemüsesorte vorgestellt.",
+      "correct": 6,
+      "highlightColor": 4
+    },
+    {
+      "id": "f",
+      "text": "Die Wahrheit und nichts als die Wahrheit Ab 28. Januar montags um 22:15 Uhr bei RTL II. Endlich eine Show, in der die Kandidaten nicht mit Allgemeinwissen brillieren müssen. Bei uns brauchen sie auch kein besonderes Talent oder Glück. Sie müssen die Wahrheit sagen. Und dazu gehört Mut - denn nichts kann bitterer sein als die Wahrheit und nichts als die Wahrheit! Das unmoralische Angebot: Für 21 wahrheitsgemäß beantwortete Fragen gibt es 25.000 Euro! Den Kandidaten werden außergewöhnliche, intime und pikante Fragen gestellt. Natürlich alles in Anwesenheit ihrer Partner und Familien!",
+      "correct": 7,
+      "highlightColor": 5
+    },
+    {
+      "id": "g",
+      "text": "The Bourne Identity Sonntag, 13. Januar Spielfilm, 130 Min. USA 2002 Irgendwo auf dem Mittelmeer treibt ein Fischerboot im Sturm. Nicht weit davon entfernt schwimmt ein Mann, der für tot gehalten wird. Einmal geborgen, entpuppt sich der vermeintlich Ertrunkene jedoch als lebendig, allerdings schwer verletzt. Innerhalb kurzer Zeit kommt er zwar wieder zu Kräften, allein seine Erinnerung an die Nacht, in der er ins Wasser fiel und in der ihm zweimal in den Rücken geschossen wurde, kehrt nicht zurück. Weil der einzige Hinweis auf die wahre Identität ein in den Oberschenkel implantierter Code für ein Schweizer Nummerkonto ist, begibt sich der Unbekannte auf direktem Weg nach Zürich.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "h",
+      "text": "ML Mona Lisa (ZDF) - Traumurlaub ganz anders Ärzteschiff für Menschen in Not Die Zahnärztin Marion Bösch aus München hat sich ihren Traum erfüllt. Sie sparte ihren Urlaub für vier Wochen Aufenthalt auf der 'Africa Mercy'. Allerdings ist es kein Kreuzfahrtschiff und ein richtiger Urlaub ist es auch nicht, denn bei dem Schiff handelt es sich um die größte schwimmende Klinik der Welt.",
+      "correct": 8,
+      "highlightColor": 6
+    },
+    {
+      "id": "i",
+      "text": "Löwenalarm! Jagd auf Menschenfresser Etwa 40.000 Löwen leben in Afrika, rund die Hälfte von ihnen in Tansania. Trotz dieser großen Zahl kommt es in der Regel nur vereinzelt zu Angriffen auf Menschen. In den ersten Jahren des 21. Jahrhunderts ist die Zahl der Angriffsopfer jedoch sprunghaft angestiegen. Ein Team um den amerikanischen Löwenforscher Craig Parker sucht nach Ursachen. Für Parker scheint es sich nicht um einzelne Löwen zu handeln, sondern um eine ganze Population. Um die Menschen besser schützen zu können und mehr über die Lebensweise der Löwen zu erfahren, versuchen Craig Packer und sein Team, einzelne Raubkatzen mit GPS-Geräten auszustatten.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "j",
+      "text": "Land. Tschüss Deutschland! Neuer Start im fremden Land Manche gehen aus Sehnsucht, andere aus Frust. Und von Jahr zu Jahr werden es mehr. Viele, vor allem gut ausgebildete Deutsche, ziehen auf der Suche nach lukrativen Jobs und besseren Lebensbedingungen in die Ferne. Dirk (40) und Birthe J. (38) aus Ockholm in Nordfriesland haben auf den ersten Blick alles, was man sich nur wünschen kann. Ein reetgedecktes altes Bauernhaus, ein großes Grundstück, zwei nette Kinder, viele Tiere, kurz: ein schönes Stück Heimat. Dirk ist Schreiner, er restauriert Antiquitäten, doch in den letzten Jahren liefen die Geschäfte eher schlecht. Dann fand Dirk im Internet seinen Traumjob. Ein deutscher Unternehmer, der alte Häuser in Irland restauriert, suchte händeringend einen Tischler: Nettogehalt 4500 Euro pro Monat! Zunächst ging nur Dirk, doch die Familie wird folgen. Die Reportage begleitet ihn beim Start auf der grünen Insel und ist dabei, wenn die Familie endlich gemeinsam ihr erstes irisches Haus bezieht. Die ZDF Reportage zeigt mutige Menschen, die ihr Schicksal in die Hand nehmen und daran glauben, dass es ihn gibt: den Neustart in einem fremden Land.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "k",
+      "text": "Bauer sucht Frau Episode: Folge 3 Sonntag, 13. Januar Serie, 60 Min. Auf dem Hof von Biobauer Olaf in Schleswig-Holstein sorgt Katrin (32) für jede Menge Action und gute Laune. Der Wirbelwind krempelt die Ärmel hoch und sorgt sowohl in den Wohnräumen als auch im Schweinestall für Ordnung. Olaf ist von Katrins Energie begeistert. Stellt sich nur die Frage, ob Olafs Eltern Rolf und Helga mit der neuen Frau an Olafs Seite auch zurechtkommen? Tanja trifft auf dem Hof von Schweinebauer Stephan in Niedersachsen ebenfalls auf eine große Familie. Stephan lebt mit seinen Eltern Inge und Hans-Jürgen sowie den Großeltern und 630 Schweinen auf dem großen Bauernhof. Finden Stephans Eltern die quirlige 22-Jährige sympathisch?",
+      "correct": 9,
+      "highlightColor": 7
+    },
+    {
+      "id": "l",
+      "text": "Episode: Autopsie Mittwoch, 09. Januar Serie, 50 Min. USA 2005 House, M.D. Dr. Wilson kann House davon überzeugen, sich des Falles der neunjährigen Andie anzunehmen, die an einer tödlichen Krebserkrankung leidet und nicht mehr lange zu leben hat. House wehrt sich zunächst mit Händen und Füßen gegen jede emotionale Einbindung in die tragische Geschichte, kann aber dem scheinbar unerschütterlichen Mut der kleinen Patientin schließlich doch nichts mehr entgegensetzen. Die Situation spitzt sich dramatisch zu, als Andie plötzlich extrem zu halluzinieren beginnt - ein Symptom, das in keiner Weise mit ihrem Krankheitsbild in Übereinstimmung gebracht werden kann. House vermutet, dass sich im Gehirn des Kindes ein Gerinnsel gebildet hat. Um das Gerinnsel finden zu können und damit Andie am Leben zu erhalten, müssen House und sein Team eine extrem gefährliche Operation wagen.",
+      "correct": null,
+      "highlightColor": null
+    }
+  ],
+  "situations": [
+    "Sie möchten sich einen Dokumentarfilm über die Einwanderung nach Australien und über den damit verbundenen Prozess ansehen",
+    "Ein junges Mädchen möchte später als Au-pair oder Austauschschülerin ins Ausland gehen und deshalb interessiert es sich für das Thema.",
+    "Ein Mann interessiert sich für die Aufdeckung von Verbrechen, die früher nicht gelöst werden konnten.",
+    "Sie schwärmen für Krimis, die auf Grund tatsächlicher Fälle rekonstruiert wurden.",
+    "Sie haben großes Interesse daran, wie mithilfe von Computertechnik das Wetter an verschiedenen Orten der Welt vorhergesagt werden kann.",
+    "Ein Mann interessiert sich dafür, wie Wetterphänomene entstehen.",
+    "Sie suchen ein Gartenmagazin, aus dem Sie alles über den Anbau von Gemüse- und Obstsorten erfahren können.",
+    "Sie möchten sich eine Quizsendung ansehen, an der Familienmitglieder teilnehmen",
+    "Eine Bekannte von Ihnen sucht einen Reisefilm, ähnlich dem 'Traumschiff', in dem es während eines Reiseaufenthaltes alles über den Aufenthaltsort gezeigt wird.",
+    "Ein Mann interessiert sich für das Bauernleben und sucht deshalb eine passende Sendung."
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (d, e, f, g, h, i, k, l). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "McLeods Töchter ... Ein Italiener zum Verlieben",
+        "Sie möchten sich einen Dokumentarfilm über die Einwanderung nach Australien ansehen"
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "auf und davon - Mein Auslandstagebuch",
+        "Ein junges Mädchen möchte später als Au-pair oder Austauschschülerin ins Ausland gehen"
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Die Chemie des Todes - Mördersuche im Labor",
+        "Ein Mann interessiert sich für die Aufdeckung von Verbrechen, die früher nicht gelöst werden konnten."
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Wildes Wetter, Teil 2: Kälte und Hitze",
+        "Sie haben großes Interesse daran, wie mithilfe von Computertechnik das Wetter vorhergesagt werden kann."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Jamie At Home",
+        "Sie suchen ein Gartenmagazin, aus dem Sie alles über den Anbau von Gemüse- und Obstsorten erfahren können."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Die Wahrheit und nichts als die Wahrheit",
+        "Sie möchten sich eine Quizsendung ansehen, an der Familienmitglieder teilnehmen"
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "ML Mona Lisa ... Ärzteschiff für Menschen in Not",
+        "Eine Bekannte von Ihnen sucht einen Reisefilm, ähnlich dem 'Traumschiff'"
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "Bauer sucht Frau",
+        "Ein Mann interessiert sich für das Bauernleben und sucht deshalb eine passende Sendung."
+      ]
+    }
+  ]
+}

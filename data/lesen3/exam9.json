@@ -1,0 +1,150 @@
+{
+  "title": "Lesen Teil 3 - Exam 8: Unterstützung in Mathematik",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "Nicht nur Urlaub... ...kann man in anderen Ländern machen, sondern auch etwas lernen. Die Agentur für Arbeit vermittelt Schülerinnen und Schülern, aber auch Studierenden Praktikumsplätze im Ausland! Nutzt die Gelegenheit, möglichst früh Euren Wunschberuf kennenzulernen, auch wenn Ihr für das Praktikum nicht bezahlt werdet. Meldet euch gleich in der nächsten Filiale oder besucht unsere Homepage, auch dort gibt's weitere Informationen. www.agenturfuerarbeit.de",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "b",
+      "text": "Neues Ziel, neues Glück! Du bist gerade 'auf dem Sprung', willst umziehen und suchst noch eine passende Bleibe? Dann haben wir das Richtige für dich: In unserem Internetportal findest du günstige Wohnungen oder WG-Zimmer in zahlreichen Städten Deutschlands - und sogar über die Grenzen Deutschlands hinaus. Unsere Suchfunktion erlaubt es dir, Details einzugeben wie 'maximale Miete', 'zentrale Lage' usw. Schau einfach mal vorbei, die Suche ist natürlich kostenlos! Und noch etwas: Du kannst auch gerne ein Wohnungsangebot bei uns einstellen, wenn du einen Nachmieter oder einen Mitbewohner suchst - für nur 0,49 Euro. Du findest uns unter www.ueberallwohnen.eu",
+      "correct": 3,
+      "highlightColor": 0
+    },
+    {
+      "id": "c",
+      "text": "Superlearning Sie möchten in kurzer Zeit ihre Sprachkenntnisse besonders schnell verbessern und suchen hierfür die beste Methode? Sie möchten sich während des Aufenthaltes gleichzeitig entspannen und etwas für Ihre Gesundheit tun? Dann dürfte dieses Programm für Sie genau das Richtige sein! Nach der Methode des berühmten bulgarischen Arztes Lozanov lernen Sie in entspannter Umgebung und dennoch hoch konzentriert mit Untermalung durch klassische Musik und praxisnahen kommunikativen Übungen. Durch unser ganzheitliches System können Sie Ihre Lernleistung erheblich steigern, so dass sich der vergleichsweise hohe Preis schnell bezahlt macht. Wir informieren Sie gerne über unser Angebot an Superintensivkursen. info@superlearning.de",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "d",
+      "text": "Andere Länder, ... ... andere Sprachen. Und wo lernt man eine Sprache am besten? Genau - in dem Land, in dem sie gesprochen wird. Wir bieten Ihnen die Möglichkeit, Sprachen auf der ganzen Welt zu lernen. Vom Einzelunterricht bis hin zu einem Kurs für eine ganze Gruppe, von A wie Arabisch bis Z wie Zulu. Entdecken Sie die Welt und die Welt der Sprachen. Wir gehen flexibel auf Ihre Wünsche ein. Sprechen Sie uns an. Egal welche Sprache Sie lernen möchten, wir haben bestimmt auch für Sie das passende Angebot! Weitere Informationen unter: info@sprachenderwelt.eu",
+      "correct": 2,
+      "highlightColor": 1
+    },
+    {
+      "id": "e",
+      "text": "Was bedeutet 'Tandemlernen'? Zwei Menschen mit verschiedenen Muttersprachen treffen sich und helfen sich gegenseitig beim Lernen der jeweiligen Fremdsprache. Tandemlernen hat keine festgelegten Strukturen, sondern kann ganz nach Lust und Laune ablaufen. Was, wann, wo und wie du lernst, hängt von dir und deinem Tandempartner ab. Außerdem hast du die Chance, durch Tandemlernen einen interessanten Einblick in eine andere Kultur zu bekommen. Und das Beste: es kostet nichts. Schau nach unter www.tandemboerse.de",
+      "correct": 7,
+      "highlightColor": 2
+    },
+    {
+      "id": "f",
+      "text": "Interesse an einer Ausbildung? Auf unserem Azubi-Portal finden Sie Informationen zu allen Ausbildungsberufen, die es derzeit in Deutschland gibt. Sie erfahren, welche Voraussetzungen Sie für eine Ausbildung benötigen, was genau Sie in der Ausbildung lernen, wie Ihr späteres Berufsleben aussieht - und natürlich erfahren Sie auch alles rund um das Thema Lohn. Auch wertvolle Bewerbungstipps finden Sie bei uns. Schauen Sie doch mal vorbei: www.azubiportal.eu",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "g",
+      "text": "Umzug mal anders Wer kennt das nicht: Wenn man umziehen will oder muss, gibt es viel zu erledigen. Man muss den Umzug organisieren, sich um Papiere kümmern, die neue Adresse bekanntgeben und vieles mehr. Dabei hat man auch gar keine Zeit, denn arbeiten oder studieren muss man ja auch noch. Deshalb bieten wir einen kompletten Umzugs-Service an. Sie müssen nur noch von einer Stadt in die nächste fahren - und den Rest erledigen wir. Das alles zu einem fairen Preis. Sprechen Sie uns an! E-Mail: info@umzugmalanders.eu",
+      "correct": 8,
+      "highlightColor": 3
+    },
+    {
+      "id": "h",
+      "text": "Alle Informationen auf einer Seite Die neue Internetseite www.studium.de bietet Ihnen alles rund um das Thema 'Studium'. So finden Sie neben Informationen zu allen deutschen Hochschulen auch genaue Beschreibungen aller Studiengänge und -fächer auf unserer Webseite. Ob Sie etwas Naturwissenschaftliches studieren möchten, etwas Wirtschaftswissenschaftliches, ein Fach mit Bezug zu Kultur oder eine Sprache - bei uns finden Sie alles und erfahren natürlich auch, wo Sie was studieren können. Und als besonderen Service bieten wir Ihnen auch einen BAföG-Rechner an: Ermitteln Sie gleich, ob Ihnen Unterstützung während des Studiums zusteht.",
+      "correct": 1,
+      "highlightColor": 4
+    },
+    {
+      "id": "i",
+      "text": "Hilfe gesucht? Studierende und Auszubildende müssen oft umziehen, ohne dass sie viel Geld dafür hätten. Deshalb haben wir unser Netzwerk 'Studis und Azubis ziehen um' gegründet. Bei uns sind viele fleißige Helfer registriert, die gerne beim Umzug helfen: Kisten packen, Möbel abbauen, die Sachen zur neuen Wohnung bringen und so weiter. Und das Beste daran: Es kostet keinen Cent! Wie das funktioniert? Ganz einfach. Registriert euch bei uns - natürlich ebenfalls kostenfrei -, und wenn jemand anders Hilfe braucht, tragt ihr eben auch mal Kartons und baut Möbel auf. Wir helfen uns gegenseitig! Weitere Infos unter: www.umzugshelferlein.eu",
+      "correct": 4,
+      "highlightColor": 5
+    },
+    {
+      "id": "j",
+      "text": "Neu in der Stadt? Ihr seid umgezogen und habt eine Ausbildung oder ein Studium hier in der Stadt begonnen? Ihr sucht neue Kontakte, Leute, mit denen ihr die Freizeit verbringen könnt? Der Verein 'Triff dich!' organisiert einmal pro Woche einen Stammtisch für alle, die neue Leute treffen wollen. Kommt einfach vorbei - und wenn es euch nicht gefällt, könnt ihr ja jederzeit wieder gehen! Weitere Informationen sowie den Ort und das genaue Datum für unser nächstes Treffen erhaltet ihr unter: info@triffdich.eu",
+      "correct": 5,
+      "highlightColor": 6
+    },
+    {
+      "id": "k",
+      "text": "Wie es Ihnen gefällt Unser neues Lernprogramm 'Sprachenfix' bietet Ihnen die Möglichkeit, eine Sprache zu lernen, wann und wo Sie möchten, ob allein zu Hause oder unterwegs. Das Programm bietet alles, was Sie brauchen: von Erklärungen und Wortschatz über Lesetexte und Hörbeispiele bis hin zu Videos mit kleinen authentischen Szenen aus dem Alltag. Unser Online-Service bietet darüber hinaus Zusatzmaterialien. Auf Wunsch können Sie auch in einem durch Passwort geschützten Bereich Ihre eigenen Texte durch unsere Lehrkräfte korrigieren und kommentieren lassen. Das Programm ist für zahlreiche Sprachen verfügbar, sprechen Sie uns an. Sprachfix GmbH, Eiderstädt, Tel, 01800/81890132",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "l",
+      "text": "Aller Anfang ist schwer. Einige Fächer sind schon in der Schule nicht beliebt, und das ändert sich auch später in der Berufsschule oder an der Universität nicht. Für viele sind Naturwissenschaften oder Mathematik echte 'Problemfächer'. Bei uns wird das anders. Unsere Lehrkräfte sind nicht nur fachlich gut ausgebildet, sondern sie haben auch eine spezielle pädagogische Ausbildung. Probieren Sie es einfach aus! Egal, ob in der Schule, in der Ausbildung, im Studium oder 'einfach nur so' - bei uns finden Sie, was Sie brauchen. Bei uns lernen Sie in Lerngruppen von drei bis fünf Teilnehmenden, so können Sie sich auch gegenseitig unterstützen. Weitere Informationen unter info@lernenmachtspass.eu",
+      "correct": 0,
+      "highlightColor": 7
+    }
+  ],
+  "situations": [
+    "Sie brauchen Unterstützung in Mathematik und möchten in einer kleinen Gruppe lernen.",
+    "Sie möchten Physik studieren und möchten sich zunächst informieren.",
+    "Sie möchten einen Sprachkurs in einem anderen Land machen",
+    "Sie möchten في einer anderen Stadt eine Ausbildung machen und suchen dort eine Wohnung",
+    "Sie ziehen wegen einer Ausbildung um und suchen so günstig wie möglich Umzugshelfer.",
+    "Sie sind gerade umgezogen und möchten neue Leute kennenlernen.",
+    "Sie suchen einen Nachmieter und wollen eine kostenlose Anzeige aufgeben",
+    "Sie wollen gerne noch eine Sprache lernen und suchen einen festen Lernpartner.",
+    "Sie wollen umziehen, haben aber eigentlich gar keine Zeit, sich darum zu kümmern.",
+    "Sie suchen für eine 18-jährige Bekannte einen bezahlten Job außerhalb von Deutschland."
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (c, f, k). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Neues Ziel, neues Glück!",
+        "Sie möchten in einer anderen Stadt eine Ausbildung machen und suchen dort eine Wohnung"
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Andere Länder, andere Sprachen",
+        "Sie möchten einen Sprachkurs في einem anderen Land machen"
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Was bedeutet 'Tandemlernen'?",
+        "Sie wollen gerne noch eine Sprache lernen und suchen einen festen Lernpartner."
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Umzug mal anders",
+        "Sie wollen umziehen, haben aber eigentlich gar keine Zeit, sich darum zu kümmern."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Alle Informationen auf einer Seite",
+        "Sie möchten Physik studieren und möchten sich zunächst informieren."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Hilfe gesucht? Studierende und Auszubildende",
+        "Sie ziehen wegen einer Ausbildung um und suchen so günstig wie möglich Umzugshelfer."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "Neu in der Stadt?",
+        "Sie sind gerade umgezogen und möchten neue Leute kennenlernen."
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "Aller Anfang ist schwer",
+        "Sie brauchen Unterstützung in Mathematik und möchten in einer kleinen Gruppe lernen."
+      ]
+    }
+  ]
+}

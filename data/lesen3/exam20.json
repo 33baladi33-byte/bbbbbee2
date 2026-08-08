@@ -1,0 +1,150 @@
+{
+  "title": "Lesen Teil 3 - Exam 19: Erholung und Reisen",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "Urlaubsregion Allgäuer Alpen Die Urlaubsregion Allgäuer Alpen ist eine der schönsten Deutschlands. Mit Bussen und Bahnen gelangt man zu Burgen, Schlössern, Kirchen und Klöstern. Das kulinarische Angebot bietet für jeden Geschmack genügend Auswahl. Bergwanderer schätzen - vor allem im Spätsommer - Hüttenwanderungen auf den gut ausgebauten Höhenwegen. Bergbahnen und Sessellifte nehmen viel von der Mühe des Aufstiegs ab. Auch für die Wassersportler ist ausreichend gesorgt.",
+      "correct": 8,
+      "highlightColor": 0
+    },
+    {
+      "id": "b",
+      "text": "Ritter und Burgfräulein für ein Wochenende Seit vielen Jahrhunderten gibt es in Deutschland Burgen. Hoch über mittelalterlichen Städten und oft in romantischer Landschaft ragen sie als touristische Attraktionen empor. Für Geschichtsinteressierte inszeniert man im alten Gemäuer bunte Feste, die das Mittelalter originaltreu zum Leben erwecken. Hier erleben Sie Ritterturniere, Minnesang und zünftige Gelage. Beliebt sind auch Bauernmärkte mit traditionsreicher Handwerkskunst, Maskentreiben und Volkstheater, deren Stücke an die Sagen und Märchen anknüpfen, die sich um jede Burg ranken. Anmeldung unter info@mittelalter.com",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "c",
+      "text": "Ferien im Harz Der Harz erhebt sich inselartig über der Norddeutschen Tiefebene und verbindet die Länder Sachsen-Anhalt, Niedersachsen und Thüringen. Er ist zugleich das höchste Mittelgebirge nördlich des Mains, im Brockenmassiv auf 1142 Meter ansteigend. Der Romkerhaller Wasserfall, der aus großer Höhe in die Tiefe stürzt, ist im Okertal neben der Okertalsperre ein beliebtes Fotomotiv. Fast jede Form von Wassersport ist hier möglich - Surfen, Paddeln, Rudern etc.",
+      "correct": 4,
+      "highlightColor": 1
+    },
+    {
+      "id": "d",
+      "text": "Auf den Spuren des römischen Dichters Ausonius Von Bingen am Rhein bis nach Trier an der Mosel führt dieser nach dem römischen Dichter Ausonius benannte Wanderweg. Auf der ehemaligen römischen Heerstraße geht es stets über die Höhenrücken des Hunsrücks. Durch Wälder und vorbei an Hunsrücker Dörfern ist die römische Vergangenheit an der Strecke und in Museen allgegenwärtig. Der 140 Kilometer lange Weg, den auch Ausonius bereiste, führt über die Höhen und durchschneidet die Bachtäler in stetigem Auf und Ab, um dann ab Neumagen die Mosel bis nach Trier zu begleiten.",
+      "correct": 2,
+      "highlightColor": 2
+    },
+    {
+      "id": "e",
+      "text": "Extra für Musicalfans MAMMA MIA! ist eine mitreißende Musical-Komödie mit den 22 größten Hits von ABBA - und keine langweilige Biografie. Alle Songs werden auf Deutsch gesungen, so ist ein schwungvoller und unterhaltsamer Abend garantiert. Die mitreißende Musical-Komödie von Benny Andersson und Björn Ulvaeus hat weltweit schon über 24 Millionen Zuschauer begeistert. MAMMA MIA! - ein grandiöses Stück über Liebe, Familie und Freundschaft. Vorstellungen jeden Abend um 18 und 20.30 Uhr. Hamburg Operettenhaus, Spielbudenplatz 1, 20369 Hamburg",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "f",
+      "text": "Durch das Watt Es gibt eine Steigerung zum 'normalen' Strandspaziergang: die Wattwanderung. An der Nordsee finden Sie die größte zusammenhängende Wattlandschaft der Welt. Hier gibt es viel zu entdecken: gleich drei Nationalparks im Wattenmeer mit faszinierenden Landschaften und Tausenden von Tierarten. Ein Höhepunkt sind bestimmt die Seehundbänke im Nationalpark Hamburgisches Wattenmeer. Eine weitere Spezialität für fortgeschrittene Wattfans sind die Halligen, kleine Reste ehemals großer Marschinseln, die während der winterlichen Sturmfluten mehrmals 'landunter' gehen.",
+      "correct": 7,
+      "highlightColor": 3
+    },
+    {
+      "id": "g",
+      "text": "Achtung, Kamera läuft! Und Action! Besucher des Movie Park Deutschland sollten sich nicht wundern, wenn sie sich plötzlich an einem Set befinden und den Anweisungen des Regisseurs folgen oder spektakuläre Stunts hautnah erleben. In Bottrop, mitten im Ruhrgebiet, dreht sich alles um Filme mit viel Action und Spannung. Gehen auch Sie den Geheimnissen des Bermuda-Dreiecks auf den Grund, wagen Sie selbst eine aufregende Verfolgung im Flugsimulator oder testen Sie Ihre Nerven auf einer der größten Achterbahnen Deutschlands! Aus Sicherheitsgründen Zutritt nur für Erwachsene.",
+      "correct": 0,
+      "highlightColor": 4
+    },
+    {
+      "id": "h",
+      "text": "Wiesbaden - internationaler Treffpunkt 'Gesundheit' Das Mineralheilbad Wiesbaden liegt in einer milden, gemäßigten Klimazone. Bereits 1836 wurde hier die erste 'Orthopädische Heilanstalt' eröffnet. Die Kurstadt mit ihrem historischen Charme ist unter anderem für ihre natriumchloridhaltigen Thermalquellen berühmt, die für vielfältige Kuren genutzt werden. In erster Linie werden sie bei rheumatischen Erkrankungen und Katarrhen der Atmungsorgane, aber auch bei Erkrankungen des Nervensystems und psychosomatischen Leiden eingesetzt.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "i",
+      "text": "Spiel und Spaß am Bodensee Auf die Plätze - die kleinen grauen Zellen anknipsen - und los geht's auf eine Erlebnisreise durch das Ravensburger Spieleland. In dem Freizeitpark am Bodensee spielt die ganze Familie mit, pumpt beim Feuerwehrspiel um die Wette, flitzt mit dem Fix & Foxi-Raketenblitz und sagt Käpt'n Blaubär 'Guten Tag'. Bekannte Ravensburger Brettspiele wie das Verrückte Labyrinth sind riesengroß. Und wo sonst kann man Memory-Kärtchen vom Hubschrauber aus bedienen? Das geht nur im Freizeitpark Ravensburger Spieleland. Mitten in der schönsten Natur und ganz in der Nähe des Bodensees warten 50 Attraktionen auf 25 Hektar darauf, entdeckt zu werden.",
+      "correct": 5,
+      "highlightColor": 5
+    },
+    {
+      "id": "j",
+      "text": "Bad Elster - heilendes Wasser aus sprudelnden Quellen In Bad Elster sprudeln gleich drei Trinkquellen unterschiedlicher Zusammensetzung und Heilwirkung. Das Herzstück einer Trink- und Badekur sind die Moritz- und die Marienquelle, die sich in der Nähe des Badeplatzes befinden. Bereits 1669 wurde den Quellen eine heilende Kraft bestätigt: Mineral- und Sprudelbäder beugen Herz- und Kreislauferkrankungen vor, Naturmoorbäder und Packungen helfen gegen Rheuma, Arthritis, bei Frauenleiden, dem Ausheilen von Sport- und Unfallverletzungen sowie bei der operativen Nachsorge und Reha-Maßnahmen. Und Trinkkuren unterstützen die Heilung bei Stoffwechsel-, Nieren- und Harnwegserkrankungen.",
+      "correct": 6,
+      "highlightColor": 6
+    },
+    {
+      "id": "k",
+      "text": "Ein besonderer Weihnachtsmarkt Willkommen auf dem Striezelmarkt, dem ältesten Weihnachtsmarkt Deutschlands. Gegründet 1434, verdankt er seinen Namen dem Hefestriezel, längst berühmt als Original Dresdner Christstollen. Alljährlich ist ihm zum Stollenfest, am Samstag vor dem 2. Advent, ein riesiger Festumzug gewidmet. Bestaunen Sie im Mittelpunkt des Marktes die mit 14 Metern höchste Weihnachtspyramide der Welt. Traditionelle Handwerksarbeiten vom Feinsten aus Dresden und Umgebung wie Pyramiden, Räuchermänner, Schwibbögen, Töpferwaren und Herrenhuter Adventssterne werden auch Sie verzaubern.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "l",
+      "text": "Bad Homburg - in einzigartiger Badekultur entspannen wie Könige In Bad Homburg steht das heilsame und wohltuende Thermalwasser von höchster Qualität als heilendes Element im Vordergrund. Es enthält für den Körper wichtige Mineralstoffe. Gleich sechs kalte, kohlensäurehaltige Kochsalzquellen, ein Solesprudel und zwei Stahlquellen werden für Trinkkuren und Mineralbäder verwendet. Man erlebt aktive Entspannung mit Gesundheits-, Fitness- und Sportprogramm. Individuelle Therapien und Verfahren helfen bei Bewältigung von Stressproblemen. Moderne medizinische und therapeutische Erkenntnisse haben das Kurangebot Bad Homburgs in den letzten hundert Jahren wesentlich beeinflusst.",
+      "correct": 3,
+      "highlightColor": 7
+    }
+  ],
+  "situations": [
+    "Ein Bekannter möchte miterleben, wie spektakuläre Filmszenen gedreht werden.",
+    "Eine Bekannte interessiert sich für CDs mit klassischer Musik.",
+    "Eine Bekannte möchte eine mehrtägige Fußwanderung machen und dabei etwas über die kulturelle Vergangenheit der Region erfahren.",
+    "Eine Bekannte möchte sich in einem Kurort von der Hektik des Alltags erholen.",
+    "Ein Bekannter möchte im Urlaub auf einem See Boot fahren",
+    "Eine Familie möchte mit ihren Kindern einen aktiven und lustigen Tag verbringen.",
+    "Ein Bekannter hat ein neues Kniegelenk bekommen und sucht eine geeignete Kur.",
+    "Eine Bekannte ist Hobbyzoologin und interessiert sich für den Lebensraum 'Küste'.",
+    "Ein Bekannter liebt die Bergwelt, kann aber keine steilen und anstrengenden Wege mehr gehen.",
+    "Eine Bekannte möchte Geschichten über Ritter und Burgen lesen."
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (e, j, k, l). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Urlaubsregion Allgäuer Alpen",
+        "Ein Bekannter liebt die Bergwelt, kann aber keine steilen und anstrengenden Wege mehr gehen."
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Ferien im Harz",
+        "Ein Bekannter möchte im Urlaub auf einem See Boot fahren"
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Auf den Spuren des römischen Dichters Ausonius",
+        "Eine Bekannte möchte eine mehrtägige Fußwanderung machen und dabei etwas über die kulturelle Vergangenheit der Region erfahren."
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Durch das Watt",
+        "Eine Bekannte ist Hobbyzoologin und interessiert sich für den Lebensraum 'Küste'."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Movie Park Deutschland",
+        "Ein Bekannter möchte miterleben, wie spektakuläre Filmszenen gedreht werden."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Ravensburger Spieleland",
+        "Eine Familie möchte mit ihren Kindern einen aktiven und lustigen Tag verbringen."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "Bad Elster",
+        "Ein Bekannter hat ein neues Kniegelenk bekommen und sucht eine geeignete Kur."
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "Bad Homburg",
+        "Eine Bekannte möchte sich in einem Kurort von der Hektik des Alltags erholen."
+      ]
+    }
+  ]
+}

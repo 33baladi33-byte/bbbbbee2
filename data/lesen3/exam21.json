@@ -1,0 +1,150 @@
+{
+  "title": "Lesen Teil 3 - Exam 20: Sport",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "Die Österreicherin Gerlinde Kaltenbrunner zählt zu den bekanntesten Bergsteigerinnen der Welt. Als erste Frau hat sie aus eigener Kraft, das heißt ohne Träger und ohne Sauerstoff, alle 14 Achttausender bestiegen. Schon sehr früh entdeckte sie ihre Begeisterung für die Berge ihrer oberösterreichischen Heimat. Ihren ersten Achttausender bestieg sie mit 23 Jahren und seit mehr als zehn Jahren ist sie Profibergsteigerin. In ihrem Vortrag spricht Gerlinde Kaltenbrunner über ihre Erlebnisse und ihre Pläne, über Leidenschaft, Willensstärke, Disziplin und Geduld. Höhenbergsteigerin Gerlinde Kaltenbrunner, 14. Mai, Kulturzentrum, 20.00 Uhr",
+      "correct": 2,
+      "highlightColor": 0
+    },
+    {
+      "id": "b",
+      "text": "Seniorenwohnhaus 'Zur alten Linde' Sie möchten sich gerne ehrenamtlich im sozialen Bereich engagieren? Wir bieten Ihnen eine ganze Reihe von Möglichkeiten dazu: Besuchsdienste, Begleitung und Hilfestellung bei Behördenwegen, Spazierengehen und vieles mehr. Wenn Sie sich für alte Menschen und ihre Geschichten interessieren, wenn Sie Einfühlungsvermögen haben und gerne zuhören, dann füllen Sie doch einfach den Fragebogen aus. Anschließend vereinbaren wir einen Termin für ein Erstgespräch. Wir freuen uns auf Ihre Nachricht.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "c",
+      "text": "Neue Studie erschienen Eine neue Studie stellt intensiv betriebenem körperlichem Training kein gutes Zeugnis aus. Dabei hatte die Studie die Aspekte des hohen Gefahrenpotentials und die damit verbundenen Unfallverletzungen bewusst ausgeklammert. Es ging lediglich um die Fragestellung, ob ein Mehr an körperlichem Training auch gesünder sei. Dass regelmäßige Bewegung gesund ist, steht außer Frage. Wer sich täglich körperlich betätigt, senkt sein Risiko für viele Krankheiten wie zum Beispiel Diabetes und Herzerkrankungen. Der Studie zufolge soll extremes Training dieses Risiko allerdings wieder erhöhen. Zu den ausführlichen Ergebnissen der Studie gelangen Sie hier.",
+      "correct": 7,
+      "highlightColor": 1
+    },
+    {
+      "id": "d",
+      "text": "Historische Fotos für das Stadtjubiläum Für die geplante Ausstellung zum bevorstehenden Stadtjubiläum sucht das Kulturamt noch historische Aufnahmen. Dazu werden alle Bürgerinnen und Bürger ganz herzlich gebeten, alte Bilder und Fotos zur Verfügung zu stellen. Von Interesse sind nicht nur geschichtlich relevante Aufnahmen, sondern auch private Bilder, die vom Leben in unserer Stadt erzählen. Weil in diesem Jahr auch der Städtische Sportclub sein 100-jähriges Bestehen feiert, soll es eine eigene Bilderabteilung geben, die historischen Sportveranstaltungen gewidmet ist. Der Termin und der Ort, zu dem Sie Ihre Erinnerungsstücke zur Sichtung bringen können, werden noch bekannt gegeben.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "e",
+      "text": "Nervenkitzel pur: Bungee-Jumping Wir bieten euch unvergessliche Erlebnisse rund um die Extremsportart Bungee-Jumping. In einer traumhaften Landschaft, mehr als 100 Meter über dem Wasser, verschaffen wir euch den ultimativen Kick! Im Sommer haben wir wieder täglich von Dienstag bis Sonntag jeweils ab Mittag geöffnet - geeignetes Wetter vorausgesetzt. Für Sprünge am Tag ist eine Reservierung nicht zwingend notwendig, aber besonders bei Schönwetter empfehlenswert. Im August bieten wir auch zwei Nachtsprungtermine an. Für diese müsst ihr mindestens sechs Personen sein und euch auch verbindlich anmelden. Hier geht es zur Terminreservierung. Weitere Infos zu Preisen, Lage und Anfahrt gibt es hier.",
+      "correct": 5,
+      "highlightColor": 2
+    },
+    {
+      "id": "f",
+      "text": "Freiwillige Feuerwehr Die Freiwilligen Feuerwehren rücken nicht nur an, wenn es brennt, sondern vermitteln auch Wissenswertes zum Thema Brandschutz. Gemeinsam mit Pädagogen hat unsere Freiwillige Feuerwehr ein Programm entwickelt, mit dem sie das Bewusstsein der Kinder und Jugendlichen für das Thema Sicherheit und Gefahrenvermeidung schärfen möchte. Im Rahmen dieses Projektes wurden gemeinsam mit Pädagogen und Pädagoginnen besondere Arbeitsunterlagen für Trainingseinheiten an Bildungsstätten vorbereitet. Interessierte Schulen und Kindergärten haben noch bis Ende April die Möglichkeit, sich zu dem Training anzumelden. Tel.: 0677-4567489",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "g",
+      "text": "Spektakuläre Feuerwehrübung Übung für den Ernstfall: Gemeinsam mit anderen Einsatzorganisationen veranstaltete die örtliche Feuerwehr eine besonders eindrucksvolle Einsatzübung. Dabei wurde simuliert, dass sich bei einer Führung durch das Rathaus ein Unfall im Turm ereignet und mehrere schwerverletzte Menschen geborgen werden müssen. Nach der Erstversorgung durch einen Notarzt in schwindelnder Höhe gelang es, die angeblichen Schwerverletzten über die Drehleiter zu bergen. Hier der Film des spektakulären Einsatzes",
+      "correct": 1,
+      "highlightColor": 3
+    },
+    {
+      "id": "h",
+      "text": "Helfer und Helferinnen gesucht Für unseren Halbmarathon am 20. Juli suchen wir noch Freiwillige, die uns bei der Benefizveranstaltung unterstützen möchten. Es gibt viele Bereiche, in denen ihr uns helfen könnt: vom Aufbau von Zuschauerbarrieren über Streckensicherung und Startnummernausgabe bis zum Einsatz an den Verpflegungsposten - jede helfende Hand ist uns herzlich willkommen. Die Veranstaltung dient einem guten Zweck. Die Startgelder und 10 Prozent der Einnahmen aus der Gastronomie gehen an gemeinnützige Vereine unserer Stadt. Anmelden könnt ihr euch auf der Webseite der Stadtverwaltung unter Veranstaltungen/Halbmarathon/Freiwillige.",
+      "correct": 0,
+      "highlightColor": 4
+    },
+    {
+      "id": "i",
+      "text": "Märchenwanderung für Kinder von 8 bis 12 Jahren Wir wandern entlang des Märchenwanderwegs, der durch eine abwechslungsreiche Landschaft führt, mit herrlicher Aussicht auf die Berge. Am Ende des Weges gelangen wir zu einem Wildgehege. Was ihr braucht: feste Schuhe, bei unbeständigem Wetter einen Regenschutz (bitte keine Schirme) und Kleidung, die ruhig schmutzig werden darf. Treffpunkt: vor der Kirche, um 10.00 Uhr. Dauer: 4 Stunden (Wander- und Erzählzeit). Teilnahmegebühr: 17 Euro inklusive Mittagessen. Leitung: Märchentante Gerlinde, unterstützt von zwei freiwilligen Helferinnen. Wir wandern ohne Eltern oder Begleitpersonen.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "j",
+      "text": "Aktion 'Sauberes Grün' Die Aktion 'Sauberes Grün' findet dieses Jahr nicht wie bisher an einem einzigen Tag statt, sondern dauert gleich drei Tage. Wir rufen Kindergärten, Schulen und Vereine dazu auf, sich auch dieses Jahr wieder zahlreich an unserer gemeinnützigen Putzaktion zu beteiligen. Ausgerüstet mit Handschuhen und Säcken werden die Teilnehmerinnen und Teilnehmer Grünflächen, Parks und Spielplätze in der Stadt säubern. Auch Einzelpersonen sind herzlich willkommen! Am Samstag gibt es dann wieder das große Abschlussfest. Unsere jährliche Aktion für eine saubere Stadt, dieses Jahr vom 2. bis 4. Mai. Anmeldungen bei den städtischen Reinigungsbetrieben: 0240-191980.",
+      "correct": 3,
+      "highlightColor": 5
+    },
+    {
+      "id": "k",
+      "text": "Tag der offenen Tür in der städtischen Bücherei Zum Anlass des Welttages des Buches am 23. April möchten wir uns ganz den jungen Lesern widmen. Unser Kinderprogramm umfasst auch spannende Lesungen, für die wir noch Freiwillige unter achtzehn suchen. Nicht Lehrer oder Eltern, sondern junge Menschen sollen den ganz Kleinen aus alten und neuen Kinderbüchern vorlesen. Wenn du gerne (vor)liest, dann bist du am 23. April bei uns genau richtig! Schick uns einfach deine Daten und einen Lesevorschlag per Mail an: info@buecherei-stadt.com. Übrigens: Als kleine Belohnung darfst du dich bei unserem Bücher-Flohmarkt bedienen!",
+      "correct": 6,
+      "highlightColor": 6
+    },
+    {
+      "id": "l",
+      "text": "150 Jahre Stadtfeuerwehr Zum Jubiläum '150 Jahre Stadtfeuerwehr' laden die Feuerwehr und der Katastrophenschutz zu einer Leistungsschau. Zu besichtigen: das 'brandneue' Löschfahrzeug, das auch dank der großzügigen Unterstützung von Sponsoren angeschafft werden konnte. Weiter: einige abenteuerliche Bergungen durch aktive Mitglieder der Freiwilligen Feuerwehr. Dann eine spektakuläre Löschaktion. Und zum Schluss: Grillfeuer für alle! Wann? Samstag, 23. Juli ab 16.00 Uhr, am alten Messegelände. Die Freiwillige Feuerwehr hofft auf großes Interesse!",
+      "correct": 9,
+      "highlightColor": 7
+    }
+  ],
+  "situations": [
+    "Ein Freund von Ihnen möchte gerne bei einer Sportveranstaltung mitarbeiten",
+    "Sie interessieren sich für Videos von besonderen Rettungseinsätzen.",
+    "Sie möchten mehr über die psychischen Aspekte des Klettersports erfahren.",
+    "Sie möchten mithelfen, Ihre Stadt schöner zu machen.",
+    "Ihr Vater plant, eine Familienchronik zu schreiben.",
+    "Sie möchten einem Freund ein besonderes Sporterlebnis schenken",
+    "Ihre sechzehnjährige Cousine beschäftigt sich gerne mit kleinen Kindern.",
+    "Sie suchen Informationen zu den gesundheitlichen Auswirkungen von Sport.",
+    "Sie suchen Informationen über eine Versicherung gegen Sportverletzungen.",
+    "Ihr kleiner Bruder möchte einmal ein Feuerwehrauto aus der Nähe sehen."
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (b, f, j, k). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Gerlinde Kaltenbrunner",
+        "Sie möchten mehr über die psychischen Aspekte des Klettersports erfahren."
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Neue Studie erschienen",
+        "Sie suchen Informationen zu den gesundheitlichen Auswirkungen von Sport."
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Bungee-Jumping",
+        "Sie möchten einem Freund ein besonderes Sporterlebnis schenken"
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Spektakuläre Feuerwehrübung",
+        "Sie interessieren sich für Videos von besonderen Rettungseinsätzen."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Helfer und Helferinnen gesucht",
+        "Ein Freund von Ihnen möchte gerne bei einer Sportveranstaltung mitarbeiten"
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Aktion 'Sauberes Grün'",
+        "Sie möchten mithelfen, Ihre Stadt schöner zu machen."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "Tag der offenen Tür in der städtischen Bücherei",
+        "Ihre sechzehnjährige Cousine beschäftigt sich gerne mit kleinen Kindern."
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "150 Jahre Stadtfeuerwehr",
+        "Ihr kleiner Bruder möchte einmal ein Feuerwehrauto aus der Nähe sehen."
+      ]
+    }
+  ]
+}
