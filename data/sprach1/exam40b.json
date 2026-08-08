@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 40: Liebe Sandra (معدل)",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Liebe Sandra,\nAus Helgoland sende ich dir herzlich Grüße! Vielleicht überrascht es dich, dass ich Urlaub auf einer Nordseeinsel mache. Sonst zieht ⌄ __ (1) __ ⌄ mich ja immer in den Süden. Ehrlich gesagt, noch vor kurzem hätte ich auch nicht gedacht, ⌄ __ (2) __ ⌄ ein Urlaub ganz ohne Partyleben das Richtige für mich sein könnte. Aber ich hatte in den letzten Monaten auf der Arbeit ⌄ __ (3) __ ⌄ Stress und wünsche mir im Moment vor allem Ruhe. Wenn man sich von der Hektik des Alltags erholen möchte, ist Helgoland jedenfalls genau der richtige Ort. Man kann an den Strand gehen, baden oder einfach mal gar nichts unternehmen. Das Klima ist mild und nicht zu heiß, ⌄ __ (4) __ ⌄ ich als sehr angenehm empfinde. Es gibt weder Fabriken noch Autoverkehr und somit auch keine Luftverschmutzung. Helgoland besteht eigentlich ⌄ __ (5) __ ⌄ zwei Inseln: einer Felseninsel und einer kleineren Sandinsel, die per Fähre zu ⌄ __ (6) __ ⌄ ist. Man kann dort Seehunde und Kegelrobben beobachten. Ich glaube, es gibt kaum einen anderen Ort auf der Welt, wo man wild ⌄ __ (7) __ ⌄ Tiere so gut aus der Nähe beobachten kann. Viele Touristen bleiben übrigens nur ⌄ __ (8) __ ⌄ Stunden auf der Insel. ⌄ __ (9) __ ⌄ die Tagesausflüger wieder abgefahren sind, kehrt Ruhe ein. Nachts kann man hier wirklich gut schlafen, weil man nur ein bisschen Wellenrauschen hört. ⌄ __ (10) __ ⌄ gibt es bei dir denn Neues? Du hast ja mal gesagt, dass du gern umziehen würdest. Wie sieht es aus? Hast du schon mit der Wohnungssuche begonnen? Ich freue mich, bald wieder von dir zu hören!\nViele Grüße\nDorothée",
+  "options": [
+    {
+      "id": 1,
+      "options": ["es", "was", "das"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "zieht",
+        "connector": "es",
+        "after": "mich ja",
+        "color": 2
+      }
+    },
+    {
+      "id": 2,
+      "options": ["ob", "weil", "dass"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "gedacht,",
+        "connector": "dass",
+        "after": "ein Urlaub",
+        "color": 8
+      }
+    },
+    {
+      "id": 3,
+      "options": ["viel", "viele", "großen"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Arbeit",
+        "connector": "viel",
+        "after": "Stress",
+        "color": 0
+      }
+    },
+    {
+      "id": 4,
+      "options": ["das", "was", "es"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "heiß,",
+        "connector": "was",
+        "after": "ich als",
+        "color": 6
+      }
+    },
+    {
+      "id": 5,
+      "options": ["aus", "in", "zu"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "besteht",
+        "connector": "aus",
+        "after": "zwei Inseln",
+        "color": 4
+      }
+    },
+    {
+      "id": 6,
+      "options": ["erreichen", "erreicht", "erreichte"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "zu",
+        "connector": "erreichen",
+        "after": "ist",
+        "color": 9
+      }
+    },
+    {
+      "id": 7,
+      "options": ["lebende", "lebenden", "lebender"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "wild",
+        "connector": "lebende",
+        "after": "Tiere",
+        "color": 3
+      }
+    },
+    {
+      "id": 8,
+      "options": ["wenige", "wenigen", "weniger"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "nur",
+        "connector": "wenige",
+        "after": "Stunden",
+        "color": 11
+      }
+    },
+    {
+      "id": 9,
+      "options": ["Sobald", "Sofern", "Somit"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Insel.",
+        "connector": "Sobald",
+        "after": "die Tagesausflüger",
+        "color": 5
+      }
+    },
+    {
+      "id": 10,
+      "options": ["was", "wie", "warum"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "hört.",
+        "connector": "was",
+        "after": "gibt es",
+        "color": 7
+      }
+    }
+  ]
+}

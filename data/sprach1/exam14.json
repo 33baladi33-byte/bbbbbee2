@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 14: Sehr geehrte Frau Goronska",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Sehr geehrte Frau Goronska,\nvielen Dank für Ihre Anfrage vom 12. September bezüglich unserer Sprachurlaube in Deutschland und Österreich. Unsere Organisation unterhält insgesamt zehn Schulen, acht ⌄ __ (1) __ ⌄ in Deutschland und zwei in Österreich, an ⌄ __ (2) __ ⌄ Sie ausnahmslos sowohl Ihr Deutsch verbessern als auch an einem anspruchsvollen Kultur- und Freizeitprogramm teilnehmen können.\nDer Sprachunterricht findet in der Regel ⌄ __ (3) __ ⌄ fünf Tagen pro Woche statt, jeweils in der Zeit von 9 bis 13 und von 15 bis 17 Uhr. ⌄ __ (4) __ ⌄ ist kein Nachmittagsunterricht. Das Kursangebot umfasst alle Niveaustufen. Die Mindestdauer für einen Kurs beträgt zwei Wochen, Sie können jedoch auch vier, sechs oder acht Wochen bleiben. Zu Beginn ⌄ __ (5) __ ⌄ wird ein Einstufungstest durchgeführt, mit ⌄ __ (6) __ ⌄ Hilfe wir herausfinden, welcher Kurs für Sie der geeignete ist. Nach Abschluss Ihres Aufenthaltes erhalten Sie eine Teilnahmebescheinigung.\nSelbstverständlich können Sie bei uns Tests auf allen Niveaustufen von A1 bis C1 ablegen und erhalten, ⌄ __ (7) __ ⌄ Sie den Test bestehen, ein international anerkanntes Zertifikat. Hinsichtlich unseres Kultur- und Freizeitprogramms gibt es verschiedene Wahlmöglichkeiten, die ⌄ __ (8) __ ⌄ vor Ort angeboten werden. Dazu zählen Ausflüge in die nähere Umgebung, Museums- und Theaterbesuche und vieles mehr.\nWas die Übernachtung am Kursort angeht, können Sie zwischen einer Unterbringung in einer Gastfamilie und der Unterkunft in einfachen Hotels wählen. Im Unterkunftspreis ⌄ __ (9) __ ⌄ jeweils Halbpension eingeschlossen, das heißt Frühstück und Mittagessen. Bitte teilen Sie uns mit, wenn Sie bestimmte Lebensmittel ausschließen, z. B. vegetarisch essen oder ⌄ __ (10) __ ⌄. Alles Weitere entnehmen Sie bitte dem beiliegenden Katalog. Bei weiteren Fragen sind wir gerne für Sie da.\nMit freundlichen Grüßen\nNatalie Spengler",
+  "options": [
+    {
+      "id": 1,
+      "options": ["dabei", "daraus", "davon"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Schulen, acht",
+        "connector": "davon",
+        "after": "in Deutschland",
+        "color": 2
+      }
+    },
+    {
+      "id": 2,
+      "options": ["denen", "die", "den"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Österreich, an",
+        "connector": "denen",
+        "after": "Sie ausnahmslos",
+        "color": 8
+      }
+    },
+    {
+      "id": 3,
+      "options": ["an", "durch", "in"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Regel",
+        "connector": "an",
+        "after": "fünf Tagen",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["Jeder Mittwoch", "Mittwochs", "zum Mittwoch"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Uhr.",
+        "connector": "Mittwochs",
+        "after": "ist kein",
+        "color": 6
+      }
+    },
+    {
+      "id": 5,
+      "options": ["jedem Kurs", "jeden Kurs", "jedes Kurses"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Beginn",
+        "connector": "jedes Kurses",
+        "after": "wird ein",
+        "color": 9
+      }
+    },
+    {
+      "id": 6,
+      "options": ["der", "deren", "dessen"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "mit",
+        "connector": "dessen",
+        "after": "Hilfe wir",
+        "color": 3
+      }
+    },
+    {
+      "id": 7,
+      "options": ["obwohl", "wenn", "wobei"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "erhalten,",
+        "connector": "wenn",
+        "after": "Sie den",
+        "color": 0
+      }
+    },
+    {
+      "id": 8,
+      "options": ["Ihnen", "Sie", "Euch"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "die",
+        "connector": "Ihnen",
+        "after": "vor Ort",
+        "color": 5
+      }
+    },
+    {
+      "id": 9,
+      "options": ["hat", "ist", "wird"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Unterkunftspreis",
+        "connector": "ist",
+        "after": "jeweils Halbpension",
+        "color": 11
+      }
+    },
+    {
+      "id": 10,
+      "options": ["eine Diät halten müssen", "müssen eine Diät halten", "müssen halten eine Diät"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "oder",
+        "connector": "eine Diät halten müssen",
+        "after": ". Alles Weitere",
+        "color": 7
+      }
+    }
+  ]
+}

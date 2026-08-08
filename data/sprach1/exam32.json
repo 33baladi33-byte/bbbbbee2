@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 32: Sehr geehrte Frau Szabo (معدل)",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Sehr geehrte Frau Szabo,\nvielen Dank für Ihr Interesse an unseren Deutschkursen. ⌄ __ (1) __ ⌄ erhalten Sie das angeforderte Anmeldeformular, das Sie bitte ausgefüllt an uns zurückschicken. Mit der Anmeldung überweisen Sie bitte eine Anzahlung ⌄ __ (2) __ ⌄ von € 200,- auf unser Konto. Die Kontoverbindung finden Sie unten auf dem Anmeldeformular. ⌄ __ (3) __ ⌄ genaueren Einschätzung Ihrer Vorkenntnisse haben wir einen Einstufungstest beigelegt. Wenn Sie die Testbögen ausfüllen und mit der Anmeldung an uns zurücksenden, helfen Sie uns bei der Kursplanung. Ein mündlicher Test wird sich am ersten Unterrichtstag in unserer Schule auch ein mündlicher Test ⌄ __ (4) __ ⌄. Damit sind wir in der Lage, den für Sie angemessenen Kurs auszuwählen.\nAußerdem finden Sie in den Unterlagen einen Fragebogen ⌄ __ (5) __ ⌄ Ihrer Freizeitinteressen, denn wir werden uns bemühen, Ihnen den Aufenthalt in Leipzig ⌄ __ (6) __ ⌄ angenehm zu gestalten. Schließlich füllen Sie bitte das grüne Unterkunftblatt aus. Sie können wählen zwischen einem 3-Sterne-Hotel, ⌄ __ (7) __ ⌄ Privatunterkunft in einer deutschen Gastfamilie oder der Unterkunft in einem Studentenwohnheim. Letzteres ist nur in den Semesterferien der Universität - in der Regel vom 15.2. bis 15.4. und vom 15.7. bis 15.10. - möglich.\nGeben Sie bitte auch Ihre Verpflegungswünsche - Frühstück oder Halbpension - an. Beachten Sie aber, dass im Studentenwohnheim nur Selbstverpflegung möglich ist. ⌄ __ (8) __ ⌄ Ihre Anmeldung bei uns eingegangen ist, erhalten Sie eine Anmeldebestätigung und einen Stadtplan mit Wegbeschreibung, ⌄ __ (9) __ ⌄ Sie den Weg zu uns ohne Umstände finden. Die Adresse Ihrer Unterkunft erhalten Sie ca. 2 Wochen vor Kursbeginn. ⌄ __ (10) __ ⌄ weitere Fragen steht Ihnen unser Sekretariat gerne montags bis freitags von 8 bis 18 Uhr zur Verfügung.\nMit freundlichen Grüßen\nGerhard Dietz Direktor",
+  "options": [
+    {
+      "id": 1,
+      "options": ["anbei", "dabei", "vorbei"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Deutschkursen.",
+        "connector": "anbei",
+        "after": "erhalten Sie",
+        "color": 2
+      }
+    },
+    {
+      "id": 2,
+      "options": ["in Betrag", "in Höhe", "in Summe"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Anzahlung",
+        "connector": "in Höhe",
+        "after": "von €",
+        "color": 8
+      }
+    },
+    {
+      "id": 3,
+      "options": ["für", "zur", "zwek"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Formular.",
+        "connector": "zur",
+        "after": "genaueren Einschätzung",
+        "color": 0
+      }
+    },
+    {
+      "id": 4,
+      "options": ["durchführen", "stattfinden", "veranstalten"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "auch ein mündlicher Test",
+        "connector": "stattfinden",
+        "after": ". Damit sind",
+        "color": 6
+      }
+    },
+    {
+      "id": 5,
+      "options": ["anlässlich", "bezüglich", "mittels"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Fragebogen",
+        "connector": "bezüglich",
+        "after": "Ihrer Freizeitinteressen",
+        "color": 4
+      }
+    },
+    {
+      "id": 6,
+      "options": ["möglich", "möglicherweise", "möglichst"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Leipzig",
+        "connector": "möglichst",
+        "after": "angenehm zu",
+        "color": 9
+      }
+    },
+    {
+      "id": 7,
+      "options": ["ein", "einem", "einer"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Hotel,",
+        "connector": "einer",
+        "after": "Privatunterkunft in",
+        "color": 3
+      }
+    },
+    {
+      "id": 8,
+      "options": ["Sobald", "Sofort", "Sooft"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "ist.",
+        "connector": "Sobald",
+        "after": "Ihre Anmeldung",
+        "color": 7
+      }
+    },
+    {
+      "id": 9,
+      "options": ["dafür", "damit", "dazu"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Wegbeschreibung,",
+        "connector": "damit",
+        "after": "Sie den",
+        "color": 5
+      }
+    },
+    {
+      "id": 10,
+      "options": ["Bei", "Für", "Zu"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Kursbeginn.",
+        "connector": "Für",
+        "after": "weitere Fragen",
+        "color": 11
+      }
+    }
+  ]
+}

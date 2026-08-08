@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 36: Sehr geehrter Herr Wenzel",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Sehr geehrter Herr Wenzel,\nvielen Dank ⌄ __ (1) __ ⌄ Ihre Anfrage bezüglich der Aktivitäten des Kulturbunds. Unser Hauptanliegen ist es, das kulturelle Leben zu bereichern und kulturelle Initiativen zu fördern. Für unsere Mitglieder findet einmal im Monat – und zwar ⌄ __ (2) __ ⌄ am ersten Montag – ein kultureller Abend in unserer Geschäftsstelle in der Villa Emilia statt. Jeder Abend ist einem bestimmten kulturellen Aspekt ⌄ __ (3) __ ⌄, von der Dichtung über die Musik bis hin zum Theater.\nDarüber hinaus besuchen wir regelmäßig Theateraufführungen innerhalb Deutschlands und haben dazu mehrere ⌄ __ (4) __ ⌄ Treffen. Von besonderem Interesse dürften für die ⌄ __ (5) __ ⌄ unserer Mitglieder unsere Studienreisen sein. Diese führen beispielsweise ⌄ __ (6) __ ⌄ der Route deutscher Dichter von Frankfurt nach Weimar, nach Salzburg und vieles mehr.\nIn diesem Jahr bieten wir übrigens eine ganze besondere Reise an: ⌄ __ (7) __ ⌄ den Spuren Tschaikowskis nach Russland. Alle von uns veranstalteten Reisen werden von sachkundigen Musik- oder Literaturwissenschaftlern begleitet, mit ⌄ __ (8) __ ⌄ Hilfe Sie Ihr kulturelles Wissen erweitern können. Auch bei der Wahl der Verkehrsmittel und Unterkünfte wird auf besonderen Komfort geachtet.\nEin besonderer Service ist der Kartentausch. Wenn Sie Theaterkarten besitzen, aber nicht nutzen wollen, können Sie diese bei uns gegen andere Karten umtauschen – ⌄ __ (9) __ ⌄ diese organisatorisch möglich ist.\nDer Preis für die Mitgliedschaft beträgt 200 Euro pro Jahr für eine Einzelperson bzw. 300 Euro für eine Doppelmitgliedschaft (zwei Personen, z.B. Ehepaare, Freunde etc.). Unsere Geschäftsstelle ist von Montag bis Freitag von 9 bis 12 und von 14 bis 17 Uhr ⌄ __ (10) __ ⌄ und steht Ihnen für Fragen gern zur Verfügung. Ein Anmeldeformular liegt diesem Schreiben bei.\nIn kultureller Verbundenheit grüßen wir Sie herzlich\nSabine Sänger\nKulturbund",
+  "options": [
+    {
+      "id": 1,
+      "options": ["auf", "für", "wegen"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Dank",
+        "connector": "für",
+        "after": "Ihre Anfrage",
+        "color": 2
+      }
+    },
+    {
+      "id": 2,
+      "options": ["jeden", "jedoch", "jeweils"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "zwar",
+        "connector": "jeweils",
+        "after": "am ersten",
+        "color": 8
+      }
+    },
+    {
+      "id": 3,
+      "options": ["gedacht", "geeignet", "gewidmet"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Aspekt",
+        "connector": "gewidmet",
+        "after": ", von der",
+        "color": 0
+      }
+    },
+    {
+      "id": 4,
+      "options": ["vorbereitende", "vorbereitend", "vorbereiteten"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "mehrere",
+        "connector": "vorbereitende",
+        "after": "Treffen. Von",
+        "color": 6
+      }
+    },
+    {
+      "id": 5,
+      "options": ["am meisten", "meisten", "meistens"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "die",
+        "connector": "meisten",
+        "after": "unserer Mitglieder",
+        "color": 4
+      }
+    },
+    {
+      "id": 6,
+      "options": ["entlang", "gegenüber", "während"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "beispielsweise",
+        "connector": "entlang",
+        "after": "der Route",
+        "color": 9
+      }
+    },
+    {
+      "id": 7,
+      "options": ["auf", "hinter", "neben"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "an:",
+        "connector": "auf",
+        "after": "den Spuren",
+        "color": 3
+      }
+    },
+    {
+      "id": 8,
+      "options": ["der", "deren", "dessen"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "mit",
+        "connector": "deren",
+        "after": "Hilfe Sie",
+        "color": 11
+      }
+    },
+    {
+      "id": 9,
+      "options": ["sofern", "sogar", "sogleich"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "umtauschen -",
+        "connector": "sofern",
+        "after": "diese organisatorisch",
+        "color": 5
+      }
+    },
+    {
+      "id": 10,
+      "options": ["erhältlich", "erreichbar", "wirksam"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Uhr",
+        "connector": "erreichbar",
+        "after": "und steht",
+        "color": 7
+      }
+    }
+  ]
+}

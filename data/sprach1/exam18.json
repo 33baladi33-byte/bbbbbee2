@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 18: Sehr geehrter Herr Dr. Dobromil",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Sehr geehrter Herr Dr. Dobromil,\nmit ⌄ __ (1) __ ⌄ Interesse habe ich Ihr Stellenangebot in der Essener Zeitung gelesen, ⌄ __ (2) __ ⌄ Sie eine Teilzeit-Mitarbeiterin in Ihrem Antiquitätengeschäft suchen. Es reizt mich eine verantwortungsvolle Aufgabe in einem so renommierten Geschäft wie dem ⌄ __ (3) __ ⌄ übernehmen ⌄ __ (4) __ ⌄. Nach dem Abitur am Kreisgymnasium in Velbert begann ich eine dreijährige Schreinerlehre ⌄ __ (5) __ ⌄ der Firma Eichelbohrer & Co und besuchte die Kreisberufsschule in Velbert. Nach erfolgreichem Abschluss meiner Berufsausbildung arbeitete ich ⌄ __ (6) __ ⌄ bei Stutz & Partner - Möbeldesign in Düsseldorf. Danach schrieb ich mich an der Fachhochschule Köln im Fachbereich Möbeldesign ein und ⌄ __ (7) __ ⌄ meine Liebe zu antiquarischen Möbelstücken. Meine Spezialität ist das stilgenaue Restaurieren und Aufarbeiten antiquarischer Möbel insbesondere aus dem Biedermeier und dem Jugendstil. Aufgrund meiner Berufserfahrung und meines Studiums konnte ich umfangreiche Kenntnisse erwerben, ⌄ __ (8) __ ⌄ Möbelstile und die Herstellungskunst in den verschiedensten Epochen ⌄ __ (9) __ ⌄ in Nord- und in Südeuropa angeht. Mein Studium lässt mir genügend Zeit, eine Teilzeitstelle zu übernehmen, die darüber hinaus meinen beruflichen Fähigkeiten und Neigungen entspricht. Aus diesem Grund habe ich mich entschlossen, ⌄ __ (10) __ ⌄, und bewerbe mich um die von Ihnen angebotene Teilzeitstelle. Ich freue mich auf ein persönliches Gespräch.\nMit freundlichen Grüßen,\nSabina Holzinger",
+  "options": [
+    {
+      "id": 1,
+      "options": ["allergrößte", "allergrößtem", "allergrößten"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "mit",
+        "connector": "allergrößtem",
+        "after": "Interesse habe",
+        "color": 3
+      }
+    },
+    {
+      "id": 2,
+      "options": ["an dem", "auf dem", "in dem"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "gelesen,",
+        "connector": "an dem",
+        "after": "Sie eine",
+        "color": 8
+      }
+    },
+    {
+      "id": 3,
+      "options": ["Ihrem", "Ihren", "Ihres"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "dem",
+        "connector": "Ihrem",
+        "after": "übernehmen",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["können", "könnte", "zu können"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "übernehmen",
+        "connector": "zu können",
+        "after": ". Nach dem",
+        "color": 6
+      }
+    },
+    {
+      "id": 5,
+      "options": ["an", "bei", "mit"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Schreinerlehre",
+        "connector": "bei",
+        "after": "der Firma",
+        "color": 9
+      }
+    },
+    {
+      "id": 6,
+      "options": ["ein Jahr lang", "durch ein Jahr", "seit einem Jahr"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "arbeitete ich",
+        "connector": "ein Jahr lang",
+        "after": "bei Stutz",
+        "color": 4
+      }
+    },
+    {
+      "id": 7,
+      "options": ["entdeckte", "erfand", "merkte"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "ein und",
+        "connector": "entdeckte",
+        "after": "meine Liebe",
+        "color": 0
+      }
+    },
+    {
+      "id": 8,
+      "options": ["das", "was", "welches"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "erwerben,",
+        "connector": "was",
+        "after": "Möbelstile und",
+        "color": 11
+      }
+    },
+    {
+      "id": 9,
+      "options": ["sowohl", "teils", "weder"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Epochen",
+        "connector": "sowohl",
+        "after": "in Nord-",
+        "color": 5
+      }
+    },
+    {
+      "id": 10,
+      "options": ["auf Ihre Anzeige antworten", "auf Ihre Anzeige zu antworten", "um auf Ihre Anzeige zu antworten"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "entschlossen,",
+        "connector": "auf Ihre Anzeige zu antworten",
+        "after": ", und bewerbe",
+        "color": 7
+      }
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 33: Lieber Igor",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Lieber Igor,\nvielen Dank für deine Nachricht, ⌄ __ (1) __ ⌄ die ich mich sehr gefreut habe. Es ist echt eine tolle Idee, im Sommer gemeinsam zu verreisen! Aber möchtest du wirklich mit dem Auto fahren? Ich würde lieber die Bahn nehmen, denn das ist umweltfreundlicher und ⌄ __ (2) __ ⌄ noch billiger. Momentan bin ich nämlich mal wieder etwas knapp bei Kasse.\nWir könnten doch eine Interrail-Tour machen. Mit einem Global Pass können wir in 30 europäischen Ländern Zug ⌄ __ (3) __ ⌄ und zwar wann und wohin auch immer - allerdings nicht bei uns in Deutschland. Hier müssen wir extra zahlen. Aber wir haben es ja von mir aus nicht allzu weit bis zur Grenze. ⌄ __ (4) __ ⌄ wir noch keine 26 Jahre alt sind, können wir den Pass ausgesprochen günstig bekommen. Der Preis hängt ⌄ __ (5) __ ⌄ ab, wie lange wir unterwegs sein wollen.\nWenn du lieber nur ein einziges Land bereisen möchtest, schlage ich vor, nach Frankreich zu fahren. Dann nämlich würden wir für ein Interrail-Ticket sogar noch weniger zahlen. Ich habe auch schon mit meiner Tante in Marseille ⌄ __ (6) __ ⌄ und sie hat gleich vorgeschlagen, ⌄ __ (7) __ ⌄ wir einige Tage bei ihr verbringen. Meine Cousins Jérôme und Matthieu, die in Paris studieren, haben Semesterferien und werden auch dort sein. Die beiden würden ⌄ __ (8) __ ⌄ freuen, mit uns um die Häuser zu ziehen, und könnten uns sicherlich die angesagtesten Clubs der Stadt zeigen. Wegen ⌄ __ (9) __ ⌄ Sprachkenntnisse brauchst du dir nicht den Kopf zu zerbrechen, denn die beiden sprechen ziemlich gut Deutsch.\nWas hältst du davon? Hast du noch andere Vorschläge? Ich freue mich ⌄ __ (10) __ ⌄ schon sehr auf unsere gemeinsame Reise.\nBis bald\nThomas",
+  "options": [
+    {
+      "id": 1,
+      "options": ["mit", "über", "wegen"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Nachricht,",
+        "connector": "über",
+        "after": "die ich",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["außerdem", "sonst", "weiterhin"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "und",
+        "connector": "außerdem",
+        "after": "noch billiger",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["fahren", "kommen", "nehmen"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Zug",
+        "connector": "fahren",
+        "after": "und zwar",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["da", "darum", "deshalb"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Grenze.",
+        "connector": "da",
+        "after": "wir noch",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["dadurch", "damit", "davon"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "hängt",
+        "connector": "davon",
+        "after": "ab, wie",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["besprochen", "gesprochen", "versprochen"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Marseille",
+        "connector": "gesprochen",
+        "after": "und sie",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["als", "dass", "wenn"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "vorgeschlagen,",
+        "connector": "dass",
+        "after": "wir einige",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["euch", "sich", "uns"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "würden",
+        "connector": "sich",
+        "after": "freuen, mit",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["das", "der", "die"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Wegen",
+        "connector": "die",
+        "after": "Sprachkenntnisse brauchst",
+        "color": 0
+      }
+    },
+    {
+      "id": 10,
+      "options": ["bestenfalls", "jedenfalls", "keinesfalls"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "freue mich",
+        "connector": "jedenfalls",
+        "after": "schon sehr",
+        "color": 5
+      }
+    }
+  ]
+}

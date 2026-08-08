@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 5: Liebe Karin",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Liebe Karin,\nvielen Dank für deine letzte E-Mail! Ich habe mich wirklich sehr gefreut zu lesen, dass es dir in München so gut gefällt. Endlich kannst du auch das studieren, ⌄ __ (1) __ ⌄ du möchtest – das ist doch super! Wie ist es ⌄ __ (2) __ ⌄ so an der Uni dort? Hast du schon neue Leute kennengelernt? Und wie sieht deine Woche aus? Hast du viele Veranstaltungen? Musst du zuhause auch ⌄ __ (3) __ ⌄ viel lernen? Jobbst du eigentlich noch nebenbei?\nDu siehst, ich habe jede Menge Fragen an dich!\nDeshalb würde ich deine Einladung wirklich gerne ⌄ __ (4) __ ⌄ und dich demnächst in München besuchen kommen. Im Moment habe ich noch nicht so viel Zeit, weil ich mich viel ⌄ __ (5) __ ⌄ Jonas kümmern muss – er ist ja erst sechs Monate alt – und Thomas leider keinen Urlaub nehmen kann. Aber ⌄ __ (6) __ ⌄ frei hat, komme ich mal für ein, zwei Tage zu dir. Ich bin ja so gespannt, wie du wohnst! In einer Wohngemeinschaft zu leben, ist bestimmt toll, ⌄ __ (7) __ ⌄ es mal Streit gibt. Aber du hast ja geschrieben, dass deine beiden Mitbewohnerinnen sehr nett sind und ihr euch alle gut versteht. Das freut mich wirklich ⌄ __ (8) __ ⌄ dich!\nBei mir gibt es gar nicht viel Neues. Wir hatten ⌄ __ (9) __ ⌄ mal überlegt, in eine größere Wohnung zu ziehen, aber die Mieten sind ja hier in Köln recht hoch und wir ⌄ __ (10) __ ⌄ uns nicht viel zumuten – also bleiben wir lieber erst mal in dieser Wohnung. Umziehen kann man ja auch später noch.\nAlso, meld' dich doch mal wieder!\nLiebe Grüße,\nHeike",
+  "options": [
+    {
+      "id": 1,
+      "options": ["das", "was", "welches"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "das studieren,",
+        "connector": "was",
+        "after": "du möchtest",
+        "color": 2
+      }
+    },
+    {
+      "id": 2,
+      "options": ["denn", "doch", "mal"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Wie ist es",
+        "connector": "denn",
+        "after": "so an",
+        "color": 8
+      }
+    },
+    {
+      "id": 3,
+      "options": ["dazu", "noch", "sogar"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "zuhause auch",
+        "connector": "noch",
+        "after": "viel lernen",
+        "color": 0
+      }
+    },
+    {
+      "id": 4,
+      "options": ["abnehmen", "annehmen", "nehmen"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Einladung wirklich gerne",
+        "connector": "annehmen",
+        "after": "und dich",
+        "color": 5
+      }
+    },
+    {
+      "id": 5,
+      "options": ["für", "über", "um"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "mich viel",
+        "connector": "um",
+        "after": "Jonas kümmern",
+        "color": 10
+      }
+    },
+    {
+      "id": 6,
+      "options": ["bevor", "bis", "sobald"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Aber",
+        "connector": "sobald",
+        "after": "frei hat",
+        "color": 3
+      }
+    },
+    {
+      "id": 7,
+      "options": ["wenn", "auch wenn", "wenn auch"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "toll,",
+        "connector": "auch wenn",
+        "after": "es mal",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["an", "für", "über"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "wirklich",
+        "connector": "für",
+        "after": "dich! Bei",
+        "color": 9
+      }
+    },
+    {
+      "id": 9,
+      "options": ["demnächst", "neulich", "noch nicht"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "hatten",
+        "connector": "neulich",
+        "after": "mal überlegt",
+        "color": 4
+      }
+    },
+    {
+      "id": 10,
+      "options": ["müssen", "sollen", "wollen"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "und wir",
+        "connector": "wollen",
+        "after": "uns nicht",
+        "color": 7
+      }
+    }
+  ]
+}

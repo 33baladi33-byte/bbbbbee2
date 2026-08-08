@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 41: Hi Jens",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Hi Jens,\ndanke für Deine Mail, schön, von Dir zu hören! Ich freu mich, dass es Dir so gut geht – in einer fremden Stadt ganz neu anzufangen ist ja doch nicht so ohne ...\nDieses Mal will ich Dich nicht wieder so ewig auf meine Antwort warten ⌄ __ (1) __ ⌄ und schreibe entgegen meinen sonstigen Gewohnheiten gleich zurück ;-).\nNicht zuletzt, ⌄ __ (2) __ ⌄ ich gern noch mehr über Deinen neuen Job ⌄ __ (3) __ ⌄ Fußballtrainer für Kinder erfahren möchte. Ich wusste gar nicht, ⌄ __ (4) __ ⌄ Du so fußballbegeistert bist! Früher warst Du doch in einer Handballmannschaft, oder?\nWie kommst Du denn mit den Kindern klar, hast Du da nicht ständig Probleme mit der Disziplin? Und wie alt sind die Kinder, die Du trainierst, genau?\nIch frage, weil ich in meinem Sportunterricht zurzeit ⌄ __ (5) __ ⌄ viel Stress habe.\nDu hast ja noch mitbekommen, dass ich ein Sportstudium angefangen habe, oder? Tja, an der Uni lief bisher auch alles glatt, aber ⌄ __ (6) __ ⌄ Schulpraktikum habe ich es einfach nicht geschafft, mich bei einer Gruppe von zwanzig 14-jährigen Jungs ⌄ __ (7) __ ⌄. Die waren total laut und haben nur das gemacht, ⌄ __ (8) __ ⌄ sie wollten. Die Stunde endete in einem ⌄ __ (9) __ ⌄ Chaos.\nDeshalb hab ich im Moment eine mittelgroße Krise und kann ⌄ __ (10) __ ⌄ gar nicht mehr vorstellen, Lehrer zu werden. Aber vielleicht hast Du ja ein paar Tipps und Kniffe für mich, wie man sich bei einem Haufen pubertierender Jungs Gehör verschaffen kann?\nBitte schreib mir schnell zurück!\nAlso hoffentlich bis bald\nDein etwas verzweifelter Matthias",
+  "options": [
+    {
+      "id": 1,
+      "options": ["lassen", "gelassen", "ließ"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "warten",
+        "connector": "lassen",
+        "after": "und schreibe",
+        "color": 0
+      }
+    },
+    {
+      "id": 2,
+      "options": ["weil", "obwohl", "denn"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Nicht zuletzt,",
+        "connector": "weil",
+        "after": "ich gern",
+        "color": 1
+      }
+    },
+    {
+      "id": 3,
+      "options": ["als", "wie", "für"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Job",
+        "connector": "als",
+        "after": "Fußballtrainer",
+        "color": 2
+      }
+    },
+    {
+      "id": 4,
+      "options": ["dass", "das", "ob"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Ich wusste gar nicht,",
+        "connector": "dass",
+        "after": "Du so",
+        "color": 3
+      }
+    },
+    {
+      "id": 5,
+      "options": ["ziemlich", "weit", "sehr"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "zurzeit",
+        "connector": "ziemlich",
+        "after": "viel Stress",
+        "color": 4
+      }
+    },
+    {
+      "id": 6,
+      "options": ["beim", "am", "im"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "aber",
+        "connector": "beim",
+        "after": "Schulpraktikum",
+        "color": 5
+      }
+    },
+    {
+      "id": 7,
+      "options": ["durchgesetzt", "durchzusetzen", "setzte durch"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "mich",
+        "connector": "durchzusetzen",
+        "after": ".",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["was", "das", "wer"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "nur das gemacht,",
+        "connector": "was",
+        "after": "sie wollten",
+        "color": 7
+      }
+    },
+    {
+      "id": 9,
+      "options": ["totalen", "totales", "totale"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "einem",
+        "connector": "totalen",
+        "after": "Chaos",
+        "color": 8
+      }
+    },
+    {
+      "id": 10,
+      "options": ["sich", "mir", "mich"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "kann",
+        "connector": "mir",
+        "after": "gar nicht",
+        "color": 9
+      }
+    }
+  ]
+}

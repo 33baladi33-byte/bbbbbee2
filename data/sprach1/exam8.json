@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 8: Sehr geehrter Herr Martini",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Sehr geehrter Herr Martini,\nvielen Dank für Ihre Anfrage vom 16. Juni ⌄ __ (1) __ ⌄ der Studienreise Ihrer Schulklasse nach Frankfurt am Main im ⌄ __ (2) __ ⌄ Oktober.\nDie Unterkunft bei deutschen Gastfamilien ist prinzipiell möglich. Die Familien werden von uns sorgfältig ⌄ __ (3) __ ⌄ strengen Kriterien ausgewählt, die Sie in der beiliegenden Informationsbroschüre auf den Seiten 15 bis 17 finden. Pro Gastfamilie können ein oder zwei Schülerinnen bzw. Schüler untergebracht werden. Unsere Gastfamilien ⌄ __ (4) __ ⌄ Halbpension, d. h. in der Regel Frühstück und Abendessen, an. Alle Familien wohnen im näheren Umkreis der Schule, ⌄ __ (5) __ ⌄ der Weg von der Unterkunft zum Unterricht innerhalb von maximal 10 Minuten zu Fuß zurückgelegt werden kann.\nZweimal pro Woche ist die Teilnahme am Schulunterricht Ihrer Partnerschule in Frankfurt, der Heinrich-Böll-Schule, in den Fächern Geografie, Kunst und Deutsch vorgesehen. Die Unterrichtssprache ist Deutsch. ⌄ __ (6) __ ⌄ Schülerinnen und Schülern der Partnerschule wird das Freizeit- und Kulturprogramm durchgeführt.\nDazu gehört z. B. ⌄ __ (7) __ ⌄ der Gemäldegalerie \"Städel\", des Museums für Kunsthandwerk und des Deutschen Postmuseums. Auch ein Besuch beim Hessischen Rundfunk ⌄ __ (8) __ ⌄. Jeweils dienstags und freitags werden Kulturabende veranstaltet, an denen die verschiedenen Aspekte und Unterschiede der deutschen und der italienischen Kultur ⌄ __ (9) __ ⌄ werden sollen.\nWeitere Informationen finden Sie in der beiliegenden Broschüre. Wir hoffen, dass Sie und Ihre Klasse einen erlebnisreichen und unvergesslichen Aufenthalt in Frankfurt ⌄ __ (10) __ ⌄ werden. Bei weiteren Fragen setzen Sie sich bitte mit uns in Verbindung.\nMit freundlichen Grüßen\nSibylle Lauterbacher\nStiftung Schüleraustausch Frankfurt",
+  "options": [
+    {
+      "id": 1,
+      "options": ["an", "von", "zu"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "vom 16. Juni",
+        "connector": "zu",
+        "after": "der Studienreise",
+        "color": 3
+      }
+    },
+    {
+      "id": 2,
+      "options": ["ankommenden", "gekommenden", "kommenden"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "im",
+        "connector": "kommenden",
+        "after": "Oktober.",
+        "color": 8
+      }
+    },
+    {
+      "id": 3,
+      "options": ["aus", "mit", "nach"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "sorgfältig",
+        "connector": "nach",
+        "after": "strengen Kriterien",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["bieten", "fordern", "behmen"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Gastfamilien",
+        "connector": "bieten",
+        "after": "Halbpension, d.",
+        "color": 6
+      }
+    },
+    {
+      "id": 5,
+      "options": ["so dass", "weil", "wenn"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Schule,",
+        "connector": "so dass",
+        "after": "der Weg",
+        "color": 9
+      }
+    },
+    {
+      "id": 6,
+      "options": ["gemeinsam mit", "verbunden von", "zusammen neben"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "ist Deutsch.",
+        "connector": "gemeinsam mit",
+        "after": "Schülerinnen und",
+        "color": 0
+      }
+    },
+    {
+      "id": 7,
+      "options": ["die Ansicht", "der Besuch", "das Betrachten"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "z. B.",
+        "connector": "der Besuch",
+        "after": "der Gemäldegalerie",
+        "color": 5
+      }
+    },
+    {
+      "id": 8,
+      "options": ["hat geplant", "ist geplant", "wird geplant haben"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Rundfunk",
+        "connector": "ist geplant",
+        "after": ". Jeweils dienstags",
+        "color": 11
+      }
+    },
+    {
+      "id": 9,
+      "options": ["besprochen", "gesprochen", "versprochen"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Kultur",
+        "connector": "besprochen",
+        "after": "werden sollen",
+        "color": 4
+      }
+    },
+    {
+      "id": 10,
+      "options": ["haben", "hatten", "hätten"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Frankfurt",
+        "connector": "haben",
+        "after": "werden. Bei",
+        "color": 7
+      }
+    }
+  ]
+}

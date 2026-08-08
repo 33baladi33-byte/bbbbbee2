@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 16: Liebe Anna",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Liebe Anna,\njetzt ist schon bald ein halbes Jahr ⌄ __ (1) __ ⌄, seit ich dir das letzte Mal geschrieben habe. Bitte denke jetzt nicht, dass ich dich vergessen habe. Aber, wie du ja schon weißt, stehe ich vor der Abschlussprüfung in Deutsch und das bedeutet jede Menge Arbeit und Stress.\nStell dir vor, ausgerechnet jetzt, nur zwei Wochen vor der Prüfung, ist unsere Lehrerin, Frau Reuter, ⌄ __ (2) __ ⌄ erkrankt. Sie liegt sogar im Krankenhaus und kommt erst wieder zurück, ⌄ __ (3) __ ⌄ unsere Prüfung schon längst vorbei ist. Ihre Vertretung, Frau Eichhorn, ist ⌄ __ (4) __ ⌄ sehr nett, aber sie hat gerade erst mit dem Unterrichten angefangen und noch keine Erfahrung. Das macht uns alle ein bisschen unsicher. Aber in zwei Wochen ist hoffentlich alles geschafft. Und dann ⌄ __ (5) __ ⌄ ich alle Bücher und Hefte in die Ecke legen und erst einmal ein paar Tage gar nichts tun. ⌄ __ (6) __ ⌄ freue ich mich schon riesig. Wenn du Zeit und Lust hast, kannst du mich doch besuchen kommen und wir können zusammen etwas unternehmen. Wir wollten doch schon lange Bad Homburg besuchen und im Taunus wandern. Was hältst du ⌄ __ (7) __ ⌄?\nWas macht deine Au-pair-Familie? Musst du immer noch so viel Hausarbeit machen? Hören „deine“ Kinder auf dich oder tanzen sie dir immer noch ⌄ __ (8) __ ⌄ der Nase herum, wie du in deinem letzten Brief geschrieben hast? Es ist bestimmt nicht so leicht, einen zweijährigen Jungen und ein vierjähriges Mädchen den ganzen Tag ⌄ __ (9) __ ⌄. Aber ich kenne dich: Du hast gute Ideen und bestimmt hast du schon einen Weg gefunden, wie du mit den Kindern ⌄ __ (10) __ ⌄.\nSo, jetzt muss ich mich wieder an meine Prüfungsvorbereitung machen, sonst wird mir die Zeit zu knapp. Ich grüße dich ganz herzlich und wünsche dir alles Gute.\nBis bald\nDeine Marta",
+  "options": [
+    {
+      "id": 1,
+      "options": ["vergangen", "vergehend", "vergingen"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "halbes Jahr",
+        "connector": "vergangen",
+        "after": ", seit ich",
+        "color": 2
+      }
+    },
+    {
+      "id": 2,
+      "options": ["gleich", "plötzlich", "sofort"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Frau Reuter,",
+        "connector": "plötzlich",
+        "after": "erkrankt. Sie",
+        "color": 8
+      }
+    },
+    {
+      "id": 3,
+      "options": ["als", "da", "wenn"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "zurück,",
+        "connector": "wenn",
+        "after": "unsere Prüfung",
+        "color": 0
+      }
+    },
+    {
+      "id": 4,
+      "options": ["sondern", "sowohl", "zwar"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "ist",
+        "connector": "zwar",
+        "after": "sehr nett",
+        "color": 6
+      }
+    },
+    {
+      "id": 5,
+      "options": ["werde", "wollte", "würde"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Und dann",
+        "connector": "werde",
+        "after": "ich alle",
+        "color": 4
+      }
+    },
+    {
+      "id": 6,
+      "options": ["Damit", "Darauf", "Davon"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "tun.",
+        "connector": "Darauf",
+        "after": "freue ich",
+        "color": 9
+      }
+    },
+    {
+      "id": 7,
+      "options": ["darüber", "davon", "dazu"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "hältst du",
+        "connector": "davon",
+        "after": "?",
+        "color": 3
+      }
+    },
+    {
+      "id": 8,
+      "options": ["an", "auf", "in"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "noch",
+        "connector": "auf",
+        "after": "der Nase",
+        "color": 11
+      }
+    },
+    {
+      "id": 9,
+      "options": ["beschäftigen lassen", "beschäftigt zu sein", "zu beschäftigen"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Tag",
+        "connector": "zu beschäftigen",
+        "after": ". Aber ich",
+        "color": 5
+      }
+    },
+    {
+      "id": 10,
+      "options": ["zurechtkamst", "zurechtkommst", "zurechtzukommen"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Kindern",
+        "connector": "zurechtkommst",
+        "after": ". So, jetzt",
+        "color": 7
+      }
+    }
+  ]
+}

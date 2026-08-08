@@ -1,0 +1,121 @@
+{
+  "title": "Mündlich Teil 3 - Problemlösung",
+  "skill": "mündlich3",
+  "type": "info",
+  "content": {
+    "headerNote": "هذه الأمثلة فقط لكي تفهموا طريقة سير الامتحان، وليس مطلوبًا منكم حفظ نفس الاقتراحات أو استعمالها حرفيًا.",
+    "groups": [
+      {
+        "id": 1,
+        "title": "Party / Fest",
+        "topics": "Straßenfest • Sportfest • Geburtstag • Hochzeit • Flohmarkt • Spielemesse • Kochnachmittag • Buchmesse • Überraschungsfest",
+        "suggestions": [
+          "Ich denke, wir sollten zuerst ein Datum und einen Ort festlegen.",
+          "Wir könnten eine einfache Dekoration vorbereiten, damit alles schön aussieht.",
+          "Ich schlage vor, dass wir Essen und Getränke organisieren, zum Beispiel ein Buffet oder jeder bringt etwas mit.",
+          "Vielleicht machen wir ein kleines Programm, zum Beispiel Musik, Spiele oder eine Überraschung.",
+          "Wie können wir dafür sorgen, dass sich alle Gäste willkommen fühlen?",
+          "Was machen wir bei schlechtem Wetter? Vielleicht brauchen wir einen Plan B.",
+          "Wir könnten Einladungen oder Poster machen, damit viele Leute kommen.",
+          "Ich könnte mich um die Getränke kümmern, und du übernimmst die Musik. Passt das?",
+          "Wir sollten auf das Budget achten, damit wir nicht zu viel Geld ausgeben.",
+          "Am Ende könnten wir eine gemeinsame Aktion machen, zum Beispiel ein Gruppenfoto."
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Veranstaltung",
+        "topics": "Infotag Gesundheit • Blutspende • Neue Medien • Deutsch als Fremdsprache • Software-Seminar",
+        "suggestions": [
+          "Wir sollten zuerst die Zielgruppe genau bestimmen. Für wen ist die Veranstaltung?",
+          "Ich schlage vor, dass wir Vorträge oder Workshops mit Experten organisieren.",
+          "Vielleicht bereiten wir Informationsmaterial vor, zum Beispiel Broschüren oder Poster.",
+          "Wie können wir die Teilnehmer aktiv einbeziehen?",
+          "Brauchen wir eine Genehmigung oder müssen wir etwas beachten?",
+          "Wir könnten Werbung machen, zum Beispiel über soziale Medien oder mit Plakaten in der Stadt.",
+          "Ein klarer Zeitplan ist wichtig, damit alles organisiert ist.",
+          "Ich kümmere mich um die Referenten, und du machst die Werbung. Einverstanden?",
+          "Das Ziel ist, den Leuten praktische Informationen zu geben und ihre Fragen zu beantworten.",
+          "Am Ende könnten wir eine Fragerunde oder ein kleines Quiz machen."
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Präsentation",
+        "topics": "Fremdsprachen lernen • Land vorstellen • Buch vorstellen",
+        "suggestions": [
+          "Ich denke, wir sollten die Präsentation kurz und klar halten, vielleicht 10 bis 15 Minuten.",
+          "Ich schlage eine klare Struktur vor: Einleitung, Hauptteil und Schluss.",
+          "Wir könnten Beispiele aus dem Alltag oder Bilder verwenden, damit es verständlicher wird.",
+          "Wie viel Zeit haben wir für die Präsentation?",
+          "Am Ende könnten wir eine kurze Zusammenfassung geben, damit alles klar ist.",
+          "Vielleicht machen wir eine kurze Fragerunde am Ende, um zu sehen, ob alles klar ist.",
+          "Ich übernehme den Hauptteil, und du machst die Einleitung und den Schluss. Passt das?",
+          "Wir sollten langsam und deutlich sprechen, damit alle folgen können.",
+          "Das Ziel ist, die Zuhörer zu informieren und für das Thema zu begeistern.",
+          "Wir könnten ein Plakat oder eine kleine PowerPoint-Präsentation vorbereiten."
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Reise",
+        "topics": "Studenten besuchen Stadt • Austauschprogramm • Reise ins deutschsprachige Land • Freund aus USA • 3 Tage ans Meer",
+        "suggestions": [
+          "Wir sollten zuerst das Reiseziel, das Datum und die Dauer festlegen.",
+          "Ich schlage vor, dass wir ein tägliches Programm mit Aktivitäten machen.",
+          "Wir müssen uns um Unterkunft und Transport kümmern, zum Beispiel Zug oder Bus.",
+          "Wie hoch ist unser Budget? Das müssen wir vorher klären.",
+          "Was machen wir im Notfall, zum Beispiel bei Krankheit oder wenn etwas schiefgeht?",
+          "Wir könnten vorher eine Liste mit Sehenswürdigkeiten machen, damit wir nichts verpassen.",
+          "Wir könnten vorher im Internet recherchieren, was man dort unbedingt sehen sollte.",
+          "Ich kümmere mich um die Unterkunft, und du machst den Reiseplan. Einverstanden?",
+          "Das Ziel ist, dass alle Spaß haben und eine schöne Zeit erleben.",
+          "Wir sollten eine Liste mit wichtigen Dingen machen, zum Beispiel Ausweise, Geld und Notfallnummern."
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Hilfe / Spenden / Rest",
+        "topics": "Museumsbesuch • Kinobesuch • Geld für Straßenkinder • Theaterstück • Bücher spenden • Kinderkrankenhaus • schlechte Noten • Kinder betreuen • Umzug • Kursraum gestalten",
+        "suggestions": [
+          "Vielleicht könnten wir auch Freiwillige suchen, damit wir schneller helfen können.",
+          "Ich schlage vor, dass wir einen konkreten Plan machen, Schritt für Schritt.",
+          "Ist die Situation dringend? Dann müssen wir schnell handeln.",
+          "Brauchen wir Unterstützung von anderen Personen oder Organisationen?",
+          "Vielleicht sammeln wir Sachspenden wie Bücher oder Kleidung statt Geld.",
+          "Wir könnten vorher anfragen, was wirklich gebraucht wird, damit unsere Hilfe ankommt.",
+          "Es ist wichtig, dass wir die Aufgaben gut verteilen, damit niemand überfordert ist.",
+          "Ich kümmere mich um die Organisation, und du machst die Kommunikation mit den Leuten. Passt das?",
+          "Das Ziel ist, effektiv zu helfen und eine gute Lösung für alle zu finden.",
+          "Am Ende könnten wir besprechen, was gut gelaufen ist und was wir beim nächsten Mal besser machen können."
+        ]
+      }
+    ],
+    "methodology": {
+      "title": "منهجية بسيطة يمكنك تتبعها",
+      "description": "حوار جاهز يساعدك على تنظيم المناقشة",
+      "dialog": [
+        {
+          "speaker": "Person A",
+          "text": "Hallo, wie du weiß, man hat uns gesagt, dass wir... sollen. also, Was meinst du, womit sollen wir anfangen?"
+        },
+        {
+          "speaker": "Person B",
+          "text": "Glaubst du, wir haben alles Wichtige besprochen oder fehlt noch was?"
+        },
+        {
+          "speaker": "Person A",
+          "text": "Ich denke, wir haben alles abgedeckt. Mir fällt gerade nichts mehr ein."
+        },
+        {
+          "speaker": "Person B",
+          "text": "Super! Ich freue mich echt darauf. Danke für das tolle Gespräch und deine Ideen!"
+        },
+        {
+          "speaker": "Person A",
+          "text": "Freut mich, dass es dir gefallen hat! Ich bin auch gespannt, wie erfolgreich das sein wird"
+        }
+      ]
+    }
+  }
+}

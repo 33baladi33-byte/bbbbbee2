@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 25: Liebe Paola",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Liebe Paola,\nvielen Dank für deine Nachricht und die vielen schönen Fotos. Eure Laura ist wirklich niedlich! Ich hoffe, dass wir ⌄ __ (1) __ ⌄ bald kennenlernen. Aber ich weiß, wie anstrengend die erste Zeit mit einem Baby sein kann. ⌄ __ (2) __ ⌄ warten wir lieber noch etwas, bevor wir euch besuchen. Sagt uns einfach Bescheid, ⌄ __ (3) __ ⌄ euch ein Treffen lieb wäre. Eine kleine Überraschung für eure Laura steht ⌄ __ (4) __ ⌄ jeden Fall bereit.\nBei uns gibt es auch einige Veränderungen. Elijah ist diesen Herbst eingeschult worden. Er kommt mit allem gut zurecht und hat auch schon Freundschaften geschlossen. Lea geht nun in den Kindergarten. ⌄ __ (5) __ ⌄ diesem Jahr sind hier im Ort Grundschule und Kindergarten in demselben Gebäudekomplex untergebracht. Das kommt uns sehr gelegen.\nNun ist es vormittags sehr still bei uns im Haus. Ich überlege mir, ⌄ __ (6) __ ⌄ ich nicht wieder anfangen soll, halbtags zu arbeiten. In meinen alten Beruf als Krankenschwester möchte ich aber nicht zurück, denn ich kann mir gar nicht ⌄ __ (7) __ ⌄, wie ich den Schichtdienst im Krankenhaus und die Kinderbetreuung unter einen Hut bringen soll. Wahrscheinlich bewerbe ich mich bei einer Arztpraxis oder der Verwaltung einer Krankenkasse.\nWas hältst du ⌄ __ (8) __ ⌄? Fällt dir vielleicht eine Tätigkeit ein, bei der meine Ausbildung ⌄ __ (9) __ ⌄ Krankenschwester von Vorteil wäre?\nWie dem auch ⌄ __ (10) __ ⌄ - ich wünsche euch viel Glück und Freude mit eurem Baby. Wenn Du irgendwelche Tipps brauchst, kannst du mich jederzeit anrufen.\nIm Anhang schicke ich dir ein paar Fotos vom Schulanfang.\nIch freue mich schon darauf, euch bald wiederzusehen.\nLiebe Grüße\nSarah",
+  "options": [
+    {
+      "id": 1,
+      "options": ["ihr", "Sie", "sie"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "dass wir",
+        "connector": "sie",
+        "after": "bald kennenlernen",
+        "color": 1
+      }
+    },
+    {
+      "id": 2,
+      "options": ["Deshalb", "Obwohl", "Trotzdem"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "kann.",
+        "connector": "Deshalb",
+        "after": "warten wir",
+        "color": 7
+      }
+    },
+    {
+      "id": 3,
+      "options": ["bis", "dann", "wann"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Bescheid,",
+        "connector": "wann",
+        "after": "euch ein",
+        "color": 3
+      }
+    },
+    {
+      "id": 4,
+      "options": ["auf", "im", "in"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "steht",
+        "connector": "auf",
+        "after": "jeden Fall",
+        "color": 9
+      }
+    },
+    {
+      "id": 5,
+      "options": ["Seit", "Vom", "Zum"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Kindergarten.",
+        "connector": "Seit",
+        "after": "diesem Jahr",
+        "color": 5
+      }
+    },
+    {
+      "id": 6,
+      "options": ["ob", "obwohl", "ohnehin"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "überlege mir,",
+        "connector": "ob",
+        "after": "ich nicht",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["verstellen", "vorstellen", "zustellen"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "gar nicht",
+        "connector": "vorstellen",
+        "after": ", wie ich",
+        "color": 4
+      }
+    },
+    {
+      "id": 8,
+      "options": ["dafür", "damit", "davon"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "hältst du",
+        "connector": "davon",
+        "after": "? Fällt dir",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["als", "wie", "zu"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Ausbildung",
+        "connector": "als",
+        "after": "Krankenschwester",
+        "color": 2
+      }
+    },
+    {
+      "id": 10,
+      "options": ["hätte", "sei", "wäre"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Wie dem auch",
+        "connector": "sei",
+        "after": "- ich wünsche",
+        "color": 6
+      }
+    }
+  ]
+}

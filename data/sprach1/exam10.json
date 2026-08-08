@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 10: Liebe Maria, lieber Timur",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Herzlich Dank für die Einladung zu eurem Hochzeitsfest nachdem wir gestren aus dem Urlaub zurückgekommen ⌄ __ (1) __ ⌄ haben wir eure Brief und die einladungskarte im Briefkasten entdeckt. ⌄ __ (2) __ ⌄ gibt es nicht veil zu überlegen Natürlich kommen wir sehr generl wir freun uns sehr ⌄ __ (3) __ ⌄ euch .dass ihr nun endlich diesen schritt wagt .Es ist eine geniale idee ⌄ __ (4) __ ⌄ in der Türkay ⌄ __ (4) __ ⌄ in Östreich zu feiern .so können alle freunde und ⌄ __ (5) __ ⌄ dabei sein wir hoffen dass wir einige ⌄ __ (6) __ ⌄ alten frende wiedrsehen werden.\nIhr habt geschrieben dass Timurs Eltern und seine Schwestern auch in Österreich sein werden Endich lernen wir auch Timurs Famillie kennen und wie schön. dass ihr in Marias Heimatdorf im Mühlviertel felertl Wir erinnern uns noch oft an die langen Partynacht die wir dort ⌄ __ (7) __ ⌄ jugendliche gemeinsam verbracht haben nun überlegen wir ⌄ __ (8) __ ⌄ wir nicht gleich ein Hotelzimmer für einige Tage buchen sollten Ihr habt ja sicher mit den Besitzungen alle Hände voll zu ⌄ __ (9) __ ⌄ Dann können wir am Freitag wandern gehen. Am Samstag ist dann euer Fest und am Sonntag ⌄ __ (10) __ ⌄ wir die Gelegenheit vor der Abreise noch gemütlich zusammen zu frühstücken in welchem Hotel habt ihr eure Verwandten untergebracht ? Seid ihr auch in einem Hotel, oder übernachtet ihr bei deinen Eltern, Maria? Nun, das können wir alles noch später besprochen\nVorerst freuen wir uns einfach nur auf euch und eure fest.\nNoch einmal viele Dank für die Einladung und bis bald!\nYasmin & Peter",
+  "options": [
+    {
+      "id": 1,
+      "options": ["seien", "sind", "waren"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "zurückgekommen",
+        "connector": "waren",
+        "after": "haben wir",
+        "color": 2
+      }
+    },
+    {
+      "id": 2,
+      "options": ["Da", "Das", "Dass"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "entdeckt.",
+        "connector": "Da",
+        "after": "gibt es",
+        "color": 7
+      }
+    },
+    {
+      "id": 3,
+      "options": ["an", "auf", "für"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "freun uns sehr",
+        "connector": "auf",
+        "after": "euch .dass",
+        "color": 0
+      }
+    },
+    {
+      "id": 4,
+      "options": ["je", "sowohl", "weder"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "idee",
+        "connector": "sowohl",
+        "after": "in der",
+        "color": 9
+      }
+    },
+    {
+      "id": 5,
+      "options": ["Verwandte", "Verwandten", "Verwandter"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Freunde und",
+        "connector": "Verwandten",
+        "after": "dabei sein",
+        "color": 4
+      }
+    },
+    {
+      "id": 6,
+      "options": ["unsere", "unseren", "unserer"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "einige",
+        "connector": "unserer",
+        "after": "alten frende",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["als", "für", "wie"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "dort",
+        "connector": "als",
+        "after": "jugendliche gemeinsam",
+        "color": 3
+      }
+    },
+    {
+      "id": 8,
+      "options": ["dass", "falls", "ob"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "überlegen wir",
+        "connector": "ob",
+        "after": "wir nicht",
+        "color": 6
+      }
+    },
+    {
+      "id": 9,
+      "options": ["bereten", "machen", "tun"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Hände voll zu",
+        "connector": "tun",
+        "after": ". Dann können",
+        "color": 5
+      }
+    },
+    {
+      "id": 10,
+      "options": ["hätten", "könnten", "solten"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Sonntag",
+        "connector": "hätten",
+        "after": "wir die",
+        "color": 8
+      }
+    }
+  ]
+}

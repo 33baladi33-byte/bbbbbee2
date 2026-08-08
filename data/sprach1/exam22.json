@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 22: Liebe Corinna (معدل)",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Liebe Corinna,\nes tut mir wirklich Leid, ⌄ __ (1) __ ⌄ ich dir seit Ewigkeiten nicht mehr geschrieben habe. Aber du weißt ja: Ich habe seit drei Monaten eine neue Arbeit. Und da hatte ich gar keine Zeit, mich mit etwas Anderem zu ⌄ __ (2) __ ⌄ als mit der neuen Arbeit.\nEs hat mich wirklich überrascht, wie schnell ich nach dem Abschluss meiner Ausbildung etwas gefunden habe. Dabei haben alle immer nur gesagt: \"Gärtner? Die gibt es ⌄ __ (3) __ ⌄ wie Sand am Meer, wie willst du da so schnell einen Job finden?\".\nIch arbeite jetzt in einer Baumschule. Wir kultivieren und verkaufen Obstbäume, ⌄ __ (4) __ ⌄ an die Obstbauern der näheren Umgebung. Die Arbeit macht mir großen Spaß, es ist andererseits aber ein bisschen anstrengend, acht Stunden am Tag körperlich ⌄ __ (5) __ ⌄ im Freien - zu arbeiten. Und leider muss ich ⌄ __ (6) __ ⌄ eine dreiviertel Stunde mit dem Zug fahren, um an meinen Arbeitsplatz zu kommen.\nWenn ich dann am Abend nach Hause komme, bin ich so müde, dass ich eigentlich nur noch fernsehen oder Musik hören kann. Ich habe im Moment nur ⌄ __ (7) __ ⌄ Lust, etwas zu unternehmen, aber ich bin mir sicher: Sie ⌄ __ (8) __ ⌄ wieder.\nWie geht es dir denn? Du müsstest doch jetzt auch bald mit deiner Ausbildung fertig sein, oder? Hast du schon damit angefangen, dich bei verschiedenen Arbeitgebern zu bewerben? Oder ⌄ __ (9) __ ⌄ du dir noch ein bisschen Zeit damit? Ich würde dir in jedem Fall raten: Fang so früh wie ⌄ __ (10) __ ⌄ mit den Bewerbungen an, je früher, desto besser. Du weißt ja, was unser Klassenlehrer in der Realschule immer gesagt hat: Gut Ding will Weile haben.\nSo, jetzt muss ich aufhören und ins Bett gehen, damit ich morgen wieder fit bin.\nMach's gut, bis bald,\ndein Richard",
+  "options": [
+    {
+      "id": 1,
+      "options": ["dass", "ob", "weil"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Leid,",
+        "connector": "dass",
+        "after": "ich dir",
+        "color": 2
+      }
+    },
+    {
+      "id": 2,
+      "options": ["bedienen", "beeilen", "beschäftigen"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "zu",
+        "connector": "beschäftigen",
+        "after": "als mit",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["bloß", "doch", "nur"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "gibt es",
+        "connector": "doch",
+        "after": "wie Sand",
+        "color": 0
+      }
+    },
+    {
+      "id": 4,
+      "options": ["außerdem", "insbesondere", "jedoch"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Obstbäume,",
+        "connector": "insbesondere",
+        "after": "an die",
+        "color": 6
+      }
+    },
+    {
+      "id": 5,
+      "options": ["übermächtig", "übermäßig", "überwiegend"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "körperlich",
+        "connector": "überwiegend",
+        "after": "im Freien",
+        "color": 4
+      }
+    },
+    {
+      "id": 6,
+      "options": ["fast", "nahe", "ziemlich"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "leider",
+        "connector": "fast",
+        "after": "eine dreiviertel",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["gering", "knapp", "wenig"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "nur",
+        "connector": "wenig",
+        "after": "Lust, etwas",
+        "color": 3
+      }
+    },
+    {
+      "id": 8,
+      "options": ["kommt", "läuft", "steht"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Sie",
+        "connector": "kommt",
+        "after": "wieder. Wie",
+        "color": 7
+      }
+    },
+    {
+      "id": 9,
+      "options": ["brauchst", "hast", "lässt"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Oder",
+        "connector": "lässt",
+        "after": "du dir",
+        "color": 5
+      }
+    },
+    {
+      "id": 10,
+      "options": ["kürzlich", "möglich", "üblich"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "wie",
+        "connector": "möglich",
+        "after": "mit den",
+        "color": 8
+      }
+    }
+  ]
+}

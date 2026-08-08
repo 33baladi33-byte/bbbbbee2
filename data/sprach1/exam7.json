@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 7: Hallo Leon",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Betreff: Grüße ⌄ __ (1) __ ⌄ Berlin\n\nHallo Leon,\nvielen Dank für deine letzte Mail aus Peking! Du arbeitest ja jetzt schon seit einem halben Jahr in China – unglaublich, wie schnell die Zeit vergeht.\nLeider hatte ich in den letzten drei Wochen keine Zeit, dir zu antworten, weil ich viel zu tun hatte. Aber jetzt berichte ich dir, ⌄ __ (2) __ ⌄ alles los war.\nAlso, im Büro haben wir derzeit viel Stress, ⌄ __ (3) __ ⌄ drei Kollegen im Urlaub sind und eine weitere Kollegin seit zwei Wochen krank ist. Jetzt müssen wir mit fünf Leuten die Arbeit erledigen, die sonst neun Leute machen. Ich weiß wirklich nicht, wer diese Urlaubsplanung gemacht hat. Hoffentlich ⌄ __ (4) __ ⌄ das in Zukunft besser organisiert.\nAbends waren Carmen und ich dann ein paarmal aus. Wir waren zum Beispiel bei einem Konzert von \"Belasco\". Kennst du die Band? Eigentlich war ich an dem Abend schon kaputt und ⌄ __ (5) __ ⌄ am liebsten zuhause geblieben, aber ich hatte Carmen die Karten zum Geburtstag geschenkt. Da ⌄ __ (6) __ ⌄ ich ja schlecht auf dem Sofa sitzen bleiben! Im Nachhinein muss ich sagen: Ein Glück, dass wir zu dem Konzert gegangen sind, ⌄ __ (7) __ ⌄ es war einfach nur super!\nAn den letzten beiden Wochenenden hatten wir dann auch noch Familienfeiern: Erst hatte meine ältere Schwester Geburtstag und hat groß gefeiert, dann hat ein Cousin geheiratet und uns eingeladen, ⌄ __ (8) __ ⌄ war zwar schön, aber auch anstrengend. Ich bin froh, dass wir für die kommenden Wochenenden ⌄ __ (9) __ ⌄ keine Pläne haben.\nDas war's erst mal von mir. Melde dich doch wieder, ich freue mich ⌄ __ (10) __ ⌄ deine nächste E-Mail!\nViele Grüße sendet dir\nFabian",
+  "options": [
+    {
+      "id": 1,
+      "options": ["ab", "aus", "von"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Grüße",
+        "connector": "aus",
+        "after": "Berlin",
+        "color": 9
+      }
+    },
+    {
+      "id": 2,
+      "options": ["wann", "was", "wie"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "berichte ich dir,",
+        "connector": "was",
+        "after": "alles los",
+        "color": 2
+      }
+    },
+    {
+      "id": 3,
+      "options": ["da", "indem", "obwohl"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Stress,",
+        "connector": "da",
+        "after": "drei Kollegen",
+        "color": 7
+      }
+    },
+    {
+      "id": 4,
+      "options": ["ist", "wird", "würde"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Hoffentlich",
+        "connector": "wird",
+        "after": "das in",
+        "color": 0
+      }
+    },
+    {
+      "id": 5,
+      "options": ["bin", "war", "wäre"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "und",
+        "connector": "wäre",
+        "after": "am liebsten",
+        "color": 5
+      }
+    },
+    {
+      "id": 6,
+      "options": ["konnte", "musste", "sollte"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Da",
+        "connector": "konnte",
+        "after": "ich ja",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["aber", "denn", "sondern"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "gegangen sind,",
+        "connector": "denn",
+        "after": "es war",
+        "color": 3
+      }
+    },
+    {
+      "id": 8,
+      "options": ["Beide", "Beiden", "Beides"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "eingeladen,",
+        "connector": "Beides",
+        "after": "war zwar",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["erst", "noch", "schon"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Wochenenden",
+        "connector": "noch",
+        "after": "keine Pläne",
+        "color": 4
+      }
+    },
+    {
+      "id": 10,
+      "options": ["auf", "für", "über"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "freue mich",
+        "connector": "auf",
+        "after": "deine nächste",
+        "color": 6
+      }
+    }
+  ]
+}

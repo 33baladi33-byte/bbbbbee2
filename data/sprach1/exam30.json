@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 30: Hallo Maria",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Hallo Maria,\nBevor wieder der Arbeitsalltag beginnt, schicke ich dir ⌄ __ (1) __ ⌄ rasch einige Zeilen, um dir von unserem Wochenende zu erzählen. Es ist so schade, dass du ⌄ __ (2) __ ⌄ deiner Grippe nicht dabei sein konntest! Wir haben dich alle sehr vermisst.\n⌄ __ (3) __ ⌄ auf Michael sind alle mit dem Zug angereist und wir haben uns schon am Bahnhof getroffen. Von dort sind wir dann los in die Ferienwohnung, die Lilo für uns reserviert hatte.\nNachdem wir unser Gepäck abgestellt ⌄ __ (4) __ ⌄, haben wir gleich einen Rundgang durch den Ort gemacht. Lilo wusste viel Interessantes zu erzählen. Sie lebt ja schon einige Jahre dort und hat sich ⌄ __ (5) __ ⌄ ausgezeichnete Fremdenführerin erwiesen. Besonders beeindruckt hat uns der wunderschöne Park, in dem gerade die Rhododendren blühten. Eine wahre Pracht. Das hätte dir auch gefallen! Später sind wir zum Amseisee gewandert, den man in kurzer Zeit vom Ort aus erreicht. Dort haben wir eine Bootsfahrt über den See gemacht. Vom Boot aus hat man einen wunderbaren Blick auf die beeindruckende Felsenlandschaft. Am Abend stand dann die Felsenbühne ⌄ __ (6) __ ⌄ dem Programm.\nDie Wanderung am nächsten Tag war ⌄ __ (7) __ ⌄ schön anstrengend, aber wunderbar.\n⌄ __ (8) __ ⌄ alle ziemlich erschöpft waren, haben wir nach dem Abendessen noch lange zusammen gesessen und über alte Zeiten geplaudert. Am nächsten Morgen nach unserem gemeinsamen Frühstück waren wir uns einig, dass wir bald wieder zusammen einen Ausflug machen. ⌄ __ (9) __ ⌄ Und nächstes Mal musst du unbedingt dabei sein. Im Anhang schicke ich dir einige Fotos. Wie du siehst, war unser Treffen wirklich lustig! Ich hoffe, dass es dir ⌄ __ (10) __ ⌄ schon wieder besser geht.\nLiebe Grüße von uns allen\nCem",
+  "options": [
+    {
+      "id": 1,
+      "options": ["momentan", "noch", "weiterhin"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "dir",
+        "connector": "noch",
+        "after": "rasch einige",
+        "color": 1
+      }
+    },
+    {
+      "id": 2,
+      "options": ["deswegen", "wegen", "weil"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "dass du",
+        "connector": "wegen",
+        "after": "deiner Grippe",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["abgesehen", "außer", "bis"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "vermisst.",
+        "connector": "bis",
+        "after": "auf Michael",
+        "color": 4
+      }
+    },
+    {
+      "id": 4,
+      "options": ["haben", "hatten", "hätten"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "abgestellt",
+        "connector": "hatten",
+        "after": ", haben wir",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["als", "für", "zur"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "sich",
+        "connector": "als",
+        "after": "ausgezeichnete Fremdenführerin",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["auf", "in", "zu"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Felsenbühne",
+        "connector": "auf",
+        "after": "dem Programm",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["absolut", "ganz", "vollkommen"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "war",
+        "connector": "ganz",
+        "after": "schön anstrengend",
+        "color": 5
+      }
+    },
+    {
+      "id": 8,
+      "options": ["obwohl", "trotzdem", "ungeachtet"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "wunderbar.",
+        "connector": "obwohl",
+        "after": "alle ziemlich",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["durften", "konnten", "sollten"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "machen.",
+        "connector": "sollten",
+        "after": "Und nächstes",
+        "color": 0
+      }
+    },
+    {
+      "id": 10,
+      "options": ["inzwischen", "während", "zwischen"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "dir",
+        "connector": "inzwischen",
+        "after": "schon wieder",
+        "color": 6
+      }
+    }
+  ]
+}

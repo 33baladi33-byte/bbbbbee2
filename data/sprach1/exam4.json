@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 4: Hallo Judith / Lina",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Hallo Judith,\nwir haben uns ja lange nicht gesehen. Ich hoffe, du hattest einen richtig schönen Urlaub in Kroatien! Danke auch für deine Urlaubskarte! Die hat mich echt neidisch gemacht; ich habe ja erst im September Urlaub. ⌄ __ (1) __ ⌄ rufst du heute schon deine E-Mails ab und liest diese Nachricht von mir!\nWir, als das gesamte Team, möchten ⌄ __ (2) __ ⌄ unserer Kollegin Elena zu ihrer Pensionierung gemeinsam etwas zum Abschied schenken. Ihre Abschiedsfeier ist ja ⌄ __ (3) __ ⌄ übermorgen abends im großen Konferenzraum unserer Firma. Bist du ⌄ __ (4) __ ⌄ einverstanden, dass wir ihr zusammen einen Gutschein und einen Blumenstrauß schenken? Jeder zahlt etwas 10 € dazu. Ich denke, das ist angemessen. Du erinnerst dich: ⌄ __ (5) __ ⌄ wir das letzte Mal gesammelt hatten, gab es Beschwerden wegen der Höhe des Betrags. Aber möglicherweise hast du eine bessere Idee.\nMichael und ich gehen dann nachmittags ⌄ __ (6) __ ⌄ in der Stadt einkaufen. Die Glückwunschkarte für Elena könntest du dann übermorgen noch ⌄ __ (7) __ ⌄ vor der Feier unterschreiben. Wir treffen uns ja alle vorher und gehen gemeinsam hin.\nIn der Firma war heute nicht viel los. Aber in den letzten 14 Tagen hatten viele Kollegen Urlaub, ⌄ __ (8) __ ⌄ ich sehr viel zu tun hatte. Es gibt übrigens auch ⌄ __ (9) __ ⌄ neue Entwicklungen in der Firma, von denen ich dir dann übermorgen erzählen kann.\nWahrscheinlich bist du nach der langen Fahrt sehr müde. Schlaf dich morgen gut aus; wir sehen uns dann auf Elenas Feier! Ich wünsche dir heute einen ⌄ __ (10) __ ⌄ Tag...\nLiebe Grüße,\nCosima",
+  "options": [
+    {
+      "id": 1,
+      "options": ["Zuversichtlich", "Möglichst", "Hoffentlich"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "September Urlaub.",
+        "connector": "Hoffentlich",
+        "after": "rufst du",
+        "color": 3
+      }
+    },
+    {
+      "id": 2,
+      "options": ["vermutlich", "nämlich", "bestimmt"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "möchten",
+        "connector": "nämlich",
+        "after": "unserer Kollegin",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["schon", "fast", "beinahe"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "ist ja",
+        "connector": "schon",
+        "after": "übermorgen abends",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["damit", "dafür", "dadurch"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Bist du",
+        "connector": "damit",
+        "after": "einverstanden, dass",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["Wenn", "Wann", "Als"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "erinnerst dich",
+        "connector": "Als",
+        "after": "wir das",
+        "color": 0
+      }
+    },
+    {
+      "id": 6,
+      "options": ["zueinander", "voneinander", "miteinander"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "nachmittags",
+        "connector": "miteinander",
+        "after": "in der",
+        "color": 5
+      }
+    },
+    {
+      "id": 7,
+      "options": ["vor Kurzem", "kürzlich", "kurz"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "übermorgen noch",
+        "connector": "kurz",
+        "after": "vor der",
+        "color": 11
+      }
+    },
+    {
+      "id": 8,
+      "options": ["weshalb", "insofern", "deshalb"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Urlaub,",
+        "connector": "weshalb",
+        "after": "ich sehr",
+        "color": 4
+      }
+    },
+    {
+      "id": 9,
+      "options": ["vollkommen", "sämtlich", "erschöpfend"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "auch",
+        "connector": "vollkommen",
+        "after": "neue Entwicklungen",
+        "color": 6
+      }
+    },
+    {
+      "id": 10,
+      "options": ["passenden", "bequemen", "angenehmen"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "einen",
+        "connector": "angenehmen",
+        "after": "Tag...",
+        "color": 8
+      }
+    }
+  ]
+}

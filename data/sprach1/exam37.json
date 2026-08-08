@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 37: Liebe Autorinnen und Autoren",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Liebe Autorinnen und Autoren,\nWeihnachten ist nicht mehr weit, und bevor wir uns alle in die wohlverdienten Feiertage verabschieden, möchte ich euch noch einmal an den Redaktionsschluss für unsere Vereinszeitung erinnern, den wir für den 10. Januar festgelegt haben. ⌄ __ (1) __ ⌄ ihr alle wisst, kann Claudia, unsere fleißige Layouterin, sich erst dann an die Arbeit machen, wenn alle Texte und Bilder ⌄ __ (2) __ ⌄. Die fertige Datei muss bis spätestens 22. Januar in der Druckerei sein, damit das Heft pünktlich zum 1. Februar fertig sein kann. Ein gutes Layout ist auch ⌄ __ (3) __ ⌄ Interesse der Autorinnen und Autoren. Ist es schlecht, schenkt man dem Artikel automatisch weniger Beachtung. Liefert also bitte eure Beiträge rechtzeitig ⌄ __ (4) __ ⌄.\nFür die Bildbearbeitung ist wie immer Florian zuständig. Bitte die Bilder im TIF- oder im JPG-Format liefern und bitte den Bildnachweis anführen, wenn die Bilder nicht von euch selbst stammen. Für eure eigenen Bilder liegt das Copyright natürlich ⌄ __ (5) __ ⌄ euch. Leider sind die Verkaufszahlen unserer Vereinszeitung im letzten Jahr ⌄ __ (6) __ ⌄ zurückgegangen. Deshalb möchten wir euch alle noch einmal herzlich ⌄ __ (7) __ ⌄ bitten, nur Themen zu wählen, die unsere Vereinsmitglieder betreffen und sie auch wirklich ⌄ __ (8) __ ⌄. Das heißt nicht, ⌄ __ (9) __ ⌄ man große Themen wie Politik oder Gesellschaft nicht behandeln kann, aber sie sollten leserfreundlich verpackt sein.\nWir verstehen uns ausdrücklich ⌄ __ (10) __ ⌄ unabhängige Zeitung und möchten uns keinen Maulkorb umhängen lassen. Trotzdem sollten die Beiträge im Rahmen sachlicher Meinungsäußerungen bleiben. In diesem Sinne freut sich die Redaktion auf zahlreiche Artikel!\nBeste Grüße und viel Erfolg\nEure Redaktion",
+  "options": [
+    {
+      "id": 1,
+      "options": ["Wie", "Was", "Wann"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "haben.",
+        "connector": "Wie",
+        "after": "ihr alle",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["vorliegen", "unterliegen", "liegen lassen"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Bilder",
+        "connector": "vorliegen",
+        "after": ". Die fertige",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["von", "ohne", "im"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "auch",
+        "connector": "im",
+        "after": "Interesse der",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["zu", "ein", "ab"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "rechtzeitig",
+        "connector": "ab",
+        "after": ". Für die",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["mit", "für", "bei"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "natürlich",
+        "connector": "bei",
+        "after": "euch. Leider",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["unerschütterlich", "stark", "fest"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Jahr",
+        "connector": "stark",
+        "after": "zurückgegangen. Deshalb",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["deswegen", "darum", "dafür"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "herzlich",
+        "connector": "darum",
+        "after": "bitten, nur",
+        "color": 5
+      }
+    },
+    {
+      "id": 8,
+      "options": ["besprechen", "aussprechen", "ansprechen"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "wirklich",
+        "connector": "ansprechen",
+        "after": ". Das heißt",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["ob", "dass", "damit"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "nicht,",
+        "connector": "dass",
+        "after": "man große",
+        "color": 0
+      }
+    },
+    {
+      "id": 10,
+      "options": ["sowie", "als ob", "als"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "ausdrücklich",
+        "connector": "als",
+        "after": "unabhängige Zeitung",
+        "color": 6
+      }
+    }
+  ]
+}

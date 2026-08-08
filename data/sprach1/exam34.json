@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 34: Liebe Lara",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Liebe Lara,\nbitte verzeih mir, dass ich erst jetzt auf ⌄ __ (1) __ ⌄ Brief antworte. Ich hatte in den letzten Wochen praktisch keine freie Minute und kam einfach nicht dazu, dir zu schreiben. Jetzt aber tue ich es, ⌄ __ (2) __ ⌄ du wirklich tolle Neuigkeiten mitzuteilen hast.\nSchon immer hast du von großen Abenteuern und Reisen in die Ferne geträumt. Ich weiß ⌄ __ (3) __ ⌄ gut, wie wir uns als Gymnasiasten fremde Länder ausgemalt haben. Nun verschlägt es dich und deine Familie also nach Dubai - und du sagst unserem Land für einige Zeit Adieu. Ich weiß, dass mit dieser Versetzung für dich ein Traum in Erfüllung geht. ⌄ __ (4) __ ⌄ deinen Neubeginn wünschen Peter und ich dir alles Gute. Wir freuen uns auch sehr, dass ihr alle gesund und munter seid und hoffen, dass das so bleibt. Bei uns geht mehr oder weniger alles seinen gewohnten Gang. Robert gefällt es gut auf seiner ⌄ __ (5) __ ⌄ Stelle. Er muss sich einfach noch einarbeiten. Lorenz ist jetzt 15. Du weißt ⌄ __ (6) __ ⌄, was das heißt. Er hält sich für den Größten und macht uns viele Schwierigkeiten. Aber irgendwann geht auch das vorüber. Sandra ist jetzt auch schon in der dritten Klasse und bringt gute Noten nach Hause. ⌄ __ (7) __ ⌄ sind wir natürlich stolz. Es ⌄ __ (8) __ ⌄ schön, wenn wir uns vor deiner Abreise noch einmal treffen würden. Vielleicht findet ihr ⌄ __ (9) __ ⌄ der Umzugsvorbereitungen noch Zeit. Wie wäre es mit einem gemeinsamen Sonntagsbrunch in unserem Garten? Bitte melde dich doch, damit wir etwas abmachen ⌄ __ (10) __ ⌄.\nLiebe Grüße\ndeine\nVanessa",
+  "options": [
+    {
+      "id": 1,
+      "options": ["dein", "deine", "deinen"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "auf",
+        "connector": "deinen",
+        "after": "Brief antworte",
+        "color": 2
+      }
+    },
+    {
+      "id": 2,
+      "options": ["denn", "obwohl", "weil"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "tue ich es,",
+        "connector": "weil",
+        "after": "du wirklich",
+        "color": 8
+      }
+    },
+    {
+      "id": 3,
+      "options": ["noch", "schon", "weiterhin"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Ich weiß",
+        "connector": "noch",
+        "after": "gut, wie",
+        "color": 4
+      }
+    },
+    {
+      "id": 4,
+      "options": ["für", "vor", "zu"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "geht.",
+        "connector": "für",
+        "after": "deinen Neubeginn",
+        "color": 9
+      }
+    },
+    {
+      "id": 5,
+      "options": ["neue", "neuen", "neuer"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "seiner",
+        "connector": "neuen",
+        "after": "Stelle. Er",
+        "color": 0
+      }
+    },
+    {
+      "id": 6,
+      "options": ["bloß", "ja", "mal"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Du weißt",
+        "connector": "ja",
+        "after": ", was das",
+        "color": 6
+      }
+    },
+    {
+      "id": 7,
+      "options": ["damit", "darauf", "darüber"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Hause.",
+        "connector": "darauf",
+        "after": "sind wir",
+        "color": 11
+      }
+    },
+    {
+      "id": 8,
+      "options": ["ist", "wäre", "würde"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Es",
+        "connector": "wäre",
+        "after": "schön, wenn",
+        "color": 3
+      }
+    },
+    {
+      "id": 9,
+      "options": ["aufgrund", "trotz", "wegen"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "ihr",
+        "connector": "trotz",
+        "after": "der Umzugsvorbereitungen",
+        "color": 7
+      }
+    },
+    {
+      "id": 10,
+      "options": ["können", "könnten", "konnten"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "abmachen",
+        "connector": "können",
+        "after": ". Liebe Grüße",
+        "color": 5
+      }
+    }
+  ]
+}

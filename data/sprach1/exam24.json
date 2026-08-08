@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 24: Liebe Ida",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Liebe Ida,\nnun ist es schon drei Monate her, dass ich nach Frankfurt gezogen bin. Es hat ziemlich lange gedauert, bis ich mich hier eingelebt habe. Am Anfang hatte ich mich auch gar nicht ⌄ __ (1) __ ⌄ die neue Stelle und das Leben in der Stadt gefreut.\nDass ich mich für meine neue Arbeitsstelle umgezogen war, hatte mich eine Zeitlang sogar ein bisschen geärgert. Ich ⌄ __ (2) __ ⌄ ja auch täglich mit dem Zug fahren können, statt mir eine Wohnung in der Nähe der Firma zu suchen. Zuerst habe ich ⌄ __ (3) __ ⌄ in meiner neuen Wohnung auch gar nicht richtig wohlgefühlt. Aber nachdem ich meine Umzugskartons ⌄ __ (4) __ ⌄, konnte ich endlich die Stadt richtig erkunden.\nSeit einiger Zeit gefällt es mir in Frankfurt nun richtig gut. Das liegt vor allem ⌄ __ (5) __ ⌄, dass ich eine neue Freundin gefunden habe. Annabelle wohnt in derselben Straße wie ich und wir haben uns auf einem Flohmarkt in unserem Stadtviertel kennengelernt. Sie hat dort ihre alten Bücher verkauft. Als wir ⌄ __ (6) __ ⌄ ins Gespräch kamen, haben wir festgestellt, dass wir ähnliche Interessen und Hobbys teilen: Sie mag ebenfalls ausgefallene Mode und moderne Kunst und wir gehen nun regelmäßig zusammen ins Schwimmbad.\nMein Leben sieht nun also ganz anders aus ⌄ __ (7) __ ⌄ noch vor drei Monaten. Mit meiner neuen Stelle bin ich auch zufrieden, ⌄ __ (8) __ ⌄ ich oft Überstunden machen muss. Dafür herrscht jedoch ein angenehmes Betriebsklima ⌄ __ (9) __ ⌄ uns in der Abteilung.\nJetzt habe ich viel von mir erzählt, aber Dich noch gar nicht gefragt, wie es Dir ⌄ __ (10) __ ⌄ geht. Gibt es etwas Neues bei Dir? Ich freue mich auf Deine nächste Mail!\nHerzliche Grüße\nDeine Emilia",
+  "options": [
+    {
+      "id": 1,
+      "options": ["an", "auf", "wegen"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "gar nicht",
+        "connector": "auf",
+        "after": "die neue",
+        "color": 7
+      }
+    },
+    {
+      "id": 2,
+      "options": ["habe", "hätte", "würde"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Ich",
+        "connector": "hätte",
+        "after": "ja auch",
+        "color": 2
+      }
+    },
+    {
+      "id": 3,
+      "options": ["dich", "uns", "mich"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Zuerst habe ich",
+        "connector": "mich",
+        "after": "in meiner",
+        "color": 9
+      }
+    },
+    {
+      "id": 4,
+      "options": ["ausgepackt habe", "ausgepackt hatte", "auspackte"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Umzugskartons",
+        "connector": "ausgepackt hatte",
+        "after": ", konnte ich",
+        "color": 4
+      }
+    },
+    {
+      "id": 5,
+      "options": ["daran", "darauf", "darin"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "vor allem",
+        "connector": "daran",
+        "after": ", dass ich",
+        "color": 11
+      }
+    },
+    {
+      "id": 6,
+      "options": ["einander", "gegeneinander", "miteinander"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Als wir",
+        "connector": "miteinander",
+        "after": "ins Gespräch",
+        "color": 0
+      }
+    },
+    {
+      "id": 7,
+      "options": ["als", "denn", "wenn"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "anders aus",
+        "connector": "als",
+        "after": "noch vor",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["obwohl", "trotzdem", "während"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "zufrieden,",
+        "connector": "obwohl",
+        "after": "ich oft",
+        "color": 3
+      }
+    },
+    {
+      "id": 9,
+      "options": ["bei", "mit", "zu"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Betriebsklima",
+        "connector": "bei",
+        "after": "uns in",
+        "color": 8
+      }
+    },
+    {
+      "id": 10,
+      "options": ["eigentlich", "hoffentlich", "sicherlich"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "es Dir",
+        "connector": "eigentlich",
+        "after": "geht. Gibt",
+        "color": 5
+      }
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 21: Liebe Meike",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Liebe Meike,\nvielen Dank für deine Mail! Es freut mich, dass du dich in Bremen wohlfühlst und mit deiner ⌄ __ (1) __ ⌄ Arbeit zufrieden bist. Auch ich habe eine Menge zu erzählen. Du weißt ja, wie unzufrieden ich in letzter Zeit oft war. ⌄ __ (2) __ ⌄ ich einen neuen Chef habe, hat sich in der Firma viel verändert: Die Arbeitsatmosphäre ist schlechter geworden und ich muss viele Überstunden machen. Daher habe ich oft ⌄ __ (3) __ ⌄ nachgedacht, ob ein beruflicher Neuanfang das Richtige für mich wäre.\nNun, inzwischen habe ich einen ersten Schritt unternommen: Ich habe ⌄ __ (4) __ ⌄ an einer Fernuniversität für ein Psychologie-Studium eingeschrieben. ⌄ __ (5) __ ⌄ ich zuerst einige Bedenken hatte, bin ich nun sehr froh über meine Entscheidung. Anfangs war ich mir nicht sicher, ob ich nebenberuflich ein Studium schaffen ⌄ __ (6) __ ⌄. Schließlich muss ich ja auch noch meinen Lebensunterhalt verdienen. Außerdem hatte ich Angst, dass mir das Lernen nicht mehr so leichtfallen würde, ⌄ __ (7) __ ⌄ war ich wirklich sehr nervös.\nDas Studium macht mir wirklich Spaß. Allerdings habe ich es unterschätzt, wie viel Zeit die Vorbereitungen in Anspruch ⌄ __ (8) __ ⌄. Manchmal fehlt mir bei dem Fernstudium auch der direkte Austausch mit Kommilitonen, denn der Lehrstoff wird ich alleine zuhause durch. Für ⌄ __ (9) __ ⌄ ist es aber eine große Hilfe, dass die Fernuniversität Chatgruppen anbietet, in ⌄ __ (10) __ ⌄ man rund um die Uhr Fragen stellen kann. Ich bin jedenfalls gespannt, wie es mit meinem Studium weitergeht.\nWie wäre es, wenn wir demnächst mal wieder telefonieren? Ich würde mich freuen, bald von dir zu hören.\nHerzliche Grüße,\nElise",
+  "options": [
+    {
+      "id": 1,
+      "options": ["neue", "neuen", "neuer"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "deiner",
+        "connector": "neuen",
+        "after": "Arbeit zufrieden",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["Seit", "Sobald", "Solange"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "war.",
+        "connector": "Seit",
+        "after": "ich einen",
+        "color": 8
+      }
+    },
+    {
+      "id": 3,
+      "options": ["daran", "darauf", "darüber"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "oft",
+        "connector": "darüber",
+        "after": "nachgedacht, ob",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["es", "mich", "mir"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "habe",
+        "connector": "mich",
+        "after": "an einer",
+        "color": 6
+      }
+    },
+    {
+      "id": 5,
+      "options": ["Damit", "Obwohl", "Wenn"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "eingeschrieben.",
+        "connector": "Obwohl",
+        "after": "ich zuerst",
+        "color": 0
+      }
+    },
+    {
+      "id": 6,
+      "options": ["dürfte", "könnte", "müsste"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "schaffen",
+        "connector": "könnte",
+        "after": ". Schließlich muss",
+        "color": 9
+      }
+    },
+    {
+      "id": 7,
+      "options": ["als", "nach", "wie"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "würde,",
+        "connector": "wie",
+        "after": "war ich",
+        "color": 3
+      }
+    },
+    {
+      "id": 8,
+      "options": ["nahmen", "nehmen", "nimmt"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Anspruch",
+        "connector": "nehmen",
+        "after": ". Manchmal fehlt",
+        "color": 11
+      }
+    },
+    {
+      "id": 9,
+      "options": ["mein", "mich", "mir"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Für",
+        "connector": "mich",
+        "after": "ist es",
+        "color": 5
+      }
+    },
+    {
+      "id": 10,
+      "options": ["denen", "der", "die"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "in",
+        "connector": "denen",
+        "after": "man rund",
+        "color": 7
+      }
+    }
+  ]
+}

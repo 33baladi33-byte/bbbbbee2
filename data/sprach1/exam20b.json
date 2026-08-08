@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 20: Liebes Julian (معدل)",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Lieber Julian,\nWie geht es dir? Ich hoffe, du hattest eine schöne Reise und konntest dich gut erholen. Ich ⌄ __ (1) __ ⌄ ja auch gerne mal wieder ans Meer fahren, ⌄ __ (2) __ ⌄ im Moment habe ich leider keine Zeit für Urlaub. ⌄ __ (3) __ ⌄ du dir bestimmt vorstellen kannst, war ich in den letzten Wochen vor allem mit meinem Umzug beschäftigt.\nDu weißt ja, dass ich zuerst ziemlich ⌄ __ (4) __ ⌄ war. Nach so vielen Jahren in Berlin konnte ich mir gar nicht mehr vorstellen, mich in einer kleinen Stadt wie Bamberg niederzulassen.\nBamberg hat nur rund 77.000 Einwohner, aber langweilig ist es hier trotzdem nicht, wie ich inzwischen ⌄ __ (5) __ ⌄ habe. Mittlerweile fühle ich mich hier sogar richtig wohl. Die Stadt hat wirklich viel zu bieten. Es gibt jahrhundertealte Sehenswürdigkeiten in Hülle und Fülle, und in der Altstadt gefallen mir besonders die schönen Fachwerkhäuser, die überwiegend aus dem Mittelalter stammen. Ich gehe oft durch die Fußgängerzone, denn dort gibt es viele kleine Läden, Cafés und Restaurants mit typisch ⌄ __ (6) __ ⌄ Spezialitäten.\nIch glaube, dir würde es hier auch gefallen. ⌄ __ (7) __ ⌄ du willst, zeige ich dir gerne mal die Stadt. Hättest du vielleicht Lust, mich im nächsten Monat zu besuchen? Dann ist bei mir der Umzugsstress vorbei.\nIm Moment steht noch eine große Anzahl nicht ausgeräumter Kisten in meinem Wohnzimmer, die ausgepackt ⌄ __ (8) __ ⌄ ⌄ __ (9) __ ⌄. Mit meiner neuen Wohnung habe ich übrigens auch Glück gehabt, ⌄ __ (10) __ ⌄ sie geräumig und zentral gelegen ist.\nWir können ja mal telefonieren, dann erzähle ich dir mehr.\nLiebe Grüße,\nAnna",
+  "options": [
+    {
+      "id": 1,
+      "options": ["werde", "würde", "wäre"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Ich",
+        "connector": "würde",
+        "after": "ja auch",
+        "color": 0
+      }
+    },
+    {
+      "id": 2,
+      "options": ["aber", "denn", "und"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "fahren,",
+        "connector": "aber",
+        "after": "im Moment",
+        "color": 1
+      }
+    },
+    {
+      "id": 3,
+      "options": ["Was", "Wie", "Wo"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "kannst,",
+        "connector": "Wie",
+        "after": "du dir",
+        "color": 2
+      }
+    },
+    {
+      "id": 4,
+      "options": ["skeptisch", "negativ", "unsicher"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "zuerst ziemlich",
+        "connector": "skeptisch",
+        "after": "war",
+        "color": 3
+      }
+    },
+    {
+      "id": 5,
+      "options": ["festgestellt", "erkannt", "entdeckt"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "ich inzwischen",
+        "connector": "festgestellt",
+        "after": "habe",
+        "color": 4
+      }
+    },
+    {
+      "id": 6,
+      "options": ["fränkischen", "fränkische", "fränkisches"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "mit typisch",
+        "connector": "fränkischen",
+        "after": "Spezialitäten",
+        "color": 5
+      }
+    },
+    {
+      "id": 7,
+      "options": ["Dass", "Wenn", "Als"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "gefallen.",
+        "connector": "Wenn",
+        "after": "du willst",
+        "color": 6
+      }
+    },
+    {
+      "id": 8,
+      "options": ["werden", "wurden", "worden"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "ausgepackt",
+        "connector": "werden",
+        "after": "müssen",
+        "color": 7
+      }
+    },
+    {
+      "id": 9,
+      "options": ["sollen", "müssen", "können"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "ausgepackt werden",
+        "connector": "müssen",
+        "after": ".",
+        "color": 8
+      }
+    },
+    {
+      "id": 10,
+      "options": ["denn", "weil", "obwohl"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "gehabt,",
+        "connector": "weil",
+        "after": "sie geräumig",
+        "color": 9
+      }
+    }
+  ]
+}

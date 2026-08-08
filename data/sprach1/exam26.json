@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 26: Liebe Jutta",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Liebe Jutta,\nschon so lange habe ich dir nicht geschrieben, ich hatte aber ⌄ __ (1) __ ⌄ einen triftigen Grund. Ich habe das Schreiben ⌄ __ (2) __ ⌄ meiner Krankheit vernachlässigt. Ich hatte fürchterliche Rücken- und Kreuzschmerzen, ich habe aber die richtige Untersuchung immer wieder ⌄ __ (3) __ ⌄. Ich habe immer nur einige Medikamente eingenommen, die für kurze Zeit zwar geholfen haben, aber die Schmerzen kamen immer zurück. Schließlich konnte ich ⌄ __ (4) __ ⌄ richtig schlafen und mich so natürlich auch bei der Arbeit nicht konzentrieren. Mein Arzt hat mich ins Krankenhaus zu einigen Untersuchungen ⌄ __ (5) __ ⌄. Die sind anstrengend gewesen und haben ziemlich lange gedauert. Die Lage ist aber nicht so schlimm. Da ich zu viel bei der Arbeit sitze und dazu noch ein paar Kilo ⌄ __ (6) __ ⌄ habe, ist meine Wirbelsäule belastet. Zum Glück muss ich aber nicht operiert werden. Ich gehe jetzt einige Monate lang ⌄ __ (7) __ ⌄ Behandlung. Einige Behandlungen sind schon ⌄ __ (8) __ ⌄ mir und sie scheinen wirksam zu sein. Ich hoffe, dass sich mein Zustand auch weiterhin verbessern wird. Dann werde ich bald wieder gesund. Früher war ich bei einem Naturheilpraktiker, der ⌄ __ (9) __ ⌄ auch geraten hat, mich mehr zu bewegen. Ich glaube, es ist höchste Zeit, damit anzufangen. So könnte ich wenigstens auch etwas abnehmen, was mir ⌄ __ (10) __ ⌄ schaden würde. So weit für heute, schreib mir bald.\nHerzliche Grüße deine Anna",
+  "options": [
+    {
+      "id": 1,
+      "options": ["darauf", "dafür", "dazu"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "aber",
+        "connector": "dafür",
+        "after": "einen triftigen",
+        "color": 0
+      }
+    },
+    {
+      "id": 2,
+      "options": ["statt", "wegen", "während"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Schreiben",
+        "connector": "wegen",
+        "after": "meiner Krankheit",
+        "color": 8
+      }
+    },
+    {
+      "id": 3,
+      "options": ["verschieben", "verschiebten", "verschoben"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "wieder",
+        "connector": "verschoben",
+        "after": ". Ich habe",
+        "color": 3
+      }
+    },
+    {
+      "id": 4,
+      "options": ["nicht mehr", "sogar", "noch nicht"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Schließlich konnte ich",
+        "connector": "nicht mehr",
+        "after": "richtig schlafen",
+        "color": 6
+      }
+    },
+    {
+      "id": 5,
+      "options": ["geschicken", "eingewiesen", "nachgewiesen"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Untersuchungen",
+        "connector": "eingewiesen",
+        "after": ". Die sind",
+        "color": 11
+      }
+    },
+    {
+      "id": 6,
+      "options": ["Übergewicht", "Gleichgewicht", "Gleichgültigkeit"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Kil o",
+        "connector": "Übergewicht",
+        "after": "habe, ist",
+        "color": 4
+      }
+    },
+    {
+      "id": 7,
+      "options": ["zur", "auf", "für"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Monate lang",
+        "connector": "zur",
+        "after": "Behandlung. Einige",
+        "color": 9
+      }
+    },
+    {
+      "id": 8,
+      "options": ["über", "vor", "hinter"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "schon",
+        "connector": "hinter",
+        "after": "mir und",
+        "color": 2
+      }
+    },
+    {
+      "id": 9,
+      "options": ["vor allem", "unter anderem", "auf alle Fälle"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "der",
+        "connector": "unter anderem",
+        "after": "auch geraten",
+        "color": 7
+      }
+    },
+    {
+      "id": 10,
+      "options": ["eigentlich", "überhaupt", "gar nicht"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "mir",
+        "connector": "gar nicht",
+        "after": "schaden würde",
+        "color": 5
+      }
+    }
+  ]
+}

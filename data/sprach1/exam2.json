@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 2: Hallo Ferdinand (معدل)",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Hallo Philipp,\nnun habe ich mich schon so lange nicht bei dir gemeldet - das tut mir wirklich leid! Ich hatte in den vergangenen Monaten viel Stress, weil ich ja nun studiere und nebenbei noch arbeiten muss, ⌄ __ (1) __ ⌄ meine Miete und alles andere bezahlen zu können. Zum Glück macht mir mein Nebenjob wenigstens Spaß. Ich weiß nicht, ⌄ __ (2) __ ⌄ ich das sonst durchhalten würde. Vielleicht habe ich dir schon erzählt, dass ich abends und am Wochenende in einer Kneipe in der Küche helfe. Das ist zwar oft sehr anstrengend, ⌄ __ (3) __ ⌄ andererseits ist dauernd was los, es wird nicht langweilig, und meine Kollegen sind total nett. Erinnerst du dich noch an unsere Zeit in der Grundschule? Mit acht Jahren wollte ich ja ⌄ __ (4) __ ⌄ Kellnerin werden, weil man da Trinkgeld bekommt. Naja, jetzt bin ich in der Küche gelandet, knapp daneben ist auch vorbei ;)\nWas macht denn deine Ausbildung? Wenn ich ⌄ __ (5) __ ⌄ nicht täusche, bist du ja in einem halben Jahr schon fertig, oder? Das ist ja nicht mehr lang!\nNeulich habe ich übrigens Tina und Kevin hier in der Nähe der Uni getroffen – die waren ja schon ein Paar, ⌄ __ (6) __ ⌄ wir noch in der Schule gegangen sind, und jetzt will sie tatsächlich verheiratet!\nWie sehen denn deine Pläne für die ⌄ __ (7) __ ⌄ Wochenenden aus? Wir könnten uns ja vielleicht mal wieder treffen und in Ruhe quatschen – hättest du Lust ⌄ __ (8) __ ⌄?\nIn meiner Straße hat vor einem Monat ein nettes kleines Café aufgemacht, die haben nicht nur sehr leckere Kuchen, ⌄ __ (9) __ ⌄ auch einige kleine Gerichte zu wirklich günstigen Preisen. Wäre das was ⌄ __ (10) __ ⌄ dich? Mail wir doch einfach, wenn du magst, ich würde mich freuen.\nViele Grüße,\nNadine",
+  "options": [
+    {
+      "id": 1,
+      "options": ["damit", "für", "um"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "arbeiten muss",
+        "connector": "um",
+        "after": "meine Miete",
+        "color": 5
+      }
+    },
+    {
+      "id": 2,
+      "options": ["wenn", "wie", "wo"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "nicht weiß",
+        "connector": "wie",
+        "after": "ich das",
+        "color": 1
+      }
+    },
+    {
+      "id": 3,
+      "options": ["damit", "denn", "doch"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "sehr anstrengend",
+        "connector": "doch",
+        "after": "andererseits ist",
+        "color": 9
+      }
+    },
+    {
+      "id": 4,
+      "options": ["bestimmt", "unbedingt", "völlig"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "wollte ich ja",
+        "connector": "unbedingt",
+        "after": "Kellnerin werden",
+        "color": 3
+      }
+    },
+    {
+      "id": 5,
+      "options": ["dich", "mich", "sich"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Wenn ich",
+        "connector": "mich",
+        "after": "nicht täusche",
+        "color": 7
+      }
+    },
+    {
+      "id": 6,
+      "options": ["als", "da", "wenn"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "ein Paar",
+        "connector": "als",
+        "after": "wir noch",
+        "color": 0
+      }
+    },
+    {
+      "id": 7,
+      "options": ["jetzigen", "kommenden", "letzten"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "für die",
+        "connector": "kommenden",
+        "after": "Wochenenden aus",
+        "color": 11
+      }
+    },
+    {
+      "id": 8,
+      "options": ["danach", "darüber", "dazu"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Lust",
+        "connector": "dazu",
+        "after": "? In",
+        "color": 4
+      }
+    },
+    {
+      "id": 9,
+      "options": ["als", "ebenso", "oder"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "nur sehr",
+        "connector": "ebenso",
+        "after": "auch einige",
+        "color": 6
+      }
+    },
+    {
+      "id": 10,
+      "options": ["einen", "einfach", "einzig"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "was",
+        "connector": "einfach",
+        "after": "dich?",
+        "color": 2
+      }
+    }
+  ]
+}

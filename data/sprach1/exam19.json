@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 19: Liebe Lina, lieber Florian",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Liebe Lina, lieber Florian,\nnun sind wir schon einige Monate in unserer neuen Wohnung, und ihr habt uns noch immer nicht besucht. Ihr ⌄ __ (1) __ ⌄ doch endlich unser neues Heim und unsere kleine Stadt kennenlernen. Deshalb möchten wir euch ⌄ __ (2) __ ⌄ das verlängerte Wochenende Anfang Juni einladen. Wenn ihr am Donnerstagabend anreist, haben wir drei ganze Tage zur Verfügung. Wohnen könnt ihr natürlich ⌄ __ (3) __ ⌄ uns. Emma fährt im Juni in Urlaub, und sie überlässt euch gern ihr Zimmer.\nDie Stadt Steyr hat ⌄ __ (4) __ ⌄ zu bieten. Wir können eine Führung durch die historische Altstadt machen, die romantischen Innenhöfe besichtigen und auf ⌄ __ (5) __ ⌄ Turm der Stadtpfarrkirche steigen. Da geht es über 228 Stufen 60 Meter hinauf. Bei einem längeren Rundgang ⌄ __ (6) __ ⌄ auch die wunderbare Schlossbibliothek und das Tapetenzimmer zu besichtigen. Besonders interessant ist die Runde durch den Wehrgraten, ⌄ __ (7) __ ⌄ man an den alten Bauten den Wandel der Industrie nachvollziehen kann. ⌄ __ (8) __ ⌄ erfährt man alles über die Eisenindustrie, die den Reichtum der Stadt begründet hat.\nAußerdem finden an ⌄ __ (9) __ ⌄ Wochenende die jährlichen Literaturtage statt. Bei dieser Veranstaltung präsentieren zeitgenössische Autorinnen und Autoren ihre Neuerscheinungen. Die Lesungen finden zum Großteil in den prächtigen Arkadenhöfen statt. Die Stimmung dort ist wirklich eine ganz besondere. Lina, das wäre doch was für dich, oder?\nAuch die Umgebung kann ⌄ __ (10) __ ⌄ sehen lassen. Praktisch vor den Toren der Stadt beginnt der Nationalpark Kalkalpen. Dort kann man wunderbar wandern und Rad fahren. Ihr könnt in der Stadt auch Räder ausleihen.\nWir hoffen sehr, dass ihr noch keine Pläne für das Wochenende habt und zu uns kommen könnt.\nViele liebe Grüße und hoffentlich bis bald!\nChiara und Mark",
+  "options": [
+    {
+      "id": 1,
+      "options": ["dürft", "könnt", "sollt"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Ihr",
+        "connector": "sollt",
+        "after": "doch endlich",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["an", "für", "in"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "möchten wir euch",
+        "connector": "für",
+        "after": "das verlängerte",
+        "color": 8
+      }
+    },
+    {
+      "id": 3,
+      "options": ["bei", "unter", "zu"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "natürlich",
+        "connector": "bei",
+        "after": "uns. Emma",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["einige", "einigen", "einiges"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "hat",
+        "connector": "einiges",
+        "after": "zu bieten",
+        "color": 6
+      }
+    },
+    {
+      "id": 5,
+      "options": ["dem", "den", "der"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "auf",
+        "connector": "den",
+        "after": "Turm der",
+        "color": 0
+      }
+    },
+    {
+      "id": 6,
+      "options": ["ist", "sind", "waren"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Rundgang",
+        "connector": "sind",
+        "after": "auch die",
+        "color": 9
+      }
+    },
+    {
+      "id": 7,
+      "options": ["wann", "wie", "wo"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Wehrgraten,",
+        "connector": "wo",
+        "after": "man an",
+        "color": 3
+      }
+    },
+    {
+      "id": 8,
+      "options": ["Dabei", "Daneben", "Darin"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "kann.",
+        "connector": "Dabei",
+        "after": "erfährt man",
+        "color": 11
+      }
+    },
+    {
+      "id": 9,
+      "options": ["dies", "diesem", "dieses"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "an",
+        "connector": "diesem",
+        "after": "Wochenende die",
+        "color": 5
+      }
+    },
+    {
+      "id": 10,
+      "options": ["man", "sich", "sie"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "kann",
+        "connector": "sich",
+        "after": "sehen lassen",
+        "color": 7
+      }
+    }
+  ]
+}

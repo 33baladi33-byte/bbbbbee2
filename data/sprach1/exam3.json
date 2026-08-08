@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 3: Liebe Vanessa",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Liebe Vanessa,\ndanke für deinen Brief, ⌄ __ (1) __ ⌄ ich mich total gefreut habe. Du fragst dich bestimmt, warum du schon drei Wochen ⌄ __ (2) __ ⌄ von mir gehört hast, oder? Ich war mit meiner Gastfamilie in Urlaub. Vierzehn Tage im Allgäu – mit den Kindern Stefan, Anja und Karina. Du weißt ⌄ __ (3) __ ⌄ selbst, wie anstrengend es ist, wenn man ständig drei kleine Kinder um sich hat, die pausenlos unterhalten werden möchten. ⌄ __ (4) __ ⌄ ist es übrigens in deiner Au-pair-Familie mit der kleinen Dorothea?\nDas Allgäu liegt in Süddeutschland am Fuß ⌄ __ (5) __ ⌄ Alpen. Wir sind fast jeden Tag gewandert, immer bergauf und bergab. Den Kindern und mir haben ständig die Füße weh ⌄ __ (6) __ ⌄, doch meine Gasteltern, Herr und Frau Zimmer, sind einfach immer weitergelaufen. Die Deutschen lieben es nämlich, in der Natur spazieren zu gehen, bis sie vor Erschöpfung ⌄ __ (7) __ ⌄.\nUnterwegs haben wir manchmal an einer sogenannten \"Wassertretstelle\" Rast gemacht. Das sind kleine Wasserbecken, die oft mitten im Wald liegen. Durch das Becken fließt ein Bach mit eiskaltem Wasser, das direkt von den Bergen kommt. Stell ⌄ __ (8) __ ⌄ vor, alle Wanderer ziehen ihre Schuhe und Strümpfe aus und laufen durch dieses Becken. Als ich meinen Fuß in dieses kalte Wasser getaucht hatte, dachte ich, dass ich gleich sterben muss.\nAm Wochenende haben wir alle Minigolf gespielt. Dabei muss ein Golfball mit einem Schläger in ein etwa zehn Meter entferntes Loch geschlagen werden. Aber vor dem Loch gibt es ⌄ __ (9) __ ⌄ Menge Hindernisse: Gräben, kleine Hügel, Tunnel. Der Spieler, dessen Ball mit den wenigsten Schlägen im Loch ankommt, hat gewonnen. Die Kinder wollten gar nicht mehr ⌄ __ (10) __ ⌄ aufhören.\nJetzt muss ich aber Schluss machen, die Kinder warten auf ihr Abendessen, denn die Zimmers sind heute nicht da: Sie wandern mal wieder.\nViele Grüße\ndeine Mercedes",
+  "options": [
+    {
+      "id": 1,
+      "options": ["an den", "auf dem", "über den"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "deinen Brief",
+        "connector": "über den",
+        "after": "ich mich",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["nichts mehr", "noch nicht", "keines"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "drei Wochen",
+        "connector": "nichts mehr",
+        "after": "von mir",
+        "color": 8
+      }
+    },
+    {
+      "id": 3,
+      "options": ["doch", "eben", "überhaupt"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Du weißt",
+        "connector": "doch",
+        "after": "selbst wie",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["Wann", "Was", "Wie"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "übrigens",
+        "connector": "Wie",
+        "after": "ist es",
+        "color": 6
+      }
+    },
+    {
+      "id": 5,
+      "options": ["der", "die", "von"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Fuß",
+        "connector": "der",
+        "after": "Alpen. Wir",
+        "color": 0
+      }
+    },
+    {
+      "id": 6,
+      "options": ["gelaufen", "getan", "geworden"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "die Füße weh",
+        "connector": "getan",
+        "after": ", doch meine",
+        "color": 9
+      }
+    },
+    {
+      "id": 7,
+      "options": ["durchfallen", "umfallen", "wegfallen"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Erschöpfung",
+        "connector": "umfallen",
+        "after": ". Unterwegs haben",
+        "color": 3
+      }
+    },
+    {
+      "id": 8,
+      "options": ["dich", "dir", "mal"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Stell",
+        "connector": "dir",
+        "after": "vor, alle",
+        "color": 11
+      }
+    },
+    {
+      "id": 9,
+      "options": ["alle", "ganze", "jede"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "gibt es",
+        "connector": "jede",
+        "after": "Menge Hindernisse",
+        "color": 7
+      }
+    },
+    {
+      "id": 10,
+      "options": ["dabei", "damit", "davon"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "mehr",
+        "connector": "damit",
+        "after": "aufhören. Jetzt",
+        "color": 2
+      }
+    }
+  ]
+}

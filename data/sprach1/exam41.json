@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 41: Liebe Anna(الجديد)",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Liebe Anna,\ndanke für deinen lieben Brief, ⌄ __ (1) __ ⌄ ich letzte Woche erhalten habe. Ich freue mich sehr, dass es dir gut geht und dass du einen schönen Urlaub in Verona verbracht ⌄ __ (2) __ ⌄. Bestimmt wirst du jetzt öfter nach Italien reisen, wo doch dein Enkel dort die Frau fürs Leben gefunden hat und schon im September heiraten wird.\nDu hast ⌄ __ (3) __ ⌄ gefragt, was ich davon halte, wenn du in deinem Alter noch Italienisch lernst. Sicherlich sind wir beide nicht mehr die Allerjüngsten, ⌄ __ (4) __ ⌄ zum Sprachenlernen sind wir bestimmt ⌄ __ (5) __ ⌄ jung genug. Was sind schon sechzig Jahre?\nSieh mal: Als Chefsekretärin in deiner Firma sprichst du fließend Englisch und Französisch, du hast mit fünfzig noch gelernt, wie man einen Computer ⌄ __ (6) __ ⌄. Und heute bist du eine Computerspezialistin! Willst du, dass der „Computer“ in deinem Kopf einrostet, bloß weil du Angst hast, mit sechzig noch etwas Neues ⌄ __ (7) __ ⌄?\nNein, zu alt ist man nie! Lernen hält geistig fit und du kannst obendrein deine neuen Kenntnisse ganz praktisch ⌄ __ (8) __ ⌄. Du hast doch immer von deinen Reiseplänen erzählt: Florenz, Rom, Neapel! Und die Freundin deines Enkels ist doch Italienerin.\n ⌄ __ (9) __ ⌄ du mich fragst, dann geh in den nächsten Italienischkurs und lerne diese Sprache. Und kümmere dich nicht um dein (oder besser gesagt unser) Alter. Denn auch ich habe angefangen, eine Sprache zu lernen: Seit zwei Wochen besuche ich zweimal pro Woche einen Russischkurs an der Volkshochschule. Das macht einen Riesenspaß.\nJetzt muss ich aber aufhören, ich muss ⌄ __ (10) __ ⌄ gleich in den Kurs. Bis bald – und viele Grüße an deinen Enkel und seine Verlobte.\nDeine\nKarin",
+  "options": [
+    {
+      "id": 1,
+      "options": ["das", "den", "der"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Brief,",
+        "connector": "den",
+        "after": "ich letzte",
+        "color": 3
+      }
+    },
+    {
+      "id": 2,
+      "options": ["bist", "hast", "warst"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "verbracht",
+        "connector": "hast",
+        "after": ". Bestimmt wirst",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["mich", "mir", "sich"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Du hast",
+        "connector": "mich",
+        "after": "gefragt, was",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["doch", "obwohl", "sondern"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Allerjüngsten,",
+        "connector": "doch",
+        "after": "zum Sprachenlernen",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["erst", "noch", "schon"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "bestimmt",
+        "connector": "noch",
+        "after": "jung genug",
+        "color": 5
+      }
+    },
+    {
+      "id": 6,
+      "options": ["bearbeitet", "bedient", "bewirkt"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Computer",
+        "connector": "bedient",
+        "after": ". Und heute",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["lernen", "lernen müssen", "zu lernen"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Neues",
+        "connector": "zu lernen",
+        "after": "?",
+        "color": 4
+      }
+    },
+    {
+      "id": 8,
+      "options": ["einsetzen", "fortsetzen", "übersetzen"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "praktisch",
+        "connector": "einsetzen",
+        "after": ". Du hast",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["Ob", "Wann", "Wenn"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "ist.",
+        "connector": "Wenn",
+        "after": "du mich",
+        "color": 0
+      }
+    },
+    {
+      "id": 10,
+      "options": ["also", "kaum", "nämlich"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "ich muss",
+        "connector": "nämlich",
+        "after": "gleich in",
+        "color": 6
+      }
+    }
+  ]
+}

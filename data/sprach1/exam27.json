@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 27: Liebe Familie Geissler",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Liebe Familie Geissler,\nvielen Dank für Ihre Antwort ⌄ __ (1) __ ⌄ meine Bewerbung als Au-pair-Mädchen. Danke schön auch für die Fotos von den Kindern. Ich bin schon sehr gespannt und freue mich sehr Ihre Familie im September kennenzulernen!\nIm Juni schließe ich meine Schulausbildung ⌄ __ (2) __ ⌄ und möchte auch noch mein Deutsch ⌄ __ (3) __ ⌄ verbessern. Dafür werde ich im Sommer noch einen Sprachkurs an einer Sommerschule in meiner Heimat ⌄ __ (4) __ ⌄. Anschließend fahre ich mit meiner Familie für drei Wochen in Urlaub ans Meer.\nIch habe noch eine Frage ⌄ __ (5) __ ⌄ Sie. Sie schreiben, dass Sie für die Weihnachtsferien einen Skiurlaub planen, bei dem ich mitfahren kann, wenn ich möchte. Ich habe aber keine Ski und Skibekleidung. Kann ich mir diese Sachen bei ⌄ __ (6) __ ⌄ ausleihen? In meiner Heimat werde ich sie kaum jemals wieder brauchen. Aber ich bin immer offen für Neues und möchte das Skilaufen gern einmal ausprobieren.\nDanke schön, ⌄ __ (7) __ ⌄ Sie mich am Flughafen abholen kommen. Ich habe meinen Flug nach Frankfurt ⌄ __ (8) __ ⌄ gebucht. Am 2.9. werde ich sehr früh in Frankfurt landen, nämlich um 5:15 Uhr. Ich schlage ⌄ __ (9) __ ⌄, dass wir uns erst gegen 7:30 Uhr in einem Café treffen. Vielleicht komme ich ja mit Verspätung oder muss länger auf mein Gepäck warten. Dann müssen Sie nicht so früh da sein.\nBitte schreiben Sie mir, wenn Sie noch etwas über mich wissen möchten! Ich schicke einige Fotos mit der Mail, damit die Kinder schon ein bisschen ⌄ __ (10) __ ⌄ von mir sehen.\nViele Grüße\nIhre Asja",
+  "options": [
+    {
+      "id": 1,
+      "options": ["wegen", "von", "auf"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Antwort",
+        "connector": "auf",
+        "after": "meine Bewerbung",
+        "color": 2
+      }
+    },
+    {
+      "id": 2,
+      "options": ["zu", "aus", "ab"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Schulausbildung",
+        "connector": "ab",
+        "after": "und möchte",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["kaum", "fast", "ein bisschen"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Deutsch",
+        "connector": "ein bisschen",
+        "after": "verbessern. Dafür",
+        "color": 4
+      }
+    },
+    {
+      "id": 4,
+      "options": ["unterrichten", "machen", "lernen"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Heimat",
+        "connector": "machen",
+        "after": ". Anschließend fahre",
+        "color": 0
+      }
+    },
+    {
+      "id": 5,
+      "options": ["über", "für", "an"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Frage",
+        "connector": "an",
+        "after": "Sie. Sie",
+        "color": 7
+      }
+    },
+    {
+      "id": 6,
+      "options": ["irgendwo", "irgendjemandem", "irgendetwas"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "bei",
+        "connector": "irgendjemandem",
+        "after": "ausleihen? In",
+        "color": 3
+      }
+    },
+    {
+      "id": 7,
+      "options": ["falls", "dass", "dafür"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Danke schön,",
+        "connector": "dass",
+        "after": "Sie mich",
+        "color": 11
+      }
+    },
+    {
+      "id": 8,
+      "options": ["schon", "noch", "bevor"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Frankfurt",
+        "connector": "schon",
+        "after": "gebucht. Am",
+        "color": 6
+      }
+    },
+    {
+      "id": 9,
+      "options": ["zu", "vor", "nach"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Ich schlage",
+        "connector": "vor",
+        "after": ", dass wir",
+        "color": 5
+      }
+    },
+    {
+      "id": 10,
+      "options": ["weniger", "viel", "mehr"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "bisschen",
+        "connector": "mehr",
+        "after": "von mir",
+        "color": 8
+      }
+    }
+  ]
+}

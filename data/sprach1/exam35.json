@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 35: Lieber David",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Lieber David,\nwas für eine schöne Überraschung, dass Du nach Deutschland kommst. Und ⌄ __ (1) __ ⌄ schöner ist es, dass Du uns besuchen willst, ⌄ __ (2) __ ⌄ Du in München zu tun hast und wir in Köln wohnen, was ja nicht so nah ist.\nDu bist jederzeit herzlich willkommen. Wir können für Dich ein interessantes Wochenende organisieren. Du kannst Dir den Kölner Dom ⌄ __ (3) __ ⌄ und noch ein paar andere Sehenswürdigkeiten. Und natürlich ⌄ __ (4) __ ⌄ wir genug Zeit für Gespräche haben. Die Briefe, die wir sonst schreiben, können persönliche Gespräche ja nicht ersetzen.\nMach dir keine Sorgen über Deinen Ausflug nach Köln. Schreib uns kurz, an welchem Tag und um welche Uhrzeit Du am Hauptbahnhof ⌄ __ (5) __ ⌄. Wir holen Dich dort mit dem Auto ab, so dass Du Dir keine Gedanken über Bus und Straßenbahn machen musst. Warte einfach am Bahnsteig auf uns, ⌄ __ (6) __ ⌄ wir uns verspäten sollten.\nZu Hause erwartet Dich ein Gästezimmer. Es ist das Zimmer unseres Sohnes, der schon seit Jahren eine eigene Wohnung hat. Wir benutzen es ⌄ __ (7) __ ⌄ für ihn, wenn er zu Besuch kommt, aber auch für andere Gäste. Es wird Dir bestimmt gefallen.\nWir können dann alte Erinnerungen ⌄ __ (8) __ ⌄. Wir haben sehr viele Fotos gemacht, ⌄ __ (9) __ ⌄ wir bei Dir zu Besuch waren. Kaum zu glauben, dass inzwischen schon drei Jahre vergangen sind. Es ist in dieser Zeit viel geschehen; aber ⌄ __ (10) __ ⌄ Dich überraschen...\nWir wünschen Dir eine gute Reise und freuen uns auf Deinen Besuch.\nViele Grüße\nKarl und Monika",
+  "options": [
+    {
+      "id": 1,
+      "options": ["ganz", "noch", "zwar"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Und",
+        "connector": "noch",
+        "after": "schöner ist",
+        "color": 3
+      }
+    },
+    {
+      "id": 2,
+      "options": ["jedoch", "obwohl", "trotzdem"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "willst,",
+        "connector": "obwohl",
+        "after": "Du in",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["anschauen", "überschauen", "vorschauen"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Dom",
+        "connector": "anschauen",
+        "after": "und noch",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["konnten", "sollten", "wollten"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "natürlich",
+        "connector": "sollten",
+        "after": "wir genug",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["ankommen wirst", "anzukommen wirst", "wirst ankommen"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Hauptbahnhof",
+        "connector": "ankommen wirst",
+        "after": ". Wir holen",
+        "color": 5
+      }
+    },
+    {
+      "id": 6,
+      "options": ["falls", "für den Fall", "im Fall"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "uns,",
+        "connector": "falls",
+        "after": "wir uns",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["neulich", "seitdem", "vormals"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "benutzen es",
+        "connector": "seitdem",
+        "after": "für ihn",
+        "color": 4
+      }
+    },
+    {
+      "id": 8,
+      "options": ["auffrischen", "aufholen", "aufsparen"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Erinnerungen",
+        "connector": "auffrischen",
+        "after": ". Wir haben",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["als", "wann", "wo"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "gemacht,",
+        "connector": "als",
+        "after": "wir bei",
+        "color": 2
+      }
+    },
+    {
+      "id": 10,
+      "options": ["geh", "komm", "lass"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "aber",
+        "connector": "lass",
+        "after": "Dich überraschen",
+        "color": 6
+      }
+    }
+  ]
+}

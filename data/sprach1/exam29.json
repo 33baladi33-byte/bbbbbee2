@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 29: Liebe Andrea (معدل)",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Liebe Andrea,\nvielen Dank für deine Nachricht. Entschuldige bitte, dass ich ⌄ __ (1) __ ⌄ jetzt antworte, aber ich konnte gestern meinen Laptop nicht verwenden. Ich hatte ihn zu Peter gebracht, damit er mir ein neues Betriebssystem installiert. Jetzt funktioniert alles ⌄ __ (2) __ ⌄, so dass ich endlich meine Fotos sortieren konnte. Peter und ich haben uns die Fotos von deinem letzten Besuch hier angesehen. Es war so lustig, du musst bald wieder mal ⌄ __ (3) __ ⌄ uns kommen.\nNun zu deiner Nachricht: Du suchst also einen Sommerjob im Bereich Touristik und wolltest wissen, ob ich einen Tipp für dich habe. Ich habe mich hier ein wenig umgehört, aber du bist ⌄ __ (4) __ ⌄ spät dran mit deiner Suche. Nur das Hotel \"Seeblick\" sucht noch jemanden für die Rezeption. Man braucht keine ⌄ __ (5) __ ⌄ Berufserfahrung; nur Englisch ist zwingende Voraussetzung, eine ⌄ __ (6) __ ⌄ Fremdsprache wäre noch besser. Das wäre für Juli und August, fünf Tage in der Woche. Du musst dich allerdings sehr bald ⌄ __ (7) __ ⌄, am besten noch heute. Die Kontaktperson findest du auf der Webseite des Hotels. Leider kenne ich die Hotelbesitzer nicht persönlich, ⌄ __ (8) __ ⌄ hätte ich mich natürlich sofort für dich eingesetzt.\nIch werde ⌄ __ (9) __ ⌄ wieder im Kinder-Feriencamp arbeiten. Eigentlich wollte ich dieses Jahr ins Ausland, aber dann habe ich mich doch ⌄ __ (10) __ ⌄ hier zu bleiben. Meine Mutter hat sich noch nicht richtig von ihrer Operation erholt, und ich lasse sie ungern allein.\nAlso bewirb dich gleich - es wäre toll, wenn wir uns im Sommer viel sehen könnten. Falls es nicht klappt, hoffe ich doch, dass du uns bald besuchen kommst!\nIn der Zwischenzeit alles Liebe Sophia",
+  "options": [
+    {
+      "id": 1,
+      "options": ["erst", "gleich", "zuerst"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "dass ich",
+        "connector": "erst",
+        "after": "jetzt antworte",
+        "color": 2
+      }
+    },
+    {
+      "id": 2,
+      "options": ["am besten", "bestenfalls", "bestens"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "alles",
+        "connector": "bestens",
+        "after": ", so dass",
+        "color": 8
+      }
+    },
+    {
+      "id": 3,
+      "options": ["bei", "mit", "zu"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "mal",
+        "connector": "bei",
+        "after": "uns kommen",
+        "color": 0
+      }
+    },
+    {
+      "id": 4,
+      "options": ["fast", "ungefähr", "ziemlich"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "bist",
+        "connector": "ziemlich",
+        "after": "spät dran",
+        "color": 6
+      }
+    },
+    {
+      "id": 5,
+      "options": ["besondere", "geringe", "gute"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "keine",
+        "connector": "besondere",
+        "after": "Berufserfahrung; nur",
+        "color": 4
+      }
+    },
+    {
+      "id": 6,
+      "options": ["künftige", "nächste", "weitere"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "eine",
+        "connector": "weitere",
+        "after": "Fremdsprache wäre",
+        "color": 9
+      }
+    },
+    {
+      "id": 7,
+      "options": ["anwerben", "bewerben", "umwerben"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "dich",
+        "connector": "bewerben",
+        "after": ", am besten",
+        "color": 3
+      }
+    },
+    {
+      "id": 8,
+      "options": ["außerdem", "damals", "sonst"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "persönlich,",
+        "connector": "sonst",
+        "after": "hätte ich",
+        "color": 11
+      }
+    },
+    {
+      "id": 9,
+      "options": ["deshalb", "trotzdem", "übrigens"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Ich werde",
+        "connector": "übrigens",
+        "after": "wieder im",
+        "color": 5
+      }
+    },
+    {
+      "id": 10,
+      "options": ["ausgemacht", "beschlossen", "entschieden"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "mich doch",
+        "connector": "entschieden",
+        "after": "hier zu",
+        "color": 7
+      }
+    }
+  ]
+}

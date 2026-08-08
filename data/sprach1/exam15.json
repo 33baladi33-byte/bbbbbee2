@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 15: Liebe Agnieszka",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Liebe Agnieszka,\njetzt ist es schon bald ein halbes Jahr ⌄ __ (1) __ ⌄, dass ich dir das letzte Mal geschrieben habe. Bitte denke jetzt nicht, dass ich dich vergessen habe. Aber, wie du ja schon weißt, stehe ich vor der Abschlussprüfung in Deutsch und das bedeutet jede Menge Arbeit und Stress. Stell dir vor, ausgerechnet jetzt, nur zwei Wochen vor der Prüfung, ist unsere Lehrerin, Frau Reuter, ⌄ __ (2) __ ⌄. Sie liegt sogar im Krankenhaus und kommt erst wieder zurück, ⌄ __ (3) __ ⌄ unsere Prüfung schon längst vorbei ist. Ihre Vertretung, Frau Eichhorn, ist ⌄ __ (4) __ ⌄ sehr nett, aber sie hat gerade erst mit dem Unterrichten angefangen und noch keine Erfahrung. Das macht uns alle ein bisschen unsicher.\nAber in zwei Wochen ist hoffentlich alles geschafft. Und dann ⌄ __ (5) __ ⌄ ich alle Bücher und Hefte in die Ecke legen und erst einmal ein paar Tage gar nichts tun. ⌄ __ (6) __ ⌄ freue ich mich schon riesig. Wenn du Zeit und Lust hast, kannst du mich doch besuchen kommen und wir können zusammen etwas unternehmen. Wir wollten doch schon lange Bad Homburg besuchen und im Taunus wandern. Was hältst du ⌄ __ (7) __ ⌄?\nWas macht deine Au-pair-Familie? Musst du immer noch so viel Hausarbeit machen? Hören \"deine\" Kinder auf dich oder tanzen sie ⌄ __ (8) __ ⌄ noch immer auf der Nase herum, wie du in deinem letzten Brief geschrieben hast? Es ist bestimmt nicht so leicht, einen zweijährigen Jungen und ein vierjähriges Mädchen den ganzen Tag ⌄ __ (9) __ ⌄. Aber ich kenne dich: Du hast gute Ideen und bestimmt hast du schon einen Weg gefunden, ⌄ __ (10) __ ⌄ du mit den Kindern zurechtkommst.\nSo, jetzt muss ich mich wieder an meine Prüfungsvorbereitung machen, sonst wird mir die Zeit zu knapp. Ich grüße dich ganz herzlich und wünsche dir alles Gute.\nBis bald deine Louise",
+  "options": [
+    {
+      "id": 1,
+      "options": ["her", "hin", "vorbei"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "halbes Jahr",
+        "connector": "her",
+        "after": ", dass ich",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["erkrankt", "gekränkt", "kränklich"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Frau Reuter,",
+        "connector": "erkrankt",
+        "after": ". Sie liegt",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["als", "da", "wenn"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "zurück,",
+        "connector": "wenn",
+        "after": "unsere Prüfung",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["nicht nur", "teils", "zwar"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "ist",
+        "connector": "zwar",
+        "after": "sehr nett",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["werde", "wollte", "würde"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Und dann",
+        "connector": "werde",
+        "after": "ich alle",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["Darauf", "Danach", "Davon"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "tun.",
+        "connector": "Darauf",
+        "after": "freue ich",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["darüber", "davon", "dazu"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "hältst du",
+        "connector": "davon",
+        "after": "?",
+        "color": 0
+      }
+    },
+    {
+      "id": 8,
+      "options": ["dich", "dir", "sich"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "tanzen sie",
+        "connector": "dir",
+        "after": "noch immer",
+        "color": 6
+      }
+    },
+    {
+      "id": 9,
+      "options": ["beschäftigen lassen", "beschäftigt zu sein", "zu beschäftigen"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Tag",
+        "connector": "zu beschäftigen",
+        "after": ". Aber ich",
+        "color": 5
+      }
+    },
+    {
+      "id": 10,
+      "options": ["weshalb", "wie", "wo"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "gefunden,",
+        "connector": "wie",
+        "after": "du mit",
+        "color": 8
+      }
+    }
+  ]
+}

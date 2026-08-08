@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 13: Lieber Thomas",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Lieber Thomas,\nich muss dir unbedingt etwas erzählen: Ich bin heute das erste Mal in meinem Leben Ski gefahren, ⌄ __ (1) __ ⌄ ich mir das bisher nie zugetraut hatte. Meine Freundin Lisa hat mich eingeladen, einige Tage mit ihr und ihren Eltern in den Bergen zu verbringen. Und bevor ich ankam, ⌄ __ (2) __ ⌄ sie schon einen individuellen Skikurs für mich gebucht! Du kannst dir vorstellen, wie mich das überrascht hat! Ich ⌄ __ (3) __ ⌄ es mir schon anders überlegen, aber Lisa wollte nichts ⌄ __ (4) __ ⌄ hören. Heute Morgen ging es dann los. ⌄ __ (5) __ ⌄ war ich ziemlich aufgeregt, aber ich habe mich auch unheimlich gefreut. Mit der Skilehrerin habe ich mich gleich gut verstanden. Sie hat mich abgeholt und mir ⌄ __ (6) __ ⌄ geholfen, im Sportgeschäft Schuhe, Skier, Stöcke und einen Helm für mich ⌄ __ (7) __ ⌄. Dann hat mir die Skilehrerin einige ⌄ __ (8) __ ⌄ Dinge erklärt. Ich war anfangs sehr unsicher, mit der Zeit ließ das aber nach. Die Kinder im Zwergerlkurs scheinen ⌄ __ (9) __ ⌄ Gegensatz zu mir überhaupt keine Angst zu haben. Das Schlimmste am ersten Tag war der Schlepplift. Erst habe ich den Lift einige Male verpasst, dann bin ich hingefallen. Irgendwie habe ich es dann doch noch geschafft. Und zum Schluss bin ich mit der Lehrerin sogar eine leichte Piste runtergefahren. Morgen habe ich wieder zwei Stunden. Ich habe jetzt schon Muskelkater und mir tut alles weh! Ich weiß gar nicht, ⌄ __ (10) __ ⌄ ich das schaffen soll. Ich werde dich über meine Fortschritte auf dem Laufenden halten :)\nBis bald und liebe Grüße\nSamira",
+  "options": [
+    {
+      "id": 1,
+      "options": ["obwohl", "trotz", "während"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "gefahren,",
+        "connector": "obwohl",
+        "after": "ich mir",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["hat", "hatte", "hätte"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "ich ankam,",
+        "connector": "hatte",
+        "after": "sie schon",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["konnte", "sollte", "wollte"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Ich",
+        "connector": "wollte",
+        "after": "es mir",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["dafür", "damit", "davon"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "nichts",
+        "connector": "davon",
+        "after": "hören. Heute",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["Einerseite", "weder", "zwar"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "los.",
+        "connector": "Einerseite",
+        "after": "war ich",
+        "color": 3
+      }
+    },
+    {
+      "id": 6,
+      "options": ["dabei", "davon", "dazu"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "mir",
+        "connector": "dabei",
+        "after": "geholfen, im",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["aussuchen", "ausgesucht", "auszusuchen"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "mich",
+        "connector": "auszusuchen",
+        "after": ". Dann hat",
+        "color": 0
+      }
+    },
+    {
+      "id": 8,
+      "options": ["grundlegende", "grundlegenden", "grundlegender"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "einige",
+        "connector": "grundlegende",
+        "after": "Dinge erklärt",
+        "color": 6
+      }
+    },
+    {
+      "id": 9,
+      "options": ["am", "im", "zum"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "scheinen",
+        "connector": "im",
+        "after": "Gegensatz zu",
+        "color": 5
+      }
+    },
+    {
+      "id": 10,
+      "options": ["dass", "ob", "wie"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "nicht,",
+        "connector": "wie",
+        "after": "ich das",
+        "color": 8
+      }
+    }
+  ]
+}

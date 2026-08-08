@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 11: Lieber Justus",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Lieber Justus,\nvielen Dank für deine Urlaubskarte, ⌄ __ (1) __ ⌄ die ich mich wirklich sehr gefreut habe! Ich wusste ⌄ __ (2) __ ⌄ nicht, dass ihr gerne wandern geht. Oder habt ihr das jetzt zum ersten Mal gemacht?\nAls Kind war ich mit meinen Eltern mal wandern, aber mir hat das damals nicht ⌄ __ (3) __ ⌄ gefallen. Ich war auch noch klein und hatte keine Lust, so lange zu laufen.\nHeute fahre ich lieber an den Strand und mache einen schönen Badeurlaub. Den ganzen Tag lesen, in der Sonne liegen, ab und zu mal ins Wasser gehen – ⌄ __ (4) __ ⌄ habe ich schon im Alltag genug Stress.\nDabei fällt mir ein: Wie ist eigentlich deine neue Stelle? Du arbeitest doch jetzt in dieser internationalen Baufirma, oder? Bist du jetzt schneller im Büro als früher oder ist die Firma sogar noch weiter ⌄ __ (5) __ ⌄ als deine alte? Du musstest ja immer ziemlich lange fahren, daran erinnere ich mich noch gut!\nIch denke im Moment auch darüber nach, die Stelle zu ⌄ __ (6) __ ⌄. Mein Chef und meine Kollegen sind zwar total nett und die Bezahlung ist auch gut, aber ich mache fast jeden Tag das Gleiche – und das jetzt schon seit über zehn Jahren. Ehrlich ⌄ __ (7) __ ⌄ langweile ich mich in den letzten Monaten immer häufiger und würde gerne noch mal etwas Neues ausprobieren. Deshalb mache ich ab dem ⌄ __ (8) __ ⌄ Monat erst mal eine Weiterbildung, sonst hätte ich wohl nicht so gute Chancen, eine neue Stelle zu bekommen. Schließlich wird es auch immer schwieriger, ⌄ __ (9) __ ⌄ älter man ist. Die meisten Arbeitgeber wollen doch lieber jüngere Angestellte.\nWie ⌄ __ (10) __ ⌄ es, wenn wir uns demnächst treffen würden? Wir könnten in diesem neuen Restaurant in der Innenstadt essen gehen. Melde dich doch einfach mal wieder!\nViele Grüße\nRichard",
+  "options": [
+    {
+      "id": 1,
+      "options": ["an", "für", "über"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Urlaubskarte,",
+        "connector": "über",
+        "after": "die ich",
+        "color": 3
+      }
+    },
+    {
+      "id": 2,
+      "options": ["daher", "gar", "sicher"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Ich wusste",
+        "connector": "gar",
+        "after": "nicht, dass",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["besonders", "einfach", "kaum"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "nicht",
+        "connector": "besonders",
+        "after": "gefallen. Ich",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["allerdings", "außerdem", "schließlich"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "ins Wasser gehen –",
+        "connector": "schließlich",
+        "after": "habe ich",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["-", "abgerückt", "entfernt"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "noch weiter",
+        "connector": "entfernt",
+        "after": "als deine",
+        "color": 0
+      }
+    },
+    {
+      "id": 6,
+      "options": ["ändern", "verwechseln", "wechseln"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Stelle zu",
+        "connector": "wechseln",
+        "after": ". Mein Chef",
+        "color": 5
+      }
+    },
+    {
+      "id": 7,
+      "options": ["gesagt", "sagend", "zu sagen"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Ehrlich",
+        "connector": "gesagt",
+        "after": "langweile ich",
+        "color": 11
+      }
+    },
+    {
+      "id": 8,
+      "options": ["kommende", "kommendem", "kommenden"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "ab dem",
+        "connector": "kommenden",
+        "after": "Monat erst",
+        "color": 4
+      }
+    },
+    {
+      "id": 9,
+      "options": ["als", "je", "weil"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "schwieriger,",
+        "connector": "je",
+        "after": "älter man",
+        "color": 6
+      }
+    },
+    {
+      "id": 10,
+      "options": ["ist", "war", "wäre"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Wie",
+        "connector": "wäre",
+        "after": "es, wenn",
+        "color": 8
+      }
+    }
+  ]
+}

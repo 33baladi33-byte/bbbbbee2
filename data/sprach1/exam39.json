@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 39: Sehr geehrte Frau Melchior",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Sehr geehrte Frau Melchior,\nvielen Dank für Ihr Schreiben von letztem Dienstag, ⌄ __ (1) __ ⌄ Sie um nähere Informationen zu der geplanten Dresden-Reise im kommenden Juni gebeten haben. ⌄ __ (2) __ ⌄ unser Programmheft erst in zwei Wochen fertig ist, gebe ich Ihnen schon einmal ein paar Vorabinformationen.\nDie Reise findet in der Zeit vom 3. bis 8. Juni statt. Die Anreise erfolgt mit der Bahn. ⌄ __ (3) __ ⌄ sind Sie im Hotel Corona, das ⌄ __ (4) __ ⌄ in der Stadtmitte befindet. Ihnen stehen Einzel- oder Doppelzimmer mit Bad zur Verfügung. Der Reisepreis beträgt 650 € im Doppel- sowie 950 € im Einzelzimmer, jeweils mit Frühstück.\nDas eigentliche Programm der Reise startet am 4. Juni mit einer Stadtrundfahrt, in deren Verlauf Ihnen alle wichtigen Sehenswürdigkeiten ⌄ __ (5) __ ⌄ werden. Am Nachmittag werden Sie den Zwinger mit seiner umfangreichen Sammlung an Bildern, Porzellan und Skulpturen besuchen. Für den Abend ist ein Besuch ⌄ __ (6) __ ⌄ Semper-Oper geplant, wo am Abend Mozarts Zauberflöte aufgeführt wird.\nAm 5. Juni machen Sie einen Ausflug zu dem vor den Toren der Stadt liegenden barocken Schloss Pillnitz, dessen Park ⌄ __ (7) __ ⌄ seine exotischen Pflanzen berühmt ist. Während der halbstündigen Busfahrt fahren Sie über die berühmte Elbbrücke Blaues Wunder. Am 6. Juni geht es in das Residenzschloss mit dem Grünen Gewölbe. Darin befinden sich über 3000 Werke der Goldschmiede- und Juwelierkunst. Am Abend geht es in die wiederaufgebaute Frauenkirche. Hier erwartet Sie ein Konzert mit Musik von Johann Sebastian Bach. Der 7. Juni ⌄ __ (8) __ ⌄ zu Ihrer freien Verfügung. Vielleicht möchten Sie einen Einkaufsbummel machen oder an einer Fahrt in die nahe gelegene Sächsische Schweiz ⌄ __ (9) __ ⌄.\nIch hoffe, dass Ihnen diese Vorabinformationen einen Überblick über die geplante Reise ⌄ __ (10) __ ⌄.\nNähere Informationen enthält dann unser Programmheft, in dem Sie auch die genauen Abfahrts- und Ankunftszeiten finden.\nMit freundlichen Grüßen\nJasmin Krämer\nReisedienst Krämer",
+  "options": [
+    {
+      "id": 1,
+      "options": ["für das", "in dem", "von dem"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Dienstag,",
+        "connector": "in dem",
+        "after": "Sie um",
+        "color": 3
+      }
+    },
+    {
+      "id": 2,
+      "options": ["Da", "Wann", "Wenn"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "haben.",
+        "connector": "Da",
+        "after": "unser Programmheft",
+        "color": 9
+      }
+    },
+    {
+      "id": 3,
+      "options": ["Untergebracht", "Verbracht", "Zugebracht"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Bahn.",
+        "connector": "Untergebracht",
+        "after": "sind Sie",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["man", "sich", "Sie"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "das",
+        "connector": "sich",
+        "after": "in der",
+        "color": 7
+      }
+    },
+    {
+      "id": 5,
+      "options": ["geschaut", "gesehen", "gezeigt"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Sehenswürdigkeiten",
+        "connector": "gezeigt",
+        "after": "werden. Am",
+        "color": 5
+      }
+    },
+    {
+      "id": 6,
+      "options": ["der", "die", "von"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Besuch",
+        "connector": "der",
+        "after": "Semper-Oper geplant",
+        "color": 11
+      }
+    },
+    {
+      "id": 7,
+      "options": ["für", "mit", "wegen"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "dessen Park",
+        "connector": "für",
+        "after": "seine exotischen",
+        "color": 4
+      }
+    },
+    {
+      "id": 8,
+      "options": ["fällt", "liegt", "steht"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Juni",
+        "connector": "steht",
+        "after": "zu Ihrer",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["beteiligen", "fahren", "teilnehmen"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Schweiz",
+        "connector": "teilnehmen",
+        "after": ". Ich hoffe",
+        "color": 0
+      }
+    },
+    {
+      "id": 10,
+      "options": ["verschaffen", "vermachen", "schaffen"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Reise",
+        "connector": "verschaffen",
+        "after": ". Nähere Informationen",
+        "color": 6
+      }
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 38: Liebe Clara",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Liebe Clara,\naus Lyon sende ich dir herzliche Grüße! Ich sitze gerade in einem gemütlichen, aber ziemlich vollen Bistro in der Altstadt und genieße meinen Urlaub. Nun ist es ja schon einige Monate her, dass wir zuletzt ⌄ __ (1) __ ⌄ gehört haben. Ich hoffe, es geht dir gut!\nZurzeit mache ich eine Rundreise ⌄ __ (2) __ ⌄ Europa, die ich übrigens schon lange geplant hatte.\n⌄ __ (3) __ ⌄ du weißt, habe ich in den letzten zwei Jahren sehr viel gearbeitet und konnte mir nur selten freinehmen. Nach dem ganzen Stress musste ich unbedingt mal eine längere Pause einlegen. Dank meiner gesammelten Überstunden kann ich nun acht Wochen Urlaub am Stück machen. Mein Chef ⌄ __ (4) __ ⌄ zuerst nicht gerade von dieser Idee begeistert, aber am Ende konnte ich ihn doch überzeugen. In den Sommermonaten ist ⌄ __ (5) __ ⌄ in der Firma ohnehin etwas ruhiger.\nNun klappere ich nach und nach alle Städte ab, die auf der Liste meiner Traumziele stehen. Ich bin nur mit dem Zug oder Bus unterwegs, denn ich fliege ja nicht sehr gerne. Meine ⌄ __ (6) __ ⌄ Station war Amsterdam, dann ging es über Brüssel nach Lyon und bald werde ich weiter Richtung Süden reisen. Der Büroalltag fehlt mir wirklich überhaupt nicht. Ich möchte gar nicht ⌄ __ (7) __ ⌄ denken, dass ich irgendwann wieder an den Schreibtisch zurück ⌄ __ (8) __ ⌄. In den letzten Tagen kam ⌄ __ (9) __ ⌄ manchmal der Gedanke, dass ich nach meiner Rückkehr auch etwas ganz Neues anfangen ⌄ __ (10) __ ⌄.\nIch wünsche dir einen schönen Sommer!\nHerzliche Grüße und bis bald",
+  "options": [
+    {
+      "id": 1,
+      "options": ["miteinander", "voneinander", "zueinander"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "zuletzt",
+        "connector": "voneinander",
+        "after": "gehört haben",
+        "color": 2
+      }
+    },
+    {
+      "id": 2,
+      "options": ["durch", "über", "in"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Rundreise",
+        "connector": "durch",
+        "after": "Europa, die",
+        "color": 8
+      }
+    },
+    {
+      "id": 3,
+      "options": ["als", "wie", "wenn"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "hatte.",
+        "connector": "wie",
+        "after": "du weißt",
+        "color": 4
+      }
+    },
+    {
+      "id": 4,
+      "options": ["war", "würde", "wurde"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Mein Chef",
+        "connector": "war",
+        "after": "zuerst nicht",
+        "color": 9
+      }
+    },
+    {
+      "id": 5,
+      "options": ["es", "er", "man"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "ist",
+        "connector": "es",
+        "after": "in der",
+        "color": 1
+      }
+    },
+    {
+      "id": 6,
+      "options": ["erste", "ersten", "erst"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Meine",
+        "connector": "erste",
+        "after": "Station war",
+        "color": 7
+      }
+    },
+    {
+      "id": 7,
+      "options": ["daran", "darüber", "davon"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "nicht",
+        "connector": "daran",
+        "after": "denken, dass",
+        "color": 3
+      }
+    },
+    {
+      "id": 8,
+      "options": ["kann", "mag", "muss"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "zurück",
+        "connector": "muss",
+        "after": ". In den",
+        "color": 11
+      }
+    },
+    {
+      "id": 9,
+      "options": ["bei", "in", "mir"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "kam",
+        "connector": "mir",
+        "after": "manchmal der",
+        "color": 6
+      }
+    },
+    {
+      "id": 10,
+      "options": ["bräuchte", "dürfte", "könnte"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "anfangen",
+        "connector": "könnte",
+        "after": ". Ich wünsche",
+        "color": 5
+      }
+    }
+  ]
+}

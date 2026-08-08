@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 20: Liebes Julian",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Liebes Julian,\nWie geht es dir? Ich hoffe, du hattest eine schöne Reise und ⌄ __ (1) __ ⌄ dich gut erholen. Ich ⌄ __ (2) __ ⌄ ja auch gerne mal wieder ans Meer fahren, aber im Moment habe ich leider keine Zeit ⌄ __ (3) __ ⌄ Urlaub. Wie du dir bestimmt vorstellen kannst, war ich in den letzten Wochen vor allem mit meinem Umzug beschäftigt. Du weißt ja, dass ich zuerst ziemlich skeptisch war. Nach so ⌄ __ (4) __ ⌄ Jahren in Berlin konnte ich mir gar nicht mehr vorstellen, mich in einer kleinen Stadt wie Bamberg niederzulassen. Bamberg hat nur rund 77.000 Einwohner, aber langweilig ist es hier trotzdem nicht, wie ich inzwischen festgestellt habe. Mittlerweile fühle ich mich hier sogar richtig wohl. Die Stadt hat wirklich viel zu bieten. Es gibt jahrhundertealte Sehenswürdigkeiten in Hülle und Fülle, und in der Altstadt ⌄ __ (5) __ ⌄ mir besonders die schönen Fachwerkhäuser, die überwiegend aus dem Mittelalter stammen. Ich gehe oft durch die Fußgängerzone, ⌄ __ (6) __ ⌄ dort gibt es viele kleine Läden, Cafés und Restaurants mit typisch fränkischen Spezialitäten. Ich glaube, dir würde es hier auch gefallen. ⌄ __ (7) __ ⌄ du willst, zeige ich dir gerne mal die Stadt. Hättest du vielleicht Lust, mich im nächsten Monat zu besuchen? ⌄ __ (8) __ ⌄ ist bei mir wach der Umzugsstress vorbei. Im Moment steht noch eine große Anzahl nicht ⌄ __ (9) __ ⌄ Kisten in meinem Wohnzimmer, die ausgepackt werden müssen. Mit meiner neuen Wohnung habe ich übrigens auch Glück gehabt, ⌄ __ (10) __ ⌄ sie geräumig und zentral gelegen ist. Wir können ja mal telefonieren, dann erzähle ich dir mehr.\nLiebe Grüße,\nAnna",
+  "options": [
+    {
+      "id": 1,
+      "options": ["musstest", "konntest", "solltest"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "und",
+        "connector": "konntest",
+        "after": "dich gut",
+        "color": 4
+      }
+    },
+    {
+      "id": 2,
+      "options": ["würde", "werde", "soll"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Ich",
+        "connector": "würde",
+        "after": "ja auch",
+        "color": 8
+      }
+    },
+    {
+      "id": 3,
+      "options": ["nach", "um", "für"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Zeit",
+        "connector": "für",
+        "after": "Urlaub. Wie",
+        "color": 1
+      }
+    },
+    {
+      "id": 4,
+      "options": ["vielen", "lange", "wenigen"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Nach so",
+        "connector": "vielen",
+        "after": "Jahren in",
+        "color": 6
+      }
+    },
+    {
+      "id": 5,
+      "options": ["schaut", "gefallen", "finde"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Altstadt",
+        "connector": "gefallen",
+        "after": "mir besonders",
+        "color": 0
+      }
+    },
+    {
+      "id": 6,
+      "options": ["denn", "weil", "obwohl"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Fußgängerzone,",
+        "connector": "denn",
+        "after": "dort gibt",
+        "color": 9
+      }
+    },
+    {
+      "id": 7,
+      "options": ["Wenn", "Dass", "Als"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "gefallen.",
+        "connector": "Wenn",
+        "after": "du willst",
+        "color": 3
+      }
+    },
+    {
+      "id": 8,
+      "options": ["Dann", "Wann", "Während"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "besuchen?",
+        "connector": "Wann",
+        "after": "ist bei",
+        "color": 11
+      }
+    },
+    {
+      "id": 9,
+      "options": ["ausgeräumt", "geschlossen", "vergessen"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "nicht",
+        "connector": "ausgeräumt",
+        "after": "Kisten in",
+        "color": 5
+      }
+    },
+    {
+      "id": 10,
+      "options": ["dass", "damit", "weil"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "habe, weil",
+        "connector": "weil",
+        "after": "sie geräumig",
+        "color": 7
+      }
+    }
+  ]
+}
