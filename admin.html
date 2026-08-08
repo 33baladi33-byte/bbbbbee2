@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Zertiva B2</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0a0e1a;
+            color: #e2e8f0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* ===== Header ===== */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .header h1 {
+            color: #38bdf8;
+            font-size: 24px;
+        }
+        .header-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 8px 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .btn-primary {
+            background: #38bdf8;
+            color: #0a0e1a;
+        }
+        .btn-primary:hover {
+            background: #0ea5e9;
+            transform: scale(1.02);
+        }
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+        .btn-success:hover {
+            background: #059669;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #94a3b8;
+        }
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.05);
+        }
+        
+        /* ===== Stats ===== */
+        .stats {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background: #0f1a2e;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 14px 22px;
+            min-width: 120px;
+            text-align: center;
+        }
+        .stat-card .number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #38bdf8;
+        }
+        .stat-card .label {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+        .stat-card.premium .number { color: #10b981; }
+        .stat-card.free .number { color: #94a3b8; }
+        .stat-card.expired .number { color: #ef4444; }
+        
+        /* ===== Search & Filters ===== */
+        .filters {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        .filters input, .filters select {
+            padding: 10px 14px;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            background: #0f1a2e;
+            color: #e2e8f0;
+            font-size: 13px;
+            font-family: inherit;
+            min-width: 150px;
+        }
+        .filters input:focus, .filters select:focus {
+            outline: none;
+            border-color: #38bdf8;
+        }
+        .filters input::placeholder {
+            color: #64748b;
+        }
+        
+        /* ===== Table ===== */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: #0f1a2e;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            min-width: 1000px;
+        }
+        thead {
+            background: #1a2236;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        th {
+            padding: 12px 14px;
+            text-align: right;
+            color: #94a3b8;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+        }
+        th:hover {
+            color: #e2e8f0;
+        }
+        td {
+            padding: 10px 14px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            color: #cbd5e1;
+            vertical-align: middle;
+        }
+        tr:hover td {
+            background: rgba(255,255,255,0.02);
+        }
+        
+        /* ===== Row Colors ===== */
+        .row-premium { background: rgba(16, 185, 129, 0.06); }
+        .row-premium:hover td { background: rgba(16, 185, 129, 0.12); }
+        .row-free { background: transparent; }
+        .row-expiring { background: rgba(251, 191, 36, 0.08); }
+        .row-expiring:hover td { background: rgba(251, 191, 36, 0.15); }
+        .row-expired { background: rgba(239, 68, 68, 0.08); }
+        .row-expired:hover td { background: rgba(239, 68, 68, 0.15); }
+        
+        /* ===== Badges ===== */
+        .badge {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .badge-premium { background: #10b981; color: #0a0e1a; }
+        .badge-free { background: #334155; color: #94a3b8; }
+        .badge-online { background: #22c55e; color: #0a0e1a; font-size: 10px; padding: 2px 10px; }
+        .badge-offline { background: #475569; color: #94a3b8; font-size: 10px; padding: 2px 10px; }
+        
+        /* ===== Actions ===== */
+        .action-btns {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+        .action-btn {
+            padding: 4px 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 500;
+            transition: all 0.15s;
+            font-family: inherit;
+            background: rgba(255,255,255,0.05);
+            color: #94a3b8;
+        }
+        .action-btn:hover {
+            background: rgba(255,255,255,0.12);
+            color: #e2e8f0;
+        }
+        .action-btn.edit:hover { background: rgba(56, 189, 248, 0.2); color: #38bdf8; }
+        .action-btn.extend:hover { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+        .action-btn.copy:hover { background: rgba(251, 191, 36, 0.2); color: #fbbf24; }
+        .action-btn.delete:hover { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+        
+        .uid-text {
+            font-family: monospace;
+            font-size: 11px;
+            color: #64748b;
+            cursor: pointer;
+        }
+        .uid-text:hover {
+            color: #38bdf8;
+        }
+        
+        /* ===== Modal ===== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-content {
+            background: #0f1a2e;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-content h2 {
+            color: #38bdf8;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        .modal-content .field {
+            margin-bottom: 16px;
+        }
+        .modal-content .field label {
+            display: block;
+            color: #94a3b8;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+        .modal-content .field input,
+        .modal-content .field select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            background: #0a0e1a;
+            color: #e2e8f0;
+            font-size: 14px;
+            font-family: inherit;
+        }
+        .modal-content .field input:focus,
+        .modal-content .field select:focus {
+            outline: none;
+            border-color: #38bdf8;
+        }
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: flex-end;
+        }
+        .modal-actions .btn {
+            padding: 10px 24px;
+        }
+        
+        /* ===== Toast ===== */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 500;
+            z-index: 9999;
+            animation: slideUp 0.3s ease;
+            max-width: 400px;
+        }
+        .toast-success { background: #10b981; color: white; }
+        .toast-error { background: #ef4444; color: white; }
+        .toast-info { background: #38bdf8; color: #0a0e1a; }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #64748b;
+        }
+        .empty-state .icon { font-size: 48px; margin-bottom: 16px; }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #38bdf8;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .back-link:hover { color: #0ea5e9; }
+        
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .header { flex-direction: column; align-items: stretch; }
+            .filters { flex-direction: column; }
+            .filters input, .filters select { min-width: auto; width: 100%; }
+            .stats { gap: 8px; }
+            .stat-card { padding: 10px 14px; min-width: 80px; }
+            .stat-card .number { font-size: 18px; }
+            th, td { padding: 6px 8px; font-size: 11px; }
+            .badge { font-size: 9px; padding: 2px 8px; }
+            .action-btn { font-size: 10px; padding: 3px 6px; }
+            .modal-content { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- ===== Header ===== -->
+    <div class="header">
+        <h1>🛠️ لوحة الإدارة</h1>
+        <div class="header-actions">
+            <button class="btn btn-primary" onclick="loadUsers()">🔄 تحديث</button>
+            <button class="btn btn-outline" onclick="exportCSV()">📥 تصدير CSV</button>
+            <button class="btn btn-danger" onclick="if(confirm('⚠️ هل أنت متأكد من حذف جميع المستخدمين؟')) deleteAllUsers()">🗑️ حذف الكل</button>
+        </div>
+    </div>
+
+    <!-- ===== Stats ===== -->
+    <div class="stats" id="statsContainer">
+        <div class="stat-card"><div class="number" id="totalUsers">0</div><div class="label">👥 إجمالي</div></div>
+        <div class="stat-card premium"><div class="number" id="totalPremium">0</div><div class="label">⭐ Premium</div></div>
+        <div class="stat-card free"><div class="number" id="totalFree">0</div><div class="label">📖 مجاني</div></div>
+        <div class="stat-card expired"><div class="number" id="totalExpired">0</div><div class="label">⏰ منتهي</div></div>
+    </div>
+
+    <!-- ===== Filters ===== -->
+    <div class="filters">
+        <input type="text" id="searchInput" placeholder="🔍 بحث بالبريد، الاسم، أو UID..." oninput="filterUsers()">
+        <select id="filterPlan" onchange="filterUsers()">
+            <option value="all">📋 الكل</option>
+            <option value="premium">⭐ Premium</option>
+            <option value="free">📖 مجاني</option>
+            <option value="expired">⏰ منتهي</option>
+        </select>
+        <select id="sortBy" onchange="filterUsers()">
+            <option value="latest">📅 الأحدث أولاً</option>
+            <option value="oldest">📅 الأقدم أولاً</option>
+            <option value="premium-first">⭐ Premium أولاً</option>
+            <option value="free-first">📖 مجاني أولاً</option>
+        </select>
+    </div>
+
+    <!-- ===== Table ===== -->
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>📧 البريد</th>
+                    <th>👤 الاسم</th>
+                    <th>💎 الخطة</th>
+                    <th>📅 الصلاحية</th>
+                    <th>🆔 UID</th>
+                    <th>📆 التسجيل</th>
+                    <th>📌 الحالة</th>
+                    <th>⚙️ إجراءات</th>
+                </tr>
+            </thead>
+            <tbody id="usersTableBody">
+                <tr><td colspan="9" style="text-align:center;padding:40px;color:#64748b;">⏳ جاري التحميل...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a href="index.html" class="back-link">← العودة إلى الرئيسية</a>
+</div>
+
+<!-- ===== Edit Modal ===== -->
+<div class="modal-overlay" id="editModal">
+    <div class="modal-content">
+        <h2>✏️ تعديل المستخدم</h2>
+        <div class="field">
+            <label>👤 اسم المستخدم</label>
+            <input type="text" id="editUsername">
+        </div>
+        <div class="field">
+            <label>📧 البريد الإلكتروني</label>
+            <input type="email" id="editEmail" readonly style="opacity:0.6;cursor:not-allowed;">
+        </div>
+        <div class="field">
+            <label>💎 الخطة</label>
+            <select id="editPlan">
+                <option value="free">📖 مجاني</option>
+                <option value="premium">⭐ Premium</option>
+            </select>
+        </div>
+        <div class="field">
+            <label>📅 تاريخ انتهاء الاشتراك</label>
+            <input type="date" id="editPremiumUntil">
+        </div>
+        <div class="field">
+            <label>➕ تمديد الاشتراك</label>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <button class="btn btn-success" onclick="extendPremium(30)">+30 يوم</button>
+                <button class="btn btn-success" onclick="extendPremium(90)">+90 يوم</button>
+                <button class="btn btn-success" onclick="extendPremium(180)">+180 يوم</button>
+                <button class="btn btn-success" onclick="extendPremium(365)">+365 يوم</button>
+            </div>
+        </div>
+        <div class="modal-actions">
+            <button class="btn btn-primary" onclick="saveEditUser()">💾 حفظ</button>
+            <button class="btn btn-outline" onclick="closeEditModal()">✕ إلغاء</button>
+        </div>
+        <div id="editMessage" style="margin-top:12px;font-size:13px;color:#10b981;"></div>
+    </div>
+</div>
+
+<!-- ===== Firebase ===== -->
+<script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore-compat.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyABp_TfYLzX76ddo0nE08R7T0N8UEGbjIc",
+  authDomain: "zertivab22.firebaseapp.com",
+  projectId: "zertivab22",
+  storageBucket: "zertivab22.firebasestorage.app",
+  messagingSenderId: "510978830489",
+  appId: "1:510978830489:web:754fc4ebc02a7ab40a4808"
+};
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+let allUsers = [];
+let editingUid = null;
+
+// ============================================
+// التحقق من صلاحيات المدير
+// ============================================
+const ADMIN_EMAIL = 'gmail@gmail.com';// <- غيّر إلى بريدك
+
+// ============================================
+// تحميل المستخدمين
+// ============================================
+async function loadUsers() {
+    const tbody = document.getElementById('usersTableBody');
+    tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;padding:40px;color:#64748b;">⏳ جاري التحميل...</td></tr>';
+    
+    try {
+        const snapshot = await db.collection('users').get();
+        allUsers = [];
+        snapshot.forEach(doc => {
+            const data = doc.data();
+            allUsers.push({ id: doc.id, ...data });
+        });
+        
+        updateStats();
+        filterUsers();
+    } catch (error) {
+        tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;padding:40px;color:#ef4444;">❌ خطأ: ${error.message}</td></tr>`;
+        showToast('❌ خطأ في تحميل المستخدمين', 'error');
+    }
+}
+
+// ============================================
+// تحديث الإحصائيات
+// ============================================
+function updateStats() {
+    const total = allUsers.length;
+    let premium = 0, expired = 0;
+    const now = new Date();
+    
+    allUsers.forEach(user => {
+        const plan = user.plan || 'free';
+        const until = user.premiumUntil;
+        if (plan === 'premium' && until) {
+            const expiryDate = new Date(until);
+            if (expiryDate > now) premium++;
+            else expired++;
+        }
+    });
+    
+    document.getElementById('totalUsers').textContent = total;
+    document.getElementById('totalPremium').textContent = premium;
+    document.getElementById('totalFree').textContent = total - premium - expired;
+    document.getElementById('totalExpired').textContent = expired;
+}
+
+// ============================================
+// فلترة وعرض المستخدمين
+// ============================================
+function filterUsers() {
+    const query = document.getElementById('searchInput').value.toLowerCase().trim();
+    const planFilter = document.getElementById('filterPlan').value;
+    const sortBy = document.getElementById('sortBy').value;
+    const now = new Date();
+    
+    let filtered = allUsers.filter(user => {
+        const email = (user.email || '').toLowerCase();
+        const username = (user.username || '').toLowerCase();
+        const uid = (user.id || '').toLowerCase();
+        const matchSearch = !query || email.includes(query) || username.includes(query) || uid.includes(query);
+        
+        const plan = user.plan || 'free';
+        const until = user.premiumUntil;
+        let isExpired = false;
+        if (plan === 'premium' && until) {
+            isExpired = new Date(until) <= now;
+        }
+        
+        let matchPlan = true;
+        if (planFilter === 'premium') matchPlan = plan === 'premium' && !isExpired;
+        else if (planFilter === 'free') matchPlan = plan === 'free';
+        else if (planFilter === 'expired') matchPlan = plan === 'premium' && isExpired;
+        
+        return matchSearch && matchPlan;
+    });
+    
+    // ترتيب
+    filtered.sort((a, b) => {
+        const planA = a.plan || 'free';
+        const planB = b.plan || 'free';
+        const untilA = a.premiumUntil ? new Date(a.premiumUntil) : null;
+        const untilB = b.premiumUntil ? new Date(b.premiumUntil) : null;
+        const dateA = a.createdAt?.toDate ? a.createdAt.toDate() : new Date(0);
+        const dateB = b.createdAt?.toDate ? b.createdAt.toDate() : new Date(0);
+        
+        switch(sortBy) {
+            case 'latest': return dateB - dateA;
+            case 'oldest': return dateA - dateB;
+            case 'premium-first': return (planA === 'premium' ? 0 : 1) - (planB === 'premium' ? 0 : 1);
+            case 'free-first': return (planA === 'free' ? 0 : 1) - (planB === 'free' ? 0 : 1);
+            default: return 0;
+        }
+    });
+    
+    renderUsers(filtered);
+}
+
+// ============================================
+// عرض المستخدمين في الجدول
+// ============================================
+function renderUsers(users) {
+    const tbody = document.getElementById('usersTableBody');
+    
+    if (users.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="9"><div class="empty-state"><div class="icon">📭</div><p>لا يوجد مستخدمون</p></div></td></tr>`;
+        return;
+    }
+    
+    let html = '';
+    const now = new Date();
+    
+    users.forEach((user, index) => {
+        const plan = user.plan || 'free';
+        const until = user.premiumUntil;
+        const isPremium = plan === 'premium' && until && new Date(until) > now;
+        const isExpired = plan === 'premium' && until && new Date(until) <= now;
+        const daysLeft = until ? Math.ceil((new Date(until) - now) / (1000 * 60 * 60 * 24)) : null;
+        const isExpiring = isPremium && daysLeft !== null && daysLeft <= 7;
+        
+        let rowClass = 'row-free';
+        if (isPremium) rowClass = 'row-premium';
+        if (isExpiring) rowClass = 'row-expiring';
+        if (isExpired) rowClass = 'row-expired';
+        
+        const formatDate = (ts) => {
+            if (!ts) return '---';
+            if (ts.toDate) return ts.toDate().toLocaleDateString('ar-EG');
+            return ts;
+        };
+        
+        const email = user.email || '---';
+        const username = user.username || 'مستخدم';
+        const uid = user.id || '---';
+        const createdAt = formatDate(user.createdAt);
+        const lastLogin = user.lastLogin?.toDate ? user.lastLogin.toDate().toLocaleDateString('ar-EG') : '---';
+        
+        // ✅ التعديل: استخدام session.deviceId بدلاً من currentSession
+        const isOnline = user.session?.deviceId ? true : false;
+        
+        // لون الخطة
+        let planBadge = `<span class="badge badge-free">📖 مجاني</span>`;
+        let expiryText = '---';
+        if (isPremium) {
+            planBadge = `<span class="badge badge-premium">⭐ Premium</span>`;
+            expiryText = `${until}`;
+            if (daysLeft !== null) expiryText += ` (${daysLeft} يوم)`;
+        } else if (isExpired) {
+            planBadge = `<span class="badge badge-free" style="background:#ef4444;color:white;">⏰ منتهي</span>`;
+            expiryText = until || '---';
+        }
+        
+        html += `
+            <tr class="${rowClass}">
+                <td>${index + 1}</td>
+                <td><strong style="color:#38bdf8;font-size:12px;">${email}</strong></td>
+                <td>${username}</td>
+                <td>${planBadge}</td>
+                <td style="font-size:12px;">${expiryText}</td>
+                <td>
+                    <span class="uid-text" onclick="copyUID('${uid}')" title="انقر لنسخ UID">${uid.substring(0, 12)}...</span>
+                </td>
+                <td style="font-size:12px;color:#64748b;">${createdAt}</td>
+                <td>
+                    <span class="badge ${isOnline ? 'badge-online' : 'badge-offline'}">
+                        ${isOnline ? '🟢 متصل' : '⚪ غير متصل'}
+                    </span>
+                </td>
+                <td>
+                    <div class="action-btns">
+                        <button class="action-btn edit" onclick="openEditModal('${uid}')" title="تعديل">✏️</button>
+                        <button class="action-btn extend" onclick="quickExtend('${uid}')" title="تمديد +30 يوم">📅</button>
+                        <button class="action-btn copy" onclick="copyUID('${uid}')" title="نسخ UID">📋</button>
+                        <button class="action-btn delete" onclick="deleteUser('${uid}')" title="حذف">🗑️</button>
+                    </div>
+                </td>
+            </tr>
+        `;
+    });
+    
+    tbody.innerHTML = html;
+}
+
+// ============================================
+// نسخ UID
+// ============================================
+function copyUID(uid) {
+    navigator.clipboard.writeText(uid).then(() => {
+        showToast('✅ تم نسخ UID: ' + uid.substring(0, 12) + '...', 'success');
+    }).catch(() => {
+        // طريقة بديلة
+        const input = document.createElement('input');
+        input.value = uid;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        input.remove();
+        showToast('✅ تم نسخ UID', 'success');
+    });
+}
+
+// ============================================
+// فتح نافذة التعديل
+// ============================================
+function openEditModal(uid) {
+    const user = allUsers.find(u => u.id === uid);
+    if (!user) return;
+    
+    editingUid = uid;
+    document.getElementById('editUsername').value = user.username || '';
+    document.getElementById('editEmail').value = user.email || '';
+    document.getElementById('editPlan').value = user.plan || 'free';
+    document.getElementById('editPremiumUntil').value = user.premiumUntil || '';
+    document.getElementById('editMessage').textContent = '';
+    document.getElementById('editModal').classList.add('active');
+}
+
+function closeEditModal() {
+    document.getElementById('editModal').classList.remove('active');
+    editingUid = null;
+}
+
+// ============================================
+// تمديد الاشتراك من داخل النافذة
+// ============================================
+function extendPremium(days) {
+    const dateInput = document.getElementById('editPremiumUntil');
+    let currentDate = dateInput.value ? new Date(dateInput.value) : new Date();
+    if (isNaN(currentDate.getTime())) currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + days);
+    dateInput.value = currentDate.toISOString().split('T')[0];
+    document.getElementById('editMessage').textContent = `✅ تم إضافة ${days} يوم (حتى ${dateInput.value})`;
+    document.getElementById('editMessage').style.color = '#10b981';
+}
+
+// ============================================
+// حفظ التعديلات
+// ============================================
+async function saveEditUser() {
+    if (!editingUid) return;
+    
+    const username = document.getElementById('editUsername').value.trim();
+    const plan = document.getElementById('editPlan').value;
+    const premiumUntil = document.getElementById('editPremiumUntil').value || null;
+    
+    if (!username) {
+        document.getElementById('editMessage').textContent = '⚠️ الاسم مطلوب';
+        document.getElementById('editMessage').style.color = '#ef4444';
+        return;
+    }
+    
+    try {
+        await db.collection('users').doc(editingUid).update({
+            username: username,
+            plan: plan,
+            premiumUntil: premiumUntil
+        });
+        
+        document.getElementById('editMessage').textContent = '✅ تم الحفظ بنجاح!';
+        document.getElementById('editMessage').style.color = '#10b981';
+        showToast('✅ تم تحديث بيانات المستخدم', 'success');
+        setTimeout(() => {
+            closeEditModal();
+            loadUsers();
+        }, 1000);
+    } catch (error) {
+        document.getElementById('editMessage').textContent = '❌ خطأ: ' + error.message;
+        document.getElementById('editMessage').style.color = '#ef4444';
+        showToast('❌ خطأ في الحفظ', 'error');
+    }
+}
+
+// ============================================
+// تمديد سريع +30 يوم
+// ============================================
+async function quickExtend(uid) {
+    if (!confirm('📅 هل تريد تمديد الاشتراك +30 يوم؟')) return;
+    
+    try {
+        const user = allUsers.find(u => u.id === uid);
+        if (!user) return;
+        
+        let currentDate = user.premiumUntil ? new Date(user.premiumUntil) : new Date();
+        if (isNaN(currentDate.getTime())) currentDate = new Date();
+        currentDate.setDate(currentDate.getDate() + 30);
+        const newDate = currentDate.toISOString().split('T')[0];
+        
+        await db.collection('users').doc(uid).update({
+            plan: 'premium',
+            premiumUntil: newDate
+        });
+        
+        showToast('✅ تم التمديد +30 يوم حتى ' + newDate, 'success');
+        loadUsers();
+    } catch (error) {
+        showToast('❌ خطأ: ' + error.message, 'error');
+    }
+}
+
+// ============================================
+// حذف مستخدم
+// ============================================
+async function deleteUser(uid) {
+    if (!confirm('⚠️ هل أنت متأكد من حذف هذا المستخدم؟')) return;
+    if (!confirm('⚠️ هذا الإجراء لا يمكن التراجع عنه!')) return;
+    
+    try {
+        await db.collection('users').doc(uid).delete();
+        showToast('✅ تم حذف المستخدم', 'success');
+        loadUsers();
+    } catch (error) {
+        showToast('❌ خطأ: ' + error.message, 'error');
+    }
+}
+
+// ============================================
+// حذف جميع المستخدمين
+// ============================================
+async function deleteAllUsers() {
+    if (!confirm('⚠️ هل أنت متأكد من حذف جميع المستخدمين؟')) return;
+    if (!confirm('⚠️ هذا الإجراء لا يمكن التراجع عنه!')) return;
+    
+    try {
+        const snapshot = await db.collection('users').get();
+        const batch = db.batch();
+        snapshot.forEach(doc => batch.delete(doc.ref));
+        await batch.commit();
+        showToast('✅ تم حذف جميع المستخدمين', 'success');
+        loadUsers();
+    } catch (error) {
+        showToast('❌ خطأ: ' + error.message, 'error');
+    }
+}
+
+// ============================================
+// تصدير CSV
+// ============================================
+function exportCSV() {
+    if (allUsers.length === 0) {
+        showToast('⚠️ لا يوجد مستخدمين للتصدير', 'error');
+        return;
+    }
+    
+    let csv = 'UID,البريد,الاسم,الخطة,الصلاحية,تاريخ التسجيل,آخر دخول\n';
+    allUsers.forEach(user => {
+        const formatDate = (ts) => {
+            if (!ts) return '';
+            if (ts.toDate) return ts.toDate().toISOString().split('T')[0];
+            return ts;
+        };
+        csv += `${user.id},${user.email || ''},${user.username || ''},${user.plan || 'free'},${user.premiumUntil || ''},${formatDate(user.createdAt)},${formatDate(user.lastLogin)}\n`;
+    });
+    
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `users_${new Date().toISOString().split('T')[0]}.csv`;
+    link.click();
+    showToast('✅ تم تصدير ' + allUsers.length + ' مستخدم', 'success');
+}
+
+// ============================================
+// Toast Notifications
+// ============================================
+function showToast(message, type = 'info') {
+    const existing = document.querySelector('.toast');
+    if (existing) existing.remove();
+    
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 0.3s';
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
+
+// ============================================
+// إغلاق النافذة بالضغط خارجها
+// ============================================
+document.getElementById('editModal').addEventListener('click', function(e) {
+    if (e.target === this) closeEditModal();
+});
+
+// ============================================
+// التحميل التلقائي
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+    // ✅ التحقق من صلاحيات المدير
+    auth.onAuthStateChanged(user => {
+        if (!user) {
+            // غير مسجل -> يذهب لتسجيل الدخول
+            window.location.href = 'index.html';
+            return;
+        }
+        
+        // ✅ التحقق من أن البريد هو بريد المدير
+        if (user.email !== ADMIN_EMAIL) {
+            alert('⛔ هذه الصفحة مخصصة للمدير فقط.');
+            window.location.href = 'index.html';
+            return;
+        }
+        
+        // ✅ المدير مصرح له
+        loadUsers();
+    });
+});
+
+console.log('✅ لوحة الإدارة جاهزة (معدلة للتوافق مع نظام session.deviceId)');
+</script>
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zertiva B2 - اشتراك</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+            background: #0a0e1a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px;
+        }
+        .container {
+            max-width: 1100px;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            color: #38bdf8;
+            margin-bottom: 50px;
+            font-size: 32px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: -0.5px;
+        }
+        .plans {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            align-items: stretch;
+        }
+        .plan-card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 40px 30px;
+            width: 330px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid #e8e8e8;
+            display: flex;
+            flex-direction: column;
+        }
+        .plan-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+        .plan-card.vip {
+            transform: translateY(-5px);
+            border: 2px solid #38bdf8;
+            box-shadow: 0 15px 35px rgba(56,189,248,0.12);
+            position: relative;
+        }
+        .plan-card.vip:hover {
+            transform: translateY(-10px);
+        }
+        .plan-card.popular {
+            border: 2px solid #f59e0b;
+            box-shadow: 0 15px 35px rgba(245,158,11,0.12);
+        }
+        .plan-card.popular:hover {
+            transform: translateY(-10px);
+        }
+        .vip-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: #38bdf8;
+            color: #0a0e1a;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 16px;
+            border-radius: 30px;
+            letter-spacing: 0.5px;
+        }
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: #f59e0b;
+            color: #0a0e1a;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 16px;
+            border-radius: 30px;
+            letter-spacing: 0.5px;
+        }
+        .plan-name {
+            font-size: 22px;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+        }
+        .old-price {
+            font-size: 18px;
+            color: #999;
+            text-decoration: line-through;
+            margin-bottom: 5px;
+        }
+        .new-price {
+            font-size: 52px;
+            font-weight: 700;
+            color: #0a0e1a;
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+        .new-price small {
+            font-size: 18px;
+            font-weight: 400;
+            color: #666;
+        }
+        .offer-small {
+            font-size: 11px;
+            color: #888;
+            margin-top: 6px;
+        }
+        .saving-text {
+            font-size: 12px;
+            color: #10b981;
+            font-weight: 500;
+            margin-top: 6px;
+        }
+        .divider {
+            height: 1px;
+            background: #e8e8e8;
+            margin: 25px 0 20px 0;
+        }
+        .features {
+            text-align: right;
+            margin-bottom: 30px;
+            flex: 1;
+        }
+        .features li {
+            list-style: none;
+            padding: 6px 0;
+            font-size: 14px;
+            color: #444;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .features li span {
+            font-weight: bold;
+            font-size: 15px;
+            min-width: 22px;
+        }
+        .features li .check {
+            color: #10b981;
+        }
+        .features li .star {
+            color: #f59e0b;
+        }
+        .features li .brain {
+            color: #8b5cf6;
+        }
+        .features li .diamond {
+            color: #38bdf8;
+        }
+        .btn-select {
+            background: #38bdf8;
+            color: #0a0e1a;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: auto;
+        }
+        .btn-select:hover {
+            transform: scale(1.02);
+            background: #0ea5e9;
+            box-shadow: 0 4px 12px rgba(56,189,248,0.3);
+        }
+        .btn-select.gold {
+            background: #f59e0b;
+        }
+        .btn-select.gold:hover {
+            background: #d97706;
+            box-shadow: 0 4px 12px rgba(245,158,11,0.3);
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .back-link a {
+            color: #38bdf8;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(56,189,248,0.4);
+            padding: 5px;
+            transition: 0.3s;
+        }
+        .back-link a:hover {
+            color: #0ea5e9;
+            border-bottom-color: #0ea5e9;
+        }
+        @media (max-width: 750px) {
+            .plans {
+                gap: 30px;
+            }
+            .plan-card {
+                width: 100%;
+                max-width: 320px;
+                padding: 30px 20px;
+            }
+            .new-price {
+                font-size: 44px;
+            }
+            .old-price {
+                font-size: 16px;
+            }
+            h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>💰 اختر الباقة المناسبة لك</h1>
+    <div class="plans">
+
+        <!-- ========================================= -->
+        <!-- الباقة 1: شهر واحد                        -->
+        <!-- ========================================= -->
+        <div class="plan-card" data-plan="1month">
+            <div class="plan-name">🌙 شهر واحد</div>
+            <div class="old-price">149 درهم</div>
+            <div class="new-price">99 <small>درهم</small></div>
+            <div class="saving-text">💰 وفر 50 درهم</div>
+            <div class="offer-small">⚡ أسرع قبل نفاد العرض</div>
+            <div class="divider"></div>
+            <ul class="features">
+                <li><span class="check">✅</span> الوصول الكامل إلى جميع الامتحانات</li>
+                <li><span class="check">✅</span> جميع التيمات القديمة والجديدة متوفرة لديك</li>
+                <li><span class="check">✅</span> بطاقات المساعدة الذكية لجميع الأجزاء</li>
+                <li><span class="check">✅</span> نصائح وإرشادات حصرية للنجاح</li>
+                <li><span class="check">✅</span> تصحيح فوري للامتحانات</li>
+                <li><span class="check">✅</span> إمكانية تتبع تقدمك</li>
+                <li><span class="check">✅</span> بدون إعلانات مزعجة</li>
+                <li><span class="check">✅</span> دعم فني عبر واتساب</li>
+                <li><span class="check">✅</span> محاكاة حقيقية لامتحان Telc B2</li>
+                <li><span class="check">✅</span> تحديثات مستمرة للمحتوى</li>
+            </ul>
+            <button class="btn-select">اشترك الآن</button>
+        </div>
+
+        <!-- ========================================= -->
+        <!-- الباقة 2: شهرين (VIP)                     -->
+        <!-- ========================================= -->
+        <div class="plan-card vip" data-plan="2months">
+            <div class="vip-badge">✨ الأكثر اختياراً</div>
+            <div class="plan-name">✨ شهرين</div>
+            <div class="old-price">198 درهم</div>
+            <div class="new-price">149 <small>درهم</small></div>
+            <div class="saving-text">💰 وفر 50 درهم</div>
+            <div class="offer-small">⚡ أسرع قبل نفاد العرض</div>
+            <div class="divider"></div>
+            <ul class="features">
+                <li><span class="check">✅</span> الوصول الكامل إلى جميع الامتحانات</li>
+                <li><span class="check">✅</span> جميع التيمات القديمة والجديدة متوفرة لديك</li>
+                <li><span class="check">✅</span> بطاقات المساعدة الذكية لجميع الأجزاء</li>
+                <li><span class="check">✅</span> نصائح وإرشادات حصرية للنجاح</li>
+                <li><span class="check">✅</span> تصحيح فوري للامتحانات</li>
+                <li><span class="check">✅</span> إمكانية تتبع تقدمك</li>
+                <li><span class="check">✅</span> بدون إعلانات مزعجة</li>
+                <li><span class="check">✅</span> دعم فني عبر واتساب</li>
+                <li><span class="check">✅</span> محاكاة حقيقية لامتحان Telc B2</li>
+                <li><span class="check">✅</span> تحديثات مستمرة للمحتوى</li>
+            </ul>
+            <button class="btn-select">اشترك الآن</button>
+        </div>
+
+        <!-- ========================================= -->
+        <!-- الباقة 3: 3 أشهر (NEW)                    -->
+        <!-- ========================================= -->
+        <div class="plan-card popular" data-plan="3months">
+            <div class="popular-badge">⭐ أفضل قيمة</div>
+            <div class="plan-name">⭐ 3 أشهر</div>
+            <div class="old-price">297 درهم</div>
+            <div class="new-price">199 <small>درهم</small></div>
+            <div class="saving-text">💰 وفر 100 درهم</div>
+            <div class="offer-small">⚡ أسرع قبل نفاد العرض</div>
+            <div class="divider"></div>
+            <ul class="features">
+                <li><span class="check">✅</span> الوصول الكامل إلى جميع الامتحانات</li>
+                <li><span class="check">✅</span> جميع التيمات القديمة والجديدة متوفرة لديك</li>
+                <li><span class="check">✅</span> بطاقات المساعدة الذكية لجميع الأجزاء</li>
+                <li><span class="check">✅</span> نصائح وإرشادات حصرية للنجاح</li>
+                <li><span class="check">✅</span> تصحيح فوري للامتحانات</li>
+                <li><span class="check">✅</span> إمكانية تتبع تقدمك</li>
+                <li><span class="check">✅</span> بدون إعلانات مزعجة</li>
+                <li><span class="check">✅</span> دعم فني عبر واتساب</li>
+                <li><span class="check">✅</span> محاكاة حقيقية لامتحان Telc B2</li>
+                <li><span class="check">✅</span> تحديثات مستمرة للمحتوى</li>
+                <li><span class="diamond">💎</span> أفضل قيمة مقابل السعر</li>
+                <li><span class="brain">🧠</span> استعداد أفضل للامتحان مع وقت كافي للمراجعة</li>
+            </ul>
+            <button class="btn-select gold">🔥 اشترك الآن</button>
+        </div>
+
+    </div>
+    <div class="back-link">
+        <a href="index.html">← العودة إلى الرئيسية</a>
+    </div>
+</div>
+
+<!-- ================================ -->
+<!-- تهيئة Firebase (compat)         -->
+<!-- ================================ -->
+<script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth-compat.js"></script>
+<script>
+    // 🔥 إعدادات مشروعك (من Firebase Console)
+    const firebaseConfig = {
+        apiKey: "AIzaSyABp_TfYLzX76ddo0nE08R7T0N8UEGbjIc",
+        authDomain: "zertivab22.firebaseapp.com",
+        databaseURL: "https://zertivab22-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "zertivab22",
+        storageBucket: "zertivab22.firebasestorage.app",
+        messagingSenderId: "510978830489",
+        appId: "1:510978830489:web:754fc4ebc02a7ab40a4808",
+        measurementId: "G-57CPE84S84"
+    };
+
+    // تهيئة Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // =============================================
+    // دالة الحصول على البريد الإلكتروني للمستخدم
+    // =============================================
+    function getLoggedInEmail() {
+        // 1️⃣ أولاً: جرب جلب البريد من Firebase Auth (إذا كان المستخدم مسجلاً)
+        if (auth.currentUser) {
+            return auth.currentUser.email;
+        }
+        // 2️⃣ ثانياً: إذا لم يكن مسجلاً، جرب جلب البريد من localStorage (للتوافق مع النظام القديم)
+        const localEmail = localStorage.getItem('zertiva_email');
+        if (localEmail) {
+            return localEmail;
+        }
+        // 3️⃣ وإلا: عرض "غير مسجل"
+        return 'غير مسجل';
+    }
+
+    // =============================================
+    // رابط الواتساب ورسائل الباقات
+    // =============================================
+    const WA_URL = 'https://wa.me/212687561491';
+
+    const PLAN_MESSAGES = {
+        "1month": "[NEW] Neue Abonnementanfrage – Zertiva B2\n\n[USR] E-Mail: [EMAIL]\n[PLN] Paket: 1 Monat\n[PRC] Preis: 99 DH\n[TM] Dauer: 1 Monat\n\n[NT] Bitte aktivieren Sie mein Konto nach Zahlungseingang.",
+        "2months": "[NEW] Neue Abonnementanfrage – Zertiva B2\n\n[USR] E-Mail: [EMAIL]\n[PLN] Paket: 2 Monate\n[PRC] Preis: 149 DH\n[TM] Dauer: 2 Monate\n\n[NT] Bitte aktivieren Sie mein Konto nach Zahlungseingang.",
+        "3months": "[NEW] Neue Abonnementanfrage – Zertiva B2\n\n[USR] E-Mail: [EMAIL]\n[PLN] Paket: 3 Monate\n[PRC] Preis: 199 DH\n[TM] Dauer: 3 Monate\n\n[NT] Bitte aktivieren Sie mein Konto nach Zahlungseingang."
+    };
+
+    // =============================================
+    // ربط الأزرار والبطاقات
+    // =============================================
+    document.querySelectorAll('.plan-card').forEach(card => {
+        const plan = card.getAttribute('data-plan');
+
+        function goToWhatsApp() {
+            const email = getLoggedInEmail();
+            let message = PLAN_MESSAGES[plan] || "[NEW] Neue Abonnementanfrage – Zertiva B2\n\n[USR] E-Mail: [EMAIL]";
+            message = message.replace('[EMAIL]', email);
+
+            const encodedMessage = encodeURIComponent(message);
+            window.location.href = `${WA_URL}?text=${encodedMessage}`;
+        }
+
+        const btn = card.querySelector('.btn-select');
+        if (btn) {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                goToWhatsApp();
+            });
+        }
+
+        // عند النقر على البطاقة نفسها (إذا لم يكن الضغط على الزر)
+        card.addEventListener('click', function(e) {
+            if (e.target !== btn) {
+                goToWhatsApp();
+            }
+        });
+    });
+
+    // =============================================
+    // (اختياري) تحديث البريد المعروض في الـ UI
+    // =============================================
+    // يمكنك إضافة عنصر لعرض البريد الحالي في الصفحة
+    // مثلاً: <div id="user-email"></div>
+    // وعند تحميل الصفحة: auth.onAuthStateChanged(user => {
+    //   if (user) document.getElementById('user-email').innerText = user.email;
+    // });
+    console.log('✅ subscribe.html جاهز مع Firebase');
+</script>
+
+</body>
+</html>
