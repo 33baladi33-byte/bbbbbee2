@@ -1,0 +1,24 @@
+{
+  "title": "Hörverstehen Teil 2 - Roland (einer höheren Lige)",
+  "type": "truefalse",
+  "note": "einer höheren Lige diese Schlüsselwort ist im letzten Satz 2 vorhanden",
+  "questions": [
+    { "text": "Roland Wünschmann spielt selbst bei Viktoria Köln Fußball.", "correct": false },
+    { "text": "Viktoria Köln spielt seit Beginn der Saison in einer höheren Lige.", "correct": true },
+    { "text": "Die meisten Spieler der Mannschaft haben schon in der letzten Saison bei Viktoria Köln gespielt.", "correct": true },
+    { "text": "Neuzugänge kommen bei Viktoria Köln meist aus ganz unterschiedlichen Mannschaften.", "correct": false },
+    { "text": "Die Mannschaft von Viktoria Köln möchte in dieser Saison neue Spieltaktiken ausprobieren.", "correct": true },
+    { "text": "Roland Wünschmann wagt die Prognose, dass in dieser Saison der 1. FC Mönchengladbach Meister wird.", "correct": false },
+    { "text": "Roland Wünschmann empfindet sein Ehrenamt oft als Belastung.", "correct": false },
+    { "text": "Roland Wünschmanns Frau engagiert sich für denselben Verein.", "correct": true },
+    { "text": "Herr Wünschmann und der Vereinsvorstand sind meistens einer Meinung.", "correct": true },
+    { "text": "Roland Wünschmann hofft auf Verbesserungen in der Nachwuchsförderung.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 4, "parts": [ "Viktoria Köln spielt seit Beginn der Saison in einer höheren Lige." ] },
+    { "color": 11, "parts": [ "Die meisten Spieler der Mannschaft haben schon in der letzten Saison bei Viktoria Köln gespielt." ] },
+    { "color": 1, "parts": [ "Die Mannschaft von Viktoria Köln möchte in dieser Saison neue Spieltaktiken ausprobieren." ] },
+    { "color": 9, "parts": [ "Roland Wünschmanns Frau engagiert sich für denselben Verein." ] },
+    { "color": 5, "parts": [ "Herr Wünschmann und der Vereinsvorstand sind meistens einer Meinung." ] }
+  ]
+}

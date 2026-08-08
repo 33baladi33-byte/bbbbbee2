@@ -1,0 +1,21 @@
+{
+  "title": "Hörverstehen Teil 2 - Mallorca (Mittel)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Die Zahl der deutschen Mallorca-Urlauber hat nur leicht abgenommen.", "correct": false },
+    { "text": "Nach Professor Kirsch achten die Deutschen bei der Wahl ihrer Urlaubsreisen nicht besonders auf die Kosten.", "correct": false },
+    { "text": "Einige Einheimische in Mallorca haben begonnen, sich gegen das Vordringen der deutschen Sprache zu wehren.", "correct": true },
+    { "text": "Für den Einbruch des Tourismus auf Mallorca sind verschiedene Faktoren verantwortlich.", "correct": true },
+    { "text": "Viele Deutsche haben jetzt Rumänien und Ungarn als Reiseziel entdeckt.", "correct": false },
+    { "text": "Professor Kirsch weist auf günstige Angebote für Golfspieler am Plattensee hin.", "correct": false },
+    { "text": "Bulgarien hat sich als Urlaubsland sehr positiv entwickelt.", "correct": true },
+    { "text": "Viele Westdeutsche meiden Bulgarien, weil die Einreisemodalitäten abschreckend sind.", "correct": false },
+    { "text": "Seit Ende der neunziger Jahre geben die Deutschen mehr Geld für den Urlaub aus.", "correct": false },
+    { "text": "Durch die Vielzahl aktiver Senioren entsteht eine höhere Nachfrage nach Abenteuerreisen in ferne Länder.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 4, "parts": [ "Einige Einheimische in Mallorca haben begonnen, sich gegen das Vordringen der deutschen Sprache zu wehren." ] },
+    { "color": 8, "parts": [ "Für den Einbruch des Tourismus auf Mallorca sind verschiedene Faktoren verantwortlich." ] },
+    { "color": 1, "parts": [ "Bulgarien hat sich als Urlaubsland sehr positiv entwickelt." ] }
+  ]
+}

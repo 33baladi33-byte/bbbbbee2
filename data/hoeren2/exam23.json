@@ -1,0 +1,22 @@
+{
+  "title": "Hörverstehen Teil 2 - Beim Wettkampf",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Beim Wettkampf auf Sylt gibt es mehr Zuschauer als bei anderen Surf-Wettkämpfen.", "correct": true },
+    { "text": "Die Wind-Bedingungen sind auf Sylt sehr unberechenbar.", "correct": true },
+    { "text": "Herr Dunderbeck ist noch immer so fit wie früher.", "correct": false },
+    { "text": "Im Freestyle hat er schon starke Gegner, die viel jünger sind als er.", "correct": true },
+    { "text": "Beim Slalom muss er auch mit starken Gegnern rechnen.", "correct": false },
+    { "text": "Sein Hobby ist, solche Strände zu suchen, wo sich im Windsurfen noch niemand ausprobiert hat.", "correct": true },
+    { "text": "Er hat ständig Angst vor den Haien.", "correct": false },
+    { "text": "Seine Kinder haben noch ein bisschen Angst vor dem Wasser, obwohl er sie schon aufs Brett gesetzt hat.", "correct": false },
+    { "text": "Falls er auf Sylt siegen würde, würde er dies zuerst gerne mit seinen Freunden feiern.", "correct": false },
+    { "text": "Er hat zwei Kinder und sie gehen mit ihm auf Reisen.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 5, "parts": [ "Beim Wettkampf auf Sylt gibt es mehr Zuschauer als bei anderen Surf-Wettkämpfen." ] },
+    { "color": 10, "parts": [ "Die Wind-Bedingungen sind auf Sylt sehr unberechenbar." ] },
+    { "color": 2, "parts": [ "Im Freestyle hat er schon starke Gegner, die viel jünger sind als er." ] },
+    { "color": 8, "parts": [ "Sein Hobby ist, solche Strände zu suchen, wo sich im Windsurfen noch niemand ausprobiert hat." ] }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Hörverstehen Teil 2 - Nadine Wagner (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Nadine Wagner ist gerade erst von ihrer Weltreise zurückgekehrt.", "correct": false },
+    { "text": "Sie hatte vor der Weltreise einige Zweifel und Bedenken.", "correct": true },
+    { "text": "Die Journalistin ist während ihrer Reise auch geflogen.", "correct": true },
+    { "text": "Sie hat für dieses Abenteuer ihre Stelle gekündigt.", "correct": false },
+    { "text": "Ihre Freunde waren unterschiedlicher Meinung über ihr Vorhaben.", "correct": true },
+    { "text": "In Tadschikistan hat sie eine Zeit lang andere Motorradfahrer begleitet.", "correct": true },
+    { "text": "Sie hat auf der Reise ihr ganzes Erspartes aufgebracht.", "correct": false },
+    { "text": "Nadine Wagner hat auf der Reise gelegentlich gearbeitet.", "correct": true },
+    { "text": "Sie hat am meisten ihre eigene Wohnung vermisst.", "correct": false },
+    { "text": "Nach ihrer Rückkehr musste sie nicht lange nach einer neuen Arbeit suchen.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 4, "parts": [ "Sie hatte vor der Weltreise einige Zweifel und Bedenken." ] },
+    { "color": 10, "parts": [ "Die Journalistin ist während ihrer Reise auch geflogen." ] },
+    { "color": 1, "parts": [ "Ihre Freunde waren unterschiedlicher Meinung über ihr Vorhaben." ] },
+    { "color": 8, "parts": [ "In Tadschikistan hat sie eine Zeit lang andere Motorradfahrer begleitet." ] },
+    { "color": 11, "parts": [ "Nadine Wagner hat auf der Reise gelegentlich gearbeitet." ] },
+    { "color": 2, "parts": [ "Nach ihrer Rückkehr musste sie nicht lange nach einer neuen Arbeit suchen." ] }
+  ]
+}

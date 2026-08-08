@@ -1,0 +1,24 @@
+{
+  "title": "Hörverstehen Teil 2 - Mirjam Pressier - ليدعت (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Mirjam Pressler freut sich, in Kürze die Doktorwürde der Universität Groningen zu erhalten.", "correct": true },
+    { "text": "Sie arbeitet auch als Übersetzerin.", "correct": true },
+    { "text": "Sie hat über Anne Frank gearbeitet.", "correct": true },
+    { "text": "Sie macht jedes Jahr Urlaub in einem Ferienhaus bei Venedig.", "correct": false },
+    { "text": "Wenn sie an ihre Kindheit denkt, denkt sie an den Krieg.", "correct": true },
+    { "text": "Der Kontakt zu ihren Pflegeeltern war sehr gut.", "correct": false },
+    { "text": "Ihre Werke haben oft biografische Züge.", "correct": true },
+    { "text": "Ihre erste Lektüre war ein Roman, der in Petersburg spielt.", "correct": false },
+    { "text": "Als Kind las sie immer im Keller des Hauses.", "correct": false },
+    { "text": "Ihre Pflegemutter wollte nicht, dass sie Tagebuch schreibt.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 6, "parts": [ "Mirjam Pressler freut sich, in Kürze die Doktorwürde der Universität Groningen zu erhalten." ] },
+    { "color": 10, "parts": [ "Sie arbeitet auch als Übersetzerin." ] },
+    { "color": 3, "parts": [ "Sie hat über Anne Frank gearbeitet." ] },
+    { "color": 8, "parts": [ "Wenn sie an ihre Kindheit denkt, denkt sie an den Krieg." ] },
+    { "color": 1, "parts": [ "Ihre Werke haben oft biografische Züge." ] },
+    { "color": 11, "parts": [ "Ihre Pflegemutter wollte nicht, dass sie Tagebuch schreibt." ] }
+  ]
+}

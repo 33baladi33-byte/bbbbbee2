@@ -1,0 +1,25 @@
+{
+  "title": "Hörverstehen Teil 2 - In dem Restaurant",
+  "type": "truefalse",
+  "note": "عندما تجد الألب Alpen في LESEN تصبح الجملة 7 صحيحة أيضا",
+  "questions": [
+    { "text": "In dem Restaurant gab es einen Wasserschaden.", "correct": true },
+    { "text": "Anton Laurito ist bei seinen Großeltern aufgewachsen.", "correct": false },
+    { "text": "Im Haus der Großeltern lebten auch andere Kinder.", "correct": true },
+    { "text": "Der Stress störte den Studiogast während der Ausbildung nicht.", "correct": true },
+    { "text": "Bei neuen Mitarbeitern legt Anton Laurito am meisten Wert auf viel Erfahrung.", "correct": false },
+    { "text": "Aussehen und Geschmack der Speisen haben für den Koch den gleichen Stellenwert.", "correct": false },
+    { "text": "In der Essschule können Kinder kochen lernen.", "correct": true },
+    { "text": "Anton Laurito lehnt Fastfood nicht grundsätzlich ab.", "correct": true },
+    { "text": "Der Koch hat eine gesunde Einstellung zum Thema Wettbewerb.", "correct": true },
+    { "text": "Zuhause probiert er gerne komplizierte Gerichte aus.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 7, "parts": [ "In dem Restaurant gab es einen Wasserschaden." ] },
+    { "color": 11, "parts": [ "Im Haus der Großeltern lebten auch andere Kinder." ] },
+    { "color": 2, "parts": [ "Der Stress störte den Studiogast während der Ausbildung nicht." ] },
+    { "color": 9, "parts": [ "In der Essschule können Kinder kochen lernen." ] },
+    { "color": 5, "parts": [ "Anton Laurito lehnt Fastfood nicht grundsätzlich ab." ] },
+    { "color": 0, "parts": [ "Der Koch hat eine gesunde Einstellung zum Thema Wettbewerb." ] }
+  ]
+}

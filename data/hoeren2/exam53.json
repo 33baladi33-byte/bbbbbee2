@@ -1,0 +1,23 @@
+{
+  "title": "Hörverstehen Teil 2 - Influencerin Maria im Interview",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Maria war am Anfang überrascht, wie schnell ihre Beiträge im Internet Aufmerksamkeit bekamen.", "correct": true },
+    { "text": "Ihre Familie stand ihrer Tätigkeit als Influencerin von Beginn an ohne Zweifel positiv gegenüber.", "correct": true },
+    { "text": "Maria prüft Werbeangebote genau, bevor sie eine Zusammenarbeit annimmt.", "correct": true },
+    { "text": "Für Maria ist es wichtiger, authentisch zu bleiben, als möglichst viele Produkte zu präsentieren.", "correct": false },
+    { "text": "Negative Kommentare belasten Maria nie, weil sie diese grundsätzlich nicht liest.", "correct": false },
+    { "text": "Maria sieht soziale Medien nicht nur als Unterhaltung, sondern auch als berufliche Möglichkeit.", "correct": false },
+    { "text": "Große Treffen mit Followern empfindet Maria immer als völlig entspannt.", "correct": true },
+    { "text": "Künstliche Intelligenz nutzt Maria bereits gezielt, um ihre Arbeit effizienter zu organisieren.", "correct": true },
+    { "text": "Maria möchte jungen Menschen zeigen, dass Erfolg im Internet auch mit Verantwortung verbunden ist.", "correct": false },
+    { "text": "In Zukunft plant Maria, ihre Tätigkeit in den sozialen Medien vollständig aufzugeben.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 4, "parts": [ "Maria war am Anfang überrascht, wie schnell ihre Beiträge im Internet Aufmerksamkeit bekamen." ] },
+    { "color": 9, "parts": [ "Ihre Familie stand ihrer Tätigkeit als Influencerin von Beginn an ohne Zweifel positiv gegenüber." ] },
+    { "color": 11, "parts": [ "Maria prüft Werbeangebote genau, bevor sie eine Zusammenarbeit annimmt." ] },
+    { "color": 1, "parts": [ "Große Treffen mit Followern empfindet Maria immer als völlig entspannt." ] },
+    { "color": 6, "parts": [ "Künstliche Intelligenz nutzt Maria bereits gezielt, um ihre Arbeit effizienter zu organisieren." ] }
+  ]
+}

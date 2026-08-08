@@ -1,0 +1,22 @@
+{
+  "title": "Hörverstehen Teil 2 - Bibliothek (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Astrid Nowak hat ihr ganzes Berufsleben in der Stadtbibliothek verbracht.", "correct": false },
+    { "text": "Die meisten Besucher/innen der Stadtbibliothek wollen Medien ausleihen.", "correct": true },
+    { "text": "Viele halten sich gern in den attraktiven Räumen der Bibliothek auf.", "correct": true },
+    { "text": "Die Bibliothek bietet ihre Dienstleistungen seit Jahren auch sonntags an.", "correct": false },
+    { "text": "Die vielfältigen Angebote der Bibliothek sind gratis nutzbar.", "correct": true },
+    { "text": "Ein Angebotsschwerpunkt sind Informationsmedien für jüngere Leute.", "correct": false },
+    { "text": "Man kann in der Bibliothek auch elektronische Geräte mieten.", "correct": false },
+    { "text": "Heute finden nur Kurse aus dem Bereich Medien und Technik statt.", "correct": false },
+    { "text": "Es gibt einen Raum, in dem man mit anderen zusammen moderne technische Werkzeuge ausprobieren kann.", "correct": true },
+    { "text": "Die Bibliotheken in Deutschland werden genauso häufig genutzt wie Kinos oder Museen.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 4, "parts": [ "Die meisten Besucher/innen der Stadtbibliothek wollen Medien ausleihen." ] },
+    { "color": 10, "parts": [ "Viele halten sich gern in den attraktiven Räumen der Bibliothek auf." ] },
+    { "color": 1, "parts": [ "Die vielfältigen Angebote der Bibliothek sind gratis nutzbar." ] },
+    { "color": 9, "parts": [ "Es gibt einen Raum, in dem man mit anderen zusammen moderne technische Werkzeuge ausprobieren kann." ] }
+  ]
+}

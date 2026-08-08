@@ -1,0 +1,22 @@
+{
+  "title": "Hörverstehen Teil 2 - Suza Hotop",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Für die Autorin Suza Hotop ist Schreiben Freude und Anstrengung zugleich.", "correct": true },
+    { "text": "Suza begann im Alter von zwölf Jahren mit ihrem Buch Jenseits von.", "correct": false },
+    { "text": "Am Anfang dachte Suza nicht daran, ihre Geschichte zu veröffentlichen.", "correct": true },
+    { "text": "Zuerst stellte Suza Auszüge ihrer Geschichte ins Internet.", "correct": true },
+    { "text": "Begeisterte Nutzer stellten den Kontakt zu einem Verlag her.", "correct": false },
+    { "text": "Suza beschreibt bewusst Personen aus ihrem eigenen Umfeld.", "correct": false },
+    { "text": "Die Autorin plant im Vorfeld genau, was in der Geschichte passieren wird.", "correct": false },
+    { "text": "Suza folgt beim Schreiben keinen besonderen Vorbildern.", "correct": true },
+    { "text": "Die junge Frau gab während des Radiointerviews eine Leseprobe.", "correct": false },
+    { "text": "Suza braucht immer Ruhe, um schreiben zu können.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 5, "parts": [ "Für die Autorin Suza Hotop ist Schreiben Freude und Anstrengung zugleich." ] },
+    { "color": 9, "parts": [ "Am Anfang dachte Suza nicht daran, ihre Geschichte zu veröffentlichen." ] },
+    { "color": 0, "parts": [ "Zuerst stellte Suza Auszüge ihrer Geschichte ins Internet." ] },
+    { "color": 6, "parts": [ "Suza folgt beim Schreiben keinen besonderen Vorbildern." ] }
+  ]
+}

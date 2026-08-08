@@ -1,0 +1,23 @@
+{
+  "title": "Hörverstehen Teil 2 - Markus",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Markus ist schon während des Studiums an eine amerikanische Universität gegangen.", "correct": false },
+    { "text": "Markus wollte in einem besonders erfolgreichen Team mitarbeiten.", "correct": true },
+    { "text": "Um eine Stelle in einer amerikanischen Forschergruppe zu bekommen, muss man viel Glück haben.", "correct": false },
+    { "text": "Markus befindet sich zwischen Ausbildung und Beruf.", "correct": true },
+    { "text": "Das Studium in Bonn hat Markus sehr gut auf den Auslandsaufenthalt vorbereitet.", "correct": true },
+    { "text": "Markus hatte nach der Ankunft in den USA sehr viele Schwierigkeiten.", "correct": false },
+    { "text": "Markus ist immer noch sehr nervös in der fremden Umgebung.", "correct": false },
+    { "text": "Markus ist mit den Arbeitsbedingungen zufrieden.", "correct": true },
+    { "text": "Markus befürwortet es nicht, dass sich Studenten in den USA früh auf ihren zukünftigen Beruf festlegen müssen.", "correct": false },
+    { "text": "Für Markus ist es ein Vorteil, dass er in Deutschland Referate und Vorträge halten musste.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 3, "parts": [ "Markus wollte in einem besonders erfolgreichen Team mitarbeiten." ] },
+    { "color": 9, "parts": [ "Markus befindet sich zwischen Ausbildung und Beruf." ] },
+    { "color": 11, "parts": [ "Das Studium in Bonn hat Markus sehr gut auf den Auslandsaufenthalt vorbereitet." ] },
+    { "color": 4, "parts": [ "Markus ist mit den Arbeitsbedingungen zufrieden." ] },
+    { "color": 0, "parts": [ "Für Markus ist es ein Vorteil, dass er in Deutschland Referate und Vorträge halten musste." ] }
+  ]
+}

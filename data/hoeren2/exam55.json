@@ -1,0 +1,24 @@
+{
+  "title": "Hörverstehen Teil 2 - Interview mit Bauingenieur Herr Böhm",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Amerikanische Politiker haben die Entscheidung für das Projekt getroffen.", "correct": false },
+    { "text": "Herr Böhm wollte schon als Kind Bauingenieur werden.", "correct": false },
+    { "text": "Das älteste Bauwerk ist 80.000 Jahre alt.", "correct": false },
+    { "text": "Herr Böhm arbeitet häufig an ähnlichen Projekten.", "correct": false },
+    { "text": "Moderne Maschinen erhöhen die Sicherheit auf Baustellen.", "correct": true },
+    { "text": "Früher mussten Bauarbeiter viele gefährliche Aufgaben selbst übernehmen.", "correct": true },
+    { "text": "Herr Böhm arbeitete früher im Bereich Maschinenentwicklung.", "correct": true },
+    { "text": "Am Anfang gab es finanzielle Probleme bei dem Projekt.", "correct": true },
+    { "text": "Automatische Kontrollsysteme helfen dabei, Gefahren früher zu erkennen.", "correct": true },
+    { "text": "Das Projekt wird heute durch europäische Fördermittel unterstützt.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 5, "parts": [ "Moderne Maschinen erhöhen die Sicherheit auf Baustellen." ] },
+    { "color": 10, "parts": [ "Früher mussten Bauarbeiter viele gefährliche Aufgaben selbst übernehmen." ] },
+    { "color": 2, "parts": [ "Herr Böhm arbeitete früher im Bereich Maschinenentwicklung." ] },
+    { "color": 9, "parts": [ "Am Anfang gab es finanzielle Probleme bei dem Projekt." ] },
+    { "color": 0, "parts": [ "Automatische Kontrollsysteme helfen dabei, Gefahren früher zu erkennen." ] },
+    { "color": 7, "parts": [ "Das Projekt wird heute durch europäische Fördermittel unterstützt." ] }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Hörverstehen Teil 2 - Herr Kemper (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Herr Kemper arbeitet aus Dankbarkeit für die Hilfe, die er früher bekommen hat, ehrenamtlich.", "correct": true },
+    { "text": "Der Tierschutz hat für Herrn Kemper oberste Priorität.", "correct": false },
+    { "text": "Herr Kemper hat zuerst handwerkliche Arbeiten im Tierheim gemacht.", "correct": true },
+    { "text": "Herr Kemper hat es abgelehnt, Reinigungsarbeiten zu übernehmen.", "correct": false },
+    { "text": "Alle Helferinnen und Helfer arbeiten mehrmals in der Woche im Tierheim.", "correct": false },
+    { "text": "Greta hat angefangen, ehrenamtlich zu arbeiten, weil sie zu Hause Langeweile hatte.", "correct": true },
+    { "text": "Herr Kemper hat einer jungen Frau geholfen, ihren beruflichen Weg zu finden.", "correct": true },
+    { "text": "Herr Kemper findet, dass sich jeder Mensch ehrenamtlich engagieren sollte.", "correct": false },
+    { "text": "Herr Kemper hat auch Verständnis für Menschen, die sich nicht ehrenamtlich engagieren.", "correct": true },
+    { "text": "Herr Kemper wohnt in einem Haus, in dem Tierhaltung verboten ist.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 4, "parts": [ "Herr Kemper arbeitet aus Dankbarkeit für die Hilfe, die er früher bekommen hat, ehrenamtlich." ] },
+    { "color": 9, "parts": [ "Herr Kemper hat zuerst handwerkliche Arbeiten im Tierheim gemacht." ] },
+    { "color": 0, "parts": [ "Greta hat angefangen, ehrenamtlich zu arbeiten, weil sie zu Hause Langeweile hatte." ] },
+    { "color": 7, "parts": [ "Herr Kemper hat einer jungen Frau geholfen, ihren beruflichen Weg zu finden." ] },
+    { "color": 11, "parts": [ "Herr Kemper hat auch Verständnis für Menschen, die sich nicht ehrenamtlich engagieren." ] },
+    { "color": 3, "parts": [ "Herr Kemper wohnt in einem Haus, in dem Tierhaltung verboten ist." ] }
+  ]
+}

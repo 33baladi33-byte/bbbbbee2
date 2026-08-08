@@ -1,0 +1,23 @@
+{
+  "title": "Hörverstehen Teil 2 - Frau Pesina (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Frau Pesina ist die Chefin des Kosmos Kinos.", "correct": true },
+    { "text": "Von Hanau nach Frankfurt braucht man weniger als eine halbe Stunde.", "correct": true },
+    { "text": "Die Gründung des Kinos vor 100 Jahren war eher ein Zufall.", "correct": true },
+    { "text": "Der Großonkel baute sofort einen separaten Kinosaal.", "correct": false },
+    { "text": "Nach ihrem Großonkel leitete gleich Frau Pesina das Kino.", "correct": false },
+    { "text": "Manchmal denkt sie, es wäre besser gewesen, die sichere Stelle bei der Bank zu behalten.", "correct": false },
+    { "text": "In dem Kino gibt es heute außer der Schwägerin und den beiden Schwestern auch noch weitere Mitarbeiter.", "correct": true },
+    { "text": "Der Arbeitsalltag im Kino läuft immer völlig reibungslos ab.", "correct": false },
+    { "text": "Frau Pesina entscheidet immer allein, was im Kosmos Kino läuft.", "correct": false },
+    { "text": "Manchmal gibt es in dem Kino ein spezielles Programm für Frau.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 2, "parts": [ "Frau Pesina ist die Chefin des Kosmos Kinos." ] },
+    { "color": 9, "parts": [ "Von Hanau nach Frankfurt braucht man weniger als eine halbe Stunde." ] },
+    { "color": 11, "parts": [ "Die Gründung des Kinos vor 100 Jahren war eher ein Zufall." ] },
+    { "color": 4, "parts": [ "In dem Kino gibt es heute außer der Schwägerin und den beiden Schwestern auch noch weitere Mitarbeiter." ] },
+    { "color": 7, "parts": [ "Manchmal gibt es in dem Kino ein spezielles Programm für Frau." ] }
+  ]
+}

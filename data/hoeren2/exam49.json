@@ -1,0 +1,24 @@
+{
+  "title": "Hörverstehen Teil 2 - Die Ausbildung (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Viele befürchten, dass es durch das neue Gesetz zu weiteren Mittelkürzungen kommt.", "correct": true },
+    { "text": "In Zukunft werden weniger Erzieherinnen gebraucht als heute.", "correct": true },
+    { "text": "Künftig soll es mehr Krippenplätze für Kinder unter drei Jahren geben.", "correct": false },
+    { "text": "Der Besuch von Kindergärten soll kostenlos werden.", "correct": true },
+    { "text": "Die Mehrheit der Kleinkinder wird auch weiterhin zu Hause betreut werden.", "correct": false },
+    { "text": "Bei Bedarf setzt die Sprachförderung im vierten Lebensjahr ein.", "correct": true },
+    { "text": "Deutsche Kinder haben keinen Anspruch auf staatliche Sprachförderung.", "correct": false },
+    { "text": "Im Elternhaus wird die Sprachförderung der Kinder immer häufiger vernachlässigt.", "correct": true },
+    { "text": "Herr Teichmann sieht in Bezug auf Sprachförderung auch auf Seiten der Politik Handlungsbedarf.", "correct": false },
+    { "text": "Die Ausbildung der Erzieherinnen soll künftig an Hochschulen angesiedelt sein.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 5, "parts": [ "Viele befürchten, dass es durch das neue Gesetz zu weiteren Mittelkürzungen kommt." ] },
+    { "color": 10, "parts": [ "In Zukunft werden weniger Erzieherinnen gebraucht als heute." ] },
+    { "color": 0, "parts": [ "Der Besuch von Kindergärten soll kostenlos werden." ] },
+    { "color": 7, "parts": [ "Bei Bedarf setzt die Sprachförderung im vierten Lebensjahr ein." ] },
+    { "color": 11, "parts": [ "Im Elternhaus wird die Sprachförderung der Kinder immer häufiger vernachlässigt." ] },
+    { "color": 4, "parts": [ "Die Ausbildung der Erzieherinnen soll künftig an Hochschulen angesiedelt sein." ] }
+  ]
+}

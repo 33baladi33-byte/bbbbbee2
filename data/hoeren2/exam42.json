@@ -1,0 +1,23 @@
+{
+  "title": "Hörverstehen Teil 2 - Die Radiosendung (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Die Radiosendung stellt wöchentlich Leute aus ganz Deutschland vor.", "correct": false },
+    { "text": "Eva Küpper läuft im Training wenigstens einmal pro Woche auch über die Marathondistanz.", "correct": true },
+    { "text": "Ihren Job als Bankangestellte würde Eva Küpper gerne kündigen.", "correct": false },
+    { "text": "Nach der Ausbildung hat Eva Küpper ihren Lebensstil radikal verändert.", "correct": true },
+    { "text": "Eva Küpper kommt ursprünglich aus München.", "correct": true },
+    { "text": "Eva Küpper gefallen Dauerläufe in der Stadt genauso gut wie in den Bergen.", "correct": false },
+    { "text": "Während eines Ultramarathons wechselt Eva Küpper die Laufschuhe dreimal.", "correct": false },
+    { "text": "Die spezielle Uhr ist für Eva Küpper nicht nur im Training, sondern auch im Wettkampf wichtig.", "correct": true },
+    { "text": "Solange der Körper gesund ist, will Eva Küpper weiterhin Ultramarathons laufen.", "correct": true },
+    { "text": "Nach dem Berlin Marathon kann Eva Küpper dem Lauf-Club offiziell beitreten.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 0, "parts": [ "Eva Küpper läuft im Training wenigstens einmal pro Woche auch über die Marathondistanz." ] },
+    { "color": 7, "parts": [ "Nach der Ausbildung hat Eva Küpper ihren Lebensstil radikal verändert." ] },
+    { "color": 11, "parts": [ "Eva Küpper kommt ursprünglich aus München." ] },
+    { "color": 2, "parts": [ "Die spezielle Uhr ist für Eva Küpper nicht nur im Training, sondern auch im Wettkampf wichtig." ] },
+    { "color": 10, "parts": [ "Solange der Körper gesund ist, will Eva Küpper weiterhin Ultramarathons laufen." ] }
+  ]
+}

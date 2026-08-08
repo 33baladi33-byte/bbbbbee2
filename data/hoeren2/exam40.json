@@ -1,0 +1,23 @@
+{
+  "title": "Hörverstehen Teil 2 - Revolution Day (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Am 24. April ist der Fashion Revolution Day.", "correct": true },
+    { "text": "Der Anlass für den Fashion Revolution Day ist der Einsturz des Fabrikgebäudes in Bangladesch.", "correct": true },
+    { "text": "Nur wenige Menschen wurden beim Einsturz schwer verletzt.", "correct": false },
+    { "text": "An diesem Tag wird nur schwarze Kleidung getragen.", "correct": false },
+    { "text": "Eine Näherin verdient dort ca. 20 Cent.", "correct": true },
+    { "text": "The Clean Clothes Kampagne fordert bereits seit Jahren einen existenzsichernden Lohn.", "correct": true },
+    { "text": "Faire Mode ist im Geschäft teurer, weil größere Serien produziert werden.", "correct": false },
+    { "text": "Eine andere Attraktion ist das Filmscreening des Films 'Traceable'.", "correct": true },
+    { "text": "Nach dem Film ist die Veranstaltung zu Ende.", "correct": false },
+    { "text": "Weitere Informationen können auf der Webseite traceable.org abgerufen werden.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 4, "parts": [ "Am 24. April ist der Fashion Revolution Day." ] },
+    { "color": 8, "parts": [ "Der Anlass für den Fashion Revolution Day ist der Einsturz des Fabrikgebäudes in Bangladesch." ] },
+    { "color": 1, "parts": [ "Eine Näherin verdient dort ca. 20 Cent." ] },
+    { "color": 11, "parts": [ "The Clean Clothes Kampagne fordert bereits seit Jahren einen existenzsichernden Lohn." ] },
+    { "color": 6, "parts": [ "Eine andere Attraktion ist das Filmscreening des Films 'Traceable'." ] }
+  ]
+}

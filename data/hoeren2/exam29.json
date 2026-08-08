@@ -1,0 +1,22 @@
+{
+  "title": "Hörverstehen Teil 2 - Meron Makeba",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Meron Makeba hat schon in Ghana Leichtathletik gemacht.", "correct": false },
+    { "text": "Frau Makeba ist mit ihrem Ergebnis bei der WM sehr zufrieden.", "correct": false },
+    { "text": "Frau Makeba hat im vergangenen Jahr ihre Eltern in Ghana besucht.", "correct": false },
+    { "text": "Das Publikum hat bei der WM die Sportler aller Nationen unterstützt.", "correct": true },
+    { "text": "Frau Makeba trifft selten andere Sportler aus Ghana.", "correct": true },
+    { "text": "Für Frau Makeba ist Ghana noch immer ihre Heimat.", "correct": false },
+    { "text": "Wegen ihres Migrationshintergrundes hatte Frau Makeba keine Schwierigkeiten.", "correct": false },
+    { "text": "Anfangs war Frau Makeba in ihrem Verein die einzige Migrantin.", "correct": false },
+    { "text": "Frau Makeba glaubt nicht, dass man aufgrund der Herkunft in bestimmten Sportarten bevorzugt wird.", "correct": true },
+    { "text": "Frau Makebas Erfahrungen im privaten Bereich unterscheiden sich stark von denen im Sport.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": [ "Das Publikum hat bei der WM die Sportler aller Nationen unterstützt." ] },
+    { "color": 8, "parts": [ "Frau Makeba trifft selten andere Sportler aus Ghana." ] },
+    { "color": 11, "parts": [ "Frau Makeba glaubt nicht, dass man aufgrund der Herkunft in bestimmten Sportarten bevorzugt wird." ] },
+    { "color": 6, "parts": [ "Frau Makebas Erfahrungen im privaten Bereich unterscheiden sich stark von denen im Sport." ] }
+  ]
+}

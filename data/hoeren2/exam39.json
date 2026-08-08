@@ -1,0 +1,26 @@
+{
+  "title": "Hörverstehen Teil 2 - Familie - Eltern (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Fast 11500 Kinder leben nicht bei ihren leiblichen Eltern.", "correct": true },
+    { "text": "Früher wurden Fälle von Gewalt in der Familie oft nicht bekannt.", "correct": true },
+    { "text": "Kinder werden nicht sofort von ihren Familien getrennt.", "correct": true },
+    { "text": "Materielle Unterstützung wie Elektrogeräte kann keine Hilfe sein.", "correct": false },
+    { "text": "Die Nachmittagsbetreuung für die ältesten Kinder ist kostenlos.", "correct": false },
+    { "text": "In Skandinavien gibt es eine bessere Familienvorsorge.", "correct": true },
+    { "text": "Früher lernte man Erziehung an Modellsituationen in der Großfamilie.", "correct": true },
+    { "text": "Der Kontakt zwischen Kindern und leiblichen Eltern wird möglichst erhalten.", "correct": true },
+    { "text": "Es gibt spezielle WGs für Jugendliche, die nicht bei ihren Eltern leben.", "correct": true },
+    { "text": "Herr Blaschitz bittet die Hörer um Unterstützung.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 3, "parts": [ "Fast 11500 Kinder leben nicht bei ihren leiblichen Eltern." ] },
+    { "color": 9, "parts": [ "Früher wurden Fälle von Gewalt in der Familie oft nicht bekannt." ] },
+    { "color": 11, "parts": [ "Kinder werden nicht sofort von ihren Familien getrennt." ] },
+    { "color": 2, "parts": [ "In Skandinavien gibt es eine bessere Familienvorsorge." ] },
+    { "color": 7, "parts": [ "Früher lernte man Erziehung an Modellsituationen in der Großfamilie." ] },
+    { "color": 10, "parts": [ "Der Kontakt zwischen Kindern und leiblichen Eltern wird möglichst erhalten." ] },
+    { "color": 5, "parts": [ "Es gibt spezielle WGs für Jugendliche, die nicht bei ihren Eltern leben." ] },
+    { "color": 0, "parts": [ "Herr Blaschitz bittet die Hörer um Unterstützung." ] }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "title": "Hörverstehen Teil 2 - Bio-Essen: Obst, Gemüse und Lieferung",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Die Nachfrage nach regionalem Bio-Obst und Bio-Gemüse hat sich in den letzten Jahren spürbar verändert.", "correct": true },
+    { "text": "Viele Kundinnen und Kunden legen bei Bio-Produkten inzwischen mehr Wert auf Herkunft und Frische als auf einen möglichst niedrigen Preis.", "correct": false },
+    { "text": "Die Lieferung frischer Lebensmittel verursacht für kleinere Betriebe zusätzliche organisatorische und finanzielle Belastungen.", "correct": false },
+    { "text": "Nicht alle angebotenen Bio-Produkte stammen direkt aus der eigenen Produktion.", "correct": true },
+    { "text": "Digitale Bestellsysteme spielen beim Verkauf von Obst und Gemüse mittlerweile eine wichtige Rolle.", "correct": true },
+    { "text": "Die Qualität der Produkte hängt nach Ansicht des Sprechers vor allem von einer schnellen Lieferung ab.", "correct": false },
+    { "text": "Der persönliche Kontakt zu den Kundinnen und Kunden bleibt trotz Online-Bestellungen ein wichtiger Bestandteil des Geschäfts.", "correct": true },
+    { "text": "Durch den Lieferdienst können auch Menschen erreicht werden, die nicht regelmäßig auf den Wochenmarkt gehen können.", "correct": false },
+    { "text": "Für kleinere Bio-Betriebe ist es schwierig, gleichzeitig nachhaltig und preislich konkurrenzfähig zu bleiben.", "correct": true },
+    { "text": "Der Sprecher geht davon aus, dass regionale Lieferangebote für Bio-Lebensmittel in Zukunft weiter an Bedeutung gewinnen werden.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 5, "parts": [ "Die Nachfrage nach regionalem Bio-Obst und Bio-Gemüse hat sich in den letzten Jahren spürbar verändert." ] },
+    { "color": 10, "parts": [ "Nicht alle angebotenen Bio-Produkte stammen direkt aus der eigenen Produktion." ] },
+    { "color": 2, "parts": [ "Digitale Bestellsysteme spielen beim Verkauf von Obst und Gemüse mittlerweile eine wichtige Rolle." ] },
+    { "color": 8, "parts": [ "Der persönliche Kontakt zu den Kundinnen und Kunden bleibt trotz Online-Bestellungen ein wichtiger Bestandteil des Geschäfts." ] },
+    { "color": 11, "parts": [ "Für kleinere Bio-Betriebe ist es schwierig, gleichzeitig nachhaltig und preislich konkurrenzfähig zu bleiben." ] }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "title": "Hörverstehen Teil 2 - Roland (aufsteigen)",
+  "type": "truefalse",
+  "note": "aufsteigen diese Schlüsselwort ist im letzten Satz 2 vorhanden",
+  "questions": [
+    { "text": "Roland Wünschmann spielt selbst bei Viktoria Köln Fußball.", "correct": false },
+    { "text": "Viktoria Köln möchte am Ende der Spielsaison aufsteigen.", "correct": false },
+    { "text": "Zu Beginn dieser Saison hat ein Spieler Viktoria Köln verlassen.", "correct": true },
+    { "text": "Neue Spieler kommen bei Viktoria Köln immer aus der eigenen Jugendmannschaft.", "correct": true },
+    { "text": "Die Mannschaft von Viktoria Köln hat Schwächen in der Abwehr.", "correct": false },
+    { "text": "Roland Wünschmann wagt die Prognose, dass in dieser Saison der 1. FC Mönchengladbach Meister wird.", "correct": false },
+    { "text": "Roland Wünschmann kann seinen Beruf und sein Ehrenamt als Fußballtrainer miteinander vereinbaren.", "correct": true },
+    { "text": "Auch die Frau von Roland Wünschmann engagiert sich im Fußball.", "correct": false },
+    { "text": "Der Vereinsvorstand schätzt Herrn Wünschmanns Arbeit.", "correct": true },
+    { "text": "Roland Wünschmann ist mit der bisherigen Nachwuchsförderung des Vereins noch nicht voll zufrieden.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 2, "parts": [ "Zu Beginn dieser Saison hat ein Spieler Viktoria Köln verlassen." ] },
+    { "color": 8, "parts": [ "Neue Spieler kommen bei Viktoria Köln immer aus der eigenen Jugendmannschaft." ] },
+    { "color": 0, "parts": [ "Roland Wünschmann kann seinen Beruf und sein Ehrenamt als Fußballtrainer miteinander vereinbaren." ] },
+    { "color": 7, "parts": [ "Der Vereinsvorstand schätzt Herrn Wünschmanns Arbeit." ] }
+  ]
+}

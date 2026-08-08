@@ -1,0 +1,25 @@
+{
+  "title": "Hörverstehen Teil 2 - Straßenkinder - Die Kinder (Kids) (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Frau Edler arbeitete früher für die Verkehrsbetriebe Leipzig.", "correct": true },
+    { "text": "Zum ersten Mal wurde sie in Frankfurt mit dem Problem der Straßenkinder konfrontiert.", "correct": true },
+    { "text": "Zu Anfang kümmerte sie sich um obdachlose Erwachsene.", "correct": true },
+    { "text": "Sie hat den Straßenkindern immer Geld gegeben.", "correct": false },
+    { "text": "Die Kinder (Kids) wollten, nach Meinung von Frau Edler, Zigaretten kaufen.", "correct": true },
+    { "text": "Sie hat mit den Kindern in leer stehenden Häusern übernachtet.", "correct": true },
+    { "text": "Die Kolleginnen hatten anfangs kein Verständnis für ihr Engagement.", "correct": true },
+    { "text": "Die Zahl der Kinder, die an den Weihnachtsfeiern teilnehmen, ist seit 1990 stark gesunken.", "correct": false },
+    { "text": "Sie sammelt noch heute bei den früheren Kollegen Geld für die Straßenkinder.", "correct": true },
+    { "text": "Mit einer Büchse herumzulaufen, ist ihr manchmal peinlich.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 4, "parts": [ "Frau Edler arbeitete früher für die Verkehrsbetriebe Leipzig." ] },
+    { "color": 10, "parts": [ "Zum ersten Mal wurde sie in Frankfurt mit dem Problem der Straßenkinder konfrontiert." ] },
+    { "color": 1, "parts": [ "Zu Anfang kümmerte sie sich um obdachlose Erwachsene." ] },
+    { "color": 8, "parts": [ "Die Kinder (Kids) wollten, nach Meinung von Frau Edler, Zigaretten kaufen." ] },
+    { "color": 11, "parts": [ "Sie hat mit den Kindern in leer stehenden Häusern übernachtet." ] },
+    { "color": 0, "parts": [ "Die Kolleginnen hatten anfangs kein Verständnis für ihr Engagement." ] },
+    { "color": 6, "parts": [ "Sie sammelt noch heute bei den früheren Kollegen Geld für die Straßenkinder." ] }
+  ]
+}

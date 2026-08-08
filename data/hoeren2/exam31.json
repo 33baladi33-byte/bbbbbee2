@@ -1,0 +1,23 @@
+{
+  "title": "Hörverstehen Teil 2 - Frau Keder aus Malta",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Frau Kedar kommt aus Düsseldorf.", "correct": false },
+    { "text": "Sie lebt jetzt in Malta.", "correct": true },
+    { "text": "Sie ist effektiv und tätig in Malta.", "correct": false },
+    { "text": "Sie genießt das ganze Jahr im Mittelmeer zu baden.", "correct": true },
+    { "text": "Der Moderator kennt die Temperatur des Mittelmeers im Winter nicht.", "correct": true },
+    { "text": "Der Moderator denkt, in Malta gibt es drei Amtssprachen.", "correct": false },
+    { "text": "Die Malteser waren konservativ und zurückhaltend.", "correct": false },
+    { "text": "Malteser kommen aus verschiedenen Religionen.", "correct": true },
+    { "text": "Sie plante, die maltesische Sprache zu lernen.", "correct": true },
+    { "text": "Sie möchte zu Van... umziehen.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 3, "parts": [ "Sie lebt jetzt in Malta." ] },
+    { "color": 9, "parts": [ "Sie genießt das ganze Jahr im Mittelmeer zu baden." ] },
+    { "color": 11, "parts": [ "Der Moderator kennt die Temperatur des Mittelmeers im Winter nicht." ] },
+    { "color": 0, "parts": [ "Malteser kommen aus verschiedenen Religionen." ] },
+    { "color": 7, "parts": [ "Sie plante, die maltesische Sprache zu lernen." ] }
+  ]
+}

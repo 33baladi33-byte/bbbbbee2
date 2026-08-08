@@ -1,0 +1,25 @@
+{
+  "title": "Hörverstehen Teil 2 - Zu Beginn",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Zu Beginn der Sendung hatte der Reporter ein exklusives Frühstücksrezept erwartet.", "correct": true },
+    { "text": "Ole hat sich vor 17 Jahren selbstständig gemacht.", "correct": true },
+    { "text": "Davor hatte er eine Lehre als Koch absolviert.", "correct": true },
+    { "text": "Er bevorzugt Gerichte ohne Fleisch.", "correct": true },
+    { "text": "Ole sieht wie ein Punker aus.", "correct": false },
+    { "text": "Er kocht für Musiker, die auf Tournee sind.", "correct": true },
+    { "text": "Zuletzt hat er für die Band 'Die Prinzen' gekocht.", "correct": false },
+    { "text": "Ole nimmt eine komplette Kücheneinrichtung mit auf Tournee.", "correct": true },
+    { "text": "Er macht sich über den Sender lustig, weil der Reporter bei englischen Wörtern nachfragt.", "correct": true },
+    { "text": "Die Musiker müssen immer essen, was auf den Tisch kommt.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 3, "parts": [ "Zu Beginn der Sendung hatte der Reporter ein exklusives Frühstücksrezept erwartet." ] },
+    { "color": 10, "parts": [ "Ole hat sich vor 17 Jahren selbstständig gemacht." ] },
+    { "color": 7, "parts": [ "Davor hatte er eine Lehre als Koch absolviert." ] },
+    { "color": 11, "parts": [ "Er bevorzugt Gerichte ohne Fleisch." ] },
+    { "color": 2, "parts": [ "Er kocht für Musiker, die auf Tournee sind." ] },
+    { "color": 8, "parts": [ "Ole nimmt eine komplette Kücheneinrichtung mit auf Tournee." ] },
+    { "color": 5, "parts": [ "Er macht sich über den Sender lustig, weil der Reporter bei englischen Wörtern nachfragt." ] }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Hörverstehen Teil 2 - Frau Schenk (Mittel)",
+  "type": "truefalse",
+  "note": "عندما تجد الألب Alpen في LESEN تصبح الجملة 6 خاطئة",
+  "questions": [
+    { "text": "Frau Schenk hat kurze blondierte Haare.", "correct": true },
+    { "text": "Angie ist der Künstlername von Frau Schenk.", "correct": false },
+    { "text": "Frau Schenk lebt seit etwas mehr als zwei Jahren in Bayern.", "correct": false },
+    { "text": "Der Interviewte hat keine guten Erinnerungen an seine Aufenthalte in Jugendherbergen.", "correct": true },
+    { "text": "Auch in der modernen Jugendherberge von Frau Schenk gibt es Schlafräume mit mehr als zehn Betten.", "correct": false },
+    { "text": "Mädchen und Jungen müssen in verschiedenen Schlafräumen schlafen.", "correct": true },
+    { "text": "In der Jugendherberge wird das Essen den Wünschen der Gästegruppen angepasst.", "correct": true },
+    { "text": "Schüler aus ländlichen Regionen verhalten sich in der Regel anständig.", "correct": true },
+    { "text": "Reiten ist Teil des Sportangebots der Jugendherberge.", "correct": false },
+    { "text": "Frau Schenk muss für ihre Dienstwohnung 800 € bezahlen.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 6, "parts": [ "Frau Schenk hat kurze blondierte Haare." ] },
+    { "color": 11, "parts": [ "Der Interviewte hat keine guten Erinnerungen an seine Aufenthalte in Jugendherbergen." ] },
+    { "color": 2, "parts": [ "Mädchen und Jungen müssen in verschiedenen Schlafräumen schlafen." ] },
+    { "color": 9, "parts": [ "In der Jugendherberge wird das Essen den Wünschen der Gästegruppen angepasst." ] },
+    { "color": 3, "parts": [ "Schüler aus ländlichen Regionen verhalten sich in der Regel anständig." ] }
+  ]
+}

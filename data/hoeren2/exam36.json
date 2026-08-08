@@ -1,0 +1,24 @@
+{
+  "title": "Hörverstehen Teil 2 - Herr Werner (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Auf dem Gipfel der Zugspitze liegt ungefähr ein Meter Schnee.", "correct": true },
+    { "text": "Man kann derzeit auf der Zugspitze Ski fahren.", "correct": false },
+    { "text": "Auch in Garmisch-Partenkirchen selbst hat es geschnelt.", "correct": false },
+    { "text": "In der kommenden Woche erwartet man für die Zugspitzregion freundliches Wetter.", "correct": true },
+    { "text": "Am Sonntag wird ein Gottesdienst auf einer Bergstation abgehalten.", "correct": true },
+    { "text": "Die Zugspitze kann man momentan wegen des Nebels nicht erkennen.", "correct": false },
+    { "text": "Die Urlauber in Garmisch-Partenkirchen haben bei jedem Wetter genügend Möglichkeiten zur Freizeitgestaltung.", "correct": true },
+    { "text": "Herr Werner erwartet keine Wetterbesserung.", "correct": false },
+    { "text": "Auch in früheren Jahren hat es im Juni und August geschnelt.", "correct": true },
+    { "text": "Herr Werner ist mit seinem Arbeitsplatz zufrieden.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 5, "parts": [ "Auf dem Gipfel der Zugspitze liegt ungefähr ein Meter Schnee." ] },
+    { "color": 10, "parts": [ "In der kommenden Woche erwartet man für die Zugspitzregion freundliches Wetter." ] },
+    { "color": 0, "parts": [ "Am Sonntag wird ein Gottesdienst auf einer Bergstation abgehalten." ] },
+    { "color": 8, "parts": [ "Die Urlauber in Garmisch-Partenkirchen haben bei jedem Wetter genügend Möglichkeiten zur Freizeitgestaltung." ] },
+    { "color": 11, "parts": [ "Auch in früheren Jahren hat es im Juni und August geschnelt." ] },
+    { "color": 3, "parts": [ "Herr Werner ist mit seinem Arbeitsplatz zufrieden." ] }
+  ]
+}

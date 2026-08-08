@@ -1,0 +1,23 @@
+{
+  "title": "Hörverstehen Teil 2 - psychische (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Weniger als zehn Prozent der Fehltage am Arbeitsplatz sind auf psychische Erkrankungen zurückzuführen.", "correct": false },
+    { "text": "Betroffene Arbeitnehmer sprechen relativ offen über ihre psychischen Probleme.", "correct": false },
+    { "text": "Auch Arbeitslosigkeit ist ein Risikofaktor für psychische Probleme.", "correct": true },
+    { "text": "Schlechte Stimmung am Arbeitsplatz ist die Hauptursache für psychische Erkrankungen.", "correct": true },
+    { "text": "Menschen, die zu wenig zu tun haben, versuchen, das nicht zu zeigen.", "correct": true },
+    { "text": "Menschen, die am Arbeitsplatz wenig zu tun haben, sind besonders zufrieden.", "correct": false },
+    { "text": "Internet und Smartphone können einen Einfluss auf die Psyche haben.", "correct": true },
+    { "text": "Wem seine Arbeit Spaß macht, der kann eher mehr leisten.", "correct": true },
+    { "text": "Bei Managern ist das Risiko für psychische Erkrankungen unter allen Berufsgruppen am höchsten.", "correct": false },
+    { "text": "Für die psychische Gesundheit ist es besser, arbeitslos zu sein, als eine nur durchschnittlich interessante Arbeit zu finden.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 5, "parts": [ "Auch Arbeitslosigkeit ist ein Risikofaktor für psychische Probleme." ] },
+    { "color": 10, "parts": [ "Schlechte Stimmung am Arbeitsplatz ist die Hauptursache für psychische Erkrankungen." ] },
+    { "color": 1, "parts": [ "Menschen, die zu wenig zu tun haben, versuchen, das nicht zu zeigen." ] },
+    { "color": 8, "parts": [ "Internet und Smartphone können einen Einfluss auf die Psyche haben." ] },
+    { "color": 11, "parts": [ "Wem seine Arbeit Spaß macht, der kann eher mehr leisten." ] }
+  ]
+}

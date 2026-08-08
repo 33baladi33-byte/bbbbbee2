@@ -1,0 +1,21 @@
+{
+  "title": "Thomas",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Nach seinem Studium hat Thomas Hirschbaum zuerst im IT-Bereich gearbeitet.", "correct": true },
+    { "text": "Er hat den Managementbereich in seiner Firma gegründet.", "correct": false },
+    { "text": "Es hat ihm gefallen, Verantwortung für sein 50-köpfiges Team zu haben.", "correct": true },
+    { "text": "Seine Eltern haben erwartet, dass er einmal mehr Geld verdient als sie.", "correct": false },
+    { "text": "Seit seinem Start ins Berufsleben hatte er keine Freizeit mehr.", "correct": false },
+    { "text": "Er hat sich oft nicht gut gefühlt, wenn er an seine Familie dachte.", "correct": false },
+    { "text": "Nach seinem 40. Geburtstag hatte er den Wunsch, mal einen Monat Urlaub zu machen.", "correct": false },
+    { "text": "Sein Chef war sofort mit dem Vorschlag einverstanden, die Arbeit anders zu organisieren.", "correct": false },
+    { "text": "Wie sein Kollege arbeitet Thomas Hirschbaum jetzt halbtags.", "correct": true },
+    { "text": "Trotzdem steht die Arbeit für ihn an oberster Stelle.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": [ "Nach seinem Studium hat Thomas Hirschbaum zuerst im IT-Bereich gearbeitet." ] },
+    { "color": 9, "parts": [ "Es hat ihm gefallen, Verantwortung für sein 50-köpfiges Team zu haben." ] },
+    { "color": 11, "parts": [ "Wie sein Kollege arbeitet Thomas Hirschbaum jetzt halbtags." ] }
+  ]
+}

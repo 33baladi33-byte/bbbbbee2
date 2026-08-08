@@ -1,0 +1,25 @@
+{
+  "title": "Hörverstehen Teil 2 - Roland (Spielen)",
+  "type": "truefalse",
+  "note": "Spielen diese Schlüsselwort ist im letzten Satz 2 vorhanden",
+  "questions": [
+    { "text": "Roland Wünschmann arbeitet Vollzeit als Fußballtrainer bei Viktoria Köln.", "correct": false },
+    { "text": "Viktoria Köln möchte nicht nur gegen Mannschaften aus der Verbandsliga spielen.", "correct": true },
+    { "text": "Zu Beginn dieser Saison hat ein Spieler Viktoria Köln verlassen.", "correct": true },
+    { "text": "Neue Spieler kommen bei Viktoria Köln immer aus der eigenen Jugendmannschaft.", "correct": true },
+    { "text": "Die Mannschaft von Viktoria Köln hat Schwächen in der Abwehr.", "correct": false },
+    { "text": "Roland Wünschmann wagt die Prognose, dass in dieser Saison der 1. FC Mönchengladbach Meister wird.", "correct": false },
+    { "text": "Roland Wünschmann kann seinen Beruf und sein Ehrenamt als Fußballtrainer problemlos miteinander vereinbaren.", "correct": true },
+    { "text": "Auch die Frau von Roland Wünschmann engagiert sich im Fußball.", "correct": false },
+    { "text": "Der Vereinsvorstand schätzt Herrn Wünschmanns Arbeit.", "correct": true },
+    { "text": "Roland Wünschmann ist mit der bisherigen Nachwuchsförderung des Vereins zufrieden.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": [ "Viktoria Köln möchte nicht nur gegen Mannschaften aus der Verbandsliga spielen." ] },
+    { "color": 10, "parts": [ "Zu Beginn dieser Saison hat ein Spieler Viktoria Köln verlassen." ] },
+    { "color": 6, "parts": [ "Neue Spieler kommen bei Viktoria Köln immer aus der eigenen Jugendmannschaft." ] },
+    { "color": 11, "parts": [ "Roland Wünschmann kann seinen Beruf und sein Ehrenamt als Fußballtrainer problemlos miteinander vereinbaren." ] },
+    { "color": 3, "parts": [ "Der Vereinsvorstand schätzt Herrn Wünschmanns Arbeit." ] },
+    { "color": 9, "parts": [ "Roland Wünschmann ist mit der bisherigen Nachwuchsförderung des Vereins zufrieden." ] }
+  ]
+}

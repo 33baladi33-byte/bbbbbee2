@@ -1,0 +1,21 @@
+{
+  "title": "Hörverstehen Teil 2 - Herr Scherer",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Herr Scherer wird an seinem Arbeitsplatz interviewt.", "correct": false },
+    { "text": "Herr Scherer probt jede Woche zweimal mit dem Kirchenchor.", "correct": false },
+    { "text": "Herr Scherer hat wechselnde Arbeitszeiten.", "correct": true },
+    { "text": "Verspätungen gehen häufig auf das Konto undisziplinierter Fahrgäste.", "correct": true },
+    { "text": "Herr Scherer und seine Kollegen verkaufen keine Fahrscheine mehr.", "correct": false },
+    { "text": "Alkoholisierte Fahrgäste verursachen zunehmend Probleme.", "correct": false },
+    { "text": "Die Verkehrsbetriebe haben ein eigenes Schwimmbad.", "correct": false },
+    { "text": "Die Klimatisierung der Busse ist bei hohen Temperaturen nicht ausreichend.", "correct": false },
+    { "text": "Herr Scherer hat bei der Bundeswehr eine Ausbildung zum Automechaniker gemacht.", "correct": false },
+    { "text": "Herr Scherer hat bei der Post 15 Jahre in Nachtschicht gearbeitet.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 0, "parts": [ "Herr Scherer hat wechselnde Arbeitszeiten." ] },
+    { "color": 7, "parts": [ "Verspätungen gehen häufig auf das Konto undisziplinierter Fahrgäste." ] },
+    { "color": 11, "parts": [ "Herr Scherer hat bei der Post 15 Jahre in Nachtschicht gearbeitet." ] }
+  ]
+}

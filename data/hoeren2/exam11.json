@@ -1,0 +1,24 @@
+{
+  "title": "Hörverstehen Teil 2 - Carina (Mittel)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Der Berufseinstieg ist in anderen Ländern nicht leicht.", "correct": true },
+    { "text": "Carina ist ihr Beruf wichtiger als ihr Privatleben.", "correct": false },
+    { "text": "Carina hat bei der Agentur mit einem Videofilm Interesse geweckt.", "correct": true },
+    { "text": "Carina hat für einen Film eine Diät gemacht.", "correct": true },
+    { "text": "Carina macht lieber gefühlvolle Filme als Action-Filme.", "correct": false },
+    { "text": "Wegen der vielen Fehlstunden hatte Carina Probleme mit dem Direktor der Schule.", "correct": false },
+    { "text": "Carinas Eltern haben ihre Tochter von Anfang an unterstützt.", "correct": false },
+    { "text": "Carina findet den Wechsel zwischen Schule und Drehterminen schwierig.", "correct": true },
+    { "text": "Bei Dialogen darf man auch selbst etwas erfinden.", "correct": true },
+    { "text": "Carina empfiehlt, sich andere Schauspieler im Theater und in Filmen anzusehen.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 3, "parts": [ "Der Berufseinstieg ist in anderen Ländern nicht leicht." ] },
+    { "color": 9, "parts": [ "Carina hat bei der Agentur mit einem Videofilm Interesse geweckt." ] },
+    { "color": 11, "parts": [ "Carina hat für einen Film eine Diät gemacht." ] },
+    { "color": 2, "parts": [ "Carina findet den Wechsel zwischen Schule und Drehterminen schwierig." ] },
+    { "color": 7, "parts": [ "Bei Dialogen darf man auch selbst etwas erfinden." ] },
+    { "color": 0, "parts": [ "Carina empfiehlt, sich andere Schauspieler im Theater und in Filmen anzusehen." ] }
+  ]
+}

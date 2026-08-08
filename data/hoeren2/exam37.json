@@ -1,0 +1,22 @@
+{
+  "title": "Hörverstehen Teil 2 - Wohnmobil (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Der Hauptpreis des Gewinnspiels ist ein rund vierwöchiger Urlaub in Spanien.", "correct": true },
+    { "text": "Sie können in der Sendung auch schöne Bildbände über verschiedene Länder gewinnen.", "correct": false },
+    { "text": "Thomas Schilp vertritt einen großen Wohnmobilhändler.", "correct": false },
+    { "text": "Für das Wohnmobil Camper 500F benötigt man einen Zusatzführerschein.", "correct": false },
+    { "text": "Wohnmobile für Reisen in Europa sollte man erst am Urlaubsort mieten.", "correct": false },
+    { "text": "Reisende mit Wohnmobilen schätzen ihre Unabhängigkeit.", "correct": true },
+    { "text": "Auf Luxus muss man im Wohnwagen auch heute nicht verzichten.", "correct": true },
+    { "text": "Wer den Urlaub mit dem Wohnmobil erst einmal ausprobieren will, sollte ein gebrauchtes Fahrzeug kaufen.", "correct": true },
+    { "text": "Deutsche zahlen für ein Wohnmobil durchschnittlich 200.000 Euro.", "correct": false },
+    { "text": "Der Mietpreis für ein Wohnmobil hängt von der Jahreszeit ab.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 6, "parts": [ "Der Hauptpreis des Gewinnspiels ist ein rund vierwöchiger Urlaub in Spanien." ] },
+    { "color": 11, "parts": [ "Reisende mit Wohnmobilen schätzen ihre Unabhängigkeit." ] },
+    { "color": 2, "parts": [ "Auf Luxus muss man im Wohnwagen auch heute nicht verzichten." ] },
+    { "color": 9, "parts": [ "Wer den Urlaub mit dem Wohnmobil erst einmal ausprobieren will, sollte ein gebrauchtes Fahrzeug kaufen." ] }
+  ]
+}

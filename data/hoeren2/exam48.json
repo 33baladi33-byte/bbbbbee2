@@ -1,0 +1,23 @@
+{
+  "title": "Hörverstehen Teil 2 - Eisschwimmen (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Mit der Gründung der Eisschwimmervereinigung wollte Elias Wunderlich dem Eisschwimmen unter anderem zu einem offiziellen Status verhelfen.", "correct": false },
+    { "text": "Das Eisschwimmen hat Elias Wunderlich durch den Austausch mit anderen Sportlern entdeckt.", "correct": false },
+    { "text": "Die Ärzte sind sich einig, dass Eisschwimmen die Gesundheit fördert.", "correct": true },
+    { "text": "Nur durchtrainierte Menschen sollten Eisschwimmen betreiben.", "correct": false },
+    { "text": "Für den Einstieg in den Eisschwimmsport ist der Winterbeginn der beste Zeitpunkt.", "correct": true },
+    { "text": "Elias Wunderlich hält sich strikt an seine eigenen Empfehlungen.", "correct": true },
+    { "text": "Warmhaltendes Fett wird auch durch die Reaktion des Körpers auf Kälte erzeugt.", "correct": false },
+    { "text": "Bei Wettbewerben ist schützende Ganzkörperbekleidung vorgesehen.", "correct": false },
+    { "text": "Elias Wunderlich nimmt an Wettbewerben teil, um zu siegen.", "correct": true },
+    { "text": "Laut Elias Wunderlich kann Eisschwimmen zur Abhängigkeit führen.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 6, "parts": [ "Die Ärzte sind sich einig, dass Eisschwimmen die Gesundheit fördert." ] },
+    { "color": 11, "parts": [ "Für den Einstieg in den Eisschwimmsport ist der Winterbeginn der beste Zeitpunkt." ] },
+    { "color": 2, "parts": [ "Elias Wunderlich hält sich strikt an seine eigenen Empfehlungen." ] },
+    { "color": 8, "parts": [ "Elias Wunderlich nimmt an Wettbewerben teil, um zu siegen." ] },
+    { "color": 3, "parts": [ "Laut Elias Wunderlich kann Eisschwimmen zur Abhängigkeit führen." ] }
+  ]
+}

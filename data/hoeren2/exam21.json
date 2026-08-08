@@ -1,0 +1,21 @@
+{
+  "title": "Hörverstehen Teil 2 - Die Deutschen machen",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Die Deutschen machen zurzeit gerne bis zu drei Wochen oder mehr Urlaub.", "correct": false },
+    { "text": "Viele Wellness-Hotels befinden sich in Großstädten.", "correct": false },
+    { "text": "Wellness-Angebote gibt es vor allem in Hotels der gehobenen Kategorie.", "correct": true },
+    { "text": "Die von den Hotels angebotenen 'Pakete' enthalten in der Regel Vollpension.", "correct": false },
+    { "text": "In den Hotels kann man auch schwimmen und in die Sauna gehen.", "correct": true },
+    { "text": "Die Gäste nehmen die Sportangebote kaum wahr.", "correct": false },
+    { "text": "Oft bieten die Hotels auch kulturelle Rahmenprogramme wie Stadtführungen und Opernbesuche an.", "correct": false },
+    { "text": "Frauen kommen fast immer in Begleitung ihrer Ehemänner.", "correct": false },
+    { "text": "Die Hotels haben besondere Angebote für Männer.", "correct": true },
+    { "text": "Mitglieder von Krankenkassen können die Hotels kostenlos besuchen.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 3, "parts": [ "Wellness-Angebote gibt es vor allem in Hotels der gehobenen Kategorie." ] },
+    { "color": 9, "parts": [ "In den Hotels kann man auch schwimmen und in die Sauna gehen." ] },
+    { "color": 11, "parts": [ "Die Hotels haben besondere Angebote für Männer." ] }
+  ]
+}

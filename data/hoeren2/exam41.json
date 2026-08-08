@@ -1,0 +1,21 @@
+{
+  "title": "Hörverstehen Teil 2 - Bicycle (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Das ist ein Interview mit dem Restaurant 'Bicycle'.", "correct": false },
+    { "text": "Gert Kronheim ist der alleinige Gründer von Bicycle.", "correct": false },
+    { "text": "Bicycle bietet Arbeitsplätze für junge Leute, die schon länger arbeitslos sind.", "correct": true },
+    { "text": "Bicycle gibt es schon seit 1926.", "correct": false },
+    { "text": "Anlass für die Gründung von Bicycle war die steigende Arbeitslosigkeit Anfang der 80er Jahre.", "correct": false },
+    { "text": "Gert Kronheimer findet, dass das Fahrrad für junge Leute interessant ist.", "correct": true },
+    { "text": "Das Fahrrad ist heute leider sehr unpopulär geworden.", "correct": false },
+    { "text": "Bei Bicycle kann man nur Vollzeit arbeiten.", "correct": false },
+    { "text": "Bei Bicycle werden im Jahr ungefähr 10000 Fahrräder repariert.", "correct": true },
+    { "text": "Sibylle Hartung ist nur eine Assistentin und keine Expertin für technische Fragen.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 3, "parts": [ "Bicycle bietet Arbeitsplätze für junge Leute, die schon länger arbeitslos sind." ] },
+    { "color": 9, "parts": [ "Gert Kronheimer findet, dass das Fahrrad für junge Leute interessant ist." ] },
+    { "color": 11, "parts": [ "Bei Bicycle werden im Jahr ungefähr 10000 Fahrräder repariert." ] }
+  ]
+}

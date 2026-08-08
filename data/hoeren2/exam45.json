@@ -1,0 +1,23 @@
+{
+  "title": "Hörverstehen Teil 2 - Frau Hahn (مواضيع تركيا)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Der Journalist spricht mit einer Kundin im Kaufhaus.", "correct": false },
+    { "text": "Frau Hahn hat ihren Beruf im Kaufhaus Brück gelernt.", "correct": true },
+    { "text": "Frau Hahn wollte schon als Kind Verkäuferin im Kaufhaus Brück werden.", "correct": false },
+    { "text": "Frau Hahn fand es wichtig, nette Kollegen zu haben.", "correct": true },
+    { "text": "Frau Hahns Mann arbeitet jetzt in demselben Kaufhaus wie sie.", "correct": false },
+    { "text": "Der Mann von Frau Hahn hat als Schuhverkäufer arbeitete.", "correct": true },
+    { "text": "Das Kaufhaus Brück wird nach der Schließung abgerissen.", "correct": false },
+    { "text": "Frau Hahn findet es wichtig, in einem schönen Haus zu arbeiten.", "correct": true },
+    { "text": "Die neuen Inhaber hätten das Kaufhaus gerne weitergeführt.", "correct": false },
+    { "text": "Frau Hahn will nicht in einem anderen Kaufhaus arbeiten.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 6, "parts": [ "Frau Hahn hat ihren Beruf im Kaufhaus Brück gelernt." ] },
+    { "color": 10, "parts": [ "Frau Hahn fand es wichtig, nette Kollegen zu haben." ] },
+    { "color": 2, "parts": [ "Der Mann von Frau Hahn hat als Schuhverkäufer arbeitete." ] },
+    { "color": 8, "parts": [ "Frau Hahn findet es wichtig, in einem schönen Haus zu arbeiten." ] },
+    { "color": 1, "parts": [ "Frau Hahn will nicht in einem anderen Kaufhaus arbeiten." ] }
+  ]
+}

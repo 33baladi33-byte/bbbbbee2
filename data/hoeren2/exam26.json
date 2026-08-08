@@ -1,0 +1,23 @@
+{
+  "title": "Hörverstehen Teil 2 - Die TU Dresden",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Die TU Dresden ist eine kleine Universität.", "correct": false },
+    { "text": "An der TU Dresden kann man nur technische Fächer studieren.", "correct": false },
+    { "text": "Ältere Studierende kümmern sich um neue Studierende.", "correct": true },
+    { "text": "Man erreicht die Neustadt nicht mit öffentlichen Verkehrsmitteln.", "correct": false },
+    { "text": "Jens ist nicht sicher, ob er nach dem Studium einen interessanten Job bekommt.", "correct": true },
+    { "text": "Studienanfänger können noch zwischen Bachelor und Diplom wählen.", "correct": false },
+    { "text": "Mit dem Semesterticket dürfen Studierende öffentliche Verkehrsmittel in Dresden nutzen.", "correct": true },
+    { "text": "Für Studienanfänger gibt es die Möglichkeit, bestimmte Grundkenntnisse aufzufrischen.", "correct": true },
+    { "text": "Im Studium gibt es keine Gruppenarbeit.", "correct": false },
+    { "text": "An der TU Dresden kann man auch außergewöhnliche Sportarten treiben.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 4, "parts": [ "Ältere Studierende kümmern sich um neue Studierende." ] },
+    { "color": 9, "parts": [ "Jens ist nicht sicher, ob er nach dem Studium einen interessanten Job bekommt." ] },
+    { "color": 1, "parts": [ "Mit dem Semesterticket dürfen Studierende öffentliche Verkehrsmittel in Dresden nutzen." ] },
+    { "color": 6, "parts": [ "Für Studienanfänger gibt es die Möglichkeit, bestimmte Grundkenntnisse aufzufrischen." ] },
+    { "color": 11, "parts": [ "An der TU Dresden kann man auch außergewöhnliche Sportarten treiben." ] }
+  ]
+}

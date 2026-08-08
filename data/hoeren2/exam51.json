@@ -1,0 +1,23 @@
+{
+  "title": "Frau Kiddar 3",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Frau Kiddar stammt aus Düsseldorf.", "correct": false },
+    { "text": "Sie lebt heute auf Malta.", "correct": true },
+    { "text": "Sie ist auf Malta beruflich tätig.", "correct": true },
+    { "text": "Frau Kiddar möchte gerne bald nach Valletta ziehen.", "correct": false },
+    { "text": "Sie genießt es, das ganze Jahr über im Mittelmeer zu baden.", "correct": false },
+    { "text": "Der Moderator weiß nicht, wie viel Grad das Mittelmeer im Winter hat.", "correct": true },
+    { "text": "Frau Kiddar weist darauf hin, dass die Einwohner Maltas ursprünglich aus verschiedenen Regionen stammten.", "correct": true },
+    { "text": "Die Malteser haben sich ihr gegenüber aber zurückhaltend, ja misstrauisch verhalten.", "correct": false },
+    { "text": "Der Moderator denkt, dass es auf Malta drei Amtssprachen gibt.", "correct": true },
+    { "text": "Frau Kiddar plant, bald die maltesische Sprache zu lernen.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 3, "parts": [ "Sie lebt heute auf Malta." ] },
+    { "color": 9, "parts": [ "Sie ist auf Malta beruflich tätig." ] },
+    { "color": 11, "parts": [ "Der Moderator weiß nicht, wie viel Grad das Mittelmeer im Winter hat." ] },
+    { "color": 0, "parts": [ "Frau Kiddar weist darauf hin, dass die Einwohner Maltas ursprünglich aus verschiedenen Regionen stammten." ] },
+    { "color": 7, "parts": [ "Der Moderator denkt, dass es auf Malta drei Amtssprachen gibt." ] }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "title": "Hörverstehen Teil 2 - Julia",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Julia hatte an einem Schüleraustausch kein Interesse.", "correct": true },
+    { "text": "Die Lehrer in Julias Schule weigerten sich, mit dem Austauschschüler Englisch zu sprechen.", "correct": false },
+    { "text": "Frankreich ist als Aufenthaltsland bei Au-pairs nicht sehr gefragt.", "correct": true },
+    { "text": "Julia hatte auch darüber nachgedacht, in die Schweiz zu fahren.", "correct": true },
+    { "text": "Julia empfiehlt, mit der Gastfamilie einen Vertrag zu schließen.", "correct": true },
+    { "text": "Zu Beginn der Au-pair-Bewegung schickten Familien ihre Kinder zum Sprachunterricht in die Schweiz.", "correct": false },
+    { "text": "Julia ist der Meinung, dass die Vermittlungskosten zu hoch sind.", "correct": false },
+    { "text": "Julia verbrachte mit den Kindern auch Zeit in Paris.", "correct": true },
+    { "text": "Es gab am Anfang Momente, in denen sich Julia der Gastfamilie nicht zugehörig fühlte.", "correct": false },
+    { "text": "Julia lernt im Sprachkurs mehr Französisch als durch den Kontakt mit der Gastfamilie.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 3, "parts": [ "Julia hatte an einem Schüleraustausch kein Interesse." ] },
+    { "color": 10, "parts": [ "Frankreich ist als Aufenthaltsland bei Au-pairs nicht sehr gefragt." ] },
+    { "color": 4, "parts": [ "Julia hatte auch darüber nachgedacht, in die Schweiz zu fahren." ] },
+    { "color": 8, "parts": [ "Julia empfiehlt, mit der Gastfamilie einen Vertrag zu schließen." ] },
+    { "color": 1, "parts": [ "Julia verbrachte mit den Kindern auch Zeit in Paris." ] }
+  ]
+}

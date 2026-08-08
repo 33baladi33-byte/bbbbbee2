@@ -1,0 +1,24 @@
+{
+  "title": "Hörverstehen Teil 2 - Professor Steiner",
+  "type": "truefalse",
+  "note": "Steiner vermittelt diese Schlüsselwort ist in Satz 2 vorhanden",
+  "questions": [
+    { "text": "Professor Steiner ist heute gar nicht mehr nervös, wenn er moderieren muss.", "correct": false },
+    { "text": "Steiner vermittelt den Studierenden nicht nur theoretisches Wissen, sondern fordert auch, dass es praktisch angewendet wird.", "correct": true },
+    { "text": "Steiners Hobby ist es, experimentelle Filme zu machen.", "correct": false },
+    { "text": "Journalisten sollten heute auf einzelne Medien spezialisiert sein.", "correct": false },
+    { "text": "Sportjournalist zu werden, ist nach Steiners Ansicht heute fast ausgeschlossen.", "correct": false },
+    { "text": "Journalisten sollten Lust haben, etwas zu entdecken.", "correct": true },
+    { "text": "Steiner musste wegen einer Verletzung mit dem Fußballspielen aufhören.", "correct": false },
+    { "text": "Steiner hat während seines Journalistik-Studiums für das ZDF Fußballspiele moderiert.", "correct": true },
+    { "text": "Steiner ist es wichtig, als Moderator den Sportlern gegenüber neutral zu bleiben.", "correct": true },
+    { "text": "Steiner rät Abiturienten dazu, verschiedene berufliche Möglichkeiten zu testen.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": [ "Steiner vermittelt den Studierenden nicht nur theoretisches Wissen, sondern fordert auch, dass es praktisch angewendet wird." ] },
+    { "color": 7, "parts": [ "Journalisten sollten Lust haben, etwas zu entdecken." ] },
+    { "color": 11, "parts": [ "Steiner hat während seines Journalistik-Studiums für das ZDF Fußballspiele moderiert." ] },
+    { "color": 3, "parts": [ "Steiner ist es wichtig, als Moderator den Sportlern gegenüber neutral zu bleiben." ] },
+    { "color": 9, "parts": [ "Steiner rät Abiturienten dazu, verschiedene berufliche Möglichkeiten zu testen." ] }
+  ]
+}

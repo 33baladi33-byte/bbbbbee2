@@ -1,0 +1,24 @@
+{
+  "title": "Hörverstehen Teil 2 - Vanessa",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Vanessa versucht, so viele Orte wie möglich zu besuchen.", "correct": false },
+    { "text": "Mit den Arbeitsbedingungen in der Werbeagentur war Vanessa unzufrieden.", "correct": true },
+    { "text": "Wenn Vanessa unter Menschen ist, schadet das manchmal ihrer Konzentration.", "correct": true },
+    { "text": "Die Sicherheit, die eine feste Stelle bietet, bedeutet Vanessa nicht viel.", "correct": true },
+    { "text": "Vanessa ist sich sicher, dass sie nie mehr als Angestellte arbeiten möchte.", "correct": false },
+    { "text": "Dass sie immer wieder neue Auftraggeber suchen muss, hat für Vanessa auch Vorteile.", "correct": true },
+    { "text": "Vanessas Eltern würden auch gerne öfter verreisen.", "correct": false },
+    { "text": "Es fiel Vanessa leicht, sich von persönlichen Gegenständen zu trennen.", "correct": true },
+    { "text": "Vanessa glaubt, dass man in Zukunft in mehr Berufen ortsunabhängig arbeiten kann.", "correct": false },
+    { "text": "Auch wer ortsunabhängig arbeitet, sollte nicht zu oft den Ort wechseln.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 4, "parts": [ "Mit den Arbeitsbedingungen in der Werbeagentur war Vanessa unzufrieden." ] },
+    { "color": 9, "parts": [ "Wenn Vanessa unter Menschen ist, schadet das manchmal ihrer Konzentration." ] },
+    { "color": 11, "parts": [ "Die Sicherheit, die eine feste Stelle bietet, bedeutet Vanessa nicht viel." ] },
+    { "color": 1, "parts": [ "Dass sie immer wieder neue Auftraggeber suchen muss, hat für Vanessa auch Vorteile." ] },
+    { "color": 6, "parts": [ "Es fiel Vanessa leicht, sich von persönlichen Gegenständen zu trennen." ] },
+    { "color": 0, "parts": [ "Auch wer ortsunabhängig arbeitet, sollte nicht zu oft den Ort wechseln." ] }
+  ]
+}

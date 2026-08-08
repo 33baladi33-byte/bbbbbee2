@@ -1,0 +1,23 @@
+{
+  "title": "Hörverstehen Teil 2 - Vom Marktstand zum eigenen Geschäft",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Der Vater des Gründers hatte früher einen Stand auf einem Markt.", "correct": false },
+    { "text": "Die ersten Schritte in die Selbstständigkeit waren problemlos.", "correct": false },
+    { "text": "Zu Beginn war es schwierig, passende Lieferanten zu finden.", "correct": false },
+    { "text": "Frau Eichhorn erzählt, wie sie die ersten Kunden gewonnen hat.", "correct": true },
+    { "text": "Das Angebot des Geschäfts richtet sich ausschließlich an Kunden aus der eigenen Stadt.", "correct": true },
+    { "text": "Anfangs hatten einige Kunden Zweifel an der Qualität der Produkte.", "correct": true },
+    { "text": "Frau Eichhorn spricht über die Zusammenarbeit mit Produzenten und Lieferanten.", "correct": true },
+    { "text": "Der Inhaber plant, in naher Zukunft eine weitere Filiale in der Stadt zu eröffnen.", "correct": false },
+    { "text": "Ein Verkauf der Produkte in andere Länder ist grundsätzlich vorgesehen.", "correct": false },
+    { "text": "Persönliche Beratung im Geschäft bleibt auch in Zukunft sehr wichtig.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 0, "parts": [ "Frau Eichhorn erzählt, wie sie die ersten Kunden gewonnen hat." ] },
+    { "color": 8, "parts": [ "Das Angebot des Geschäfts richtet sich ausschließlich an Kunden aus der eigenen Stadt." ] },
+    { "color": 10, "parts": [ "Anfangs hatten einige Kunden Zweifel an der Qualität der Produkte." ] },
+    { "color": 3, "parts": [ "Frau Eichhorn spricht über die Zusammenarbeit mit Produzenten und Lieferanten." ] },
+    { "color": 11, "parts": [ "Persönliche Beratung im Geschäft bleibt auch in Zukunft sehr wichtig." ] }
+  ]
+}

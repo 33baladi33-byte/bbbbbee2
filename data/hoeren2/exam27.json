@@ -1,0 +1,23 @@
+{
+  "title": "Hörverstehen Teil 2 - Lisa Eisenberg",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Lisa Eisenberg war aus beruflichen Gründen in den USA.", "correct": false },
+    { "text": "Während einer Reise entschied sich Lisa Eisenberg für einen beruflichen Neuanfang.", "correct": true },
+    { "text": "Lisa Eisenbergs Geschäftsidee stieß in ihrem Bekanntenkreis auf Skepsis.", "correct": true },
+    { "text": "Lisa Eisenberg hat sich auf regionale Speisen spezialisiert.", "correct": true },
+    { "text": "In der Mittagszeit erzielt Lisa Eisenberg den Großteil ihres Umsatzes.", "correct": false },
+    { "text": "Lisa Eisenberg muss nicht mehr aktiv nach Kunden suchen.", "correct": true },
+    { "text": "Lisa Eisenberg bietet für Firmen täglich auch abends Gerichte an.", "correct": false },
+    { "text": "Es war für Lisa Eisenberg leicht, ein geeignetes Fahrzeug zu finden.", "correct": true },
+    { "text": "Lisa Eisenberg hat als Studentin nebenbei in der Gastronomie gearbeitet.", "correct": false },
+    { "text": "In den nächsten Monaten wird Lisa Eisenberg einen zweiten Wagen kaufen.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 0, "parts": [ "Während einer Reise entschied sich Lisa Eisenberg für einen beruflichen Neuanfang." ] },
+    { "color": 7, "parts": [ "Lisa Eisenbergs Geschäftsidee stieß in ihrem Bekanntenkreis auf Skepsis." ] },
+    { "color": 10, "parts": [ "Lisa Eisenberg hat sich auf regionale Speisen spezialisiert." ] },
+    { "color": 5, "parts": [ "Lisa Eisenberg muss nicht mehr aktiv nach Kunden suchen." ] },
+    { "color": 11, "parts": [ "Es war für Lisa Eisenberg leicht, ein geeignetes Fahrzeug zu finden." ] }
+  ]
+}

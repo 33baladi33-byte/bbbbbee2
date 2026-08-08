@@ -1,0 +1,22 @@
+{
+  "title": "Hörverstehen Teil 2 - Professor Steiner (Mittel)",
+  "type": "truefalse",
+  "note": "عندما تجد Sport ist gesund في LESEN تصبح الجملة 1 و 4 صحيحة أيضا",
+  "questions": [
+    { "text": "Professor Steiner ist heute gar nicht mehr nervös, wenn er moderieren muss.", "correct": false },
+    { "text": "Steiner möchte, dass die Studierenden das Gelernte auch in der Praxis anwenden können.", "correct": true },
+    { "text": "Steiners Hobby ist es, experimentelle Filme zu machen.", "correct": false },
+    { "text": "Journalisten sollten heute auf einzelne Medien spezialisiert sein.", "correct": false },
+    { "text": "Nach Steiners Ansicht ist der Berufswunsch Sportjournalist heutzutage unrealistisch.", "correct": false },
+    { "text": "Journalisten sollten Lust haben, etwas zu entdecken.", "correct": false },
+    { "text": "Steiner musste wegen einer Verletzung mit dem Fußballspielen aufhören.", "correct": false },
+    { "text": "Steiner hat während seines Journalistik-Studiums für das ZDF Fußballspiele kommentiert.", "correct": false },
+    { "text": "Steiner ist es wichtig, als Moderator den Sportlern gegenüber neutral zu bleiben.", "correct": true },
+    { "text": "Steiner rät Abiturienten dazu, verschiedene Tests zu machen.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 5, "parts": [ "Steiner möchte, dass die Studierenden das Gelernte auch in der Praxis anwenden können." ] },
+    { "color": 10, "parts": [ "Steiner ist es wichtig, als Moderator den Sportlern gegenüber neutral zu bleiben." ] },
+    { "color": 2, "parts": [ "Steiner rät Abiturienten dazu, verschiedene Tests zu machen." ] }
+  ]
+}

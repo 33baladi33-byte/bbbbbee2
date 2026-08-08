@@ -1,0 +1,23 @@
+{
+  "title": "Hörverstehen Teil 2 - Herr Karimov",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Herr Karimov hat vor sechs Jahren die Internetplattform ZEITPLAN gegründet.", "correct": false },
+    { "text": "Die Mitglieder bekommen für ihre Hilfe ein Stunden-Guthaben.", "correct": true },
+    { "text": "Herr Karimov hatte ein eigenes Handwerksunternehmen.", "correct": false },
+    { "text": "Nach dem Umzug aufs Land war er auf die Hilfe der Nachbarn angewiesen.", "correct": false },
+    { "text": "Manchmal erwarten Mitglieder keine Gegenleistung für ihre Arbeit.", "correct": true },
+    { "text": "Meistens brauchen alleinstehende Frauen Herrn Karimovs Hilfe.", "correct": false },
+    { "text": "Viele Menschen sehen im ZEITPLAN eine Konkurrenz zu Handwerksbetrieben.", "correct": false },
+    { "text": "Herr Karimov erledigt nicht so gerne Büroarbeit.", "correct": true },
+    { "text": "Wer sich bei der Nachbarschaftshilfe einbringen möchte, muss sich persönlich vorstellen.", "correct": true },
+    { "text": "Herr Karimov brauchte vorübergehend einen Chauffeur.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 0, "parts": [ "Die Mitglieder bekommen für ihre Hilfe ein Stunden-Guthaben." ] },
+    { "color": 7, "parts": [ "Manchmal erwarten Mitglieder keine Gegenleistung für ihre Arbeit." ] },
+    { "color": 11, "parts": [ "Herr Karimov erledigt nicht so gerne Büroarbeit." ] },
+    { "color": 4, "parts": [ "Wer sich bei der Nachbarschaftshilfe einbringen möchte, muss sich persönlich vorstellen." ] },
+    { "color": 9, "parts": [ "Herr Karimov brauchte vorübergehend einen Chauffeur." ] }
+  ]
+}

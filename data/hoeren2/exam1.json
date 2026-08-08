@@ -1,0 +1,78 @@
+{
+  "title": "Hörverstehen Teil 2 - Herr Gasser und Frau Janke",
+  "type": "truefalse",
+  "questions": [
+    {
+      "text": "Herr Gasser und Frau Janke haben zusammen Urlaub im Gebirge gemacht.",
+      "correct": false
+    },
+    {
+      "text": "Josef Gasser ist ein gebürtiger Tiroler.",
+      "correct": false
+    },
+    {
+      "text": "Die Bergbauern können kaum vom Verkauf ihrer Produkte leben.",
+      "correct": true
+    },
+    {
+      "text": "Auch heute werden die steilen Hänge noch manuell bearbeitet.",
+      "correct": true
+    },
+    {
+      "text": "Josef Gasser findet, dass man die Berglandschaft sich selbst überlassen sollte.",
+      "correct": false
+    },
+    {
+      "text": "Eva Janke begeistert sich immer noch für Flugreisen.",
+      "correct": false
+    },
+    {
+      "text": "Ihren ersten Einsatz auf der Alm hatte sie vor kurzem.",
+      "correct": false
+    },
+    {
+      "text": "Für Frau Janke ist der Erholungswert trotz der Anstrengung sehr hoch.",
+      "correct": true
+    },
+    {
+      "text": "Almhelferinnen und -helfer können vielseitige Aufgaben übernehmen.",
+      "correct": true
+    },
+    {
+      "text": "Über die Dauer des Aufenthalts kann man frei entscheiden.",
+      "correct": true
+    }
+  ],
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Die Bergbauern können kaum vom Verkauf ihrer Produkte leben."
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "Auch heute werden die steilen Hänge noch manuell bearbeitet."
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Für Frau Janke ist der Erholungswert trotz der Anstrengung sehr hoch."
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Almhelferinnen und -helfer können vielseitige Aufgaben übernehmen."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Über die Dauer des Aufenthalts kann man frei entscheiden."
+      ]
+    }
+  ]
+}
