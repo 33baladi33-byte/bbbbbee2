@@ -1,0 +1,60 @@
+{
+  "title": "Lesen Teil 2 - Exam 36: Nachtzug",
+  "skill": "lesen2",
+  "type": "teil2",
+  "text": "Nachtzüge sind wie fahrende Zeitkapseln: Man legt sich schlafen und hofft, im Morgengrauen in einer neuen Welt aufzuwachen. Zwischen Schiene und Schlaf entsteht ein eigener Rhythmus, der sowohl romantisch als auch unbequem sein kann. Nachtzüge wecken heute oft nostalgische Bilder. Man denkt an den Glanz eines Luxuszugs wie des fiktiven Aurora-Express, der seine wohlhabende Kundschaft in wenigen Tagen von Montreal nach Istanbul brachte, vorbei an begleitenden Landschaften und an das sanfte Rattern, das einen in den Schlaf wiegt. Hält die Wirklichkeit, was diese Bilder versprechen? \"Zum Teil\", meint die Studentin Mara Himmelsfeld. Sie ist bereits im Nachtzug von Rosenbrück nach San Marina, von Nordhavn nach Fjordlund und von Svalby nach Eiskrone gereist. Auf ihrer ersten Fahrt habe sie vor lauter Aufregung gar nicht geschlafen, erzählt sie. Und auch sonst seien die Nächte an Bord unruhig - nicht zuletzt wegen schlafender Mitreisender. Natürlich wäre das Fliegen schneller und auf vielen Strecken sogar günstiger. Doch die lange Fahrzeit schenkt Raum für Begegnungen. \"Im Zug erzählen die Leute erstaunlich offen aus ihrem Leben, viel mehr, als man bei flüchtigen Bekanntschaften sonst erlebt. Das fasziniert mich\", erklärt sie. Ähnliches berichtet Familie Winterfeld. Einmal kamen sie völlig übermüdet am Ziel an - und doch rief der jüngste Sohn beim Aufwachen: \"Das war die beste Reise überhaupt! Ein Bett, das fährt! Ich will nur noch Nachtzüge.\" Gerade der Kinder wegen haben die Winterfelds auch für den diesjährigen Urlaub wieder eine Nachtverbindung gebucht. Dass die Züge, die quer durch Europa fahren, nicht immer besonders bequem sind, hört man häufig. Fahrgäste beklagen, manche Wagen seien in die Jahre gekommen und bieten nur wenige Annehmlichkeiten. Liegt darin vielleicht auch ein Grund, warum Geschäftsreisende diese Option selten ernsthaft erwägen? Jonas Falk, Vertriebsleiter eines mittelständischen Unternehmens, winkt ab: \"Das würde für mich keine große Rolle spielen.\" Viel wichtiger sei die Zeit: \"Wer will zwei Nächte im Zug verbringen, nur weil es einen Termin in einer anderen Stadt gibt?\" Wenn Nachtzüge konkurrenzfähig sein wollen, müssen sie schneller werden, sagt Falk. Längere Geschäftsreisen nimmt er ausschließlich das Flugzeug.",
+  "questions": [
+    {
+      "text": "Mara Himmelsfeld fährt gerne mit dem Nachtzug, weil",
+      "options": [
+        "a. er im Vergleich zum Fliegen meist günstiger ist",
+        "b. man dort leicht mit Mitreisenden ins Gespräch kommt",
+        "c. sie während der Fahrt meistens gut schlafen kann"
+      ],
+      "correct": 1
+    },
+    {
+      "text": "Einige Bahnunternehmen",
+      "options": [
+        "a. haben Nachtzugwagen anderer Betreiber aufgekauft",
+        "b. möchten kurzfristig zahlreiche zusätzliche Nachtverbindungen anbieten",
+        "c. verzichteten aus wirtschaftlichen Gründen zeitweise auf eigene Nachtzüge"
+      ],
+      "correct": 2
+    },
+    {
+      "text": "Die Reise mit dem Nachtzug",
+      "options": [
+        "a. empfand die Familie Winterfeld insgesamt als sehr erholsam",
+        "b. hat den jüngsten Sohn der Familie begeistert",
+        "c. möchte die Familie Winterfeld auf keinen Fall wiederholen"
+      ],
+      "correct": 1
+    },
+    {
+      "text": "Jonas Falk verzichtet auf längere Zugreisen, weil",
+      "options": [
+        "a. er im Zug ungern arbeitet",
+        "b. er mit dem Flugzeug deutlich Zeit spart",
+        "c. es ihm vor allem an Bequemlichkeit fehlt"
+      ],
+      "correct": 1
+    },
+    {
+      "text": "Im Vergleich zum Fliegen gilt im Text, dass",
+      "options": [
+        "a. Fliegen schneller und auf vielen Strecken sogar günstiger ist",
+        "b. Nachtzüge in der Regel schneller sind als Flugzeuge",
+        "c. beide Verkehrsmittel preislich und zeitlich ungefähr gleich sind"
+      ],
+      "correct": 0
+    }
+  ],
+  "memoryHighlights": [
+    { "color": 3, "parts": ["man dort leicht mit Mitreisenden ins Gespräch kommt"] },
+    { "color": 8, "parts": ["verzichteten aus wirtschaftlichen Gründen zeitweise auf eigene Nachtzüge"] },
+    { "color": 11, "parts": ["hat den jüngsten Sohn der Familie begeistert"] },
+    { "color": 5, "parts": ["er mit dem Flugzeug deutlich Zeit spart"] },
+    { "color": 10, "parts": ["Fliegen schneller und auf vielen Strecken sogar günstiger ist"] }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "title": "Lesen Teil 2 - Exam 8: Kreditkarte",
+  "skill": "lesen2",
+  "type": "teil2",
+  "text": "Wer kennt sie nicht: Kreditkarten, mit denen man in der heimischen Stadt oder während des Urlaubs einkaufen kann. Fast jeder hat eine, und alles scheint ganz einfach zu sein: Kein Wunder, dass auch immer mehr Kinder und Jugendliche eine eigene Kreditkarte haben wollen. Sie sehen, wie ihre Eltern damit bezahlen, und möchten auch das praktische \"Plastikgeld\". Aber Eltern sorgen sich: Ist das nicht zu gefährlich? Um das Risiko einer Überschuldung zu vermeiden, bieten Banken und alle Sparkassen Jugendlichen eine besondere Art von Kreditkarten an: die sogenannte Prepaid-Kreditkarte. Eine Prepaid-Kreditkarte ist mit einem Prepaid-Handy vergleichbar. Man kann sie nur einsetzen, wenn man zuvor Geld auf die Karte geladen hat. Ist das Guthaben verbraucht, kann man mit der Karte nicht mehr bezahlen und am Automaten kein Geld mehr abheben. Der Vorteil liegt auf der Hand: \"Man kann nicht mehr Geld ausgeben, als man hat\", sagt Andreas Gernt, Finanzexperte der Verbraucherzentrale Niedersachsen in Hannover. Mit einer Prepaid-Kreditkarte kann daher niemand in die Schuldenfalle tappen. \"Für Kinder und Jugendliche auf Reisen ist die Prepaid-Kreditkarte eine überlegenswerte Option\", sagt Gernt. Die daheimgebliebenen Eltern können ihrem Kind von zu Hause aus Geld auf die Karte laden, wenn das Guthaben verbraucht ist. Zugleich können sie die Kosten kontrollieren. \"Die Prepaid-Kreditkarte ist eine Ausgabenschranke für den Verbraucher\", fasst Tanja Beller vom Bundesverband deutscher Banken in Berlin zusammen. So können Jugendliche den Umgang mit bargeldlosem Zahlungsverkehr lernen. Zugleich eignen sich die Karten aber auch für erwachsene Reisende mit einem größeren Sicherheitsbedürfnis. \"Man ist mit einer Kreditkarte auf Reisen unabhängiger vom Bargeld\", erklärt Gernt. Die Prepaid-Karte bietet zwei Vorteile: Zum einen ist mit ihr das Reisebudget von Anfang an limitiert. Es kann nur das für Souvenirs ausgegeben werden, was vorher geladen wurde. Zum anderen sind damit auch die Verluste überschaubar, wenn die Karte gestohlen wird. Denn auch ein Dieb kann nur das Geld nutzen, das als Guthaben auf der Karte ist. Außerdem eignet sich die Prepaid-Kreditkarte für Freiberufler und Selbständige - oder allgemeiner gefasst für Menschen mit einem unregelmäßigen oder geringen Einkommen, die dadurch keine gute Bonität haben. Denn die Prepaid-Kreditkarten sind im Gegensatz zur klassischen Kreditkarte nicht direkt an ein Gehaltskonto gebunden. Das ermöglicht auch Geringverdienern Einkäufe im Internet. Zugleich schützt die Guthabenkarte vor allzu großen Verlusten durch Missbrauch im Netz. Bevor man sich aber für eine Prepaid-Karte entscheidet, sollte man ihre Akzeptanz überprüfen, rät Beller. Denn gerade Prepaid-Karten sind nicht in jedem Land als Zahlungsmittel gern gesehen. Grundsätzlich sollte man auch bei Lock-Angeboten skeptisch sein. Außerdem sollte man die Gebühren genau vergleichen und auf versteckte Kosten achten. Die Stiftung Warentest hat für ihre Zeitschrift \"Finanztest\" die Bedingungen und Kosten von 24 Prepaid-Kreditkarten für Erwachsene und Jugendliche getestet. Die Tester stellten fest: Die Karten sind nicht teurer als klassische Kreditkarten, und auch die Nutzungsgebühren unterscheiden sich kaum. Erwachsene bezahlen für Prepaid-Karten zwischen 29 und 39 Euro im Jahr. Karten für Jugendliche kosten im Jahr höchstens 22 Euro. Bei vielen Banken sind sie bis zum 18. oder 21. Geburtstag kostenlos. Unter dem Strich kann die Prepaid-Karte mit der klassischen Kreditkarte durchaus mithalten. Mit beiden Kartentypen kann man im Restaurant bezahlen, am Automaten Geld abheben oder im Internet shoppen.",
+  "questions": [
+    {
+      "text": "Eine Prepaid-Kreditkarte",
+      "options": [
+        "a. gibt es für Jugendliche schon bei zahlreichen Geldinstituten.",
+        "b. können Jugendliche zusammen mit einer Handy-Prepaidkarte bekommen.",
+        "c. macht es möglich, mit dem Handy zu bezahlen."
+      ],
+      "correct": 0
+    },
+    {
+      "text": "Man hat Kontrolle über die Kosten",
+      "options": [
+        "a. da nur der Karteninhaber seine Karte aufladen darf",
+        "b. denn die Eltern werden bei einer Aufladung benachrichtigt",
+        "c. weil die Ausgaben durch das Guthaben begrenzt sind"
+      ],
+      "correct": 2
+    },
+    {
+      "text": "Die Prepaid-Kreditkarte ist besonders geeignet für",
+      "options": [
+        "a. Angestellte mit einem guten Gehalt",
+        "b. Jugendliche ohne festes Einkommen",
+        "c. Menschen mit einem eigenen Bankkonto"
+      ],
+      "correct": 1
+    },
+    {
+      "text": "Prepaid-Karten",
+      "options": [
+        "a. kosten ähnlich viel wie klassische Kreditkarten",
+        "b. verursachen keine unerwarteten Kosten",
+        "c. werden als Zahlungsmittel ebenso akzeptiert wie klassische"
+      ],
+      "correct": 0
+    },
+    {
+      "text": "Bei Prepaid-Karten zahlen",
+      "options": [
+        "a. Erwachsene ab 21 Jahren eine höhere Jahresgebühr als Jugendliche",
+        "b. Jugendliche unter 18 Jahren nur die Nutzungsgebühr am Geldautomaten",
+        "c. Kunden zwischen 18 und 21 Jahren noch nichts"
+      ],
+      "correct": 0
+    }
+  ],
+  "memoryHighlights": [
+    { "color": 0, "parts": [ "gibt es für Jugendliche schon bei zahlreichen Geldinstituten." ] },
+    { "color": 6, "parts": [ "weil die Ausgaben durch das Guthaben begrenzt sind" ] },
+    { "color": 11, "parts": [ "Jugendliche ohne festes Einkommen" ] },
+    { "color": 4, "parts": [ "kosten ähnlich viel wie klassische Kreditkarten" ] },
+    { "color": 9, "parts": [ "Erwachsene ab 21 Jahren eine höhere Jahresgebühr als Jugendliche" ] }
+  ]
+}

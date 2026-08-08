@@ -1,0 +1,60 @@
+{
+  "title": "Lesen Teil 2 - Exam 34: Die deutschen und ihre Ernährung",
+  "skill": "lesen2",
+  "type": "teil2",
+  "text": "Bei den Deutschen wächst das Bewusstsein für ihre gesunde Ernährung. Das geht aus einer kürzlich veröffentlichten Studie hervor, bei der 1000 Erwachsene in Deutschland zu ihrer Ernährung befragt wurden. In dieser Untersuchung antworteten 45% der Befragten auf die Frage, worauf es ihnen bei ihrer Ernährung ankommt, dass sie vor allem gesund essen möchten. Damit steht laut der Studie erstmals das Kriterium \"gesund\" vor \"lecker\". In der vorhergehenden Umfrage war das Kriterium \"lecker\" den Befragten noch am wichtigsten. Dennoch bleibt der Geschmack ein wichtiges Kriterium: für immerhin 41% aller Befragten kommt es beim Essen auf den Genuss an. Im Vergleich zur Voruntersuchung sind die beiden Kriterien \"Hauptsache schnell\" und \"Hauptsache günstig\" weniger wichtig geworden: Die Deutschen nehmen sich demnach etwas mehr Zeit für ihre Ernährung und sind auch eher bereit, mehr Geld für gute Lebensmittel auszugeben. Allerdings hat auch das Kriterium \"kalorienarm\" an Bedeutung verloren. Nur mehr 5% (gegenüber 9% in der Voruntersuchung) denken bei der Wahl von Lebensmitteln an die schlanke Linie. Dazu passt, dass knapp die Hälfte der Befragten selbst angibt, übergewichtig zu sein, 13% bezeichnen sich sogar als stark übergewichtig. Gesundheitspsychologen führen das darauf zurück, dass häufig die Zeit für den Einkauf und die Zubereitung von frischen Lebensmitteln fehlt; die Menschen griffen dann aus Bequemlichkeit zu Fertiggerichten oder Snacks, die häufig zu viel Fett, Salz oder Zucker enthalten. Dabei ließen sich durch die Ernährung viele Risikofaktoren reduzieren, betonten die Experten. An mangelndem Wissen scheint das nicht zu liegen: nur ein Viertel der Befragten gab an, nicht genug über gesunde Ernährung zu wissen. Dennoch forderten einige Fachleute bessere Verbraucherinformationen. Sie warfen der Bundesregierung vor, es fehle offensichtlich an dem politischen Willen, sich mit der Branche anzulegen. Die gesunde Wahl werde unnötig schwer gemacht. Ein Großteil der Erfrischungsgetränke sei überzuckert, die Kennzeichnung von Fett, Zucker und Salz sei eine Zumutung, und selbst Süßigkeiten werden wie gesunde Produkte beworben. \"Das ist kein Bildungsproblem, sondern ein Problem des Angebotes, das die Lebensmittelwirtschaft uns vorsetzt.\" Deshalb sehen diese Fachleute die Industrie und Politik in der Pflicht. \"Wenn ich Licht und Lupe brauche, um diese Liste lesen zu können, läuft etwas falsch\", bringt einer von ihnen die Kritik auf den Punkt. Ihr Argument lautet: Das Problem ist nicht, ob vegetarische Produkte \"Wurst\" oder \"Frikadelle\" heißen dürfen, sondern ob der Verbraucher weiß, was an Zutaten und Stoffen in seiner vermeintlich gesunden Alternative steckt. Die Studienergebnisse zeigen, dass es im Umgang mit Lebensmitteln erhebliche Unterschiede zwischen den Altersgruppen gibt. So herrscht bei Jüngeren eine vergleichsweise starke Wegwerfmentalität. Bei 14% der 18- bis 25-Jährigen landet häufig oder sogar sehr häufig Essen im Müll. Nur jeder Zweite aus dieser Altersgruppe entsorgt selten oder nie Lebensmittel. Bei den Älteren ab Mitte 60 dagegen entsorgen 65% selten oder nie Lebensmittel in den Müll. Insgesamt warf mehr als jeder dritte Deutsche regelmäßig Lebensmittel weg. Auch der Fleischkonsum unterscheidet sich je nach Altersgruppe: Unter den 18- bis 29-Jährigen ist der Anteil jener, die auf Fleisch verzichten, höher als in der Gesamtbevölkerung. 8% bezeichnen sich als Vegetarier und 2% als Veganer. In Deutschland bezeichnen sich 1% der Menschen als Veganer. Flexitarier (die meist selbst weder Fleisch noch Wurst kaufen, es aber auch nicht vollständig ablehnen, wenn es ihnen angeboten wird) gibt es viele. Bioprodukte spielen mittlerweile eine große Rolle. Von den Befragten gaben 40% an, bevorzugt Lebensmittel mit Bio-Siegel zu kaufen; vor einigen Jahren griff nur ein Drittel der Befragten im Gegensatz zu biologisch hergestellten Lebensmitteln zu konventionellen Produkten.",
+  "questions": [
+    {
+      "text": "Die meisten Befragten finden, dass das Essen",
+      "options": [
+        "a. früher besser war",
+        "b. gesund sein sollte",
+        "c. vor allem gut schmecken muss"
+      ],
+      "correct": 1
+    },
+    {
+      "text": "Das Kriterium kalorienarm",
+      "options": [
+        "a. ist für die Hälfte der Befragten wichtig",
+        "b. steht bei Übergewichtigen an erster Stelle",
+        "c. war früher wichtiger"
+      ],
+      "correct": 2
+    },
+    {
+      "text": "Experten glauben, dass Menschen ungesund essen, weil",
+      "options": [
+        "a. ihnen Fett und Zucker gut schmecken",
+        "b. sie sich nicht genug informieren",
+        "c. zu viele ungesunde Lebensmittel auf dem Markt sind"
+      ],
+      "correct": 2
+    },
+    {
+      "text": "Das Wegwerfen von Lebensmitteln",
+      "options": [
+        "a. findet ein Drittel der Befragten in Ordnung",
+        "b. lehnen jüngere Menschen vollkommen ab",
+        "c. passiert bei älteren Menschen fast nie"
+      ],
+      "correct": 2
+    },
+    {
+      "text": "Der Fleischkonsum",
+      "options": [
+        "a. ist nicht in allen Altersgruppen gleich",
+        "b. kommt für dreizehn Prozent der Jugendlichen nicht in Frage",
+        "c. nimmt mit dem Alter zu"
+      ],
+      "correct": 0
+    }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": ["gesund sein sollte"] },
+    { "color": 9, "parts": ["war früher wichtiger"] },
+    { "color": 11, "parts": ["zu viele ungesunde Lebensmittel auf dem Markt sind"] },
+    { "color": 4, "parts": ["passiert bei älteren Menschen fast nie"] },
+    { "color": 10, "parts": ["ist nicht in allen Altersgruppen gleich"] }
+  ]
+}

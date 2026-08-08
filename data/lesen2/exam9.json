@@ -1,0 +1,60 @@
+{
+  "title": "Lesen Teil 2 - Exam 9: Gedächtnis",
+  "skill": "lesen2",
+  "type": "teil2",
+  "text": "Melanie Hoffmann ist Gedächtnistrainerin. Seit fast zehn Jahren bietet sie nun schon Seminare an Volkshochschulen, in Altenheimen, in Banken und Industriebetrieben an, in denen die Seminarteilnehmer lernen sollen, wie sie Informationen besser im Gedächtnis behalten. Suma Hartmann ist 30 Jahre alt, Bürokauffrau und eine von Melanie Hoffmanns Seminarteilnehmerinnen. \"An meinem Arbeitsplatz bekomme ich ständig Massen von neuen Informationen: Texte, die zu lesen sind, Termine, Anrufe, Anfragen von Kunden, Kurzinfos von Kollegen. Diese Informationsflut zu bewältigen und möglichst nichts zu vergessen, ist fast ausgeschlossen\", so Hartmann. Wie ihr geht es vielen Menschen in unserer Informationsgesellschaft - und das quer durch alle Altersstufen: vom Schüler bis zum Rentner. Sie fühlen sich den Anforderungen an ihr Gedächtnis nicht mehr gewachsen, und darum besuchen sie Trainingskurse wie die von Melanie Hoffmann. Während jeder Sekunde, die Suma Hartmann im Trainingsseminar, am Arbeitsplatz oder zu Hause verbringt, nimmt sie über ihre \"Eingangskanäle\" - die Augen, die Ohren, die Nase, den Mund, die Haut - um die zwei Millionen kleinste Informationen unbewusst auf. Jede kleinste Schwankung في der Licht- oder Farbintensität, Formen und Farben, Licht und Schatten, alle nur erdenklichen Geräusche von der Stimme der Seminarleiterin oder Kollegin bis zum draußen vorbeifahrenden Motorrad, verschiedenste Gerüche vom Schweiß bis zum teuren Parfüm, das Kratzen des Pullovers auf der Haut: All dies nimmt sie unbewusst wahr. Würde sie sich all diese Informationen bewusst merken wollen, wäre - wenn man die Sprache der Computerwelt zu Hilfe nimmt - innerhalb kürzester Zeit der \"Speicher voll\". Damit dies nicht passiert, vergisst man fast alle Informationseinheiten innerhalb der nächsten 20 Sekunden wieder - und schafft damit Platz für neue Informationen. Erst nach etwa 20 Minuten behalten wir etwas auf lange Zeit. Dann haben die Nervenzellen im Gehirn eine neue Verbindung hergestellt, eine Synapse gebildet - und wir behalten etwas, statt es gleich wieder zu vergessen. Die Trainerin Melanie Hoffmann sagt: \"Starke Sinneseindrücke, die mit Emotionen behaftet sind, behält man ebenso wie das, was interessant ist oder lebensnotwendig. Ein Kind, das einmal eine heiße Herdplatte angefasst hat, vergisst nie mehr, was \"heiß\" bedeutet. Ein Hobbyastronom, dem seine Freizeitbeschäftigung großen Spaß bereitet, kennt im Nu alle möglichen Namen von Sternen. Und ich habe noch keinen Seminarteilnehmer gehabt, der sich nicht mehr daran erinnern könnte, was am 11. September 2001 in New York passiert ist.\" In unserer heutigen Informationsgesellschaft ist es wichtig, die auf uns einströmende Informationsflut zu bündeln. Daten und Begriffe zu gruppieren oder an Bildern oder Gegenständen festzumachen und sich so \"Eselsbrücken\" zu bauen, die dabei helfen, mehr im Gedächtnis zu behalten. Suma Hartmann \"sortiert\" jetzt im Geiste alle wichtigen Informationen in bestimmte Schubladen ihres Aktenschrankes in ihrem Büro: \"Ich habe mir Zahlensymbole ausgedacht, mit denen ich die neuen Informationen bildlich verknüpfe: Die Eins wird zur Kerze, die Zwei zum Schwan usw. Wenn ich nun nicht vergessen möchte, um zwei Uhr eine bestimmte Konferenz vorzubereiten, denke ich mir meine Konferenzmappe im Schnabel des Schwans. Und es funktioniert: Ich vergesse viel weniger.\"",
+  "questions": [
+    {
+      "text": "Melanie Hoffmanns Seminare besuchen",
+      "options": [
+        "a. ausschließlich Frauen, die im Büro arbeiten",
+        "b. junge und alte Menschen gleichermaßen",
+        "c. überwiegend alte Menschen"
+      ],
+      "correct": 1
+    },
+    {
+      "text": "Die Teilnehmer besuchen Frau Hoffmanns Seminar, weil sie",
+      "options": [
+        "a. das Gefühl haben, dass ihr Gedächtnis schlechter wird",
+        "b. immer mehr vergessen",
+        "c. sich von den vielen Informationen überfordert fühlen"
+      ],
+      "correct": 2
+    },
+    {
+      "text": "Jeder Mensch",
+      "options": [
+        "a. kann sich alle erdenklichen Geräusche und Gerüche merken",
+        "b. kann über einen Zeitraum von 20 Minuten alles behalten",
+        "c. vergisst die meisten Informationen innerhalb kürzester Zeit"
+      ],
+      "correct": 2
+    },
+    {
+      "text": "Besonders gut kann man sich",
+      "options": [
+        "a. als Kind etwas merken",
+        "b. an Daten und Begriffe erinnern",
+        "c. emotional aufgeladene Situationen merken"
+      ],
+      "correct": 2
+    },
+    {
+      "text": "Suma Hartmann",
+      "options": [
+        "a. lehrt andere, wie man sich \"Eselsbrücken\" ausdenkt",
+        "b. verbindet Informationen mit Bildern",
+        "c. verwendet für ihre Aktenablage nur Tiersymbole"
+      ],
+      "correct": 1
+    }
+  ],
+  "memoryHighlights": [
+    { "color": 3, "parts": [ "junge und alte Menschen gleichermaßen" ] },
+    { "color": 8, "parts": [ "sich von den vielen Informationen überfordert fühlen" ] },
+    { "color": 11, "parts": [ "vergisst die meisten Informationen innerhalb kürzester Zeit" ] },
+    { "color": 5, "parts": [ "emotional aufgeladene Situationen merken" ] },
+    { "color": 10, "parts": [ "verbindet Informationen mit Bildern" ] }
+  ]
+}

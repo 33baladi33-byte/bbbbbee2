@@ -1,0 +1,60 @@
+{
+  "title": "Lesen Teil 2 - Exam 27: Familienglück oder Generationskonflikte?",
+  "skill": "lesen2",
+  "type": "teil2",
+  "text": "In der öffentlichen Beschreibung kennt man die Familie oft als Problemzone. Bestsellerautoren suggerieren der Öffentlichkeit, Eltern seien zum Erziehen heute kaum noch in der Lage; Berichte über steigende Scheidungsraten, Verwahrlosung und Jugendkriminalität verstärken ebenfalls den Eindruck, um die Familien sei es nicht gut bestellt. Tatsächlich hat sich Erziehung in den letzten Jahrzehnten grundlegend gewandelt. In vielerlei Hinsicht allerdings eher zum Guten als zum Schlechten. Wie lebt es sich heute in der Familie? Ausgesprochen gut, in den meisten Fällen sogar recht kuschelig. Das legen zumindest Umfragen und Statistiken über die Familienwirklichkeit nahe. Sie zeigen ein erfreulich positives Bild, nach dem sich die Familie in den vergangenen Jahrzehnten sehr gut entwickelt hat. Das gilt für die materiellen Bedingungen, in denen die meisten Eltern und Kinder heute leben, wie auch für das Ansehen, das die Familie in der Gesellschaft genießt. Den größten Fortschritt habe aber das gemeinsame Zusammenleben gemacht, sagen Experten: \"Es gibt kaum noch wirkliche Konflikte zwischen den Generationen.\" Dass heute 67 Prozent der 16- bis 29-Jährigen angeben, sie hätten eine glückliche Kindheit, während es bei den über 60-Jährigen nur 50 Prozent sind, kann zwar sicher nicht nur auf den Wandel der Erziehung zurückgeführt werden. Schließlich war die Kindheit vieler von ihnen noch von Krieg und Not geprägt, während die Jüngeren in Wohlstand und Sicherheit aufwuchsen. Aber fast alle Jugendlichen geben heute an, dass sie ein gutes Verhältnis zu den Eltern haben. Außerdem orientieren sie sich stark an ihrer Familie. Gestützt unter anderem auf den emotionalen Rückhalt der Eltern blicken die allermeisten Jugendlichen optimistisch nach vorn. Fast 75 Prozent der Befragten würden ihre eigenen Kinder genau so erziehen, wie sie selbst erzogen wurden. Genauso viele glauben, dass man eine Familie braucht, um wirklich glücklich leben zu können. Die Eltern sehen es übrigens kaum anders. Von ihnen berichten 74 Prozent von Harmonie, Wärme und Geborgenheit im Zusammenleben. Vor 40 Jahren fanden viele Jugendliche ihre Eltern noch spießig, und Eltern konnten sich erregen über die Frisuren oder den Musikgeschmack des Nachwuchses. Heute gleichen sich die Lebensstile und die Wertvorstellungen. So entspannt ist der Umgang zwischen Jung und Alt geworden, dass man es schon wieder bedenklich finden kann. Ist es denn normal, dass Kinder als wichtigstes Vorbild die eigene Mutter nennen? Selbst Oma und Opa findet nur noch jeder fünfte Teenager altmodisch. Gerade Großeltern haben noch nie zuvor für ihre Enkel eine so große Bedeutung. Dank besserer Gesundheit und steigender Lebenserwartung verbringen sie mehr Zeit als früher mit ihren Enkeln. Der Kontakt ist persönlicher und er hält länger an. Heute sieht rund ein Drittel der Jugendlichen Oma und Opa mindestens einmal pro Woche, ein weiteres Drittel telefoniert wenigstens mit ihnen. Mit den Lebenseinstellungen wandelten sich die Erziehungsvorstellungen. Erwachsene nehmen mehr Rücksicht auf die Bedürfnisse von Kindern. Statt eines autoritären Umgangs mit den Kindern pflegen die meisten Familien den Verhandlungsstil, wie es Pädagogen nennen. Der ist nicht selten anstrengend und wird mitunter übertrieben, ist aber am Ende zielführender als die familiären Kleinkriege, die früher das Klima in vielen Familien bestimmten. Besonders Väter profitieren von der neuen Nähe zu ihren Kindern. Sie spielen heute häufiger mit ihnen als früher oder lesen ihnen vor – auch wenn weiterhin die Mütter den Großteil der Familienarbeit leisten. Das führt zu Stress, da Mütter mit Kindern heute doppelt so häufig berufstätig sind wie noch vor 40 Jahren. Trotzdem haben sie nicht weniger Zeit für ihre Kinder, weil sie den Haushalt dank moderner Technik schneller erledigen. 1990 verbrachten Eltern mit ihren unter sechsjährigen Söhnen und Töchtern pro Tag vier Stunden und 52 Minuten. Heute ist es eine Dreiviertelstunde mehr. Auch der Eindruck, dass Familien sich nicht mehr täglich um den gedeckten Tisch versammeln, um sich untereinander auszutauschen, stimmt nicht, haben Ernährungsforscher ermittelt. Heute dauern die bewusst inszenierten Zusammentreffen von Jung und Alt um Suppenschüssel oder Nudeltopf sogar länger als noch vor 20 Jahren.",
+  "questions": [
+    {
+      "text": "Etwa die Hälfte der Senioren über 60 gibt an, dass sie",
+      "options": [
+        "a. ihre Kinder strenger erziehen würden",
+        "b. die geänderten Erziehungsmethoden begrüßen",
+        "c. als Kind glücklich waren"
+      ],
+      "correct": 2
+    },
+    {
+      "text": "Die meisten Jugendlichen",
+      "options": [
+        "a. verstehen sich mit ihren Eltern gut",
+        "b. haben keine Meinung zu Erziehungsfragen",
+        "c. denken, dass man auch ohne Familie glücklich sein kann"
+      ],
+      "correct": 0
+    },
+    {
+      "text": "Heute gibt es zwischen Eltern und Kindern",
+      "options": [
+        "a. Konflikte wegen unterschiedlicher Werte",
+        "b. kaum Unterschiede in der Lebensart",
+        "c. immer wieder Probleme wegen zu engen Wohnraums"
+      ],
+      "correct": 1
+    },
+    {
+      "text": "Mütter haben heute mehr Zeit für ihre Kinder, weil",
+      "options": [
+        "a. sie in der Arbeit weniger Stress haben",
+        "b. Geräte die Hausarbeit leichter machen",
+        "c. die Großeltern ihnen Arbeit abnehmen"
+      ],
+      "correct": 1
+    },
+    {
+      "text": "In der Öffentlichkeit",
+      "options": [
+        "a. wird der Wandel in der Erziehung nicht wahrgenommen",
+        "b. ist das Thema Familie nicht interessant",
+        "c. entsteht oft ein falsches Bild der Familie"
+      ],
+      "correct": 2
+    }
+  ],
+  "memoryHighlights": [
+    { "color": 2, "parts": ["als Kind glücklich waren"] },
+    { "color": 9, "parts": ["verstehen sich mit ihren Eltern gut"] },
+    { "color": 11, "parts": ["kaum Unterschiede in der Lebensart"] },
+    { "color": 6, "parts": ["Geräte die Hausarbeit leichter machen"] },
+    { "color": 10, "parts": ["entsteht oft ein falsches Bild der Familie"] }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "title": "Lesen Teil 2 - Exam 35: Weniger Euro-Blüten in Deutschland",
+  "skill": "lesen2",
+  "type": "teil2",
+  "text": "Frankfurt/Main/Brüssel (dpa) – Jeder hat schon einmal von ihnen gehört: \"Blüten\", ein Synonym für Falschgeld. Aber wie viel Falschgeld gibt es wirklich? Tatsächlich wurden im vergangenen Jahr weniger Euro-Scheine, aber mehr Falschmünzen in Umlauf gebracht als im vorletzten Jahr. Die Zahl des entdeckten gefälschten Papiergelds sank in Europa somit von 629.000 auf 600.000 Scheine. In Deutschland sank gegenüber der restlichen Euro-Zone die Zahl der \"Blüten\" noch deutlicher. Grund dafür: Im vergangenen Jahr konnte die Polizei in mehreren europäischen Ländern Fälscherwerkstätten aufspüren und Verteilerringe zerschlagen. Dennoch ist der wirtschaftliche Schaden insgesamt gestiegen, teilte die Europäische Zentralbank in Frankfurt mit. In Deutschland zog die Polizei im vergangenen Jahr rund 66.000 \"Blüten\" aus dem Verkehr, die Schadenssumme belief sich laut Bundesbank auf 3,2 Millionen Euro. Am häufigsten werden nach wie vor 20-Euro-Scheine nachgemacht, gefolgt von 50-Euro-Scheinen. Während europaweit die 20-Euro-Note der beliebteste Schein der Fälscher ist (mit 36 Prozent am gesamten Falschgeldaufkommen), ist es in Deutschland die 50-Euro-Note (mit 41 Prozent). Einen deutlichen Anstieg verzeichneten die Fahnder derzeit bei 100-Euro-\"Blüten\". \"Die Fälscher versuchen, auf neue Werte auszuweichen\", sagte der Bundesbank-Sprecher. Die Notenbanken forderten die Bürger daher zur erhöhten Wachsamkeit auf. Die meisten Fälschungen seien mit einfachen Tests (\"Fühlen-Sehen-Kippen\") jedoch leicht von echten Banknoten zu unterscheiden. Dagegen erreichte die Zahl falscher Münzen in Deutschland einen Rekordwert. Nach Angaben der EU-Kommission wurden im vergangenen Jahr 164.000 falsche Euro-Münzen entdeckt und aus dem Verkehr gezogen; das war ein Anstieg von 63 Prozent. Besonders beliebt waren bei den Fälschern 2-Euro-Stücke mit dem deutschen Adler. Angesichts der riesigen Anzahl von 69 Milliarden Euro-Münzen ist das Falschgeld aber unbedeutend, \"es besteht daher kein Grund zur Beunruhigung\", stellte die EU-Behörde fest. 86 Prozent aller entdeckten falschen Münzen waren 2-Euro-Stücke. Laut Kommission werden die nachgemachten Münzen qualitativ zwar immer besser, die höhere Zahl entdeckter Falschmünzen gehe vor allem auf die verstärkten Ermittlungen von Polizei und Behörden zurück. \"Die Wahrscheinlichkeit, eine gefälschte Banknote in den Händen zu halten, ist für den Bürger auf der Straße sehr gering\", sagte ein Bundesbank-Sprecher. Da insgesamt 10,6 Milliarden Banknoten in Umlauf sind, handelt es sich nur bei 6 von 100.000 Scheinen um Fälschungen. Die Mehrzahl werde außerdem nicht von Privatleuten, sondern von Kassenpersonal in Geldinstituten und Geschäften erkannt. Wer eine \"Blüte\" findet, kann sie bei der Polizei oder in Bankfilialen abgeben. Einen Ersatz gibt es dafür allerdings nicht. Laut Europäischer Zentralbank werden es die Geldfälscher künftig noch schwerer haben. In den Laboren gibt es nahezu fälschungssichere Technologien – zum Beispiel einen Mikrochip, der beinahe unsichtbar in die Euro-Noten integriert werden kann. Er beinhaltet die Seriennummer und den Wert einer Banknote. Diese Daten könnten zukünftig an jeder Kasse ausgelesen und mit einer Datenbank verglichen werden. Aus der Natur stammt ein Farbstoff mit verblüffenden Eigenschaften: Wenn dieser Farbstoff beim Scannen oder Kopieren hellem Licht ausgesetzt ist, wechselt er in Bruchteilen einer Sekunde seine Farbe von Rot zu Gelb. Die Kopie unterscheidet sich also gravierend vom Original und ist ohne Hilfsmittel leicht zu erkennen.",
+  "questions": [
+    {
+      "text": "Die Anzahl der",
+      "options": [
+        "a. entdeckten Euromünzen hat sich im letzten Kalenderjahr verdoppelt",
+        "b. gefälschten 50-Euro-Scheine ist in Deutschland besonders hoch",
+        "c. gefälschten Banknoten hat zugenommen"
+      ],
+      "correct": 1
+    },
+    {
+      "text": "Es werden immer mehr Falschmünzen entdeckt, weil",
+      "options": [
+        "a. die Ermittler gründlicher suchen",
+        "b. die Qualität der Falschmünzen immer schlechter wird",
+        "c. es ein neues technisches Gerät dafür gibt"
+      ],
+      "correct": 0
+    },
+    {
+      "text": "Die meisten gefälschten Geldscheine werden",
+      "options": [
+        "a. bereits bei den Fälschern gefunden",
+        "b. von Kassierern in Banken und Läden entdeckt",
+        "c. von Privatleuten am Geldautomaten entdeckt"
+      ],
+      "correct": 1
+    },
+    {
+      "text": "Man bekommt Falschgeld nur selten zu sehen, da",
+      "options": [
+        "a. das Geld oft nur in Banktresoren liegt",
+        "b. die Fälscher mit Kassierern in Geschäften zusammenarbeiten",
+        "c. die Wahrscheinlichkeit sehr niedrig ist"
+      ],
+      "correct": 2
+    },
+    {
+      "text": "Künftig wird die Herstellung von Falschgeld noch schwieriger, weil",
+      "options": [
+        "a. an den Ladenkassen alle Scheine gescannt werden",
+        "b. beim Druck Farben verwendet werden, die man nicht kopieren kann",
+        "c. Münzen mit Mikrochips versehen werden"
+      ],
+      "correct": 1
+    }
+  ],
+  "memoryHighlights": [
+    { "color": 2, "parts": ["gefälschten 50-Euro-Scheine ist in Deutschland besonders hoch"] },
+    { "color": 9, "parts": ["die Ermittler gründlicher suchen"] },
+    { "color": 11, "parts": ["von Kassierern in Banken und Läden entdeckt"] },
+    { "color": 6, "parts": ["die Wahrscheinlichkeit sehr niedrig ist"] },
+    { "color": 10, "parts": ["beim Druck Farben verwendet werden, die man nicht kopieren kann"] }
+  ]
+}

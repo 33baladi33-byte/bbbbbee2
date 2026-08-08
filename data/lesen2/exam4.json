@@ -1,0 +1,60 @@
+{
+  "title": "Lesen Teil 2 - Exam 4: Der Ein-Personen-Karneval (معدل)",
+  "skill": "lesen2",
+  "type": "teil2",
+  "text": "Als Helmut Scherer vor genau 50 Jahren zum ersten Mal mit seinem Bollerwagen durch die westfälische Kleinstadt Unna zog, wurde er von den Leuten ausgelacht. Heute aber ist er eine städtische Berühmtheit und sogar weit über die Grenzen seiner Heimatstadt hinaus bekannt. Der 71-Jährige ist der einzige Teilnehmer des weltweit kleinsten Karnevalsumzugs. An Weiberfastnacht, dem letzten Donnerstag der Karnevalsperiode eines Jahres, zieht er mit seinem Handwagen los: Er selbst ist dann - dieses Jahr als blondes Schulmädchen - verkleidet und auf seinem Bollerwagen hat er aus Pappe und Gips Figuren aufgebaut, die humoristisch ein aktuelles gesellschaftliches Thema - diesmal die Schulreform - aufgreifen. So macht er sich nach alter karnevalistischer Tradition über Missstände lustig. Helmut Scherer legt natürlich Wert darauf, dass er von Karnevalsmusik begleitet wird, die jedoch nicht von einer Musikgruppe, sondern von einem Radiorekorder gespielt wird. Vor 50 Jahren kam Helmut Scherer aus dem katholisch geprägten Paderborn, wo er seine Kindheit und Jugend verbracht hatte, nach Unna, dessen überwiegend evangelische Bevölkerung sich recht kühl und nüchtern gibt und deshalb anfangs auch wenig Verständnis für den katholischen Karnevalsbrauch zeigte. \"Die Leute haben mir einen Vogel gezeigt und den Kopf geschüttelt\", beschreibt der \"Narr aus Überzeugung\" die Anfänge. Auch bei der Stadtverwaltung, wo Scherer für Weiberfastnacht seinen Umzug ordnungsgemäß anmeldete, stieß er zunächst auf Unverständnis. Aber da sein Karnevalszug niemanden behinderte und auch nicht zu befürchten war, dass Unnas öffentliche Ordnung gestört würde, bekam er die Erlaubnis, mit seinem humoristischen Handwagen loszumarschieren. Über 10 Jahre lang zog Scherer einsam, belächelt und verspottet durch Unna, weder eisige Kälte noch Schnee konnten ihn davon abhalten. Doch der Karneval blieb für lange Zeit sein Privatvergnügen. Als dann die lokale Presse anfing, ihn zu unterstützen, wandelte sich die Meinung der Öffentlichkeit. Der einst verspottete Karnevalist stieg langsam zum närrischen Wahrzeichen einer Stadt ohne Karneval auf. Für die Stadtoberen ist heute die \"Ein-Mann-Show\" die beste Werbung für Unna. Scherers Beharrlichkeit hat sich also ausgezahlt: Anlässlich seines fünfzigsten Karnevalsjubiläums wurde er sogar offiziell im Rathaus empfangen, um ihm - so wie es auch in den Karnevalshochburgen Köln, Düsseldorf und Mainz üblich ist - den goldenen Schlüssel des Rathauses zu übergeben. Obwohl er keinem Karnevalsverein angehört, wurde ihm die Ehre zuteil, als Karnevalsprinz in den Bund Deutscher Karneval aufgenommen zu werden; somit wurde es ihm möglich, auch bei den Rosenmontagszügen in den närrischen Hochburgen im Rheinland mitzuwirken. Weit über hundert Fans des standhaften Narren haben sich zu einem Fan-Club zusammengeschlossen, und etliche stehen beim jährlichen Umzug in Unna am Straßenrand und rufen statt \"Spinner\" den rheinischen Karnevalsgruß \"Helau\". Bei aller Fortschrittlichkeit soll aber eines so bleiben, wie es immer war - einen weiteren Teilnehmer am Zug duldet der Karnevalsprinz nicht: \"Die Tradition soll aufrechterhalten bleiben\", sagt er schmunzelnd. \"Aber nur solange mich die Füße tragen!\"",
+  "questions": [
+    {
+      "text": "Helmut Scherer",
+      "options": [
+        "a. ist nur in Unna eine bekannte Persönlichkeit",
+        "b. veranstaltet an Karneval allein einen Umzug",
+        "c. veranstaltet den einzigen Karnevalsumzug der Welt"
+      ],
+      "correct": 1
+    },
+    {
+      "text": "Auf seinem Handwagen",
+      "options": [
+        "a. fährt traditionell ein blondes Schulmädchen mit",
+        "b. präsentiert er kleine Szenen, die auf den Alltag Bezug nehmen",
+        "c. stellt er sozialkritische Themen auf witzige Art und Weise dar"
+      ],
+      "correct": 2
+    },
+    {
+      "text": "Die Bevölkerung von Unna",
+      "options": [
+        "a. hatte zunächst wenig Verständnis für Helmut Scherer",
+        "b. hielt anfangs Helmut Scherer für kühl und nüchtern",
+        "c. verhinderte Helmut Scherers ersten Karnevalsumzug"
+      ],
+      "correct": 0
+    },
+    {
+      "text": "Der kleinste Karnevalsumzug der Welt",
+      "options": [
+        "a. hat Helmut Scherer sogar Geld eingebracht",
+        "b. ist heute eine gute Reklame für die Stadt Unna",
+        "c. wird in Zukunft von einer ganzen Gruppe von Leuten durchgeführt"
+      ],
+      "correct": 1
+    },
+    {
+      "text": "Helmut Scherer",
+      "options": [
+        "a. hat an Karnevalsumzügen in mehreren Städten teilgenommen",
+        "b. hat inzwischen في ganz Deutschland Fan-Clubs",
+        "c. sucht einen Nachfolger"
+      ],
+      "correct": 0
+    }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": [ "veranstaltet an Karneval allein einen Umzug." ] },
+    { "color": 7, "parts": [ "stellt er sozialkritische Themen auf witzige Art und Weise dar." ] },
+    { "color": 11, "parts": [ "hatte zunächst wenig Verständnis für Helmut Scherer." ] },
+    { "color": 5, "parts": [ "ist heute eine gute Reklame für die Stadt Unna." ] },
+    { "color": 9, "parts": [ "hat an Karnevalsumzügen in mehreren Städten teilgenommen." ] }
+  ]
+}

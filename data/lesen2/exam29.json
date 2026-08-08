@@ -1,0 +1,60 @@
+{
+  "title": "Lesen Teil 2 - Exam 30: Wie Babys lernen",
+  "skill": "lesen2",
+  "type": "teil2",
+  "text": "Bereits mit sechs Monaten können Babys zwischen möglichen und unmöglichen Ereignissen unterscheiden und denken über Ursache und Folge nach. Unglaubliche Ergebnisse sind das, bedenkt man, dass ein Säugling vor 50 Jahren noch als leeres Blatt gesehen wurde. Man glaubte, dass ein Säugling äußere Einflüsse nur bedingt wahrnehmen oder Empfindungen wie Schmerz nicht spüren kann. Inzwischen hat die Kleinstkindforschung eine ganz andere Meinung und weiß: Babys bedienen sich sehr vieler komplizierter Forschungsmethoden. Sie lernen nicht nur, indem sie tun, was sie bei ihren Eltern sehen, sondern sie lernen mit Versuchen die Welt kennen. Eine der Fragen, die Babyforscher dabei beschäftigt, lautet: Wie viel Klugheit ist angeboren, wie viel erlernt? Lässt sich die Intelligenz also entwickeln? Wenn ja, welche Umwelt macht Babys intelligent? Was die Forscher heute glauben: Rund 50 Prozent unseres geistigen Könnens wurde von unseren Eltern vererbt, das heißt, die Hälfte unserer Intelligenz ist uns schon bei der Geburt mitgegeben. Die andere Hälfte wird durch Schule, Ausbildung, Freunde, Mutter, Vater, Geschwister, Großeltern, kurz: die Umwelt bestimmt. Aber dieses Verhältnis von Erbgut auf der einen und Umwelt auf der anderen Seite verändert sich im Lauf des Lebens. Bei Kleinkindern zum Beispiel sind die Umwelteinflüsse von größerer Bedeutung als im späteren Leben. Der US-Forscher Robert Plomin meint, dass die Umwelt in diesem Alter mit etwa 80 Prozent einen sehr hohen Stellenwert einnimmt. Mit zunehmendem Alter wird das Erbgut stärker sichtbar. Im Erwachsenenalter ist der Einfluss der Gene auf die Intelligenz mit etwa 60 Prozent deutlich größer als der der Umwelt. Um das Lernen zu lernen, brauchen kleine Kinder weder spezielle Programme noch intelligentes Spielzeug - sondern Menschen. Gut ist nach Meinung der Forscher zum Beispiel eine Familie, in der vorgelesen und gemeinsam gespielt wird. Unsere Kinder werden immer klüger. Drei- bis Siebenjährige in Deutschland können heute mehr als noch vor 25 Jahren. Alle 10 Jahre nimmt die Intelligenz um rund 3 Prozent zu. Liegt das vielleicht daran, dass heute schon Kleinkinder vor Wissensvideos sitzen, dass Einjährige mit sprechenden Handys herumlaufen und dass bei vielen noch vor dem Schulbeginn ein Lerncomputer auf dem Geburtstagstisch steht? Die Wissenschaftler glauben das nicht: \"Intelligenz ist nicht gleich Wissen\", sagt Professor Ralph Dawirs, Neurobiologe an der Uniklinik Erlangen. Es gehe nicht darum, Wissen anzusammeln. \"Verstehen heißt Verbindungen herstellen und auswählen\". Im Gehirn macht das der Stirnlappen. Das Stirnhirn ist bei der Geburt zwar organisch da, hat seine volle Funktion aber noch nicht erreicht. \"Es braucht geistige Nahrung, Futter\", sagte Dawirs. Deshalb geht es im Kleinkindalter erst einmal darum, dass möglichst viele dem jeweiligen Entwicklungsstand angemessene Impulse verarbeitet werden. Eine Spielzeugente, die man anfassen kann und über die die Mutter vielleicht sagt: \"Ja, das ist eine Ente. Schau, sie kann in der Badewanne schwimmen\", ist also ungleich mehr wert als die Spielzeugente, die auf einen Bildschirm erscheint. Sind Lerncomputer, Handy und Videos deshalb Teufelswerk? \"Wenn man sie nur wenig benutzt, schaden sie nicht\", sagt Entwicklungsforscherin Pauen, \"die Frage ist nur, ob sie nützen\". Die beste Unterstützung der Entwicklung sei immer noch menschliche Begleitung: \"Man tut einem Baby keinen Gefallen damit, wenn man es mit einem Spielzeug alleine lässt. Besser ist, es beim Lernen zu beobachten, so wenig wie möglich zu stören, aber zu Hilfe zu kommen, wenn etwas nicht klappt\", so ihr Tipp für Eltern. Es ist besser, Kinder im Dreck spielen zu lassen und mit ihnen in die Natur zu gehen. Dort lernen sie viel mehr als mit dem besten Computerspiel.",
+  "questions": [
+    {
+      "text": "Man glaubte früher, dass Babys",
+      "options": [
+        "a. kaum auf ihre Umwelt reagieren",
+        "b. nur nachmachen, was ihre Eltern tun",
+        "c. sehr kompliziert denken"
+      ],
+      "correct": 0
+    },
+    {
+      "text": "Die Umwelt ist für die Entwicklung der Intelligenz",
+      "options": [
+        "a. im Erwachsenenalter besonders wichtig",
+        "b. im Kleinkindalter besonders wichtig",
+        "c. in jedem Alter gleich wichtig"
+      ],
+      "correct": 1
+    },
+    {
+      "text": "Bessere Entwicklungschancen haben Kinder, je",
+      "options": [
+        "a. früher sie den Umgang mit Computern erlernen",
+        "b. mehr altersgerechte Erfahrungen sie machen können",
+        "c. öfter sie beim Spielen auf sich gestellt sind"
+      ],
+      "correct": 1
+    },
+    {
+      "text": "Fernsehen und Computer sind",
+      "options": [
+        "a. für die geistige Entwicklung eher ungeeignet",
+        "b. geistige Nahrung für das Gehirn",
+        "c. sehr gute Hilfsmittel für das Lernen"
+      ],
+      "correct": 0
+    },
+    {
+      "text": "Kontakt mit Menschen",
+      "options": [
+        "a. fördert die Intelligenz des Babys am besten",
+        "b. ist weniger wichtig als Erfahrungen in der freien Natur",
+        "c. wird unwichtig, wenn es gutes Spielzeug gibt"
+      ],
+      "correct": 0
+    }
+  ],
+  "memoryHighlights": [
+    { "color": 2, "parts": ["kaum auf ihre Umwelt reagieren"] },
+    { "color": 9, "parts": ["im Kleinkindalter besonders wichtig"] },
+    { "color": 11, "parts": ["mehr altersgerechte Erfahrungen sie machen können"] },
+    { "color": 6, "parts": ["für die geistige Entwicklung eher ungeeignet"] },
+    { "color": 10, "parts": ["fördert die Intelligenz des Babys am besten"] }
+  ]
+}

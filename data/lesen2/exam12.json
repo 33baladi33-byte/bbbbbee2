@@ -1,0 +1,60 @@
+{
+  "title": "Lesen Teil 2 - Exam 12: Kellnern - Nebenjob",
+  "skill": "lesen2",
+  "type": "teil2",
+  "text": "Noch ein Wasser, bitte! Die Semesterferien sind zu Ende und diese Woche beginnt an der Universität das Sommersemester. Aber nicht nur Vorlesungen und Seminare gehen wieder los. 73 Prozent der Berliner Studenten müssen neben dem Studium auch noch Geld verdienen. Ein beliebter Studentenjob ist der des Kellners. Denn erstens arbeitet man meist am Abend, so dass es keine Terminkollisionen mit den Vorlesungs- und Seminarprogrammen gibt. Zweitens findet man leicht einen Job, da es in der Nähe von Universitäten häufig viele Cafés und Kneipen gibt, die sehr gut besucht sind. Und je mehr Gäste, desto höher natürlich die Chancen auf Trinkgelder. Das ist auch wichtig, denn nur so kommt man auf einen akzeptablen Stundenlohn. Allerdings ist es in manchen Restaurants auch üblich, dass die Trinkgelder gesammelt und am Ende dann an alle Kellner gleichmäßig verteilt werden. Davon profitieren dann auch diejenigen, die nicht so engagiert und motiviert arbeiten. Als Kellner braucht man starke Nerven, denn der Gast hat immer recht. Manche Gäste machen es einem Kellner mit zahlreichen Beschwerden und Extrawünschen wirklich nicht leicht. Denn der Kellner ist die Person, die direkt mit dem Gast in Kontakt kommt. Wenn das Essen nicht schmeckt, kalt ist oder nicht schnell genug zubereitet wird, bekommt der Kellner den Unmut der Gäste zu spüren, obwohl die \"Schuld\" beim Koch liegt. Wer ist für den Job als Kellner geeignet? Man sollte offen sein und den Kontakt mit Menschen mögen und auf jeden Fall geduldig sein. Natürlich ist es wichtig, immer freundlich und zuvorkommend zu bleiben. Denn wenn der Service stimmt und der Kellner kompetent und freundlich wirkt, dann sitzt auch das Trinkgeld lockerer. Kellnern war gestern? Neben den klassischen Studentenjobs wie Kellnern und Nachhilfe geben greifen manche aber auch zu eher ungewöhnlichen Jobs. Wie zum Beispiel Jan, der in Berlin als Fahrradkurier arbeitet, oder Stefanie, die Testkäuferin. Jan fährt im Auftrag von Apotheken, Filmverleihfirmen oder Pizzadiensten im Schnitt zwischen 50 km und 200 km pro Tag. Um diesen Job machen zu können, braucht er eine sehr gute Kondition. Denn manche Strecken sind lang, und oft gibt es Gegenwind. Er arbeitet wie die meisten Fahrradkuriere auf selbständiger Basis und kommt auf einen Stundenlohn von etwa 10 Euro. Jan meint: \"Reich wird man damit zwar nicht, aber man kann sagen: Wer schnell ist und gut, verdient als Fahrradkurier nicht schlecht.\" Am liebsten würde Jan von einem Kurierdienst in einem klassischen Arbeitsverhältnis angestellt werden. Das ist in der Branche aber eher die Ausnahme. Wäre er Angestellter, würde er vom Kurierdienst ein Grundgehalt bekommen und für die gefahrenen Aufträge eine kleine Provision. Einen der größten Vorteile seines Jobs sieht Jan darin, dass er sich den ganzen Tag im Freien bewegt und so die Beiträge für das Fitnessstudio spart. Außerdem lernt man so eine Stadt sehr gut kennen. Ein Nachteil ist, dass man auch bei Wind und Wetter oder bei dichtem Verkehr fahren muss. Aber das nimmt Jan in Kauf. Denn Kellnern oder ein Bürojob wären nichts für ihn. Der Job von Stefanie ist ein wahrer Glückstreffer: Sie darf den ganzen Tag einkaufen und wird dafür auch noch bezahlt. Stefanie arbeitet als Testkäuferin, um Beratung und Service von Verkäufern in Geschäften zu testen. Ein typischer Arbeitseinsatz sieht bei ihr so aus: Nach der letzten Vorlesung an der Uni geht sie zum Beispiel in einen Modeladen. Dort überprüft sie als Erstes den Eingang auf Sauberkeit, schlendert dann zu den Ständen mit Hosen und Blusen und schaut, ob alles ordentlich sortiert und beschildert ist. Dann spricht sie eine Verkäuferin an und sagt, dass sie eine Bluse sucht. Damit testet sie, ob sie als Kundin von der Verkäuferin angemessen beraten wird. Die Verkäuferin sollte nachfragen, für welchen Anlass und in welcher Farbe die Kundin eine Bluse sucht. Leider läuft es nicht immer so, wie es sein sollte. In 90 Prozent der Fälle gibt es Grund zur Beschwerde, weil die Verkäuferin entweder unfreundlich oder uninteressiert ist. Bevor Stefanie die Läden wieder verlässt, kommt das Beste: Sie muss etwas kaufen, um die Kasse zu testen. 20 Euro bekommt sie dafür pro Test. Außerdem darf sie das, was sie kaufen sollte, auch noch behalten.",
+  "questions": [
+    {
+      "text": "Der Nebenjob als Kellner",
+      "options": [
+        "a. hat an Attraktivität deutlich verloren",
+        "b. ist insgesamt sehr gut bezahlt",
+        "c. lässt sich gut mit dem Studium vereinbaren"
+      ],
+      "correct": 2
+    },
+    {
+      "text": "Wer als Kellner arbeitet",
+      "options": [
+        "a. muss bei Beschwerden den Kontakt zwischen Koch und Gast herstellen",
+        "b. muss das Trinkgeld mit den Kollegen teilen",
+        "c. sollte nicht aus der Ruhe zu bringen sein"
+      ],
+      "correct": 2
+    },
+    {
+      "text": "Jan arbeitet gern als Fahrradkurier",
+      "options": [
+        "a. weil er außer dem Grundgehalt noch eine Provision bekommt",
+        "b. weil er dann fest angestellt ist",
+        "c. weil er mit dem Verdienst ganz zufrieden ist"
+      ],
+      "correct": 2
+    },
+    {
+      "text": "Jan sagte",
+      "options": [
+        "a. dass er durch seinen Job keine Ausgaben für ein Fitnessstudio hat",
+        "b. dass er lieber im Büro arbeiten würde",
+        "c. dass ihm schlechtes Wetter gar nicht stört"
+      ],
+      "correct": 0
+    },
+    {
+      "text": "Stefanie muss als Testkäuferin",
+      "options": [
+        "a. auch den Service في Cafés und Kneipen überprüfen",
+        "b. einige Waren selbst bezahlen",
+        "c. sich beim Einkauf an einen festen Ablauf halten"
+      ],
+      "correct": 2
+    }
+  ],
+  "memoryHighlights": [
+    { "color": 0, "parts": [ "lässt sich gut mit dem Studium vereinbaren" ] },
+    { "color": 8, "parts": [ "sollte nicht aus der Ruhe zu bringen sein" ] },
+    { "color": 11, "parts": [ "weil er mit dem Verdienst ganz zufrieden ist" ] },
+    { "color": 4, "parts": [ "dass er durch seinen Job keine Ausgaben für ein Fitnessstudio hat" ] },
+    { "color": 10, "parts": [ "sich beim Einkauf an einen festen Ablauf halten" ] }
+  ]
+}

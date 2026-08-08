@@ -1,0 +1,60 @@
+{
+  "title": "Lesen Teil 2 - Exam 14: Geschichte des Hauspersonals",
+  "skill": "lesen2",
+  "type": "teil2",
+  "text": "Dienstmädchen war um 1900 der am weitesten verbreitete Beruf für Frauen. Aus heutiger Perspektive ist das verwunderlich, denn der Alltag eines Dienstmädchens war sehr hart. Was trieb also Frauen in diesen Beruf? Es waren vor allem Mädchen vom Land, die von ihren Eltern in die Stadt geschickt wurden, um dort zu arbeiten. Auf dem Land gab es kaum Stellen für Mädchen. Als Dienstmädchen, so hofften die Eltern, würden ihre Töchter wenigstens das Hauswirtschaften lernen - eine wichtige Fertigkeit als spätere Haus- und Ehefrau. Dabei war das enge Leben eines Dienstmädchens ohne viel Freizeit genau das, was den Eltern gut an diesem Beruf erschien: Da die Mädchen oft erst 14 oder 15 Jahre alt waren, waren sie in einer Familie behüteter als beispielsweise in der Fabrik. Allerdings kam es nicht selten vor, dass die Hoffnung auf eine Ausbildung enttäuscht wurde. Viele Mädchen wurden nicht eingearbeitet und angelernt, sondern mussten selber zusehen, wie sie das Arbeitspensum bewältigten. Leider verfügten die Eltern meist nicht über Kontakte in der Stadt. Die Mädchen fuhren mit dem Zug in die Fremde und mussten dann auf eigene Faust eine Stellung finden. Das machten sich auch dubiose Stellenvermittler an den Bahnhöfen zu Nutze und verschafften den Mädchen Stellen in Kneipen als Kellnerinnen - damals eine Arbeit mit sehr schlechtem Ruf. Um diesen Missstand zu beenden, gründeten sich übrigens die Bahnhofsmissionen, die damals konfessionsübergreifend von den katholischen, evangelischen und jüdischen Gemeinden den ankommenden Mädchen erst einmal ein Bett bieten sollten. Wer etwas auf sich hielt, beschäftigte um 1900 ein Dienstmädchen: sowohl kleinbürgerliche Haushalte als auch großbürgerliche. Die unteren Schichten, also Handwerkerfamilien, eiferten den gehobeneren nach. Nach außen durfte es an nichts fehlen, auch wenn das Budget dafür knapp war. Gespart wurde da, wo es nicht sichtbar war: bei der Unterbringung und Ernährung der Dienstmädchen. In gehobeneren Schichten gab es gerne auch mehr Personal - ein Vorteil und Nachteil zugleich. Einerseits hatte das Dienstmädchen so mehr Gesellschaft und war weniger isoliert, andererseits gab es auch unter den Dienstboten eine Hierarchie und das Dienstmädchen war das unterste Glied. Anders als Fabrikarbeiter hatten Dienstboten keine geregelten Arbeitszeiten. Sie mussten, wenn nötig, ihren Dienstherren rund um die Uhr zur Verfügung stehen. Das Dienstmädchen stand als Erste auf, befeuerte den Ofen, machte das Wasser zum Waschen und fürs Frühstück warm, servierte die Mahlzeiten, räumte wieder ab, spülte und putzte. Das Einkaufen gehörte zu den beliebten Tätigkeiten, denn das erlaubte es den Mädchen, einmal ohne Aufsicht in der Stadt unterwegs zu sein, andere Dienstmädchen zu treffen und sich auszutauschen. Fließendes Wasser gehörte um die Jahrhundertwende nicht zum Standard, so musste das Dienstmädchen auch Wasser schleppen. Erst wenn alle Arbeit erledigt war, konnte das Dienstmädchen schlafen gehen. Die wenige freie Zeit am Abend reichte oft nur, um die eigene Kleidung auszubessern. Alle vierzehn Tage durften die Mädchen sonntags für zwei Stunden das Haus verlassen, das war der einzige Ausgang, den sie hatten. Der Lohn bestand im Wesentlichen aus Kost und Unterkunft. Etwas zurücklegen für später konnte kaum ein Mädchen. Auch die Unterbringung ließ zu wünschen übrig. Von Berliner Dienstmädchen weiß man, dass sie oft noch nicht einmal eine eigene Kammer hatten, sondern auf so genannten Hängeböden schliefen, eine kleine Fläche von vielleicht mal zwei Metern bei einer Raumhöhe von etwa 1,50 Meter. Wenig Schlaf, und dann auch noch schlechter Schlaf: Vielen Mädchen waren die Strapazen trotz ihres jungen Alters anzusehen. Für die meisten war es nur eine Zwischenstation. Heirateten sie, beendeten die jungen Mädchen dieses Arbeitsverhältnis und stattdessen war die junge Frau selbst Hausfrau und Herrin eines eigenen Haushalts.",
+  "questions": [
+    {
+      "text": "Die Eltern ließen ihre Töchter als Dienstmädchen arbeiten",
+      "options": [
+        "a. damit sie die Jahre bis zur Arbeit in der Fabrik überbrücken konnten",
+        "b. damit sie lernten, einen Haushalt zu führen",
+        "c. damit sie besser beaufsichtigt waren als zu Hause"
+      ],
+      "correct": 1
+    },
+    {
+      "text": "Die Stellen fanden die Mädchen zumeist",
+      "options": [
+        "a. durch Vermittler, die ins Dorf kamen",
+        "b. alleine",
+        "c. mit Hilfe ihrer Eltern"
+      ],
+      "correct": 1
+    },
+    {
+      "text": "Dienstmädchen gab es",
+      "options": [
+        "a. fast nur bei reicheren Leuten",
+        "b. auch bei den weniger reichen Leuten",
+        "c. في jedem Haus in der Stadt"
+      ],
+      "correct": 1
+    },
+    {
+      "text": "Dienstmädchen",
+      "options": [
+        "a. mussten länger arbeiten als Fabrikarbeiter",
+        "b. konnten sich am Sonntag zwei Stunden mit anderen Dienstmädchen treffen",
+        "c. durften nicht alleine einkaufen gehen"
+      ],
+      "correct": 0
+    },
+    {
+      "text": "Dienstmädchen bekamen",
+      "options": [
+        "a. fast kein Geld",
+        "b. ein eigenes Zimmer",
+        "c. Geld, um für später zu sparen"
+      ],
+      "correct": 0
+    }
+  ],
+  "memoryHighlights": [
+    { "color": 3, "parts": [ "damit sie lernten, einen Haushalt zu führen" ] },
+    { "color": 9, "parts": [ "alleine" ] },
+    { "color": 11, "parts": [ "auch bei den weniger reichen Leuten" ] },
+    { "color": 5, "parts": [ "mussten länger arbeiten als Fabrikarbeiter" ] },
+    { "color": 7, "parts": [ "fast kein Geld" ] }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "title": "Lesen Teil 2 - Exam 28: Traumfrau und Traummann gesucht",
+  "skill": "lesen2",
+  "type": "teil2",
+  "text": "Den Partner für das Leben finden - für immer mehr Menschen wird dies offenbar immer schwieriger. Rund 31 Millionen Männer und Frauen in Deutschland, also mehr als ein Drittel der gesamten Bevölkerung, sind alleinstehend. Nicht dass Mann oder Frau wählerischer als in früheren Zeiten geworden wäre, es gibt scheinbar ganz einfach immer weniger Gelegenheiten, das Ziel einer Partnerschaft oder Ehe zu erreichen. Die Menschen haben einfach immer weniger Zeit, sich um ihre ganz natürlichen Wünsche zu kümmern. Viele arbeiten weit entfernt von ihrem Wohnort, wechseln die Arbeitsstätte in relativ kurzen Abständen, haben für das Privatleben ungünstige Arbeitszeiten mit wenig Freizeit - abgesehen vom alljährlichen Urlaub. Dazu kommt, dass eine beträchtliche Minderheit der Deutschen nicht bereit ist, sich längerfristig oder gar \"lebenslänglich\" an einen bestimmten Partner zu binden. Immer mehr Menschen leben lieber mit ihren Lebensabschnittgefährten zusammen oder sie bevorzugen saisonale Kurzbeziehungen nach dem Muster \"öfter mal 'ne(n) Neue(n)\". Und immer mehr von denen, die eine Partnerschaft anstreben, versuchen ihren Liebsten oder ihre Liebste nicht auf Partys, Kirmesfesten oder in Cafés und Kneipen zu finden, wie das bei ihren Großeltern noch üblich war, sondern sie schauen ins Internet oder in Zeitungen, um über Partnerschafts- oder Heiratsannoncen fündig zu werden. In Deutschland gibt es viele Radioprogramme, in denen täglich Dutzende ihre Heiratsabsichten kundtun. An Wochenenden gibt es sogar Fernsehsendungen, in denen Partnersuchende mit anderen Partnersuchenden quasi verkuppelt werden. Doch wie muss solch eine Kontaktanzeige aussehen, damit sie auch von Erfolg gekrönt ist? Denn nicht wenige Anzeigen bringen gar keinen oder nicht den erwünschten Erfolg. Dieser Frage hat sich nun der Kommunikationsexperte Jörg Stimpfling an der Universität Stuttgart gewidmet und seit mehr als zehn Jahren Kontaktanzeigen in den verschiedensten Medien gesammelt und analysiert. Das Ergebnis der umfangreichen Forschung: Viele Anzeigen sind zu oberflächlich formuliert oder bedienen sich althergebrachter Stereotypen. So beschreiben sich Frauen mit Synonymen für Schönheit oder Attraktivität, Männer bieten Sicherheit oder Status an, überholt geglaubte Klischees finden sich in den meisten Fällen. Ebenso fällt die Neigung auf, sich schöner, besser zu präsentieren, als man wirklich ist, so als biete man ein Produkt in der Konsumwerbung an. Man könnte fast meinen, viele suchen sich selbst wie ihr eigenes Zwillingsbild. Jörg Stimpfling und seine Kollegen empfehlen Partnersuchenden Singles daher, sich erst einmal selbst kennen zu lernen, bevor sie sich an zukünftige Partnerinnen oder Partner wenden. Nur wer über sich selbst Bescheid weiß, kann den Partner finden, der zu ihm passt. Und das Zwillingsbild im Spiegel ist leider kaum als idealer Partner geeignet.",
+  "questions": [
+    {
+      "text": "Viele Menschen in Deutschland sind unverheiratet, weil",
+      "options": [
+        "a. die Ansprüche bei der Partnerwahl immer weiter steigen",
+        "b. die Lebensumstände es erschweren, den Partner oder die Partnerin fürs Leben zu finden",
+        "c. eine Mehrheit ohnehin lieber in zeitlich begrenzten Beziehungen lebt"
+      ],
+      "correct": 1
+    },
+    {
+      "text": "Viele Singles suchen sich heute ihre Partner oder Partnerinnen",
+      "options": [
+        "a. am Arbeitsplatz",
+        "b. auf Festen",
+        "c. in den Medien"
+      ],
+      "correct": 2
+    },
+    {
+      "text": "Im Radio werden",
+      "options": [
+        "a. an Samstagen und Sonntagen Partner vermittelt",
+        "b. jeden Tag Heiratswünsche gesendet",
+        "c. täglich Hochzeitsglückwünsche gesendet"
+      ],
+      "correct": 1
+    },
+    {
+      "text": "In Kontaktanzeigen",
+      "options": [
+        "a. beschreiben sich Partnersuchende oft im Rahmen konventioneller Rollenerwartungen",
+        "b. suchen die meisten Männer moderne, attraktive Frauen",
+        "c. werden recht häufig die passenden Partner fürs Leben gefunden"
+      ],
+      "correct": 0
+    },
+    {
+      "text": "Wer eine Kontaktanzeige aufgibt, sollte",
+      "options": [
+        "a. jemanden suchen mit möglichst ähnlichen Eigenschaften",
+        "b. sich werbewirksam präsentieren können",
+        "c. zunächst eine Selbstanalyse vornehmen"
+      ],
+      "correct": 2
+    }
+  ],
+  "memoryHighlights": [
+    { "color": 3, "parts": ["die Lebensumstände es erschweren, den Partner oder die Partnerin fürs Leben zu finden"] },
+    { "color": 8, "parts": ["in den Medien"] },
+    { "color": 11, "parts": ["jeden Tag Heiratswünsche gesendet"] },
+    { "color": 5, "parts": ["beschreiben sich Partnersuchende oft im Rahmen konventioneller Rollenerwartungen"] },
+    { "color": 10, "parts": ["zunächst eine Selbstanalyse vornehmen"] }
+  ]
+}
