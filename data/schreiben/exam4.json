@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 4: Kosmetik-Shop",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "Kosmetik-Shop",
+    "level": "B2",
+    "text": "Ihr Kosmetik-Shop\nSchönheit & Pflege für Sie!\nEntdecken Sie die neuesten Kosmetik- und Pflegeprodukte – alles für Ihre Schönheit und Ihr Wohlbefinden in unserem Laden!\n\n- Große Auswahl an hochwertigen Kosmetikprodukten\n- Namhafte Marken und exklusive Linien\n- Natürlich und dermatologisch getestete Pflegeartikel\n- Kompetente Beratung & individuelle Hautanalysen\n- Luxuriöse Parfums, edles Make-Up und feine Düfte\n- Entspannende Wellness-Produkte & Geschenke\n\nBesuchen Sie uns in der Schönheitsstraße 77 und lassen Sie sich von unseren Experten beraten! Unser freundliches Team hilft Ihnen gerne dabei, die passenden Produkte für Ihre Bedürfnisse zu finden. Genießen Sie ein einzigartiges Einkaufserlebnis voller Schönheit und Wohlgefühl!\n\n100% ZUFRIEDENHEITS-GARANTIE!\n\nBeauty & Pflege\nSchönheitsstraße 77, 98765 Schönstadt\nwww.beautyundpflege.de\n+49 1234 98765"
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie haben bei der Firma \"Beauty & Pflege\" ein Kosmetikprodukt gekauft. Nach der Anwendung traten gesundheitliche Probleme auf und Sie fühlen sich krank und unwohl. Trotz Beschwerden wurde Ihr Problem nicht angemessen behandelt. Schreiben Sie eine Beschwerde und gehen Sie dabei auf die genannten Punkte ein.",
+    "points": [
+      "Erklären Sie, warum Sie mit einem bei uns gekauften Produkt unzufrieden sind.",
+      "Beschreiben Sie, welche gesundheitlichen Probleme nach der Anwendung auftraten.",
+      "Erläutern Sie, wie die Firma auf Ihre Beschwerden reagiert hat.",
+      "Schreiben Sie, was Sie jetzt von der Firma erwarten."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ هدا فقط متال لمنهجية نتا قاد ديالك وحدة ديالك",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

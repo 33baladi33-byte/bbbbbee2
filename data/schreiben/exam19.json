@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 19: Kostenlose Apps für dein Handy!",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "Kostenlose Apps für dein Handy!",
+    "level": "B2",
+    "text": "prima-app.net ist die Spaßseite für alle Smartphone-Nutzer:\nJede Menge Apps für Spiele, Sport-Live-Sendungen und Filme. Hol dir die aktuellsten Sportergebnisse, die neuesten Schlagzeilen, die lustigsten Witze oder wechsle schnell zu deinen Social Media.\n\nRegistriere dich jetzt und erhalte sofort unbegrenzten Zugang zu den Angeboten unserer Webseite:\n\nprima-app.net\ninfo@prima-app.net\nprima-app GmbH, Sommerweg 34-36, 37269 Eschwege\n*Dienste verfügbar gegen einen kleinen Monatsbeitrag"
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie haben die Apps abonniert und waren damit nicht zufrieden. Schreiben Sie eine Beschwerde und beziehen Sie sich dabei auf die Anzeige.",
+    "points": [
+      "Welche Probleme hatten Sie bei der Nutzung?",
+      "Welche Angebote wollten Sie nutzen?",
+      "Wie bewerten Sie das Preis-Leistungs-Verhältnis?",
+      "Welche Forderungen stellen Sie?"
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ يمكنك تطبيق هذه المنهجية باستمرار للوصول إلى ما بين 20–30 / 45 بأقل مجهود.",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

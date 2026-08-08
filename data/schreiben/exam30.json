@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 30: Securvia Reisegepäckversicherung",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "Rundum sorglos unterwegs - die Securvia Reisegepäckversicherung",
+    "level": "B2",
+    "text": "Sie reisen oft, per Bahn, Auto oder Flugzeug. Doch was passiert, wenn Ihr Gepäck verloren geht oder gestohlen wird?\n\nWir sorgen dafür, dass Ihnen sofort geholfen wird. Ein Anruf genügt, und wir ersetzen die Reparaturkosten oder den Wert des Gepäcks. Wir sind auch für Sie da, wenn Ihre Reisedokumente oder Zahlungsmittel verloren gehen - unsere Hotline ist rund um die Uhr für Sie erreichbar. Sollte Ihr Reisegepäck bei einer Flugreise verspätet am Zielort ankommen, erstatten wir Ihnen 250 € für Ihre notwendigen Ersatzkäufe.\n\nWenn Sie mehr erfahren wollen, rufen Sie einfach an unter der Telefonnummer 0800 88300888. Oder schreiben Sie uns eine E-Mail: info@securvia.de\n\nSecurvia Deutschland AG · Hauptstr. 18 · 84489 Burghausen"
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie haben eine Reisegepäckversicherung abgeschlossen. Auf Ihrer letzten Reise ist etwas mit Ihrem Gepäck passiert. Doch es gab Probleme mit der Versicherung. Schreiben Sie eine Beschwerde an die Versicherung.",
+    "points": [
+      "Beschreiben Sie genau, was für eine Reise Sie unternommen haben.",
+      "Erklären Sie, was mit Ihrem Gepäck passiert ist.",
+      "Legen Sie dar, welche Probleme es mit der Versicherung gab.",
+      "Erläutern Sie, was Sie nun von dem Unternehmen fordern."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ يمكنك تطبيق هذه المنهجية باستمرار للوصول إلى ما بين 20–30 / 45 بأقل مجهود.",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

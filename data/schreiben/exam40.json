@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 40: Schlüsseldienst",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "Schlüsseldienst",
+    "level": "B2",
+    "text": "Schlüsseldienst - Notservice bundesweit\nSie haben sich ausgesperrt?\nWir liefern Ihnen eine saubere und unkomplizierte Lösung.\nSchnell, zuverlässig und günstig.\n\nSchlüsseldienst - rufen Sie uns an und einer unserer kompetenten Mitarbeiter ist sofort für Sie da.\n\nUnsere Telefonzentrale ermittelt Ihren Standort und schickt Ihnen innerhalb einer Stunde einen erfahrenen Techniker vorbei, der Ihnen die Tür öffnet, ohne sie zu schädigen.\n\nSetzen Sie sich mit uns in Verbindung, wir reagieren schnellstmöglich und professionell.\n\nSie hatten Ihren Schlüssel verloren und kamen nicht mehr in Ihre Wohnung hinein. Daher hatten Sie diesen Schlüsseldienst gerufen, doch waren Sie mit seiner Arbeit nicht zufrieden."
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie hatten Ihren Schlüssel verloren und kamen nicht mehr in Ihre Wohnung hinein. Daher hatten Sie diesen Schlüsseldienst gerufen, doch waren Sie mit seiner Arbeit nicht zufrieden.",
+    "points": [
+      "Erklären Sie, warum Sie für diesen Schlüsseldienst entschieden hatten.",
+      "Erläutern Sie, warum Sie mit den Leistungen nicht zufrieden sind.",
+      "Beschreiben Sie Ihre Erfahrungen mit der Service-Hotline.",
+      "Nennen Sie Ihre Forderungen, ohne gleich mit dem Anwalt zu drohen."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ هدا فقط متال لمنهجية نتا قاد ديالك وحدة ديالك",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

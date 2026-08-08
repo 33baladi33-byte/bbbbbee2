@@ -1,0 +1,28 @@
+{
+  "title": "Schreiben - Exam 18: Apartment-Haus",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "Apartment-Haus",
+    "level": "B2",
+    "text": "Suchen Sie eine komfortable und zentrale Unterkunft?\n\nUnser Appartementhaus bietet Ihnen modern eingerichtete Apartments in verschiedenen Größen, ideal für Geschäftsreisende, Paare und Familien.\n\nUnsere Ausstattung:\n- Voll ausgestattete Küche\n- Kostenloses WLAN\n- Sat-TV\n- Balkon oder Terrasse\n- Waschmaschine und Trockner (gegen Gebühr)\n- Wöchentliche Reinigung\n- Privatparkplatz (gegen Gebühr)\n\nUnsere Lage:\nIn der Nähe von Restaurants, Geschäften und Sehenswürdigkeiten.\nGute Anbindung an öffentliche Verkehrsmittel"
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie haben ein Appartement in diesem Haus gekauft, jedoch entsprach es leider nicht Ihren Erwartungen.",
+    "points": [
+      "Erzählen Sie von den Problemen, die Sie im Appartement gefunden haben.",
+      "Erzählen Sie von einer früheren Erfahrung, die besser war als diese.",
+      "Erzählen Sie, warum Sie in dieses Appartement gezogen sind."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3],
+  "template": {
+    "title": "✦ يمكنك تطبيق هذه المنهجية باستمرار للوصول إلى ما بين 20–30 / 45 بأقل مجهود.",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

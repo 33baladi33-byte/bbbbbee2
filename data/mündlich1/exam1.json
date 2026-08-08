@@ -1,0 +1,172 @@
+{
+  "title": "Mündlich Teil 1 - دليل التعارف والموضوع القصير",
+  "skill": "mündlich1",
+  "type": "info",
+  "content": {
+    "phase1": {
+      "title": "المرحلة الأولى: التعارف والأسئلة الشخصية",
+      "questions": [
+        {
+          "german": "Stellen Sie sich vor.",
+          "arabic": "قدّم نفسك",
+          "example": "Guten Tag, mein Name ist Mohamed.\nIch komme aus Marokko. Im Moment studiere ich Englische Literatur an der Universität und lerne außerdem Deutsch.\nIn meiner Freizeit interessiere ich mich sehr für Motorräder. Ich finde sie spannend und würde mir gerne in Zukunft eines kaufen.\nIch bin eine neugierige und motivierte Person, die immer neue Ziele verfolgt."
+        },
+        {
+          "german": "Warum möchten Sie die B2-Prüfung ablegen?",
+          "arabic": "لماذا تريد اجتياز امتحان B2؟",
+          "example": "Ich möchte die B2-Prüfung ablegen, weil ich meine Deutschkenntnisse offiziell bestätigen möchte.\nFür mich ist die deutsche Sprache sehr wichtig, da ich in Zukunft in Deutschland studieren oder eine Ausbildung machen möchte.\nAußerdem gibt mir das B2-Zertifikat bessere Chancen für meine berufliche und persönliche Zukunft."
+        },
+        {
+          "german": "Wie lange haben Sie sich auf die Prüfung vorbereitet?",
+          "arabic": "كم من الوقت تحضر للامتحان؟",
+          "example": "Ich habe mich seit etwa vier Monaten auf die B2-Prüfung vorbereitet.\nIch habe regelmäßig Deutsch gelernt und besonders viel gesprochen und versucht, mich im Alltag auf Deutsch auszudrücken.\nAußerdem habe ich jeden Tag aktiv an meinem Deutsch gearbeitet."
+        },
+        {
+          "german": "Wie lange lernen Sie Deutsch?",
+          "arabic": "منذ متى تتعلم الألمانية؟",
+          "example": "Ich lerne Deutsch seit ungefähr einem Jahr.\nMit der Zeit habe ich eine deutliche Verbesserung gemerkt und konnte mich immer besser ausdrücken.\nSchritt für Schritt habe ich mehr Sicherheit beim Sprechen bekommen."
+        },
+        {
+          "german": "Warum möchten Sie nach Deutschland reisen?",
+          "arabic": "لماذا تريد السفر إلى ألمانيا؟",
+          "example": "Ich möchte nach Deutschland reisen, weil ich meine Deutschkenntnisse in der Praxis verbessern möchte.\nAußerdem interessiere ich mich für das Leben und die Kultur dort und möchte neue Erfahrungen sammeln.\nFür mich ist es auch ein wichtiger Schritt für meine Zukunft und meine beruflichen Ziele."
+        },
+        {
+          "german": "Welche Spezialität möchten Sie in Deutschland machen?",
+          "arabic": "ما التخصص الذي تريد دراسته أو العمل به في ألمانيا؟",
+          "example": "Ich möchte in Deutschland eine Ausbildung als Berufskraftfahrer machen.\nIch interessiere mich für Motorräder, aber auch allgemein für das Fahren, deshalb passt dieser Beruf gut zu mir.\nMein Ziel ist es, später in Europa zu arbeiten und viele Länder zu sehen, vielleicht auch darüber hinaus."
+        }
+      ]
+    },
+    "phase2": {
+      "title": "تقديم موضوع (Kurzvortrag)",
+      "note": "يجب أن يكون النص بين 165 و 175 كلمة، ويكتب بصيغة Perfekt، ومدة الكلام حوالي دقيقة ونصف.",
+      "topics": [
+        {
+          "title": "DAS BUCH",
+          "points": [
+            "اسم الكتاب",
+            "اسم الكاتب ومعلومات بسيطة عنه",
+            "لماذا اخترت هذا الكتاب؟",
+            "ما رأيك فيه؟",
+            "هل تنصح الآخرين بقراءته؟"
+          ],
+          "partnerQuestions": [
+            {
+              "german": "Warum lesen Sie gern Bücher?",
+              "arabic": "لماذا تحب قراءة الكتب؟"
+            },
+            {
+              "german": "Welche Bücher interessieren Sie allgemein?",
+              "arabic": "ما نوع الكتب التي تهمك عمومًا؟"
+            }
+          ]
+        },
+        {
+          "title": "DER FILM",
+          "points": [
+            "الشخصيات الرئيسية",
+            "قصة الفيلم وموضوعه",
+            "لماذا كان مهمًا بالنسبة لك؟",
+            "أفضل مشهد أعجبك",
+            "رأيك النهائي في الفيلم"
+          ],
+          "partnerQuestions": [
+            {
+              "german": "Warum mögen Sie Filme allgemein?",
+              "arabic": "لماذا تحب الأفلام عمومًا؟"
+            },
+            {
+              "german": "Welche Art von Filmen bevorzugen Sie?",
+              "arabic": "ما نوع الأفلام التي تفضلها؟"
+            }
+          ]
+        },
+        {
+          "title": "MUSIKVERANSTALTUNG",
+          "points": [
+            "نوع الموسيقى أو المهرجان",
+            "الفرقة أو المغنون المشاركون",
+            "المكان والأجواء",
+            "لماذا أعجبك الحدث؟",
+            "انطباعك النهائي"
+          ],
+          "partnerQuestions": [
+            {
+              "german": "Welche Musik hören Sie normalerweise?",
+              "arabic": "ما نوع الموسيقى التي تستمع إليها عادة؟"
+            },
+            {
+              "german": "Warum sind Musikveranstaltungen interessant?",
+              "arabic": "لماذا تعتبر الحفلات الموسيقية ممتعة؟"
+            }
+          ]
+        },
+        {
+          "title": "SPORTEREIGNIS",
+          "points": [
+            "نوع الرياضة",
+            "الفرق أو المشاركون والنتيجة",
+            "الملعب أو المكان",
+            "أجواء الجمهور",
+            "أهم لحظة أثرت فيك",
+            "رأيك النهائي"
+          ],
+          "partnerQuestions": [
+            {
+              "german": "Interessieren Sie sich für Sport?",
+              "arabic": "هل تهتم بالرياضة؟"
+            },
+            {
+              "german": "Welche Sportart mögen Sie am meisten?",
+              "arabic": "ما الرياضة التي تحبها أكثر؟"
+            }
+          ]
+        },
+        {
+          "title": "WICHTIGE PERSON",
+          "points": [
+            "من هو هذا الشخص؟",
+            "متى تعرفت عليه؟",
+            "لماذا هو مهم بالنسبة لك؟",
+            "كيف أثر عليك؟",
+            "موقف أو ذكرى مهمة معه",
+            "هل ما زالت العلاقة مستمرة؟"
+          ],
+          "partnerQuestions": [
+            {
+              "german": "Warum ist diese Person besonders für Sie?",
+              "arabic": "لماذا هذه الشخصية مميزة بالنسبة لك؟"
+            },
+            {
+              "german": "Wie würden Sie diese Person in drei Worten beschreiben?",
+              "arabic": "كيف تصف هذه الشخصية في ثلاث كلمات؟"
+            }
+          ]
+        },
+        {
+          "title": "WICHTIGE ERFAHRUNG",
+          "points": [
+            "ما هي هذه التجربة؟",
+            "متى وأين حدثت؟",
+            "مع من قمت بها؟",
+            "لماذا كانت مهمة؟",
+            "ماذا تعلمت منها؟",
+            "ما رأيك فيها اليوم؟"
+          ],
+          "partnerQuestions": [
+            {
+              "german": "Was hat Ihnen diese Erfahrung fürs Leben gegeben?",
+              "arabic": "ماذا أعطتك هذه التجربة في الحياة؟"
+            },
+            {
+              "german": "Würden Sie diese Erfahrung weiterempfehlen?",
+              "arabic": "هل تنصح الآخرين بخوض هذه التجربة؟"
+            }
+          ]
+        }
+      ]
+    },
+    "footerMessage": "🗣️ .هدر(ي) عادي بحال الا كتهدر(ي) مع صحابك... وره هتنجح(ي)"
+  }
+}

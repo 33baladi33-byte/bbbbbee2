@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 39: Umzugsunternehmen Bühler",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "Umzugsunternehmen Bühler",
+    "level": "B2",
+    "text": "Umzugsunternehmen Bühler - der Perfekte Partner für Ihren Umzug!\n\nEin Umzug muss nicht immer stressig sein. Überlassen Sie die Arbeit einfach uns und ziehen Sie entspannt in Ihre neue Wohnung.\nWir haben uns auf private Wohnungsumzüge spezialisiert und garantieren Ihnen einen zuverlässigen und fachgerechten Service.\n\nUNSER ANGEBOT:\n- Ein- und Auspacken aller Gegenstände aus Ihrem Haushalt\n- Möbelabbau und Aufbau\n- Verladen - Transport\n- Professionelle Umzugshelfer\n- Küchenmontage\n- Verpackungsmaterial\n- Nah- und Fernumzüge\n- Alles zum Festpreis\n\nAuf Wunsch bieten wir auch fachmännische Renovierungsarbeiten, Entrümpelung und Lagerung an.\nIhre Möbel sind bei uns in guten Händen.\nVereinbaren Sie noch heute einen Termin für ein Beratungsgespräch!\nUmzugsunternehmen Bühler, Hauptstr 87, 85784 Garchig."
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie sind vor kurzem in eine andere Stadt gezogen und hatten das Umzugsunternehmen Bühler beauftragt. Leider gab es Probleme. Schreiben Sie eine Beschwerde an das Unternehmen.",
+    "points": [
+      "Beschreiben Sie, was Sie nach dem Lesen der Anzeige erwartet hatten.",
+      "Beschreiben Sie genau, welche Probleme es beim Umzug gab.",
+      "Legen Sie dar, welche Kosten Ihnen dadurch entstanden sind.",
+      "Erklären Sie, was Sie nun von dem Umzugsunternehmen fordern."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ هدا فقط متال لمنهجية نتا قاد ديالك وحدة ديالك",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

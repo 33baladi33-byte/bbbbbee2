@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 28: Reisebüro Sonnenschein",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "Reisebüro Sonnenschein",
+    "level": "B2",
+    "text": "Fliegen Sie gerne spontan, ohne Monate im Voraus zu planen? Möchten Sie am liebsten schon morgen in den Urlaub fliegen? Dann sind unsere Reisen genau das Richtige für Sie.\n\nOb Strand, Großstadt oder Berge: Wir bieten Reisen mit bis zu 50 Prozent Rabatt! Finden Sie bei uns den perfekten Urlaub.\n\nLast-Minute-Reisen für Kurzentschlossene zu den schönsten Urlaubszielen weltweit – Kreuzfahrten, All-Inclusive-Urlaub, Pauschalreisen (Flug, Hotel, Transfer, Reiseleitung).\n\nBuchung online unter reisebuero-sonnenschein.net\n\nReisebüro Sonnenschein\nKäfergasse 5\n01109 Dresden"
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie haben bei diesem Reisebüro eine Pauschalreise gebucht. Als Sie abends im Hotel ankamen, gab es kein freies Zimmer für Sie. Schreiben Sie eine Beschwerde an das Reisebüro.",
+    "points": [
+      "Berichten Sie, was Sie an diesem Abend gemacht haben.",
+      "Beschreiben Sie, wie der Reiseleiter reagiert hat.",
+      "Erläutern Sie, welche Erwartungen Sie vor dem Urlaub hatten.",
+      "Berichten Sie, wie der Urlaub insgesamt war."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ يمكنك تطبيق هذه المنهجية باستمرار للوصول إلى ما بين 20–30 / 45 بأقل مجهود.",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 11: Autovermietung Neustadt",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "Autovermietung Neustadt",
+    "level": "B2",
+    "text": "Brauchen Sie ein Auto? Wir haben das passende Modell für Sie!\n• Preiswerte Kleinwagen\n• Geräumige Kleinbusse\n• Praktische Kombis\n• Schicke Cabrios\n• Luxuriöse Oberklasse und vieles mehr\n\nBuchen Sie noch heute Ihr Wunschauto ganz bequem online! Wir stellen Ihnen ein modernes, sicheres und sauberes Fahrzeug zur Verfügung. Mieten Sie Ihr Auto für wenige Stunden, ein Wochenende oder mehrere Tage. Bei Fragen und Problemen können Sie sich rund um die Uhr an unseren Service wenden. Unsere kompetenten Mitarbeiter helfen Ihnen gern."
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie haben bei der Autovermietung Neustadt ein Auto fürs Wochenende gemietet. Leider waren Sie mit dem Auto und dem Service der Firma sehr unzufrieden. Das Auto war weder modern noch sauber, und Sie konnten keinen Service-Mitarbeiter erreichen. Schreiben Sie eine E-Mail, in der Sie sich über die Unannehmlichkeiten beschweren.",
+    "points": [
+      "Erklären Sie, warum Sie sich für die Autovermietung Neustadt entschieden haben.",
+      "Beschreiben Sie, welche Probleme es mit dem Auto gab.",
+      "Erläutern Sie, welche Probleme es mit dem Service der Firma gab.",
+      "Schreiben Sie, was Sie jetzt von der Autovermietung Neustadt erwarten."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ يمكنك تطبيق هذه المنهجية باستمرار للوصول إلى ما بين 20–30 / 45 بأقل مجهود.",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

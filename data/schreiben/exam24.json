@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 25: Kopfhörer",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "Kopfhörer",
+    "level": "B2",
+    "text": "Kabelloser Kopfhörer mit exzellentem Klang für Musikbegeisterte, Sportler, Vieltelefonierer und Globetrotter.\nIdeal für Sport, Reisen und Freizeit.\nKabellos, leicht und flexibel. Musik hören und telefonieren, wo immer Sie wollen.\n\n- Beeindruckende Klangwiedergabe bei jeder Lautstärke\n- Klar verständliche Telefonate dank fortschrittlichem Mikrofonsystem\n- Unterdrückung lästiger Umgebungsgeräusche\n- Leistungsfähiger Akku für bis zu 15 Stunden Musikwiedergabe\n- Bequemer Kopfbügel und weiche Ohrpolster für stundenlangen Tragekomfort\n\nBestellen Sie hier Ihren kabellosen Kopfhörer für unbeschwerten Musikgenuss:\nwww.freebeat.de/bestellung\nKontakt: www.freebeat.de/kontakt"
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie haben über die Webseite freebeat.de kabellose Kopfhörer bestellt. Leider waren Sie mit dem Produkt und dem Kundenservice sehr unzufrieden. Schreiben Sie eine Beschwerde.",
+    "points": [
+      "Erklären Sie, warum Sie sich für dieses Produkt entschieden haben.",
+      "Beschreiben Sie, welche Probleme es mit den Kopfhörern gab.",
+      "Schildern Sie Ihre Erfahrungen mit dem Kundenservice.",
+      "Schreiben Sie, was Sie jetzt von der Firma erwarten."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ يمكنك تطبيق هذه المنهجية باستمرار للوصول إلى ما بين 20–30 / 45 بأقل مجهود.",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

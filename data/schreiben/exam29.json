@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 30: FITWATCH Smartwatch",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "FITWATCH Smartwatch",
+    "level": "B2",
+    "text": "FITWATCH - Die smarte Uhr für Ihre Fitness\n\nSuchen Sie eine moderne Smartwatch, die Sie bei einem gesunden Lebensstil unterstützt? Mit FITWATCH erhalten Sie eine Smartwatch, die Ihnen hilft, Ihre Fitness zu verbessern und Ihre Gesundheitsziele zu erreichen – alles in einem stilvollen Gerät am Handgelenk.\n\nWir bieten Ihnen:\n- Kalorienzähler und Bewegungserkennung\n- Fortschritte bei Gesundheit und Fitness verfolgen\n- Herzfrequenz-, Schritt- und Schlafüberwachung\n- Wetter und Musik direkt am Handgelenk\n- Diverse Sportmodi und tägliche Aktivitätsziele\n- Elegantes Design und intuitive Bedienung\n\nPreis und weitere Informationen finden Sie auf unserer Website: www.fitwatch.de. Bestellen Sie jetzt und starten Sie Ihre Gesundheitsreise mit FITWATCH!"
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie haben kürzlich eine FITWATCH Smartwatch gekauft und sind enttäuscht – Schreiben Sie eine Beschwerde.",
+    "points": [
+      "Erklären Sie, warum Sie sich für die FITWATCH entschieden haben.",
+      "Beschreiben Sie, was Ihnen an ähnlichen Produkten anderer Firmen gefallen hat.",
+      "Machen Sie Verbesserungsvorschläge, z. B. für bessere Kalorienberechnung, genauere Bewegungsanalyse, leicht verständliche Anweisung.",
+      "Beschreiben Sie, welche Probleme Sie mit der FITWATCH hatten. Wo hat die FITWATCH Ihre Erwartungen nicht erfüllt?"
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ يمكنك تطبيق هذه المنهجية باستمرار للوصول إلى ما بين 20–30 / 45 بأقل مجهود.",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

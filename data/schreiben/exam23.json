@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 23: Hotel mit Thermen",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "Hotel mit Thermen",
+    "level": "B2",
+    "text": "Einfach mal raus aus dem Alltag? In den komfortablen Zimmern des Hotels an der Therme finden Sie Ruhe und Entspannung. Von Ihrem Balkon aus genießen Sie einen wunderschönen Blick in die Natur. Unser gut geschulter Service sorgt dafür, dass sich alle Gäste rundum wohlfühlen.\n\nIn der Octavian-Therme können Sie ein großes Schwimmbecken, ein Dampfbad, eine Saunalandschaft, ein hervorragendes gastronomisches Angebot und vor allem viel Ruhe genießen. Hier können Sie für kurze Zeit allen Stress vergessen!\n\nBuchen Sie noch heute Ihren Kurzurlaub: 2 Übernachtungen im Doppelzimmer, Tageskarte für die Therme, Frühstück vom Buffet, frisches Obst auf dem Zimmer und kostenloser Parkplatz – 150 € pro Person.\n\nHotel an der Therme\nThermenallee 5, 61352 Bad Homburg"
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie haben ein Wochenende in diesem Hotel verbracht und die Therme besucht. Leider waren Sie nicht zufrieden. Schreiben Sie eine Beschwerde.",
+    "points": [
+      "Schreiben Sie, was Sie von Ihrem Aufenthalt erwartet hatten.",
+      "Beschreiben Sie, wovon Sie sich erholen wollten.",
+      "Erläutern Sie, warum Sie unzufrieden sind.",
+      "Machen Sie Verbesserungsvorschläge."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ يمكنك تطبيق هذه المنهجية باستمرار للوصول إلى ما بين 20–30 / 45 بأقل مجهود.",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

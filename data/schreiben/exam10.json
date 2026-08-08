@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 10: Wohnen auf Zeit in Oranienburg",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "Wohnen auf Zeit in Oranienburg",
+    "level": "B2",
+    "text": "Sie sind für ein paar Monate beruflich oder privat in Oranienburg? Sie möchten nicht in einem Hotel leben, aber auf Komfort nicht verzichten? In unserem Apartmenthaus, das im Stadtzentrum von Oranienburg liegt, finden Sie eine Unterkunft ganz nach Ihrem Geschmack:\n\nWir bieten Ihnen:\n• voll ausgestattete, möblierte Wohnungen und Zimmer\n• Handtücher und Bettwäsche inklusive\n• für Privatpersonen und Mitarbeiter von Firmen\n• Mietdauer ab 1 Monat\n• 1- bis 4-Zimmer-Wohnungen\n• ab 1200 € im Monat inklusive Nebenkosten\n\nServiceleistungen können dazugebucht werden, z. B. Parkplatz, Reinigung, Wäscheservice, Frühstück.\n\nDer Preis richtet sich nach der Mietdauer und den gewünschten Serviceleistungen. Wir beraten Sie per E-Mail, telefonisch sowie persönlich und vermitteln Ihnen eine Wohnung, die Ihren Wünschen entspricht.\n\nMehr Informationen hier:\nwww.apartmenthaus-oranienburg.de\nApartmenthaus Oranienburg\nIsoldenweg 19, 16125 Oranienburg\nE-Mail: apartmenthaus@oranienburg.de"
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie mussten für ein paar Monate nach Oranienburg ziehen, wohnten in diesem Apartmenthaus und waren nicht zufrieden. Schreiben Sie eine Beschwerde an das Apartmenthaus.",
+    "points": [
+      "Erklären Sie, warum Sie für ein paar Monate in Oranienburg waren.",
+      "Beschreiben Sie, welche Erfahrungen Sie früher mit ähnlichen Angeboten gemacht hatten.",
+      "Machen Sie Verbesserungsvorschläge.",
+      "Beschreiben Sie, welche Probleme Sie in dem Apartmenthaus hatten."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ هدا فقط متال لمنهجية نتا قاد ديالك وحدة ديالك",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

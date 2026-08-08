@@ -1,0 +1,28 @@
+{
+  "title": "Schreiben - Exam 33: Online-Training für guten Schlaf",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "Online-Training für guten Schlaf",
+    "level": "B2",
+    "text": "Schlafen kann man lernen! Online-Training für guten Schlaf\n\nZu viel Stress? Eine unruhige Umgebung? Gesunder Schlaf ist wichtig, doch nicht immer kommt man leicht zur Ruhe... Unser Online-Training hilft Ihnen, Ihre Schlafqualität zu verbessern.\n\nDas Programm wurde in Zusammenarbeit mit der Universität München entwickelt und wird seit zwei Jahren erfolgreich eingesetzt.\n\nEs funktioniert ganz einfach: Sie geben online Ihre Daten ein, beantworten Fragen zu Ihren Gewohnheiten und bekommen individuelle Übungen von Ihrem virtuellen Schlaftrainer.\n\nSchon mehr als 10.000 zufriedene Teilnehmer\n\nKontakt: info@endlich-besser-schlafen.net\nwww.endlich-besser-schlafen.net\n\nDormindo GmbH\nSandmannweg 26\n45327 Essen"
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "In letzter Zeit haben Sie oft schlecht geschlafen. Sie interessieren sich für das Online Training. Schreiben Sie eine E-Mail und bitten Sie um mehr Informationen.",
+    "points": [
+      "Erklären Sie, warum Sie nicht mehr so gut schlafen können.",
+      "Beschreiben Sie, was Sie bisher gegen Ihren schlechten Schlaf unternommen haben.",
+      "Erklären Sie, welche Vorteile ein Online-Training für Sie hat."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3],
+  "template": {
+    "title": "✦ يمكنك تطبيق هذه المنهجية باستمرار للوصول إلى ما بين 20–30 / 45 بأقل مجهود.",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

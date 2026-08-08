@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 20: nie mehr schlaflos in Deutschland - Komfort-Matratze",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "nie mehr schlaflos in Deutschland - Komfort-Matratze",
+    "level": "B2",
+    "text": "Gönnen Sie sich ein neues Bett mit einer Komfort-Matratze und Sie schlafen auf Wolken! Kommen Sie zum Probeliegen in unsere Showrooms in 20 deutschen Innenstädten.\nOder bestellen Sie gleich online unter: www.baumeister-betten.de.\n\nWir bieten Ihnen eine große Auswahl an Betten, Lattenrosten und Matratzen wegen Räumung unseres Lagers zu Sonderpreisen!\n\nBettgestelle: aus Holz oder Metall, Einzel oder Doppelbetten von 110 Euro bis 2000 Euro\nMatratzen: Taschenfederkern, Komfortschaum oder Kaltschaum je nach Größe 80/200cm, 90/200 cm oder 100/200 cm für nur 69 Euro bis 489 Euro.\n\nBeim Kauf einer Matratze entsorgen wir auf Wunsch die alte gleich mit! Bei der kostenlosen Lieferung Ihrer Bestellung nimmt der Herold-Fahrer Ihre gebrauchten Teile im Tausch 1:1 gerne mit.\n\nDie Kostenpauschale in Höhe von 15 Euro pro Stück für Mitnahme und Entsorgung zahlen Sie bitte in bar bei unserem Fahrer."
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie haben bei der Firma Baumeister-Betten eingekauft. Sie sind mit der Qualität und dem Service unzufrieden. Schreiben Sie eine Beschwerde.",
+    "points": [
+      "Beschreiben Sie, warum Sie sich für Produkte dieser Firma entschieden haben.",
+      "Erklären Sie, warum Sie mit der Warenqualität unzufrieden sind.",
+      "Beschreiben Sie Ihre Erfahrungen mit dem Service und der Service-Hotline.",
+      "Machen Sie Vorschläge, wie Baumeister-Betten kundenfreundlicher werden kann."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ يمكنك تطبيق هذه المنهجية باستمرار للوصول إلى ما بين 20–30 / 45 بأقل مجهود.",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

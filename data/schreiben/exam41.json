@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 41: T & W Elektronikversicherung",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "T & W Elektronikversicherung",
+    "level": "B2",
+    "text": "T & W Elektronikversicherung - Wir schützen Ihre Haushaltsgeräte!\n\nOb Kaffeeautomat, Kamera oder Fernsehen - bei uns können Sie an, wenn Sie ein teures Gerät ersetzen müssen.\n\nVersichert sind Schäden durch:\n- Bedienungsfehler\n- Diebstahl\n- Fahrlässigkeit\n- Kurzschluss\n- Wasserschaden\n\nAlle Küchen- und Haushaltsgeräte, Unterhaltungselektronik, Computer, Telefonanlage.\n\nJe Gerät zahlen wir im Schadensfall bis zu 3000 € und insgesamt für alle Schadensfälle pro Jahr 15000 €.\n\nWir übernehmen die anfallenden Wiederbeschaffungs- oder Reparaturkosten.\nWir regeln jeden Fall schnell und unkompliziert.\nMelden Sie Ihren Schaden einfach telefonisch oder online und Sie erhalten schnell Ihre Erstattung!\nT & W Elektronik Versicherung, Bergstr. 1, E-Mail: service@tuw.de"
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Nachdem Sie diese Versicherung abgeschlossen hatten, ging bei Ihnen ein Elektronikgerät kaputt. Die Versicherung möchte aber nicht zahlen. Schreiben Sie eine Beschwerde an die Versicherung, ohne mit dem Anwalt zu drohen.",
+    "points": [
+      "Beschreiben Sie das Gerät, das beschädigt wurde.",
+      "Erklären Sie, wie der Schaden entstanden ist.",
+      "Beschreiben Sie, warum Sie mit der Versicherung nicht zufrieden sind.",
+      "Erklären Sie, was Sie nun von der Versicherung erwarten."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ هدا فقط متال لمنهجية نتا قاد ديالك وحدة ديالك",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 9: Engagement für Jugendliche",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "Engagement für Jugendliche",
+    "level": "B2",
+    "text": "Wie soll es nach dem Schulabschluss weitergehen?\nWas wäre der ideale Beruf?\nWie findet man einen Ausbildungsplatz und wie bewirbt man sich?\n\nWollen Sie Jugendlichen dabei helfen, die richtigen Antworten auf diese Fragen zu finden und so ihre Zukunftsperspektiven zu verbessern? Dann werden Sie Bildungspatin/Bildungspate.\n\nWir suchen Bildungspatinnen/Bildungspaten, die Schülerinnen und Schüler ab 14 Jahren unterstützen können:\n• bei Problemen mit dem Schulabschluss,\n• bei der Suche nach einem Ausbildungsplatz,\n• beim Bewerbungsprozess,\n• beim Berufseinstieg.\n\nSie helfen einer Schülerin/einem Schüler dabei, den Übergang zwischen Schule und Beruf zu meistern.\nIn drei Wochenendseminaren bereiten wir Sie auf Ihre Aufgabe vor. Sie erhalten außerdem regelmäßig Unterstützung durch unser Team.\n\nSetzen Sie Ihre Zeit, Ihr Wissen und Ihr Engagement ein, um das Leben eines Jugendlichen positiv zu beeinflussen!\n\nMehr Informationen erhalten Sie unter: www.bildungspaten-fuer-jugendliche.net\n\nAdresse:\nBildungspaten für Jugendliche e. V.,\nHamburger Str. 112,\n60824 Frankfurt am Main"
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie wollten sich ehrenamtlich für Jugendliche engagieren, waren aber mit der Organisation unzufrieden. Schreiben Sie eine Beschwerde an den Verein.",
+    "points": [
+      "Beschreiben Sie, welche Erfahrungen Sie bei Ihrem Engagement gemacht haben.",
+      "Erklären Sie, warum Sie Jugendlichen helfen wollten.",
+      "Beschreiben Sie, wie Sie sich die Mitarbeit im Verein vorgestellt haben.",
+      "Machen Sie Verbesserungsvorschläge."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ هدا فقط متال لمنهجية نتا قاد ديالك وحدة ديالك",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

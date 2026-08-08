@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 15: KULTUR UND KULINARIK",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "KULTUR UND KULINARIK",
+    "level": "B2",
+    "text": "Fahren Sie mit uns von Berlin \"ins Blaue\"! Verbringen Sie einen Tag in angenehmer Gesellschaft. Genießen Sie die Fahrt und schauen Sie sich die vorbeiziehende Landschaft in Ruhe an. Plaudern Sie mit den anderen Fahrgästen und lassen Sie sich auf ganzer Linie verwöhnen!\n\nWir bieten Ihnen für nur unglaubliche 18,99 EURO:\n• Frühstück: Frühstücksbuffet frisch und reichhaltig\n• Mittagessen: Berliner Spezialitäten - so viel Sie essen\n• Kaffee: Kuchen und Torten - zur freien Auswahl.\n\nLassen Sie sich von unserem Programm überraschen: Wir besichtigen unterwegs Kirchen, Klöster, Burgen oder Schlösser und machen dabei natürlich entsprechende Pausen. Doch wir erklären Ihnen nicht nur die Sehenswürdigkeiten, sondern bieten Ihnen auch noch zusätzlich das ein oder andere Schnäppchen zum Kauf an! Setzen Sie sich einfach in unseren Bus und genießen Sie einen Tag unter Freunden.\n\nWir freuen uns auf IHRE TEILNAHME!!!\nGute-Laune-Reisen\nVulkanstraße\n10315 Berlin-Lichtenberg\nTelefon: 030-85 95 65\ngute-laune-reisen@info.de"
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie haben an dieser Fahrt teilgenommen und waren überhaupt nicht zufrieden, nur das Frühstück hat Ihnen sehr gut gefallen. Schreiben Sie an den Reiseveranstalter und beschweren Sie sich.",
+    "points": [
+      "Beschreiben Sie, warum Sie sich für den Tagesausflug entschieden haben.",
+      "Erklären Sie, was Ihnen an dem Besichtigungsprogramm missfiel.",
+      "Beschreiben Sie die Reaktionen der anderen Fahrgäste.",
+      "Erläutern Sie, wie Sie die angebotenen Waren fanden."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ يمكنك تطبيق هذه المنهجية باستمرار للوصول إلى ما بين 20–30 / 45 بأقل مجهود.",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

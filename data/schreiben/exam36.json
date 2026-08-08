@@ -1,0 +1,28 @@
+{
+  "title": "Schreiben - Exam 36: Nachbarschaft.net",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "Nachbarschaft.net",
+    "level": "B2",
+    "text": "Unsere Nachbarschaft vernetzt sich: Schon 656 Nachbarn machen mit! Schenken, leihen, reparieren oder Dienste wie Baby- oder Hundesitting anbieten, Schreibarbeiten erledigen, Nachhilfe, Blumen gießen oder einfach nur mal Zucker ausleihen ...\n\nwww.nachbarschaft.net ist ein Netzwerk zum Aufbau und zur Pflege einer guten Nachbarschaft. Mitglied kann man nur im eigenen oder angrenzenden Viertel werden. Inzwischen sind wir eine bundesweite Plattform.\n\nSeid dabei! Macht mit! Sucht eure Stadt und euer Viertel! Werdet aktiv! Erkundigt euch! Wir freuen uns auf euch!\n\ninfo@nachbarschaft.net\nwww.nachbarschaft.net"
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie haben sich bei dem Netzwerk angemeldet, weil Sie neue Kontakte knüpfen und aktiv werden wollten. Leider haben Sie sehr schlechte Erfahrungen gemacht. Schreiben Sie eine Beschwerde an die Betreiber der Website. Behandeln Sie darin entweder a) drei der folgenden Punkte oder b) zwei der folgenden Punkte und einen weiteren Aspekt Ihrer Wahl.",
+    "points": [
+      "Beschreiben Sie, welche Angebote oder Dienste Sie selbst anbieten wollten.",
+      "Legen Sie dar, welche Probleme Sie mit der Plattform oder den anderen Mitgliedern hatten.",
+      "Machen Sie den Betreibern Verbesserungsvorschläge."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3],
+  "template": {
+    "title": "✦ يمكنك تطبيق هذه المنهجية باستمرار للوصول إلى ما بين 20–30 / 45 بأقل مجهود.",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich mich bei Ihrer Plattform www.nachbarschaft.net angemeldet, weil ich neue Kontakte knüpfen und aktiv in der Nachbarschaft werden wollte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Plattform benutzerfreundlicher gestaltet wird und die Kommunikation verständlicher ist, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

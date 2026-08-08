@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 35: In Offenbach zu Hause",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "In Offenbach zu Hause",
+    "level": "B2",
+    "text": "Sie arbeiten in Frankfurt, können sich aber die exorbitanten Mietpreise nicht leisten? - Dann kommen Sie zu uns nach Offenbach!\n\nWir sind Ihr Ansprechpartner in Sachen preisgünstige Mietimmobilien. Besichtigen Sie unsere erst kürzlich komplett sanierte Anlage Am Berg 22. Wir bieten Ihnen attraktive 2-, 3- oder 4-Zimmer-Wohnungen mit Bad, Gäste-WC und Balkon oder Gartenanteil.\n\nUnsere Makler zeigen Ihnen exemplarisch einige der 150 verfügbaren Etagenwohnungen und klären Sie dabei auf über\n• Preise und Kosten\n• Vertragsbedingungen\n• Mietkaution\n• Energieeffizienz\nund stehen Ihnen für alle weiteren Fragen zur Verfügung.\n\nKommen Sie einfach ohne Anmeldung vorbei:\nBesichtigung ab sofort jeden Sonntag von 10:00-16:00 Uhr solange noch Wohnungen frei sind.\n\nANLAGE AM BERG 22 - 63071 Offenbach\nWohnbaugesellschaft Offenbach Am Berg e. V.\nKontakt: www.wohnbaugesellschaft-offenbach-am-berg.de"
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie waren bei der Besichtigung der Wohnungen. Doch Sie waren mit dem Service nicht zufrieden. Schreiben Sie eine Beschwerde an die Wohnbaugesellschaft.",
+    "points": [
+      "Beschreiben Sie, warum Sie sich für die Wohnbaugesellschaft Offenbach Am Berg e.V. entschieden haben.",
+      "Erklären Sie, was Ihnen bei einer Mietwohnung wichtig ist.",
+      "Beschreiben Sie Ihre Erfahrungen bei der Besichtigung.",
+      "Nennen Sie Ihre Forderungen an die Wohnbaugesellschaft."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ يمكنك تطبيق هذه المنهجية باستمرار للوصول إلى ما بين 20–30 / 45 بأقل مجهود.",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

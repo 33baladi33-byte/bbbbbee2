@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 27: FREIZEITBAD MEERESRAUSCHEN",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "FREIZEITBAD MEERESRAUSCHEN",
+    "level": "B2",
+    "text": "Kommen Sie zu uns und genießen Sie mit der ganzen Familie oder allein unsere Angebote:\n- Erlebnisbad mit Gute-Laune-Garantie\n- Thermalbad mit Thermal-Sole für Ihre Gesundheit\n- Saunaparadies in großzügiger Anlage\n\n*Hunger und Durst können Sie in unserer Erlebnisgastronomie stillen.\n\nStundenkarten ab 7 €\nTageskarten ab 27 €\nFamilieneintritt ab 55 €\n\nGönnen Sie sich Urlaub vom Alltag!\n\nÖffnungszeiten: Montag bis Donnerstag von 9:30 bis 22 Uhr\nFreitag, Samstag und Sonntag von 11 bis 24 Uhr\n\nFREIZEITBAD MEERESRAUSCHEN - Am Waidrand 12 - 64673 Bensheim\nTelefon: 0 62 51 - 55 66 77\nE-Mail: info@freizeitbad-meeresrauschen.de"
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie haben am Wochenende mit Ihrer Familie das \"FREIZEITBAD MEERESRAUSCHEN\" besucht. Leider waren Sie von den Angeboten und dem Service vor Ort sehr enttäuscht. Schreiben Sie eine Beschwerde an die Leitung des Bades.",
+    "points": [
+      "Erklären Sie, warum Sie sich für den Besuch dieses Bades entschieden haben.",
+      "Beschreiben Sie, was Ihnen im Bad (Thermalbad/Sauna) nicht gefallen hat.",
+      "Schildern Sie Ihre negativen Erfahrungen mit der Gastronomie und dem Personal.",
+      "Schreiben Sie, was Sie nun als Entschädigung erwarten."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ يمكنك تطبيق هذه المنهجية باستمرار للوصول إلى ما بين 20–30 / 45 بأقل مجهود.",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

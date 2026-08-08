@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 14: Backstage-Musical-Tour",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "Backstage-Musical-Tour",
+    "level": "B2",
+    "text": "Sie wollten schon immer einmal hinter die Kulissen eines Musicals schauen?\nEntdecken Sie die Welt der Musicals und erfahren Sie, wie ein Casting abläuft.\nWelche Regelungen es für Kinderdarsteller gibt,\nwie ein Bühnenbild gebaut wird, wie die Maske abläuft oder woher die imposanten Kostüme der Shows kommen.\n\nAußerdem können Sie erfahren, wie unsere Darsteller zu Musicaldarstellern wurden,\nwelche unserer Musicals Eigenproduktionen sind\noder welche Film-Musical Produktionen es gibt.\n\nIn unserem Musical-Archiv geben wir Ihnen einen Einblick in verschiedene Musicals.\n\nBackstage Musical beginnt am frühen Nachmittag und kostet 45 €\nwww.stage-entertainment.de\nE-Mail: info@stage-entertainment.de"
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie haben einen Blick hinter die Kulissen eines Theaterstücks geworfen, waren jedoch leider nicht zufrieden.",
+    "points": [
+      "Beschreiben Sie, warum Sie unzufrieden waren.",
+      "Berichten Sie von Ihren Erfahrungen mit ähnlichen Veranstaltungen.",
+      "Erklären Sie, was Sie an diesem Angebot am meisten interessierte.",
+      "Erklären Sie, was Sie vom Veranstalter erwarten."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ يمكنك تطبيق هذه المنهجية باستمرار للوصول إلى ما بين 20–30 / 45 بأقل مجهود.",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 17: Super Clean-Staubsaugroboter",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "Super Clean-Staubsaugroboter",
+    "level": "B2",
+    "text": "SuperClean-Staubsaugroboter ist Ihr neuer Helfer im Haus\n\nDarf ich mich vorstellen? Mein Name ist SuperClean-Staubsaugroboter. Ich bin Ihr neuer Staubsaugroboter. Sie haben schon lange nach einem Helfer im Haushalt gesucht? Sie möchten nicht mehr selbst staubsaugen und trotzdem eine saubere Wohnung haben? Dann brauchen Sie meine Hilfe. Während Sie lesen oder kochen, bin ich für Sie in Ihrer Wohnung unterwegs. Ich sauge dort, wo Sie es nicht schaffen: unter den Betten, unter dem Sofa. Staubsaugen ist meine Leidenschaft.\n\nDer SuperClean-Staubsaugroboter arbeitet, während Sie sich vergnügen. Am liebsten arbeite ich für Sie, wenn Sie nicht zu Hause sind, bin dank der App auch ganz einfach von unterwegs zu starten und zu bedienen.\n\nWas kann Ihr neuer Helfer und wie ist er?\n- Bedienung auf allen Böden\n- angenehm leise\n- sicheres Navigieren mit System\n- reinigt unter Betten, Sofas, Tischen und einfach überall\n- geeignet auch für stark verschmutzte Flächen\n- ob Tierhaare oder Haushaltsmüll, von mir bleibt nichts verschont\n- Rückerstattung des Kaufpreises, wenn Sie mit mir unzufrieden sind\n\nMein Preis: 499,90 Euro\nSie können mich direkt bei SuperClean-Staubsaugroboter GmbH bestellen.\nSuperClean-Staubsaugroboter GmbH\nAdenauerstraße 12, 50600 Köln"
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie haben den obengenannten Staubsauger erworben. Leider gibt es mehrere Probleme mit diesem Gerät. Schreiben Sie eine Mängelrüge an den Hersteller, ohne gleich mit dem Anwalt zu drohen. Behandeln Sie darin drei der folgenden Punkte oder zwei der folgenden Punkte und einen weiteren Aspekt Ihrer Wahl.",
+    "points": [
+      "Beschreiben Sie, was nicht zu Ihrer Zufriedenheit ausfällt.",
+      "Erklären Sie, warum Sie sich genau für dieses Gerät entschieden hatten.",
+      "Schreiben Sie, welche Schäden Ihnen durch dieses Gerät bereits entstanden sind.",
+      "Legen Sie dar, was Sie nun vom Hersteller verlangen."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ يمكنك تطبيق هذه المنهجية باستمرار للوصول إلى ما بين 20–30 / 45 بأقل مجهود.",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

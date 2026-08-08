@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 12: Freizeitverein",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "Freizeitverein",
+    "level": "B2",
+    "text": "Sie wollen in Ihrer Freizeit mehr erleben? Neue Leute aus Mainz kennenlernen? Am Wochenende nie mehr allein sein? Dann werden Sie Mitglied im Freizeitverein!\n\nWir organisieren verschiedene Aktivitäten in Mainz und Umgebung:\nWanderungen, Fahrradtouren, Museums- und Theaterbesuche, Spiele- und Kinoabende, Restaurantbesuche und Ausflüge.\n\nJede Woche stehen mindestens zwei unterschiedliche Angebote auf dem Programm.\nOb Sport oder Kultur – bei uns kommt jeder auf seine Kosten. Sie können viel Neues ausprobieren und lernen dabei nette Leute kennen.\n\nUnsere Mitglieder sind zwischen 26 und 85 Jahre alt. Bei uns ist jeder willkommen, ob Student oder Seniorin. Sie finden bei uns neue Freunde und Bekannte, mit denen Sie viel erleben können. Probieren Sie es doch einfach mal aus!\n\nMitgliedschaft\nDie Mitgliedschaft kostet 20 Euro pro Monat."
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie sind seit zwei Wochen Mitglied im Freizeitverein, aber leider nicht zufrieden. Schreiben Sie eine Beschwerde.",
+    "points": [
+      "Erklären Sie, was Sie nach dem Lesen der Anzeige erwartet hatten.",
+      "Erläutern Sie, warum Sie mit dem Angebot des Freizeitvereins nicht zufrieden sind.",
+      "Machen Sie Verbesserungsvorschläge zum Programm.",
+      "Erklären Sie, was Sie tun werden, wenn sich nichts ändert."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ يمكنك تطبيق هذه المنهجية باستمرار للوصول إلى ما بين 20–30 / 45 بأقل مجهود.",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

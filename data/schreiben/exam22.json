@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 22: Meine Kiste: Obst und Gemüse",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "Meine Kiste: Obst und Gemüse",
+    "level": "B2",
+    "text": "Gesunde Ernährung – direkt an Ihre Haustür oder Ihren Arbeitsplatz geliefert. Wählen Sie wöchentlich eine unserer Kisten aus und erhalten Sie eine Zusammenstellung von biologisch angebautem Obst und Gemüse.\n\nSie können wählen zwischen:\n• Meine Kiste Single: 10 €\n• Meine Kiste Familie: 20 €\n• Meine Kiste Büro: 40 €\n\nAuf Wunsch liefern wir auch weitere regionale Produkte wie Backwaren, Eier, Käse und Getränke.\n\nVorteile Ihrer Kiste:\n• Kurze Transportwege\n• Produkte von regionalen Erzeugern\n• Kontrollierter Anbau\n• Obst und Gemüse je nach Jahreszeit zusammengestellt\n• Kostenlose Rezepte zur Zubereitung von Gemüse\n• Lieferung an Ihren Wunschort\n\nBestellen Sie hier:\nwww.diegesundeobstkiste.de oder telefonisch unter 0176 54xxxxxx"
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie haben sich Obst und Gemüse liefern lassen, aber Sie sind unzufrieden. Schreiben Sie eine Beschwerde.",
+    "points": [
+      "Schreiben Sie, warum Sie sich regelmäßig Obst und Gemüse liefern lassen möchten.",
+      "Erklären Sie, warum biologisch angebautes Obst und Gemüse aus der Region für Sie wichtig ist.",
+      "Erläutern Sie, warum Sie mit dem Service unzufrieden waren.",
+      "Machen Sie Verbesserungsvorschläge."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ يمكنك تطبيق هذه المنهجية باستمرار للوصول إلى ما بين 20–30 / 45 بأقل مجهود.",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

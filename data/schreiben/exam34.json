@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 34: Hollandblumen-Onlineshop",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "HOLLANDBLUMEN-ONLINESHOP",
+    "level": "B2",
+    "text": "Die Vorteile liegen klar auf der Hand: Bei uns gibt es keine unnötigen Wege über Groß- und Einzelhandel. All unsere Blumen und Pflanzen stammen direkt vom Gärtner und durchlaufen vor dem Versand eine strenge Qualitätskontrolle.\n\nDoch wir liefern nicht nur Blumen oder Pflanzen für jeden Anlass und Geldbeutel, sondern auch individuelle, geschmackvolle Geschenksets für private und geschäftliche Anlässe.\n\nWir liefern deutschlandweit mit Frische-Garantie und Sie wählen, wann und wohin die Lieferung gehen soll. Natürlich können Sie Ihre Bestellung auch mit ansprechenden Grußkarten und verschiedensten Dekorationen ergänzen.\n\nAlle Preise verstehen sich inkl. Mehrwertsteuer und zzgl. Versandkosten.\nDie Bezahlung erfolgt mittels Kreditkarte, Paypal, Lastschrift oder per Rechnung.\n\nGern sind wir von Montag bis Samstag für Sie erreichbar.\n\nKontakt:\nServicetelefon +49 40 - 2577 6655\nservice@hollandblumen-onlineshop.de"
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie haben durch den Hollandblumen-Onlineshop jemanden beliefern lassen. Sie sind nicht zufrieden. Schreiben Sie eine Beschwerde an den Hollandblumen-Onlineshop.",
+    "points": [
+      "Beschreiben Sie ausführlich, für welchen Anlass Sie welche Ware bestellten.",
+      "Erklären Sie den Grund Ihrer Unzufriedenheit.",
+      "Beschreiben Sie Ihre Erfahrungen mit der Service-Hotline.",
+      "Machen Sie Vorschläge, wie der Hollandblumen-Onlineshop seine Leistungen verbessern kann."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ يمكنك تطبيق هذه المنهجية باستمرار للوصول إلى ما بين 20–30 / 45 بأقل مجهود.",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

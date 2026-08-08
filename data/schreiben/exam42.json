@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 42: Waldschwimmbad Langen",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "Waldschwimmbad Langen",
+    "level": "B2",
+    "text": "WALDSCHWIMMBAD LANGEN.\n\nDie Badesaison ist eröffnet!\nSie wollen sich vom Alltagsstress erholen?\nDann sind Sie jetzt bei uns genau richtig.\n\nAuf unserer riesigen Liegewiese gibt es einen abgetrennten Bereich.\n\nWASSERSPASS:\nFünf Schwimmbecken, Strömungskanal, Sprudelliegen.\n\nFÜR DIE KLEINEN:\nBeheiztes Kinderplanschbecken mit Rutschbahn, Kinderspielplatz.\n\nFÜR DEN HUNGER:\nRestaurant mit schmackhafter und gesunder Küche. Snackbar.\n\nWaldschwimmbad Langen\nAm neuen Wald\nKontakt: info@waldschwimmbad-langen.de"
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie waren zur Erholung in diesem Schwimmbad, aber Sie waren nicht zufrieden. Schreiben Sie eine Beschwerde an das Waldschwimmbad.",
+    "points": [
+      "Legen Sie dar, was Sie von dem Besuch im Waldschwimmbad erwartet haben.",
+      "Erläutern Sie, welche Angebote im Schwimmbad Sie genutzt haben.",
+      "Beschreiben Sie, warum Sie unzufrieden sind.",
+      "Machen Sie Verbesserungsvorschläge."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ هدا فقط متال لمنهجية نتا قاد ديالك وحدة ديالك",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

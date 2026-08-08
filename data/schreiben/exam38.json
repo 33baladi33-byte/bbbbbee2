@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 38 : Fotografieren für Fortgeschrittene",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "Fotografieren für Fortgeschrittene",
+    "level": "B2",
+    "text": "Fotografieren für Fortgeschrittene!\n\nSie besitzen bereits Grundkenntnisse in Fotografie, möchten aber Ihre Technik verbessern. Der erfahrene Pressefotograf Robert Zahn steht Ihnen mit Rat und Tat zur Seite und wird Sie mit den Feinheiten der Bildbearbeitung am Computer und Bildpräsentation bekanntmachen und auf Ihre Fragen individuell eingehen. Am Wochenende bieten wir Exkursionen unter fachlicher Leitung von Herrn Zahn an.\n\nWir wünschen viel Erfolg!\nKurs 457638\nLeitung: Robert Zahn\nPressefotograf\n\nMi. 18.00-20.15 Uhr\n7 Termine, 2 pro Monat\n95 € / 75 €\nMaximal 10 Teilnehmer/innen\nStudio \"Shooting Werkstatt\"\nNerostraße 13, 63013 Frankfurt\nWeb: www.shootingwerkstatt.de\nMail: studio@shootingwerkstatt.de"
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie haben an dem Fotokurs teilgenommen, waren aber sehr unzufrieden. Nichts war so, wie es in der Ankündigung beschrieben wurde, und auch die Termine wurden kurzfristig geändert.",
+    "points": [
+      "Ihre konkreten Erwartungen an den Kurs",
+      "Kritik an der Kursorganisation",
+      "Kritik am Kursleiter",
+      "Forderungen an das Studio"
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ هدا فقط متال لمنهجية نتا قاد ديالك وحدة ديالك",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}

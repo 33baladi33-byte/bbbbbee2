@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 6: ESS Firma",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "ESS Firma",
+    "level": "B2",
+    "text": "Kulinarische Erlebnisse nach Maß!\n- Individuelle Menüs für jeden Anlass und Geschmack\n- Frische, hochwertige Zutaten und kreative Gerichte\n- Persönlicher Kochservice für Ihre Veranstaltung\n- Pünktliche Lieferung und professioneller Service\n- 100% Zufriedenheitsgarantie und 24/7 Kundendienst\n\nFeiern Sie kulinarische Höhepunkte mit Gourmet Catering24! Ob große Familienfeier, Hochzeit, Geburtstag oder Firmenfeier – wir sorgen für unvergessliche Momente. Planen Sie Ihr Fest mit unserer Hilfe und wir kochen Ihre Lieblingsgerichte frisch und auf höchstem Niveau für Sie und Ihre Gäste. Fragen und Probleme? Unser kompetenter Mitarbeiter helfen Ihnen gern."
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie haben Essen für eine große Familienfeier bestellt. Geben Sie an, warum Sie mit dem Essen und dem Service der Firma Gourmet Catering24 unzufrieden waren. Nutzen Sie die Punkte unten, um Ihre Beschwerde präzise und überzeugend zu formulieren.",
+    "points": [
+      "Erklären Sie, warum Sie unzufrieden waren.",
+      "Beschreiben Sie, wie Ihre Gäste auf das Essen reagiert haben.",
+      "Erklären Sie, warum Sie sich für ESS Firma entschieden haben.",
+      "Schreiben Sie, warum die Familienfeier für Sie besonders wichtig war."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ هدا فقط متال لمنهجية نتا قاد ديالك وحدة ديالك",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}
