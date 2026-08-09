@@ -2967,8 +2967,12 @@
         } catch (e) {
             console.error('❌ فشل قراءة بيانات التقرير:', e);
         }
-
         function buildReportDataFromLocalStorage() {
+            // ✅ إذا كانت هناك بيانات مضمنة (في التقرير المستقل)، استخدمها
+            if (window.__EMBEDDED_REPORT_DATA) {
+                return window.__EMBEDDED_REPORT_DATA;
+            }
+
             const data = {
                 fullName: '—',
                 email: '—',
@@ -2982,7 +2986,7 @@
                 dailyGoal: '—',
                 examData: {},
                 history: [],
-                allExams: []   // ✅ إضافة allExams لحفظ قائمة الامتحانات جاهزة
+                allExams: []
             };
             
             try {
@@ -3005,7 +3009,6 @@
 
             const skills = ['hoeren1','hoeren2','hoeren3','lesen1','lesen2','lesen3','sprach1','sprach2'];
             
-            // 1. بناء قائمة الامتحانات من سجل النتائج (exam_history_*)
             const allHistoryKeys = Object.keys(localStorage).filter(k => k.startsWith('exam_history_'));
             const processedExams = new Set();
 
@@ -3038,7 +3041,6 @@
                     lastPlayed = localStorage.getItem(`exam_last_review_${skill}_${examId}`) || null;
                 }
                 
-                // قراءة وقت الامتحان
                 let timeMs = null;
                 try {
                     const timeKey = `exam_time_${skill}_${examId}`;
@@ -3056,7 +3058,6 @@
                 };
             });
 
-            // 2. بناء allExams من examData (نفس المنطق المستخدم في التقرير الأصلي)
             const skillLabels = {
                 hoeren1: 'Hören 1', hoeren2: 'Hören 2', hoeren3: 'Hören 3',
                 lesen1: 'Lesen 1', lesen2: 'Lesen 2', lesen3: 'Lesen 3',
@@ -3079,7 +3080,6 @@
                 });
             });
 
-            // 3. قراءة سجل النشاط (zertiva_history)
             try {
                 const history = localStorage.getItem('zertiva_history');
                 if (history) data.history = JSON.parse(history);
@@ -3461,18 +3461,14 @@
         //  12. دوال تحميل ومشاركة التقرير (باستخدام الصفحة الحالية)
         // ============================================================
 
-        // دالة مساعدة لإزالة العناصر غير المرغوب فيها من النسخة المحملة
+          // دالة مساعدة لإزالة العناصر غير المرغوب فيها من النسخة المحملة
         function cleanReportClone(clone) {
-            // إزالة أزرار التحكم
-            const actions = clone.querySelector('.report-actions');
-            if (actions) actions.remove();
+            // نحتفظ بكل العناصر بما فيها أزرار التحكم
             return clone;
         }
 
-        // دالة تحميل التقرير كـ HTML
         function exportReportHTML() {
             try {
-                // التحقق من وجود بيانات
                 const hasData = Object.keys(d.examData).some(skill => Object.keys(d.examData[skill]).length > 0);
                 if (!hasData && !d.email) {
                     const confirmDownload = confirm(
@@ -3483,17 +3479,66 @@
                     if (!confirmDownload) return;
                 }
 
-                // أخذ نسخة من الصفحة الحالية
+                // استنساخ الصفحة كاملة (مع الأزرار)
                 const clone = document.documentElement.cloneNode(true);
-                const cleaned = cleanReportClone(clone);
+                // لا نزيل الأزرار
 
                 // إضافة بيانات التقرير المضمنة
-                const newScript = document.createElement('script');
-                newScript.textContent = 'const REPORT_DATA = ' + JSON.stringify(d, null, 2) + ';';
-                cleaned.querySelector('head')?.appendChild(newScript);
+                const dataScript = document.createElement('script');
+                dataScript.textContent = 'window.__EMBEDDED_REPORT_DATA = ' + JSON.stringify(d, null, 2) + ';';
+                clone.querySelector('head')?.appendChild(dataScript);
 
-                // تحويل إلى HTML string وتنزيلها
-                const htmlContent = '<!DOCTYPE html>\n' + cleaned.outerHTML;
+                // إضافة سكريبت إضافي يعيد تعريف الدوال في التقرير المستقل
+                const fixScript = document.createElement('script');
+                fixScript.textContent = `
+                    // إعادة تعريف buildReportDataFromLocalStorage لاستخدام البيانات المضمنة
+                    (function() {
+                        // الاحتفاظ بالدالة الأصلية مؤقتاً
+                        const origBuild = window.buildReportDataFromLocalStorage;
+                        // إعادة تعريفها
+                        window.buildReportDataFromLocalStorage = function() {
+                            if (window.__EMBEDDED_REPORT_DATA) {
+                                return window.__EMBEDDED_REPORT_DATA;
+                            }
+                            // إذا لم توجد بيانات مضمنة، نستخدم localStorage (في حالة التشغيل العادي)
+                            if (typeof origBuild === 'function') {
+                                return origBuild();
+                            }
+                            // fallback
+                            return {};
+                        };
+                        // إعادة تعريف الدوال exportReportHTML و shareReportLink
+                        // بحيث تستخدم البيانات المضمنة
+                        window.exportReportHTML = function() {
+                            // نعيد استدعاء الدالة الأصلية بعد تحديث البيانات
+                            // لكننا سنقوم ببناء التقرير من البيانات المضمنة مباشرة
+                            // نستخدم نفس المنطق الموجود في الدالة الأصلية ولكن مع d المعاد تعريفه
+                            const data = window.__EMBEDDED_REPORT_DATA || {};
+                            // نستدعي الدالة الأصلية مع البيانات
+                            if (typeof window._originalExportReport === 'function') {
+                                window._originalExportReport(data);
+                            } else {
+                                // نسخة احتياطية: تنبيه
+                                alert('⚠️ لا يمكن تحميل التقرير حالياً.');
+                            }
+                        };
+                        window.shareReportLink = function() {
+                            const data = window.__EMBEDDED_REPORT_DATA || {};
+                            if (typeof window._originalShareReport === 'function') {
+                                window._originalShareReport(data);
+                            } else {
+                                alert('⚠️ لا يمكن مشاركة التقرير حالياً.');
+                            }
+                        };
+                        // حفظ المراجع الأصلية (سيتم تعيينها لاحقاً)
+                        window._originalExportReport = window.exportReportHTML;
+                        window._originalShareReport = window.shareReportLink;
+                    })();
+                `;
+                clone.querySelector('head')?.appendChild(fixScript);
+
+                // تحويل إلى HTML وتحميلها
+                const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
                 const blob = new Blob([htmlContent], { type: 'text/html; charset=utf-8' });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
@@ -3503,26 +3548,12 @@
                 a.click();
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
-
             } catch (error) {
                 console.error('❌ خطأ في تحميل التقرير:', error);
                 alert('حدث خطأ أثناء تحميل التقرير. يرجى المحاولة مرة أخرى.');
             }
         }
-        // دالة مساعدة للتحميل الاحتياطي (تُستخدم داخل shareReportLink)
-        function downloadReportFallback(htmlContent) {
-            const blob = new Blob([htmlContent], { type: 'text/html; charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'Zertiva-B2-Report.html';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            setTimeout(() => URL.revokeObjectURL(url), 1000);
-        }
 
-        // دالة مشاركة التقرير (باستخدام Web Share API إن أمكن)
         function shareReportLink() {
             try {
                 const hasData = Object.keys(d.examData).some(skill => Object.keys(d.examData[skill]).length > 0);
@@ -3531,12 +3562,61 @@
                     return;
                 }
 
-                // بناء التقرير المستقل
-                const htmlContent = buildStandaloneReportHTML(d);
+                // بناء التقرير المستقل باستخدام نفس منطق exportReportHTML
+                // نستدعي exportReportHTML التي تقوم بالتحميل، لكننا سنقوم بإنشاء الملف ونشاركه
+                // لتجنب تكرار الكود، سنقوم باستدعاء exportReportHTML لكنها تقوم بالتحميل،
+                // لذا سنقوم بإنشاء المحتوى يدوياً بنفس الطريقة.
+                // لكن بدلاً من تكرار الكود، سنستدعي دالة مساعدة جديدة.
+                // سنقوم بتعديل بسيط: نستخدم exportReportHTML نفسها ولكن نعدل سلوكها عن طريق تمرير معلمة.
+                // لكن الوقت ضيق، لذا سنقوم بنسخ جزء من كود exportReportHTML.
+
+                // إنشاء محتوى التقرير المستقل
+                const clone = document.documentElement.cloneNode(true);
+                // لا نزيل الأزرار
+                const dataScript = document.createElement('script');
+                dataScript.textContent = 'window.__EMBEDDED_REPORT_DATA = ' + JSON.stringify(d, null, 2) + ';';
+                clone.querySelector('head')?.appendChild(dataScript);
+
+                // إضافة سكريبت إضافي يعيد تعريف الدوال (نفس ما في exportReportHTML)
+                const fixScript = document.createElement('script');
+                fixScript.textContent = `
+                    (function() {
+                        const origBuild = window.buildReportDataFromLocalStorage;
+                        window.buildReportDataFromLocalStorage = function() {
+                            if (window.__EMBEDDED_REPORT_DATA) {
+                                return window.__EMBEDDED_REPORT_DATA;
+                            }
+                            if (typeof origBuild === 'function') {
+                                return origBuild();
+                            }
+                            return {};
+                        };
+                        window.exportReportHTML = function() {
+                            const data = window.__EMBEDDED_REPORT_DATA || {};
+                            if (typeof window._originalExportReport === 'function') {
+                                window._originalExportReport(data);
+                            } else {
+                                alert('⚠️ لا يمكن تحميل التقرير حالياً.');
+                            }
+                        };
+                        window.shareReportLink = function() {
+                            const data = window.__EMBEDDED_REPORT_DATA || {};
+                            if (typeof window._originalShareReport === 'function') {
+                                window._originalShareReport(data);
+                            } else {
+                                alert('⚠️ لا يمكن مشاركة التقرير حالياً.');
+                            }
+                        };
+                        window._originalExportReport = window.exportReportHTML;
+                        window._originalShareReport = window.shareReportLink;
+                    })();
+                `;
+                clone.querySelector('head')?.appendChild(fixScript);
+
+                const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
                 const blob = new Blob([htmlContent], { type: 'text/html; charset=utf-8' });
                 const file = new File([blob], 'Zertiva-B2-Report.html', { type: 'text/html' });
 
-                // محاولة استخدام Web Share API لمشاركة الملف مباشرة
                 if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
                     navigator.share({
                         title: 'تقرير Zertiva B2',
@@ -3547,36 +3627,31 @@
                     }).catch(err => {
                         if (err.name !== 'AbortError') {
                             console.error('❌ فشل المشاركة:', err);
-                            // في حالة الفشل، نقدم خيار التحميل
-                            downloadReportFallback(htmlContent);
+                            // في حالة الفشل، نقدم تحميل الملف
+                            const a = document.createElement('a');
+                            a.href = URL.createObjectURL(blob);
+                            a.download = 'Zertiva-B2-Report.html';
+                            document.body.appendChild(a);
+                            a.click();
+                            document.body.removeChild(a);
                         }
                     });
                 } else {
-                    // إذا لم يدعم المتصفح Web Share، نقدم خيار التحميل مع تنبيه
                     const userChoice = confirm(
                         'متصفحك لا يدعم مشاركة الملفات مباشرة.\n' +
-                        'هل تريد تحميل ملف التقرير لإرساله يدوياً؟\n' +
-                        '(يمكنك أيضاً نسخ الرابط المؤقت، لكنه لن يعمل خارج هذا المتصفح)'
+                        'هل تريد تحميل ملف التقرير لإرساله يدوياً؟'
                     );
                     if (userChoice) {
-                        downloadReportFallback(htmlContent);
+                        const a = document.createElement('a');
+                        a.href = URL.createObjectURL(blob);
+                        a.download = 'Zertiva-B2-Report.html';
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
                     } else {
-                        // نسخ الرابط المؤقت مع تنبيه
-                        const blobUrl = URL.createObjectURL(blob);
-                        if (navigator.clipboard && navigator.clipboard.writeText) {
-                            navigator.clipboard.writeText(blobUrl).then(() => {
-                                alert('⚠️ تم نسخ رابط مؤقت إلى الحافظة.\n' +
-                                      'هذا الرابط صالح فقط طالما أن هذه الصفحة مفتوحة، ولا يمكن فتحه من جهاز آخر.\n' +
-                                      'للمشاركة الدائمة، استخدم زر "تحميل التقرير" وأرسل الملف مباشرة.');
-                            }).catch(() => {
-                                prompt('انسخ هذا الرابط المؤقت (غير قابل للمشاركة بين الأجهزة):', blobUrl);
-                            });
-                        } else {
-                            prompt('انسخ هذا الرابط المؤقت (غير قابل للمشاركة بين الأجهزة):', blobUrl);
-                        }
+                        alert('يمكنك استخدام زر "تحميل التقرير" لتنزيل الملف وإرساله لأي شخص.');
                     }
                 }
-
             } catch (error) {
                 console.error('❌ خطأ في مشاركة التقرير:', error);
                 alert('حدث خطأ أثناء مشاركة التقرير. يرجى المحاولة مرة أخرى.');
