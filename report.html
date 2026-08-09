@@ -671,12 +671,9 @@
     <div class="report-hero">
         <div class="report-hero-left">
             <div class="report-hero-icon">Z</div>
-                        <div style="display: flex; align-items: center; gap: 12px;">
-                <img src="images/logo.webp" alt="Zertiva B2" style="height: 40px; width: auto; object-fit: contain;">
-                <div>
-                    <div class="report-hero-title">تقرير <span>Zertiva</span> B2</div>
-                    <div class="report-hero-sub">ملخص تقدمك في التحضير لامتحان B2</div>
-                </div>
+                                <div>
+                <div class="report-hero-title">تقرير <span>Zertiva</span> B2</div>
+                <div class="report-hero-sub">ملخص تقدمك في التحضير لامتحان B2</div>
             </div>
         </div>
         <div class="report-hero-right">
@@ -1201,8 +1198,8 @@
                 avgScore = Math.round((sum / allScores.length) * 100) / 100;
             }
 
-            const progress = avgScore !== null ? Math.round((avgScore / 25) * 100) : 0;
-            const scoreDisplay = avgScore !== null ? avgScore + ' / 25' : '—';
+                        const progress = avgScore !== null ? Math.round((avgScore / 25) * 100) : 0;
+            const scoreDisplay = avgScore !== null ? 'متوسط النتيجة: ' + avgScore + '/25' : '—';
             const latestRelative = latestDate ? getRelativeDateWithColor(latestDate) : { text: '—', colorClass: 'review-gray' };
 
             skillsGrid.innerHTML += `
@@ -1283,12 +1280,16 @@
                     lastThreeScores = [exam.score];
                 }
 
-                let scoresDisplay = '';
-                if (lastThreeScores.length === 0) {
-                    scoresDisplay = '—';
-                } else {
-                    scoresDisplay = lastThreeScores.map(s => s + ' / 25').join(' : ');
-                }
+                  let scoresDisplay = '';
+    if (lastThreeScores.length === 0) {
+        scoresDisplay = '—';
+    } else if (lastThreeScores.length === 1) {
+        scoresDisplay = 'آخر نتيجة: ' + lastThreeScores[0] + '/25';
+    } else if (lastThreeScores.length === 2) {
+        scoresDisplay = 'آخر نتيجتين: ' + lastThreeScores[0] + '/25 | ' + lastThreeScores[1] + '/25';
+    } else {
+        scoresDisplay = 'آخر 3 نتائج: ' + lastThreeScores[0] + '/25 | ' + lastThreeScores[1] + '/25 | ' + lastThreeScores[2] + '/25';
+    }
 
                 const latestScore = lastThreeScores.length > 0 ? lastThreeScores[lastThreeScores.length - 1] : null;
                 const scoreClass = (latestScore === null || latestScore === undefined) ? 'score-none' :
@@ -1322,7 +1323,7 @@
                         </div>
                         <div class="exam-meta">
                             <span>آخر مراجعة: <span class="${review.colorClass}">${review.text}</span></span>
-                            <span>⏱️ <span style="color:${timeColor}">${timeText}</span></span>
+                                           <span>أجبت على الامتحان في: <span style="color:${timeColor}">${timeText}</span></span>
                         </div>
                     </div>
                 `;
