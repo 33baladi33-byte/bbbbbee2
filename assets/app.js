@@ -22387,7 +22387,7 @@ var MyApp = (() => {
           }
           const seconds = Math.floor(elapsed / 1e3);
           const minutes = (seconds / 60).toFixed(2);
-          updateTimerDisplay("\u23F8\uFE0F " + minutes + " \u062F\u0642\u064A\u0642\u0629");
+          updateTimerDisplay(minutes + " \u062F\u0642\u064A\u0642\u0629");
           console.log(`\u23F1\uFE0F \u062A\u0648\u0642\u0641 \u0627\u0644\u062A\u0648\u0642\u064A\u062A \u0644\u0644\u0627\u0645\u062A\u062D\u0627\u0646 ${skill} - ${examId}\u060C \u0627\u0644\u0645\u062F\u0629: ${elapsed}ms`);
           return elapsed;
         },
