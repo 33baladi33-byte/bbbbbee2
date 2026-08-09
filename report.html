@@ -1359,7 +1359,7 @@
         }
         console.log('✅ تقرير Zertiva B2 محدث (تواريخ إنجليزية + ألوان للمراجعة والإعادة)');
 
-        // بناء HTML للتقرير المستقل مع البيانات المضمنة (نسخة محسّنة)
+        // بناء HTML للتقرير المستقل مع البيانات المضمنة (نسخة نظيفة وآمنة)
         function buildStandaloneReportHTML(reportData) {
             // تحويل الشعار إلى Base64 أو استخدام الرابط
             let logoBase64 = '';
@@ -1385,13 +1385,19 @@
 
             const styles = document.querySelector('style')?.innerHTML || '';
 
-            // التأكد من وجود البيانات، وإلا نعرض رسالة خطأ
-            const dataStr = JSON.stringify(reportData, null, 2)
-                .replace(/</g, '\\u003c')   // منع حقن HTML
-                .replace(/>/g, '\\u003e')
-                .replace(/&/g, '\\u0026');
+            // معالجة البيانات لتضمينها بأمان
+            let dataStr;
+            try {
+                dataStr = JSON.stringify(reportData);
+                // الهروب من الأحرف الخاصة التي قد تكسر الصفحة
+                dataStr = dataStr.replace(/</g, '\\u003c').replace(/>/g, '\\u003e').replace(/&/g, '\\u0026');
+            } catch(e) {
+                console.error('فشل في تحويل البيانات إلى JSON:', e);
+                dataStr = '{}';
+            }
 
-            return `<!DOCTYPE html>
+            // بناء محتوى HTML النهائي
+            const htmlContent = `<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -1723,6 +1729,8 @@ if (historyData.length === 0) {
 </script>
 </body>
 </html>`;
+
+            return htmlContent;
         }
 
         // دالة تحميل التقرير كـ HTML (نسخة مستقلة)
@@ -1755,7 +1763,7 @@ if (historyData.length === 0) {
             }
         }
 
-        // دالة مشاركة التقرير (إنشاء رابط)
+        // دالة مشاركة التقرير (تحميل الملف + رابط مؤقت)
         function shareReportLink() {
             try {
                 const hasData = Object.keys(d.examData).some(skill => Object.keys(d.examData[skill]).length > 0);
@@ -1764,20 +1772,42 @@ if (historyData.length === 0) {
                     return;
                 }
 
+                // بناء التقرير المستقل
                 const htmlContent = buildStandaloneReportHTML(d);
                 const blob = new Blob([htmlContent], { type: 'text/html; charset=utf-8' });
-                const url = URL.createObjectURL(blob);
+                const blobUrl = URL.createObjectURL(blob);
 
-                if (navigator.clipboard && navigator.clipboard.writeText) {
-                    navigator.clipboard.writeText(url).then(() => {
-                        alert('✅ تم نسخ رابط التقرير إلى الحافظة!\n\n' +
-                              'يمكنك إرسال هذا الرابط لأي شخص.\n' +
-                              'ملاحظة: الرابط صالح فقط طالما أن هذه الصفحة مفتوحة في المتصفح.');
-                    }).catch(() => {
-                        prompt('انسخ هذا الرابط لمشاركة التقرير:', url);
-                    });
+                // عرض خيارات للمستخدم
+                const choice = confirm(
+                    '📤 مشاركة التقرير\n\n' +
+                    'اختر طريقة المشاركة:\n' +
+                    '• اضغط "موافق" لتحميل ملف التقرير (يمكنك إرساله لأي شخص)\n' +
+                    '• اضغط "إلغاء" لنسخ رابط مؤقت (ينتهي عند إغلاق المتصفح)'
+                );
+
+                if (choice) {
+                    // تحميل الملف مباشرة
+                    const a = document.createElement('a');
+                    a.href = blobUrl;
+                    a.download = 'Zertiva-B2-Report.html';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+                    alert('✅ تم تحميل ملف التقرير.\n\nأرسل هذا الملف لأي شخص، وسيتمكن من فتحه وعرض بياناتك.');
                 } else {
-                    prompt('انسخ هذا الرابط لمشاركة التقرير:', url);
+                    // نسخ الرابط المؤقت
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(blobUrl).then(() => {
+                            alert('✅ تم نسخ رابط مؤقت إلى الحافظة!\n\n' +
+                                  '⚠️ هذا الرابط صالح فقط طالما أن هذه الصفحة مفتوحة.\n' +
+                                  '🔹 للحصول على رابط دائم، استخدم زر "تحميل التقرير" وأرسل الملف.');
+                        }).catch(() => {
+                            prompt('انسخ هذا الرابط المؤقت لمشاركة التقرير:', blobUrl);
+                        });
+                    } else {
+                        prompt('انسخ هذا الرابط المؤقت لمشاركة التقرير:', blobUrl);
+                    }
                 }
 
             } catch (error) {
@@ -1785,10 +1815,6 @@ if (historyData.length === 0) {
                 alert('حدث خطأ أثناء مشاركة التقرير. يرجى المحاولة مرة أخرى.');
             }
         }
-
-        // إضافة الدوال للنطاق العام
-        window.exportReportHTML = exportReportHTML;
-        window.shareReportLink = shareReportLink;
 
     })();
 </script>
