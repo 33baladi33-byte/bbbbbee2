@@ -1135,11 +1135,20 @@
                 <div class="report-hero-sub">ملخص تقدمك في التحضير لامتحان B2</div>
             </div>
         </div>
-        <div class="report-hero-right">
-            <span class="report-hero-date" id="reportDate">09/08/2026</span>
-                             
-        </div>
+     <div class="report-hero-right">
+    <span class="report-hero-date" id="reportDate">09/08/2026</span>
+    <div class="report-actions">
+        <button class="btn-download" onclick="exportReportHTML()">
+            <span class="material-symbols-outlined" style="font-size:18px;">download</span>
+            تحميل التقرير
+        </button>
+        <button class="btn-share" onclick="shareReportLink()">
+            <span class="material-symbols-outlined" style="font-size:18px;">share</span>
+            نسخ رابط التقرير
+        </button>
     </div>
+</div>
+
 
     <!-- ===== STATS GRID ===== -->
     <div class="report-grid" id="statsGrid">
