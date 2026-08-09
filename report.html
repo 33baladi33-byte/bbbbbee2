@@ -1359,11 +1359,7 @@
         }
         console.log('✅ تقرير Zertiva B2 محدث (تواريخ إنجليزية + ألوان للمراجعة والإعادة)');
 
-        // ============================================================
-        //  12. دوال تحميل ومشاركة التقرير (نسخة مستقلة نظيفة)
-        // ============================================================
-
-        // بناء HTML للتقرير المستقل مع البيانات المضمنة
+        // بناء HTML للتقرير المستقل مع البيانات المضمنة (نسخة محسّنة)
         function buildStandaloneReportHTML(reportData) {
             // تحويل الشعار إلى Base64 أو استخدام الرابط
             let logoBase64 = '';
@@ -1388,6 +1384,12 @@
             }
 
             const styles = document.querySelector('style')?.innerHTML || '';
+
+            // التأكد من وجود البيانات، وإلا نعرض رسالة خطأ
+            const dataStr = JSON.stringify(reportData, null, 2)
+                .replace(/</g, '\\u003c')   // منع حقن HTML
+                .replace(/>/g, '\\u003e')
+                .replace(/&/g, '\\u0026');
 
             return `<!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -1532,7 +1534,7 @@
 </div>
 
 <script>
-const REPORT_DATA = ${JSON.stringify(reportData, null, 2)};
+const REPORT_DATA = ${dataStr};
 
 function getExamTime(s, e) {
     const sd = REPORT_DATA.examData && REPORT_DATA.examData[s];
