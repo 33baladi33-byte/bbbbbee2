@@ -794,7 +794,54 @@
 </div>
 
 <script>
-    (function() {
+
+
+
+
+(function() {
+        // ============================================================
+        //  0.  دوال وقت الامتحان والتاريخ (مستقلة)
+        // ============================================================
+        function getExamTime(skill, examId) {
+            try {
+                const key = `exam_time_${skill}_${examId}`;
+                const val = localStorage.getItem(key);
+                return val ? parseInt(val, 10) : null;
+            } catch(e) {
+                return null;
+            }
+        }
+
+        function formatTime(ms) {
+            if (ms === null || ms === undefined) return '—';
+            const seconds = Math.floor(ms / 1000);
+            if (seconds < 60) {
+                return `${seconds} ثانية`;
+            } else {
+                const minutes = (seconds / 60).toFixed(2);
+                return `${minutes} دقيقة`;
+            }
+        }
+
+        function getTimeColor(ms) {
+            if (ms === null || ms === undefined) return 'gray';
+            const seconds = ms / 1000;
+            if (seconds < 60) return 'green';
+            if (seconds < 120) return 'orange';
+            return 'red';
+        }
+
+        // دالة لقراءة سجل نتائج امتحان معين من localStorage
+        function getExamHistory(skill, examId) {
+            try {
+                const key = `exam_history_${skill}_${examId}`;
+                const data = localStorage.getItem(key);
+                return data ? JSON.parse(data) : [];
+            } catch(e) {
+                return [];
+            }
+        }
+
         // ============================================================
         //  1.  عرض التاريخ (بالأرقام الغربية)
         // ============================================================
@@ -993,16 +1040,24 @@
                 return;
             }
 
-            let bestScore = null;
+            // جمع كل النتائج من جميع الامتحانات في هذا الجزء
+            let allScores = [];
             let totalRetries = 0;
             let latestDate = null;
 
             examIds.forEach(id => {
                 const exam = exams[id];
-                if (exam.score !== null && exam.score !== undefined) {
-                    if (bestScore === null || exam.score > bestScore) {
-                        bestScore = exam.score;
-                    }
+                // قراءة سجل النتائج الكامل لهذا الامتحان
+                const history = getExamHistory(skill.id, id);
+                if (history && history.length > 0) {
+                    history.forEach(item => {
+                        if (item.score !== null && item.score !== undefined) {
+                            allScores.push(item.score);
+                        }
+                    });
+                } else if (exam.score !== null && exam.score !== undefined) {
+                    // إذا لم يكن هناك سجل، نضيف النتيجة الحالية
+                    allScores.push(exam.score);
                 }
                 totalRetries += exam.retries || 0;
                 if (exam.lastPlayed) {
@@ -1014,8 +1069,15 @@
                 totalExams++;
             });
 
-            const progress = bestScore !== null ? Math.round((bestScore / 25) * 100) : 0;
-            const scoreDisplay = bestScore !== null ? bestScore + ' / 25' : '—';
+            // حساب المتوسط
+            let avgScore = null;
+            if (allScores.length > 0) {
+                const sum = allScores.reduce((a, b) => a + b, 0);
+                avgScore = Math.round((sum / allScores.length) * 100) / 100;
+            }
+
+            const progress = avgScore !== null ? Math.round((avgScore / 25) * 100) : 0;
+            const scoreDisplay = avgScore !== null ? avgScore + ' / 25' : '—';
             const latestRelative = latestDate ? getRelativeDateWithColor(latestDate) : { text: '—', colorClass: 'review-gray' };
 
             skillsGrid.innerHTML += `
@@ -1074,52 +1136,74 @@
             let html = '';
 
             allExams.forEach(exam => {
-                if (exam.skillId !== currentSkillId) {
-                    currentSkillId = exam.skillId;
-                    const skillLabel = skills.find(s => s.id === currentSkillId)?.label || currentSkillId;
-                    html += `
-                        <div class="exam-section-divider">
-                            <span class="material-symbols-outlined">folder</span>
-                            ${skillLabel}
-                        </div>
-                    `;
-                }
 
-                const scoreClass = (exam.score === null || exam.score === undefined) ? 'score-none' :
-                                   (exam.score >= 20 ? 'score-good' :
-                                   (exam.score >= 15 ? 'score-medium' : 'score-low'));
-                const scoreDisplay = (exam.score !== null && exam.score !== undefined) ? exam.score + ' / 25' : '—';
+allExams.forEach(exam => {
+    if (exam.skillId !== currentSkillId) {
+        currentSkillId = exam.skillId;
+        const skillLabel = skills.find(s => s.id === currentSkillId)?.label || currentSkillId;
+        html += `
+            <div class="exam-section-divider">
+                <span class="material-symbols-outlined">folder</span>
+                ${skillLabel}
+            </div>
+        `;
+    }
 
-                // لون "آخر مراجعة"
-                const review = exam.lastPlayed ? getRelativeDateWithColor(exam.lastPlayed) : { text: 'ليس بعد', colorClass: 'review-gray' };
+    // جلب آخر 3 نتائج من السجل
+    const history = getExamHistory(exam.skillId, exam.examId);
+    let lastThreeScores = [];
+    if (history && history.length > 0) {
+        const len = history.length;
+        const start = Math.max(0, len - 3);
+        lastThreeScores = history.slice(start).map(item => item.score);
+    } else if (exam.score !== null && exam.score !== undefined) {
+        lastThreeScores = [exam.score];
+    }
 
-                // لون عدد مرات الإعادة
-                let retryClass = 'retry-green';
-                if (exam.retries <= 3) retryClass = 'retry-red';
-                else if (exam.retries <= 7) retryClass = 'retry-orange';
-                // else أخضر
+    let scoresDisplay = '';
+    if (lastThreeScores.length === 0) {
+        scoresDisplay = '—';
+    } else {
+        scoresDisplay = lastThreeScores.map(s => s + ' / 25').join(' : ');
+    }
 
-                const title = getExamTitle(exam.skillId, exam.examId);
+    const latestScore = lastThreeScores.length > 0 ? lastThreeScores[lastThreeScores.length - 1] : null;
+    const scoreClass = (latestScore === null || latestScore === undefined) ? 'score-none' :
+                       (latestScore >= 20 ? 'score-good' :
+                       (latestScore >= 15 ? 'score-medium' : 'score-low'));
 
-                html += `
-                    <div class="exam-card">
-                        <div class="exam-row">
-                            <span class="exam-skill">${exam.skillLabel}</span>
-                            <span class="exam-title">${title}</span>
-                        </div>
-                        <div class="exam-row">
-                            <span class="exam-score ${scoreClass}">${scoreDisplay}</span>
-                            <span style="font-size:0.75rem; color:#94a3b8;">
-                                <span class="material-symbols-outlined" style="font-size:16px; vertical-align:middle;">repeat</span>
-                                <span class="${retryClass}">${exam.retries}</span>
-                            </span>
-                        </div>
-                        <div class="exam-meta">
-                            <span>آخر مراجعة: <span class="${review.colorClass}">${review.text}</span></span>
-                        </div>
-                    </div>
-                `;
-            });
+    const review = exam.lastPlayed ? getRelativeDateWithColor(exam.lastPlayed) : { text: 'ليس بعد', colorClass: 'review-gray' };
+
+    let retryClass = 'retry-green';
+    if (exam.retries <= 3) retryClass = 'retry-red';
+    else if (exam.retries <= 7) retryClass = 'retry-orange';
+
+    const timeMs = getExamTime(exam.skillId, exam.examId);
+    const timeText = timeMs !== null ? formatTime(timeMs) : '—';
+    const timeColor = timeMs !== null ? getTimeColor(timeMs) : 'gray';
+
+    const title = getExamTitle(exam.skillId, exam.examId);
+
+    html += `
+        <div class="exam-card">
+            <div class="exam-row">
+                <span class="exam-skill">${exam.skillLabel}</span>
+                <span class="exam-title">${title}</span>
+            </div>
+            <div class="exam-row">
+                <span class="exam-score ${scoreClass}">${scoresDisplay}</span>
+                <span style="font-size:0.75rem; color:#94a3b8;">
+                    <span class="material-symbols-outlined" style="font-size:16px; vertical-align:middle;">repeat</span>
+                    <span class="${retryClass}">${exam.retries}</span>
+                </span>
+            </div>
+            <div class="exam-meta">
+                <span>آخر مراجعة: <span class="${review.colorClass}">${review.text}</span></span>
+                <span>⏱️ <span style="color:${timeColor}">${timeText}</span></span>
+            </div>
+        </div>
+    `;
+});
 
             examsGrid.innerHTML = html;
         }
