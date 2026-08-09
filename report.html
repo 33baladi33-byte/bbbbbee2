@@ -1142,7 +1142,7 @@
         const skillsGrid = document.getElementById('skillsGrid');
         let totalExams = 0;
 
-        skills.forEach(skill => {
+                skills.forEach(skill => {
             const exams = examData[skill.id] || {};
             const examIds = Object.keys(exams);
 
@@ -1199,15 +1199,15 @@
                 avgScore = Math.round((sum / allScores.length) * 100) / 100;
             }
 
-                        const progress = avgScore !== null ? Math.round((avgScore / 25) * 100) : 0;
-            const scoreDisplay = avgScore !== null ? 'متوسط النتيجة: ' + avgScore + '/25' : '—';
+            const progress = avgScore !== null ? Math.round((avgScore / 25) * 100) : 0;
+            const scoreDisplay = avgScore !== null ? 'المتوسط: ' + avgScore + '/25' : '—';
             const latestRelative = latestDate ? getRelativeDateWithColor(latestDate) : { text: '—', colorClass: 'review-gray' };
 
             skillsGrid.innerHTML += `
                 <div class="skill-card">
                     <div class="skill-header">
                         <span class="skill-name">${skill.label}</span>
-                        <span class="skill-score">${scoreDisplay}</span>
+                        <span class="skill-score" style="font-weight: normal;">${scoreDisplay}</span>
                     </div>
                     <div class="skill-progress"><div class="fill" style="width:${progress}%;"></div></div>
                     <div class="skill-meta">
