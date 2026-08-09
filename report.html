@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zertiva B2 - التقرير</title>
+    <title>Zertiva B2</title>
     <link rel="icon" type="image/webp" href="images/logo.webp">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="assets/app.js"></script>
     <style>
-        /* ===== Reset & Base (نفس الكود السابق، يُحتفظ به كاملاً) ===== */
+        /* ===== Reset & Base ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Cairo', 'Inter', sans-serif;
+            font-family: 'Cairo', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: #f5f7fa;
             color: #1a1a2e;
             padding: 32px 24px;
@@ -21,45 +22,31 @@
         }
         .report-container { max-width: 1100px; margin: 0 auto; }
         .report-hero {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px 32px;
-            background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-            border: 1px solid rgba(0,0,0,0.04);
-            margin-bottom: 28px;
-            flex-wrap: wrap;
-            gap: 16px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 24px 32px; background: #ffffff; border-radius: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.04);
+            margin-bottom: 28px; flex-wrap: wrap; gap: 16px;
         }
         .report-hero-left { display: flex; align-items: center; gap: 14px; }
         .report-hero-icon {
-            width: 44px; height: 44px;
-            background: linear-gradient(135deg, #1a2a4a, #2c3e66);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 22px;
-            font-weight: 800;
+            width: 44px; height: 44px; background: linear-gradient(135deg, #1a2a4a, #2c3e66);
+            border-radius: 14px; display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 22px; font-weight: 800; letter-spacing: -0.5px;
         }
-        .report-hero-title { font-size: 1.25rem; font-weight: 700; color: #1a1a2e; }
+        .report-hero-title { font-size: 1.25rem; font-weight: 700; color: #1a1a2e; letter-spacing: -0.3px; }
         .report-hero-title span { color: #2c3e66; }
-        .report-hero-sub { font-size: 0.75rem; color: #94a3b8; }
+        .report-hero-sub { font-size: 0.75rem; color: #94a3b8; font-weight: 400; }
         .report-hero-right { display: flex; align-items: center; gap: 12px; }
         .report-hero-date {
-            font-size: 0.8rem; color: #64748b;
-            background: #f1f4f8; padding: 6px 16px;
-            border-radius: 40px; font-weight: 500;
+            font-size: 0.8rem; color: #64748b; background: #f1f4f8;
+            padding: 6px 16px; border-radius: 40px; font-weight: 500;
         }
         .report-actions { display: flex; gap: 10px; }
         .report-actions button {
             display: inline-flex; align-items: center; gap: 8px;
             padding: 10px 22px; border: none; border-radius: 40px;
-            font-size: 0.8rem; font-weight: 600;
-            cursor: pointer; transition: all 0.25s ease; font-family: inherit;
+            font-size: 0.8rem; font-weight: 600; cursor: pointer;
+            transition: all 0.25s ease; font-family: inherit;
         }
         .btn-download {
             background: #1a2a4a; color: white;
@@ -74,73 +61,51 @@
         .btn-close:hover {
             background: #e2e8f0; transform: translateY(-2px);
         }
-        /* ===== باقي الأنماط كما هي (لم نغير شيئاً) ===== */
+        /* ===== باقي الأنماط (نفسها) ===== */
         .report-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-bottom: 24px;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px;
         }
         .stat-card {
             background: #ffffff; border-radius: 16px; padding: 18px 20px;
-            border: 1px solid rgba(0,0,0,0.04);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 1px 3px rgba(0,0,0,0.04);
             transition: all 0.2s ease;
         }
         .stat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
         .stat-card .stat-icon { font-size: 20px; color: #2c3e66; margin-bottom: 6px; display: block; }
-        .stat-card .stat-value { font-size: 1.6rem; font-weight: 700; color: #1a1a2e; line-height: 1.2; }
-        .stat-card .stat-label {
-            font-size: 0.7rem; color: #94a3b8; font-weight: 500;
-            text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px;
-        }
+        .stat-card .stat-value { font-size: 1.6rem; font-weight: 700; color: #1a1a2e; line-height: 1.2; letter-spacing: -0.5px; }
+        .stat-card .stat-label { font-size: 0.7rem; color: #94a3b8; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
         .section-card {
             background: #ffffff; border-radius: 20px; padding: 24px 28px;
-            border: 1px solid rgba(0,0,0,0.04);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-            margin-bottom: 20px;
-            transition: all 0.2s ease;
+            border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            margin-bottom: 20px; transition: all 0.2s ease;
         }
         .section-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
         .section-header {
             display: flex; align-items: center; gap: 10px;
-            margin-bottom: 16px; padding-bottom: 12px;
-            border-bottom: 1px solid #f1f4f8;
+            margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #f1f4f8;
         }
         .section-header .material-symbols-outlined { font-size: 22px; color: #2c3e66; }
-        .section-header h3 { font-size: 1rem; font-weight: 600; color: #1a1a2e; }
+        .section-header h3 { font-size: 1rem; font-weight: 600; color: #1a1a2e; letter-spacing: -0.2px; }
         .section-header .badge {
             font-size: 0.6rem; font-weight: 600; color: #94a3b8;
-            background: #f1f4f8; padding: 2px 10px; border-radius: 20px;
-            margin-right: auto;
+            background: #f1f4f8; padding: 2px 10px; border-radius: 20px; margin-right: auto;
         }
         .account-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 12px;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px;
         }
         .account-item { display: flex; flex-direction: column; gap: 2px; }
-        .account-item .label {
-            font-size: 0.65rem; color: #94a3b8; font-weight: 500;
-            text-transform: uppercase; letter-spacing: 0.5px;
-        }
+        .account-item .label { font-size: 0.65rem; color: #94a3b8; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
         .account-item .value { font-size: 0.9rem; font-weight: 500; color: #1a1a2e; }
-        .account-item .value.mono { font-family: monospace; font-size: 0.75rem; word-break: break-all; }
+        .account-item .value.mono { font-family: 'SF Mono', 'Menlo', monospace; font-size: 0.75rem; word-break: break-all; }
         .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 12px;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px;
         }
         .skill-card {
             background: #f8fafc; border-radius: 14px; padding: 14px 16px;
-            border: 1px solid #eef2f6;
-            transition: all 0.2s ease;
+            border: 1px solid #eef2f6; transition: all 0.2s ease;
         }
         .skill-card:hover { background: #f1f4f8; border-color: #dce2ec; }
-        .skill-card .skill-header {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 6px;
-        }
+        .skill-card .skill-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
         .skill-card .skill-name { font-size: 0.85rem; font-weight: 600; color: #1a1a2e; }
         .skill-card .skill-score { font-size: 0.85rem; font-weight: 700; color: #2c3e66; }
         .skill-card .skill-progress {
@@ -150,8 +115,7 @@
         .skill-card .skill-progress .fill {
             height: 100%; border-radius: 10px;
             background: linear-gradient(90deg, #2c3e66, #38bdf8);
-            transition: width 0.8s ease;
-            width: 0%;
+            transition: width 0.8s ease; width: 0%;
         }
         .skill-card .skill-meta {
             display: flex; justify-content: space-between;
@@ -160,21 +124,15 @@
         .skill-card .skill-meta span { display: flex; align-items: center; gap: 4px; }
         .skill-card .skill-meta .material-symbols-outlined { font-size: 14px; color: #94a3b8; }
         .exams-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
         }
         .exam-card {
             background: #f8fafc; border-radius: 14px; padding: 14px 16px;
-            border: 1px solid #eef2f6;
-            transition: all 0.2s ease;
+            border: 1px solid #eef2f6; transition: all 0.2s ease;
             display: flex; flex-direction: column; gap: 6px;
         }
         .exam-card:hover { background: #f1f4f8; border-color: #dce2ec; }
-        .exam-card .exam-row {
-            display: flex; justify-content: space-between; align-items: center;
-            font-size: 0.8rem;
-        }
+        .exam-card .exam-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; }
         .exam-card .exam-skill { font-weight: 600; color: #1a1a2e; font-size: 0.85rem; }
         .exam-card .exam-title { color: #475569; font-weight: 400; }
         .exam-card .exam-score { font-weight: 700; font-size: 0.85rem; }
@@ -196,9 +154,7 @@
         .review-red { color: #dc2626; }
         .review-gray { color: #94a3b8; }
         .exam-section-divider {
-            grid-column: 1 / -1;
-            margin: 6px 0 4px 0;
-            padding: 6px 8px;
+            grid-column: 1 / -1; margin: 6px 0 4px 0; padding: 6px 8px;
             font-size: 0.8rem; font-weight: 600; color: #2c3e66;
             background: #f1f4f8; border-radius: 8px;
             display: flex; align-items: center; gap: 8px;
@@ -209,23 +165,16 @@
         }
         .timeline-item {
             display: flex; align-items: center; gap: 14px;
-            padding: 8px 12px; border-radius: 10px;
-            background: #f8fafc; transition: background 0.2s ease;
+            padding: 8px 12px; border-radius: 10px; background: #f8fafc;
+            transition: background 0.2s ease;
         }
         .timeline-item:hover { background: #f1f4f8; }
-        .timeline-item .timeline-date {
-            font-size: 0.7rem; color: #94a3b8; font-weight: 500;
-            min-width: 80px;
-        }
-        .timeline-item .timeline-dot {
-            width: 8px; height: 8px; border-radius: 50%;
-            background: #2c3e66; flex-shrink: 0;
-        }
+        .timeline-item .timeline-date { font-size: 0.7rem; color: #94a3b8; font-weight: 500; min-width: 80px; }
+        .timeline-item .timeline-dot { width: 8px; height: 8px; border-radius: 50%; background: #2c3e66; flex-shrink: 0; }
         .timeline-item .timeline-content { flex: 1; font-size: 0.8rem; color: #1a1a2e; }
         .timeline-item .timeline-value { font-weight: 600; color: #2c3e66; }
         .report-footer {
-            margin-top: 28px; padding-top: 16px;
-            border-top: 1px solid #eef2f6;
+            margin-top: 28px; padding-top: 16px; border-top: 1px solid #eef2f6;
             display: flex; justify-content: space-between; align-items: center;
             font-size: 0.7rem; color: #94a3b8; flex-wrap: wrap; gap: 8px;
         }
@@ -237,11 +186,7 @@
             .stat-card { box-shadow: none; border: 1px solid #eef2f6; }
             .section-card { box-shadow: none; border: 1px solid #eef2f6; break-inside: avoid; }
             .report-actions { display: none !important; }
-            .report-footer {
-                position: fixed; bottom: 12px; left: 0; right: 0;
-                padding: 8px 24px; background: white;
-                border-top: 1px solid #eef2f6;
-            }
+            .report-footer { position: fixed; bottom: 12px; left: 0; right: 0; padding: 8px 24px; background: white; border-top: 1px solid #eef2f6; }
             .stat-card:hover { transform: none !important; }
             .exam-card:hover { background: #f8fafc !important; }
             .skill-card:hover { background: #f8fafc !important; }
@@ -276,6 +221,7 @@
 </head>
 <body>
 <div class="report-container" id="reportContainer">
+
     <!-- ===== HERO ===== -->
     <div class="report-hero">
         <div class="report-hero-left">
@@ -396,505 +342,523 @@
 </div>
 
 <script>
-    (function() {
-        // ============================================================
-        // 1. دوال مساعدة لقراءة البيانات من localStorage (نفس التقرير القديم)
-        // ============================================================
-        function getLocalData(key, defaultValue) {
-            try {
-                const val = localStorage.getItem(key);
-                return val !== null ? val : defaultValue;
-            } catch { return defaultValue; }
-        }
+(function() {
+    // ============================================================
+    // 1. دوال مساعدة لقراءة البيانات من localStorage
+    // ============================================================
+    function getLocalData(key, defaultVal) {
+        try {
+            const val = localStorage.getItem(key);
+            return val !== null ? val : defaultVal;
+        } catch { return defaultVal; }
+    }
 
-        function getLocalJSON(key, defaultValue) {
-            try {
-                const val = localStorage.getItem(key);
-                return val ? JSON.parse(val) : defaultValue;
-            } catch { return defaultValue; }
-        }
+    function getLocalJSON(key, defaultVal) {
+        try {
+            const val = localStorage.getItem(key);
+            return val ? JSON.parse(val) : defaultVal;
+        } catch { return defaultVal; }
+    }
 
-        function getTotalStudyMinutes() {
-            return parseInt(getLocalData('total_study_minutes', '0')) || 0;
-        }
+    function getTotalStudyMinutes() {
+        return parseInt(getLocalData('total_study_minutes', '0')) || 0;
+    }
 
-        function getTotalStudyHours() {
-            return (getTotalStudyMinutes() / 60).toFixed(1);
-        }
+    function getTotalStudyHours() {
+        return (getTotalStudyMinutes() / 60).toFixed(1);
+    }
 
-        function getExamDate() {
-            return getLocalData('zertiva_exam_date', null);
-        }
+    function getExamDate() {
+        return getLocalData('zertiva_exam_date', null);
+    }
 
-        function getDailyGoal() {
-            const data = getLocalJSON('stats_daily_data', { goal: 120 });
-            const goal = data.goal || 120;
-            const hours = Math.floor(goal / 60);
-            const mins = goal % 60;
-            if (hours > 0) {
-                return hours + (hours === 1 ? ' ساعة' : ' ساعات') + (mins > 0 ? ' و ' + mins + ' دقيقة' : '');
+    function getDailyGoal() {
+        const data = getLocalJSON('stats_daily_data', { goal: 120 });
+        const goal = data.goal || 120;
+        const hours = Math.floor(goal / 60);
+        const mins = goal % 60;
+        if (hours > 0) {
+            return hours + (hours === 1 ? ' ساعة' : ' ساعات') + (mins > 0 ? ' و ' + mins + ' دقيقة' : '');
+        }
+        return mins + ' دقيقة';
+    }
+
+    function getStreak() {
+        const data = getLocalJSON('stats_daily_data', { history: [] });
+        const history = data.history || [];
+        let totalSuccessful = 0;
+        history.forEach(entry => {
+            if (entry.completed !== undefined) {
+                if (entry.completed === true) totalSuccessful++;
+            } else {
+                const goalAtDay = entry.goal || data.goal || 120;
+                const minutes = entry.minutes || 0;
+                if (minutes >= goalAtDay) totalSuccessful++;
             }
-            return mins + ' دقيقة';
-        }
+        });
+        return totalSuccessful;
+    }
 
-        function getStreak() {
-            const data = getLocalJSON('stats_daily_data', { history: [] });
-            const history = data.history || [];
-            let totalSuccessful = 0;
-            history.forEach(entry => {
-                if (entry.completed !== undefined) {
-                    if (entry.completed === true) totalSuccessful++;
-                } else {
-                    const goalAtDay = entry.goal || data.goal || 120;
-                    const minutes = entry.minutes || 0;
-                    if (minutes >= goalAtDay) totalSuccessful++;
+    function getHistory() {
+        const data = getLocalJSON('stats_daily_data', { history: [] });
+        return data.history || [];
+    }
+
+    // ============================================================
+    // 2. جمع بيانات الامتحانات من localStorage
+    // ============================================================
+    function getAllExamData() {
+        const skills = ['hoeren1','hoeren2','hoeren3','lesen1','lesen2','lesen3','sprach1','sprach2'];
+        const result = {};
+        skills.forEach(skill => {
+            result[skill] = {};
+            // اقرأ جميع المفاتيح التي تبدأ بـ exam_result_skill_
+            const prefix = `exam_result_${skill}_`;
+            const allKeys = Object.keys(localStorage);
+            const examKeys = allKeys.filter(k => k.startsWith(prefix));
+            examKeys.forEach(k => {
+                const examIdStr = k.substring(prefix.length);
+                const examId = parseInt(examIdStr, 10);
+                if (!isNaN(examId)) {
+                    const score = parseFloat(localStorage.getItem(k));
+                    if (!isNaN(score)) {
+                        const retries = parseInt(getLocalData(`exam_retry_${skill}_${examId}`, '0')) || 0;
+                        const lastPlayed = getLocalData(`exam_last_review_${skill}_${examId}`, null);
+                        // إذا لم يوجد last_review، نحاول من history
+                        let lastFromHistory = null;
+                        try {
+                            const historyKey = `exam_history_${skill}_${examId}`;
+                            const hist = JSON.parse(localStorage.getItem(historyKey) || '[]');
+                            if (hist.length > 0) {
+                                lastFromHistory = hist[hist.length - 1].date || null;
+                            }
+                        } catch(e) {}
+                        const finalLast = lastPlayed || lastFromHistory;
+                        result[skill][examId] = {
+                            score: score,
+                            retries: retries,
+                            lastPlayed: finalLast
+                        };
+                    }
                 }
             });
-            return totalSuccessful;
-        }
+        });
+        return result;
+    }
 
-        function getHistory() {
-            const data = getLocalJSON('stats_daily_data', { history: [] });
-            return data.history || [];
-        }
-
-        function getExamResultsForSkill(skill) {
-            const prefix = `exam_result_${skill}_`;
-            const exams = {};
+    // ============================================================
+    // 3. بناء بيانات التقرير من localStorage
+    // ============================================================
+    function buildReportDataFromLocalStorage() {
+        const examDate = getExamDate();
+        let remainingDays = '—';
+        if (examDate) {
             try {
-                const allKeys = Object.keys(localStorage);
-                const examKeys = allKeys.filter(k => k.startsWith(prefix));
-                examKeys.forEach(k => {
-                    const examIdStr = k.substring(prefix.length);
-                    const examId = parseInt(examIdStr, 10);
-                    if (!isNaN(examId)) {
-                        const score = parseFloat(localStorage.getItem(k));
-                        if (!isNaN(score)) {
-                            const retriesKey = `exam_retry_${skill}_${examId}`;
-                            const retries = parseInt(localStorage.getItem(retriesKey)) || 0;
-                            const lastReviewKey = `exam_last_review_${skill}_${examId}`;
-                            const lastPlayed = localStorage.getItem(lastReviewKey) || null;
-                            exams[examId] = { score, retries, lastPlayed };
-                        }
-                    }
-                });
-            } catch (e) { /* تجاهل */ }
-            return exams;
+                const today = new Date();
+                today.setHours(0,0,0,0);
+                const exam = new Date(examDate);
+                exam.setHours(0,0,0,0);
+                const diff = Math.ceil((exam - today) / (1000*60*60*24));
+                remainingDays = diff > 0 ? diff + ' يوم' : 'انتهى';
+            } catch(e) { /* تجاهل */ }
         }
 
-        function getAllExamData() {
-            const skills = ['hoeren1','hoeren2','hoeren3','lesen1','lesen2','lesen3','sprach1','sprach2'];
-            const result = {};
-            skills.forEach(skill => { result[skill] = getExamResultsForSkill(skill); });
-            return result;
-        }
+        // قراءة بيانات المستخدم من zertiva_user_data إن وجدت
+        let userData = {};
+        try {
+            const raw = localStorage.getItem('zertiva_user_data');
+            if (raw) userData = JSON.parse(raw);
+        } catch(e) {}
 
-        // ============================================================
-        // 2. بناء البيانات من localStorage (بدون افتراضيات ثابتة)
-        // ============================================================
-        function buildReportDataFromLocalStorage() {
-            const examDate = getExamDate();
-            let remainingDays = '—';
-            if (examDate) {
-                try {
-                    const today = new Date();
-                    today.setHours(0,0,0,0);
-                    const exam = new Date(examDate);
-                    exam.setHours(0,0,0,0);
-                    const diff = Math.ceil((exam - today) / (1000*60*60*24));
-                    remainingDays = diff > 0 ? diff + ' يوم' : 'انتهى';
-                } catch(e) { /* تجاهل */ }
-            }
+        return {
+            fullName: userData.fullName || getLocalData('zertiva_user_name', '—'),
+            email: userData.email || getLocalData('zertiva_user_email', 'زائر'),
+            creationTime: userData.creationTime || getLocalData('zertiva_user_created', null),
+            uid: userData.uid || getLocalData('zertiva_user_uid', '—'),
+            examDate: examDate || '—',
+            plan: userData.plan || getLocalData('zertiva_user_plan', 'free'),
+            totalHours: getTotalStudyHours(),
+            streak: getStreak(),
+            remainingDays: remainingDays,
+            dailyGoal: getDailyGoal(),
+            examData: getAllExamData(),
+            history: getHistory()
+        };
+    }
 
-            return {
-                fullName: getLocalData('zertiva_user_name', '—'),
-                email: getLocalData('zertiva_user_email', 'زائر'),
-                creationTime: getLocalData('zertiva_user_created', null),
-                uid: getLocalData('zertiva_user_uid', '—'),
-                examDate: examDate || '—',
-                plan: getLocalData('zertiva_user_plan', 'free'),
-                totalHours: getTotalStudyHours(),
-                streak: getStreak(),
-                remainingDays: remainingDays,
-                dailyGoal: getDailyGoal(),
-                examData: getAllExamData(),
-                history: getHistory()
-            };
-        }
+    // ============================================================
+    // 4. قراءة البيانات (يفضل zertiva_report_data إن وجد)
+    // ============================================================
+    let d = null;
+    const stored = localStorage.getItem('zertiva_report_data');
+    if (stored) {
+        try {
+            d = JSON.parse(stored);
+            // التأكد من وجود الحقول الأساسية
+            if (!d.examData) d.examData = {};
+            if (!d.history) d.history = [];
+        } catch(e) { d = null; }
+    }
+    if (!d) {
+        d = buildReportDataFromLocalStorage();
+    }
 
-        // ============================================================
-        // 3. قراءة البيانات (يفضل zertiva_report_data إن وجد)
-        // ============================================================
-        let d = null;
-        const stored = localStorage.getItem('zertiva_report_data');
-        if (stored) {
-            try {
-                d = JSON.parse(stored);
-                // التأكد من وجود الحقول الأساسية
-                if (!d.examData) d.examData = {};
-                if (!d.history) d.history = [];
-            } catch(e) { d = null; }
-        }
-        if (!d) {
-            d = buildReportDataFromLocalStorage();
-        }
+    // إذا لم توجد بيانات على الإطلاق، نعرض رسالة
+    const hasData = Object.keys(d.examData).some(s => Object.keys(d.examData[s]).length > 0) || d.email !== 'زائر';
+    if (!hasData && d.email === 'زائر') {
+        document.querySelector('.report-container').innerHTML = `
+            <div style="text-align:center; padding:60px 20px; background:#ffffff; border-radius:20px; border:1px solid #eef2f6;">
+                <div style="font-size:48px; margin-bottom:16px;">📭</div>
+                <h3 style="color:#1a1a2e; margin-bottom:8px;">لا توجد بيانات</h3>
+                <p style="color:#94a3b8; font-size:0.9rem;">لم يتم تسجيل أي نتائج بعد. قم بحل بعض الامتحانات ثم عد إلى هذا التقرير.</p>
+                <button onclick="window.close()" style="margin-top:20px; padding:10px 28px; background:#1a2a4a; color:white; border:none; border-radius:40px; font-size:0.85rem; font-weight:600; cursor:pointer;">إغلاق</button>
+            </div>
+        `;
+        return;
+    }
 
-        // إذا لم توجد بيانات على الإطلاق، نعرض رسالة
-        const hasData = Object.keys(d.examData).some(s => Object.keys(d.examData[s]).length > 0) || d.email !== 'زائر';
-        if (!hasData && d.email === 'زائر') {
-            document.querySelector('.report-container').innerHTML = `
-                <div style="text-align:center; padding:60px 20px; background:#ffffff; border-radius:20px; border:1px solid #eef2f6;">
-                    <div style="font-size:48px; margin-bottom:16px;">📭</div>
-                    <h3 style="color:#1a1a2e; margin-bottom:8px;">لا توجد بيانات</h3>
-                    <p style="color:#94a3b8; font-size:0.9rem;">لم يتم تسجيل أي نتائج بعد. قم بحل بعض الامتحانات ثم عد إلى هذا التقرير.</p>
-                    <button onclick="window.close()" style="margin-top:20px; padding:10px 28px; background:#1a2a4a; color:white; border:none; border-radius:40px; font-size:0.85rem; font-weight:600; cursor:pointer;">إغلاق</button>
+    if (d.email === '—') d.email = 'زائر';
+
+    // ============================================================
+    // 5. دوال العرض (نفسها)
+    // ============================================================
+    function clean(val) {
+        if (val === null || val === undefined || val === '') return '—';
+        if (typeof val === 'string' && val.trim() === '') return '—';
+        return val;
+    }
+
+    function formatDateEn(dateStr) {
+        if (!dateStr || dateStr === '—') return '—';
+        let date = new Date(dateStr);
+        if (isNaN(date.getTime()) && !isNaN(Number(dateStr))) date = new Date(Number(dateStr));
+        if (isNaN(date.getTime())) {
+            const parsed = Date.parse(dateStr);
+            if (!isNaN(parsed)) date = new Date(parsed);
+        }
+        if (isNaN(date.getTime())) return dateStr;
+        const day = String(date.getDate()).padStart(2,'0');
+        const month = String(date.getMonth()+1).padStart(2,'0');
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+    }
+
+    function getRelativeDateWithColor(dateStr) {
+        if (!dateStr) return { text: 'ليس بعد', colorClass: 'review-gray' };
+        try {
+            const date = new Date(dateStr);
+            const now = new Date();
+            const diff = Math.floor((now - date) / (1000*60*60*24));
+            let text, colorClass;
+            if (diff === 0) { text = 'اليوم'; colorClass = 'review-green'; }
+            else if (diff === 1) { text = 'قبل يوم'; colorClass = 'review-green'; }
+            else if (diff === 2) { text = 'قبل يومين'; colorClass = 'review-green'; }
+            else if (diff === 3) { text = 'قبل 3 أيام'; colorClass = 'review-green'; }
+            else if (diff >= 4 && diff <= 6) { text = `قبل ${diff} أيام`; colorClass = 'review-orange'; }
+            else if (diff >= 7) { text = `قبل ${diff} يوماً`; colorClass = 'review-red'; }
+            else { text = dateStr; colorClass = 'review-gray'; }
+            return { text, colorClass };
+        } catch { return { text: dateStr, colorClass: 'review-gray' }; }
+    }
+
+    // ============================================================
+    // 6. عرض التواريخ والإحصائيات
+    // ============================================================
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('en-GB', { year:'numeric', month:'2-digit', day:'2-digit' });
+    document.getElementById('reportDate').textContent = dateStr;
+    document.getElementById('footerDate').textContent = dateStr;
+
+    document.getElementById('statHours').textContent = clean(d.totalHours);
+    document.getElementById('statStreak').textContent = clean(d.streak);
+    document.getElementById('statRemaining').textContent = clean(d.remainingDays);
+    document.getElementById('statGoal').textContent = clean(d.dailyGoal);
+
+    document.getElementById('accName').textContent = clean(d.fullName);
+    document.getElementById('accEmail').textContent = clean(d.email);
+    document.getElementById('accCreated').textContent = formatDateEn(d.creationTime);
+    document.getElementById('accUid').textContent = clean(d.uid);
+    document.getElementById('accExamDate').textContent = formatDateEn(d.examDate);
+
+    const badge = document.getElementById('accountBadge');
+    if (d.plan === 'Pro' || d.plan === 'premium') {
+        badge.textContent = '⭐ Pro';
+        badge.style.background = '#dcfce7';
+        badge.style.color = '#166534';
+    } else {
+        badge.textContent = 'مجاني';
+        badge.style.background = '#f1f4f8';
+        badge.style.color = '#94a3b8';
+    }
+
+    // ============================================================
+    // 7. عرض المهارات
+    // ============================================================
+    const skills = [
+        { id: 'hoeren1', label: 'Hören 1' },
+        { id: 'hoeren2', label: 'Hören 2' },
+        { id: 'hoeren3', label: 'Hören 3' },
+        { id: 'lesen1', label: 'Lesen 1' },
+        { id: 'lesen2', label: 'Lesen 2' },
+        { id: 'lesen3', label: 'Lesen 3' },
+        { id: 'sprach1', label: 'Sprachbausteine 1' },
+        { id: 'sprach2', label: 'Sprachbausteine 2' }
+    ];
+
+    const examData = d.examData || {};
+    const skillsGrid = document.getElementById('skillsGrid');
+    let totalExams = 0;
+
+    skills.forEach(skill => {
+        const exams = examData[skill.id] || {};
+        const examIds = Object.keys(exams);
+        if (examIds.length === 0) {
+            skillsGrid.innerHTML += `
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">${skill.label}</span>
+                        <span class="skill-score" style="color:#94a3b8;">—</span>
+                    </div>
+                    <div class="skill-progress"><div class="fill" style="width:0%;"></div></div>
+                    <div class="skill-meta">
+                        <span>0 امتحان</span>
+                        <span>لم يبدأ</span>
+                    </div>
                 </div>
             `;
             return;
         }
 
-        if (d.email === '—') d.email = 'زائر';
+        let allScores = [];
+        let totalRetries = 0;
+        let latestDate = null;
 
-        // ============================================================
-        // 4. دوال عرض التاريخ والنسبية (نفس التقرير القديم)
-        // ============================================================
-        function clean(val) {
-            if (val === null || val === undefined || val === '') return '—';
-            if (typeof val === 'string' && val.trim() === '') return '—';
-            return val;
-        }
-
-        function formatDateEn(dateStr) {
-            if (!dateStr || dateStr === '—') return '—';
-            let date = new Date(dateStr);
-            if (isNaN(date.getTime()) && !isNaN(Number(dateStr))) date = new Date(Number(dateStr));
-            if (isNaN(date.getTime())) {
-                const parsed = Date.parse(dateStr);
-                if (!isNaN(parsed)) date = new Date(parsed);
+        examIds.forEach(id => {
+            const exam = exams[id];
+            if (exam.score !== undefined && exam.score !== null) {
+                allScores.push(exam.score);
             }
-            if (isNaN(date.getTime())) return dateStr;
-            const day = String(date.getDate()).padStart(2,'0');
-            const month = String(date.getMonth()+1).padStart(2,'0');
-            const year = date.getFullYear();
-            return `${day}/${month}/${year}`;
-        }
-
-        function getRelativeDateWithColor(dateStr) {
-            if (!dateStr) return { text: 'ليس بعد', colorClass: 'review-gray' };
-            try {
-                const date = new Date(dateStr);
-                const now = new Date();
-                const diff = Math.floor((now - date) / (1000*60*60*24));
-                let text, colorClass;
-                if (diff === 0) { text = 'اليوم'; colorClass = 'review-green'; }
-                else if (diff === 1) { text = 'قبل يوم'; colorClass = 'review-green'; }
-                else if (diff === 2) { text = 'قبل يومين'; colorClass = 'review-green'; }
-                else if (diff === 3) { text = 'قبل 3 أيام'; colorClass = 'review-green'; }
-                else if (diff >= 4 && diff <= 6) { text = `قبل ${diff} أيام`; colorClass = 'review-orange'; }
-                else if (diff >= 7) { text = `قبل ${diff} يوماً`; colorClass = 'review-red'; }
-                else { text = dateStr; colorClass = 'review-gray'; }
-                return { text, colorClass };
-            } catch { return { text: dateStr, colorClass: 'review-gray' }; }
-        }
-
-        // ============================================================
-        // 5. عرض التواريخ والإحصائيات
-        // ============================================================
-        const now = new Date();
-        const dateStr = now.toLocaleDateString('en-GB', { year:'numeric', month:'2-digit', day:'2-digit' });
-        document.getElementById('reportDate').textContent = dateStr;
-        document.getElementById('footerDate').textContent = dateStr;
-
-        document.getElementById('statHours').textContent = clean(d.totalHours);
-        document.getElementById('statStreak').textContent = clean(d.streak);
-        document.getElementById('statRemaining').textContent = clean(d.remainingDays);
-        document.getElementById('statGoal').textContent = clean(d.dailyGoal);
-
-        document.getElementById('accName').textContent = clean(d.fullName);
-        document.getElementById('accEmail').textContent = clean(d.email);
-        document.getElementById('accCreated').textContent = formatDateEn(d.creationTime);
-        document.getElementById('accUid').textContent = clean(d.uid);
-        document.getElementById('accExamDate').textContent = formatDateEn(d.examDate);
-
-        const badge = document.getElementById('accountBadge');
-        if (d.plan === 'Pro' || d.plan === 'premium') {
-            badge.textContent = '⭐ Pro';
-            badge.style.background = '#dcfce7';
-            badge.style.color = '#166534';
-        } else {
-            badge.textContent = 'مجاني';
-            badge.style.background = '#f1f4f8';
-            badge.style.color = '#94a3b8';
-        }
-
-        // ============================================================
-        // 6. عرض المهارات
-        // ============================================================
-        const skills = [
-            { id: 'hoeren1', label: 'Hören 1' },
-            { id: 'hoeren2', label: 'Hören 2' },
-            { id: 'hoeren3', label: 'Hören 3' },
-            { id: 'lesen1', label: 'Lesen 1' },
-            { id: 'lesen2', label: 'Lesen 2' },
-            { id: 'lesen3', label: 'Lesen 3' },
-            { id: 'sprach1', label: 'Sprachbausteine 1' },
-            { id: 'sprach2', label: 'Sprachbausteine 2' }
-        ];
-
-        const examData = d.examData || {};
-        const skillsGrid = document.getElementById('skillsGrid');
-        let totalExams = 0;
-
-        skills.forEach(skill => {
-            const exams = examData[skill] || {};
-            const examIds = Object.keys(exams);
-            if (examIds.length === 0) {
-                skillsGrid.innerHTML += `
-                    <div class="skill-card">
-                        <div class="skill-header">
-                            <span class="skill-name">${skill.label}</span>
-                            <span class="skill-score" style="color:#94a3b8;">—</span>
-                        </div>
-                        <div class="skill-progress"><div class="fill" style="width:0%;"></div></div>
-                        <div class="skill-meta"><span>0 امتحان</span><span>لم يبدأ</span></div>
-                    </div>
-                `;
-                return;
+            totalRetries += exam.retries || 0;
+            if (exam.lastPlayed) {
+                const d2 = new Date(exam.lastPlayed);
+                if (!latestDate || d2 > new Date(latestDate)) latestDate = exam.lastPlayed;
             }
+            totalExams++;
+        });
 
-            let allScores = [];
-            let totalRetries = 0;
-            let latestDate = null;
+        let avgScore = null;
+        if (allScores.length > 0) {
+            const sum = allScores.reduce((a,b) => a + b, 0);
+            avgScore = Math.round((sum / allScores.length) * 100) / 100;
+        }
 
-            examIds.forEach(id => {
-                const exam = exams[id];
-                if (exam.score !== undefined && exam.score !== null) allScores.push(exam.score);
-                totalRetries += exam.retries || 0;
-                if (exam.lastPlayed) {
-                    const d2 = new Date(exam.lastPlayed);
-                    if (!latestDate || d2 > new Date(latestDate)) latestDate = exam.lastPlayed;
-                }
-                totalExams++;
+        const progress = avgScore !== null ? Math.round((avgScore / 25) * 100) : 0;
+        const scoreDisplay = avgScore !== null ? 'المتوسط: ' + avgScore + '/25' : '—';
+        const latestRelative = latestDate ? getRelativeDateWithColor(latestDate) : { text: '—', colorClass: 'review-gray' };
+
+        skillsGrid.innerHTML += `
+            <div class="skill-card">
+                <div class="skill-header">
+                    <span class="skill-name">${skill.label}</span>
+                    <span class="skill-score" style="font-weight:normal;">${scoreDisplay}</span>
+                </div>
+                <div class="skill-progress"><div class="fill" style="width:${progress}%;"></div></div>
+                <div class="skill-meta">
+                    <span><span class="material-symbols-outlined">repeat</span> ${totalRetries}</span>
+                    <span class="${latestRelative.colorClass}">${latestRelative.text}</span>
+                </div>
+            </div>
+        `;
+    });
+
+    document.getElementById('examCount').textContent = totalExams + ' امتحان';
+
+    // ============================================================
+    // 8. عرض الامتحانات (مع آخر 3 نتائج ووقت الحل)
+    // ============================================================
+    function getExamTime(skill, examId) {
+        try {
+            const key = `exam_time_${skill}_${examId}`;
+            const val = localStorage.getItem(key);
+            return val ? parseInt(val,10) : null;
+        } catch { return null; }
+    }
+    function formatTime(ms) {
+        if (!ms) return '—';
+        const sec = Math.floor(ms/1000);
+        if (sec < 60) return sec + ' ثانية';
+        return (sec/60).toFixed(2) + ' دقيقة';
+    }
+    function getTimeColor(ms) {
+        if (!ms) return 'gray';
+        const sec = ms/1000;
+        if (sec < 60) return 'green';
+        if (sec < 120) return 'orange';
+        return 'red';
+    }
+
+    const examsGrid = document.getElementById('examsGrid');
+    const allExams = [];
+    skills.forEach(skill => {
+        const exams = examData[skill.id] || {};
+        Object.keys(exams).forEach(id => {
+            const exam = exams[id];
+            allExams.push({
+                skillId: skill.id,
+                skillLabel: skill.label,
+                examId: id,
+                score: exam.score !== undefined ? exam.score : null,
+                retries: exam.retries || 0,
+                lastPlayed: exam.lastPlayed || null
             });
+        });
+    });
 
-            let avgScore = null;
-            if (allScores.length > 0) {
-                const sum = allScores.reduce((a,b) => a + b, 0);
-                avgScore = Math.round((sum / allScores.length) * 100) / 100;
+    const skillOrder = skills.map(s => s.id);
+    allExams.sort((a,b) => {
+        const idxA = skillOrder.indexOf(a.skillId);
+        const idxB = skillOrder.indexOf(b.skillId);
+        if (idxA !== idxB) return idxA - idxB;
+        return parseInt(a.examId) - parseInt(b.examId);
+    });
+
+    if (allExams.length === 0) {
+        examsGrid.innerHTML = `<div style="grid-column:1/-1; text-align:center; color:#94a3b8; padding:20px;">لا توجد نتائج محفوظة</div>`;
+    } else {
+        let currentSkillId = null;
+        let html = '';
+        allExams.forEach(exam => {
+            if (exam.skillId !== currentSkillId) {
+                currentSkillId = exam.skillId;
+                const label = skills.find(s => s.id === currentSkillId)?.label || currentSkillId;
+                html += `<div class="exam-section-divider"><span class="material-symbols-outlined">folder</span>${label}</div>`;
             }
 
-            const progress = avgScore !== null ? Math.round((avgScore / 25) * 100) : 0;
-            const scoreDisplay = avgScore !== null ? 'المتوسط: ' + avgScore + '/25' : '—';
-            const latestRelative = latestDate ? getRelativeDateWithColor(latestDate) : { text: '—', colorClass: 'review-gray' };
+            // جلب آخر 3 نتائج من سجل الامتحان
+            let lastThreeScores = [];
+            try {
+                const historyKey = `exam_history_${exam.skillId}_${exam.examId}`;
+                const hist = JSON.parse(localStorage.getItem(historyKey) || '[]');
+                if (hist.length > 0) {
+                    const len = hist.length;
+                    const start = Math.max(0, len - 3);
+                    lastThreeScores = hist.slice(start).map(item => item.score);
+                }
+            } catch(e) {}
+            if (lastThreeScores.length === 0 && exam.score !== null) {
+                lastThreeScores = [exam.score];
+            }
 
-            skillsGrid.innerHTML += `
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <span class="skill-name">${skill.label}</span>
-                        <span class="skill-score" style="font-weight:normal;">${scoreDisplay}</span>
+            let scoresDisplay = '';
+            if (lastThreeScores.length === 0) scoresDisplay = '—';
+            else if (lastThreeScores.length === 1) scoresDisplay = 'آخر نتيجة: ' + lastThreeScores[0] + '/25';
+            else if (lastThreeScores.length === 2) scoresDisplay = 'آخر نتيجتين: ' + lastThreeScores[0] + '/25 | ' + lastThreeScores[1] + '/25';
+            else scoresDisplay = 'آخر 3 نتائج: ' + lastThreeScores[0] + '/25 | ' + lastThreeScores[1] + '/25 | ' + lastThreeScores[2] + '/25';
+
+            const latestScore = lastThreeScores.length > 0 ? lastThreeScores[lastThreeScores.length-1] : null;
+            const scoreClass = (latestScore === null) ? 'score-none' :
+                               (latestScore >= 20 ? 'score-good' : (latestScore >= 15 ? 'score-medium' : 'score-low'));
+
+            const review = exam.lastPlayed ? getRelativeDateWithColor(exam.lastPlayed) : { text: 'ليس بعد', colorClass: 'review-gray' };
+            let retryClass = 'retry-green';
+            if (exam.retries <= 3) retryClass = 'retry-red';
+            else if (exam.retries <= 7) retryClass = 'retry-orange';
+
+            const timeMs = getExamTime(exam.skillId, exam.examId);
+            const timeText = timeMs ? formatTime(timeMs) : '—';
+            const timeColor = timeMs ? getTimeColor(timeMs) : 'gray';
+
+            // عنوان الامتحان (حاول استخراجه من البيانات)
+            let title = `امتحان ${exam.examId}`;
+            // إذا كان هناك title في البيانات (من auth.js)
+            if (examData[exam.skillId] && examData[exam.skillId][exam.examId] && examData[exam.skillId][exam.examId].title) {
+                title = examData[exam.skillId][exam.examId].title;
+            }
+
+            html += `
+                <div class="exam-card">
+                    <div class="exam-row">
+                        <span class="exam-skill">${exam.skillLabel}</span>
+                        <span class="exam-title">${title}</span>
                     </div>
-                    <div class="skill-progress"><div class="fill" style="width:${progress}%;"></div></div>
-                    <div class="skill-meta">
-                        <span><span class="material-symbols-outlined">repeat</span> ${totalRetries}</span>
-                        <span class="${latestRelative.colorClass}">${latestRelative.text}</span>
+                    <div class="exam-row">
+                        <span class="exam-score ${scoreClass}">${scoresDisplay}</span>
+                        <span style="font-size:0.75rem; color:#94a3b8;">
+                            <span class="material-symbols-outlined" style="font-size:16px; vertical-align:middle;">repeat</span>
+                            <span class="${retryClass}">${exam.retries}</span>
+                        </span>
+                    </div>
+                    <div class="exam-meta">
+                        <span>آخر مراجعة: <span class="${review.colorClass}">${review.text}</span></span>
+                        <span>أجبت على الامتحان في: <span style="color:${timeColor}">${timeText}</span></span>
                     </div>
                 </div>
             `;
         });
+        examsGrid.innerHTML = html;
+    }
 
-        document.getElementById('examCount').textContent = totalExams + ' امتحان';
-
-        // ============================================================
-        // 7. عرض الامتحانات (مع آخر 3 نتائج ووقت الحل)
-        // ============================================================
-        // دوال وقت الحل (مأخوذة من engine.js)
-        function getExamTime(skill, examId) {
-            try {
-                const key = `exam_time_${skill}_${examId}`;
-                const val = localStorage.getItem(key);
-                return val ? parseInt(val,10) : null;
-            } catch { return null; }
-        }
-        function formatTime(ms) {
-            if (!ms) return '—';
-            const sec = Math.floor(ms/1000);
-            if (sec < 60) return sec + ' ثانية';
-            return (sec/60).toFixed(2) + ' دقيقة';
-        }
-        function getTimeColor(ms) {
-            if (!ms) return 'gray';
-            const sec = ms/1000;
-            if (sec < 60) return 'green';
-            if (sec < 120) return 'orange';
-            return 'red';
-        }
-
-        const examsGrid = document.getElementById('examsGrid');
-        const allExams = [];
-        skills.forEach(skill => {
-            const exams = examData[skill] || {};
-            Object.keys(exams).forEach(id => {
-                const exam = exams[id];
-                allExams.push({
-                    skillId: skill.id,
-                    skillLabel: skill.label,
-                    examId: id,
-                    score: exam.score !== undefined ? exam.score : null,
-                    retries: exam.retries || 0,
-                    lastPlayed: exam.lastPlayed || null
-                });
-            });
+    // ============================================================
+    // 9. عرض النشاط الأخير
+    // ============================================================
+    const timelineContainer = document.getElementById('timelineContainer');
+    const history = d.history || [];
+    if (history.length === 0) {
+        timelineContainer.innerHTML = `<div style="text-align:center; color:#94a3b8; padding:16px 0;">لا توجد أنشطة مسجلة</div>`;
+    } else {
+        const recent = history.slice(-7).reverse();
+        recent.forEach(entry => {
+            const date = formatDateEn(entry.date);
+            const minutes = entry.minutes || 0;
+            const hours = Math.floor(minutes / 60);
+            const mins = minutes % 60;
+            let timeStr = '';
+            if (hours > 0) timeStr = hours + ' ساعة' + (mins > 0 ? ' و ' + mins + ' دقيقة' : '');
+            else timeStr = mins + ' دقيقة';
+            timelineContainer.innerHTML += `
+                <div class="timeline-item">
+                    <span class="timeline-date">${date}</span>
+                    <span class="timeline-dot"></span>
+                    <span class="timeline-content">دراسة</span>
+                    <span class="timeline-value">${timeStr}</span>
+                </div>
+            `;
         });
+    }
 
-        const skillOrder = skills.map(s => s.id);
-        allExams.sort((a,b) => {
-            const idxA = skillOrder.indexOf(a.skillId);
-            const idxB = skillOrder.indexOf(b.skillId);
-            if (idxA !== idxB) return idxA - idxB;
-            return parseInt(a.examId) - parseInt(b.examId);
-        });
-
-        if (allExams.length === 0) {
-            examsGrid.innerHTML = `<div style="grid-column:1/-1; text-align:center; color:#94a3b8; padding:20px;">لا توجد نتائج محفوظة</div>`;
-        } else {
-            let currentSkillId = null;
-            let html = '';
-            allExams.forEach(exam => {
-                if (exam.skillId !== currentSkillId) {
-                    currentSkillId = exam.skillId;
-                    const label = skills.find(s => s.id === currentSkillId)?.label || currentSkillId;
-                    html += `<div class="exam-section-divider"><span class="material-symbols-outlined">folder</span>${label}</div>`;
-                }
-
-                // جلب آخر 3 نتائج من سجل الامتحان (إذا كان موجوداً في localStorage)
-                let lastThreeScores = [];
-                try {
-                    const historyKey = `exam_history_${exam.skillId}_${exam.examId}`;
-                    const hist = JSON.parse(localStorage.getItem(historyKey) || '[]');
-                    if (hist.length > 0) {
-                        const len = hist.length;
-                        const start = Math.max(0, len - 3);
-                        lastThreeScores = hist.slice(start).map(item => item.score);
-                    }
-                } catch(e) {}
-                if (lastThreeScores.length === 0 && exam.score !== null) {
-                    lastThreeScores = [exam.score];
-                }
-
-                let scoresDisplay = '';
-                if (lastThreeScores.length === 0) scoresDisplay = '—';
-                else if (lastThreeScores.length === 1) scoresDisplay = 'آخر نتيجة: ' + lastThreeScores[0] + '/25';
-                else if (lastThreeScores.length === 2) scoresDisplay = 'آخر نتيجتين: ' + lastThreeScores[0] + '/25 | ' + lastThreeScores[1] + '/25';
-                else scoresDisplay = 'آخر 3 نتائج: ' + lastThreeScores[0] + '/25 | ' + lastThreeScores[1] + '/25 | ' + lastThreeScores[2] + '/25';
-
-                const latestScore = lastThreeScores.length > 0 ? lastThreeScores[lastThreeScores.length-1] : null;
-                const scoreClass = (latestScore === null) ? 'score-none' :
-                                   (latestScore >= 20 ? 'score-good' : (latestScore >= 15 ? 'score-medium' : 'score-low'));
-
-                const review = exam.lastPlayed ? getRelativeDateWithColor(exam.lastPlayed) : { text: 'ليس بعد', colorClass: 'review-gray' };
-                let retryClass = 'retry-green';
-                if (exam.retries <= 3) retryClass = 'retry-red';
-                else if (exam.retries <= 7) retryClass = 'retry-orange';
-
-                const timeMs = getExamTime(exam.skillId, exam.examId);
-                const timeText = timeMs ? formatTime(timeMs) : '—';
-                const timeColor = timeMs ? getTimeColor(timeMs) : 'gray';
-
-                // عنوان الامتحان (نحاول استخراجه من البيانات المخزنة)
-                let title = `امتحان ${exam.examId}`;
-                // إذا كان هناك title في البيانات (من auth.js) نستخدمه
-                if (examData[exam.skillId] && examData[exam.skillId][exam.examId] && examData[exam.skillId][exam.examId].title) {
-                    title = examData[exam.skillId][exam.examId].title;
-                }
-
-                html += `
-                    <div class="exam-card">
-                        <div class="exam-row">
-                            <span class="exam-skill">${exam.skillLabel}</span>
-                            <span class="exam-title">${title}</span>
-                        </div>
-                        <div class="exam-row">
-                            <span class="exam-score ${scoreClass}">${scoresDisplay}</span>
-                            <span style="font-size:0.75rem; color:#94a3b8;">
-                                <span class="material-symbols-outlined" style="font-size:16px; vertical-align:middle;">repeat</span>
-                                <span class="${retryClass}">${exam.retries}</span>
-                            </span>
-                        </div>
-                        <div class="exam-meta">
-                            <span>آخر مراجعة: <span class="${review.colorClass}">${review.text}</span></span>
-                            <span>أجبت على الامتحان في: <span style="color:${timeColor}">${timeText}</span></span>
-                        </div>
-                    </div>
-                `;
-            });
-            examsGrid.innerHTML = html;
-        }
-
-        // ============================================================
-        // 8. عرض النشاط الأخير
-        // ============================================================
-        const timelineContainer = document.getElementById('timelineContainer');
-        const history = d.history || [];
-        if (history.length === 0) {
-            timelineContainer.innerHTML = `<div style="text-align:center; color:#94a3b8; padding:16px 0;">لا توجد أنشطة مسجلة</div>`;
-        } else {
-            const recent = history.slice(-7).reverse();
-            recent.forEach(entry => {
-                const date = formatDateEn(entry.date);
-                const minutes = entry.minutes || 0;
-                const hours = Math.floor(minutes / 60);
-                const mins = minutes % 60;
-                let timeStr = '';
-                if (hours > 0) timeStr = hours + ' ساعة' + (mins > 0 ? ' و ' + mins + ' دقيقة' : '');
-                else timeStr = mins + ' دقيقة';
-                timelineContainer.innerHTML += `
-                    <div class="timeline-item">
-                        <span class="timeline-date">${date}</span>
-                        <span class="timeline-dot"></span>
-                        <span class="timeline-content">دراسة</span>
-                        <span class="timeline-value">${timeStr}</span>
-                    </div>
-                `;
-            });
-        }
-
-        // ============================================================
-        // 9. دالة تحميل التقرير كـ HTML (استبدال PDF)
-        // ============================================================
-        window.exportReportHTML = function() {
-            try {
-                // نأخذ نسخة من الصفحة الحالية
-                const clone = document.documentElement.cloneNode(true);
-                // نزيل أي عناصر تفاعلية غير مرغوب فيها
-                const actions = clone.querySelector('.report-actions');
-                if (actions) actions.remove();
-                // نضمن أن البيانات مضمنة في الـ HTML (نضيف script يحمل البيانات)
-                const script = clone.querySelector('script');
-                if (script) {
-                    // نضيف البيانات كـ متغير في الـ script الحالي
-                    const dataScript = document.createElement('script');
-                    dataScript.textContent = `const REPORT_DATA = ${JSON.stringify(d, null, 2)};`;
-                    script.parentNode.insertBefore(dataScript, script);
-                }
-                // نحول إلى HTML
-                const html = '<!DOCTYPE html>\n' + clone.outerHTML;
-                const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'Zertiva-B2-Report.html';
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-            } catch(e) {
-                console.error('❌ فشل تحميل التقرير:', e);
-                alert('حدث خطأ أثناء تحميل التقرير. حاول مرة أخرى.');
+    // ============================================================
+    // 10. دالة تحميل التقرير كـ HTML
+    // ============================================================
+    window.exportReportHTML = function() {
+        try {
+            const clone = document.documentElement.cloneNode(true);
+            const actions = clone.querySelector('.report-actions');
+            if (actions) actions.remove();
+            // تضمين البيانات في الـ HTML المحمل
+            const script = clone.querySelector('script');
+            if (script) {
+                const dataScript = document.createElement('script');
+                dataScript.textContent = `const REPORT_DATA = ${JSON.stringify(d, null, 2)};`;
+                script.parentNode.insertBefore(dataScript, script);
             }
-        };
+            const html = '<!DOCTYPE html>\n' + clone.outerHTML;
+            const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Zertiva-B2-Report.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        } catch(e) {
+            console.error('❌ فشل تحميل التقرير:', e);
+            alert('حدث خطأ أثناء تحميل التقرير. حاول مرة أخرى.');
+        }
+    };
 
-        console.log('✅ تقرير Zertiva B2 محدث (تحميل HTML + بيانات حقيقية)');
-    })();
+    console.log('✅ تقرير Zertiva B2 محدث (يقرأ البيانات من exam_result_* و exam_history_*)');
+})();
 </script>
 </body>
 </html>
