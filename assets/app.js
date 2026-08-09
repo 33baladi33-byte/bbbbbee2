@@ -18464,6 +18464,74 @@ var MyApp = (() => {
     lesen3OrderSaved = false;
     console.log("\u{1F504} \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u062A\u0631\u062A\u064A\u0628 Lesen3");
   }
+  function saveExamTime(skill, examId, timeMs) {
+    if (!skill || !examId) return;
+    try {
+      const key = `exam_time_${skill}_${examId}`;
+      localStorage.setItem(key, String(timeMs));
+      if (typeof window.updateRetryCounter === "function") {
+        window.updateRetryCounter();
+      }
+      const listPage = document.getElementById("list");
+      if (listPage && listPage.classList.contains("active")) {
+        updateExamTimeInList(skill, examId, timeMs);
+      }
+    } catch (e) {
+      console.error("\u274C \u062E\u0637\u0623 \u0641\u064A \u062D\u0641\u0638 \u0648\u0642\u062A \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646:", e);
+    }
+  }
+  function getExamTime(skill, examId) {
+    try {
+      const key = `exam_time_${skill}_${examId}`;
+      const val = localStorage.getItem(key);
+      return val ? parseInt(val, 10) : null;
+    } catch (e) {
+      console.error("\u274C \u062E\u0637\u0623 \u0641\u064A \u0627\u0633\u062A\u0631\u062C\u0627\u0639 \u0648\u0642\u062A \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646:", e);
+      return null;
+    }
+  }
+  function formatTime(ms) {
+    if (ms === null || ms === void 0) return "\u2014";
+    const seconds = Math.floor(ms / 1e3);
+    if (seconds < 60) {
+      return `${seconds} \u062B\u0627\u0646\u064A\u0629`;
+    } else {
+      const minutes = (seconds / 60).toFixed(2);
+      return `${minutes} \u062F\u0642\u064A\u0642\u0629`;
+    }
+  }
+  function getTimeColor(ms) {
+    if (ms === null || ms === void 0) return "gray";
+    const seconds = ms / 1e3;
+    if (seconds < 60) return "green";
+    if (seconds < 120) return "orange";
+    return "red";
+  }
+  function updateExamTimeInList(skill, examId, timeMs) {
+    const listContainer = document.getElementById("examsList");
+    if (!listContainer) return;
+    const cards = listContainer.querySelectorAll(".item");
+    for (let card of cards) {
+      const titleSpan = card.querySelector(".exam-title");
+      if (!titleSpan) continue;
+      const match = titleSpan.textContent.match(/^(\d+):/);
+      if (!match) continue;
+      const id = parseInt(match[1]);
+      if (id === examId) {
+        const chips = card.querySelectorAll(".exam-chip");
+        for (let chip of chips) {
+          if (chip.querySelector(".material-symbols-outlined")?.textContent === "timer") {
+            const timeStr = formatTime(timeMs);
+            const color = getTimeColor(timeMs);
+            chip.className = `exam-chip score chip-${color}`;
+            chip.innerHTML = `<span class="material-symbols-outlined">timer</span> ${timeStr}`;
+            break;
+          }
+        }
+        break;
+      }
+    }
+  }
   function renderSchreibenExam() {
     const container = document.getElementById("schreiben");
     if (!container) return;
@@ -19080,6 +19148,16 @@ var MyApp = (() => {
         window.removeColorFromExam(examId);
       }
     }
+    if (examTimer2.isRunning) {
+      const elapsed = examTimer2.stop();
+      if (elapsed !== null) {
+        const skill = window.currentSkill || "";
+        const examId = window.currentExamId || 1;
+        if (skill && examId) {
+          saveExamTime(skill, examId, elapsed);
+        }
+      }
+    }
   }
   function renderSprach1Exam() {
     const container = document.getElementById("sprach1");
@@ -19418,6 +19496,16 @@ var MyApp = (() => {
         window.removeColorFromExam(examId);
       }
     }
+    if (examTimer2.isRunning) {
+      const elapsed = examTimer2.stop();
+      if (elapsed !== null) {
+        const skill = window.currentSkill || "";
+        const examId = window.currentExamId || 1;
+        if (skill && examId) {
+          saveExamTime(skill, examId, elapsed);
+        }
+      }
+    }
   }
   function checkTrueFalseExam(container, questions, answers, correctNumbersContainer) {
     let questionsToCheck = questions;
@@ -19576,6 +19664,16 @@ var MyApp = (() => {
         window.removeColorFromExam(examId);
       }
     }
+    if (examTimer2.isRunning) {
+      const elapsed = examTimer2.stop();
+      if (elapsed !== null) {
+        const skill = container.id || window.currentSkill || "";
+        const examId = window.currentExamId || 1;
+        if (skill && examId) {
+          saveExamTime(skill, examId, elapsed);
+        }
+      }
+    }
     setTimeout(() => {
       resultDiv.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }, 100);
@@ -19721,15 +19819,25 @@ var MyApp = (() => {
             selectElem.style.backgroundColor = "#fef0e0";
             selectElem.style.border = "2px solid #e67e22";
             selectElem.style.color = "#155724";
-            selectElem.value = correctAnswer;
+            let optionExists = false;
             for (let j = 0; j < selectElem.options.length; j++) {
               if (selectElem.options[j].value === correctAnswer) {
-                const originalText = selectElem.options[j].textContent;
-                const cleanText = originalText.replace(/^✅\s*/, "");
+                optionExists = true;
+                const cleanText = selectElem.options[j].textContent.replace(/^✅\s*/, "");
                 selectElem.options[j].textContent = `\u2705 ${cleanText}`;
                 selectElem.options[j].selected = true;
                 break;
               }
+            }
+            if (!optionExists) {
+              let msg = card.querySelector(".correct-answer-message");
+              if (!msg) {
+                msg = document.createElement("div");
+                msg.className = "correct-answer-message";
+                msg.style.cssText = "margin-top: 6px; font-size: 12px; color: #28a745;";
+                card.appendChild(msg);
+              }
+              msg.innerHTML = `\u2705 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629: ${correctAnswer}`;
             }
           }
         }
@@ -19766,6 +19874,16 @@ var MyApp = (() => {
       const examId = window.currentExamId;
       if (examId) {
         window.removeColorFromExam(examId);
+      }
+    }
+    if (examTimer2.isRunning) {
+      const elapsed = examTimer2.stop();
+      if (elapsed !== null) {
+        const skill = window.currentSkill || "";
+        const examId = window.currentExamId || 1;
+        if (skill && examId) {
+          saveExamTime(skill, examId, elapsed);
+        }
       }
     }
   }
@@ -20005,6 +20123,16 @@ var MyApp = (() => {
       const examId = window.currentExamId;
       if (examId) {
         window.removeColorFromExam(examId);
+      }
+    }
+    if (examTimer2.isRunning) {
+      const elapsed = examTimer2.stop();
+      if (elapsed !== null) {
+        const skill = window.currentSkill || "";
+        const examId = window.currentExamId || 1;
+        if (skill && examId) {
+          saveExamTime(skill, examId, elapsed);
+        }
       }
     }
   }
@@ -20510,16 +20638,28 @@ var MyApp = (() => {
             selectElem.style.backgroundColor = "#fef0e0";
             selectElem.style.border = "2px solid #e67e22";
             selectElem.style.color = "#155724";
-            selectElem.value = correctValue;
+            let optionExists = false;
             for (let j = 0; j < selectElem.options.length; j++) {
               const optValue = selectElem.options[j].value;
               if (optValue === correctValue || correctValue === "none" && optValue === "none" || correctValue !== null && correctValue !== void 0 && parseInt(optValue) === correctValue) {
+                optionExists = true;
                 const originalText = selectElem.options[j].textContent;
                 const cleanText = originalText.replace(/^✅\s*/, "");
                 selectElem.options[j].textContent = `\u2705 ${cleanText}`;
                 selectElem.options[j].selected = true;
                 break;
               }
+            }
+            if (!optionExists) {
+              let msg = card.querySelector(".correct-answer-message");
+              if (!msg) {
+                msg = document.createElement("div");
+                msg.className = "correct-answer-message";
+                msg.style.cssText = "margin-top: 6px; font-size: 12px; color: #28a745;";
+                card.appendChild(msg);
+              }
+              let correctDisplay = correctText || (correctValue === "none" ? "\u2727 \u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646 \u2727" : correctValue);
+              msg.innerHTML = `\u2705 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629: ${correctDisplay}`;
             }
           }
         }
@@ -20556,6 +20696,16 @@ var MyApp = (() => {
       const examId = window.currentExamId;
       if (examId) {
         window.removeColorFromExam(examId);
+      }
+    }
+    if (examTimer2.isRunning) {
+      const elapsed = examTimer2.stop();
+      if (elapsed !== null) {
+        const skill = window.currentSkill || "";
+        const examId = window.currentExamId || 1;
+        if (skill && examId) {
+          saveExamTime(skill, examId, elapsed);
+        }
       }
     }
   }
@@ -22157,7 +22307,7 @@ var MyApp = (() => {
       }
     });
   }
-  var _hoerenData, interleavingOrders, lesen1OriginalNodes, lesen1ShuffledNodes, lesen1OrderSaved, lesen2OriginalNodes, lesen2ShuffledNodes, lesen2OrderSaved, lesen3OriginalNodes, lesen3ShuffledNodes, lesen3OrderSaved, currentSchreibenData, currentSprach2Data, sprach2UserAnswers, sprach2SelectedQuestionId, sprach2SelectedWordForLinking, currentSprach1Data, sprach1UserAnswers, sprach1OpenDropdownId, currentMatchingExamData2, matchingSelectedAnswers2, matchingAvailableOptions2, currentTeil2Data, teil2UserAnswers, currentTeil3Data, teil3UserAnswers, teil3SelectedItem, teil3SelectedSit, teil3SelectedItemForLink, teil3SelectedSitForLink, originalOpenExamGlobal, MemoryHighlightEngine, memoryEngine, toggleBtn, _toggleInProgress, _interleavingInitialized, _answerHistory, _historyEnabled, originalCheckTrueFalse;
+  var _hoerenData, interleavingOrders, lesen1OriginalNodes, lesen1ShuffledNodes, lesen1OrderSaved, lesen2OriginalNodes, lesen2ShuffledNodes, lesen2OrderSaved, lesen3OriginalNodes, lesen3ShuffledNodes, lesen3OrderSaved, examTimer2, currentSchreibenData, currentSprach2Data, sprach2UserAnswers, sprach2SelectedQuestionId, sprach2SelectedWordForLinking, currentSprach1Data, sprach1UserAnswers, sprach1OpenDropdownId, currentMatchingExamData2, matchingSelectedAnswers2, matchingAvailableOptions2, currentTeil2Data, teil2UserAnswers, currentTeil3Data, teil3UserAnswers, teil3SelectedItem, teil3SelectedSit, teil3SelectedItemForLink, teil3SelectedSitForLink, originalOpenExamGlobal, MemoryHighlightEngine, memoryEngine, toggleBtn, _toggleInProgress, _interleavingInitialized, _answerHistory, _historyEnabled, originalCheckTrueFalse;
   var init_engine = __esm({
     "engine.js"() {
       console.log("\u2705 engine.js \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647");
@@ -22183,6 +22333,63 @@ var MyApp = (() => {
       lesen3OriginalNodes = null;
       lesen3ShuffledNodes = null;
       lesen3OrderSaved = false;
+      examTimer2 = {
+        startTime: null,
+        isRunning: false,
+        skill: null,
+        examId: null,
+        intervalId: null,
+        start(skill, examId) {
+          if (this.isRunning) return;
+          this.startTime = Date.now();
+          this.isRunning = true;
+          this.skill = skill;
+          this.examId = examId;
+          const btn = document.getElementById("playTimerBtn");
+          if (btn) {
+            btn.querySelector(".material-symbols-outlined").textContent = "pause";
+            btn.title = "\u0627\u0644\u0639\u062F\u0627\u062F \u064A\u0639\u0645\u0644";
+          }
+          console.log(`\u23F1\uFE0F \u0628\u062F\u0623 \u0627\u0644\u062A\u0648\u0642\u064A\u062A \u0644\u0644\u0627\u0645\u062A\u062D\u0627\u0646 ${skill} - ${examId}`);
+        },
+        stop() {
+          if (!this.isRunning) return null;
+          const elapsed = Date.now() - this.startTime;
+          this.isRunning = false;
+          const skill = this.skill;
+          const examId = this.examId;
+          this.skill = null;
+          this.examId = null;
+          const btn = document.getElementById("playTimerBtn");
+          if (btn) {
+            btn.querySelector(".material-symbols-outlined").textContent = "play_arrow";
+            btn.title = "\u0628\u062F\u0621 \u062A\u0648\u0642\u064A\u062A \u0627\u0644\u062D\u0644";
+          }
+          console.log(`\u23F1\uFE0F \u062A\u0648\u0642\u0641 \u0627\u0644\u062A\u0648\u0642\u064A\u062A \u0644\u0644\u0627\u0645\u062A\u062D\u0627\u0646 ${skill} - ${examId}\u060C \u0627\u0644\u0645\u062F\u0629: ${elapsed}ms`);
+          return elapsed;
+        },
+        reset() {
+          if (this.intervalId) {
+            clearInterval(this.intervalId);
+            this.intervalId = null;
+          }
+          this.startTime = null;
+          this.isRunning = false;
+          this.skill = null;
+          this.examId = null;
+          const btn = document.getElementById("playTimerBtn");
+          if (btn) {
+            btn.querySelector(".material-symbols-outlined").textContent = "play_arrow";
+            btn.title = "\u0628\u062F\u0621 \u062A\u0648\u0642\u064A\u062A \u0627\u0644\u062D\u0644";
+          }
+        }
+      };
+      window.examTimer = examTimer2;
+      window.saveExamTime = saveExamTime;
+      window.getExamTime = getExamTime;
+      window.formatTime = formatTime;
+      window.getTimeColor = getTimeColor;
+      window.updateExamTimeInList = updateExamTimeInList;
       window.loadExamFromFile = async function(skill, examId) {
         try {
           const response = await fetch(`data/${skill}/exam${examId}.json`);
@@ -24551,35 +24758,6 @@ var MyApp = (() => {
       return null;
     }
   }
-  function getResultColor(score) {
-    if (score === 25) return "#17a2b8";
-    if (score >= 15) return "#28a745";
-    return "#adb5bd";
-  }
-  function createResultBadge(score) {
-    if (score === null) return null;
-    const badge = document.createElement("span");
-    badge.className = "exam-result-badge";
-    badge.textContent = `${score} / 25`;
-    const isMobile = window.innerWidth <= 768;
-    const fs = isMobile ? "8px" : "11px";
-    const pad = isMobile ? "2px 5px" : "3px 8px";
-    const minW = isMobile ? "40px" : "55px";
-    badge.style.cssText = `
-    font-size: ${fs};
-    font-weight: bold;
-    padding: ${pad};
-    border-radius: 20px;
-    color: white;
-    background-color: ${getResultColor(score)};
-    display: inline-block;
-    min-width: ${minW};
-    text-align: center;
-    line-height: 1.4;
-    margin-left: 6px;
-  `;
-    return badge;
-  }
   function saveRetryCount(skill, examId, count) {
     try {
       const key = `exam_retry_${skill}_${examId}`;
@@ -24860,15 +25038,6 @@ var MyApp = (() => {
         titleSpan.textContent = `${exam.id}: ${exam.title}`;
       }
       div.appendChild(titleSpan);
-      const savedScore = getExamResult(skill, exam.id);
-      if (savedScore !== null) {
-        const badge = createResultBadge(savedScore);
-        if (badge) {
-          const existingBadge = titleSpan.querySelector(".exam-result-badge");
-          if (existingBadge) existingBadge.remove();
-          titleSpan.appendChild(badge);
-        }
-      }
       const forbiddenChipsSkills = ["schreiben", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3"];
       if (!forbiddenChipsSkills.includes(targetSkill)) {
         let getScoreColor = function(score2) {
@@ -24920,6 +25089,13 @@ var MyApp = (() => {
         memoryChip.className = `exam-chip memory chip-${memoryColor}`;
         memoryChip.innerHTML = `<span class="material-symbols-outlined">auto_awesome</span> ${memoryProgress}%`;
         chipsContainer.appendChild(memoryChip);
+        const timeMs = window.getExamTime ? window.getExamTime(targetSkill, exam.id) : null;
+        const timeText = timeMs !== null ? window.formatTime(timeMs) : "\u2014";
+        const timeColor = timeMs !== null ? window.getTimeColor(timeMs) : "gray";
+        const timeChip = document.createElement("span");
+        timeChip.className = `exam-chip score chip-${timeColor}`;
+        timeChip.innerHTML = `<span class="material-symbols-outlined">timer</span> ${timeText}`;
+        chipsContainer.appendChild(timeChip);
         div.appendChild(chipsContainer);
       }
       const hasVersions = exam.versions && exam.versions.length > 1;
@@ -25234,14 +25410,17 @@ var MyApp = (() => {
         const swapBtn = document.getElementById("interleavingBtn");
         const gameBtn = document.getElementById("rapidGameBtn");
         const memoryToggleBtn = document.getElementById("memoryToggleBtn");
+        const playBtn = document.getElementById("playTimerBtn");
         if (skill === "sprach1" || skill === "sprach2") {
           if (swapBtn) swapBtn.style.display = "none";
           if (gameBtn) gameBtn.style.display = "";
           if (memoryToggleBtn) memoryToggleBtn.style.display = "";
+          if (playBtn) playBtn.style.display = "";
         } else {
           if (swapBtn) swapBtn.style.display = "";
           if (gameBtn) gameBtn.style.display = "";
           if (memoryToggleBtn) memoryToggleBtn.style.display = "";
+          if (playBtn) playBtn.style.display = "";
         }
       }
     }
@@ -25284,6 +25463,25 @@ var MyApp = (() => {
       const forbiddenSkills = ["schreiben", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3"];
       if (!forbiddenSkills.includes(skill) && typeof addRetryCounterToExam === "function") {
         addRetryCounterToExam();
+      }
+      const playBtn = document.getElementById("playTimerBtn");
+      if (playBtn) {
+        const newPlayBtn = playBtn.cloneNode(true);
+        playBtn.parentNode.replaceChild(newPlayBtn, playBtn);
+        const freshPlayBtn = document.getElementById("playTimerBtn");
+        freshPlayBtn.addEventListener("click", function(e) {
+          e.stopPropagation();
+          if (examTimer.isRunning) {
+            return;
+          }
+          const skill2 = window.currentSkill || "";
+          const examId2 = window.currentExamId || 1;
+          if (skill2 && examId2) {
+            examTimer.start(skill2, examId2);
+          } else {
+            console.warn("\u26A0\uFE0F \u0644\u0627 \u064A\u0645\u0643\u0646 \u0628\u062F\u0621 \u0627\u0644\u0639\u062F\u0627\u062F: skill \u0623\u0648 examId \u063A\u064A\u0631 \u0645\u0639\u0631\u0641");
+          }
+        });
       }
       updateExamNavButtons();
       if (currentExamData.type === "matching") {
@@ -26572,6 +26770,7 @@ var MyApp = (() => {
     if (oldCounter) oldCounter.remove();
     const retryCount = window.getRetryCount ? window.getRetryCount(currentSkill2, currentExamId) : 0;
     const reviewDays = window.getLastReviewDays ? window.getLastReviewDays(currentSkill2, currentExamId) : null;
+    const timeMs = window.getExamTime ? window.getExamTime(currentSkill2, currentExamId) : null;
     let reviewText = "";
     if (reviewDays === null) {
       reviewText = "\u0644\u0645 \u064A\u064F\u0631\u0627\u062C\u0639";
@@ -26580,6 +26779,8 @@ var MyApp = (() => {
     } else {
       reviewText = `\u0645\u0646\u0630 ${reviewDays} \u064A\u0648\u0645`;
     }
+    const timeText = timeMs !== null ? window.formatTime(timeMs) : "\u0644\u0645 \u064A\u064F\u0633\u062C\u0644";
+    const timeColor = timeMs !== null ? window.getTimeColor(timeMs) : "gray";
     const container = document.createElement("div");
     container.id = "retryCounterBox";
     container.style.cssText = `
@@ -26636,8 +26837,25 @@ var MyApp = (() => {
         box-sizing: border-box;
         text-align: right;
     `;
+    const timeBox = document.createElement("div");
+    timeBox.innerHTML = `\u0623\u062C\u0628\u062A \u0639\u0644\u0649 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 \u0641\u064A: <strong style="color:${timeColor};font-weight:700;">${timeText}</strong>`;
+    timeBox.style.cssText = `
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 8px 16px;
+        font-size: 14px;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        color: #1e293b;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        white-space: nowrap;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: right;
+    `;
     container.appendChild(reviewBox);
     container.appendChild(retryBox);
+    container.appendChild(timeBox);
     const interleavingRow = document.getElementById("interleavingRow");
     if (interleavingRow) {
       interleavingRow.style.display = "flex";
@@ -26679,6 +26897,7 @@ var MyApp = (() => {
     }
     const retryCount = window.getRetryCount ? window.getRetryCount(currentSkill2, currentExamId) : 0;
     const reviewDays = window.getLastReviewDays ? window.getLastReviewDays(currentSkill2, currentExamId) : null;
+    const timeMs = window.getExamTime ? window.getExamTime(currentSkill2, currentExamId) : null;
     let reviewText = "";
     if (reviewDays === null) {
       reviewText = "\u0644\u0645 \u064A\u064F\u0631\u0627\u062C\u0639";
@@ -26687,6 +26906,8 @@ var MyApp = (() => {
     } else {
       reviewText = `\u0645\u0646\u0630 ${reviewDays} \u064A\u0648\u0645`;
     }
+    const timeText = timeMs !== null ? window.formatTime(timeMs) : "\u0644\u0645 \u064A\u064F\u0633\u062C\u0644";
+    const timeColor = timeMs !== null ? window.getTimeColor(timeMs) : "gray";
     const retryBox = container.querySelectorAll("div")[1];
     if (retryBox) {
       retryBox.innerHTML = `\u0639\u0627\u0648\u062F\u062A \u0647\u0630\u0627 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 <strong style="color:#2563eb;font-weight:700;">${retryCount}</strong> ${retryCount === 1 ? "\u0645\u0631\u0629" : "\u0645\u0631\u0627\u062A"}`;
@@ -26708,6 +26929,11 @@ var MyApp = (() => {
       }
       reviewBox.innerHTML = `\u0622\u062E\u0631 \u0645\u0631\u0627\u062C\u0639\u0629: <strong style="color:${reviewColor};font-weight:700;">${reviewText}</strong>`;
       reviewBox.style.textAlign = "right";
+    }
+    const timeBox = container.querySelectorAll("div")[2];
+    if (timeBox) {
+      timeBox.innerHTML = `\u0623\u062C\u0628\u062A \u0639\u0644\u0649 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 \u0641\u064A: <strong style="color:${timeColor};font-weight:700;">${timeText}</strong>`;
+      timeBox.style.textAlign = "right";
     }
   }
   var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, originalOrderNumbers, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY;
