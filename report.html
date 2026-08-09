@@ -671,9 +671,12 @@
     <div class="report-hero">
         <div class="report-hero-left">
             <div class="report-hero-icon">Z</div>
-            <div>
-                <div class="report-hero-title">تقرير <span>Zertiva</span> B2</div>
-                <div class="report-hero-sub">ملخص تقدمك في التحضير لامتحان B2</div>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                <img src="images/logo.webp" alt="Zertiva B2" style="height: 40px; width: auto; object-fit: contain;">
+                <div>
+                    <div class="report-hero-title">تقرير <span>Zertiva</span> B2</div>
+                    <div class="report-hero-sub">ملخص تقدمك في التحضير لامتحان B2</div>
+                </div>
             </div>
         </div>
         <div class="report-hero-right">
@@ -894,8 +897,9 @@
             console.error('❌ فشل قراءة بيانات التقرير:', e);
         }
 
-          // ============================================================
-        //  2.  بناء بيانات التقرير من localStorage مباشرة
+
+        // ============================================================
+        //  2.  بناء بيانات التقرير من localStorage مباشرة (باستخدام exam_history)
         // ============================================================
         function buildReportDataFromLocalStorage() {
             const data = {
@@ -932,24 +936,47 @@
             } catch(e) {}
 
             const skills = ['hoeren1','hoeren2','hoeren3','lesen1','lesen2','lesen3','sprach1','sprach2'];
-            skills.forEach(skill => {
-                const examData = {};
-                const prefix = `exam_result_${skill}_`;
-                const keys = Object.keys(localStorage).filter(k => k.startsWith(prefix));
-                keys.forEach(key => {
-                    const examId = parseInt(key.replace(prefix, ''));
-                    if (!isNaN(examId)) {
-                        const score = parseFloat(localStorage.getItem(key));
-                        const retries = parseInt(localStorage.getItem(`exam_retry_${skill}_${examId}`)) || 0;
-                        const lastPlayed = localStorage.getItem(`exam_last_review_${skill}_${examId}`) || null;
-                        examData[examId] = { score, retries, lastPlayed };
+            
+            // 1. بناء قائمة الامتحانات من سجل النتائج (exam_history_*)
+            const allHistoryKeys = Object.keys(localStorage).filter(k => k.startsWith('exam_history_'));
+            const processedExams = new Set(); // لتجنب تكرار الامتحان الواحد
+
+            allHistoryKeys.forEach(key => {
+                // key format: exam_history_skill_examId
+                const parts = key.split('_'); // ['exam', 'history', 'skill', 'examId']
+                if (parts.length < 4) return;
+                const skill = parts[2];
+                const examId = parseInt(parts[3], 10);
+                if (isNaN(examId)) return;
+                if (!skills.includes(skill)) return;
+                
+                const keyId = `${skill}_${examId}`;
+                if (processedExams.has(keyId)) return;
+                processedExams.add(keyId);
+                
+                // قراءة البيانات
+                let score = null;
+                let lastPlayed = null;
+                try {
+                    const historyData = JSON.parse(localStorage.getItem(key));
+                    if (Array.isArray(historyData) && historyData.length > 0) {
+                        const lastEntry = historyData[historyData.length - 1];
+                        score = lastEntry.score !== undefined ? lastEntry.score : null;
+                        lastPlayed = lastEntry.date || null;
                     }
-                });
-                if (Object.keys(examData).length > 0) {
-                    data.examData[skill] = examData;
+                } catch(e) {}
+                
+                const retries = parseInt(localStorage.getItem(`exam_retry_${skill}_${examId}`)) || 0;
+                // إذا لم نجد lastPlayed من السجل، نحاول من المفتاح المستقل
+                if (!lastPlayed) {
+                    lastPlayed = localStorage.getItem(`exam_last_review_${skill}_${examId}`) || null;
                 }
+                
+                if (!data.examData[skill]) data.examData[skill] = {};
+                data.examData[skill][examId] = { score, retries, lastPlayed };
             });
 
+            // 2. قراءة سجل النشاط (zertiva_history)
             try {
                 const history = localStorage.getItem('zertiva_history');
                 if (history) data.history = JSON.parse(history);
@@ -1234,74 +1261,72 @@
             let html = '';
 
             allExams.forEach(exam => {
+                if (exam.skillId !== currentSkillId) {
+                    currentSkillId = exam.skillId;
+                    const skillLabel = skills.find(s => s.id === currentSkillId)?.label || currentSkillId;
+                    html += `
+                        <div class="exam-section-divider">
+                            <span class="material-symbols-outlined">folder</span>
+                            ${skillLabel}
+                        </div>
+                    `;
+                }
 
-allExams.forEach(exam => {
-    if (exam.skillId !== currentSkillId) {
-        currentSkillId = exam.skillId;
-        const skillLabel = skills.find(s => s.id === currentSkillId)?.label || currentSkillId;
-        html += `
-            <div class="exam-section-divider">
-                <span class="material-symbols-outlined">folder</span>
-                ${skillLabel}
-            </div>
-        `;
-    }
+                // جلب آخر 3 نتائج من السجل
+                const history = getExamHistory(exam.skillId, exam.examId);
+                let lastThreeScores = [];
+                if (history && history.length > 0) {
+                    const len = history.length;
+                    const start = Math.max(0, len - 3);
+                    lastThreeScores = history.slice(start).map(item => item.score);
+                } else if (exam.score !== null && exam.score !== undefined) {
+                    lastThreeScores = [exam.score];
+                }
 
-    // جلب آخر 3 نتائج من السجل
-    const history = getExamHistory(exam.skillId, exam.examId);
-    let lastThreeScores = [];
-    if (history && history.length > 0) {
-        const len = history.length;
-        const start = Math.max(0, len - 3);
-        lastThreeScores = history.slice(start).map(item => item.score);
-    } else if (exam.score !== null && exam.score !== undefined) {
-        lastThreeScores = [exam.score];
-    }
+                let scoresDisplay = '';
+                if (lastThreeScores.length === 0) {
+                    scoresDisplay = '—';
+                } else {
+                    scoresDisplay = lastThreeScores.map(s => s + ' / 25').join(' : ');
+                }
 
-    let scoresDisplay = '';
-    if (lastThreeScores.length === 0) {
-        scoresDisplay = '—';
-    } else {
-        scoresDisplay = lastThreeScores.map(s => s + ' / 25').join(' : ');
-    }
+                const latestScore = lastThreeScores.length > 0 ? lastThreeScores[lastThreeScores.length - 1] : null;
+                const scoreClass = (latestScore === null || latestScore === undefined) ? 'score-none' :
+                                   (latestScore >= 20 ? 'score-good' :
+                                   (latestScore >= 15 ? 'score-medium' : 'score-low'));
 
-    const latestScore = lastThreeScores.length > 0 ? lastThreeScores[lastThreeScores.length - 1] : null;
-    const scoreClass = (latestScore === null || latestScore === undefined) ? 'score-none' :
-                       (latestScore >= 20 ? 'score-good' :
-                       (latestScore >= 15 ? 'score-medium' : 'score-low'));
+                const review = exam.lastPlayed ? getRelativeDateWithColor(exam.lastPlayed) : { text: 'ليس بعد', colorClass: 'review-gray' };
 
-    const review = exam.lastPlayed ? getRelativeDateWithColor(exam.lastPlayed) : { text: 'ليس بعد', colorClass: 'review-gray' };
+                let retryClass = 'retry-green';
+                if (exam.retries <= 3) retryClass = 'retry-red';
+                else if (exam.retries <= 7) retryClass = 'retry-orange';
 
-    let retryClass = 'retry-green';
-    if (exam.retries <= 3) retryClass = 'retry-red';
-    else if (exam.retries <= 7) retryClass = 'retry-orange';
+                const timeMs = getExamTime(exam.skillId, exam.examId);
+                const timeText = timeMs !== null ? formatTime(timeMs) : '—';
+                const timeColor = timeMs !== null ? getTimeColor(timeMs) : 'gray';
 
-    const timeMs = getExamTime(exam.skillId, exam.examId);
-    const timeText = timeMs !== null ? formatTime(timeMs) : '—';
-    const timeColor = timeMs !== null ? getTimeColor(timeMs) : 'gray';
+                const title = getExamTitle(exam.skillId, exam.examId);
 
-    const title = getExamTitle(exam.skillId, exam.examId);
-
-    html += `
-        <div class="exam-card">
-            <div class="exam-row">
-                <span class="exam-skill">${exam.skillLabel}</span>
-                <span class="exam-title">${title}</span>
-            </div>
-            <div class="exam-row">
-                <span class="exam-score ${scoreClass}">${scoresDisplay}</span>
-                <span style="font-size:0.75rem; color:#94a3b8;">
-                    <span class="material-symbols-outlined" style="font-size:16px; vertical-align:middle;">repeat</span>
-                    <span class="${retryClass}">${exam.retries}</span>
-                </span>
-            </div>
-            <div class="exam-meta">
-                <span>آخر مراجعة: <span class="${review.colorClass}">${review.text}</span></span>
-                <span>⏱️ <span style="color:${timeColor}">${timeText}</span></span>
-            </div>
-        </div>
-    `;
-});
+                html += `
+                    <div class="exam-card">
+                        <div class="exam-row">
+                            <span class="exam-skill">${exam.skillLabel}</span>
+                            <span class="exam-title">${title}</span>
+                        </div>
+                        <div class="exam-row">
+                            <span class="exam-score ${scoreClass}">${scoresDisplay}</span>
+                            <span style="font-size:0.75rem; color:#94a3b8;">
+                                <span class="material-symbols-outlined" style="font-size:16px; vertical-align:middle;">repeat</span>
+                                <span class="${retryClass}">${exam.retries}</span>
+                            </span>
+                        </div>
+                        <div class="exam-meta">
+                            <span>آخر مراجعة: <span class="${review.colorClass}">${review.text}</span></span>
+                            <span>⏱️ <span style="color:${timeColor}">${timeText}</span></span>
+                        </div>
+                    </div>
+                `;
+            });
 
             examsGrid.innerHTML = html;
         }
