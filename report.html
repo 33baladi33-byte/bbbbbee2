@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <style>
-        /* ===== Reset & Base ===== */
+        /* ===== جميع الأنماط (نفسها بالكامل) ===== */
+        /* ... (احتفظ بكل الـ CSS الموجود، لم يتغير شيء) ... */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Cairo', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -60,7 +61,6 @@
         .btn-close:hover {
             background: #e2e8f0; transform: translateY(-2px);
         }
-        /* ===== باقي الأنماط (نفسها) ===== */
         .report-grid {
             display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px;
         }
@@ -343,154 +343,173 @@
 <script>
 (function() {
     // ============================================================
-    // 1. قراءة البيانات: إما من REPORT_DATA (إذا وُجد) أو من localStorage
+    // 1. دوال مساعدة لقراءة البيانات من localStorage (للتقرير الأصلي)
     // ============================================================
-    let d = null;
+    function getLocalData(key, defaultVal) {
+        try {
+            const val = localStorage.getItem(key);
+            return val !== null ? val : defaultVal;
+        } catch { return defaultVal; }
+    }
 
-    // التحقق من وجود REPORT_DATA (سيتم تضمينه في النسخة المحمّلة)
-    if (typeof window.REPORT_DATA !== 'undefined' && window.REPORT_DATA !== null) {
-        d = window.REPORT_DATA;
-        console.log('✅ باستخدام REPORT_DATA المضمن');
-    } else {
-        // دوال مساعدة لقراءة البيانات من localStorage
-        function getLocalData(key, defaultVal) {
-            try {
-                const val = localStorage.getItem(key);
-                return val !== null ? val : defaultVal;
-            } catch { return defaultVal; }
+    function getLocalJSON(key, defaultVal) {
+        try {
+            const val = localStorage.getItem(key);
+            return val ? JSON.parse(val) : defaultVal;
+        } catch { return defaultVal; }
+    }
+
+    function getTotalStudyMinutes() {
+        return parseInt(getLocalData('total_study_minutes', '0')) || 0;
+    }
+
+    function getTotalStudyHours() {
+        return (getTotalStudyMinutes() / 60).toFixed(1);
+    }
+
+    function getExamDate() {
+        return getLocalData('zertiva_exam_date', null);
+    }
+
+    function getDailyGoal() {
+        const data = getLocalJSON('stats_daily_data', { goal: 120 });
+        const goal = data.goal || 120;
+        const hours = Math.floor(goal / 60);
+        const mins = goal % 60;
+        if (hours > 0) {
+            return hours + (hours === 1 ? ' ساعة' : ' ساعات') + (mins > 0 ? ' و ' + mins + ' دقيقة' : '');
         }
+        return mins + ' دقيقة';
+    }
 
-        function getLocalJSON(key, defaultVal) {
-            try {
-                const val = localStorage.getItem(key);
-                return val ? JSON.parse(val) : defaultVal;
-            } catch { return defaultVal; }
-        }
-
-        function getTotalStudyMinutes() {
-            return parseInt(getLocalData('total_study_minutes', '0')) || 0;
-        }
-
-        function getTotalStudyHours() {
-            return (getTotalStudyMinutes() / 60).toFixed(1);
-        }
-
-        function getExamDate() {
-            return getLocalData('zertiva_exam_date', null);
-        }
-
-        function getDailyGoal() {
-            const data = getLocalJSON('stats_daily_data', { goal: 120 });
-            const goal = data.goal || 120;
-            const hours = Math.floor(goal / 60);
-            const mins = goal % 60;
-            if (hours > 0) {
-                return hours + (hours === 1 ? ' ساعة' : ' ساعات') + (mins > 0 ? ' و ' + mins + ' دقيقة' : '');
+    function getStreak() {
+        const data = getLocalJSON('stats_daily_data', { history: [] });
+        const history = data.history || [];
+        let totalSuccessful = 0;
+        history.forEach(entry => {
+            if (entry.completed !== undefined) {
+                if (entry.completed === true) totalSuccessful++;
+            } else {
+                const goalAtDay = entry.goal || data.goal || 120;
+                const minutes = entry.minutes || 0;
+                if (minutes >= goalAtDay) totalSuccessful++;
             }
-            return mins + ' دقيقة';
-        }
+        });
+        return totalSuccessful;
+    }
 
-        function getStreak() {
-            const data = getLocalJSON('stats_daily_data', { history: [] });
-            const history = data.history || [];
-            let totalSuccessful = 0;
-            history.forEach(entry => {
-                if (entry.completed !== undefined) {
-                    if (entry.completed === true) totalSuccessful++;
-                } else {
-                    const goalAtDay = entry.goal || data.goal || 120;
-                    const minutes = entry.minutes || 0;
-                    if (minutes >= goalAtDay) totalSuccessful++;
+    function getHistory() {
+        const data = getLocalJSON('stats_daily_data', { history: [] });
+        return data.history || [];
+    }
+
+    function getAllExamData() {
+        const skills = ['hoeren1','hoeren2','hoeren3','lesen1','lesen2','lesen3','sprach1','sprach2'];
+        const result = {};
+        skills.forEach(skill => {
+            result[skill] = {};
+            const prefix = `exam_result_${skill}_`;
+            const allKeys = Object.keys(localStorage);
+            const examKeys = allKeys.filter(k => k.startsWith(prefix));
+            examKeys.forEach(k => {
+                const examIdStr = k.substring(prefix.length);
+                const examId = parseInt(examIdStr, 10);
+                if (!isNaN(examId)) {
+                    const score = parseFloat(localStorage.getItem(k));
+                    if (!isNaN(score)) {
+                        const retries = parseInt(getLocalData(`exam_retry_${skill}_${examId}`, '0')) || 0;
+                        const lastPlayed = getLocalData(`exam_last_review_${skill}_${examId}`, null);
+                        let lastFromHistory = null;
+                        try {
+                            const historyKey = `exam_history_${skill}_${examId}`;
+                            const hist = JSON.parse(localStorage.getItem(historyKey) || '[]');
+                            if (hist.length > 0) {
+                                lastFromHistory = hist[hist.length - 1].date || null;
+                            }
+                        } catch(e) {}
+                        const finalLast = lastPlayed || lastFromHistory;
+                        result[skill][examId] = {
+                            score: score,
+                            retries: retries,
+                            lastPlayed: finalLast
+                        };
+                    }
                 }
             });
-            return totalSuccessful;
-        }
+        });
+        return result;
+    }
 
-        function getHistory() {
-            const data = getLocalJSON('stats_daily_data', { history: [] });
-            return data.history || [];
-        }
-
-        // جمع بيانات الامتحانات من localStorage
-        function getAllExamData() {
-            const skills = ['hoeren1','hoeren2','hoeren3','lesen1','lesen2','lesen3','sprach1','sprach2'];
-            const result = {};
-            skills.forEach(skill => {
-                result[skill] = {};
-                const prefix = `exam_result_${skill}_`;
-                const allKeys = Object.keys(localStorage);
-                const examKeys = allKeys.filter(k => k.startsWith(prefix));
-                examKeys.forEach(k => {
-                    const examIdStr = k.substring(prefix.length);
-                    const examId = parseInt(examIdStr, 10);
-                    if (!isNaN(examId)) {
-                        const score = parseFloat(localStorage.getItem(k));
-                        if (!isNaN(score)) {
-                            const retries = parseInt(getLocalData(`exam_retry_${skill}_${examId}`, '0')) || 0;
-                            const lastPlayed = getLocalData(`exam_last_review_${skill}_${examId}`, null);
-                            let lastFromHistory = null;
-                            try {
-                                const historyKey = `exam_history_${skill}_${examId}`;
-                                const hist = JSON.parse(localStorage.getItem(historyKey) || '[]');
-                                if (hist.length > 0) {
-                                    lastFromHistory = hist[hist.length - 1].date || null;
-                                }
-                            } catch(e) {}
-                            const finalLast = lastPlayed || lastFromHistory;
-                            result[skill][examId] = {
-                                score: score,
-                                retries: retries,
-                                lastPlayed: finalLast
-                            };
-                        }
-                    }
-                });
-            });
-            return result;
-        }
-
-        function buildReportDataFromLocalStorage() {
-            const examDate = getExamDate();
-            let remainingDays = '—';
-            if (examDate) {
-                try {
-                    const today = new Date();
-                    today.setHours(0,0,0,0);
-                    const exam = new Date(examDate);
-                    exam.setHours(0,0,0,0);
-                    const diff = Math.ceil((exam - today) / (1000*60*60*24));
-                    remainingDays = diff > 0 ? diff + ' يوم' : 'انتهى';
-                } catch(e) { /* تجاهل */ }
-            }
-
-            let userData = {};
+    function buildReportDataFromLocalStorage() {
+        const examDate = getExamDate();
+        let remainingDays = '—';
+        if (examDate) {
             try {
-                const raw = localStorage.getItem('zertiva_user_data');
-                if (raw) userData = JSON.parse(raw);
-            } catch(e) {}
-
-            return {
-                fullName: userData.fullName || getLocalData('zertiva_user_name', '—'),
-                email: userData.email || getLocalData('zertiva_user_email', 'زائر'),
-                creationTime: userData.creationTime || getLocalData('zertiva_user_created', null),
-                uid: userData.uid || getLocalData('zertiva_user_uid', '—'),
-                examDate: examDate || '—',
-                plan: userData.plan || getLocalData('zertiva_user_plan', 'free'),
-                totalHours: getTotalStudyHours(),
-                streak: getStreak(),
-                remainingDays: remainingDays,
-                dailyGoal: getDailyGoal(),
-                examData: getAllExamData(),
-                history: getHistory()
-            };
+                const today = new Date();
+                today.setHours(0,0,0,0);
+                const exam = new Date(examDate);
+                exam.setHours(0,0,0,0);
+                const diff = Math.ceil((exam - today) / (1000*60*60*24));
+                remainingDays = diff > 0 ? diff + ' يوم' : 'انتهى';
+            } catch(e) { /* تجاهل */ }
         }
 
-        d = buildReportDataFromLocalStorage();
-        console.log('✅ باستخدام localStorage (تقرير أصلي)');
+        let userData = {};
+        try {
+            const raw = localStorage.getItem('zertiva_user_data');
+            if (raw) userData = JSON.parse(raw);
+        } catch(e) {}
+
+        return {
+            fullName: userData.fullName || getLocalData('zertiva_user_name', '—'),
+            email: userData.email || getLocalData('zertiva_user_email', 'زائر'),
+            creationTime: userData.creationTime || getLocalData('zertiva_user_created', null),
+            uid: userData.uid || getLocalData('zertiva_user_uid', '—'),
+            examDate: examDate || '—',
+            plan: userData.plan || getLocalData('zertiva_user_plan', 'free'),
+            totalHours: getTotalStudyHours(),
+            streak: getStreak(),
+            remainingDays: remainingDays,
+            dailyGoal: getDailyGoal(),
+            examData: getAllExamData(),
+            history: getHistory()
+        };
     }
 
     // ============================================================
-    // 2. دوال العرض (نفسها)
+    // 2. قراءة البيانات وعرضها (للتقرير الأصلي)
+    // ============================================================
+    let d = null;
+    const stored = localStorage.getItem('zertiva_report_data');
+    if (stored) {
+        try {
+            d = JSON.parse(stored);
+            if (!d.examData) d.examData = {};
+            if (!d.history) d.history = [];
+        } catch(e) { d = null; }
+    }
+    if (!d) {
+        d = buildReportDataFromLocalStorage();
+    }
+
+    // إذا لم توجد بيانات، نعرض رسالة
+    const hasData = Object.keys(d.examData).some(s => Object.keys(d.examData[s]).length > 0) || d.email !== 'زائر';
+    if (!hasData && d.email === 'زائر') {
+        document.querySelector('.report-container').innerHTML = `
+            <div style="text-align:center; padding:60px 20px; background:#ffffff; border-radius:20px; border:1px solid #eef2f6;">
+                <div style="font-size:48px; margin-bottom:16px;">📭</div>
+                <h3 style="color:#1a1a2e; margin-bottom:8px;">لا توجد بيانات</h3>
+                <p style="color:#94a3b8; font-size:0.9rem;">لم يتم تسجيل أي نتائج بعد. قم بحل بعض الامتحانات ثم عد إلى هذا التقرير.</p>
+                <button onclick="window.close()" style="margin-top:20px; padding:10px 28px; background:#1a2a4a; color:white; border:none; border-radius:40px; font-size:0.85rem; font-weight:600; cursor:pointer;">إغلاق</button>
+            </div>
+        `;
+        return;
+    }
+
+    if (d.email === '—') d.email = 'زائر';
+
+    // ============================================================
+    // 3. دوال العرض (نفسها)
     // ============================================================
     function clean(val) {
         if (val === null || val === undefined || val === '') return '—';
@@ -553,7 +572,7 @@
     }
 
     // ============================================================
-    // 3. عرض التواريخ والإحصائيات
+    // 4. عرض التواريخ والإحصائيات (للتقرير الأصلي)
     // ============================================================
     const now = new Date();
     const dateStr = now.toLocaleDateString('en-GB', { year:'numeric', month:'2-digit', day:'2-digit' });
@@ -583,7 +602,7 @@
     }
 
     // ============================================================
-    // 4. عرض المهارات
+    // 5. عرض المهارات (للتقرير الأصلي)
     // ============================================================
     const skills = [
         { id: 'hoeren1', label: 'Hören 1' },
@@ -665,7 +684,7 @@
     document.getElementById('examCount').textContent = totalExams + ' امتحان';
 
     // ============================================================
-    // 5. عرض الامتحانات
+    // 6. عرض الامتحانات (للتقرير الأصلي)
     // ============================================================
     const examsGrid = document.getElementById('examsGrid');
     const allExams = [];
@@ -766,7 +785,7 @@
     }
 
     // ============================================================
-    // 6. عرض النشاط الأخير
+    // 7. عرض النشاط الأخير (للتقرير الأصلي)
     // ============================================================
     const timelineContainer = document.getElementById('timelineContainer');
     const history = d.history || [];
@@ -794,63 +813,29 @@
     }
 
     // ============================================================
-    // 7. دالة تحميل التقرير كـ HTML (معدلة لجعله مستقلاً)
+    // 8. دالة تحميل التقرير كـ HTML (Snapshot ثابت بدون سكربت)
     // ============================================================
     window.exportReportHTML = function() {
         try {
-            // 1. استنساخ الـ DOM الحالي (بعد عرض البيانات)
+            // 1. استنساخ الـ DOM بالكامل (بعد عرض البيانات)
             const clone = document.documentElement.cloneNode(true);
 
-            // 2. إزالة الأزرار غير المرغوب فيها (لكن نحتفظ بالزر نفسه في النسخة؟ لا، نزيل أزرار التفاعل)
+            // 2. إزالة أزرار التحكم (حتى لا تظهر في النسخة المحمّلة)
             const actions = clone.querySelector('.report-actions');
             if (actions) actions.remove();
 
-            // 3. إزالة أي سكربت خارجي (مثل assets/app.js) لأنه غير ضروري
-            const externalScripts = clone.querySelectorAll('script[src]');
-            externalScripts.forEach(script => {
-                if (script.src && !script.src.startsWith('https://fonts.googleapis.com')) {
-                    script.remove();
-                }
-            });
-
-            // 4. البحث عن السكربت الرئيسي (الذي يحتوي على كود التقرير) واستبداله
+            // 3. إزالة جميع عناصر <script> (لأننا لا نريد أي منطق جلب بيانات)
             const scripts = clone.querySelectorAll('script');
-            let mainScript = null;
-            scripts.forEach(script => {
-                if (!script.src && script.textContent.includes('function exportReportHTML')) {
-                    mainScript = script;
-                }
-            });
+            scripts.forEach(script => script.remove());
 
-            if (mainScript) {
-                // نستبدل محتوى السكربت بنسخة معدلة تعتمد على REPORT_DATA
-                // لكننا سنبقي السكربت كما هو، مع إضافة سكربت جديد قبل يحدد REPORT_DATA
-                // ونضمن أن السكربت الموجود سيتعامل معه
-                // لكن الأفضل: نترك السكربت كما هو لأنه بالفعل يتحقق من window.REPORT_DATA
-                // ونضيف فقط تعريف REPORT_DATA في سكربت منفصل قبله
-                // لكن يجب التأكد من أن السكربت الموجود لن يحاول قراءة localStorage إذا وجد REPORT_DATA
-                // بالفعل الكود الحالي يفعل ذلك (الجزء الأول من السكربت يتحقق من window.REPORT_DATA)
-            }
+            // 4. إزالة أي رابط لـ assets/app.js (إن وجد)
+            const appJsLinks = clone.querySelectorAll('link[href*="assets/app.js"]');
+            appJsLinks.forEach(link => link.remove());
 
-            // 5. إضافة سكربت يحتوي على البيانات (REPORT_DATA) في أعلى الـ body أو قبل السكربت الرئيسي
-            const dataScript = document.createElement('script');
-            dataScript.textContent = `window.REPORT_DATA = ${JSON.stringify(d, null, 2)};`;
-            // نضعه قبل أي سكربت آخر (في الـ head أو بداية body)
-            const head = clone.querySelector('head');
-            if (head) {
-                head.appendChild(dataScript);
-            } else {
-                // إذا لم يوجد head، نضعه في بداية body
-                const body = clone.querySelector('body');
-                if (body) {
-                    body.insertBefore(dataScript, body.firstChild);
-                }
-            }
-
-            // 6. تحويل إلى HTML
+            // 5. تحويل النسخة إلى نص HTML كامل
             const html = '<!DOCTYPE html>\n' + clone.outerHTML;
 
-            // 7. إنشاء Blob وتحميل الملف
+            // 6. إنشاء Blob وتحميل الملف
             const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -861,13 +846,14 @@
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
 
+            console.log('✅ تم تحميل التقرير كـ Snapshot ثابت (بدون سكربت)');
         } catch(e) {
             console.error('❌ فشل تحميل التقرير:', e);
             alert('حدث خطأ أثناء تحميل التقرير. حاول مرة أخرى.');
         }
     };
 
-    console.log('✅ تقرير Zertiva B2 محدث (يدعم التصدير المستقل)');
+    console.log('✅ تقرير Zertiva B2 جاهز (يدعم التصدير كـ Snapshot ثابت)');
 })();
 </script>
 </body>
