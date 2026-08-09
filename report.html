@@ -679,10 +679,14 @@
         </div>
         <div class="report-hero-right">
             <span class="report-hero-date" id="reportDate"></span>
-                           <div class="report-actions">
-                <button class="btn-download" onclick="downloadReportHTML()" style="background:#2c3e66; color:white;">
+                             <div class="report-actions">
+                <button class="btn-download" onclick="exportReportHTML()" style="background:#2c3e66; color:white;">
                     <span class="material-symbols-outlined" style="font-size:18px;">download</span>
                     تحميل التقرير
+                </button>
+                <button class="btn-share" onclick="shareReportLink()" style="background:#1a2a4a; color:white;">
+                    <span class="material-symbols-outlined" style="font-size:18px;">link</span>
+                    مشاركة التقرير
                 </button>
                 <button class="btn-close" onclick="window.close()">
                     <span class="material-symbols-outlined" style="font-size:18px;">close</span>
@@ -1367,9 +1371,103 @@
                 `;
             });
         }
+        console.log('✅ تقرير Zertiva B2 محدث (تواريخ إنجليزية + ألوان للمراجعة والإعادة)');
 
-             console.log('✅ تقرير Zertiva B2 محدث (تواريخ إنجليزية + ألوان للمراجعة والإعادة)');
-        
+        // ============================================================
+        //  12. دوال تحميل ومشاركة التقرير (باستخدام الصفحة الحالية)
+        // ============================================================
+
+        // دالة مساعدة لإزالة العناصر غير المرغوب فيها من النسخة المحملة
+        function cleanReportClone(clone) {
+            // إزالة أزرار التحكم
+            const actions = clone.querySelector('.report-actions');
+            if (actions) actions.remove();
+            return clone;
+        }
+
+        // دالة تحميل التقرير كـ HTML
+        function exportReportHTML() {
+            try {
+                // التحقق من وجود بيانات
+                const hasData = Object.keys(d.examData).some(skill => Object.keys(d.examData[skill]).length > 0);
+                if (!hasData && !d.email) {
+                    const confirmDownload = confirm(
+                        '⚠️ لا توجد بيانات محفوظة حتى الآن.\n\n' +
+                        'هل تريد إنشاء تقرير فارغ؟\n' +
+                        '(يمكنك العودة لاحقاً بعد حل بعض الامتحانات)'
+                    );
+                    if (!confirmDownload) return;
+                }
+
+                // أخذ نسخة من الصفحة الحالية
+                const clone = document.documentElement.cloneNode(true);
+                const cleaned = cleanReportClone(clone);
+
+                // إضافة بيانات التقرير المضمنة
+                const newScript = document.createElement('script');
+                newScript.textContent = 'const REPORT_DATA = ' + JSON.stringify(d, null, 2) + ';';
+                cleaned.querySelector('head')?.appendChild(newScript);
+
+                // تحويل إلى HTML string وتنزيلها
+                const htmlContent = '<!DOCTYPE html>\n' + cleaned.outerHTML;
+                const blob = new Blob([htmlContent], { type: 'text/html; charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'Zertiva-B2-Report.html';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+            } catch (error) {
+                console.error('❌ خطأ في تحميل التقرير:', error);
+                alert('حدث خطأ أثناء تحميل التقرير. يرجى المحاولة مرة أخرى.');
+            }
+        }
+
+        // دالة مشاركة التقرير (إنشاء رابط)
+        function shareReportLink() {
+            try {
+                const hasData = Object.keys(d.examData).some(skill => Object.keys(d.examData[skill]).length > 0);
+                if (!hasData && !d.email) {
+                    alert('⚠️ لا توجد بيانات لمشاركتها. قم بحل بعض الامتحانات أولاً.');
+                    return;
+                }
+
+                const clone = document.documentElement.cloneNode(true);
+                const cleaned = cleanReportClone(clone);
+
+                const newScript = document.createElement('script');
+                newScript.textContent = 'const REPORT_DATA = ' + JSON.stringify(d, null, 2) + ';';
+                cleaned.querySelector('head')?.appendChild(newScript);
+
+                const htmlContent = '<!DOCTYPE html>\n' + cleaned.outerHTML;
+                const blob = new Blob([htmlContent], { type: 'text/html; charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(url).then(() => {
+                        alert('✅ تم نسخ رابط التقرير إلى الحافظة!\n\n' +
+                              'يمكنك إرسال هذا الرابط لأي شخص.\n' +
+                              'ملاحظة: الرابط صالح فقط طالما أن هذه الصفحة مفتوحة في المتصفح.');
+                    }).catch(() => {
+                        prompt('انسخ هذا الرابط لمشاركة التقرير:', url);
+                    });
+                } else {
+                    prompt('انسخ هذا الرابط لمشاركة التقرير:', url);
+                }
+
+            } catch (error) {
+                console.error('❌ خطأ في مشاركة التقرير:', error);
+                alert('حدث خطأ أثناء مشاركة التقرير. يرجى المحاولة مرة أخرى.');
+            }
+        }
+
+        // إضافة الدوال للنطاق العام
+        window.exportReportHTML = exportReportHTML;
+        window.shareReportLink = shareReportLink;
+
     })();
 </script>
 
