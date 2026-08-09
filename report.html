@@ -831,7 +831,7 @@
             return 'red';
         }
 
-        // دالة لقراءة سجل نتائج امتحان معين من localStorage
+            // دالة لقراءة سجل نتائج امتحان معين من localStorage
         function getExamHistory(skill, examId) {
             try {
                 const key = `exam_history_${skill}_${examId}`;
@@ -840,6 +840,35 @@
             } catch(e) {
                 return [];
             }
+        }
+
+        function getExamTime(skill, examId) {
+            try {
+                const key = `exam_time_${skill}_${examId}`;
+                const val = localStorage.getItem(key);
+                return val ? parseInt(val, 10) : null;
+            } catch(e) {
+                return null;
+            }
+        }
+
+        function formatTime(ms) {
+            if (ms === null || ms === undefined) return '—';
+            const seconds = Math.floor(ms / 1000);
+            if (seconds < 60) {
+                return `${seconds} ثانية`;
+            } else {
+                const minutes = (seconds / 60).toFixed(2);
+                return `${minutes} دقيقة`;
+            }
+        }
+
+        function getTimeColor(ms) {
+            if (ms === null || ms === undefined) return 'gray';
+            const seconds = ms / 1000;
+            if (seconds < 60) return 'green';
+            if (seconds < 120) return 'orange';
+            return 'red';
         }
 
         // ============================================================
@@ -865,12 +894,79 @@
             console.error('❌ فشل قراءة بيانات التقرير:', e);
         }
 
-        if (!reportData) {
+          // ============================================================
+        //  2.  بناء بيانات التقرير من localStorage مباشرة
+        // ============================================================
+        function buildReportDataFromLocalStorage() {
+            const data = {
+                fullName: '—',
+                email: '—',
+                creationTime: null,
+                uid: '—',
+                examDate: null,
+                plan: 'free',
+                totalHours: 0,
+                streak: 0,
+                remainingDays: '—',
+                dailyGoal: '—',
+                examData: {},
+                history: []
+            };
+            
+            try {
+                const userData = localStorage.getItem('zertiva_user_data');
+                if (userData) {
+                    const parsed = JSON.parse(userData);
+                    data.fullName = parsed.fullName || '—';
+                    data.email = parsed.email || '—';
+                    data.creationTime = parsed.creationTime || null;
+                    data.uid = parsed.uid || '—';
+                    data.plan = parsed.plan || 'free';
+                    data.examDate = parsed.examDate || null;
+                }
+            } catch(e) {}
+
+            try {
+                const examDate = localStorage.getItem('zertiva_exam_date');
+                if (examDate) data.examDate = examDate;
+            } catch(e) {}
+
+            const skills = ['hoeren1','hoeren2','hoeren3','lesen1','lesen2','lesen3','sprach1','sprach2'];
+            skills.forEach(skill => {
+                const examData = {};
+                const prefix = `exam_result_${skill}_`;
+                const keys = Object.keys(localStorage).filter(k => k.startsWith(prefix));
+                keys.forEach(key => {
+                    const examId = parseInt(key.replace(prefix, ''));
+                    if (!isNaN(examId)) {
+                        const score = parseFloat(localStorage.getItem(key));
+                        const retries = parseInt(localStorage.getItem(`exam_retry_${skill}_${examId}`)) || 0;
+                        const lastPlayed = localStorage.getItem(`exam_last_review_${skill}_${examId}`) || null;
+                        examData[examId] = { score, retries, lastPlayed };
+                    }
+                });
+                if (Object.keys(examData).length > 0) {
+                    data.examData[skill] = examData;
+                }
+            });
+
+            try {
+                const history = localStorage.getItem('zertiva_history');
+                if (history) data.history = JSON.parse(history);
+            } catch(e) {}
+
+            return data;
+        }
+
+        const d = buildReportDataFromLocalStorage();
+
+        const hasData = Object.keys(d.examData).some(skill => Object.keys(d.examData[skill]).length > 0);
+        if (!hasData && !d.email) {
             document.querySelector('.report-container').innerHTML = `
                 <div style="text-align:center; padding:60px 20px; background:#ffffff; border-radius:20px; border:1px solid #eef2f6;">
                     <div style="font-size:48px; margin-bottom:16px;">📭</div>
                     <h3 style="color:#1a1a2e; margin-bottom:8px;">لا توجد بيانات</h3>
-                    <p style="color:#94a3b8; font-size:0.9rem;">يرجى العودة إلى الموقع الرئيسي وتحميل معلوماتك من الملف الشخصي.</p>
+                    <p style="color:#94a3b8; font-size:0.9rem;">لم يتم تسجيل أي نتائج بعد. قم بحل بعض الامتحانات ثم عد إلى هذا التقرير.</p>
                     <button onclick="window.close()" style="margin-top:20px; padding:10px 28px; background:#1a2a4a; color:white; border:none; border-radius:40px; font-size:0.85rem; font-weight:600; cursor:pointer;">
                         إغلاق
                     </button>
@@ -879,7 +975,9 @@
             return;
         }
 
-        const d = reportData;
+        if (d.email === '—') {
+            d.email = 'زائر';
+        }
 
         // ============================================================
         //  3.  دوال مساعدة عامة
