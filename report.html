@@ -3214,7 +3214,8 @@
         const examData = d.examData || {};
         const skillsGrid = document.getElementById('skillsGrid');
         let totalExams = 0;
-
+// 🔽 أضف السطر التالي هنا لمسح البطاقات الثابتة أولاً
+skillsGrid.innerHTML = '';
                 skills.forEach(skill => {
             const exams = examData[skill.id] || {};
             const examIds = Object.keys(exams);
