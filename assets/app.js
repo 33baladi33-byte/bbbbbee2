@@ -18464,6 +18464,14 @@ var MyApp = (() => {
     lesen3OrderSaved = false;
     console.log("\u{1F504} \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u062A\u0631\u062A\u064A\u0628 Lesen3");
   }
+  function updateTimerDisplay(text) {
+    const container = document.getElementById("retryCounterBox");
+    if (!container) return;
+    const timeBox = container.querySelectorAll("div")[2];
+    if (timeBox) {
+      timeBox.innerHTML = `\u0623\u062C\u0628\u062A \u0639\u0644\u0649 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 \u0641\u064A: <strong style="font-weight:700;">${text}</strong>`;
+    }
+  }
   function saveExamTime(skill, examId, timeMs) {
     if (!skill || !examId) return;
     try {
@@ -19496,14 +19504,12 @@ var MyApp = (() => {
         window.removeColorFromExam(examId);
       }
     }
-    if (examTimer2.isRunning) {
-      const elapsed = examTimer2.stop();
-      if (elapsed !== null) {
-        const skill = window.currentSkill || "";
-        const examId = window.currentExamId || 1;
-        if (skill && examId) {
-          saveExamTime(skill, examId, elapsed);
-        }
+    const elapsed = examTimer2.finalize();
+    if (elapsed !== null) {
+      const skill = window.currentSkill || "";
+      const examId = window.currentExamId || 1;
+      if (skill && examId) {
+        saveExamTime(skill, examId, elapsed);
       }
     }
   }
@@ -22339,33 +22345,102 @@ var MyApp = (() => {
         skill: null,
         examId: null,
         intervalId: null,
+        lastElapsed: 0,
         start(skill, examId) {
           if (this.isRunning) return;
           this.startTime = Date.now();
           this.isRunning = true;
           this.skill = skill;
           this.examId = examId;
+          this.lastElapsed = 0;
           const btn = document.getElementById("playTimerBtn");
           if (btn) {
             btn.querySelector(".material-symbols-outlined").textContent = "pause";
-            btn.title = "\u0627\u0644\u0639\u062F\u0627\u062F \u064A\u0639\u0645\u0644";
+            btn.title = "\u0625\u064A\u0642\u0627\u0641 \u0645\u0624\u0642\u062A";
           }
+          if (this.intervalId) clearInterval(this.intervalId);
+          this.intervalId = setInterval(() => {
+            if (this.isRunning) {
+              const elapsed = Date.now() - this.startTime + this.lastElapsed;
+              const seconds = Math.floor(elapsed / 1e3);
+              const minutes = (seconds / 60).toFixed(2);
+              updateTimerDisplay(minutes + " \u062F\u0642\u064A\u0642\u0629");
+            }
+          }, 1e3);
           console.log(`\u23F1\uFE0F \u0628\u062F\u0623 \u0627\u0644\u062A\u0648\u0642\u064A\u062A \u0644\u0644\u0627\u0645\u062A\u062D\u0627\u0646 ${skill} - ${examId}`);
         },
         stop() {
           if (!this.isRunning) return null;
-          const elapsed = Date.now() - this.startTime;
+          const elapsed = Date.now() - this.startTime + this.lastElapsed;
           this.isRunning = false;
+          this.lastElapsed = elapsed;
+          if (this.intervalId) {
+            clearInterval(this.intervalId);
+            this.intervalId = null;
+          }
           const skill = this.skill;
           const examId = this.examId;
+          const btn = document.getElementById("playTimerBtn");
+          if (btn) {
+            btn.querySelector(".material-symbols-outlined").textContent = "play_arrow";
+            btn.title = "\u0627\u0633\u062A\u0626\u0646\u0627\u0641 \u0627\u0644\u062A\u0648\u0642\u064A\u062A";
+          }
+          const seconds = Math.floor(elapsed / 1e3);
+          const minutes = (seconds / 60).toFixed(2);
+          updateTimerDisplay("\u23F8\uFE0F " + minutes + " \u062F\u0642\u064A\u0642\u0629");
+          console.log(`\u23F1\uFE0F \u062A\u0648\u0642\u0641 \u0627\u0644\u062A\u0648\u0642\u064A\u062A \u0644\u0644\u0627\u0645\u062A\u062D\u0627\u0646 ${skill} - ${examId}\u060C \u0627\u0644\u0645\u062F\u0629: ${elapsed}ms`);
+          return elapsed;
+        },
+        resume() {
+          if (this.isRunning) return;
+          if (this.skill === null || this.examId === null) return;
+          this.startTime = Date.now();
+          this.isRunning = true;
+          const btn = document.getElementById("playTimerBtn");
+          if (btn) {
+            btn.querySelector(".material-symbols-outlined").textContent = "pause";
+            btn.title = "\u0625\u064A\u0642\u0627\u0641 \u0645\u0624\u0642\u062A";
+          }
+          if (this.intervalId) clearInterval(this.intervalId);
+          this.intervalId = setInterval(() => {
+            if (this.isRunning) {
+              const elapsed = Date.now() - this.startTime + this.lastElapsed;
+              const seconds = Math.floor(elapsed / 1e3);
+              const minutes = (seconds / 60).toFixed(2);
+              updateTimerDisplay(minutes + " \u062F\u0642\u064A\u0642\u0629");
+            }
+          }, 1e3);
+          console.log(`\u23F1\uFE0F \u0627\u0633\u062A\u0626\u0646\u0627\u0641 \u0627\u0644\u062A\u0648\u0642\u064A\u062A \u0644\u0644\u0627\u0645\u062A\u062D\u0627\u0646 ${this.skill} - ${this.examId}`);
+        },
+        finalize() {
+          if (!this.isRunning && this.lastElapsed === 0) {
+            return null;
+          }
+          let elapsed = this.lastElapsed;
+          if (this.isRunning) {
+            elapsed = Date.now() - this.startTime + this.lastElapsed;
+            this.isRunning = false;
+            if (this.intervalId) {
+              clearInterval(this.intervalId);
+              this.intervalId = null;
+            }
+          }
+          const skill = this.skill;
+          const examId = this.examId;
+          this.startTime = null;
+          this.isRunning = false;
           this.skill = null;
           this.examId = null;
+          this.lastElapsed = 0;
           const btn = document.getElementById("playTimerBtn");
           if (btn) {
             btn.querySelector(".material-symbols-outlined").textContent = "play_arrow";
             btn.title = "\u0628\u062F\u0621 \u062A\u0648\u0642\u064A\u062A \u0627\u0644\u062D\u0644";
           }
-          console.log(`\u23F1\uFE0F \u062A\u0648\u0642\u0641 \u0627\u0644\u062A\u0648\u0642\u064A\u062A \u0644\u0644\u0627\u0645\u062A\u062D\u0627\u0646 ${skill} - ${examId}\u060C \u0627\u0644\u0645\u062F\u0629: ${elapsed}ms`);
+          const seconds = Math.floor(elapsed / 1e3);
+          const minutes = (seconds / 60).toFixed(2);
+          updateTimerDisplay(minutes + " \u062F\u0642\u064A\u0642\u0629");
+          console.log(`\u23F1\uFE0F \u062A\u0645 \u062D\u0641\u0638 \u0648\u0642\u062A \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 ${skill} - ${examId}\u060C \u0627\u0644\u0645\u062F\u0629: ${elapsed}ms`);
           return elapsed;
         },
         reset() {
@@ -22377,11 +22452,13 @@ var MyApp = (() => {
           this.isRunning = false;
           this.skill = null;
           this.examId = null;
+          this.lastElapsed = 0;
           const btn = document.getElementById("playTimerBtn");
           if (btn) {
             btn.querySelector(".material-symbols-outlined").textContent = "play_arrow";
             btn.title = "\u0628\u062F\u0621 \u062A\u0648\u0642\u064A\u062A \u0627\u0644\u062D\u0644";
           }
+          updateTimerDisplay("\u0644\u0645 \u064A\u064F\u0633\u062C\u0644");
         }
       };
       window.examTimer = examTimer2;
@@ -22390,6 +22467,16 @@ var MyApp = (() => {
       window.formatTime = formatTime;
       window.getTimeColor = getTimeColor;
       window.updateExamTimeInList = updateExamTimeInList;
+      document.addEventListener("beforeunload", function() {
+        if (examTimer2.isRunning) {
+          examTimer2.reset();
+        }
+      });
+      document.addEventListener("pagehide", function() {
+        if (examTimer2.isRunning) {
+          examTimer2.reset();
+        }
+      });
       window.loadExamFromFile = async function(skill, examId) {
         try {
           const response = await fetch(`data/${skill}/exam${examId}.json`);
@@ -25471,15 +25558,20 @@ var MyApp = (() => {
         const freshPlayBtn = document.getElementById("playTimerBtn");
         freshPlayBtn.addEventListener("click", function(e) {
           e.stopPropagation();
-          if (examTimer.isRunning) {
-            return;
-          }
           const skill2 = window.currentSkill || "";
           const examId2 = window.currentExamId || 1;
-          if (skill2 && examId2) {
-            examTimer.start(skill2, examId2);
-          } else {
+          if (!skill2 || !examId2) {
             console.warn("\u26A0\uFE0F \u0644\u0627 \u064A\u0645\u0643\u0646 \u0628\u062F\u0621 \u0627\u0644\u0639\u062F\u0627\u062F: skill \u0623\u0648 examId \u063A\u064A\u0631 \u0645\u0639\u0631\u0641");
+            return;
+          }
+          if (examTimer.isRunning) {
+            examTimer.stop();
+          } else {
+            if (examTimer.skill === skill2 && examTimer.examId === examId2 && examTimer.lastElapsed > 0) {
+              examTimer.resume();
+            } else {
+              examTimer.start(skill2, examId2);
+            }
           }
         });
       }
@@ -26779,8 +26871,12 @@ var MyApp = (() => {
     } else {
       reviewText = `\u0645\u0646\u0630 ${reviewDays} \u064A\u0648\u0645`;
     }
-    const timeText = timeMs !== null ? window.formatTime(timeMs) : "\u0644\u0645 \u064A\u064F\u0633\u062C\u0644";
-    const timeColor = timeMs !== null ? window.getTimeColor(timeMs) : "gray";
+    let timeText = "\u0644\u0645 \u064A\u064F\u0633\u062C\u0644";
+    let timeColor = "gray";
+    if (timeMs !== null) {
+      timeText = window.formatTime(timeMs);
+      timeColor = window.getTimeColor(timeMs);
+    }
     const container = document.createElement("div");
     container.id = "retryCounterBox";
     container.style.cssText = `
@@ -31010,7 +31106,7 @@ var MyApp = (() => {
           if (modal) modal.classList.remove("active");
           showMainContent();
         }
-        function updateTimerDisplay() {
+        function updateTimerDisplay2() {
           const { timerMinutes, timerSeconds } = getElements();
           if (!timerMinutes) return;
           const mins = Math.floor(remainingSeconds / 60);
@@ -31153,7 +31249,7 @@ var MyApp = (() => {
             lastSavedMinute = Math.floor(elapsedSeconds / 60);
             clearPauseState();
             closeModal();
-            updateTimerDisplay();
+            updateTimerDisplay2();
             const { timerBar: timerBar2, pauseBtn: pauseBtn2 } = getElements();
             if (timerBar2) {
               timerBar2.style.display = "flex";
@@ -31166,7 +31262,7 @@ var MyApp = (() => {
                 endSession();
               } else {
                 remainingSeconds--;
-                updateTimerDisplay();
+                updateTimerDisplay2();
                 saveElapsedMinutes();
               }
             }, 1e3);
@@ -31180,7 +31276,7 @@ var MyApp = (() => {
           pausedMinutes = 0;
           lastSavedMinute = 0;
           closeModal();
-          updateTimerDisplay();
+          updateTimerDisplay2();
           const { timerBar, pauseBtn } = getElements();
           if (timerBar) {
             timerBar.style.display = "flex";
@@ -31193,7 +31289,7 @@ var MyApp = (() => {
               endSession();
             } else {
               remainingSeconds--;
-              updateTimerDisplay();
+              updateTimerDisplay2();
               saveElapsedMinutes();
             }
           }, 1e3);
@@ -31232,7 +31328,7 @@ var MyApp = (() => {
               endSession();
             } else {
               remainingSeconds--;
-              updateTimerDisplay();
+              updateTimerDisplay2();
               saveElapsedMinutes();
             }
           }, 1e3);
@@ -31397,7 +31493,7 @@ var MyApp = (() => {
               if (savedState.remainingSeconds) {
                 remainingSeconds = savedState.remainingSeconds;
                 totalSeconds = savedState.totalSeconds;
-                updateTimerDisplay();
+                updateTimerDisplay2();
                 const { timerBar, pauseBtn } = getElements();
                 if (timerBar) {
                   timerBar.style.display = "flex";
