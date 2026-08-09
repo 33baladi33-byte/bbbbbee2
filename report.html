@@ -1374,36 +1374,63 @@
 
              console.log('✅ تقرير Zertiva B2 محدث (تواريخ إنجليزية + ألوان للمراجعة والإعادة)');
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // ============================================================
-        //  12. دالة تحميل التقرير كملف HTML مستقل
+        //  12. دالة تحميل التقرير كملف HTML مستقل (مع معالجة الأخطاء)
         // ============================================================
         function downloadReportHTML() {
-            // 1. جمع بيانات التقرير الحالية (من d)
-            const reportData = d;
+            try {
+                // 1. جمع بيانات التقرير الحالية (من d)
+                const reportData = d;
 
-            // 2. تحويل الشعار إلى Base64 (إذا كان موجوداً)
-            let logoBase64 = '';
-            const logoImg = document.querySelector('.report-hero-left img');
-            if (logoImg && logoImg.src) {
-                // إذا كانت الصورة موجودة، نحاول تحويلها إلى Base64 عبر Canvas
-                try {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = logoImg.naturalWidth || 40;
-                    canvas.height = logoImg.naturalHeight || 40;
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(logoImg, 0, 0, canvas.width, canvas.height);
-                    logoBase64 = canvas.toDataURL('image/webp');
-                } catch(e) {
-                    // في حال فشل، نستخدم رابط الصورة الأصلي
-                    logoBase64 = logoImg.src;
+                // 2. تحويل الشعار إلى Base64 (إذا كان موجوداً)
+                let logoBase64 = '';
+                const logoImg = document.querySelector('.report-hero-left img');
+                if (logoImg && logoImg.src) {
+                    try {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = logoImg.naturalWidth || 40;
+                        canvas.height = logoImg.naturalHeight || 40;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(logoImg, 0, 0, canvas.width, canvas.height);
+                        logoBase64 = canvas.toDataURL('image/webp');
+                    } catch(e) {
+                        logoBase64 = logoImg.src;
+                    }
+                } else {
+                    logoBase64 = 'images/logo.webp';
                 }
-            } else {
-                // إذا لم توجد الصورة، نضع رابطاً افتراضياً
-                logoBase64 = 'images/logo.webp';
-            }
 
-            // 3. بناء HTML للتقرير المستقل
-            const htmlContent = `<!DOCTYPE html>
+                // 3. الحصول على الأنماط
+                const styleEl = document.querySelector('style');
+                const styles = styleEl ? styleEl.innerHTML : '';
+
+                // 4. بناء HTML للتقرير المستقل
+                const htmlContent = `<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -1415,10 +1442,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <style>
         /* ===== نفس أنماط report.html الحالية ===== */
-        ${document.querySelector('style').innerHTML}
+        ${styles}
         /* تعديلات إضافية للطباعة والتصدير */
         .report-actions { display: flex !important; }
-        .btn-download { display: none !important; } /* إخفاء زر التحميل في النسخة المستقلة */
+        .btn-download { display: none !important; }
         @media print {
             .report-actions { display: none !important; }
             .btn-download { display: none !important; }
@@ -1555,19 +1582,16 @@
 const REPORT_DATA = ${JSON.stringify(reportData, null, 2)};
 
 // ============================================================
-// دوال مساعدة (نسخة من دوال report.html الأصلية)
+// دوال مساعدة
 // ============================================================
 function getExamTime(skill, examId) {
-    // في النسخة المستقلة، نقرأ من REPORT_DATA المخزنة مسبقاً
     const skillData = REPORT_DATA.examData && REPORT_DATA.examData[skill];
     if (skillData && skillData[examId]) {
-        // نبحث عن وقت الامتحان من localStorage (إذا كان المتصفح يسمح)
         try {
             const key = 'exam_time_' + skill + '_' + examId;
             const val = localStorage.getItem(key);
             if (val) return parseInt(val, 10);
         } catch(e) {}
-        // وإلا نرجع null
     }
     return null;
 }
@@ -1628,9 +1652,7 @@ function getRelativeDateWithColor(dateStr) {
 function formatDateEn(dateStr) {
     if (!dateStr || dateStr === '—' || dateStr === 'غير متوفر') return '—';
     let date = new Date(dateStr);
-    if (isNaN(date.getTime()) && !isNaN(Number(dateStr))) {
-        date = new Date(Number(dateStr));
-    }
+    if (isNaN(date.getTime()) && !isNaN(Number(dateStr))) date = new Date(Number(dateStr));
     if (isNaN(date.getTime())) {
         const parsed = Date.parse(dateStr);
         if (!isNaN(parsed)) date = new Date(parsed);
@@ -1643,21 +1665,16 @@ function formatDateEn(dateStr) {
 }
 
 function getExamTitle(skillId, examId) {
-    // نسخة مبسطة لعنوان الامتحان
     return 'امتحان ' + examId;
 }
 
-// ============================================================
 // عرض التاريخ
-// ============================================================
 const now = new Date();
 const dateStr = now.toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' });
 document.getElementById('reportDate').textContent = dateStr;
 document.getElementById('footerDate').textContent = dateStr;
 
-// ============================================================
 // عرض البيانات من REPORT_DATA
-// ============================================================
 const d = REPORT_DATA;
 
 // الإحصائيات
@@ -1816,16 +1833,21 @@ if (historyData.length === 0) {
 </body>
 </html>`;
 
-            // 4. إنشاء Blob وتنزيل الملف
-            const blob = new Blob([htmlContent], { type: 'text/html; charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'Zertiva-B2-Report.html';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+                // 5. إنشاء Blob وتنزيل الملف
+                const blob = new Blob([htmlContent], { type: 'text/html; charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'Zertiva-B2-Report.html';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+            } catch (error) {
+                console.error('❌ خطأ في تحميل التقرير:', error);
+                alert('حدث خطأ أثناء تحميل التقرير. راجع Console للمزيد من التفاصيل.');
+            }
         }
 
         // إضافة الدالة للنطاق العام
