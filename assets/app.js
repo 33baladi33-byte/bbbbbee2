@@ -1311,8 +1311,8 @@ var MyApp = (() => {
     if (!nav) return;
     const btn = document.createElement("button");
     btn.id = "globalHelpButton";
-    btn.className = "memory-btn btn-blue";
-    btn.textContent = "\u{1F602} \u0627\u062C\u064A \u0636\u062D\u0643 \u0648\u0641\u0647\u0645";
+    btn.className = "memory-btn btn-rapid";
+    btn.textContent = "\u0641\u0647\u0645 \u0633\u0631\u064A\u0639";
     btn.onmouseenter = () => {
       btn.style.transform = "scale(1.02)";
       btn.style.boxShadow = "0 4px 10px rgba(0,0,0,0.2)";
