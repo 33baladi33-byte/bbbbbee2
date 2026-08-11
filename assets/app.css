@@ -7292,6 +7292,20 @@ body:has(#list.active) #backHomeBtn {
 .notification-badge:not([style*="display: none"]) {
     animation: badgePulse 2s ease-in-out infinite;
 }
+/* إصلاح تداخل خطوط Material Symbols */
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined' !important;
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+.material-symbols-rounded {
+    font-family: 'Material Symbols Rounded' !important;
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
 /* ============================================
    studySession.css - النسخة النهائية (متكاملة)
    ============================================ */
