@@ -6121,9 +6121,10 @@ body.dark-mode #studyPlannerModal h3 {
    ============================================ */
 
 .material-symbols-outlined {
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
-    font-size: 18px;
-    color: #94a3b8;
+    font-family: 'Material Symbols Outlined' !important;
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
 }
 
 .planner-card {
