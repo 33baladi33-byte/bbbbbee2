@@ -25315,6 +25315,10 @@ var MyApp = (() => {
         setTimeout(window.applyExamColors, 50);
       }
     }
+    const savedOrder = localStorage.getItem("examOrderMode");
+    if (savedOrder === "1" && typeof applyLeaderboardOrder === "function") {
+      applyLeaderboardOrder();
+    }
   }
   function showVersionsPopup(exam, skill) {
     const overlay = document.createElement("div");
@@ -25730,7 +25734,8 @@ var MyApp = (() => {
     if (oldBtn1) oldBtn1.remove();
     const oldBtn2 = document.getElementById("viewModeToggleBtn2");
     if (oldBtn2) oldBtn2.remove();
-    let currentIndex1 = 0;
+    const ORDER_MODE_KEY = "examOrderMode";
+    let currentIndex1 = parseInt(localStorage.getItem(ORDER_MODE_KEY)) || 0;
     const btn1 = document.createElement("button");
     btn1.id = "viewModeToggleBtn1";
     btn1.className = "view-mode-toggle-btn-1";
@@ -25744,6 +25749,7 @@ var MyApp = (() => {
       if (span) {
         span.textContent = currentIndex1 === 0 ? "leaderboard" : "123";
       }
+      localStorage.setItem(ORDER_MODE_KEY, String(currentIndex1));
       if (currentIndex1 === 0) {
         restoreOriginalOrder();
       } else {
@@ -26695,7 +26701,7 @@ var MyApp = (() => {
       if (saved !== null) return parseInt(saved);
     } catch {
     }
-    return 1;
+    return 0;
   }
   function setViewModeIndex2(index) {
     try {
@@ -26704,7 +26710,7 @@ var MyApp = (() => {
     }
   }
   function getExamListMode() {
-    return localStorage.getItem(EXAM_LIST_MODE_KEY) || "grid";
+    return localStorage.getItem(EXAM_LIST_MODE_KEY) || "list";
   }
   function setExamListMode(mode) {
     localStorage.setItem(EXAM_LIST_MODE_KEY, mode);
