@@ -25799,10 +25799,25 @@ var MyApp = (() => {
       }
       oldGrid.remove();
     }
-    [...list.querySelectorAll(".item")].forEach((el) => {
-      el.style.cssText = "";
-    });
     if (mode === "list") {
+      [...list.querySelectorAll(".item")].forEach((el) => {
+        el.style.cssText = `
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                height: auto !important;
+                padding: 8px 12px !important;
+                margin-bottom: 8px !important;
+                background: white !important;
+                border: 1px solid #e2e8f0 !important;
+                border-radius: 10px !important;
+                box-shadow: none !important;
+                min-height: 44px !important;
+                font-size: 0.65rem !important;
+                cursor: pointer !important;
+            `;
+      });
       console.log("\u{1F4C4} List View");
       return;
     }
@@ -26574,39 +26589,9 @@ var MyApp = (() => {
       resetSkillProgress("hoeren1");
     }
   }
-  function saveOriginalOrder() {
-    const list = document.getElementById("examsList");
-    if (!list) return;
-    const gridContainer = document.getElementById("examGridContainer");
-    const targetContainer = gridContainer || list;
-    const exams = [...targetContainer.querySelectorAll(".item")].filter(
-      (el) => !el.classList.contains("teil-header") && !el.classList.contains("memory-progress-bar-container")
-    );
-    if (exams.length === 0) {
-      console.warn("\u26A0\uFE0F saveOriginalOrder: \u0644\u0627 \u062A\u0648\u062C\u062F \u0639\u0646\u0627\u0635\u0631 \u0644\u0644\u062D\u0641\u0638");
-      return;
-    }
-    originalOrderNumbers = exams.map((el) => {
-      const title = el.querySelector(".exam-title");
-      if (!title) return null;
-      const text = title.textContent || "";
-      const match = text.match(/^(\d+):/);
-      return match ? parseInt(match[1], 10) : null;
-    }).filter((num) => num !== null);
-    if (originalOrderNumbers.length === 0) {
-      console.warn("\u26A0\uFE0F saveOriginalOrder: \u0644\u0645 \u064A\u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u0623\u0631\u0642\u0627\u0645\u060C \u0627\u0633\u062A\u062E\u062F\u0627\u0645 \u0627\u0644\u0641\u0647\u0631\u0633");
-      originalOrderNumbers = exams.map((_, index) => index + 1);
-    }
-    console.log("\u{1F4CB} \u062A\u0645 \u062D\u0641\u0638 \u0627\u0644\u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0623\u0635\u0644\u064A:", originalOrderNumbers);
-  }
   function restoreOriginalOrder() {
     const list = document.getElementById("examsList");
     if (!list) return;
-    if (originalOrderNumbers.length === 0) {
-      console.warn("\u26A0\uFE0F restoreOriginalOrder: \u0644\u0627 \u062A\u0648\u062C\u062F \u0623\u0631\u0642\u0627\u0645 \u0645\u062D\u0641\u0648\u0638\u0629\u060C \u0645\u062D\u0627\u0648\u0644\u0629 \u0627\u0644\u062D\u0641\u0638 \u0645\u062C\u062F\u062F\u0627\u064B");
-      saveOriginalOrder();
-      return;
-    }
     const gridContainer = document.getElementById("examGridContainer");
     const targetContainer = gridContainer || list;
     const exams = [...targetContainer.querySelectorAll(".item")].filter(
@@ -26627,36 +26612,21 @@ var MyApp = (() => {
         examMap[num] = el;
       }
     });
-    if (Object.keys(examMap).length === 0) {
-      console.warn("\u26A0\uFE0F restoreOriginalOrder: \u0644\u0645 \u064A\u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u0623\u0631\u0642\u0627\u0645\u060C \u0627\u0633\u062A\u062E\u062F\u0627\u0645 \u0627\u0644\u0641\u0647\u0631\u0633");
-      exams.forEach((el, index) => {
-        el.dataset.originalIndex = index;
-      });
-      originalOrderNumbers = exams.map((_, index) => index + 1);
-      exams.forEach((el) => {
-        const idx = parseInt(el.dataset.originalIndex);
-        examMap[idx + 1] = el;
-      });
-    }
+    const sortedKeys = Object.keys(examMap).map(Number).sort((a, b) => a - b);
     const fragment = document.createDocumentFragment();
-    let foundCount = 0;
-    originalOrderNumbers.forEach((num) => {
+    sortedKeys.forEach((num) => {
       if (examMap[num]) {
         fragment.appendChild(examMap[num]);
-        delete examMap[num];
-        foundCount++;
       }
     });
-    Object.keys(examMap).map(Number).sort((a, b) => a - b).forEach((num) => {
-      fragment.appendChild(examMap[num]);
-      foundCount++;
+    exams.forEach((el) => {
+      if (!fragment.contains(el)) {
+        fragment.appendChild(el);
+      }
     });
-    if (foundCount > 0) {
+    if (fragment.childNodes.length > 0) {
       targetContainer.appendChild(fragment);
-      console.log(`\u{1F4CB} \u062A\u0645 \u0627\u0633\u062A\u0639\u0627\u062F\u0629 \u0627\u0644\u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0623\u0635\u0644\u064A (${foundCount} \u0639\u0646\u0635\u0631)`);
-    } else {
-      console.warn("\u26A0\uFE0F restoreOriginalOrder: \u0644\u0645 \u064A\u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u0623\u064A \u0639\u0646\u0635\u0631 \u0644\u0644\u0645\u0637\u0627\u0628\u0642\u0629");
-      exams.forEach((el) => targetContainer.appendChild(el));
+      console.log(`\u{1F4CB} \u062A\u0645 \u0627\u0633\u062A\u0639\u0627\u062F\u0629 \u0627\u0644\u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0623\u0635\u0644\u064A (123) \u0628\u0646\u062C\u0627\u062D (${sortedKeys.length} \u0639\u0646\u0635\u0631)`);
     }
   }
   function applyLeaderboardOrder() {
@@ -26693,7 +26663,7 @@ var MyApp = (() => {
       return a.score - b.score;
     });
     data.forEach((item) => targetContainer.appendChild(item.el));
-    console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u0645\u0646 \u0627\u0644\u0623\u0636\u0639\u0641 \u0625\u0644\u0649 \u0627\u0644\u0623\u0642\u0648\u0649");
+    console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u0645\u0646 \u0627\u0644\u0623\u0636\u0639\u0641 \u0625\u0644\u0649 \u0627\u0644\u0623\u0642\u0648\u0649 (leaderboard)");
   }
   function getViewModeIndex2() {
     try {
@@ -27038,7 +27008,7 @@ var MyApp = (() => {
       timeBox.style.textAlign = "right";
     }
   }
-  var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, originalOrderNumbers, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY;
+  var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY;
   var init_exams = __esm({
     "exams.js"() {
       window.isInterleavingActive = false;
@@ -28358,7 +28328,6 @@ var MyApp = (() => {
       window.renderInitialExamList = renderInitialExamList;
       console.log("\u{1F9E0} \u0646\u0638\u0627\u0645 \u0627\u0644\u062A\u0642\u062F\u0645 \u0627\u0644\u0645\u062A\u0648\u0627\u0632\u0646 (\u0627\u0644\u0645\u0631\u0627\u062D\u0644 \u0644\u0643\u0644 \u0645\u0647\u0627\u0631\u0629) \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647 \u0628\u0646\u062C\u0627\u062D");
       console.log("\u{1F4CA} \u0639\u062F\u062F \u0627\u0644\u0645\u0631\u0627\u062D\u0644:", Object.keys(SKILL_CONFIG).map((s) => `${s}: ${getTotalStages(s)}`).join(", "));
-      originalOrderNumbers = [];
       VIEW_ICONS_2 = ["view_day", "grid_view"];
       VIEW_MODE_KEY_2 = "viewModeIconIndex2";
       EXAM_LIST_MODE_KEY = "examListViewMode";
