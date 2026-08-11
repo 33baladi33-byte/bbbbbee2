@@ -25,7 +25,7 @@
 <link rel="icon" type="image/webp" href="images/favicon.webp">
 <link rel="shortcut icon" type="image/webp" href="images/favicon.webp">
 <link rel="stylesheet" href="assets/app.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=auto_awesome,timer,bar_chart,repeat,calendar_month,info,schedule,swap_vert,stadia_controller,emoji_objects,play_arrow,pause,keyboard,layers,send,history,edit,keyboard_return,mark_email_read,settings" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=auto_awesome,timer,bar_chart,repeat,calendar_month,info,schedule,swap_vert,stadia_controller,emoji_objects,play_arrow,pause,keyboard,layers,send,history,edit,keyboard_return,mark_email_read,settings,leaderboard,123,view_day,grid_view">
 <style>
     /* زر التخليط الأيقوني الصغير */
 .interleaving-icon-btn {
@@ -2144,7 +2144,7 @@ body.dark-mode .mobile-banner span {
 <script>
     // ✅ نظام تكبير وتصغير الموقع
     (function() {
-           let currentScale = 80;
+           let currentScale = 105;
         const MIN_SCALE = 60;
         const MAX_SCALE = 150;
         const STEP = 5;
@@ -5233,7 +5233,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        // ⏳ 1. التحقق من الحد اليومي (قبل أي شيء)
+        //  1. التحقق من الحد اليومي (قبل أي شيء)
         const canProceed = await checkAndIncrementUsage();
         if (!canProceed) {
             showDailyLimitModal(); // رسالة جميلة
@@ -5305,7 +5305,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         console.log('📤 إرسال طلب:', { question: text, context: promptData });
 
-        // ⏳ 5. عرض التحميل
+        //  5. عرض التحميل
         showLoading();
 
         let reply = null;
