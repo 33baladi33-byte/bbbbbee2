@@ -25063,6 +25063,8 @@ var MyApp = (() => {
   async function renderExamListForSkill(skill, teilName) {
     currentSkill2 = skill;
     window.currentSkill = skill;
+    const ORDER_MODE_KEY = "examOrderMode";
+    localStorage.removeItem(ORDER_MODE_KEY);
     const container = document.getElementById("examsList");
     if (!container) return;
     container.innerHTML = "";
@@ -25735,24 +25737,26 @@ var MyApp = (() => {
     const oldBtn2 = document.getElementById("viewModeToggleBtn2");
     if (oldBtn2) oldBtn2.remove();
     const ORDER_MODE_KEY = "examOrderMode";
-    let currentIndex1 = parseInt(localStorage.getItem(ORDER_MODE_KEY)) || 0;
+    let currentIndex1 = 2;
     const ICONS_CYCLE = ["leaderboard", "timer_arrow_down", "123"];
     const btn1 = document.createElement("button");
     btn1.id = "viewModeToggleBtn1";
     btn1.className = "view-mode-toggle-btn-1";
     btn1.title = "\u062A\u0628\u062F\u064A\u0644 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0642\u0627\u0626\u0645\u0629";
-    btn1.innerHTML = `<span class="material-symbols-outlined">${ICONS_CYCLE[currentIndex1]}</span>`;
+    btn1.innerHTML = `<span class="material-symbols-outlined">${ICONS_CYCLE[0]}</span>`;
     btn1.onclick = function(e) {
       e.stopPropagation();
-      currentIndex1 = (currentIndex1 + 1) % ICONS_CYCLE.length;
+      let currentState = parseInt(localStorage.getItem(ORDER_MODE_KEY)) || 2;
+      let nextState = (currentState + 1) % 3;
+      localStorage.setItem(ORDER_MODE_KEY, String(nextState));
       const span = this.querySelector(".material-symbols-outlined");
       if (span) {
-        span.textContent = ICONS_CYCLE[currentIndex1];
+        let nextIconIndex = (nextState + 1) % 3;
+        span.textContent = ICONS_CYCLE[nextIconIndex];
       }
-      localStorage.setItem(ORDER_MODE_KEY, String(currentIndex1));
-      if (currentIndex1 === 0) {
+      if (nextState === 0) {
         applyLeaderboardOrder();
-      } else if (currentIndex1 === 1) {
+      } else if (nextState === 1) {
         applyTimeOrder();
       } else {
         restoreOriginalOrder();
@@ -26653,28 +26657,50 @@ var MyApp = (() => {
       return;
     }
     const data = exams.map((el, index) => {
-      const badge = el.querySelector(".exam-result-badge");
       let score = Infinity;
       let hasResult = false;
-      if (badge) {
-        const txt = badge.textContent.trim();
-        const m = txt.match(/^(\d+)\s*\/\s*\d+/);
-        if (m) {
-          score = parseInt(m[1], 10);
-          hasResult = true;
+      const chips = el.querySelectorAll(".exam-chip");
+      for (let chip of chips) {
+        const icon = chip.querySelector(".material-symbols-outlined");
+        if (icon && icon.textContent === "bar_chart") {
+          const txt = chip.textContent.replace(icon.textContent, "").trim();
+          if (txt !== "\u2014") {
+            const m = txt.match(/^(\d+)\s*\/\s*\d+/);
+            if (m) {
+              score = parseInt(m[1], 10);
+              hasResult = true;
+            }
+          }
+          break;
+        }
+      }
+      if (!hasResult) {
+        const skill = currentSkill2 || "";
+        const title = el.querySelector(".exam-title");
+        let examId = null;
+        if (title) {
+          const match = title.textContent.match(/^(\d+):/);
+          if (match) examId = parseInt(match[1]);
+        }
+        if (skill && examId) {
+          const stored = getExamResult(skill, examId);
+          if (stored !== null) {
+            score = stored;
+            hasResult = true;
+          }
         }
       }
       return { el, score, hasResult, originalIndex: index };
     });
     data.sort((a, b) => {
+      if (a.hasResult && !b.hasResult) return -1;
+      if (!a.hasResult && b.hasResult) return 1;
       if (!a.hasResult && !b.hasResult) return a.originalIndex - b.originalIndex;
-      if (!a.hasResult) return 1;
-      if (!b.hasResult) return -1;
       if (a.score === b.score) return a.originalIndex - b.originalIndex;
       return a.score - b.score;
     });
     data.forEach((item) => targetContainer.appendChild(item.el));
-    console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u0645\u0646 \u0627\u0644\u0623\u0636\u0639\u0641 \u0625\u0644\u0649 \u0627\u0644\u0623\u0642\u0648\u0649 (leaderboard)");
+    console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u062D\u0633\u0628 \u0627\u0644\u0646\u062A\u064A\u062C\u0629 (\u0645\u0646 \u0627\u0644\u0623\u0636\u0639\u0641 \u0625\u0644\u0649 \u0627\u0644\u0623\u0642\u0648\u0649)");
   }
   function getViewModeIndex2() {
     try {
