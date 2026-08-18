@@ -7320,6 +7320,189 @@ body:has(#list.active) #backHomeBtn {
     animation: badgePulse 2s ease-in-out infinite;
 }
 /* ============================================
+   إشعار المواضيع القديمة والجديدة
+   ============================================ */
+
+.topics-notice {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+    position: relative;
+    width: fit-content;
+    max-width: 100%;
+}
+
+.topics-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #38bdf8;
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+    animation: dotPulse 2.5s ease-in-out infinite;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+@keyframes dotPulse {
+    0%, 100% {
+        transform: scale(0.85);
+        box-shadow: 0 0 6px rgba(56, 189, 248, 0.3);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.15);
+        box-shadow: 0 0 16px rgba(56, 189, 248, 0.6);
+        opacity: 1;
+    }
+}
+
+.topics-text {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    transition: color 0.2s ease;
+}
+
+.topics-notice:hover .topics-text {
+    color: #38bdf8;
+}
+
+.topics-notice:hover .topics-dot {
+    background: #60a5fa;
+}
+
+/* ===== نافذة منبثقة عند الضغط ===== */
+.topics-tooltip {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) scale(0.92);
+    background: rgba(15, 23, 42, 0.96);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-size: 0.8rem;
+    color: #e2e8f0;
+    white-space: nowrap;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    pointer-events: none;
+    z-index: 100;
+    text-align: center;
+    font-weight: 500;
+}
+
+.topics-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: rgba(56, 189, 248, 0.25);
+    border-bottom: none;
+}
+
+.topics-tooltip.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) scale(1);
+    pointer-events: none;
+}
+
+/* ===== تنسيق الكمبيوتر ===== */
+@media (min-width: 769px) {
+    #list .topics-notice {
+        display: flex;
+        position: relative;
+        margin: 0 0 12px 0;
+        padding: 6px 12px;
+        background: rgba(56, 189, 248, 0.04);
+        border-radius: 30px;
+        border: 1px solid rgba(56, 189, 248, 0.08);
+        width: fit-content;
+        max-width: 100%;
+        /* محاذاة إلى اليسار مقابل زر info في اليمين */
+        margin-left: 0;
+        margin-right: auto;
+    }
+    
+    .topics-notice .topics-text {
+        font-size: 0.8rem;
+    }
+    
+    .topics-dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* ===== تنسيق الهاتف ===== */
+@media (max-width: 768px) {
+    #list .topics-notice {
+        display: inline-flex;
+        position: relative;
+        margin: 4px 0 8px 0;
+        padding: 4px 6px;
+        gap: 6px;
+        background: transparent;
+        border: none;
+        width: auto;
+        /* نضعه بجانب عنوان القسم عبر JavaScript */
+    }
+    
+    .topics-dot {
+        width: 8px;
+        height: 8px;
+        box-shadow: 0 0 6px rgba(56, 189, 248, 0.3);
+    }
+    
+    .topics-text {
+        display: none; /* نخفي النص في الهاتف، نكتفي بالنقطة */
+    }
+    
+    .topics-tooltip {
+        font-size: 0.7rem;
+        padding: 8px 14px;
+        white-space: normal;
+        max-width: 220px;
+        bottom: calc(100% + 8px);
+        left: 50%;
+        transform: translateX(-50%) scale(0.92);
+    }
+    
+    .topics-tooltip.active {
+        transform: translateX(-50%) scale(1);
+    }
+    
+    /* إخفاء الإشعار في الصفحة الرئيسية والامتحان */
+    #home .topics-notice,
+    #exam .topics-notice {
+        display: none !important;
+    }
+}
+
+/* ===== إخفاء الإشعار خارج صفحة القائمة ===== */
+#home .topics-notice,
+#exam .topics-notice {
+    display: none !important;
+}
+
+/* ===== تحسينات عامة ===== */
+.topics-notice:active .topics-dot {
+    transform: scale(0.9);
+    transition-duration: 0.05s;
+}
+/* ============================================
    studySession.css - النسخة النهائية (متكاملة)
    ============================================ */
 

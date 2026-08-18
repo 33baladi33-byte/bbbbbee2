@@ -25736,27 +25736,26 @@ var MyApp = (() => {
     if (oldBtn1) oldBtn1.remove();
     const oldBtn2 = document.getElementById("viewModeToggleBtn2");
     if (oldBtn2) oldBtn2.remove();
-    const ORDER_MODE_KEY = "examOrderMode";
-    let currentIndex1 = 2;
+    let currentState = 2;
     const ICONS_CYCLE = ["leaderboard", "timer_arrow_down", "123"];
     const btn1 = document.createElement("button");
     btn1.id = "viewModeToggleBtn1";
     btn1.className = "view-mode-toggle-btn-1";
     btn1.title = "\u062A\u0628\u062F\u064A\u0644 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0642\u0627\u0626\u0645\u0629";
-    btn1.innerHTML = `<span class="material-symbols-outlined">${ICONS_CYCLE[0]}</span>`;
+    const nextIconIndex = (currentState + 1) % 3;
+    btn1.innerHTML = `<span class="material-symbols-outlined">${ICONS_CYCLE[nextIconIndex]}</span>`;
     btn1.onclick = function(e) {
       e.stopPropagation();
-      let currentState = parseInt(localStorage.getItem(ORDER_MODE_KEY)) || 2;
       let nextState = (currentState + 1) % 3;
-      localStorage.setItem(ORDER_MODE_KEY, String(nextState));
+      currentState = nextState;
       const span = this.querySelector(".material-symbols-outlined");
       if (span) {
-        let nextIconIndex = (nextState + 1) % 3;
-        span.textContent = ICONS_CYCLE[nextIconIndex];
+        let nextIconIndex2 = (currentState + 1) % 3;
+        span.textContent = ICONS_CYCLE[nextIconIndex2];
       }
-      if (nextState === 0) {
+      if (currentState === 0) {
         applyLeaderboardOrder();
-      } else if (nextState === 1) {
+      } else if (currentState === 1) {
         applyTimeOrder();
       } else {
         restoreOriginalOrder();
@@ -26693,14 +26692,16 @@ var MyApp = (() => {
       return { el, score, hasResult, originalIndex: index };
     });
     data.sort((a, b) => {
-      if (a.hasResult && !b.hasResult) return -1;
-      if (!a.hasResult && b.hasResult) return 1;
-      if (!a.hasResult && !b.hasResult) return a.originalIndex - b.originalIndex;
-      if (a.score === b.score) return a.originalIndex - b.originalIndex;
-      return a.score - b.score;
+      if (a.hasResult && b.hasResult) {
+        if (a.score === b.score) return a.originalIndex - b.originalIndex;
+        return a.score - b.score;
+      }
+      if (!a.hasResult && b.hasResult) return -1;
+      if (a.hasResult && !b.hasResult) return 1;
+      return a.originalIndex - b.originalIndex;
     });
     data.forEach((item) => targetContainer.appendChild(item.el));
-    console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u062D\u0633\u0628 \u0627\u0644\u0646\u062A\u064A\u062C\u0629 (\u0645\u0646 \u0627\u0644\u0623\u0636\u0639\u0641 \u0625\u0644\u0649 \u0627\u0644\u0623\u0642\u0648\u0649)");
+    console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u062D\u0633\u0628 \u0627\u0644\u0646\u062A\u064A\u062C\u0629 (\u2014 \u0623\u0648\u0644\u0627\u064B\u060C \u062B\u0645 \u0627\u0644\u0623\u0636\u0639\u0641 \u0641\u0627\u0644\u0623\u0642\u0648\u0649)");
   }
   function getViewModeIndex2() {
     try {
@@ -27104,7 +27105,76 @@ var MyApp = (() => {
     data.forEach((item) => targetContainer.appendChild(item.el));
     console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u062D\u0633\u0628 \u0627\u0644\u0648\u0642\u062A (\u0645\u0646 \u0627\u0644\u0623\u0636\u0639\u0641 \u0625\u0644\u0649 \u0627\u0644\u0623\u0642\u0648\u0649)");
   }
-  var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY;
+  function initTopicsNotice() {
+    const notice = document.getElementById("topicsNotice");
+    if (!notice) return;
+    const dot = notice.querySelector(".topics-dot");
+    const tooltip = notice.querySelector(".topics-tooltip");
+    function closeTooltip(e) {
+      if (tooltip && tooltip.classList.contains("active")) {
+        if (!notice.contains(e.target)) {
+          tooltip.classList.remove("active");
+          document.removeEventListener("click", closeTooltip);
+        }
+      }
+    }
+    notice.addEventListener("click", function(e) {
+      e.stopPropagation();
+      if (tooltip) {
+        const isOpen = tooltip.classList.contains("active");
+        if (isOpen) {
+          tooltip.classList.remove("active");
+          document.removeEventListener("click", closeTooltip);
+        } else {
+          tooltip.classList.add("active");
+          setTimeout(() => {
+            document.addEventListener("click", closeTooltip);
+          }, 10);
+        }
+      }
+    });
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape" && tooltip && tooltip.classList.contains("active")) {
+        tooltip.classList.remove("active");
+        document.removeEventListener("click", closeTooltip);
+      }
+    });
+    console.log("\u2705 \u0625\u0634\u0639\u0627\u0631 \u0627\u0644\u0645\u0648\u0627\u0636\u064A\u0639 \u0627\u0644\u0642\u062F\u064A\u0645\u0629 \u0648\u0627\u0644\u062C\u062F\u064A\u062F\u0629 \u062A\u0645 \u062A\u0641\u0639\u064A\u0644\u0647");
+  }
+  function positionTopicsNotice() {
+    const notice = document.getElementById("topicsNotice");
+    if (!notice) return;
+    if (window.innerWidth <= 768) {
+      const header = document.querySelector(".teil-header");
+      if (header) {
+        const headerText = header.querySelector("strong, span, .teil-title") || header;
+        header.style.display = "flex";
+        header.style.alignItems = "center";
+        header.style.gap = "8px";
+        header.style.flexWrap = "wrap";
+        if (!header.contains(notice)) {
+          header.appendChild(notice);
+        }
+        notice.style.display = "inline-flex";
+        notice.style.margin = "0";
+        notice.style.padding = "4px 6px";
+        notice.style.background = "transparent";
+        notice.style.border = "none";
+      }
+    } else {
+      const listContainer = document.getElementById("examsList");
+      if (listContainer && !listContainer.parentNode.contains(notice)) {
+        listContainer.parentNode.insertBefore(notice, listContainer);
+      }
+      notice.style.display = "flex";
+      notice.style.margin = "0 0 12px 0";
+      notice.style.padding = "6px 12px";
+      notice.style.background = "rgba(56, 189, 248, 0.04)";
+      notice.style.border = "1px solid rgba(56, 189, 248, 0.08)";
+      notice.style.borderRadius = "30px";
+    }
+  }
+  var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY, originalRenderExamListForSkill;
   var init_exams = __esm({
     "exams.js"() {
       window.isInterleavingActive = false;
@@ -28474,6 +28544,24 @@ var MyApp = (() => {
         console.log("\u2139\uFE0F \u0645\u062A\u063A\u064A\u0631\u0627\u062A Lesen1 \u0633\u062A\u064F\u0635\u062F\u0651\u0631 \u0645\u0646 engine.js");
       }
       window.applyTimeOrder = applyTimeOrder;
+      document.addEventListener("DOMContentLoaded", function() {
+        initTopicsNotice();
+        setTimeout(positionTopicsNotice, 100);
+      });
+      window.addEventListener("resize", function() {
+        positionTopicsNotice();
+      });
+      originalRenderExamListForSkill = window.renderExamListForSkill;
+      if (typeof originalRenderExamListForSkill === "function") {
+        window.renderExamListForSkill = function(skill, teilName) {
+          const result = originalRenderExamListForSkill.call(this, skill, teilName);
+          setTimeout(positionTopicsNotice, 50);
+          return result;
+        };
+      }
+      window.initTopicsNotice = initTopicsNotice;
+      window.positionTopicsNotice = positionTopicsNotice;
+      console.log("\u2705 \u0646\u0638\u0627\u0645 \u0625\u0634\u0639\u0627\u0631 \u0627\u0644\u0645\u0648\u0627\u0636\u064A\u0639 \u0627\u0644\u0642\u062F\u064A\u0645\u0629 \u0648\u0627\u0644\u062C\u062F\u064A\u062F\u0629 \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647");
     }
   });
 
