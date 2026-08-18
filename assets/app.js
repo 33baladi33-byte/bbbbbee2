@@ -18488,7 +18488,7 @@ var MyApp = (() => {
       console.error("\u274C \u062E\u0637\u0623 \u0641\u064A \u062D\u0641\u0638 \u0648\u0642\u062A \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646:", e);
     }
   }
-  function getExamTime(skill, examId) {
+  function getExamTime2(skill, examId) {
     try {
       const key = `exam_time_${skill}_${examId}`;
       const val = localStorage.getItem(key);
@@ -22463,7 +22463,7 @@ var MyApp = (() => {
       };
       window.examTimer = examTimer2;
       window.saveExamTime = saveExamTime;
-      window.getExamTime = getExamTime;
+      window.getExamTime = getExamTime2;
       window.formatTime = formatTime;
       window.getTimeColor = getTimeColor;
       window.updateExamTimeInList = updateExamTimeInList;
@@ -25736,24 +25736,26 @@ var MyApp = (() => {
     if (oldBtn2) oldBtn2.remove();
     const ORDER_MODE_KEY = "examOrderMode";
     let currentIndex1 = parseInt(localStorage.getItem(ORDER_MODE_KEY)) || 0;
+    const ICONS_CYCLE = ["leaderboard", "timer_arrow_down", "123"];
     const btn1 = document.createElement("button");
     btn1.id = "viewModeToggleBtn1";
     btn1.className = "view-mode-toggle-btn-1";
     btn1.title = "\u062A\u0628\u062F\u064A\u0644 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0642\u0627\u0626\u0645\u0629";
-    const iconName1 = currentIndex1 === 0 ? "leaderboard" : "123";
-    btn1.innerHTML = `<span class="material-symbols-outlined">${iconName1}</span>`;
+    btn1.innerHTML = `<span class="material-symbols-outlined">${ICONS_CYCLE[currentIndex1]}</span>`;
     btn1.onclick = function(e) {
       e.stopPropagation();
-      currentIndex1 = currentIndex1 === 0 ? 1 : 0;
+      currentIndex1 = (currentIndex1 + 1) % ICONS_CYCLE.length;
       const span = this.querySelector(".material-symbols-outlined");
       if (span) {
-        span.textContent = currentIndex1 === 0 ? "leaderboard" : "123";
+        span.textContent = ICONS_CYCLE[currentIndex1];
       }
       localStorage.setItem(ORDER_MODE_KEY, String(currentIndex1));
       if (currentIndex1 === 0) {
-        restoreOriginalOrder();
-      } else {
         applyLeaderboardOrder();
+      } else if (currentIndex1 === 1) {
+        applyTimeOrder();
+      } else {
+        restoreOriginalOrder();
       }
     };
     header.appendChild(btn1);
@@ -25804,7 +25806,7 @@ var MyApp = (() => {
         el.style.cssText = `
                 display: flex !important;
                 flex-direction: row !important;
-                justify-content: space-between !important;
+                justify-content: flex-start !important; /* \u2190 \u062A\u063A\u064A\u064A\u0631 \u0645\u0646 space-between \u0625\u0644\u0649 flex-start */
                 align-items: center !important;
                 height: auto !important;
                 padding: 8px 12px !important;
@@ -25817,8 +25819,17 @@ var MyApp = (() => {
                 font-size: 0.65rem !important;
                 cursor: pointer !important;
             `;
+        const title = el.querySelector(".exam-title");
+        if (title) {
+          title.style.textAlign = "left";
+          title.style.marginRight = "auto";
+        }
+        const rightSide = el.querySelector(".exam-right-icons");
+        if (rightSide) {
+          rightSide.style.marginLeft = "auto";
+        }
       });
-      console.log("\u{1F4C4} List View");
+      console.log("\u{1F4C4} List View (\u0645\u062D\u0627\u0630\u0627\u0629 \u064A\u0633\u0627\u0631)");
       return;
     }
     const exams = [...list.querySelectorAll(".item")].filter(
@@ -27007,6 +27018,65 @@ var MyApp = (() => {
       timeBox.innerHTML = `\u0623\u062C\u0628\u062A \u0639\u0644\u0649 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 \u0641\u064A: <strong style="color:${timeColor};font-weight:700;">${timeText}</strong>`;
       timeBox.style.textAlign = "right";
     }
+  }
+  function applyTimeOrder() {
+    const list = document.getElementById("examsList");
+    if (!list) return;
+    const gridContainer = document.getElementById("examGridContainer");
+    const targetContainer = gridContainer || list;
+    const exams = [...targetContainer.querySelectorAll(".item")].filter(
+      (el) => !el.classList.contains("teil-header") && !el.classList.contains("memory-progress-bar-container")
+    );
+    if (exams.length === 0) {
+      console.warn("\u26A0\uFE0F applyTimeOrder: \u0644\u0627 \u062A\u0648\u062C\u062F \u0639\u0646\u0627\u0635\u0631");
+      return;
+    }
+    const data = exams.map((el, index) => {
+      let timeMs = null;
+      const chips = el.querySelectorAll(".exam-chip");
+      for (let chip of chips) {
+        const icon = chip.querySelector(".material-symbols-outlined");
+        if (icon && icon.textContent === "timer") {
+          const text = chip.textContent.replace(icon.textContent, "").trim();
+          if (text === "\u2014") {
+            timeMs = null;
+          } else if (text.includes("\u062B\u0627\u0646\u064A\u0629")) {
+            const secs = parseFloat(text.replace("\u062B\u0627\u0646\u064A\u0629", "").trim());
+            timeMs = isNaN(secs) ? null : secs * 1e3;
+          } else if (text.includes("\u062F\u0642\u064A\u0642\u0629")) {
+            const mins = parseFloat(text.replace("\u062F\u0642\u064A\u0642\u0629", "").trim());
+            timeMs = isNaN(mins) ? null : mins * 60 * 1e3;
+          } else {
+            const num = parseFloat(text);
+            timeMs = isNaN(num) ? null : num * 1e3;
+          }
+          break;
+        }
+      }
+      if (timeMs === null) {
+        const skill = currentSkill2 || "";
+        const title = el.querySelector(".exam-title");
+        let examId = null;
+        if (title) {
+          const match = title.textContent.match(/^(\d+):/);
+          if (match) examId = parseInt(match[1]);
+        }
+        if (skill && examId) {
+          const stored = getExamTime(skill, examId);
+          if (stored !== null) timeMs = stored;
+        }
+      }
+      return { el, timeMs, originalIndex: index };
+    });
+    data.sort((a, b) => {
+      if (a.timeMs === null && b.timeMs === null) return a.originalIndex - b.originalIndex;
+      if (a.timeMs === null) return -1;
+      if (b.timeMs === null) return 1;
+      if (a.timeMs === b.timeMs) return a.originalIndex - b.originalIndex;
+      return a.timeMs - b.timeMs;
+    });
+    data.forEach((item) => targetContainer.appendChild(item.el));
+    console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u062D\u0633\u0628 \u0627\u0644\u0648\u0642\u062A (\u0645\u0646 \u0627\u0644\u0623\u0636\u0639\u0641 \u0625\u0644\u0649 \u0627\u0644\u0623\u0642\u0648\u0649)");
   }
   var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY;
   var init_exams = __esm({
@@ -28377,6 +28447,7 @@ var MyApp = (() => {
       } catch (e) {
         console.log("\u2139\uFE0F \u0645\u062A\u063A\u064A\u0631\u0627\u062A Lesen1 \u0633\u062A\u064F\u0635\u062F\u0651\u0631 \u0645\u0646 engine.js");
       }
+      window.applyTimeOrder = applyTimeOrder;
     }
   });
 

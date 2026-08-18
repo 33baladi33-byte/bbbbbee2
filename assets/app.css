@@ -368,9 +368,10 @@ body {
     gap: 15px;
 }
 
+/* ===== توحيد حجم logo-icon ===== */
 .logo-icon {
-    width: 40px;
-    height: 40px;
+    width: 35px; /* ← تغيير من 40 إلى 35 */
+    height: 35px; /* ← تغيير من 40 إلى 35 */
     background: transparent;
     display: flex;
     align-items: center;
@@ -594,13 +595,14 @@ body {
 
 
 /* ===== زر الملف الشخصي - تصميم Apple Premium ===== */
+/* ===== توحيد حجم profile-icon مع الأزرار الأخرى ===== */
 .profile-icon {
-    width: 40px;
-    height: 40px;
+    width: 35px; /* ← تغيير من 40 إلى 35 */
+    height: 35px; /* ← تغيير من 40 إلى 35 */
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    border-radius: 50%;
+    border-radius: 12px; /* ← تغيير من 50% إلى 12px */
     display: flex;
     align-items: center;
     justify-content: center;
