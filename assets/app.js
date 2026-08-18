@@ -27107,11 +27107,14 @@ var MyApp = (() => {
   }
   function initTopicsNotice() {
     const notice = document.getElementById("topicsNotice");
-    if (!notice) return;
-    const dot = notice.querySelector(".topics-dot");
+    if (!notice) {
+      console.warn("\u26A0\uFE0F topicsNotice \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F");
+      return;
+    }
     const tooltip = notice.querySelector(".topics-tooltip");
+    if (!tooltip) return;
     function closeTooltip(e) {
-      if (tooltip && tooltip.classList.contains("active")) {
+      if (tooltip.classList.contains("active")) {
         if (!notice.contains(e.target)) {
           tooltip.classList.remove("active");
           document.removeEventListener("click", closeTooltip);
@@ -27120,34 +27123,32 @@ var MyApp = (() => {
     }
     notice.addEventListener("click", function(e) {
       e.stopPropagation();
-      if (tooltip) {
-        const isOpen = tooltip.classList.contains("active");
-        if (isOpen) {
-          tooltip.classList.remove("active");
-          document.removeEventListener("click", closeTooltip);
-        } else {
-          tooltip.classList.add("active");
-          setTimeout(() => {
-            document.addEventListener("click", closeTooltip);
-          }, 10);
-        }
+      const isOpen = tooltip.classList.contains("active");
+      if (isOpen) {
+        tooltip.classList.remove("active");
+        document.removeEventListener("click", closeTooltip);
+      } else {
+        tooltip.classList.add("active");
+        setTimeout(() => {
+          document.addEventListener("click", closeTooltip);
+        }, 10);
       }
     });
     document.addEventListener("keydown", function(e) {
-      if (e.key === "Escape" && tooltip && tooltip.classList.contains("active")) {
+      if (e.key === "Escape" && tooltip.classList.contains("active")) {
         tooltip.classList.remove("active");
         document.removeEventListener("click", closeTooltip);
       }
     });
-    console.log("\u2705 \u0625\u0634\u0639\u0627\u0631 \u0627\u0644\u0645\u0648\u0627\u0636\u064A\u0639 \u0627\u0644\u0642\u062F\u064A\u0645\u0629 \u0648\u0627\u0644\u062C\u062F\u064A\u062F\u0629 \u062A\u0645 \u062A\u0641\u0639\u064A\u0644\u0647");
+    console.log("\u2705 \u0625\u0634\u0639\u0627\u0631 \u0627\u0644\u0645\u0648\u0627\u0636\u064A\u0639 \u062A\u0645 \u062A\u0641\u0639\u064A\u0644\u0647");
   }
   function positionTopicsNotice() {
     const notice = document.getElementById("topicsNotice");
     if (!notice) return;
-    if (window.innerWidth <= 768) {
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
       const header = document.querySelector(".teil-header");
       if (header) {
-        const headerText = header.querySelector("strong, span, .teil-title") || header;
         header.style.display = "flex";
         header.style.alignItems = "center";
         header.style.gap = "8px";
@@ -27157,24 +27158,36 @@ var MyApp = (() => {
         }
         notice.style.display = "inline-flex";
         notice.style.margin = "0";
-        notice.style.padding = "4px 6px";
+        notice.style.padding = "0 4px 0 6px";
+        notice.style.alignSelf = "center";
+        notice.style.flexShrink = "0";
         notice.style.background = "transparent";
         notice.style.border = "none";
+        notice.style.borderRadius = "0";
+        notice.style.width = "auto";
+        notice.style.position = "relative";
       }
     } else {
       const listContainer = document.getElementById("examsList");
-      if (listContainer && !listContainer.parentNode.contains(notice)) {
-        listContainer.parentNode.insertBefore(notice, listContainer);
+      if (listContainer && listContainer.parentNode) {
+        const parent = listContainer.parentNode;
+        if (!parent.contains(notice) || parent.querySelector("#topicsNotice") !== notice) {
+          parent.insertBefore(notice, listContainer);
+        }
       }
       notice.style.display = "flex";
       notice.style.margin = "0 0 12px 0";
-      notice.style.padding = "6px 12px";
-      notice.style.background = "rgba(56, 189, 248, 0.04)";
-      notice.style.border = "1px solid rgba(56, 189, 248, 0.08)";
-      notice.style.borderRadius = "30px";
+      notice.style.padding = "4px 6px";
+      notice.style.alignSelf = "flex-start";
+      notice.style.flexShrink = "0";
+      notice.style.background = "transparent";
+      notice.style.border = "none";
+      notice.style.borderRadius = "0";
+      notice.style.position = "relative";
+      notice.style.width = "fit-content";
     }
   }
-  var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY, originalRenderExamListForSkill;
+  var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY, resizeTimer, originalRenderExamListForSkill;
   var init_exams = __esm({
     "exams.js"() {
       window.isInterleavingActive = false;
@@ -28546,22 +28559,35 @@ var MyApp = (() => {
       window.applyTimeOrder = applyTimeOrder;
       document.addEventListener("DOMContentLoaded", function() {
         initTopicsNotice();
-        setTimeout(positionTopicsNotice, 100);
+        setTimeout(positionTopicsNotice, 150);
       });
       window.addEventListener("resize", function() {
-        positionTopicsNotice();
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(positionTopicsNotice, 100);
       });
       originalRenderExamListForSkill = window.renderExamListForSkill;
       if (typeof originalRenderExamListForSkill === "function") {
         window.renderExamListForSkill = function(skill, teilName) {
           const result = originalRenderExamListForSkill.call(this, skill, teilName);
-          setTimeout(positionTopicsNotice, 50);
+          setTimeout(positionTopicsNotice, 100);
           return result;
         };
+      } else {
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type === "childList" && mutation.addedNodes.length > 0) {
+              const list = document.getElementById("examsList");
+              if (list && list.children.length > 0) {
+                setTimeout(positionTopicsNotice, 50);
+              }
+            }
+          });
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
       }
       window.initTopicsNotice = initTopicsNotice;
       window.positionTopicsNotice = positionTopicsNotice;
-      console.log("\u2705 \u0646\u0638\u0627\u0645 \u0625\u0634\u0639\u0627\u0631 \u0627\u0644\u0645\u0648\u0627\u0636\u064A\u0639 \u0627\u0644\u0642\u062F\u064A\u0645\u0629 \u0648\u0627\u0644\u062C\u062F\u064A\u062F\u0629 \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647");
+      console.log("\u2705 \u0646\u0638\u0627\u0645 \u0625\u0634\u0639\u0627\u0631 \u0627\u0644\u0645\u0648\u0627\u0636\u064A\u0639 (\u0627\u0644\u0645\u0633\u062A\u0642\u0631) \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647");
     }
   });
 
