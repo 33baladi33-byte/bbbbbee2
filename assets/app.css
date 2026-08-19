@@ -7371,6 +7371,23 @@ body:has(#list.active) #backHomeBtn {
     }
 }
 /* ============================================
+   زر مساعدة الفهم - أزرق غامق
+   ============================================ */
+#globalHelpButton {
+    background: linear-gradient(135deg, #1a3a5c, #0e2a44) !important;
+    box-shadow: 0 2px 8px rgba(26, 58, 92, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+    border: none !important;
+    transition: all 0.25s ease !important;
+}
+#globalHelpButton:hover {
+    background: linear-gradient(135deg, #2a4a6c, #1a3a54) !important;
+    box-shadow: 0 4px 12px rgba(26, 58, 92, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+    transform: translateY(-2px);
+}
+#globalHelpButton:active {
+    transform: scale(0.97);
+}
+/* ============================================
    studySession.css - النسخة النهائية (متكاملة)
    ============================================ */
 
