@@ -27004,6 +27004,23 @@ var MyApp = (() => {
     data.forEach((item) => targetContainer.appendChild(item.el));
     console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u062D\u0633\u0628 \u0627\u0644\u0648\u0642\u062A (\u0645\u0646 \u0627\u0644\u0623\u0636\u0639\u0641 \u0625\u0644\u0649 \u0627\u0644\u0623\u0642\u0648\u0649)");
   }
+  function saveOriginalOrder() {
+    const list = document.getElementById("examsList");
+    if (!list) return;
+    const gridContainer = document.getElementById("examGridContainer");
+    const targetContainer = gridContainer || list;
+    const exams = [...targetContainer.querySelectorAll(".item")].filter(
+      (el) => !el.classList.contains("teil-header") && !el.classList.contains("memory-progress-bar-container")
+    );
+    const order = exams.map((el) => {
+      const title = el.querySelector(".exam-title");
+      if (!title) return null;
+      const match = title.textContent.match(/^(\d+):/);
+      return match ? parseInt(match[1], 10) : null;
+    }).filter((id) => id !== null);
+    window._originalExamOrder = order;
+    console.log(`\u2705 \u062A\u0645 \u062D\u0641\u0638 \u0627\u0644\u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0623\u0635\u0644\u064A (${order.length} \u0627\u0645\u062A\u062D\u0627\u0646)`);
+  }
   var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY;
   var init_exams = __esm({
     "exams.js"() {
