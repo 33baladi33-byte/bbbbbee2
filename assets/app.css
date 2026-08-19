@@ -368,37 +368,46 @@ body {
     gap: 15px;
 }
 
-/* ===== توحيد حجم logo-icon ===== */
-/* ===== زر الشعار - متطابق مع الأزرار الأخرى ===== */
+/* ===== زر الشعار - متطابق مع زر الملف الشخصي ===== */
 .logo-icon {
-    height: 35px;
-    padding: 0 12px;
-    background: transparent;
-    border: none;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
-    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    box-shadow: none;
-    font-size: 0;
-    transition: 0.3s;
-    overflow: hidden;
+    transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    cursor: pointer;
+    flex-shrink: 0;
     box-sizing: border-box;
-}
-
-.logo-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 12px;
+    overflow: hidden;
+    font-size: 0;
 }
 
 .logo-icon:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+    background: rgba(255, 255, 255, 0.10);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: scale(1.04);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
 }
 
+.logo-icon:active {
+    transform: scale(0.95);
+    transition-duration: 0.05s;
+}
+
+.logo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+    display: block;
+    pointer-events: none;
+}
 .notification-container {
     position: relative;
 }
@@ -598,41 +607,46 @@ body {
 }
 
 
-/* ===== زر الملف الشخصي - تصميم Apple Premium ===== */
-/* ===== زر الملف الشخصي - متطابق مع الأزرار الأخرى ===== */
+/* ===== زر الملف الشخصي - متطابق مع زر الشعار ===== */
 .profile-icon {
-    height: 35px;
-    padding: 0 12px;
+    width: 36px;
+    height: 36px;
+    padding: 0;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    color: #E5E7EB;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    font-size: 16px;
-    gap: 5px;
-    font-family: inherit;
+    transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    cursor: pointer;
     flex-shrink: 0;
-    position: relative;
-    object-fit: cover;
     box-sizing: border-box;
+    overflow: hidden;
+    color: #E5E7EB;
+    font-size: 0;
 }
 
-
 .profile-icon:hover {
-    transform: scale(1.05);
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 0 25px rgba(56, 189, 248, 0.12);
+    background: rgba(255, 255, 255, 0.10);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: scale(1.04);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
 }
 
 .profile-icon:active {
-    transform: scale(0.94);
+    transform: scale(0.95);
     transition-duration: 0.05s;
+}
+
+.profile-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+    display: block;
+    pointer-events: none;
 }
 
 body.dark-mode .profile-icon {
@@ -1674,8 +1688,9 @@ body:has(#exam.active) .left-side #navSubscribeBtn { order: 4 !important; }
     }
     
     .logo-icon {
-        width: 28px !important;
-        height: 28px !important;
+        width: 32px !important;
+        height: 32px !important;
+        border-radius: 10px !important;
     }
     
     .notification-bell {
@@ -1688,10 +1703,11 @@ body:has(#exam.active) .left-side #navSubscribeBtn { order: 4 !important; }
         font-size: 9px !important;
     }
     
-    .profile-icon {
-        width: 28px !important;
-        height: 28px !important;
+     .profile-icon {
+        width: 32px !important;
+        height: 32px !important;
         font-size: 14px !important;
+        border-radius: 10px !important;
     }
     
     .settings-icon-btn,
