@@ -27105,89 +27105,7 @@ var MyApp = (() => {
     data.forEach((item) => targetContainer.appendChild(item.el));
     console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u062D\u0633\u0628 \u0627\u0644\u0648\u0642\u062A (\u0645\u0646 \u0627\u0644\u0623\u0636\u0639\u0641 \u0625\u0644\u0649 \u0627\u0644\u0623\u0642\u0648\u0649)");
   }
-  function initTopicsNotice() {
-    const notice = document.getElementById("topicsNotice");
-    if (!notice) {
-      console.warn("\u26A0\uFE0F topicsNotice \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F");
-      return;
-    }
-    const tooltip = notice.querySelector(".topics-tooltip");
-    if (!tooltip) return;
-    function closeTooltip(e) {
-      if (tooltip.classList.contains("active")) {
-        if (!notice.contains(e.target)) {
-          tooltip.classList.remove("active");
-          document.removeEventListener("click", closeTooltip);
-        }
-      }
-    }
-    notice.addEventListener("click", function(e) {
-      e.stopPropagation();
-      const isOpen = tooltip.classList.contains("active");
-      if (isOpen) {
-        tooltip.classList.remove("active");
-        document.removeEventListener("click", closeTooltip);
-      } else {
-        tooltip.classList.add("active");
-        setTimeout(() => {
-          document.addEventListener("click", closeTooltip);
-        }, 10);
-      }
-    });
-    document.addEventListener("keydown", function(e) {
-      if (e.key === "Escape" && tooltip.classList.contains("active")) {
-        tooltip.classList.remove("active");
-        document.removeEventListener("click", closeTooltip);
-      }
-    });
-    console.log("\u2705 \u0625\u0634\u0639\u0627\u0631 \u0627\u0644\u0645\u0648\u0627\u0636\u064A\u0639 \u062A\u0645 \u062A\u0641\u0639\u064A\u0644\u0647");
-  }
-  function positionTopicsNotice() {
-    const notice = document.getElementById("topicsNotice");
-    if (!notice) return;
-    const isMobile = window.innerWidth <= 768;
-    if (isMobile) {
-      const header = document.querySelector(".teil-header");
-      if (header) {
-        header.style.display = "flex";
-        header.style.alignItems = "center";
-        header.style.gap = "8px";
-        header.style.flexWrap = "wrap";
-        if (!header.contains(notice)) {
-          header.appendChild(notice);
-        }
-        notice.style.display = "inline-flex";
-        notice.style.margin = "0";
-        notice.style.padding = "0 4px 0 6px";
-        notice.style.alignSelf = "center";
-        notice.style.flexShrink = "0";
-        notice.style.background = "transparent";
-        notice.style.border = "none";
-        notice.style.borderRadius = "0";
-        notice.style.width = "auto";
-        notice.style.position = "relative";
-      }
-    } else {
-      const listContainer = document.getElementById("examsList");
-      if (listContainer && listContainer.parentNode) {
-        const parent = listContainer.parentNode;
-        if (!parent.contains(notice) || parent.querySelector("#topicsNotice") !== notice) {
-          parent.insertBefore(notice, listContainer);
-        }
-      }
-      notice.style.display = "flex";
-      notice.style.margin = "0 0 12px 0";
-      notice.style.padding = "4px 6px";
-      notice.style.alignSelf = "flex-start";
-      notice.style.flexShrink = "0";
-      notice.style.background = "transparent";
-      notice.style.border = "none";
-      notice.style.borderRadius = "0";
-      notice.style.position = "relative";
-      notice.style.width = "fit-content";
-    }
-  }
-  var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY, resizeTimer, originalRenderExamListForSkill;
+  var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY;
   var init_exams = __esm({
     "exams.js"() {
       window.isInterleavingActive = false;
@@ -28557,37 +28475,74 @@ var MyApp = (() => {
         console.log("\u2139\uFE0F \u0645\u062A\u063A\u064A\u0631\u0627\u062A Lesen1 \u0633\u062A\u064F\u0635\u062F\u0651\u0631 \u0645\u0646 engine.js");
       }
       window.applyTimeOrder = applyTimeOrder;
-      document.addEventListener("DOMContentLoaded", function() {
-        initTopicsNotice();
-        setTimeout(positionTopicsNotice, 150);
-      });
-      window.addEventListener("resize", function() {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(positionTopicsNotice, 100);
-      });
-      originalRenderExamListForSkill = window.renderExamListForSkill;
-      if (typeof originalRenderExamListForSkill === "function") {
-        window.renderExamListForSkill = function(skill, teilName) {
-          const result = originalRenderExamListForSkill.call(this, skill, teilName);
-          setTimeout(positionTopicsNotice, 100);
-          return result;
-        };
-      } else {
-        const observer = new MutationObserver(function(mutations) {
-          mutations.forEach(function(mutation) {
-            if (mutation.type === "childList" && mutation.addedNodes.length > 0) {
-              const list = document.getElementById("examsList");
-              if (list && list.children.length > 0) {
-                setTimeout(positionTopicsNotice, 50);
+      (function() {
+        const btn = document.getElementById("checkCircleBtn");
+        const tooltip = document.getElementById("checkCircleTooltip");
+        if (!btn || !tooltip) return;
+        let isOpen = false;
+        function updateTooltipPosition() {
+          if (window.innerWidth > 768) {
+            return;
+          }
+          const rect = btn.getBoundingClientRect();
+          let top = rect.bottom + 6;
+          let left = rect.left;
+          const tw = tooltip.offsetWidth || 200;
+          if (left + tw > window.innerWidth - 10) {
+            left = window.innerWidth - tw - 10;
+          }
+          if (left < 10) left = 10;
+          tooltip.style.top = top + "px";
+          tooltip.style.left = left + "px";
+        }
+        btn.addEventListener("click", function(e) {
+          e.stopPropagation();
+          isOpen = !isOpen;
+          const icon = this.querySelector(".material-symbols-outlined");
+          if (isOpen) {
+            tooltip.style.display = "flex";
+            if (icon) icon.style.animation = "none";
+            if (window.innerWidth <= 768) {
+              setTimeout(updateTooltipPosition, 10);
+            }
+          } else {
+            tooltip.style.display = "none";
+            if (icon) icon.style.animation = "";
+          }
+        });
+        document.addEventListener("click", function(e) {
+          if (isOpen && !btn.contains(e.target) && !tooltip.contains(e.target)) {
+            isOpen = false;
+            tooltip.style.display = "none";
+            const icon = btn.querySelector(".material-symbols-outlined");
+            if (icon) icon.style.animation = "";
+          }
+        });
+        if (window.innerWidth <= 768) {
+          window.addEventListener("scroll", function() {
+            if (isOpen) updateTooltipPosition();
+          });
+          window.addEventListener("resize", function() {
+            if (isOpen) setTimeout(updateTooltipPosition, 50);
+          });
+        }
+        let lastWidth = window.innerWidth;
+        window.addEventListener("resize", function() {
+          const currentWidth = window.innerWidth;
+          if (lastWidth > 768 && currentWidth <= 768 || lastWidth <= 768 && currentWidth > 768) {
+            if (isOpen) {
+              if (currentWidth > 768) {
+                tooltip.style.top = "";
+                tooltip.style.left = "";
+              } else {
+                setTimeout(updateTooltipPosition, 50);
               }
             }
-          });
+          }
+          lastWidth = currentWidth;
         });
-        observer.observe(document.body, { childList: true, subtree: true });
-      }
-      window.initTopicsNotice = initTopicsNotice;
-      window.positionTopicsNotice = positionTopicsNotice;
-      console.log("\u2705 \u0646\u0638\u0627\u0645 \u0625\u0634\u0639\u0627\u0631 \u0627\u0644\u0645\u0648\u0627\u0636\u064A\u0639 (\u0627\u0644\u0645\u0633\u062A\u0642\u0631) \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647");
+        console.log("\u2705 \u0632\u0631 check_circle \u062C\u0627\u0647\u0632 (\u062F\u0627\u0626\u0645).");
+      })();
     }
   });
 
