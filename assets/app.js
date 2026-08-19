@@ -28369,13 +28369,17 @@ var MyApp = (() => {
         console.log("\u2139\uFE0F \u0645\u062A\u063A\u064A\u0631\u0627\u062A Lesen1 \u0633\u062A\u064F\u0635\u062F\u0651\u0631 \u0645\u0646 engine.js");
       }
       window.applyTimeOrder = applyTimeOrder;
-      document.addEventListener("DOMContentLoaded", function() {
-        const btn = document.getElementById("checkCircleBtn");
+      (function() {
         const tooltip = document.getElementById("checkCircleTooltip");
-        if (!btn || !tooltip) return;
+        if (!tooltip) return;
         let isOpen = false;
         const isMobile = () => window.innerWidth <= 768;
+        function getBtn() {
+          return document.getElementById("checkCircleBtn");
+        }
         function updateTooltipPosition() {
+          const btn = getBtn();
+          if (!btn) return;
           if (!isMobile()) {
             tooltip.style.top = "";
             tooltip.style.left = "";
@@ -28390,20 +28394,23 @@ var MyApp = (() => {
           tooltip.style.top = top + "px";
           tooltip.style.left = left + "px";
         }
-        btn.addEventListener("click", function(e) {
-          e.stopPropagation();
-          isOpen = !isOpen;
-          const icon = this.querySelector(".material-symbols-outlined");
-          if (isOpen) {
-            tooltip.style.display = "flex";
-            if (icon) icon.style.animation = "none";
-            setTimeout(updateTooltipPosition, 10);
-          } else {
-            tooltip.style.display = "none";
-            if (icon) icon.style.animation = "";
-          }
-        });
         document.addEventListener("click", function(e) {
+          const btn = getBtn();
+          if (!btn) return;
+          if (btn.contains(e.target)) {
+            e.stopPropagation();
+            isOpen = !isOpen;
+            const icon = btn.querySelector(".material-symbols-outlined");
+            if (isOpen) {
+              tooltip.style.display = "flex";
+              if (icon) icon.style.animation = "none";
+              setTimeout(updateTooltipPosition, 10);
+            } else {
+              tooltip.style.display = "none";
+              if (icon) icon.style.animation = "";
+            }
+            return;
+          }
           if (isOpen && !btn.contains(e.target) && !tooltip.contains(e.target)) {
             isOpen = false;
             tooltip.style.display = "none";
@@ -28417,8 +28424,8 @@ var MyApp = (() => {
         window.addEventListener("resize", function() {
           if (isOpen && isMobile()) setTimeout(updateTooltipPosition, 50);
         });
-        console.log("\u2705 \u0632\u0631 check_circle \u0645\u0631\u0628\u0648\u0637 (\u062D\u062F\u062B \u0627\u0644\u0646\u0642\u0631)");
-      });
+        console.log("\u2705 \u0632\u0631 check_circle \u0645\u0631\u0628\u0648\u0637 \u0639\u0628\u0631 Event Delegation");
+      })();
     }
   });
 
