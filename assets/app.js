@@ -1312,7 +1312,7 @@ var MyApp = (() => {
     const btn = document.createElement("button");
     btn.id = "globalHelpButton";
     btn.className = "memory-btn btn-blue";
-    btn.textContent = "\u{1F602} \u0627\u062C\u064A \u0636\u062D\u0643 \u0648\u0641\u0647\u0645";
+    btn.textContent = "\u0645\u0633\u0627\u0639\u062F\u0629 \u0644\u0644\u0641\u0647\u0645";
     btn.onmouseenter = () => {
       btn.style.transform = "scale(1.02)";
       btn.style.boxShadow = "0 4px 10px rgba(0,0,0,0.2)";
@@ -25071,9 +25071,33 @@ var MyApp = (() => {
     if (skill === "m\xFCndlich1" || skill === "m\xFCndlich2" || skill === "m\xFCndlich3" || skill === "m\xFCndlich") {
       renderM\u00FCndlichPartTabs();
     }
+    const btn = document.getElementById("checkCircleBtn");
+    if (btn && btn.parentNode) {
+      btn.parentNode.removeChild(btn);
+    }
     const headerDiv = document.createElement("div");
     headerDiv.className = "teil-header";
     headerDiv.innerHTML = `<strong> ${teilName || getTeilNameBySkill(skill)}</strong>`;
+    if (btn) {
+      const isMobile = window.innerWidth <= 768;
+      headerDiv.style.display = "flex";
+      headerDiv.style.alignItems = "center";
+      headerDiv.style.gap = "6px";
+      headerDiv.style.flexWrap = "wrap";
+      if (isMobile) {
+        headerDiv.appendChild(btn);
+        const wrapper = document.querySelector(".check-circle-wrapper");
+        if (wrapper) wrapper.style.display = "none";
+      } else {
+        const wrapper = document.querySelector(".check-circle-wrapper");
+        if (wrapper) {
+          wrapper.appendChild(btn);
+          wrapper.style.display = "flex";
+        } else {
+          headerDiv.appendChild(btn);
+        }
+      }
+    }
     container.appendChild(headerDiv);
     if (SKILL_CONFIG[skill]) {
       renderMemoryProgressBar(skill, container);
