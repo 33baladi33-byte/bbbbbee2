@@ -7320,184 +7320,134 @@ body:has(#list.active) #backHomeBtn {
     animation: badgePulse 2s ease-in-out infinite;
 }
 /* ============================================
-   إشعار المواضيع القديمة والجديدة (نسخة احترافية)
+   زر check_circle والخانة المنبثقة
    ============================================ */
 
-.topics-notice {
-    display: none;
+/* ===== نسخة الكمبيوتر ===== */
+.check-circle-btn {
+    position: fixed !important;
+    top: 82px !important;
+    left: 30px !important;
+    z-index: 9999 !important;
+    width: 36px;
+    height: 36px;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    cursor: pointer;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    user-select: none;
-    position: relative;
-    width: fit-content;
-    height: fit-content;
-    flex-shrink: 0;
-}
-
-/* ===== النقطة فقط (بدون نص) ===== */
-.topics-dot {
-    display: block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #334155; /* لون غامق أنيق */
-    box-shadow: 0 0 6px rgba(51, 65, 85, 0.3);
+    color: #38bdf8;
+    font-size: 24px;
+    font-family: 'Material Symbols Outlined', sans-serif;
     transition: all 0.3s ease;
-    /* تنفس هادئ جداً */
-    animation: dotBreathe 3.5s ease-in-out infinite;
-    flex-shrink: 0;
 }
 
-/* تنفس بطيء، ناعم، وهادئ */
-@keyframes dotBreathe {
-    0%, 100% {
-        transform: scale(0.92);
-        box-shadow: 0 0 4px rgba(51, 65, 85, 0.2);
-        opacity: 0.85;
-    }
-    50% {
-        transform: scale(1.08);
-        box-shadow: 0 0 12px rgba(51, 65, 85, 0.35);
-        opacity: 1;
-    }
+.check-circle-btn .material-symbols-outlined {
+    font-size: 24px;
+    color: #38bdf8;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    animation: gentlePulseCheck 1.6s ease-in-out infinite;
+    display: inline-block;
+    transform-origin: center;
 }
 
-/* تأثير Hover خفيف جداً */
-.topics-notice:hover .topics-dot {
-    background: #475569;
-    box-shadow: 0 0 14px rgba(71, 85, 105, 0.4);
+@keyframes gentlePulseCheck {
+    0%, 100% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.04); opacity: 1; }
 }
 
-/* ===== نافذة الرسالة المنبثقة ===== */
-.topics-tooltip {
-    position: absolute;
-    bottom: calc(100% + 14px);
-    left: 50%;
-    transform: translateX(-50%) scale(0.92);
-    background: rgba(20, 25, 40, 0.96);
-    backdrop-filter: blur(14px);
-    border: 1px solid rgba(71, 85, 105, 0.25);
+.check-circle-tooltip {
+    position: fixed;
+    top: 125px;
+    left: 30px;
+    z-index: 10000;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(56, 189, 248, 0.12);
     border-radius: 14px;
-    padding: 12px 20px;
-    font-size: 0.85rem;
-    color: #e8edf5;
+    padding: 4px 16px;
+    color: #38bdf8;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    direction: rtl;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), 0 0 40px rgba(56, 189, 248, 0.04);
+    display: none;
+    max-width: 280px;
     white-space: nowrap;
-    box-shadow: 0 10px 40px -8px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(71, 85, 105, 0.1) inset;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    pointer-events: none;
-    z-index: 1000;
-    text-align: center;
-    font-weight: 500;
+    line-height: 1.6;
+    height: auto;
+    min-height: 24px;
+    align-items: center;
+    justify-content: center;
     letter-spacing: 0.2px;
-    line-height: 1.5;
-    min-width: 60px;
-    max-width: 320px;
-}
-
-/* سهم صغير أنيق */
-.topics-tooltip::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 6px solid transparent;
-    border-top-color: rgba(71, 85, 105, 0.25);
-    border-bottom: none;
-}
-
-/* حالة ظهور الرسالة */
-.topics-tooltip.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) scale(1);
     pointer-events: none;
 }
 
-/* ===== تنسيق سطح المكتب ===== */
-@media (min-width: 769px) {
-    /* تظهر النقطة فقط في أقصى يسار القائمة، مقابل زر info */
-    #list .topics-notice {
-        display: flex;
-        position: relative;
-        margin: 0 0 16px 0;
-        padding: 4px 6px;
-        background: transparent;
-        border: none;
-        border-radius: 0;
-        width: fit-content;
-        align-self: flex-start; /* تبقى في اليسار */
-    }
-    
-    .topics-dot {
-        width: 14px;
-        height: 14px;
-    }
-
-    .topics-tooltip {
-        font-size: 0.85rem;
-        padding: 12px 22px;
-        white-space: nowrap;
-        max-width: 340px;
-        bottom: calc(100% + 16px);
-        left: 50%;
-        transform: translateX(-50%) scale(0.95);
-    }
-    .topics-tooltip.active {
-        transform: translateX(-50%) scale(1);
-    }
-}
-
-/* ===== تنسيق الهاتف ===== */
+/* ===== نسخة الهاتف ===== */
 @media (max-width: 768px) {
-    /* تظهر النقطة بجانب عنوان القسم */
-    #list .topics-notice {
-        display: inline-flex;
-        position: relative;
-        margin: 0;
-        padding: 2px 4px 2px 6px;
-        background: transparent;
-        border: none;
-        width: auto;
-        align-self: center;
+    /* زر check_circle في الهاتف */
+    .check-circle-btn {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        width: 24px;
+        height: 24px;
+        font-size: 18px;
         flex-shrink: 0;
-    }
-    
-    .topics-dot {
-        width: 10px;
-        height: 10px;
+        margin: 0 0 10px 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    .topics-tooltip {
-        font-size: 0.7rem;
-        padding: 10px 14px;
+    .check-circle-btn .material-symbols-outlined {
+        font-size: 18px;
+        animation: mobilePulseCheck 1.6s ease-in-out infinite;
+    }
+
+    @keyframes mobilePulseCheck {
+        0%, 100% { transform: scale(1); opacity: 0.9; }
+        50% { transform: scale(1.05); opacity: 1; }
+    }
+
+    .check-circle-tooltip {
+        position: fixed;
+        top: auto;
+        left: auto;
+        background: rgba(8, 12, 24, 0.88);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid rgba(56, 189, 248, 0.06);
+        border-radius: 15px;
+        padding: 4px 14px;
+        color: #258bc0;
+        font-size: 12px;
+        max-width: 200px;
+        min-height: 20px;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45), 0 0 50px rgba(56, 189, 248, 0.02);
         white-space: normal;
-        max-width: 180px;
-        min-width: 100px;
-        bottom: calc(100% + 10px);
-        left: 50%;
-        transform: translateX(-50%) scale(0.92);
-        line-height: 1.6;
-        text-align: center;
-        word-break: break-word;
+        line-height: 1.5;
+        padding: 6px 12px;
     }
-    .topics-tooltip.active {
-        transform: translateX(-50%) scale(1);
-    }
-    
-    /* إخفاء أي نص جانبي */
-    .topics-text {
-        display: none !important;
-    }
-}
 
-/* ===== إخفاء الإشعار في الصفحة الرئيسية والامتحان ===== */
-#home .topics-notice,
-#exam .topics-notice {
-    display: none !important;
+    /* ترتيب العناصر في #list للهاتف */
+    #list {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    #list .check-circle-btn {
+        order: 0;
+        margin-bottom: 8px;
+    }
+    #list #examsList {
+        order: 1;
+        width: 100%;
+    }
 }
 /* ============================================
    studySession.css - النسخة النهائية (متكاملة)
