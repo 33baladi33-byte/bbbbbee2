@@ -27021,6 +27021,57 @@ var MyApp = (() => {
     window._originalExamOrder = order;
     console.log(`\u2705 \u062A\u0645 \u062D\u0641\u0638 \u0627\u0644\u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0623\u0635\u0644\u064A (${order.length} \u0627\u0645\u062A\u062D\u0627\u0646)`);
   }
+  function setupLockedNextButton() {
+    const nextBtn = document.getElementById("nextExamBtn");
+    if (!nextBtn) return;
+    getUserStatusForExam().then((status) => {
+      const isPremium = status === "premium";
+      const flatList = getFlattenedExamList(currentExamsList);
+      const currentIndex = flatList.findIndex((e) => e.id === currentExamId);
+      const nextExam = flatList[currentIndex + 1];
+      if (nextExam) {
+        const nextExamId = nextExam.id;
+        const isNextFree = isExamFree(currentSkill2, nextExamId);
+        if (!isPremium && !isNextFree && nextBtn.style.display !== "none") {
+          nextBtn.style.position = "relative";
+          nextBtn.style.paddingLeft = "35px";
+          let lockIcon = nextBtn.querySelector(".next-lock-icon");
+          if (!lockIcon) {
+            lockIcon = document.createElement("span");
+            lockIcon.className = "next-lock-icon";
+            lockIcon.innerHTML = "\u{1F512}";
+            lockIcon.style.cssText = "position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 14px; color: #ef4444;";
+            nextBtn.appendChild(lockIcon);
+          }
+          nextBtn.style.backgroundColor = "#b0bec5";
+          nextBtn.style.opacity = "0.8";
+          nextBtn.onclick = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (typeof window.showPremiumModal === "function") {
+              window.showPremiumModal(nextExam.title + " (" + nextExamId + ")");
+            } else {
+              window.location.href = "subscribe.html";
+            }
+            return false;
+          };
+        } else if (isPremium || isNextFree) {
+          const lockIcon = nextBtn.querySelector(".next-lock-icon");
+          if (lockIcon) lockIcon.remove();
+          nextBtn.style.backgroundColor = "";
+          nextBtn.style.opacity = "1";
+          nextBtn.style.paddingLeft = "";
+          nextBtn.onclick = () => {
+            if (nextExam.isVersion) {
+              openExam(nextExam.id, nextExam.title, nextExam.skill, nextExam.file);
+            } else {
+              openExam(nextExam.id, nextExam.title, nextExam.skill);
+            }
+          };
+        }
+      }
+    });
+  }
   var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY;
   var init_exams = __esm({
     "exams.js"() {
