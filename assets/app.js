@@ -28496,6 +28496,8 @@ var MyApp = (() => {
               }
               btn.classList.add("in-header");
               btn.style.display = "inline-flex";
+              btn.style.opacity = "1";
+              btn.style.visibility = "visible";
             } else {
               if (wrapper && wrapper.contains(btn)) {
                 btn.style.display = "none";
@@ -28507,6 +28509,8 @@ var MyApp = (() => {
               wrapper.appendChild(btn);
               btn.classList.remove("in-header");
               btn.style.display = "inline-flex";
+              btn.style.opacity = "1";
+              btn.style.visibility = "visible";
             }
             if (wrapper) wrapper.style.display = "flex";
           }
@@ -28565,27 +28569,30 @@ var MyApp = (() => {
           if (isOpen && isMobile()) setTimeout(updateTooltipPosition, 50);
         });
         const observer = new MutationObserver(function(mutations) {
-          mutations.forEach(function(mutation) {
-            if (mutation.type === "childList" && mutation.addedNodes.length) {
-              if (document.querySelector(".teil-header")) {
-                if (isMobile()) {
-                  repositionButton();
+          for (const mutation of mutations) {
+            if (mutation.type === "childList") {
+              for (const node of mutation.addedNodes) {
+                if (node.nodeType === 1) {
+                  const header = node.querySelector ? node.querySelector(".teil-header") : null;
+                  if (header || node.classList && node.classList.contains("teil-header")) {
+                    if (isMobile()) {
+                      repositionButton();
+                      console.log("\u2705 \u062A\u0645 \u0627\u0643\u062A\u0634\u0627\u0641 .teil-header\u060C \u062A\u0645 \u0646\u0642\u0644 \u0627\u0644\u0632\u0631.");
+                    }
+                    break;
+                  }
                 }
               }
             }
-          });
+          }
         });
         observer.observe(document.body, { childList: true, subtree: true });
-        let attempts = 0;
         function tryPlace() {
           if (document.querySelector(".teil-header") || document.getElementById("examsList")) {
             repositionButton();
             console.log("\u2705 \u0632\u0631 check_circle \u0645\u0648\u0636\u0639 (\u0645\u062D\u0627\u0648\u0644\u0629 \u0646\u0627\u062C\u062D\u0629).");
-          } else if (attempts < 20) {
-            attempts++;
-            setTimeout(tryPlace, 200);
           } else {
-            console.warn("\u26A0\uFE0F \u0644\u0645 \u064A\u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 .teil-header \u0623\u0648 #examsList \u0628\u0639\u062F 20 \u0645\u062D\u0627\u0648\u0644\u0629.");
+            setTimeout(tryPlace, 200);
           }
         }
         setTimeout(tryPlace, 100);
