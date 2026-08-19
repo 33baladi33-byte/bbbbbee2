@@ -7323,29 +7323,30 @@ body:has(#list.active) #backHomeBtn {
    زر check_circle والخانة المنبثقة
    ============================================ */
 
+/* ============================================
+   زر check_circle والخانة المنبثقة
+   ============================================ */
+
 /* ===== نسخة الكمبيوتر ===== */
 .check-circle-btn {
-    position: fixed !important;
-    top: 82px !important;
-    left: 30px !important;
-    z-index: 9999 !important;
-    width: 36px;
-    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background: transparent !important;
     border: none !important;
     padding: 0 !important;
     cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     color: #38bdf8;
-    font-size: 24px;
+    font-size: 20px;
     font-family: 'Material Symbols Outlined', sans-serif;
     transition: all 0.3s ease;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
 }
 
 .check-circle-btn .material-symbols-outlined {
-    font-size: 24px;
+    font-size: 20px;
     color: #38bdf8;
     font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     animation: gentlePulseCheck 1.6s ease-in-out infinite;
@@ -7359,9 +7360,10 @@ body:has(#list.active) #backHomeBtn {
 }
 
 .check-circle-tooltip {
-    position: fixed;
-    top: 125px;
-    left: 30px;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 10000;
     background: rgba(15, 23, 42, 0.85);
     backdrop-filter: blur(12px);
@@ -7387,18 +7389,32 @@ body:has(#list.active) #backHomeBtn {
     pointer-events: none;
 }
 
+/* الحاوية التي تحتوي على الزر والخانة - تظهر في أعلى قائمة الامتحانات */
+#list .check-circle-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+#list .check-circle-wrapper .check-circle-btn {
+    margin: 0;
+}
+
 /* ===== نسخة الهاتف ===== */
 @media (max-width: 768px) {
-    /* زر check_circle في الهاتف */
+    /* إخفاء الـ wrapper في الهاتف لأن الزر سيوضع داخل .teil-header */
+    #list .check-circle-wrapper {
+        display: none !important;
+    }
+
     .check-circle-btn {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
         width: 24px;
         height: 24px;
         font-size: 18px;
         flex-shrink: 0;
-        margin: 0 0 10px 0;
+        margin: 0;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -7434,19 +7450,16 @@ body:has(#list.active) #backHomeBtn {
         padding: 6px 12px;
     }
 
-    /* ترتيب العناصر في #list للهاتف */
-    #list {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+    /* زر check_circle داخل .teil-header */
+    .teil-header {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        flex-wrap: wrap !important;
     }
-    #list .check-circle-btn {
-        order: 0;
-        margin-bottom: 8px;
-    }
-    #list #examsList {
+    .teil-header .check-circle-btn {
         order: 1;
-        width: 100%;
+        margin-right: 0;
     }
 }
 /* ============================================
