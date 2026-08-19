@@ -6893,192 +6893,114 @@ body:has(#list.active) #backHomeBtn {
         min-width: 150px;
     }
 }
-
 /* ============================================
-   LOGIN UNIVERS BUTTON (Uiverse Skin - Fully Scoped)
+   LOGIN BUTTON - بسيط ومتناسق مع الأزرار الأخرى
    ============================================ */
 .login-uiverse-wrapper {
     position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 4px;
 }
 .login-uiverse-glow {
-    position: absolute;
-    inset: 0;
-    border-radius: 0.75rem;
-    background: linear-gradient(to right, #6366f1, #ec4899, #facc15);
-    filter: blur(16px);
-    opacity: 0.6;
-    transition: all 1s;
-    pointer-events: none;
-}
-.login-uiverse-wrapper:hover .login-uiverse-glow {
-    opacity: 1;
-    transition-duration: 0.2s;
+    display: none !important;
 }
 .login-uiverse-btn {
     position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
-    border-radius: 0.75rem;
-    background-color: #111827;
-    color: white;
-    padding: 12px 24px;
-    font-weight: 600;
-    border: none;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #E5E7EB;
+    padding: 6px 14px;
+    font-weight: 500;
     cursor: pointer;
-    transition: all 0.2s;
-    gap: 8px;
+    transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    gap: 6px;
     white-space: nowrap;
     font-family: inherit;
-    min-height: 44px;
+    height: 32px;
+    min-height: 32px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 .login-uiverse-btn:hover {
-    background-color: #1f2937;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.10);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 .login-uiverse-btn:active {
-    transform: scale(0.98);
+    transform: scale(0.95);
+    transition-duration: 0.05s;
 }
 .login-uiverse-arrow {
-    margin-top: 1px;
-    stroke: currentColor;
-    stroke-width: 2;
-    fill: none;
+    display: none !important;
 }
-.login-uiverse-arrow-stroke {
-    transition: opacity 0.2s;
-    opacity: 0;
-}
+.login-uiverse-arrow-stroke,
 .login-uiverse-arrow-head {
-    transition: transform 0.2s;
-}
-.login-uiverse-wrapper:hover .login-uiverse-arrow-head {
-    transform: translateX(-3px);
-}
-.login-uiverse-wrapper:hover .login-uiverse-arrow-stroke {
-    opacity: 1;
+    display: none !important;
 }
 
 @media (max-width: 768px) {
     .login-uiverse-btn {
-        padding: 8px 14px;
-        font-size: 0.8rem;
-        min-height: 32px;
-        gap: 6px;
+        padding: 4px 10px;
+        font-size: 0.75rem;
+        height: 26px;
+        min-height: 26px;
+        border-radius: 8px;
+        gap: 4px;
     }
 }
 
 /* ============================================
-   SUBSCRIBE UNIVERS BUTTON (Uiverse Skin - Fully Scoped)
+   SUBSCRIBE BUTTON - تصميم بسيط واحترافي
    ============================================ */
 .subscribe-uiverse-btn {
     position: relative;
-    padding: 12px 24px;
-    font-size: 16px;
-    background: #1a1a1a;
-    color: white;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    background: #2d6a4f;
+    color: #cbd5e1;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-    height: 44px;
+    justify-content: center;
+    gap: 4px;
+    transition: all 0.25s ease;
+    height: 32px;
     font-family: inherit;
+    box-shadow: 0 2px 6px rgba(45, 106, 79, 0.25), 0 0 0 1px rgba(45, 106, 79, 0.2);
+    letter-spacing: 0.2px;
 }
 .subscribe-uiverse-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    transform: translateY(-1px);
+    background: #3a7a5a;
+    box-shadow: 0 4px 12px rgba(45, 106, 79, 0.35), 0 0 0 1px rgba(45, 106, 79, 0.3);
+    color: #f1f5f9;
 }
-.subscribe-uiverse-icon-container {
-    position: relative;
-    width: 24px;
-    height: 24px;
+.subscribe-uiverse-btn:active {
+    transform: scale(0.97);
 }
-.subscribe-uiverse-icon {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 24px;
-    height: 24px;
-    color: #22c55e;
-    opacity: 0;
-    visibility: hidden;
-}
-.subscribe-uiverse-default-icon {
-    opacity: 1;
-    visibility: visible;
-}
-.subscribe-uiverse-btn:hover .subscribe-uiverse-icon {
-    animation: none;
-}
-.subscribe-uiverse-btn:hover .subscribe-uiverse-wallet-icon {
-    opacity: 0;
-    visibility: hidden;
-}
-.subscribe-uiverse-btn:hover .subscribe-uiverse-card-icon {
-    animation: subscribeIconRotate 2.5s infinite;
-    animation-delay: 0s;
-}
-.subscribe-uiverse-btn:hover .subscribe-uiverse-payment-icon {
-    animation: subscribeIconRotate 2.5s infinite;
-    animation-delay: 0.5s;
-}
-.subscribe-uiverse-btn:hover .subscribe-uiverse-dollar-icon {
-    animation: subscribeIconRotate 2.5s infinite;
-    animation-delay: 1s;
-}
-.subscribe-uiverse-btn:hover .subscribe-uiverse-check-icon {
-    animation: subscribeIconRotate 2.5s infinite;
-    animation-delay: 1.5s;
-}
-.subscribe-uiverse-btn:active .subscribe-uiverse-icon {
-    animation: none;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-.subscribe-uiverse-btn:active .subscribe-uiverse-check-icon {
-    animation: subscribeCheckmarkAppear 0.6s ease forwards;
-    visibility: visible;
-}
-.subscribe-uiverse-text {
+.subscribe-uiverse-btn .subscribe-uiverse-text {
     font-weight: 600;
-    font-family: system-ui, -apple-system, sans-serif;
 }
-@keyframes subscribeIconRotate {
-    0% { opacity: 0; visibility: hidden; transform: translateY(10px) scale(0.5); }
-    5% { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
-    15% { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
-    20% { opacity: 0; visibility: hidden; transform: translateY(-10px) scale(0.5); }
-    100% { opacity: 0; visibility: hidden; transform: translateY(-10px) scale(0.5); }
+.subscribe-uiverse-btn .subscribe-uiverse-icon-container {
+    display: none !important;
 }
-@keyframes subscribeCheckmarkAppear {
-    0% { opacity: 0; transform: scale(0.5) rotate(-45deg); }
-    50% { opacity: 0.5; transform: scale(1.2) rotate(0deg); }
-    100% { opacity: 1; transform: scale(1) rotate(0deg); }
-}
+
 @media (max-width: 768px) {
     .subscribe-uiverse-btn {
-        padding: 8px 14px;
-        font-size: 14px;
-        height: 34px;
-        gap: 6px;
-    }
-    .subscribe-uiverse-icon-container {
-        width: 18px;
-        height: 18px;
-    }
-    .subscribe-uiverse-icon {
-        width: 18px;
-        height: 18px;
+        padding: 4px 12px;
+        font-size: 11px;
+        height: 26px;
+        gap: 3px;
+        border-radius: 6px;
     }
 }
 

@@ -23704,28 +23704,28 @@ var MyApp = (() => {
               buttonHtml = `<button class="memory-trainer-btn primary" onclick="window.memoryTrainer.showMemoryCard()">\u0627\u0628\u062F\u0623 \u0627\u0644\u062A\u062F\u0631\u064A\u0628</button>`;
             } else {
               buttonHtml = `
-                    <button class="memory-trainer-btn locked" onclick="window.location.href='subscribe.html'" style="
-                        padding: 8px 20px;
-                        border: none;
-                        border-radius: 10px;
-                        font-size: 14px;
-                        font-weight: 600;
-                        cursor: pointer;
-                        transition: all 0.15s ease;
-                        margin-top: 12px;
-                        background: #64748B;
-                        color: #cbd5e1;
-                        box-shadow: none;
-                        display: inline-block;
-                        width: auto;
-                        opacity: 0.7;
-                    "
-                    onmouseover="this.style.opacity='0.9'"
-                    onmouseout="this.style.opacity='0.7'"
-                    >
-                        \u{1F512} \u0645\u062A\u0627\u062D \u0644\u0644\u062D\u0633\u0627\u0628 \u0627\u0644\u0643\u0627\u0645\u0644
-                    </button>
-                `;
+        <button class="memory-trainer-btn locked" onclick="window.location.href='subscribe.html'" style="
+            padding: 8px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            margin-top: 12px;
+            background: #334155;
+            color: #94a3b8;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: inline-block;
+            width: auto;
+            opacity: 0.85;
+        "
+        onmouseover="this.style.opacity='1'; this.style.background='#475569'; this.style.color='#e2e8f0';"
+        onmouseout="this.style.opacity='0.85'; this.style.background='#334155'; this.style.color='#94a3b8';"
+        >
+            \u{1F512} \u0627\u0634\u062A\u0631\u0643 \u0644\u0644\u0648\u0635\u0648\u0644
+        </button>
+    `;
             }
             this.updateCard(`
                 <div class="memory-trainer-intro">
