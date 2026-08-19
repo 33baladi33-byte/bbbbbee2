@@ -22179,12 +22179,29 @@ var MyApp = (() => {
     return resultDiv && resultDiv.style.display !== "none";
   }
   function triggerCorrection() {
-    const checkBtn = document.querySelector(".check-btn");
+    const examContainer = document.getElementById("exam");
+    if (!examContainer) {
+      const checkBtn2 = document.querySelector(".check-btn");
+      if (checkBtn2) {
+        checkBtn2.click();
+        return true;
+      }
+      const allBtns2 = document.querySelectorAll("button");
+      for (let btn of allBtns2) {
+        const text = btn.textContent.trim();
+        if (text === "\u062A\u0635\u062D\u064A\u062D" || text === "Pr\xFCfen" || text === "\u2705 \u062A\u0635\u062D\u064A\u062D" || text === "\u{1F4DD} Pr\xFCfen") {
+          btn.click();
+          return true;
+        }
+      }
+      return false;
+    }
+    const checkBtn = examContainer.querySelector(".check-btn");
     if (checkBtn) {
       checkBtn.click();
       return true;
     }
-    const allBtns = document.querySelectorAll("button");
+    const allBtns = examContainer.querySelectorAll("button");
     for (let btn of allBtns) {
       const text = btn.textContent.trim();
       if (text === "\u062A\u0635\u062D\u064A\u062D" || text === "Pr\xFCfen" || text === "\u2705 \u062A\u0635\u062D\u064A\u062D" || text === "\u{1F4DD} Pr\xFCfen") {
@@ -23065,11 +23082,7 @@ var MyApp = (() => {
         }
         if (key === "Enter") {
           e.preventDefault();
-          if (isCorrectionVisible()) {
-            triggerNextExam();
-          } else {
-            triggerCorrection();
-          }
+          triggerCorrection();
           return;
         }
         if (key === "ArrowRight") {
