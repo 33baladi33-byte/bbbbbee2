@@ -25071,33 +25071,9 @@ var MyApp = (() => {
     if (skill === "m\xFCndlich1" || skill === "m\xFCndlich2" || skill === "m\xFCndlich3" || skill === "m\xFCndlich") {
       renderM\u00FCndlichPartTabs();
     }
-    const btn = document.getElementById("checkCircleBtn");
-    if (btn && btn.parentNode) {
-      btn.parentNode.removeChild(btn);
-    }
     const headerDiv = document.createElement("div");
     headerDiv.className = "teil-header";
     headerDiv.innerHTML = `<strong> ${teilName || getTeilNameBySkill(skill)}</strong>`;
-    if (btn) {
-      headerDiv.style.display = "flex";
-      headerDiv.style.alignItems = "center";
-      headerDiv.style.gap = "6px";
-      headerDiv.style.flexWrap = "wrap";
-      const isMobile = window.innerWidth <= 768;
-      if (isMobile) {
-        headerDiv.appendChild(btn);
-        const wrapper = document.querySelector(".check-circle-wrapper");
-        if (wrapper) wrapper.style.display = "none";
-      } else {
-        const wrapper = document.querySelector(".check-circle-wrapper");
-        if (wrapper) {
-          wrapper.appendChild(btn);
-          wrapper.style.display = "flex";
-        } else {
-          headerDiv.appendChild(btn);
-        }
-      }
-    }
     container.appendChild(headerDiv);
     if (SKILL_CONFIG[skill]) {
       renderMemoryProgressBar(skill, container);
@@ -28505,8 +28481,52 @@ var MyApp = (() => {
         if (!btn || !tooltip) return;
         let isOpen = false;
         const isMobile = () => window.innerWidth <= 768;
+        function repositionButton() {
+          const wrapper = document.querySelector(".check-circle-wrapper");
+          const header = document.querySelector(".teil-header");
+          if (isMobile()) {
+            if (header) {
+              if (wrapper && wrapper.contains(btn)) {
+                const notice = document.getElementById("topicsNotice");
+                if (notice && header.contains(notice)) {
+                  header.insertBefore(btn, notice);
+                } else {
+                  header.prepend(btn);
+                }
+              }
+              btn.classList.add("in-header");
+              btn.style.display = "inline-flex";
+              btn.style.opacity = "1";
+              btn.style.visibility = "visible";
+            } else {
+              if (wrapper && wrapper.contains(btn)) {
+                btn.style.display = "none";
+              }
+            }
+            if (wrapper) wrapper.style.display = "none";
+          } else {
+            if (wrapper && !wrapper.contains(btn)) {
+              wrapper.appendChild(btn);
+              btn.classList.remove("in-header");
+              btn.style.display = "inline-flex";
+              btn.style.opacity = "1";
+              btn.style.visibility = "visible";
+            }
+            if (wrapper) wrapper.style.display = "flex";
+          }
+          if (isOpen) {
+            if (isMobile()) {
+              setTimeout(updateTooltipPosition, 10);
+            } else {
+              tooltip.style.top = "";
+              tooltip.style.left = "";
+            }
+          }
+        }
         function updateTooltipPosition() {
-          if (!isMobile()) return;
+          if (!isMobile()) {
+            return;
+          }
           const rect = btn.getBoundingClientRect();
           let top = rect.bottom + 6;
           let left = rect.left;
@@ -28545,8 +28565,38 @@ var MyApp = (() => {
           if (isOpen && isMobile()) updateTooltipPosition();
         });
         window.addEventListener("resize", function() {
+          repositionButton();
           if (isOpen && isMobile()) setTimeout(updateTooltipPosition, 50);
         });
+        const observer = new MutationObserver(function(mutations) {
+          for (const mutation of mutations) {
+            if (mutation.type === "childList") {
+              for (const node of mutation.addedNodes) {
+                if (node.nodeType === 1) {
+                  const header = node.querySelector ? node.querySelector(".teil-header") : null;
+                  if (header || node.classList && node.classList.contains("teil-header")) {
+                    if (isMobile()) {
+                      repositionButton();
+                      console.log("\u2705 \u062A\u0645 \u0627\u0643\u062A\u0634\u0627\u0641 .teil-header\u060C \u062A\u0645 \u0646\u0642\u0644 \u0627\u0644\u0632\u0631.");
+                    }
+                    break;
+                  }
+                }
+              }
+            }
+          }
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+        function tryPlace() {
+          if (document.querySelector(".teil-header") || document.getElementById("examsList")) {
+            repositionButton();
+            console.log("\u2705 \u0632\u0631 check_circle \u0645\u0648\u0636\u0639 (\u0645\u062D\u0627\u0648\u0644\u0629 \u0646\u0627\u062C\u062D\u0629).");
+          } else {
+            setTimeout(tryPlace, 200);
+          }
+        }
+        setTimeout(tryPlace, 100);
+        console.log("\u2705 \u0632\u0631 check_circle \u062C\u0627\u0647\u0632 (\u0645\u0639 \u0646\u0642\u0644 \u062F\u064A\u0646\u0627\u0645\u064A\u0643\u064A \u0644\u0644\u0647\u0627\u062A\u0641).");
       })();
     }
   });
