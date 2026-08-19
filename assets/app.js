@@ -25067,11 +25067,6 @@ var MyApp = (() => {
     localStorage.removeItem(ORDER_MODE_KEY);
     const container = document.getElementById("examsList");
     if (!container) return;
-    const btn = document.getElementById("checkCircleBtn");
-    const tooltip = document.getElementById("checkCircleTooltip");
-    if (btn && btn.parentNode) {
-      btn.parentNode.removeChild(btn);
-    }
     container.innerHTML = "";
     if (skill === "m\xFCndlich1" || skill === "m\xFCndlich2" || skill === "m\xFCndlich3" || skill === "m\xFCndlich") {
       renderM\u00FCndlichPartTabs();
@@ -25079,29 +25074,6 @@ var MyApp = (() => {
     const headerDiv = document.createElement("div");
     headerDiv.className = "teil-header";
     headerDiv.innerHTML = `<strong> ${teilName || getTeilNameBySkill(skill)}</strong>`;
-    const isMobile = window.innerWidth <= 768;
-    if (btn) {
-      btn.style.display = "inline-flex";
-      btn.style.opacity = "1";
-      btn.style.visibility = "visible";
-      if (isMobile) {
-        headerDiv.appendChild(btn);
-        headerDiv.style.display = "flex";
-        headerDiv.style.alignItems = "center";
-        headerDiv.style.gap = "6px";
-        headerDiv.style.flexWrap = "wrap";
-        const wrapper = document.querySelector(".check-circle-wrapper");
-        if (wrapper) wrapper.style.display = "none";
-      } else {
-        const wrapper = document.querySelector(".check-circle-wrapper");
-        if (wrapper) {
-          wrapper.appendChild(btn);
-          wrapper.style.display = "flex";
-        } else {
-          headerDiv.appendChild(btn);
-        }
-      }
-    }
     container.appendChild(headerDiv);
     if (SKILL_CONFIG[skill]) {
       renderMemoryProgressBar(skill, container);
@@ -25349,6 +25321,135 @@ var MyApp = (() => {
     if (savedOrder === "1" && typeof applyLeaderboardOrder === "function") {
       applyLeaderboardOrder();
     }
+  }
+  function showVersionsPopup(exam, skill) {
+    const overlay = document.createElement("div");
+    overlay.id = "versionsPopupAuto";
+    overlay.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    animation: fadeIn 0.2s ease;
+  `;
+    const modal = document.createElement("div");
+    modal.style.cssText = `
+    background: #1a1f2e;
+    border-radius: 20px;
+    padding: 28px 24px;
+    max-width: 380px;
+    width: 90%;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border: 1px solid #2a3042;
+    animation: scaleIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    color: #e2e8f0;
+    text-align: center;
+  `;
+    getUserStatusForExam().then((userStatus) => {
+      const isPremium = userStatus === "premium";
+      let versionsHtml = exam.versions.map((v, i) => {
+        const savedScore = getExamResult(skill, v.id);
+        const retryCount = getRetryCount(skill, v.id);
+        const reviewDays = getLastReviewDays(skill, v.id);
+        const progress = getExamProgress(skill, v.id);
+        let chipsHtml = `
+        <span class="exam-chip score"><span class="material-symbols-outlined">bar_chart</span> ${savedScore !== null ? savedScore + "/25" : "\u2014"}</span>
+        <span class="exam-chip attempts"><span class="material-symbols-outlined">repeat</span> ${retryCount}</span>
+        <span class="exam-chip days"><span class="material-symbols-outlined">calendar_month</span> ${reviewDays !== null ? reviewDays === 0 ? "\u0627\u0644\u064A\u0648\u0645" : `\u0645\u0646\u0630 ${reviewDays} \u064A\u0648\u0645` : "\u2014"}</span>
+        <span class="exam-chip memory"><span class="material-symbols-outlined">auto_awesome</span> ${progress}%</span>
+      `;
+        return `
+        <div style="background: #0f1421; border-radius: 12px; padding: 10px 14px; margin-bottom: 8px; border-left: 3px solid #4a6fa5; text-align: right; cursor: pointer; transition: background 0.2s ease;" 
+             onclick="closeVersionsPopupAndOpen('${skill}', ${v.id}, '${v.file}', '${v.title}')">
+          <div style="font-size: 13px; font-weight: 500; color: #e2e8f0; margin-bottom: 4px;">${v.title}</div>
+          <div class="exam-info-chips" style="display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 4px; justify-content: flex-start;">
+            ${chipsHtml}
+          </div>
+        </div>
+      `;
+      }).join("");
+      modal.innerHTML = `
+      <h4 style="margin:0 0 16px 0; font-size:16px; font-weight:600; color:#a8b5d9;">\u{1F4CB} \u0647\u0630\u0627 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 \u0644\u0647 ${exam.versions.length} \u062A\u0639\u062F\u064A\u0644\u0627\u062A</h4>
+      <div style="border-top:1px solid #2a3042; margin-bottom:14px;"></div>
+      ${versionsHtml}
+      <button onclick="this.closest('#versionsPopupAuto').remove()" style="margin-top:14px; background: #334155; border: none; padding: 8px 24px; border-radius: 30px; color: #e2e8f0; cursor: pointer; font-weight: 500; width:100%;">\u0625\u063A\u0644\u0627\u0642</button>
+    `;
+      overlay.appendChild(modal);
+      document.body.appendChild(overlay);
+      overlay.onclick = (e) => {
+        if (e.target === overlay) overlay.remove();
+      };
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") overlay.remove();
+      }, { once: true });
+      if (!document.getElementById("modal-style-auto")) {
+        const style = document.createElement("style");
+        style.id = "modal-style-auto";
+        style.textContent = `
+        @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+        @keyframes scaleIn { from { transform:scale(0.9); opacity:0; } to { transform:scale(1); opacity:1; } }
+      `;
+        document.head.appendChild(style);
+      }
+    });
+  }
+  function setupLockedNextButton() {
+    const nextBtn = document.getElementById("nextExamBtn");
+    if (!nextBtn) return;
+    getUserStatusForExam().then((status) => {
+      const isPremium = status === "premium";
+      const flatList = getFlattenedExamList(currentExamsList);
+      const currentIndex = flatList.findIndex((e) => e.id === currentExamId);
+      const nextExam = flatList[currentIndex + 1];
+      if (nextExam) {
+        const nextExamId = nextExam.id;
+        const isNextFree = isExamFree(currentSkill2, nextExamId);
+        if (!isPremium && !isNextFree && nextBtn.style.display !== "none") {
+          nextBtn.style.position = "relative";
+          nextBtn.style.paddingLeft = "35px";
+          let lockIcon = nextBtn.querySelector(".next-lock-icon");
+          if (!lockIcon) {
+            lockIcon = document.createElement("span");
+            lockIcon.className = "next-lock-icon";
+            lockIcon.innerHTML = "\u{1F512}";
+            lockIcon.style.cssText = "position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 14px; color: #ef4444;";
+            nextBtn.appendChild(lockIcon);
+          }
+          nextBtn.style.backgroundColor = "#b0bec5";
+          nextBtn.style.opacity = "0.8";
+          nextBtn.onclick = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (typeof window.showPremiumModal === "function") {
+              window.showPremiumModal(nextExam.title + " (" + nextExamId + ")");
+            } else {
+              window.location.href = "subscribe.html";
+            }
+            return false;
+          };
+        } else if (isPremium || isNextFree) {
+          const lockIcon = nextBtn.querySelector(".next-lock-icon");
+          if (lockIcon) lockIcon.remove();
+          nextBtn.style.backgroundColor = "";
+          nextBtn.style.opacity = "1";
+          nextBtn.style.paddingLeft = "";
+          nextBtn.onclick = () => {
+            if (nextExam.isVersion) {
+              openExam(nextExam.id, nextExam.title, nextExam.skill, nextExam.file);
+            } else {
+              openExam(nextExam.id, nextExam.title, nextExam.skill);
+            }
+          };
+        }
+      }
+    });
   }
   function getTeilNameBySkill(skill) {
     if (skill === "m\xFCndlich1") return "M\xFCndlich - Teil 1 \u{1F4D6}";
@@ -27004,74 +27105,6 @@ var MyApp = (() => {
     data.forEach((item) => targetContainer.appendChild(item.el));
     console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u062D\u0633\u0628 \u0627\u0644\u0648\u0642\u062A (\u0645\u0646 \u0627\u0644\u0623\u0636\u0639\u0641 \u0625\u0644\u0649 \u0627\u0644\u0623\u0642\u0648\u0649)");
   }
-  function saveOriginalOrder() {
-    const list = document.getElementById("examsList");
-    if (!list) return;
-    const gridContainer = document.getElementById("examGridContainer");
-    const targetContainer = gridContainer || list;
-    const exams = [...targetContainer.querySelectorAll(".item")].filter(
-      (el) => !el.classList.contains("teil-header") && !el.classList.contains("memory-progress-bar-container")
-    );
-    const order = exams.map((el) => {
-      const title = el.querySelector(".exam-title");
-      if (!title) return null;
-      const match = title.textContent.match(/^(\d+):/);
-      return match ? parseInt(match[1], 10) : null;
-    }).filter((id) => id !== null);
-    window._originalExamOrder = order;
-    console.log(`\u2705 \u062A\u0645 \u062D\u0641\u0638 \u0627\u0644\u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0623\u0635\u0644\u064A (${order.length} \u0627\u0645\u062A\u062D\u0627\u0646)`);
-  }
-  function setupLockedNextButton() {
-    const nextBtn = document.getElementById("nextExamBtn");
-    if (!nextBtn) return;
-    getUserStatusForExam().then((status) => {
-      const isPremium = status === "premium";
-      const flatList = getFlattenedExamList(currentExamsList);
-      const currentIndex = flatList.findIndex((e) => e.id === currentExamId);
-      const nextExam = flatList[currentIndex + 1];
-      if (nextExam) {
-        const nextExamId = nextExam.id;
-        const isNextFree = isExamFree(currentSkill2, nextExamId);
-        if (!isPremium && !isNextFree && nextBtn.style.display !== "none") {
-          nextBtn.style.position = "relative";
-          nextBtn.style.paddingLeft = "35px";
-          let lockIcon = nextBtn.querySelector(".next-lock-icon");
-          if (!lockIcon) {
-            lockIcon = document.createElement("span");
-            lockIcon.className = "next-lock-icon";
-            lockIcon.innerHTML = "\u{1F512}";
-            lockIcon.style.cssText = "position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 14px; color: #ef4444;";
-            nextBtn.appendChild(lockIcon);
-          }
-          nextBtn.style.backgroundColor = "#b0bec5";
-          nextBtn.style.opacity = "0.8";
-          nextBtn.onclick = function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            if (typeof window.showPremiumModal === "function") {
-              window.showPremiumModal(nextExam.title + " (" + nextExamId + ")");
-            } else {
-              window.location.href = "subscribe.html";
-            }
-            return false;
-          };
-        } else if (isPremium || isNextFree) {
-          const lockIcon = nextBtn.querySelector(".next-lock-icon");
-          if (lockIcon) lockIcon.remove();
-          nextBtn.style.backgroundColor = "";
-          nextBtn.style.opacity = "1";
-          nextBtn.style.paddingLeft = "";
-          nextBtn.onclick = () => {
-            if (nextExam.isVersion) {
-              openExam(nextExam.id, nextExam.title, nextExam.skill, nextExam.file);
-            } else {
-              openExam(nextExam.id, nextExam.title, nextExam.skill);
-            }
-          };
-        }
-      }
-    });
-  }
   var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY;
   var init_exams = __esm({
     "exams.js"() {
@@ -28150,6 +28183,11 @@ var MyApp = (() => {
         tips: tipsExams
       };
       activeTeilId = null;
+      window.closeVersionsPopupAndOpen = function(skill, id, file, title) {
+        const popup = document.getElementById("versionsPopupAuto");
+        if (popup) popup.remove();
+        window.openExam(id, title, skill, file);
+      };
       window.saveExamResultGlobal = function(skill, examId, score) {
         saveExamResult(skill, examId, score);
         if (document.getElementById("list").classList.contains("active") && currentSkill2 === skill) {
@@ -28438,47 +28476,84 @@ var MyApp = (() => {
       }
       window.applyTimeOrder = applyTimeOrder;
       (function() {
+        const btn = document.getElementById("checkCircleBtn");
         const tooltip = document.getElementById("checkCircleTooltip");
-        if (!tooltip) return;
+        if (!btn || !tooltip) return;
         let isOpen = false;
         const isMobile = () => window.innerWidth <= 768;
-        function getBtn() {
-          return document.getElementById("checkCircleBtn");
+        function repositionButton() {
+          const wrapper = document.querySelector(".check-circle-wrapper");
+          const header = document.querySelector(".teil-header");
+          if (isMobile()) {
+            if (header) {
+              if (wrapper && wrapper.contains(btn)) {
+                const notice = document.getElementById("topicsNotice");
+                if (notice && header.contains(notice)) {
+                  header.insertBefore(btn, notice);
+                } else {
+                  header.prepend(btn);
+                }
+              }
+              btn.classList.add("in-header");
+              btn.style.display = "inline-flex";
+              btn.style.opacity = "1";
+              btn.style.visibility = "visible";
+            } else {
+              if (wrapper && wrapper.contains(btn)) {
+                btn.style.display = "none";
+              }
+            }
+            if (wrapper) wrapper.style.display = "none";
+          } else {
+            if (wrapper && !wrapper.contains(btn)) {
+              wrapper.appendChild(btn);
+              btn.classList.remove("in-header");
+              btn.style.display = "inline-flex";
+              btn.style.opacity = "1";
+              btn.style.visibility = "visible";
+            }
+            if (wrapper) wrapper.style.display = "flex";
+          }
+          if (isOpen) {
+            if (isMobile()) {
+              setTimeout(updateTooltipPosition, 10);
+            } else {
+              tooltip.style.top = "";
+              tooltip.style.left = "";
+            }
+          }
         }
         function updateTooltipPosition() {
-          const btn = getBtn();
-          if (!btn) return;
           if (!isMobile()) {
-            tooltip.style.top = "";
-            tooltip.style.left = "";
             return;
           }
           const rect = btn.getBoundingClientRect();
           let top = rect.bottom + 6;
           let left = rect.left;
           const tw = tooltip.offsetWidth || 200;
-          if (left + tw > window.innerWidth - 10) left = window.innerWidth - tw - 10;
+          if (left + tw > window.innerWidth - 10) {
+            left = window.innerWidth - tw - 10;
+          }
           if (left < 10) left = 10;
           tooltip.style.top = top + "px";
           tooltip.style.left = left + "px";
         }
-        document.addEventListener("click", function(e) {
-          const btn = getBtn();
-          if (!btn) return;
-          if (btn.contains(e.target)) {
-            e.stopPropagation();
-            isOpen = !isOpen;
-            const icon = btn.querySelector(".material-symbols-outlined");
-            if (isOpen) {
-              tooltip.style.display = "flex";
-              if (icon) icon.style.animation = "none";
+        btn.addEventListener("click", function(e) {
+          e.stopPropagation();
+          isOpen = !isOpen;
+          const icon = this.querySelector(".material-symbols-outlined");
+          if (isOpen) {
+            tooltip.style.display = "flex";
+            if (icon) icon.style.animation = "none";
+            if (isMobile()) {
               setTimeout(updateTooltipPosition, 10);
-            } else {
-              tooltip.style.display = "none";
-              if (icon) icon.style.animation = "";
             }
-            return;
+          } else {
+            tooltip.style.display = "none";
+            if (icon) icon.style.animation = "";
           }
+        });
+        document.addEventListener("click", function(e) {
           if (isOpen && !btn.contains(e.target) && !tooltip.contains(e.target)) {
             isOpen = false;
             tooltip.style.display = "none";
@@ -28490,9 +28565,38 @@ var MyApp = (() => {
           if (isOpen && isMobile()) updateTooltipPosition();
         });
         window.addEventListener("resize", function() {
+          repositionButton();
           if (isOpen && isMobile()) setTimeout(updateTooltipPosition, 50);
         });
-        console.log("\u2705 \u0632\u0631 check_circle \u0645\u0631\u0628\u0648\u0637 \u0639\u0628\u0631 Event Delegation");
+        const observer = new MutationObserver(function(mutations) {
+          for (const mutation of mutations) {
+            if (mutation.type === "childList") {
+              for (const node of mutation.addedNodes) {
+                if (node.nodeType === 1) {
+                  const header = node.querySelector ? node.querySelector(".teil-header") : null;
+                  if (header || node.classList && node.classList.contains("teil-header")) {
+                    if (isMobile()) {
+                      repositionButton();
+                      console.log("\u2705 \u062A\u0645 \u0627\u0643\u062A\u0634\u0627\u0641 .teil-header\u060C \u062A\u0645 \u0646\u0642\u0644 \u0627\u0644\u0632\u0631.");
+                    }
+                    break;
+                  }
+                }
+              }
+            }
+          }
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+        function tryPlace() {
+          if (document.querySelector(".teil-header") || document.getElementById("examsList")) {
+            repositionButton();
+            console.log("\u2705 \u0632\u0631 check_circle \u0645\u0648\u0636\u0639 (\u0645\u062D\u0627\u0648\u0644\u0629 \u0646\u0627\u062C\u062D\u0629).");
+          } else {
+            setTimeout(tryPlace, 200);
+          }
+        }
+        setTimeout(tryPlace, 100);
+        console.log("\u2705 \u0632\u0631 check_circle \u062C\u0627\u0647\u0632 (\u0645\u0639 \u0646\u0642\u0644 \u062F\u064A\u0646\u0627\u0645\u064A\u0643\u064A \u0644\u0644\u0647\u0627\u062A\u0641).");
       })();
     }
   });
