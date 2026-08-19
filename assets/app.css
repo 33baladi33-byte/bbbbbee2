@@ -3687,6 +3687,7 @@ body:has(#exam.active) .left-side #navSubscribeBtn { order: 4 !important; }
     transform: none !important;
 }
 
+
 /* ============================================
    أيقونة Info الجديدة (علاش غتنجح معانا؟)
    ============================================ */
@@ -3707,7 +3708,7 @@ body:has(#exam.active) .left-side #navSubscribeBtn { order: 4 !important; }
     
     position: fixed !important;
     top: 82px !important;
-    right: 30px !important;
+    left: 30px !important;  /* ← تغيير من right إلى left */
     z-index: 9999 !important;
 }
 
@@ -7335,30 +7336,28 @@ body:has(#list.active) #backHomeBtn {
     flex-shrink: 0;
 }
 
-/* ===== النقطة فقط (بدون نص) ===== */
 .topics-dot {
     display: block;
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: #334155; /* لون غامق أنيق */
-    box-shadow: 0 0 6px rgba(51, 65, 85, 0.3);
-    transition: all 0.3s ease;
-    /* تنفس هادئ جداً */
-    animation: dotBreathe 3.5s ease-in-out infinite;
+    background: #38bdf8;  /* ← تغيير اللون إلى #38bdf8 */
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.25);
+    transition: all 0.2s ease;
+    animation: dotBreathe 2.2s ease-in-out infinite;  /* ← تسريع الحركة */
     flex-shrink: 0;
 }
 
-/* تنفس بطيء، ناعم، وهادئ */
+/* حركة سلسة وسريعة قليلاً */
 @keyframes dotBreathe {
     0%, 100% {
         transform: scale(0.92);
-        box-shadow: 0 0 4px rgba(51, 65, 85, 0.2);
-        opacity: 0.85;
+        box-shadow: 0 0 6px rgba(56, 189, 248, 0.15);
+        opacity: 0.9;
     }
     50% {
-        transform: scale(1.08);
-        box-shadow: 0 0 12px rgba(51, 65, 85, 0.35);
+        transform: scale(1.06);
+        box-shadow: 0 0 14px rgba(56, 189, 248, 0.3);
         opacity: 1;
     }
 }
@@ -7369,32 +7368,32 @@ body:has(#list.active) #backHomeBtn {
     box-shadow: 0 0 14px rgba(71, 85, 105, 0.4);
 }
 
-/* ===== نافذة الرسالة المنبثقة ===== */
 .topics-tooltip {
     position: absolute;
     bottom: calc(100% + 14px);
     left: 50%;
     transform: translateX(-50%) scale(0.92);
-    background: rgba(20, 25, 40, 0.96);
-    backdrop-filter: blur(14px);
-    border: 1px solid rgba(71, 85, 105, 0.25);
-    border-radius: 14px;
-    padding: 12px 20px;
-    font-size: 0.85rem;
-    color: #e8edf5;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 12px;
+    padding: 10px 18px;
+    font-size: 0.8rem;
+    color: #38bdf8;  /* ← لون النص #38bdf8 */
     white-space: nowrap;
-    box-shadow: 0 10px 40px -8px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(71, 85, 105, 0.1) inset;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(56, 189, 248, 0.05) inset;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     pointer-events: none;
     z-index: 1000;
     text-align: center;
     font-weight: 500;
     letter-spacing: 0.2px;
     line-height: 1.5;
-    min-width: 60px;
     max-width: 320px;
+    width: fit-content;
+    min-width: 60px;
 }
 
 /* سهم صغير أنيق */
@@ -7418,8 +7417,9 @@ body:has(#list.active) #backHomeBtn {
 }
 
 /* ===== تنسيق سطح المكتب ===== */
-@media (min-width: 769px) {
-    /* تظهر النقطة فقط في أقصى يسار القائمة، مقابل زر info */
+/* ===== نقطة التوقف: 750px ===== */
+@media (min-width: 750px) {
+    /* سطح المكتب: النقطة في أقصى اليسار */
     #list .topics-notice {
         display: flex;
         position: relative;
@@ -7429,19 +7429,21 @@ body:has(#list.active) #backHomeBtn {
         border: none;
         border-radius: 0;
         width: fit-content;
-        align-self: flex-start; /* تبقى في اليسار */
+        align-self: flex-start;
+        margin-left: 0;
+        margin-right: auto;
     }
     
     .topics-dot {
-        width: 14px;
-        height: 14px;
+        width: 13px;
+        height: 13px;
     }
 
     .topics-tooltip {
-        font-size: 0.85rem;
-        padding: 12px 22px;
+        font-size: 0.8rem;
+        padding: 10px 20px;
         white-space: nowrap;
-        max-width: 340px;
+        max-width: 320px;
         bottom: calc(100% + 16px);
         left: 50%;
         transform: translateX(-50%) scale(0.95);
@@ -7451,9 +7453,8 @@ body:has(#list.active) #backHomeBtn {
     }
 }
 
-/* ===== تنسيق الهاتف ===== */
-@media (max-width: 768px) {
-    /* تظهر النقطة بجانب عنوان القسم */
+@media (max-width: 749px) {
+    /* الهاتف: النقطة بجانب عنوان القسم */
     #list .topics-notice {
         display: inline-flex;
         position: relative;
@@ -7467,37 +7468,27 @@ body:has(#list.active) #backHomeBtn {
     }
     
     .topics-dot {
-        width: 10px;
-        height: 10px;
+        width: 9px;
+        height: 9px;
     }
 
     .topics-tooltip {
-        font-size: 0.7rem;
-        padding: 10px 14px;
+        font-size: 0.65rem;
+        padding: 6px 10px;
         white-space: normal;
-        max-width: 180px;
-        min-width: 100px;
-        bottom: calc(100% + 10px);
+        max-width: 140px;
+        min-width: 70px;
+        bottom: calc(100% + 8px);
         left: 50%;
         transform: translateX(-50%) scale(0.92);
-        line-height: 1.6;
+        line-height: 1.5;
         text-align: center;
         word-break: break-word;
+        border-radius: 8px;
     }
     .topics-tooltip.active {
         transform: translateX(-50%) scale(1);
     }
-    
-    /* إخفاء أي نص جانبي */
-    .topics-text {
-        display: none !important;
-    }
-}
-
-/* ===== إخفاء الإشعار في الصفحة الرئيسية والامتحان ===== */
-#home .topics-notice,
-#exam .topics-notice {
-    display: none !important;
 }
 /* ============================================
    studySession.css - النسخة النهائية (متكاملة)
