@@ -28480,8 +28480,47 @@ var MyApp = (() => {
         const tooltip = document.getElementById("checkCircleTooltip");
         if (!btn || !tooltip) return;
         let isOpen = false;
+        const isMobile = () => window.innerWidth <= 768;
+        function repositionButton() {
+          const wrapper = document.querySelector(".check-circle-wrapper");
+          const header = document.querySelector(".teil-header");
+          if (isMobile()) {
+            if (header) {
+              if (wrapper && wrapper.contains(btn)) {
+                const notice = document.getElementById("topicsNotice");
+                if (notice && header.contains(notice)) {
+                  header.insertBefore(btn, notice);
+                } else {
+                  header.prepend(btn);
+                }
+              }
+              btn.classList.add("in-header");
+              btn.style.display = "inline-flex";
+            } else {
+              if (wrapper && wrapper.contains(btn)) {
+                btn.style.display = "none";
+              }
+            }
+            if (wrapper) wrapper.style.display = "none";
+          } else {
+            if (wrapper && !wrapper.contains(btn)) {
+              wrapper.appendChild(btn);
+              btn.classList.remove("in-header");
+              btn.style.display = "inline-flex";
+            }
+            if (wrapper) wrapper.style.display = "flex";
+          }
+          if (isOpen) {
+            if (isMobile()) {
+              setTimeout(updateTooltipPosition, 10);
+            } else {
+              tooltip.style.top = "";
+              tooltip.style.left = "";
+            }
+          }
+        }
         function updateTooltipPosition() {
-          if (window.innerWidth > 768) {
+          if (!isMobile()) {
             return;
           }
           const rect = btn.getBoundingClientRect();
@@ -28502,7 +28541,7 @@ var MyApp = (() => {
           if (isOpen) {
             tooltip.style.display = "flex";
             if (icon) icon.style.animation = "none";
-            if (window.innerWidth <= 768) {
+            if (isMobile()) {
               setTimeout(updateTooltipPosition, 10);
             }
           } else {
@@ -28518,30 +28557,39 @@ var MyApp = (() => {
             if (icon) icon.style.animation = "";
           }
         });
-        if (window.innerWidth <= 768) {
-          window.addEventListener("scroll", function() {
-            if (isOpen) updateTooltipPosition();
-          });
-          window.addEventListener("resize", function() {
-            if (isOpen) setTimeout(updateTooltipPosition, 50);
-          });
-        }
-        let lastWidth = window.innerWidth;
+        window.addEventListener("scroll", function() {
+          if (isOpen && isMobile()) updateTooltipPosition();
+        });
         window.addEventListener("resize", function() {
-          const currentWidth = window.innerWidth;
-          if (lastWidth > 768 && currentWidth <= 768 || lastWidth <= 768 && currentWidth > 768) {
-            if (isOpen) {
-              if (currentWidth > 768) {
-                tooltip.style.top = "";
-                tooltip.style.left = "";
-              } else {
-                setTimeout(updateTooltipPosition, 50);
+          repositionButton();
+          if (isOpen && isMobile()) setTimeout(updateTooltipPosition, 50);
+        });
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type === "childList" && mutation.addedNodes.length) {
+              if (document.querySelector(".teil-header")) {
+                if (isMobile()) {
+                  repositionButton();
+                }
               }
             }
-          }
-          lastWidth = currentWidth;
+          });
         });
-        console.log("\u2705 \u0632\u0631 check_circle \u062C\u0627\u0647\u0632 (\u062F\u0627\u0626\u0645).");
+        observer.observe(document.body, { childList: true, subtree: true });
+        let attempts = 0;
+        function tryPlace() {
+          if (document.querySelector(".teil-header") || document.getElementById("examsList")) {
+            repositionButton();
+            console.log("\u2705 \u0632\u0631 check_circle \u0645\u0648\u0636\u0639 (\u0645\u062D\u0627\u0648\u0644\u0629 \u0646\u0627\u062C\u062D\u0629).");
+          } else if (attempts < 20) {
+            attempts++;
+            setTimeout(tryPlace, 200);
+          } else {
+            console.warn("\u26A0\uFE0F \u0644\u0645 \u064A\u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 .teil-header \u0623\u0648 #examsList \u0628\u0639\u062F 20 \u0645\u062D\u0627\u0648\u0644\u0629.");
+          }
+        }
+        setTimeout(tryPlace, 100);
+        console.log("\u2705 \u0632\u0631 check_circle \u062C\u0627\u0647\u0632 (\u0645\u0639 \u0646\u0642\u0644 \u062F\u064A\u0646\u0627\u0645\u064A\u0643\u064A \u0644\u0644\u0647\u0627\u062A\u0641).");
       })();
     }
   });
