@@ -28655,13 +28655,13 @@ var MyApp = (() => {
             const score = window.getExamResult ? window.getExamResult(skill, id) : null;
             const retries = window.getRetryCount ? window.getRetryCount(skill, id) : 0;
             const lastReviewDays = window.getLastReviewDays ? window.getLastReviewDays(skill, id) : null;
+            const time = window.getExamTime ? window.getExamTime(skill, id) : null;
             exams.push({
               id,
               score,
-              // null = لم يحل أبداً
               retries,
               lastReviewDays,
-              // null = لم يراجع أبداً
+              time,
               isNew: score === null
             });
           }
@@ -28700,8 +28700,26 @@ var MyApp = (() => {
         function calculatePriority(exam) {
           const scoreWeight = exam.score !== null ? exam.score : 0;
           const retryWeight = exam.retries;
-          const reviewWeight = exam.lastReviewDays !== null ? exam.lastReviewDays : 0;
-          const priority = scoreWeight * 1e4 + retryWeight * 100 + reviewWeight;
+          let reviewBoost = 0;
+          if (exam.lastReviewDays === null || exam.lastReviewDays === 0) {
+            reviewBoost = 0;
+          } else if (exam.lastReviewDays === 1) {
+            reviewBoost = 5;
+          } else if (exam.lastReviewDays === 2) {
+            reviewBoost = 15;
+          } else if (exam.lastReviewDays === 3) {
+            reviewBoost = 30;
+          } else if (exam.lastReviewDays === 4) {
+            reviewBoost = 50;
+          } else {
+            reviewBoost = -100;
+          }
+          let timeWeight = 0;
+          if (exam.time !== null && exam.time > 0) {
+            const seconds = Math.floor(exam.time / 1e3);
+            timeWeight = Math.min(Math.floor(seconds / 10), 10);
+          }
+          const priority = scoreWeight * 1e4 + retryWeight * 100 + reviewBoost + timeWeight;
           return priority;
         }
         function sortExamsByPriority(exams) {
@@ -28717,7 +28735,7 @@ var MyApp = (() => {
           return sorted;
         }
         function selectTodayExams(sortedExams, dailyCount) {
-          const notCompleted = sortedExams.filter((exam) => exam.retries < 6);
+          const notCompleted = sortedExams.filter((exam) => exam.retries < 10);
           const selected = notCompleted.slice(0, dailyCount);
           return selected;
         }
