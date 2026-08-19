@@ -3429,28 +3429,26 @@ window.updateAskAIContext = function(skill, examId) {
             });
         });
 
-        document.getElementById('plannerInfoBtn').addEventListener('click', function(e) {
-            e.stopPropagation();
-            showPopup(
-                'كيف يعمل المدرب الذكي؟',
-                `
-                <p style="margin: 0 0 10px 0; color: #475569; line-height: 1.7; font-size: 0.75rem; text-align: right;">
-                    يعتمد النظام على خوارزمية دقيقة لتصميم خطتك اليومية بناءً على موعد امتحانك. يحسب النظام أولاً عدد الامتحانات المطلوب إنجازها اليوم لضمان وصولك إلى <strong style="color: #2c3e66; font-weight: 500;">6 مراجعات</strong> على الأقل لكل امتحان قبل يومين من الامتحان.
-                </p>
-                <p style="margin: 0 0 8px 0; color: #1e293b; font-weight: 500; font-size: 0.75rem; text-align: right;">
-                    بعد تحديد العدد، يختار النظام تلقائياً الامتحانات الأكثر أولوية بناءً على 3 قواعد أساسية:
-                </p>
-                <div style="margin: 0 0 12px 0; font-size: 0.75rem; line-height: 1.8; color: #475569; text-align: right;">
-                    <p style="margin: 0 0 2px 0;"><strong style="font-weight: 500; color: #2c3e66;">النتيجة:</strong> <span style="color: #64748b;">التركيز على الامتحانات ذات الدرجات المنخفضة</span></p>
-                    <p style="margin: 0 0 2px 0;"><strong style="font-weight: 500; color: #2c3e66;">عدد المراجعات:</strong> <span style="color: #64748b;">إعطاء الأولوية للامتحانات التي لم تُراجع كثيراً</span></p>
-                    <p style="margin: 0 0 2px 0;"><strong style="font-weight: 500; color: #2c3e66;">آخر مراجعة:</strong> <span style="color: #64748b;">ضمان عدم إهمال أي امتحان لفترة طويلة</span></p>
-                </div>
-                <p style="margin: 12px 0 0 0; color: #1e293b; font-weight: 400; text-align: center; font-size: 0.75rem; line-height: 1.5;">
-                    اختر القسم الآن، ودع النظام يحدد لك المسار الأسرع والأضمن للنجاح.
-                </p>
-                `
-            );
-        });
+ document.getElementById('plannerInfoBtn').addEventListener('click', function(e) {
+    e.stopPropagation();
+    showPopup(
+        'كيف يعمل نظام المتابعة الذكي؟',
+        `
+        <p style="margin: 0 0 12px 0; color: #475569; line-height: 1.8; font-size: 0.8rem; text-align: right;">
+            يعتمد النظام على <span style="color: #1a3a5c; font-weight: 600;">متابعة ذكية ومستمرة</span> لتقدمك، فهو لا يعتمد فقط على نتيجة الامتحان، بل يجمع عدة معلومات عن طريقة دراستك، منها: <span style="color: #1a3a5c; font-weight: 500;">آخر النتائج</span>، <span style="color: #1a3a5c; font-weight: 500;">عدد المراجعات</span>، <span style="color: #1a3a5c; font-weight: 500;">آخر مرة راجعت فيها الامتحان</span>، <span style="color: #1a3a5c; font-weight: 500;">الوقت الذي احتجته للإجابة</span>، <span style="color: #1a3a5c; font-weight: 500;">الوقت المتبقي حتى امتحانك</span>، و<span style="color: #1a3a5c; font-weight: 500;">عدد الساعات التي تدرس يومياً</span>.
+        </p>
+        <p style="margin: 0 0 12px 0; color: #475569; line-height: 1.8; font-size: 0.8rem; text-align: right;">
+            وبناءً على هذه المعلومات، يعرض لك النظام الامتحانات التي تحتاجها في الوقت المناسب؛ فبعد أن تجتاز امتحاناً، لا يختفي لعدة أيام، بل يعيده لك في <span style="color: #2d6a4f; font-weight: 500;">توقيت مناسب</span>، مع الحرص على ألا يصل أي امتحان إلى <span style="color: #f59e0b; font-weight: 600;">5 أيام</span> دون مراجعة. وهكذا تبقى الامتحانات المهمة في <span style="color: #2d6a4f; font-weight: 500;">دورة مراجعة مستمرة</span> دون أن تضطر إلى تذكر ما درست ومتى يجب أن تعيده.
+        </p>
+        <p style="margin: 0 0 12px 0; color: #475569; line-height: 1.8; font-size: 0.8rem; text-align: right;">
+            بهذا ستعرف كل يوم <span style="color: #1a3a5c; font-weight: 500;">ماذا تراجع</span>، وما الذي يحتاج إلى <span style="color: #2d6a4f; font-weight: 500;">اهتمام أكبر</span>، وما الذي لا ينبغي أن تهمله، بينما يتولى النظام ترتيب الأولويات نيابةً عنك.
+        </p>
+        <p style="margin: 0 0 0 0; color: #1e293b; font-weight: 500; text-align: center; font-size: 0.85rem; line-height: 1.6;">
+            <span style="color: #1a3a5c;">وقت أقل في التخطيط</span>، <span style="color: #2d6a4f;">مراجعة أكثر ذكاءً</span>، و<span style="color: #2d6a4f;">استعداد أقوى لامتحانك</span>.
+        </p>
+        `
+    );
+});
     }
 
     // ===== نظام التلوين الجديد (يُضاف إلى النطاق العام) =====
