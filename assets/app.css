@@ -148,6 +148,8 @@ body {
 .hero-content-side {
     flex: 1;
     min-width: 350px;
+    text-align: right;
+    direction: rtl;
 }
 
 .hero-title {
@@ -155,8 +157,11 @@ body {
     font-weight: 700;
     margin-bottom: 20px;
     line-height: 1.2;
-    color: #e2e8f0; /* رمادي فاتح أنيق بدلاً من الأبيض الصارخ */
+    color: #e2e8f0;
     letter-spacing: -0.5px;
+    text-align: right;
+    direction: rtl;
+    unicode-bidi: plaintext;
 }
 
 .blue-text {
@@ -484,20 +489,36 @@ body {
         width: 100%;
         order: 1;
         padding: 0 4px;
+        text-align: right;
+        direction: rtl;
     }
-    
+
     .hero-title {
-        font-size: 1.8rem !important;
-        text-align: center;
-        margin-bottom: 16px;
+        font-size: clamp(1.4rem, 5vw, 1.8rem) !important;
+        text-align: right;
+        margin-bottom: 4px;
         line-height: 1.3;
+        letter-spacing: -0.3px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+        width: 100%;
     }
-    
-    .hero-desc {
-        font-size: 0.9rem !important;
-        text-align: center;
+
+    .hero-description-wrapper {
+        margin-bottom: 20px;
+        text-align: right;
+        direction: rtl;
+    }
+
+    .hero-intro-text {
+        font-size: 0.85rem !important;
+        text-align: right;
+        line-height: 1.7;
         padding: 0 2px;
         color: #b0b8c9;
+        direction: rtl;
     }
 
     .hero-actions-container {
@@ -3617,7 +3638,6 @@ body:has(#exam.active) .left-side #navSubscribeBtn { order: 4 !important; }
         margin-top: 10px !important;
     }
 }
-/* للشاشات الصغيرة جداً */
 @media (max-width: 480px) {
     .teile-row {
         gap: 5px !important;
@@ -3633,7 +3653,17 @@ body:has(#exam.active) .left-side #navSubscribeBtn { order: 4 !important; }
     }
     
     .hero-title {
-        font-size: 1.2rem !important;
+        font-size: clamp(1rem, 4vw, 1.2rem) !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .hero-content-side p[style*="خاليه من أخطاء PDFs"] {
+        font-size: clamp(0.8rem, 3.5vw, 1rem) !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     
     .question-text {
@@ -7688,25 +7718,15 @@ body:has(#list.active) #backHomeBtn {
         word-break: break-word !important;
     }
 }
-
 /* ========================================
    New Hero Section Content & Cards
    ======================================== */
 
 .hero-description-wrapper {
     margin-bottom: 20px;
+    text-align: right;
+    direction: rtl;
 }
-
-/* العنوان الرئيسي "فهم أسرع..." */
-.hero-subtitle {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin: 0 0 8px 0;
-    line-height: 1.2;
-    letter-spacing: -0.5px;
-}
-
 
 /* النص التعريفي القصير */
 .hero-intro-text {
@@ -7715,12 +7735,13 @@ body:has(#list.active) #backHomeBtn {
     color: #b0b8c9;
     margin-bottom: 20px;
     max-width: 600px;
+    text-align: right;
+    direction: rtl;
 }
 .hero-intro-text .highlight {
     color: #38bdf8;
     font-weight: 500;
 }
-
 /* ============================================
    studySession.css - النسخة النهائية (متكاملة)
    ============================================ */
