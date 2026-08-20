@@ -25347,7 +25347,6 @@ var MyApp = (() => {
       applyExamListView("list");
     }
     addVersionBadgesFixed();
-    saveOriginalOrder();
     setupLockedNextButton();
     if (localStorage.getItem("plannerToggleState") === "true") {
       if (typeof window.applyExamColors === "function") {
