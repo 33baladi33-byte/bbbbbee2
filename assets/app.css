@@ -7403,6 +7403,107 @@ body:has(#list.active) #backHomeBtn {
 #globalHelpButton:active {
     transform: scale(0.97);
 }
+
+
+/* ============================================
+   إصلاحات Responsive لـ Schreiben و Sprach 1/2
+   ============================================ */
+
+/* Schreiben: منع overflow أفقي تحت 423px */
+@media (max-width: 423px) {
+    #schreiben > div {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 0 6px !important;
+        overflow: visible !important;
+    }
+    #schreiben > div > div:first-child {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        flex: none !important;
+        padding: 12px !important;
+        box-sizing: border-box !important;
+        overflow: visible !important;
+        max-height: none !important;
+    }
+    #schreiben > div > div:first-child > div,
+    #schreiben > div > div:first-child > div > div {
+        max-width: 100% !important;
+        overflow-wrap: break-word !important;
+        word-wrap: break-word !important;
+        word-break: break-word !important;
+        box-sizing: border-box !important;
+        padding: 8px !important;
+    }
+    #schreiben > div > div:last-child {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        flex: none !important;
+        box-sizing: border-box !important;
+        padding: 12px !important;
+        margin-top: 0 !important;
+        max-height: none !important;
+        overflow: visible !important;
+        display: block !important;
+    }
+}
+
+/* Sprach 1 و 2: إصلاح التداخل تحت 770px */
+@media (max-width: 770px) {
+    #sprach1 > div,
+    #sprach2 > div {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 0 6px !important;
+    }
+    #sprach1 > div > div,
+    #sprach2 > div > div {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        flex: 1 1 100% !important;
+        box-sizing: border-box !important;
+        padding: 8px 0 !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+    #sprach1 > div > div:first-child,
+    #sprach2 > div > div:first-child {
+        order: 1 !important;
+    }
+    #sprach1 > div > div:last-child,
+    #sprach2 > div > div:last-child {
+        order: 2 !important;
+    }
+    #sprach1 div:not(.option-label):not(.check-btn):not(.nav-exam-btn):not(.sprach1-gap-btn):not(.sprach2-gap-btn):not(.sprach1-option-group):not(.sprach2-word-card):not(.sprach1-gap-btn),
+    #sprach2 div:not(.option-label):not(.check-btn):not(.nav-exam-btn):not(.sprach1-gap-btn):not(.sprach2-gap-btn):not(.sprach1-option-group):not(.sprach2-word-card):not(.sprach2-gap-btn) {
+        max-width: 100% !important;
+        overflow-wrap: break-word !important;
+        word-wrap: break-word !important;
+        word-break: break-word !important;
+        white-space: normal !important;
+        box-sizing: border-box !important;
+    }
+    #sprach1 .option-label,
+    #sprach2 .option-label {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 8px 10px !important;
+        margin-bottom: 6px !important;
+        font-size: 0.8rem !important;
+        word-break: break-word !important;
+    }
+}
 /* ============================================
    studySession.css - النسخة النهائية (متكاملة)
    ============================================ */

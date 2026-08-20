@@ -25349,6 +25349,11 @@ var MyApp = (() => {
     addVersionBadgesFixed();
     saveOriginalOrder();
     setupLockedNextButton();
+    if (localStorage.getItem("plannerToggleState") === "true") {
+      if (typeof window.applyExamColors === "function") {
+        setTimeout(window.applyExamColors, 50);
+      }
+    }
     const savedOrder = localStorage.getItem("examOrderMode");
     if (savedOrder === "1" && typeof applyLeaderboardOrder === "function") {
       applyLeaderboardOrder();
