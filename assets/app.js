@@ -22181,9 +22181,9 @@ var MyApp = (() => {
   function triggerCorrection() {
     const examContainer = document.getElementById("exam");
     if (!examContainer) {
-      const checkBtn2 = document.querySelector(".check-btn");
-      if (checkBtn2) {
-        checkBtn2.click();
+      const checkBtn = document.querySelector(".check-btn");
+      if (checkBtn) {
+        checkBtn.click();
         return true;
       }
       const allBtns2 = document.querySelectorAll("button");
@@ -22196,19 +22196,43 @@ var MyApp = (() => {
       }
       return false;
     }
-    const checkBtn = examContainer.querySelector(".check-btn");
-    if (checkBtn) {
+    const allCheckBtns = examContainer.querySelectorAll(".check-btn");
+    for (const checkBtn of allCheckBtns) {
+      const btnStyle = window.getComputedStyle(checkBtn);
+      if (btnStyle.display === "none" || btnStyle.visibility === "hidden" || checkBtn.offsetParent === null) {
+        continue;
+      }
+      let parent = checkBtn.parentElement;
+      let hiddenParent = false;
+      while (parent && parent !== examContainer) {
+        const parentStyle = window.getComputedStyle(parent);
+        if (parentStyle.display === "none" || parentStyle.visibility === "hidden") {
+          hiddenParent = true;
+          break;
+        }
+        parent = parent.parentElement;
+      }
+      if (hiddenParent) {
+        continue;
+      }
+      console.log("\u2705 [Enter] \u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u0632\u0631 \u062A\u0635\u062D\u064A\u062D \u0645\u0631\u0626\u064A\u060C \u0633\u064A\u062A\u0645 \u0627\u0644\u0646\u0642\u0631 \u0639\u0644\u064A\u0647");
       checkBtn.click();
       return true;
     }
     const allBtns = examContainer.querySelectorAll("button");
     for (let btn of allBtns) {
       const text = btn.textContent.trim();
+      const btnStyle = window.getComputedStyle(btn);
+      if (btnStyle.display === "none" || btnStyle.visibility === "hidden" || btn.offsetParent === null) {
+        continue;
+      }
       if (text === "\u062A\u0635\u062D\u064A\u062D" || text === "Pr\xFCfen" || text === "\u2705 \u062A\u0635\u062D\u064A\u062D" || text === "\u{1F4DD} Pr\xFCfen") {
+        console.log("\u2705 [Enter] \u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u0632\u0631 \u062A\u0635\u062D\u064A\u062D (\u0646\u0635) \u0645\u0631\u0626\u064A\u060C \u0633\u064A\u062A\u0645 \u0627\u0644\u0646\u0642\u0631 \u0639\u0644\u064A\u0647");
         btn.click();
         return true;
       }
     }
+    console.warn("\u274C [Enter] \u0644\u0645 \u064A\u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u0623\u064A \u0632\u0631 \u062A\u0635\u062D\u064A\u062D \u0645\u0631\u0626\u064A \u0641\u064A #exam");
     return false;
   }
   function triggerNextExam() {
@@ -25325,11 +25349,6 @@ var MyApp = (() => {
     addVersionBadgesFixed();
     saveOriginalOrder();
     setupLockedNextButton();
-    if (localStorage.getItem("plannerToggleState") === "true") {
-      if (typeof window.applyExamColors === "function") {
-        setTimeout(window.applyExamColors, 50);
-      }
-    }
     const savedOrder = localStorage.getItem("examOrderMode");
     if (savedOrder === "1" && typeof applyLeaderboardOrder === "function") {
       applyLeaderboardOrder();
