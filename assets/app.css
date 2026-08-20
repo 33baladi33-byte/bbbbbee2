@@ -106,6 +106,15 @@ body {
     transform: scale(1.02);
 }
 
+/* حركة الشهادة */
+.certificate-animated {
+    animation: certificateFloat 3s ease-in-out infinite;
+}
+@keyframes certificateFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
 .hero-content-side {
     flex: 1;
     min-width: 350px;
@@ -151,11 +160,13 @@ body {
     align-items: center;
     gap: 14px;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
 
 .info-glass-card:hover {
     border-color: rgba(56, 189, 248, 0.4);
     background: rgba(56, 189, 248, 0.1);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
 }
 
 .info-icon {
@@ -170,26 +181,26 @@ body {
 }
 
 .hero-btn-primary {
-    background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+    background: linear-gradient(135deg, #1a3a5c, #0e2a44);
     border: none;
     padding: 15px 32px;
     border-radius: 50px;
     font-size: 1.1rem;
     font-weight: 700;
-    color: #0a0e1a;
+    color: #e2e8f0;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     gap: 12px;
     transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    box-shadow: 0 0 18px rgba(56, 189, 248, 0.3);
+    box-shadow: 0 4px 16px rgba(26,58,92,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
 }
 
 .hero-btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 0 28px rgba(56, 189, 248, 0.5);
+    box-shadow: 0 8px 28px rgba(26,58,92,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
     gap: 16px;
-    background: linear-gradient(135deg, #0ea5e9, #0284c7);
+    background: linear-gradient(135deg, #2a4a6c, #1a3a54);
 }
 
 .btn-arrow-icon {
@@ -957,8 +968,9 @@ body:has(#exam.active) .top-bar {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
 }
 
+
 /* ========================================
-   Floating Reviews Widget
+   Floating Reviews Widget - Carousel مع Fade
    ======================================== */
 
 .reviews-widget {
@@ -1074,17 +1086,23 @@ body:has(#exam.active) .top-bar {
     margin: 0 0 12px 0;
 }
 
+/* ===== Carousel الجديد مع Fade على الجوانب ===== */
 .widget-slider-container {
+    position: relative;
     overflow: hidden;
     width: 100%;
+    padding: 10px 0;
+    mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
 }
 
 .widget-slider {
     display: flex;
-    gap: 10px;
+    gap: 16px;
     width: fit-content;
-    animation: scrollWidget 25s linear infinite;
+    animation: scrollCarousel 20s linear infinite;
     animation-play-state: running;
+    will-change: transform;
 }
 
 .widget-slider:hover {
@@ -1093,19 +1111,21 @@ body:has(#exam.active) .top-bar {
 
 .widget-slide {
     flex-shrink: 0;
-    width: 60px;
-    height: 60px;
-    border-radius: 14px;
+    width: 100px;
+    height: 100px;
+    border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 2px solid rgba(56, 189, 248, 0.2);
+    border: 2px solid rgba(56, 189, 248, 0.15);
     background: #1e293b;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .widget-slide:hover {
-    transform: scale(1.05);
+    transform: scale(1.08);
     border-color: #38bdf8;
+    box-shadow: 0 8px 24px rgba(56,189,248,0.25);
 }
 
 .widget-slide img {
@@ -1114,12 +1134,24 @@ body:has(#exam.active) .top-bar {
     object-fit: cover;
 }
 
-@keyframes scrollWidget {
+@keyframes scrollCarousel {
     0% {
         transform: translateX(0);
     }
     100% {
         transform: translateX(-50%);
+    }
+}
+
+/* ضبط حجم الصور في الهاتف */
+@media (max-width: 768px) {
+    .widget-slide {
+        width: 70px;
+        height: 70px;
+    }
+    .widget-slider {
+        gap: 12px;
+        animation-duration: 16s;
     }
 }
 
@@ -2599,11 +2631,15 @@ body:has(#exam.active) .left-side #navSubscribeBtn { order: 4 !important; }
     .premium-card-popup img {
         border-radius: 18px !important;
     }
-
-    /* البطاقات المصورة - إخفاء */
+@media (max-width: 768px) {
     .features-images .image-stack {
         display: none !important;
     }
+    /* إزالة الصورتين الإضافيتين في الهاتف (إن وجدت) */
+    .mobile-extra-images {
+        display: none !important;
+    }
+}
     /* بانر الهاتف */
     .mobile-banner {
         display: flex !important;
@@ -7504,253 +7540,39 @@ body:has(#list.active) #backHomeBtn {
         word-break: break-word !important;
     }
 }
+
 /* ============================================
-   التعديلات الجديدة للصفحة الرئيسية
+   زر WhatsApp – نبضة خفيفة
    ============================================ */
-
-/* زر اكتشف التمارين (Primary) */
-.hero-btn-primary {
-    background: #0f2f57;
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    color: #e2e8f0;
-    padding: 14px 32px;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.25s ease;
-    box-shadow: 0 4px 12px rgba(15, 47, 87, 0.3);
-    font-family: inherit;
-    text-decoration: none;
-}
-.hero-btn-primary:hover {
-    background: #1a3f6f;
-    box-shadow: 0 6px 20px rgba(15, 47, 87, 0.4);
-    transform: translateY(-2px);
-}
-.hero-btn-primary:active {
-    transform: scale(0.97);
-}
-
-/* زر WhatsApp (Secondary) */
-.hero-btn-secondary {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    color: #cbd5e1;
-    padding: 14px 24px;
-    border-radius: 50px;
-    font-size: 0.95rem;
-    font-weight: 500;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.25s ease;
-    text-decoration: none;
-    font-family: inherit;
-}
-.hero-btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-}
-.hero-btn-secondary:active {
-    transform: scale(0.97);
-}
-
-/* أيقونة WhatsApp داخل الزر */
-.whatsapp-icon-wrapper {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    background: #25D366;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
-.whatsapp-icon {
-    width: 16px;
-    height: 16px;
-    fill: white;
-}
-/* نبضة خفيفة لأيقونة WhatsApp (تظهر في زر القسم السفلي أيضاً) */
-.hero-btn-secondary .whatsapp-icon-wrapper,
-.features-cta .whatsapp-group-btn .whatsapp-icon-wrapper {
-    animation: whatsappPulse 3s ease-in-out infinite;
+.whatsapp-hero-btn,
+.whatsapp-features-btn {
+    animation: whatsappPulse 2.5s ease-in-out infinite;
+    transform-origin: center;
 }
 @keyframes whatsappPulse {
     0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.08); }
+    50% { transform: scale(1.03); }
 }
 
-/* حاوية الأزرار الرئيسية */
-.hero-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    margin-top: 28px;
-    align-items: center;
+/* ============================================
+   تحسينات الظلال العامة (Premium)
+   ============================================ */
+.hero-btn-primary,
+.features-btn,
+.whatsapp-hero-btn,
+.whatsapp-features-btn,
+.info-glass-card,
+.image-card {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.03);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
-@media (max-width: 768px) {
-    .hero-buttons {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    .hero-buttons .hero-btn-primary,
-    .hero-buttons .hero-btn-secondary {
-        width: 100%;
-        justify-content: center;
-    }
-}
-
-/* قائمة المميزات الجديدة */
-.features-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 28px 0;
-}
-.features-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: #1e293b;
-}
-.features-list li:last-child {
-    border-bottom: none;
-}
-.feature-icon {
-    font-size: 1.2rem;
-    flex-shrink: 0;
-    margin-top: 2px;
-}
-
-/* أزرار القسم السفلي (صغيرة) */
-.features-cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    align-items: center;
-    margin-top: 4px;
-}
-.features-btn.small-cta {
-    padding: 8px 18px;
-    font-size: 0.85rem;
-    border-radius: 40px;
-    font-weight: 600;
-    border: none;
-    background: #0f2f57;
-    color: #e2e8f0;
-    box-shadow: 0 2px 8px rgba(15, 47, 87, 0.2);
-    transition: all 0.2s ease;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-.features-btn.small-cta:hover {
-    background: #1a3f6f;
-    transform: translateY(-2px);
-}
-.features-btn.small-cta.secondary {
-    background: transparent;
-    border: 1px solid rgba(0,0,0,0.1);
-    color: #334155;
-    box-shadow: none;
-}
-.features-btn.small-cta.secondary:hover {
-    background: rgba(0,0,0,0.04);
-    border-color: #64748b;
-}
-.features-cta .subscribe-guide-icon {
-    background: rgba(0,0,0,0.04);
-    border: none;
-    border-radius: 50%;
-    width: 34px;
-    height: 34px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: #64748b;
-    transition: all 0.2s ease;
-}
-.features-cta .subscribe-guide-icon:hover {
-    background: rgba(0,0,0,0.08);
-    color: #0f2f57;
-}
-.features-cta .subscribe-guide-icon .material-symbols-outlined {
-    font-size: 20px;
-}
-
-/* Carousel WhatsApp */
-.whatsapp-carousel-section {
-    max-width: 1300px;
-    margin: 40px auto 0;
-    padding: 0 20px;
-}
-.carousel-container {
-    overflow: hidden;
-    width: 100%;
-    position: relative;
-}
-.carousel-track {
-    display: flex;
-    gap: 16px;
-    width: fit-content;
-    animation: scrollCarousel 35s linear infinite;
-    animation-play-state: running;
-}
-.carousel-track img {
-    width: 180px;
-    height: auto;
-    border-radius: 16px;
-    flex-shrink: 0;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-    border: 1px solid rgba(0,0,0,0.04);
-    transition: transform 0.3s ease;
-}
-.carousel-track img:hover {
-    transform: scale(1.03);
-}
-@keyframes scrollCarousel {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-@media (max-width: 768px) {
-    .carousel-track img {
-        width: 120px;
-    }
-    .whatsapp-carousel-section {
-        margin-top: 20px;
-        padding: 0 10px;
-    }
-}
-
-/* Floating للشهادة */
-.floating-cert {
-    animation: floatCertificate 6s ease-in-out infinite;
-}
-@keyframes floatCertificate {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-}
-
-/* إزالة العناصر القديمة */
-.reviews-widget,
-.features-images,
-.show-cards-btn,
-#reviewsModal,
-#reviewsWidget {
-    display: none !important;
+.hero-btn-primary:hover,
+.features-btn:hover,
+.whatsapp-hero-btn:hover,
+.whatsapp-features-btn:hover,
+.info-glass-card:hover,
+.image-card:hover {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.04);
 }
 /* ============================================
    studySession.css - النسخة النهائية (متكاملة)
