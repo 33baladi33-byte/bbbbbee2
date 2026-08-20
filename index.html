@@ -3452,44 +3452,51 @@ window.updateAskAIContext = function(skill, examId) {
 
     // ===== نظام التلوين الجديد (يُضاف إلى النطاق العام) =====
     const EXAM_COLOR = '#38BDF8';
-  window.applyExamColors = function() {
-    const uniqueIds = window._selectedExamIds || [];
-    if (uniqueIds.length === 0) {
-        console.log('  ℹ️ لا توجد امتحانات محددة للتلوين');
-        return 0;
-    }
-    const idSet = new Set(uniqueIds);
-    const cards = document.querySelectorAll('div.item');
-    let colored = 0;
-    const skill = window.currentSkill || '';
-    if (!skill) {
-        console.warn('⚠️ window.currentSkill غير معرف، لا يمكن التلوين');
-        return 0;
-    }
-    cards.forEach(card => {
-        if (card.classList.contains('item')) {
-            let num = null;
-            const title = card.querySelector('.exam-title');
-            if (title) {
-                const match = title.textContent.match(/^(\d+):/);
-                if (match) num = parseInt(match[1]);
-            }
-            if (!num) {
-                const match = card.textContent.match(/امتحان\s*(\d+)/);
-                if (match) num = parseInt(match[1]);
-            }
-            if (num !== null) {
-                const uniqueKey = `${skill}_exam${num}`;
-                if (idSet.has(uniqueKey)) {
-                    card.dataset.colored = 'true';
-                    colored++;
+                 window.applyExamColors = function() {
+        const uniqueIds = window._selectedExamIds || [];
+        if (uniqueIds.length === 0) {
+            console.log('  ℹ️ لا توجد امتحانات محددة للتلوين');
+            return 0;
+        }
+        // تحويل المصفوفة إلى Set للبحث السريع
+        const idSet = new Set(uniqueIds);
+        const cards = document.querySelectorAll('div.item');
+        let colored = 0;
+        // نأخذ المهارة من window.currentSkill (يجب أن تكون محددة مسبقاً)
+        const skill = window.currentSkill || '';
+        if (!skill) {
+            console.warn('⚠️ window.currentSkill غير معرف، لا يمكن التلوين');
+            return 0;
+        }
+        cards.forEach(card => {
+            if (card.classList.contains('item')) {
+                // استخراج رقم الامتحان من البطاقة
+                let num = null;
+                const title = card.querySelector('.exam-title');
+                if (title) {
+                    const match = title.textContent.match(/^(\d+):/);
+                    if (match) num = parseInt(match[1]);
+                }
+                if (!num) {
+                    const match = card.textContent.match(/امتحان\s*(\d+)/);
+                    if (match) num = parseInt(match[1]);
+                }
+                if (num !== null) {
+                    const uniqueKey = `${skill}_exam${num}`;
+                    if (idSet.has(uniqueKey)) {
+                        card.dataset.colored = 'true';
+                        colored++;
+                    } else {
+                        delete card.dataset.colored;
+                    }
+                } else {
+                    delete card.dataset.colored;
                 }
             }
-        }
-    });
-    if (colored > 0) console.log(`  ✅ تم تلوين ${colored} بطاقة من أصل ${uniqueIds.length} محددة`);
-    return colored;
-};
+        });
+        if (colored > 0) console.log(`  ✅ تم تلوين ${colored} بطاقة من أصل ${uniqueIds.length} محددة`);
+        return colored;
+    };
 
          window.clearExamColors = function() {
         document.querySelectorAll('div.item[data-colored="true"]').forEach(card => {
