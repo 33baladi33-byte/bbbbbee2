@@ -8478,17 +8478,6 @@ if (expiryText) {
                         الرئيسية
                     </a>
 
-                    <a id="footerLesenBtn">
-                        Lesen
-                    </a>
-
-                    <a id="footerHörenBtn">
-                        Hören
-                    </a>
-
-                    <a id="footerSchreibenBtn">
-                        Schreiben
-                    </a>
 
                     <a id="footerUpgradeBtn">
                         الترقية
@@ -8593,56 +8582,7 @@ if (expiryText) {
         }
     });
 
-    document.getElementById('footerLesenBtn')?.addEventListener('click', function(e) {
-        e.preventDefault();
-        if (typeof goList === 'function' && typeof renderExamListForSkill === 'function') {
-            goList();
-            setTimeout(function() {
-                renderExamListForSkill('lesen1', 'Lesen 1');
-            }, 100);
-        } else {
-            window.location.hash = '#list';
-            setTimeout(function() {
-                if (typeof renderExamListForSkill === 'function') {
-                    renderExamListForSkill('lesen1', 'Lesen 1');
-                }
-            }, 200);
-        }
-    });
 
-    document.getElementById('footerHörenBtn')?.addEventListener('click', function(e) {
-        e.preventDefault();
-        if (typeof goList === 'function' && typeof renderExamListForSkill === 'function') {
-            goList();
-            setTimeout(function() {
-                renderExamListForSkill('hoeren1', 'Hören 1');
-            }, 100);
-        } else {
-            window.location.hash = '#list';
-            setTimeout(function() {
-                if (typeof renderExamListForSkill === 'function') {
-                    renderExamListForSkill('hoeren1', 'Hören 1');
-                }
-            }, 200);
-        }
-    });
-
-    document.getElementById('footerSchreibenBtn')?.addEventListener('click', function(e) {
-        e.preventDefault();
-        if (typeof goList === 'function' && typeof renderExamListForSkill === 'function') {
-            goList();
-            setTimeout(function() {
-                renderExamListForSkill('schreiben', 'Schreiben');
-            }, 100);
-        } else {
-            window.location.hash = '#list';
-            setTimeout(function() {
-                if (typeof renderExamListForSkill === 'function') {
-                    renderExamListForSkill('schreiben', 'Schreiben');
-                }
-            }, 200);
-        }
-    });
 
     document.getElementById('footerUpgradeBtn')?.addEventListener('click', function(e) {
         e.preventDefault();
