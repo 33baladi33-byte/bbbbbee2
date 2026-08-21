@@ -8277,10 +8277,13 @@ if (expiryText) {
     /* =====================================================
        Footer في نهاية الصفحة
        ===================================================== */
-
-    document.body.appendChild(
-        footer
-    );
+    // إضافة الـ Footer داخل #home لتكون خلفيته متناسقة مع خلفية الصفحة الرئيسية
+    const homeElement = document.getElementById('home');
+    if (homeElement) {
+        homeElement.appendChild(footer);
+    } else {
+        document.body.appendChild(footer);
+    }
 
 
     /*
