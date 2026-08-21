@@ -17,12 +17,12 @@ body {
 }
 
 /* ========================================
-   Hero Section (New Clean & Premium)
+   Hero Section
    ======================================== */
 
 #home {
     background: #0a0e1a;
-    min-height: auto; /* تعديل الارتفاع ليكون مدمجاً أكثر */
+    min-height: calc(100vh - 70px);
     position: relative;
     overflow: hidden;
     padding: 40px 5% 0 5%;
@@ -50,7 +50,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 50px;
+    gap: 60px;
     max-width: 1300px;
     margin: 0 auto;
     width: 100%;
@@ -67,11 +67,11 @@ body {
 
 .image-glow {
     position: absolute;
-    width: 80%;
-    height: 80%;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.15), transparent 70%);
+    width: 85%;
+    height: 85%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.2), transparent 70%);
     border-radius: 40px;
-    filter: blur(40px);
+    filter: blur(35px);
     z-index: 0;
     top: 50%;
     left: 50%;
@@ -81,36 +81,29 @@ body {
 .image-card {
     position: relative;
     z-index: 2;
-    background: rgba(20, 25, 45, 0.6);
+    background: rgba(20, 25, 45, 0.7);
     backdrop-filter: blur(8px);
-    padding: 8px;
-    border-radius: 24px;
-    box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(56, 189, 248, 0.1);
+    padding: 12px;
+    border-radius: 28px;
+    box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(56, 189, 248, 0.2);
     transition: all 0.3s ease;
 }
 
 .image-card:hover {
-    box-shadow: 0 25px 45px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(56, 189, 248, 0.2);
+    box-shadow: 0 30px 50px -15px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(56, 189, 248, 0.4);
 }
 
 .certificate-img {
     width: 100%;
-    max-width: 380px; /* تصغير الحجم قليلاً */
+    max-width: 420px;
     height: auto;
-    border-radius: 16px;
+    border-radius: 20px;
     display: block;
-    animation: floatCertificate 6s ease-in-out infinite; /* حركة عائمة */
     transition: transform 0.3s ease;
 }
 
 .certificate-img:hover {
     transform: scale(1.02);
-}
-
-@keyframes floatCertificate {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-6px); }
-    100% { transform: translateY(0px); }
 }
 
 .hero-content-side {
@@ -119,9 +112,9 @@ body {
 }
 
 .hero-title {
-    font-size: 2.8rem;
-    font-weight: 700;
-    margin-bottom: 20px;
+    font-size: 3.2rem;
+    font-weight: 800;
+    margin-bottom: 25px;
     line-height: 1.2;
     color: #ffffff;
     letter-spacing: -0.5px;
@@ -129,143 +122,95 @@ body {
 
 .blue-text {
     color: #38bdf8;
-    text-shadow: 0 0 10px rgba(56, 189, 248, 0.15);
+    text-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
 }
 
 .hero-description-wrapper {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
 .hero-desc {
-    font-size: 1rem;
+    font-size: 1.1rem;
     line-height: 1.6;
     color: #b0b8c9;
-    margin-bottom: 10px;
-}
-
-.hero-desc .highlight {
-    color: #38bdf8;
-    font-weight: 500;
-}
-
-.hero-desc .highlight-green {
-    color: #4ade80;
-    font-weight: 500;
+    margin-bottom: 16px;
 }
 
 .second-desc {
-    margin-top: 15px;
     margin-bottom: 0;
-    font-size: 0.95rem;
 }
 
-/* ===== حاوية الأزرار الرئيسية المتناسقة ===== */
-.hero-actions-container {
+.info-glass-card {
+    background: rgba(56, 189, 248, 0.06);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 20px;
+    padding: 14px 22px;
+    margin: 25px 0 35px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
     align-items: center;
-    justify-content: flex-start;
-    margin: 20px 0 0 0;
+    gap: 14px;
+    transition: all 0.3s ease;
 }
 
-/* زر اكتشف التمارين - أزرق غامق Premium */
+.info-glass-card:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+    background: rgba(56, 189, 248, 0.1);
+}
+
+.info-icon {
+    font-size: 1.6rem;
+}
+
+.info-text {
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
 .hero-btn-primary {
-    background: linear-gradient(135deg, #1e293b, #0f172a) !important;
-    border: 1px solid rgba(56, 189, 248, 0.15) !important;
-    padding: 16px 32px !important;
-    border-radius: 14px !important;
-    font-size: 1.05rem !important;
-    font-weight: 600 !important;
-    color: #f1f5f9 !important;
-    cursor: pointer !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 12px !important;
-    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1) !important;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
-    text-decoration: none !important;
-    position: relative !important;
+    background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+    border: none;
+    padding: 15px 32px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0a0e1a;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    box-shadow: 0 0 18px rgba(56, 189, 248, 0.3);
 }
 
 .hero-btn-primary:hover {
-    background: linear-gradient(135deg, #2d3a52, #1e293b) !important;
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(56, 189, 248, 0.1) !important;
-    transform: translateY(-2px) !important;
-    gap: 14px !important;
+    transform: translateY(-3px);
+    box-shadow: 0 0 28px rgba(56, 189, 248, 0.5);
+    gap: 16px;
+    background: linear-gradient(135deg, #0ea5e9, #0284c7);
 }
-.hero-btn-primary:active {
-    transform: scale(0.97) !important;
+
+.btn-arrow-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s;
 }
-.hero-btn-primary .btn-arrow-icon {
-    transition: transform 0.3s ease;
-}
+
 .hero-btn-primary:hover .btn-arrow-icon {
     transform: translateX(5px);
 }
 
-/* زر انضم للمجموعة - متناسق تماماً مع الزر الأول */
-.hero-btn-whatsapp {
-    background: rgba(15, 23, 42, 0.75) !important;
-    backdrop-filter: blur(8px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    padding: 16px 32px !important;
-    border-radius: 14px !important;
-    font-size: 1.05rem !important;
-    font-weight: 600 !important;
-    color: #f1f5f9 !important;
-    cursor: pointer !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 12px !important;
-    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1) !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
-    text-decoration: none !important;
-}
-
-.hero-btn-whatsapp:hover {
-    background: rgba(30, 41, 59, 0.85) !important;
-    border-color: rgba(255, 255, 255, 0.15) !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
-}
-.hero-btn-whatsapp:active {
-    transform: scale(0.97) !important;
-}
-/* أيقونة واتساب: حجم ثابت وبدون حركة */
-.hero-btn-whatsapp .whatsapp-icon-img {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-    display: block;
-    flex-shrink: 0;
-    /* تم إزالة animation الخاصة بالأيقونة */
-}
-
-/* تأثير مرئي ناعم على الزر نفسه (Glow/Pulse) */
-.hero-btn-whatsapp {
-    animation: btnGlowPulse 2s ease-in-out infinite;
-}
-@keyframes btnGlowPulse {
-    0%, 100% {
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.04);
-        border-color: rgba(255, 255, 255, 0.08);
-    }
-    50% {
-        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25), 0 0 12px rgba(18, 184, 134, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-        border-color: rgba(255, 255, 255, 0.12);
-    }
-}
 /* ========================================
-   Features Section - Small, Compact & Reliable
+   Features Section
    ======================================== */
 
 .features-section {
-    padding: 30px 5% 40px 5%; /* تصغير الحجم */
+    padding: 80px 5%;
     background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
     position: relative;
-    margin-top: 40px;
-    border-radius: 32px 32px 0 0;
+    margin-top: 60px;
+    border-radius: 40px 40px 0 0;
 }
 
 .features-container {
@@ -274,278 +219,124 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 30px;
+    gap: 50px;
     flex-wrap: wrap;
 }
 
 .features-content {
     flex: 1;
-    min-width: 280px;
-    max-width: 500px;
+    min-width: 380px;
+    max-width: 550px;
 }
 
 .features-title {
-    font-size: 1.6rem;
-    font-weight: 700;
-    margin-bottom: 12px;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 28px;
     line-height: 1.3;
     color: #0a0e1a;
 }
 
 .features-description {
-    font-size: 0.95rem;
-    line-height: 1.6;
+    font-size: 1rem;
+    line-height: 1.75;
     color: #475569;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
+    letter-spacing: 0.2px;
 }
 
-.features-actions-container {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: 5px;
+.features-description.second {
+    margin-bottom: 35px;
 }
 
 .features-btn {
     background: linear-gradient(135deg, #38bdf8, #0ea5e9);
     border: none;
-    padding: 12px 24px;
-    border-radius: 40px;
-    font-size: 0.95rem;
-    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
     color: #0a0e1a;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
 }
 
 .features-btn:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4);
+    gap: 16px;
+    background: linear-gradient(135deg, #0ea5e9, #0284c7);
 }
 
-.subscribe-guide-btn-new {
-    background: rgba(15, 23, 42, 0.06) !important;
-    border: 1px solid rgba(15, 23, 42, 0.1) !important;
-    border-radius: 12px !important;
-    width: 44px !important;
-    height: 44px !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    cursor: pointer !important;
-    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1) !important;
-    color: #64748b !important;
-    font-size: 24px !important;
-}
-.subscribe-guide-btn-new:hover {
-    background: rgba(15, 23, 42, 0.12) !important;
-    transform: translateY(-2px) !important;
-    color: #0f172a !important;
-}
-.subscribe-guide-btn-new .material-symbols-outlined {
-    font-size: 24px;
+.features-btn .btn-arrow {
+    font-size: 1.1rem;
+    transition: transform 0.3s;
 }
 
-/* ========================================
-   User Testimonials Slider - Infinite Loop
-   ======================================== */
-
-.user-testimonials-section {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    padding: 20px 0 30px !important;
-    background: #f8fafc !important;
-    width: 100% !important;
-    border-top: 1px solid rgba(0,0,0,0.04) !important;
-}
-.testimonials-label {
-    font-size: 0.85rem !important;
-    font-weight: 500 !important;
-    color: #64748b !important;
-    margin-bottom: 20px !important;
-    letter-spacing: 1px !important;
-    text-transform: uppercase !important;
-}
-.testimonials-slider-container {
-    width: 100% !important;
-    max-width: 1200px !important;
-    overflow: hidden !important;
-    position: relative !important;
-    padding: 0 10px !important;
-    box-sizing: border-box !important;
-}
-.testimonials-track {
-    display: flex !important;
-    gap: 20px !important;
-    width: calc(250px * 20) !important;
-    animation: slideTestimonials 35s linear infinite !important;
-}
-@keyframes slideTestimonials {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-250px * 10)); }
-}
-.testimonial-item {
-    flex: 0 0 220px !important;
-    width: 220px !important;
-    height: auto !important;
-    border-radius: 16px !important;
-    overflow: hidden !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
-    background: #ffffff !important;
-    border: 1px solid #f1f5f9 !important;
-    transition: transform 0.3s ease !important;
-}
-.testimonial-item:hover {
-    transform: scale(1.02) !important;
-}
-.testimonial-item img {
-    width: 100% !important;
-    height: auto !important;
-    display: block !important;
-    object-fit: cover !important;
-}
-.testimonials-track:hover {
-    animation-play-state: paused !important;
+.features-btn:hover .btn-arrow {
+    transform: translateX(5px);
 }
 
-/* ========================================
-   Home Page Mobile Responsiveness (Updates)
-   ======================================== */
-@media (max-width: 768px) {
-    #home {
-        padding: 20px 16px 0 16px !important;
-        min-height: auto !important;
-    }
-    
-    .bg-pattern {
-        opacity: 0.4;
-        height: 100% !important;
-        min-height: 100vh !important;
-    }
-    
-    /* الحاوية الرئيسية - عمودي */
-    .hero-container {
-        flex-direction: column !important;
-        gap: 20px !important;
-        padding-top: 8px;
-    }
-
-    .hero-image-side {
-        min-width: unset !important;
-        width: 100%;
-        order: 0;
-        margin-bottom: 0;
-    }
-    
-    .image-card {
-        padding: 8px;
-        border-radius: 20px;
-        max-width: 280px;
-        margin: 0 auto;
-        background: rgba(20, 25, 45, 0.5);
-    }
-    
-    .certificate-img {
-        max-width: 100% !important;
-        border-radius: 12px;
-    }
-
-    .hero-content-side {
-        min-width: unset !important;
-        width: 100%;
-        order: 1;
-        padding: 0 4px;
-    }
-    
-    .hero-title {
-        font-size: 1.8rem !important;
-        text-align: center;
-        margin-bottom: 16px;
-        line-height: 1.3;
-    }
-    
-    .hero-desc {
-        font-size: 0.9rem !important;
-        text-align: center;
-        padding: 0 2px;
-        color: #b0b8c9;
-    }
-
-    .hero-actions-container {
-        flex-direction: column !important;
-        width: 100% !important;
-        align-items: stretch !important;
-        gap: 12px !important;
-        margin: 15px 0 20px !important;
-    }
-    .hero-btn-primary, .hero-btn-whatsapp {
-        width: 100% !important;
-        justify-content: center !important;
-        padding: 16px 20px !important;
-        font-size: 0.95rem !important;
-        height: 52px !important;
-        border-radius: 14px !important;
-    }
-    
-    .features-section {
-        padding: 30px 16px !important;
-        margin-top: 30px !important;
-        border-radius: 28px 28px 0 0 !important;
-    }
-    .features-content {
-        min-width: unset !important;
-        max-width: 100% !important;
-        width: 100% !important;
-        text-align: center;
-    }
-    .features-actions-container {
-        justify-content: center !important;
-        width: 100% !important;
-    }
-    .features-btn {
-        padding: 12px 20px;
-        font-size: 0.9rem;
-    }
-    .subscribe-guide-btn-new {
-        width: 44px;
-        height: 44px;
-    }
-
-    .testimonials-slider-container {
-        padding: 0 5px !important;
-        max-width: 100% !important;
-    }
-    .testimonial-item {
-        flex: 0 0 160px !important;
-        width: 160px !important;
-        border-radius: 12px !important;
-    }
-    @keyframes slideTestimonials {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(calc(-160px * 10)); }
-    }
+.features-images {
+    flex: 1;
+    min-width: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* ========================================
-   إخفاء العناصر القديمة التي طلبت حذفها
-   ======================================== */
-#reviewsWidget, .reviews-widget {
-    display: none !important;
+.image-stack {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    min-height: 520px;
 }
-.features-images, .image-stack, .image-card-feature, .image-top, .image-bottom {
-    display: none !important;
+
+.image-card-feature {
+    background: white;
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    transition: all 0.35s ease;
+    overflow: hidden;
+    width: 100%;
 }
-.subscribe-guide-btn {
-    display: none !important;
+
+.image-card-feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.15);
 }
-.info-glass-card {
-    display: none !important;
+
+.image-top {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    width: 78%;
+    z-index: 2;
+    transform: rotate(3deg);
+}
+
+.image-bottom {
+    position: absolute;
+    bottom: 40px;
+    left: 20px;
+    width: 78%;
+    z-index: 1;
+    transform: rotate(-2deg);
+}
+
+.feature-img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    display: block;
+    background: white;
+    object-fit: contain;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 /* ========================================
@@ -2599,10 +2390,27 @@ body:has(#exam.active) .left-side #navSubscribeBtn { order: 4 !important; }
         font-size: 0.8rem !important;
     }
 
+    /* البطاقة الزجاجية */
+    .info-glass-card {
+        margin: 16px 0 24px 0;
+        padding: 14px 18px;
+        border-radius: 18px;
+        background: rgba(56, 189, 248, 0.06);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(56, 189, 248, 0.15);
+        gap: 12px;
+    }
 
+    .info-glass-card .hero-desc {
+        font-size: 0.8rem !important;
+        padding: 0;
+        text-align: center;
+    }
 
-
-    /* INFO GLASS CARD - REMOVED COMPLETELY AS REQUESTED */
+    .info-icon {
+        font-size: 1.3rem;
+        flex-shrink: 0;
+    }
 
     /* زر البداية */
     .hero-btn-primary {
@@ -7694,179 +7502,6 @@ body:has(#list.active) #backHomeBtn {
         margin-bottom: 6px !important;
         font-size: 0.8rem !important;
         word-break: break-word !important;
-    }
-}
-
-/* ========================================
-   New Hero Section Content & Cards
-   ======================================== */
-
-.hero-description-wrapper {
-    margin-bottom: 20px;
-}
-
-/* العنوان الرئيسي "فهم أسرع..." */
-.hero-subtitle {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin: 0 0 8px 0;
-    line-height: 1.2;
-    letter-spacing: -0.5px;
-}
-
-/* Badge "خاليه من أخطاء PDFs" */
-.hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(56, 189, 248, 0.12);
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(56, 189, 248, 0.25);
-    border-radius: 40px;
-    padding: 4px 14px 4px 12px;
-    margin-bottom: 12px;
-    width: fit-content;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-.hero-badge .badge-icon {
-    font-size: 14px;
-    color: #38bdf8;
-}
-.hero-badge span:last-child {
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: #cbd5e1;
-    letter-spacing: 0.3px;
-}
-
-/* النص التعريفي القصير */
-.hero-intro-text {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #b0b8c9;
-    margin-bottom: 20px;
-    max-width: 600px;
-}
-.hero-intro-text .highlight {
-    color: #38bdf8;
-    font-weight: 500;
-}
-
-/* ===== حاوية بطاقات المميزات ===== */
-.features-cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 12px;
-    margin-top: 10px;
-    max-width: 100%;
-}
-
-/* ===== بطاقة الميزة الواحدة ===== */
-.feature-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 14px;
-    padding: 14px 8px 12px 8px;
-    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-.feature-card:hover {
-    transform: translateY(-3px);
-    border-color: rgba(56, 189, 248, 0.3);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-    background: rgba(255, 255, 255, 0.1);
-}
-
-/* ===== أيقونة البطاقة ===== */
-.feature-card-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    background: rgba(56, 189, 248, 0.12);
-    margin-bottom: 8px;
-}
-.feature-card-icon .material-symbols-outlined {
-    font-size: 22px;
-    color: #38bdf8;
-}
-
-/* ===== محتوى البطاقة ===== */
-.feature-card-content h4 {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #f1f5f9;
-    margin: 0 0 2px 0;
-    line-height: 1.2;
-}
-.feature-card-content p {
-    font-size: 0.7rem;
-    color: #94a3b8;
-    margin: 0;
-    line-height: 1.4;
-    opacity: 0.9;
-}
-
-/* ========================================
-   Mobile Responsiveness for New Cards
-   ======================================== */
-@media (max-width: 768px) {
-    .hero-subtitle {
-        font-size: 1.6rem !important;
-        text-align: center;
-        margin-bottom: 6px !important;
-    }
-    .hero-badge {
-        margin: 0 auto 10px auto;
-    }
-    .hero-intro-text {
-        font-size: 0.9rem !important;
-        text-align: center;
-        margin: 0 auto 16px auto;
-    }
-    .features-cards-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-    }
-    .feature-card {
-        padding: 10px 6px 8px 6px;
-        border-radius: 10px;
-    }
-    .feature-card-icon {
-        width: 30px;
-        height: 30px;
-    }
-    .feature-card-icon .material-symbols-outlined {
-        font-size: 18px;
-    }
-    .feature-card-content h4 {
-        font-size: 0.7rem;
-    }
-    .feature-card-content p {
-        font-size: 0.6rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .features-cards-container {
-        gap: 6px;
-    }
-    .feature-card {
-        padding: 8px 4px 6px 4px;
-    }
-    .feature-card-content h4 {
-        font-size: 0.6rem;
-    }
-    .feature-card-content p {
-        font-size: 0.55rem;
     }
 }
 /* ============================================
