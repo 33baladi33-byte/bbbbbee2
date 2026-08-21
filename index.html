@@ -714,6 +714,7 @@ body.dark-mode .mobile-banner {
 body.dark-mode .mobile-banner span {
     color: #94a3b8;
 }
+
         /* زر 💡 طريقة الاشتراك الجديد */
     .subscribe-guide-btn {
         background: #0f2f57;
@@ -1005,6 +1006,300 @@ body.dark-mode .mobile-banner span {
         }
     }
 
+/* =========================================================
+   الصفحة الرئيسية الجديدة - CSS (من الملف المرجعي)
+   ========================================================= */
+
+/* 1. تعديل Hero على الشاشات الصغيرة */
+@media (max-width: 769px) {
+    .hero-content-side .hero-description-wrapper {
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+    .hero-content-side .hero-intro-text {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        box-sizing: border-box !important;
+        text-align: right !important;
+    }
+    .hero-content-side .hero-actions-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        gap: clamp(5px, 1vw, 7px) !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin-top: 1em !important;
+        direction: ltr !important;
+        box-sizing: border-box !important;
+    }
+    .hero-content-side .hero-actions-container #startBtn,
+    .hero-content-side .hero-actions-container .hero-btn-whatsapp {
+        width: clamp(115px, 24vw, 145px) !important;
+        min-width: clamp(115px, 24vw, 145px) !important;
+        max-width: clamp(115px, 24vw, 145px) !important;
+        height: clamp(30px, 6vw, 34px) !important;
+        min-height: clamp(30px, 6vw, 34px) !important;
+        max-height: clamp(30px, 6vw, 34px) !important;
+        padding: 0 !important;
+        font-size: clamp(0.68rem, 1.8vw, 0.78rem) !important;
+        white-space: nowrap !important;
+        flex: 0 0 auto !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+    }
+    .hero-content-side .hero-actions-container #startBtn {
+        align-self: flex-start !important;
+    }
+    .hero-content-side .hero-actions-container .hero-btn-whatsapp {
+        align-self: flex-start !important;
+        margin-left: clamp(16px, 5vw, 35px) !important;
+    }
+    .hero-content-side .hero-actions-container .hero-btn-whatsapp img {
+        width: clamp(13px, 3vw, 16px) !important;
+        height: clamp(13px, 3vw, 16px) !important;
+        flex-shrink: 0 !important;
+    }
+}
+@media (max-width: 499px) {
+    .hero-content-side .hero-description-wrapper {
+        width: calc(100% - 8px) !important;
+        margin-left: 4px !important;
+        margin-right: 4px !important;
+    }
+    .hero-content-side .hero-intro-text {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+@media (min-width: 770px) {
+    .hero-content-side .hero-actions-container {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        direction: ltr !important;
+    }
+}
+
+/* 2. قسم Zertiva و Carousel */
+#zertiva-choice-section {
+    width: 100%;
+    box-sizing: border-box;
+    padding: clamp(45px, 7vw, 90px) clamp(16px, 4vw, 55px);
+    color: #e2e8f0;
+    font-family: inherit;
+    overflow: hidden;
+    background: transparent !important;
+}
+#zertiva-choice-section * { box-sizing: border-box; }
+.zertiva-choice-heading {
+    width: 100%;
+    text-align: center;
+    margin-bottom: clamp(25px, 4vw, 45px);
+    background: transparent !important;
+}
+.zertiva-choice-heading h2 {
+    margin: 0;
+    font-size: clamp(1.45rem, 3.5vw, 2.7rem);
+    line-height: 1.35;
+    font-weight: 750;
+    letter-spacing: -0.025em;
+}
+.zertiva-choice-heading h2 span {
+    color: #315a78;
+    text-shadow: 0 0 18px rgba(49,90,120,0.18);
+}
+.zertiva-proof {
+    width: 100%;
+    padding: clamp(22px, 4vw, 35px);
+    border-radius: 20px;
+    background: rgba(15,23,42,0.42);
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.16), inset 0 1px 0 rgba(255,255,255,0.035);
+}
+.zertiva-proof-text { width: 100%; text-align: right; }
+.zertiva-proof-label {
+    display: inline-block;
+    color: #315a78;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+}
+.zertiva-proof-text h3 {
+    margin: 0 0 9px;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    line-height: 1.5;
+    color: #e2e8f0;
+}
+.zertiva-proof-text p {
+    margin: 0;
+    color: #94a3b8;
+    font-size: clamp(0.78rem, 1.2vw, 0.95rem);
+    line-height: 1.9;
+    width: 100%;
+}
+.zertiva-stats {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: clamp(8px, 1.5vw, 14px);
+    margin-top: clamp(20px, 3vw, 28px);
+}
+.zertiva-stats div {
+    min-width: 0;
+    text-align: center;
+    padding: clamp(12px, 1.8vw, 16px) 7px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.05);
+}
+.zertiva-stats strong {
+    display: block;
+    color: #e2e8f0;
+    font-size: clamp(0.85rem, 1.8vw, 1.2rem);
+    white-space: nowrap;
+}
+.zertiva-stats span {
+    display: block;
+    margin-top: 5px;
+    color: #64748b;
+    font-size: clamp(0.62rem, 1vw, 0.78rem);
+    white-space: nowrap;
+}
+.zertiva-reviews-section {
+    width: 100%;
+    margin-top: clamp(28px, 5vw, 55px);
+    background: transparent !important;
+}
+.zertiva-photo-placeholder {
+    width: 100%;
+    min-height: clamp(125px, 17vw, 170px);
+    padding: clamp(22px, 4vw, 32px);
+    border-radius: 20px;
+    border: 1px solid rgba(148,163,184,0.12);
+    background: rgba(15,23,42,0.18);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+.zertiva-photo-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(49,90,120,0.12);
+    color: #315a78;
+    margin-bottom: 10px;
+    box-shadow: 0 0 25px rgba(49,90,120,0.08);
+}
+.zertiva-photo-placeholder h3 {
+    margin: 0;
+    color: #cbd5e1;
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+}
+.zertiva-photo-placeholder p {
+    margin: 6px 0 0;
+    color: #64748b;
+    font-size: clamp(0.7rem, 1vw, 0.8rem);
+}
+.zertiva-review-carousel {
+    width: 100%;
+    margin-top: clamp(25px, 4vw, 40px);
+    overflow: hidden;
+    position: relative;
+    padding: 12px 0 22px;
+    touch-action: pan-y;
+    cursor: grab;
+    background: transparent !important;
+}
+.zertiva-review-carousel:active { cursor: grabbing; }
+.zertiva-review-track {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(14px, 2vw, 25px);
+    width: max-content;
+    direction: ltr;
+    transform: translate3d(0,0,0);
+    will-change: transform;
+    transition: transform 0.9s cubic-bezier(0.22,0.61,0.36,1);
+    user-select: none;
+    background: transparent !important;
+}
+.zertiva-phone {
+    position: relative;
+    flex: 0 0 clamp(145px,18vw,205px);
+    width: clamp(145px,18vw,205px);
+    aspect-ratio: 9 / 18.5;
+    padding: clamp(5px,0.6vw,7px);
+    border-radius: clamp(22px,3vw,32px);
+    background: linear-gradient(145deg, #202b3b, #080d15);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.34), 0 0 0 1px rgba(0,0,0,0.25), inset 0 1px 1px rgba(255,255,255,0.08);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.zertiva-phone::before {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+    height: 4px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.65);
+    z-index: 3;
+}
+.zertiva-phone img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    border-radius: clamp(17px,2.4vw,25px);
+    background: #0b111b;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
+@media (max-width: 700px) {
+    #zertiva-choice-section { padding-left: 14px; padding-right: 14px; }
+    .zertiva-proof { padding: 20px; }
+    .zertiva-phone { flex-basis: clamp(145px,27vw,175px); width: clamp(145px,27vw,175px); }
+}
+@media (max-width: 500px) {
+    #zertiva-choice-section { padding-left: 10px; padding-right: 10px; }
+    .zertiva-proof { padding: 17px; border-radius: 17px; }
+    .zertiva-stats { gap: 6px; }
+    .zertiva-stats div { padding: 11px 3px; border-radius: 11px; }
+    .zertiva-phone { flex-basis: clamp(125px,34vw,155px); width: clamp(125px,34vw,155px); }
+    .zertiva-review-track { gap: 12px; }
+}
+@media (max-width: 380px) {
+    .zertiva-phone { flex-basis: 128px; width: 128px; }
+    .zertiva-review-track { gap: 10px; }
+    .zertiva-proof { padding: 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .zertiva-review-track { transition: none !important; }
+}
 /* ============================================
    Welcome Card Styles - بطاقة الترحيب
    ============================================ */
@@ -1857,6 +2152,7 @@ body.dark-mode .mobile-banner span {
         </div>
     </div>
 </div>
+
 <div id="home" class="page active home">
     <div class="hero-wrapper">
         <div class="hero-container">
@@ -1866,10 +2162,7 @@ body.dark-mode .mobile-banner span {
                     <img src="images/certificate-sample.webp" loading="lazy" alt="telc Deutsch B2 Zertifikat" class="certificate-img">
                 </div>
             </div>
-
-                        <div class="hero-content-side" dir="rtl" style="text-align: right; direction: rtl;">
-
-                <!-- العنوان الرئيسي -->
+            <div class="hero-content-side" dir="rtl" style="text-align: right; direction: rtl;">
                 <h1 class="hero-title" style="
                     font-size: clamp(1.8rem, 5vw, 3rem);
                     font-weight: 700;
@@ -1885,8 +2178,6 @@ body.dark-mode .mobile-banner span {
                 ">
                     أفضل منصة <span style="color: #38bdf8; text-shadow: 0 0 12px rgba(56, 189, 248, 0.2);">TELC B2</span>
                 </h1>
-
-                <!-- عبارة "خاليه من أخطاء PDFs" - حجم قريب من العنوان، بدون أيقونة -->
                 <p style="
                     font-size: clamp(1.3rem, 4.2vw, 2.4rem);
                     font-weight: 500;
@@ -1902,87 +2193,21 @@ body.dark-mode .mobile-banner span {
                 ">
                     خاليه من أخطاء <span style="display: inline-block; direction: ltr; unicode-bidi: embed;">PDFs</span>
                 </p>
-
                 <div class="hero-description-wrapper" style="text-align: right; direction: rtl;">
-                    <!-- الفقرة التعريفية -->
                     <p class="hero-intro-text" style="text-align: right; direction: rtl;">
                         هنا غادي تلقى امتحانات <span class="highlight">التيلك بي 2</span> منظمة ومجمعة فبلاصة وحدة، مع التصحيح الكامل والأجوبة الصحيحة، باش تراجع بسهولة وبدون ما تضيع وقتك فالتقلاب على الـ PDFs. ومع بطاقات الحفظ والمراجعة الذكية، تقدر تثبت المعلومات وتراجع الأخطاء ديالك بطريقة أكثر فعالية. وكلشي مصمم باش يخليك تركز على المراجعة والتقدم ديالك، بلا تعقيد وبلا تضييع للوقت.
                     </p>
                 </div>
-
-                <!-- حاوية الأزرار الرئيسية -->
                 <div class="hero-actions-container" style="justify-content: flex-start; direction: rtl;">
-                    <!-- زر اكتشف التمارين -->
                     <button id="startBtn" class="hero-btn-primary">
                         اكتشف التمارين
                         <span class="btn-arrow-icon">→</span>
                     </button>
-
-                    <!-- زر انضم للمجموعة (مع أيقونة خضراء فقط) -->
                     <a href="https://chat.whatsapp.com/BfUSgkGrh6y3LONEpEsRFU" target="_blank" class="hero-btn-whatsapp">
                         <img width="24" height="24" src="https://img.icons8.com/softteal-line/24/12B886/whatsapp.png" alt="whatsapp" class="whatsapp-icon-img" style="color: #12B886; filter: none; opacity: 0.9;">
                         انضم للمجموعة
                     </a>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="bg-pattern"></div>
-
-    <section class="features-section">
-        <div class="features-container">
-            <div class="features-content">
-                <h2 class="features-title">
-                    علاش <span class="blue-text">الناس</span> كيختارونا؟
-                </h2>
-                <p class="features-description">
-                    حيت كيختاصرو ساعات ديال التقلاب، وكيجمعو ليكم كلشي فبلاصة وحدة باش تركزو غير على <span class="highlight">التقدم والثقة</span>.
-                </p>
-                
-                <div class="features-actions-container">
-                    <button id="featuresSubscribeBtn" class="features-btn">
-                        اشترك الآن
-                        <span class="btn-arrow">→</span>
-                    </button>
-
-                    <a href="https://chat.whatsapp.com/BfUSgkGrh6y3LONEpEsRFU" target="_blank" class="hero-btn-whatsapp" style="background: rgba(15, 23, 42, 0.05) !important; border-color: rgba(15, 23, 42, 0.1) !important; color: #0f172a !important; padding: 12px 24px; font-size: 0.95rem;">
-                        <img width="18" height="18" src="https://img.icons8.com/softteal-line/18/0f172a/whatsapp.png" alt="whatsapp" class="whatsapp-icon-img" style="opacity: 0.6;">
-                        انضم للمجموعة
-                    </a>
-                    
-                    <!-- زر طريقة الاشتراك الجديد (أيقونة مادية) -->
-                    <button id="subscribeGuideBtnNew" class="subscribe-guide-btn-new" title="طريقة الاشتراك">
-                        <span class="material-symbols-outlined">contact_support</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- قسم صور المشتركين الجديد (Slider Infinite Loop) -->
-    <div class="user-testimonials-section">
-        <div class="testimonials-label">
-            صور من مستخدمينا
-        </div>
-        <div class="testimonials-slider-container">
-            <div class="testimonials-track">
-                <!-- تم تكرار الصور لضمان حلقة لا نهائية -->
-                <div class="testimonial-item"><img src="images/review1.webp" loading="lazy" alt="User 1"></div>
-                <div class="testimonial-item"><img src="images/review2.webp" loading="lazy" alt="User 2"></div>
-                <div class="testimonial-item"><img src="images/review3.webp" loading="lazy" alt="User 3"></div>
-                <div class="testimonial-item"><img src="images/review4.webp" loading="lazy" alt="User 4"></div>
-                <div class="testimonial-item"><img src="images/review5.webp" loading="lazy" alt="User 5"></div>
-                <div class="testimonial-item"><img src="images/review6.webp" loading="lazy" alt="User 6"></div>
-                <div class="testimonial-item"><img src="images/review7.webp" loading="lazy" alt="User 7"></div>
-                
-                <!-- نسخة مكررة -->
-                <div class="testimonial-item"><img src="images/review1.webp" loading="lazy" alt="User 1"></div>
-                <div class="testimonial-item"><img src="images/review2.webp" loading="lazy" alt="User 2"></div>
-                <div class="testimonial-item"><img src="images/review3.webp" loading="lazy" alt="User 3"></div>
-                <div class="testimonial-item"><img src="images/review4.webp" loading="lazy" alt="User 4"></div>
-                <div class="testimonial-item"><img src="images/review5.webp" loading="lazy" alt="User 5"></div>
-                <div class="testimonial-item"><img src="images/review6.webp" loading="lazy" alt="User 6"></div>
-                <div class="testimonial-item"><img src="images/review7.webp" loading="lazy" alt="User 7"></div>
             </div>
         </div>
     </div>
@@ -2174,6 +2399,10 @@ body.dark-mode .mobile-banner span {
 </script>
 
 <script>
+
+
+
+    
     // ✅ نظام تكبير وتصغير الموقع
     (function() {
            let currentScale = 105;
@@ -5703,6 +5932,22 @@ if (expiryText) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
 /* =========================================================
    2. قسم Zertiva + صور المستخدمين
    ========================================================= */
@@ -8118,9 +8363,8 @@ if (expiryText) {
         style
     );
 
-
     /* =====================================================
-       إنشاء Footer
+       إنشاء Footer مع روابط تعمل
        ===================================================== */
 
     const footer =
@@ -8210,7 +8454,7 @@ if (expiryText) {
 
 
                 <!-- ========================================
-                     روابط الموقع
+                     روابط الموقع (مع IDs للربط عبر JS)
                      ======================================== -->
 
                 <nav
@@ -8218,23 +8462,23 @@ if (expiryText) {
                     aria-label="Footer navigation"
                 >
 
-                    <a href="#home">
+                    <a id="footerHomeBtn">
                         الرئيسية
                     </a>
 
-                    <a href="#lesen">
+                    <a id="footerLesenBtn">
                         Lesen
                     </a>
 
-                    <a href="#hoeren">
+                    <a id="footerHörenBtn">
                         Hören
                     </a>
 
-                    <a href="#schreiben">
+                    <a id="footerSchreibenBtn">
                         Schreiben
                     </a>
 
-                    <a href="#upgrade">
+                    <a id="footerUpgradeBtn">
                         الترقية
                     </a>
 
@@ -8291,6 +8535,69 @@ if (expiryText) {
      * لا نقوم هنا بتغيير خلفية body أو أي parent عام.
      * الـ Footer نفسه فقط شفاف.
      */
+
+
+    /* =====================================================
+       ربط أزرار الـ Footer بوظائف JavaScript الصحيحة
+       ===================================================== */
+
+    // دالة مساعدة للانتقال إلى القائمة وعرض القسم المطلوب
+    function goToListAndRender(skill, teilName) {
+        if (typeof goList === 'function') {
+            goList();
+            setTimeout(function() {
+                if (typeof renderExamListForSkill === 'function') {
+                    renderExamListForSkill(skill, teilName);
+                }
+            }, 100);
+        } else {
+            window.location.hash = '#list';
+            setTimeout(function() {
+                if (typeof renderExamListForSkill === 'function') {
+                    renderExamListForSkill(skill, teilName);
+                }
+            }, 200);
+        }
+    }
+
+    // زر الرئيسية
+    document.getElementById('footerHomeBtn')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (typeof goHome === 'function') {
+            goHome();
+        } else {
+            window.location.hash = '#home';
+            document.getElementById('home')?.classList.add('active');
+            document.getElementById('list')?.classList.remove('active');
+            document.getElementById('exam')?.classList.remove('active');
+        }
+    });
+
+    // زر Lesen
+    document.getElementById('footerLesenBtn')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        goToListAndRender('lesen1', 'Lesen 1');
+    });
+
+    // زر Hören
+    document.getElementById('footerHörenBtn')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        goToListAndRender('hoeren1', 'Hören 1');
+    });
+
+    // زر Schreiben
+    document.getElementById('footerSchreibenBtn')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        goToListAndRender('schreiben', 'Schreiben');
+    });
+
+    // زر الترقية
+    document.getElementById('footerUpgradeBtn')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.href = 'subscribe.html';
+    });
+
+    console.log('✅ Footer: تم ربط الأزرار (الرئيسية، Lesen، Hören، Schreiben، الترقية)');
 
 })();
 
