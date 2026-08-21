@@ -8022,6 +8022,10 @@ if (expiryText) {
         }
 
 
+
+
+
+
         /* =====================================================
            روابط الموقع
            ===================================================== */
@@ -8071,6 +8075,8 @@ if (expiryText) {
 
             transition:
                 color 0.2s ease;
+
+            cursor: pointer !important;
         }
 
 
@@ -8078,6 +8084,12 @@ if (expiryText) {
 
             color:
                 #ffffff !important;
+        }
+
+
+        .zertiva-footer-social {
+
+            cursor: pointer !important;
         }
 
 
@@ -8560,7 +8572,15 @@ if (expiryText) {
         }
     }
 
-    // زر الرئيسية
+
+
+
+
+
+
+
+
+
     document.getElementById('footerHomeBtn')?.addEventListener('click', function(e) {
         e.preventDefault();
         if (typeof goHome === 'function') {
@@ -8573,30 +8593,61 @@ if (expiryText) {
         }
     });
 
-    // زر Lesen
     document.getElementById('footerLesenBtn')?.addEventListener('click', function(e) {
         e.preventDefault();
-        goToListAndRender('lesen1', 'Lesen 1');
+        if (typeof goList === 'function' && typeof renderExamListForSkill === 'function') {
+            goList();
+            setTimeout(function() {
+                renderExamListForSkill('lesen1', 'Lesen 1');
+            }, 100);
+        } else {
+            window.location.hash = '#list';
+            setTimeout(function() {
+                if (typeof renderExamListForSkill === 'function') {
+                    renderExamListForSkill('lesen1', 'Lesen 1');
+                }
+            }, 200);
+        }
     });
 
-    // زر Hören
     document.getElementById('footerHörenBtn')?.addEventListener('click', function(e) {
         e.preventDefault();
-        goToListAndRender('hoeren1', 'Hören 1');
+        if (typeof goList === 'function' && typeof renderExamListForSkill === 'function') {
+            goList();
+            setTimeout(function() {
+                renderExamListForSkill('hoeren1', 'Hören 1');
+            }, 100);
+        } else {
+            window.location.hash = '#list';
+            setTimeout(function() {
+                if (typeof renderExamListForSkill === 'function') {
+                    renderExamListForSkill('hoeren1', 'Hören 1');
+                }
+            }, 200);
+        }
     });
 
-    // زر Schreiben
     document.getElementById('footerSchreibenBtn')?.addEventListener('click', function(e) {
         e.preventDefault();
-        goToListAndRender('schreiben', 'Schreiben');
+        if (typeof goList === 'function' && typeof renderExamListForSkill === 'function') {
+            goList();
+            setTimeout(function() {
+                renderExamListForSkill('schreiben', 'Schreiben');
+            }, 100);
+        } else {
+            window.location.hash = '#list';
+            setTimeout(function() {
+                if (typeof renderExamListForSkill === 'function') {
+                    renderExamListForSkill('schreiben', 'Schreiben');
+                }
+            }, 200);
+        }
     });
 
-    // زر الترقية
     document.getElementById('footerUpgradeBtn')?.addEventListener('click', function(e) {
         e.preventDefault();
         window.location.href = 'subscribe.html';
     });
-
     console.log('✅ Footer: تم ربط الأزرار (الرئيسية، Lesen، Hören، Schreiben، الترقية)');
 
 })();
