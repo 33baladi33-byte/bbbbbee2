@@ -5571,6 +5571,8 @@ if (expiryText) {
 
     style.textContent = `
 
+
+
         @media (max-width: 769px) {
 
             .hero-content-side .hero-description-wrapper {
@@ -5680,6 +5682,16 @@ if (expiryText) {
 
                 width: 100% !important;
                 max-width: 100% !important;
+            }
+        }
+
+        @media (min-width: 770px) {
+            .hero-content-side .hero-actions-container {
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: flex-start !important;
+                align-items: center !important;
+                direction: ltr !important;
             }
         }
 
