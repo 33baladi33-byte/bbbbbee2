@@ -16,13 +16,45 @@ body {
     display: block;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ========================================
-   Hero Section
+   Hero Section (New Clean & Premium)
    ======================================== */
 
 #home {
     background: #0a0e1a;
-    min-height: calc(100vh - 70px);
+    min-height: auto; /* تعديل الارتفاع ليكون مدمجاً أكثر */
     position: relative;
     overflow: hidden;
     padding: 40px 5% 0 5%;
@@ -50,7 +82,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 60px;
+    gap: 50px;
     max-width: 1300px;
     margin: 0 auto;
     width: 100%;
@@ -67,11 +99,11 @@ body {
 
 .image-glow {
     position: absolute;
-    width: 85%;
-    height: 85%;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.2), transparent 70%);
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.15), transparent 70%);
     border-radius: 40px;
-    filter: blur(35px);
+    filter: blur(40px);
     z-index: 0;
     top: 50%;
     left: 50%;
@@ -81,24 +113,25 @@ body {
 .image-card {
     position: relative;
     z-index: 2;
-    background: rgba(20, 25, 45, 0.7);
+    background: rgba(20, 25, 45, 0.6);
     backdrop-filter: blur(8px);
-    padding: 12px;
-    border-radius: 28px;
-    box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(56, 189, 248, 0.2);
+    padding: 8px;
+    border-radius: 24px;
+    box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(56, 189, 248, 0.1);
     transition: all 0.3s ease;
 }
 
 .image-card:hover {
-    box-shadow: 0 30px 50px -15px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(56, 189, 248, 0.4);
+    box-shadow: 0 25px 45px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(56, 189, 248, 0.2);
 }
 
 .certificate-img {
     width: 100%;
-    max-width: 420px;
+    max-width: 380px; /* تصغير الحجم قليلاً */
     height: auto;
-    border-radius: 20px;
+    border-radius: 16px;
     display: block;
+    animation: floatCertificate 6s ease-in-out infinite; /* حركة عائمة */
     transition: transform 0.3s ease;
 }
 
@@ -106,111 +139,158 @@ body {
     transform: scale(1.02);
 }
 
+@keyframes floatCertificate {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0px); }
+}
+
 .hero-content-side {
     flex: 1;
     min-width: 350px;
+    text-align: right;
+    direction: rtl;
 }
-
 .hero-title {
-    font-size: 3.2rem;
-    font-weight: 800;
-    margin-bottom: 25px;
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
     line-height: 1.2;
-    color: #ffffff;
+    color: #e2e8f0;
     letter-spacing: -0.5px;
+    text-align: right;
+    direction: rtl;
+    unicode-bidi: plaintext;
 }
 
 .blue-text {
     color: #38bdf8;
-    text-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.15);
 }
 
 .hero-description-wrapper {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
-.hero-desc {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #b0b8c9;
-    margin-bottom: 16px;
-}
 
-.second-desc {
-    margin-bottom: 0;
-}
 
-.info-glass-card {
-    background: rgba(56, 189, 248, 0.06);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(56, 189, 248, 0.2);
-    border-radius: 20px;
-    padding: 14px 22px;
-    margin: 25px 0 35px;
+
+
+
+
+
+
+
+
+
+/* تم حذف النصوص القديمة واستبدالها بالتصميم الجديد */
+
+.hero-actions-container {
     display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
     align-items: center;
-    gap: 14px;
-    transition: all 0.3s ease;
-}
-
-.info-glass-card:hover {
-    border-color: rgba(56, 189, 248, 0.4);
-    background: rgba(56, 189, 248, 0.1);
-}
-
-.info-icon {
-    font-size: 1.6rem;
-}
-
-.info-text {
-    color: #cbd5e1;
-    font-size: 0.9rem;
-    font-weight: 500;
-    letter-spacing: 0.3px;
+    justify-content: flex-start;
+    margin: 20px 0 0 0;
 }
 
 .hero-btn-primary {
-    background: linear-gradient(135deg, #38bdf8, #0ea5e9);
-    border: none;
-    padding: 15px 32px;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #0a0e1a;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    box-shadow: 0 0 18px rgba(56, 189, 248, 0.3);
+    background: linear-gradient(135deg, #1e293b, #0f172a) !important;
+    border: 1px solid rgba(56, 189, 248, 0.15) !important;
+    padding: 16px 32px !important;
+    border-radius: 14px !important;
+    font-size: 1.05rem !important;
+    font-weight: 600 !important;
+    color: #f1f5f9 !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1) !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+    text-decoration: none !important;
+    position: relative !important;
 }
 
 .hero-btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 28px rgba(56, 189, 248, 0.5);
-    gap: 16px;
-    background: linear-gradient(135deg, #0ea5e9, #0284c7);
+    background: linear-gradient(135deg, #2d3a52, #1e293b) !important;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(56, 189, 248, 0.1) !important;
+    transform: translateY(-2px) !important;
+    gap: 14px !important;
 }
-
-.btn-arrow-icon {
-    font-size: 1.2rem;
-    transition: transform 0.3s;
+.hero-btn-primary:active {
+    transform: scale(0.97) !important;
 }
-
+.hero-btn-primary .btn-arrow-icon {
+    transition: transform 0.3s ease;
+}
 .hero-btn-primary:hover .btn-arrow-icon {
     transform: translateX(5px);
 }
 
+/* زر انضم للمجموعة - متناسق تماماً مع الزر الأول */
+.hero-btn-whatsapp {
+    background: rgba(15, 23, 42, 0.75) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 16px 32px !important;
+    border-radius: 14px !important;
+    font-size: 1.05rem !important;
+    font-weight: 600 !important;
+    color: #f1f5f9 !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+    text-decoration: none !important;
+}
+
+.hero-btn-whatsapp:hover {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+}
+.hero-btn-whatsapp:active {
+    transform: scale(0.97) !important;
+}
+
+/* أيقونة واتساب بحجم 24px وبدون أي حركة */
+.hero-btn-whatsapp .whatsapp-icon-img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+    /* تم إزالة animation الخاصة بالأيقونة تماماً */
+}
+
+/* تأثير ناعم جداً على الزر نفسه (Glow/Pulse) */
+.hero-btn-whatsapp {
+    animation: btnGlowPulse 2s ease-in-out infinite;
+}
+@keyframes btnGlowPulse {
+    0%, 100% {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        border-color: rgba(255, 255, 255, 0.08);
+    }
+    50% {
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25), 0 0 12px rgba(18, 184, 134, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.12);
+    }
+}
 /* ========================================
-   Features Section
+   Features Section - Small, Compact & Reliable
    ======================================== */
 
 .features-section {
-    padding: 80px 5%;
+    padding: 30px 5% 40px 5%; /* تصغير الحجم */
     background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
     position: relative;
-    margin-top: 60px;
-    border-radius: 40px 40px 0 0;
+    margin-top: 40px;
+    border-radius: 32px 32px 0 0;
 }
 
 .features-container {
@@ -219,124 +299,293 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 50px;
+    gap: 30px;
     flex-wrap: wrap;
 }
 
 .features-content {
     flex: 1;
-    min-width: 380px;
-    max-width: 550px;
+    min-width: 280px;
+    max-width: 500px;
 }
 
 .features-title {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 28px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 12px;
     line-height: 1.3;
     color: #0a0e1a;
 }
 
 .features-description {
-    font-size: 1rem;
-    line-height: 1.75;
+    font-size: 0.95rem;
+    line-height: 1.6;
     color: #475569;
-    margin-bottom: 18px;
-    letter-spacing: 0.2px;
+    margin-bottom: 16px;
 }
 
-.features-description.second {
-    margin-bottom: 35px;
+.features-actions-container {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 5px;
 }
 
 .features-btn {
     background: linear-gradient(135deg, #38bdf8, #0ea5e9);
     border: none;
-    padding: 14px 32px;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 40px;
+    font-size: 0.95rem;
+    font-weight: 600;
     color: #0a0e1a;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
 }
 
 .features-btn:hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4);
-    gap: 16px;
-    background: linear-gradient(135deg, #0ea5e9, #0284c7);
 }
 
-.features-btn .btn-arrow {
-    font-size: 1.1rem;
-    transition: transform 0.3s;
+.subscribe-guide-btn-new {
+    background: rgba(15, 23, 42, 0.06) !important;
+    border: 1px solid rgba(15, 23, 42, 0.1) !important;
+    border-radius: 12px !important;
+    width: 44px !important;
+    height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1) !important;
+    color: #64748b !important;
+    font-size: 24px !important;
+}
+.subscribe-guide-btn-new:hover {
+    background: rgba(15, 23, 42, 0.12) !important;
+    transform: translateY(-2px) !important;
+    color: #0f172a !important;
+}
+.subscribe-guide-btn-new .material-symbols-outlined {
+    font-size: 24px;
 }
 
-.features-btn:hover .btn-arrow {
-    transform: translateX(5px);
+/* ========================================
+   User Testimonials Slider - Infinite Loop
+   ======================================== */
+
+.user-testimonials-section {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 20px 0 30px !important;
+    background: #f8fafc !important;
+    width: 100% !important;
+    border-top: 1px solid rgba(0,0,0,0.04) !important;
+}
+.testimonials-label {
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    color: #64748b !important;
+    margin-bottom: 20px !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+}
+.testimonials-slider-container {
+    width: 100% !important;
+    max-width: 1200px !important;
+    overflow: hidden !important;
+    position: relative !important;
+    padding: 0 10px !important;
+    box-sizing: border-box !important;
+}
+.testimonials-track {
+    display: flex !important;
+    gap: 20px !important;
+    width: calc(250px * 20) !important;
+    animation: slideTestimonials 35s linear infinite !important;
+}
+@keyframes slideTestimonials {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-250px * 10)); }
+}
+.testimonial-item {
+    flex: 0 0 220px !important;
+    width: 220px !important;
+    height: auto !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+    background: #ffffff !important;
+    border: 1px solid #f1f5f9 !important;
+    transition: transform 0.3s ease !important;
+}
+.testimonial-item:hover {
+    transform: scale(1.02) !important;
+}
+.testimonial-item img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: cover !important;
+}
+.testimonials-track:hover {
+    animation-play-state: paused !important;
 }
 
-.features-images {
-    flex: 1;
-    min-width: 650px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* ========================================
+   Home Page Mobile Responsiveness (Updates)
+   ======================================== */
+@media (max-width: 768px) {
+    #home {
+        padding: 20px 16px 0 16px !important;
+        min-height: auto !important;
+    }
+    
+    .bg-pattern {
+        opacity: 0.4;
+        height: 100% !important;
+        min-height: 100vh !important;
+    }
+    
+    /* الحاوية الرئيسية - عمودي */
+    .hero-container {
+        flex-direction: column !important;
+        gap: 20px !important;
+        padding-top: 8px;
+    }
+
+    .hero-image-side {
+        min-width: unset !important;
+        width: 100%;
+        order: 0;
+        margin-bottom: 0;
+    }
+    
+    .image-card {
+        padding: 8px;
+        border-radius: 20px;
+        max-width: 280px;
+        margin: 0 auto;
+        background: rgba(20, 25, 45, 0.5);
+    }
+    
+    .certificate-img {
+        max-width: 100% !important;
+        border-radius: 12px;
+    }
+    .hero-content-side {
+        min-width: unset !important;
+        width: 100%;
+        order: 1;
+        padding: 0 4px;
+        text-align: right;
+        direction: rtl;
+    }
+
+    .hero-title {
+        font-size: clamp(1.4rem, 5vw, 1.8rem) !important;
+        text-align: right;
+        margin-bottom: 4px;
+        line-height: 1.3;
+        letter-spacing: -0.3px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+        width: 100%;
+    }
+
+    .hero-description-wrapper {
+        margin-bottom: 20px;
+        text-align: right;
+        direction: rtl;
+    }
+
+    .hero-intro-text {
+        font-size: 0.85rem !important;
+        text-align: right;
+        line-height: 1.7;
+        padding: 0 2px;
+        color: #b0b8c9;
+        direction: rtl;
+    }
+
+    .hero-actions-container {
+        flex-direction: column !important;
+        width: 100% !important;
+        align-items: stretch !important;
+        gap: 12px !important;
+        margin: 15px 0 20px !important;
+    }
+    .hero-btn-primary, .hero-btn-whatsapp {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 16px 20px !important;
+        font-size: 0.95rem !important;
+        height: 52px !important;
+        border-radius: 14px !important;
+    }
+    
+    .features-section {
+        padding: 30px 16px !important;
+        margin-top: 30px !important;
+        border-radius: 28px 28px 0 0 !important;
+    }
+    .features-content {
+        min-width: unset !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        text-align: center;
+    }
+    .features-actions-container {
+        justify-content: center !important;
+        width: 100% !important;
+    }
+    .features-btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+    .subscribe-guide-btn-new {
+        width: 44px;
+        height: 44px;
+    }
+
+    .testimonials-slider-container {
+        padding: 0 5px !important;
+        max-width: 100% !important;
+    }
+    .testimonial-item {
+        flex: 0 0 160px !important;
+        width: 160px !important;
+        border-radius: 12px !important;
+    }
+    @keyframes slideTestimonials {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-160px * 10)); }
+    }
 }
 
-.image-stack {
-    position: relative;
-    width: 100%;
-    max-width: 700px;
-    min-height: 520px;
+/* ========================================
+   إخفاء العناصر القديمة التي طلبت حذفها
+   ======================================== */
+#reviewsWidget, .reviews-widget {
+    display: none !important;
 }
-
-.image-card-feature {
-    background: white;
-    border-radius: 20px;
-    padding: 15px;
-    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
-    transition: all 0.35s ease;
-    overflow: hidden;
-    width: 100%;
+.features-images, .image-stack, .image-card-feature, .image-top, .image-bottom {
+    display: none !important;
 }
-
-.image-card-feature:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.15);
+.subscribe-guide-btn {
+    display: none !important;
 }
-
-.image-top {
-    position: absolute;
-    top: 40px;
-    right: 20px;
-    width: 78%;
-    z-index: 2;
-    transform: rotate(3deg);
-}
-
-.image-bottom {
-    position: absolute;
-    bottom: 40px;
-    left: 20px;
-    width: 78%;
-    z-index: 1;
-    transform: rotate(-2deg);
-}
-
-.feature-img {
-    width: 100%;
-    height: auto;
-    border-radius: 16px;
-    display: block;
-    background: white;
-    object-fit: contain;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+.info-glass-card {
+    display: none !important;
 }
 
 /* ========================================
@@ -2390,27 +2639,10 @@ body:has(#exam.active) .left-side #navSubscribeBtn { order: 4 !important; }
         font-size: 0.8rem !important;
     }
 
-    /* البطاقة الزجاجية */
-    .info-glass-card {
-        margin: 16px 0 24px 0;
-        padding: 14px 18px;
-        border-radius: 18px;
-        background: rgba(56, 189, 248, 0.06);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(56, 189, 248, 0.15);
-        gap: 12px;
-    }
 
-    .info-glass-card .hero-desc {
-        font-size: 0.8rem !important;
-        padding: 0;
-        text-align: center;
-    }
 
-    .info-icon {
-        font-size: 1.3rem;
-        flex-shrink: 0;
-    }
+
+    /* INFO GLASS CARD - REMOVED COMPLETELY AS REQUESTED */
 
     /* زر البداية */
     .hero-btn-primary {
@@ -2430,38 +2662,7 @@ body:has(#exam.active) .left-side #navSubscribeBtn { order: 4 !important; }
         box-shadow: 0 6px 28px rgba(56, 189, 248, 0.35);
     }
 
-    /* بطاقة الثقة */
-    .reviews-widget {
-        margin: 0 auto 8px auto;
-        width: fit-content;
-        max-width: 100%;
-    }
-
-    .widget-bubble {
-        padding: 8px 16px;
-        border-radius: 50px;
-        background: rgba(15, 23, 42, 0.85);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(56, 189, 248, 0.2);
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-    }
-
-    .widget-text {
-        font-size: 0.7rem !important;
-    }
-
-    .widget-badge {
-        font-size: 0.6rem;
-        padding: 2px 8px;
-    }
-
-    .widget-slide {
-        width: 48px !important;
-        height: 48px !important;
-        border-radius: 12px !important;
-        border: 2px solid rgba(56, 189, 248, 0.15);
-    }
-
+    /* REVIEWS WIDGET - REMOVED COMPLETELY */
     /* ===== قسم المميزات - إصلاح كامل للهاتف مع منع التجاوز ===== */
     .features-section {
         padding: 40px 16px !important;
@@ -3433,7 +3634,6 @@ body:has(#exam.active) .left-side #navSubscribeBtn { order: 4 !important; }
         margin-top: 10px !important;
     }
 }
-/* للشاشات الصغيرة جداً */
 @media (max-width: 480px) {
     .teile-row {
         gap: 5px !important;
@@ -3449,7 +3649,17 @@ body:has(#exam.active) .left-side #navSubscribeBtn { order: 4 !important; }
     }
     
     .hero-title {
-        font-size: 1.2rem !important;
+        font-size: clamp(1rem, 4vw, 1.2rem) !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .hero-content-side p[style*="خاليه من أخطاء PDFs"] {
+        font-size: clamp(0.8rem, 3.5vw, 1rem) !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     
     .question-text {
@@ -7503,6 +7713,29 @@ body:has(#list.active) #backHomeBtn {
         font-size: 0.8rem !important;
         word-break: break-word !important;
     }
+}
+/* ========================================
+   New Hero Section Content & Cards
+   ======================================== */
+
+.hero-description-wrapper {
+    margin-bottom: 20px;
+    text-align: right;
+    direction: rtl;
+}
+
+.hero-intro-text {
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
+    line-height: 1.7;
+    color: #b0b8c9;
+    margin: 0.5em 0 1.2em 0;
+    max-width: 90%;
+    text-align: right;
+    direction: rtl;
+}
+.hero-intro-text .highlight {
+    color: #38bdf8;
+    font-weight: 500;
 }
 /* ============================================
    studySession.css - النسخة النهائية (متكاملة)
