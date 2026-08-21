@@ -1867,15 +1867,15 @@ body.dark-mode .mobile-banner span {
                 </div>
             </div>
 
-            <div class="hero-content-side" dir="rtl" style="text-align: right; direction: rtl;">
+                        <div class="hero-content-side" dir="rtl" style="text-align: right; direction: rtl;">
 
-                <!-- العنوان الرئيسي - محاذاة لليمين، بارز -->
+                <!-- العنوان الرئيسي -->
                 <h1 class="hero-title" style="
-                    font-size: clamp(2rem, 5.5vw, 3.2rem);
+                    font-size: clamp(1.8rem, 5vw, 3rem);
                     font-weight: 700;
                     color: #e2e8f0;
                     letter-spacing: -0.02em;
-                    margin: 0 0 0.15em 0;
+                    margin: 0 0 2px 0;
                     white-space: nowrap;
                     display: block;
                     width: 100%;
@@ -1886,12 +1886,12 @@ body.dark-mode .mobile-banner span {
                     أفضل منصة <span style="color: #38bdf8; text-shadow: 0 0 12px rgba(56, 189, 248, 0.2);">TELC B2</span>
                 </h1>
 
-                <!-- عبارة "خاليه من أخطاء PDFs" - بإزاحة إلى اليسار قليلاً (نحو الداخل) -->
-                <p class="hero-sub-pdf" style="
-                    font-size: clamp(1.3rem, 4vw, 2.4rem);
+                <!-- عبارة "خاليه من أخطاء PDFs" - حجم قريب من العنوان، بدون أيقونة -->
+                <p style="
+                    font-size: clamp(1.3rem, 4.2vw, 2.4rem);
                     font-weight: 500;
                     color: #cbd5e1;
-                    margin: 0 0 0.6em 0;
+                    margin: 0 0 14px 0;
                     letter-spacing: 0.02em;
                     white-space: nowrap;
                     display: block;
@@ -1899,53 +1899,28 @@ body.dark-mode .mobile-banner span {
                     text-align: right;
                     direction: rtl;
                     unicode-bidi: plaintext;
-                    padding-right: clamp(1.5rem, 6%, 4rem); /* إزاحة إلى الداخل (يسار) */
-                    box-sizing: border-box;
                 ">
                     خاليه من أخطاء <span style="display: inline-block; direction: ltr; unicode-bidi: embed;">PDFs</span>
                 </p>
 
-                <!-- الفقرة - كتلة مستقلة أسفل العبارة -->
-                <div class="hero-description-wrapper" style="text-align: right; direction: rtl; margin-top: 0.5em;">
-                    <p class="hero-intro-text" style="
-                        text-align: right;
-                        direction: rtl;
-                        margin-top: 0;
-                        max-width: 90%;
-                    ">
+                <div class="hero-description-wrapper" style="text-align: right; direction: rtl;">
+                    <!-- الفقرة التعريفية -->
+                    <p class="hero-intro-text" style="text-align: right; direction: rtl;">
                         هنا غادي تلقى امتحانات <span class="highlight">التيلك بي 2</span> منظمة ومجمعة فبلاصة وحدة، مع التصحيح الكامل والأجوبة الصحيحة، باش تراجع بسهولة وبدون ما تضيع وقتك فالتقلاب على الـ PDFs. ومع بطاقات الحفظ والمراجعة الذكية، تقدر تثبت المعلومات وتراجع الأخطاء ديالك بطريقة أكثر فعالية. وكلشي مصمم باش يخليك تركز على المراجعة والتقدم ديالك، بلا تعقيد وبلا تضييع للوقت.
                     </p>
                 </div>
 
                 <!-- حاوية الأزرار الرئيسية -->
-                <div class="hero-actions-container" style="
-                    justify-content: flex-start;
-                    direction: rtl;
-                    gap: clamp(10px, 2vw, 20px);
-                    margin-top: clamp(1.2em, 3vh, 2em);
-                    flex-wrap: wrap;
-                ">
+                <div class="hero-actions-container" style="justify-content: flex-start; direction: rtl;">
                     <!-- زر اكتشف التمارين -->
-                    <button id="startBtn" class="hero-btn-primary" style="
-                        padding: clamp(0.6rem, 1.2vw, 1rem) clamp(1.2rem, 2.5vw, 2rem);
-                        font-size: clamp(0.9rem, 1.2vw, 1.05rem);
-                        border-radius: 14px;
-                        min-height: 44px;
-                        flex: 0 1 auto;
-                    ">
+                    <button id="startBtn" class="hero-btn-primary">
                         اكتشف التمارين
                         <span class="btn-arrow-icon">→</span>
                     </button>
 
                     <!-- زر انضم للمجموعة (مع أيقونة خضراء فقط) -->
-                    <a href="https://chat.whatsapp.com/BfUSgkGrh6y3LONEpEsRFU" target="_blank" class="hero-btn-whatsapp" style="
-                        padding: clamp(0.6rem, 1.2vw, 1rem) clamp(1.2rem, 2.5vw, 2rem);
-                        font-size: clamp(0.9rem, 1.2vw, 1.05rem);
-                        border-radius: 14px;
-                        min-height: 44px;
-                        flex: 0 1 auto;
-                    ">
-                        <img width="24" height="24" src="https://img.icons8.com/softteal-line/24/12B886/whatsapp.png" alt="whatsapp" class="whatsapp-icon-img" style="color: #12B886; filter: none; opacity: 0.9; width: clamp(18px, 2vw, 24px); height: clamp(18px, 2vw, 24px);">
+                    <a href="https://chat.whatsapp.com/BfUSgkGrh6y3LONEpEsRFU" target="_blank" class="hero-btn-whatsapp">
+                        <img width="24" height="24" src="https://img.icons8.com/softteal-line/24/12B886/whatsapp.png" alt="whatsapp" class="whatsapp-icon-img" style="color: #12B886; filter: none; opacity: 0.9;">
                         انضم للمجموعة
                     </a>
                 </div>
