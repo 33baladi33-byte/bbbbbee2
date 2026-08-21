@@ -5542,5 +5542,2743 @@ if (expiryText) {
 </script>
 </script>
 
+<script>
+// =========================================================
+// ZERTIVA — التعديل الكامل (الصفحة الرئيسية)
+// =========================================================
+
+/* =========================================================
+   1. تعديل عرض Hero على الشاشات الصغيرة
+   2. الزران دائماً بنفس الحجم ويتصغران مع الشاشة
+   3. حذف القسم القديم الخاص بصور المستخدمين
+   4. إزالة الخلفية المرتبطة بالتعديل الجديد فقط
+   5. إنشاء قسم Zertiva الجديد
+   6. الصور داخل نفس بطاقة "صور من مستخدمينا"
+   7. الصور: review1 → review6 → review1 → review6 → ...
+   8. لا يوجد فراغ بعد review6
+   9. دعم السحب بالماوس واللمس
+   10. Footer بسيط جداً في الأسفل
+   11. Footer بدون خلفية مستقلة
+   12. نصوص Footer أبيض خفيف بدل الرمادي
+   13. لا يتم تعديل أي جزء آخر من الموقع
+   ========================================================= */
+
+(function() {
+
+    const style = document.createElement('style');
+
+    style.id = 'zertiva-hero-mobile-style';
+
+    style.textContent = `
+
+        @media (max-width: 769px) {
+
+            .hero-content-side .hero-description-wrapper {
+                width: 100% !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                padding: 0 !important;
+                box-sizing: border-box !important;
+            }
+
+            .hero-content-side .hero-intro-text {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                box-sizing: border-box !important;
+                text-align: right !important;
+            }
+
+            .hero-content-side .hero-actions-container {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                justify-content: flex-start !important;
+                gap: clamp(5px, 1vw, 7px) !important;
+                width: 100% !important;
+                padding: 0 !important;
+                margin-top: 1em !important;
+                direction: ltr !important;
+                box-sizing: border-box !important;
+            }
+
+            .hero-content-side .hero-actions-container #startBtn,
+            .hero-content-side .hero-actions-container .hero-btn-whatsapp {
+
+                width: clamp(115px, 24vw, 145px) !important;
+                min-width: clamp(115px, 24vw, 145px) !important;
+                max-width: clamp(115px, 24vw, 145px) !important;
+
+                height: clamp(30px, 6vw, 34px) !important;
+                min-height: clamp(30px, 6vw, 34px) !important;
+                max-height: clamp(30px, 6vw, 34px) !important;
+
+                padding: 0 !important;
+
+                font-size:
+                    clamp(0.68rem, 1.8vw, 0.78rem)
+                    !important;
+
+                white-space: nowrap !important;
+
+                flex: 0 0 auto !important;
+
+                display: inline-flex !important;
+
+                align-items: center !important;
+                justify-content: center !important;
+
+                box-sizing: border-box !important;
+            }
+
+            .hero-content-side .hero-actions-container #startBtn {
+                align-self: flex-start !important;
+            }
+
+            .hero-content-side .hero-actions-container .hero-btn-whatsapp {
+
+                align-self: flex-start !important;
+
+                margin-left:
+                    clamp(16px, 5vw, 35px)
+                    !important;
+            }
+
+            .hero-content-side
+            .hero-actions-container
+            .hero-btn-whatsapp img {
+
+                width:
+                    clamp(13px, 3vw, 16px)
+                    !important;
+
+                height:
+                    clamp(13px, 3vw, 16px)
+                    !important;
+
+                flex-shrink: 0 !important;
+            }
+        }
+
+
+        @media (max-width: 499px) {
+
+            .hero-content-side .hero-description-wrapper {
+
+                width:
+                    calc(100% - 8px)
+                    !important;
+
+                margin-left: 4px !important;
+                margin-right: 4px !important;
+            }
+
+            .hero-content-side .hero-intro-text {
+
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+        }
+
+    `;
+
+    document.head.appendChild(style);
+
+})();
+
+
+
+/* =========================================================
+   2. قسم Zertiva + صور المستخدمين
+   ========================================================= */
+
+(function() {
+
+    /* =====================================================
+       حذف النسخ القديمة الخاصة بهذا التعديل فقط
+       ===================================================== */
+
+    const oldFeatures =
+        document.querySelector('.features-section');
+
+    if (oldFeatures) {
+        oldFeatures.remove();
+    }
+
+
+    document
+        .querySelectorAll(
+            '.user-testimonials-section, ' +
+            '.testimonials-slider-container, ' +
+            '.testimonials-track, ' +
+            '.testimonial-item'
+        )
+        .forEach(function(el) {
+
+            if (
+                !el.closest(
+                    '#zertiva-choice-section'
+                )
+            ) {
+                el.remove();
+            }
+
+        });
+
+
+    /* =====================================================
+       حذف العناصر القديمة الخاصة بالأقسام السابقة
+       ===================================================== */
+
+    document
+        .querySelectorAll(
+            '.features-actions-container, ' +
+            '.features-btn, ' +
+            '.subscribe-guide-btn-new'
+        )
+        .forEach(function(el) {
+
+            if (
+                !el.closest(
+                    '#zertiva-choice-section'
+                )
+            ) {
+                el.remove();
+            }
+
+        });
+
+
+    /* =====================================================
+       حذف النسخة القديمة من قسم Zertiva
+       ===================================================== */
+
+    const oldSection =
+        document.getElementById(
+            'zertiva-choice-section'
+        );
+
+    const oldStyle =
+        document.getElementById(
+            'zertiva-choice-style'
+        );
+
+    if (oldSection) {
+        oldSection.remove();
+    }
+
+    if (oldStyle) {
+        oldStyle.remove();
+    }
+
+
+    /* =====================================================
+       العثور على Hero
+       ===================================================== */
+
+    const hero =
+        document.querySelector(
+            '.hero-content-side'
+        );
+
+    if (!hero) {
+
+        console.warn(
+            '❌ لم يتم العثور على قسم Hero'
+        );
+
+        return;
+    }
+
+
+    /* =====================================================
+       إنشاء القسم الجديد
+       ===================================================== */
+
+    const section =
+        document.createElement('section');
+
+    section.id =
+        'zertiva-choice-section';
+
+    section.dir =
+        'rtl';
+
+
+    section.innerHTML = `
+
+        <div class="zertiva-choice-inner">
+
+
+            <!-- ==========================================
+                 العنوان
+                 ========================================== -->
+
+            <div class="zertiva-choice-heading">
+
+                <h2>
+                    علاش
+                    <span>Zertiva</span>
+                    هو أفضل اختيار؟
+                </h2>
+
+            </div>
+
+
+            <!-- ==========================================
+                 بطاقة المعلومات
+                 ========================================== -->
+
+            <div class="zertiva-proof">
+
+                <div class="zertiva-proof-text">
+
+                    <span class="zertiva-proof-label">
+                        TELC B2
+                    </span>
+
+                    <h3>
+                        راجع بذكاء، وخلّي تركيزك على الامتحان
+                    </h3>
+
+                    <p>
+                        ما تحتاجش تضيع وقتك فالتقليب بين ملفات مختلفة.
+                        الامتحانات منظمة، التصحيح واضح، والإجابات الصحيحة
+                        موجودة باش تقدر تراجع الأخطاء ديالك وتثبت المعلومات
+                        اللي محتاجها قبل الامتحان.
+                    </p>
+
+
+                    <div class="zertiva-stats">
+
+                        <div>
+
+                            <strong>
+                                +2000
+                            </strong>
+
+                            <span>
+                                طالب مسجل
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                B1 &amp; B2
+                            </strong>
+
+                            <span>
+                                مستويات متاحة
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                100%
+                            </strong>
+
+                            <span>
+                                PDFs مصححة
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==========================================
+                 صور المستخدمين
+                 ========================================== -->
+
+            <div class="zertiva-reviews-section">
+
+                <div class="zertiva-photo-placeholder">
+
+
+                    <div class="zertiva-photo-icon">
+                        ✦
+                    </div>
+
+
+                    <h3>
+                        صور من مستخدمينا
+                    </h3>
+
+
+                    <p>
+                        تجارب حقيقية من مجتمع Zertiva.
+                    </p>
+
+
+                    <!-- ======================================
+                         Carousel
+                         ====================================== -->
+
+                    <div class="zertiva-review-carousel">
+
+                        <div class="zertiva-review-track">
+
+
+                            <!-- ORIGINAL 1 -->
+
+                            <div class="zertiva-phone">
+
+                                <img
+                                    src="https://33baladi33-byte.github.io/bbbbbee2/images/review1.webp"
+                                    alt="تجربة مستخدم Zertiva"
+                                    draggable="false"
+                                >
+
+                            </div>
+
+
+                            <!-- ORIGINAL 2 -->
+
+                            <div class="zertiva-phone">
+
+                                <img
+                                    src="https://33baladi33-byte.github.io/bbbbbee2/images/review2.webp"
+                                    alt="تجربة مستخدم Zertiva"
+                                    draggable="false"
+                                >
+
+                            </div>
+
+
+                            <!-- ORIGINAL 3 -->
+
+                            <div class="zertiva-phone">
+
+                                <img
+                                    src="https://33baladi33-byte.github.io/bbbbbee2/images/review3.webp"
+                                    alt="تجربة مستخدم Zertiva"
+                                    draggable="false"
+                                >
+
+                            </div>
+
+
+                            <!-- ORIGINAL 4 -->
+
+                            <div class="zertiva-phone">
+
+                                <img
+                                    src="https://33baladi33-byte.github.io/bbbbbee2/images/review4.webp"
+                                    alt="تجربة مستخدم Zertiva"
+                                    draggable="false"
+                                >
+
+                            </div>
+
+
+                            <!-- ORIGINAL 5 -->
+
+                            <div class="zertiva-phone">
+
+                                <img
+                                    src="https://33baladi33-byte.github.io/bbbbbee2/images/review5.webp"
+                                    alt="تجربة مستخدم Zertiva"
+                                    draggable="false"
+                                >
+
+                            </div>
+
+
+                            <!-- ORIGINAL 6 -->
+
+                            <div class="zertiva-phone">
+
+                                <img
+                                    src="https://33baladi33-byte.github.io/bbbbbee2/images/review6.webp"
+                                    alt="تجربة مستخدم Zertiva"
+                                    draggable="false"
+                                >
+
+                            </div>
+
+
+                            <!-- DUPLICATE 1 -->
+
+                            <div class="zertiva-phone">
+
+                                <img
+                                    src="https://33baladi33-byte.github.io/bbbbbee2/images/review1.webp"
+                                    alt=""
+                                    aria-hidden="true"
+                                    draggable="false"
+                                >
+
+                            </div>
+
+
+                            <!-- DUPLICATE 2 -->
+
+                            <div class="zertiva-phone">
+
+                                <img
+                                    src="https://33baladi33-byte.github.io/bbbbbee2/images/review2.webp"
+                                    alt=""
+                                    aria-hidden="true"
+                                    draggable="false"
+                                >
+
+                            </div>
+
+
+                            <!-- DUPLICATE 3 -->
+
+                            <div class="zertiva-phone">
+
+                                <img
+                                    src="https://33baladi33-byte.github.io/bbbbbee2/images/review3.webp"
+                                    alt=""
+                                    aria-hidden="true"
+                                    draggable="false"
+                                >
+
+                            </div>
+
+
+                            <!-- DUPLICATE 4 -->
+
+                            <div class="zertiva-phone">
+
+                                <img
+                                    src="https://33baladi33-byte.github.io/bbbbbee2/images/review4.webp"
+                                    alt=""
+                                    aria-hidden="true"
+                                    draggable="false"
+                                >
+
+                            </div>
+
+
+                            <!-- DUPLICATE 5 -->
+
+                            <div class="zertiva-phone">
+
+                                <img
+                                    src="https://33baladi33-byte.github.io/bbbbbee2/images/review5.webp"
+                                    alt=""
+                                    aria-hidden="true"
+                                    draggable="false"
+                                >
+
+                            </div>
+
+
+                            <!-- DUPLICATE 6 -->
+
+                            <div class="zertiva-phone">
+
+                                <img
+                                    src="https://33baladi33-byte.github.io/bbbbbee2/images/review6.webp"
+                                    alt=""
+                                    aria-hidden="true"
+                                    draggable="false"
+                                >
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    /* =========================================================
+       CSS للقسم الجديد
+       ========================================================= */
+
+    const style =
+        document.createElement('style');
+
+    style.id =
+        'zertiva-choice-style';
+
+
+    style.textContent = `
+
+
+        /* =====================================================
+           القسم الجديد شفاف بالكامل
+           ===================================================== */
+
+        #zertiva-choice-section,
+        #zertiva-choice-section::before,
+        #zertiva-choice-section::after {
+
+            background:
+                transparent !important;
+
+            background-color:
+                transparent !important;
+
+            background-image:
+                none !important;
+        }
+
+
+        #zertiva-choice-section {
+
+            width:
+                100%;
+
+            box-sizing:
+                border-box;
+
+            padding:
+                clamp(45px, 7vw, 90px)
+                clamp(16px, 4vw, 55px);
+
+            color:
+                #e2e8f0;
+
+            font-family:
+                inherit;
+
+            overflow:
+                hidden;
+        }
+
+
+        #zertiva-choice-section * {
+            box-sizing:
+                border-box;
+        }
+
+
+        /* =====================================================
+           العنوان
+           ===================================================== */
+
+        .zertiva-choice-heading {
+
+            width:
+                100%;
+
+            text-align:
+                center;
+
+            margin-bottom:
+                clamp(25px, 4vw, 45px);
+
+            background:
+                transparent !important;
+        }
+
+
+        .zertiva-choice-heading h2 {
+
+            margin:
+                0;
+
+            font-size:
+                clamp(
+                    1.45rem,
+                    3.5vw,
+                    2.7rem
+                );
+
+            line-height:
+                1.35;
+
+            font-weight:
+                750;
+
+            letter-spacing:
+                -0.025em;
+        }
+
+
+        .zertiva-choice-heading h2 span {
+
+            color:
+                #315a78;
+
+            text-shadow:
+                0 0 18px
+                rgba(49,90,120,0.18);
+        }
+
+
+        /* =====================================================
+           بطاقة المعلومات
+           ===================================================== */
+
+        .zertiva-proof {
+
+            width:
+                100%;
+
+            padding:
+                clamp(22px, 4vw, 35px);
+
+            border-radius:
+                20px;
+
+            background:
+                rgba(15,23,42,0.42);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.06);
+
+            box-shadow:
+                0 20px 50px
+                rgba(0,0,0,0.16),
+
+                inset 0 1px 0
+                rgba(255,255,255,0.035);
+        }
+
+
+        .zertiva-proof-text {
+
+            width:
+                100%;
+
+            text-align:
+                right;
+        }
+
+
+        .zertiva-proof-label {
+
+            display:
+                inline-block;
+
+            color:
+                #315a78;
+
+            font-size:
+                0.75rem;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                0.08em;
+
+            margin-bottom:
+                8px;
+        }
+
+
+        .zertiva-proof-text h3 {
+
+            margin:
+                0 0 9px;
+
+            font-size:
+                clamp(
+                    1rem,
+                    2vw,
+                    1.4rem
+                );
+
+            line-height:
+                1.5;
+
+            color:
+                #e2e8f0;
+        }
+
+
+        .zertiva-proof-text p {
+
+            margin:
+                0;
+
+            color:
+                #94a3b8;
+
+            font-size:
+                clamp(
+                    0.78rem,
+                    1.2vw,
+                    0.95rem
+                );
+
+            line-height:
+                1.9;
+
+            width:
+                100%;
+        }
+
+
+        /* =====================================================
+           الإحصائيات
+           ===================================================== */
+
+        .zertiva-stats {
+
+            width:
+                100%;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0,1fr));
+
+            gap:
+                clamp(8px, 1.5vw, 14px);
+
+            margin-top:
+                clamp(20px, 3vw, 28px);
+        }
+
+
+        .zertiva-stats div {
+
+            min-width:
+                0;
+
+            text-align:
+                center;
+
+            padding:
+                clamp(12px, 1.8vw, 16px)
+                7px;
+
+            border-radius:
+                14px;
+
+            background:
+                rgba(255,255,255,0.025);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.05);
+        }
+
+
+        .zertiva-stats strong {
+
+            display:
+                block;
+
+            color:
+                #e2e8f0;
+
+            font-size:
+                clamp(
+                    0.85rem,
+                    1.8vw,
+                    1.2rem
+                );
+
+            white-space:
+                nowrap;
+        }
+
+
+        .zertiva-stats span {
+
+            display:
+                block;
+
+            margin-top:
+                5px;
+
+            color:
+                #64748b;
+
+            font-size:
+                clamp(
+                    0.62rem,
+                    1vw,
+                    0.78rem
+                );
+
+            white-space:
+                nowrap;
+        }
+
+
+        /* =====================================================
+           قسم الصور
+           ===================================================== */
+
+        .zertiva-reviews-section {
+
+            width:
+                100%;
+
+            margin-top:
+                clamp(28px, 5vw, 55px);
+
+            background:
+                transparent !important;
+
+            background-color:
+                transparent !important;
+
+            background-image:
+                none !important;
+        }
+
+
+        .zertiva-photo-placeholder {
+
+            width:
+                100%;
+
+            min-height:
+                clamp(125px, 17vw, 170px);
+
+            padding:
+                clamp(22px, 4vw, 32px);
+
+            border-radius:
+                20px;
+
+            border:
+                1px solid
+                rgba(148,163,184,0.12);
+
+            background:
+                rgba(15,23,42,0.18);
+
+            text-align:
+                center;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
+            justify-content:
+                flex-start;
+
+            overflow:
+                hidden;
+        }
+
+
+        .zertiva-photo-icon {
+
+            width:
+                40px;
+
+            height:
+                40px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                50%;
+
+            background:
+                rgba(49,90,120,0.12);
+
+            color:
+                #315a78;
+
+            margin-bottom:
+                10px;
+
+            box-shadow:
+                0 0 25px
+                rgba(49,90,120,0.08);
+        }
+
+
+        .zertiva-photo-placeholder h3 {
+
+            margin:
+                0;
+
+            color:
+                #cbd5e1;
+
+            font-size:
+                clamp(
+                    0.95rem,
+                    1.5vw,
+                    1.1rem
+                );
+        }
+
+
+        .zertiva-photo-placeholder p {
+
+            margin:
+                6px 0 0;
+
+            color:
+                #64748b;
+
+            font-size:
+                clamp(
+                    0.7rem,
+                    1vw,
+                    0.8rem
+                );
+        }
+
+
+        /* =====================================================
+           Carousel
+           ===================================================== */
+
+        .zertiva-review-carousel {
+
+            width:
+                100%;
+
+            margin-top:
+                clamp(25px, 4vw, 40px);
+
+            overflow:
+                hidden;
+
+            position:
+                relative;
+
+            padding:
+                12px 0 22px;
+
+            touch-action:
+                pan-y;
+
+            cursor:
+                grab;
+
+            background:
+                transparent !important;
+        }
+
+
+        .zertiva-review-carousel:active {
+
+            cursor:
+                grabbing;
+        }
+
+
+        .zertiva-review-track {
+
+            display:
+                flex;
+
+            align-items:
+                flex-start;
+
+            gap:
+                clamp(14px, 2vw, 25px);
+
+            width:
+                max-content;
+
+            direction:
+                ltr;
+
+            transform:
+                translate3d(0,0,0);
+
+            will-change:
+                transform;
+
+            transition:
+                transform
+                0.9s
+                cubic-bezier(
+                    0.22,
+                    0.61,
+                    0.36,
+                    1
+                );
+
+            user-select:
+                none;
+
+            background:
+                transparent !important;
+        }
+
+
+        /* =====================================================
+           شكل الهاتف
+           ===================================================== */
+
+        .zertiva-phone {
+
+            position:
+                relative;
+
+            flex:
+                0 0
+                clamp(145px,18vw,205px);
+
+            width:
+                clamp(145px,18vw,205px);
+
+            aspect-ratio:
+                9 / 18.5;
+
+            padding:
+                clamp(5px,0.6vw,7px);
+
+            border-radius:
+                clamp(22px,3vw,32px);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #202b3b,
+                    #080d15
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            box-shadow:
+
+                0 20px 45px
+                rgba(0,0,0,0.34),
+
+                0 0 0 1px
+                rgba(0,0,0,0.25),
+
+                inset 0 1px 1px
+                rgba(255,255,255,0.08);
+
+            overflow:
+                hidden;
+
+            flex-shrink:
+                0;
+        }
+
+
+        .zertiva-phone::before {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            top:
+                7px;
+
+            left:
+                50%;
+
+            transform:
+                translateX(-50%);
+
+            width:
+                30%;
+
+            height:
+                4px;
+
+            border-radius:
+                10px;
+
+            background:
+                rgba(0,0,0,0.65);
+
+            z-index:
+                3;
+        }
+
+
+        .zertiva-phone img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            display:
+                block;
+
+            object-fit:
+                cover;
+
+            object-position:
+                center;
+
+            border-radius:
+                clamp(17px,2.4vw,25px);
+
+            background:
+                #0b111b;
+
+            user-select:
+                none;
+
+            -webkit-user-drag:
+                none;
+
+            pointer-events:
+                none;
+        }
+
+
+        /* =====================================================
+           TABLET / MOBILE
+           ===================================================== */
+
+        @media (max-width: 700px) {
+
+            #zertiva-choice-section {
+
+                padding-left:
+                    14px;
+
+                padding-right:
+                    14px;
+            }
+
+
+            .zertiva-proof {
+
+                padding:
+                    20px;
+            }
+
+
+            .zertiva-phone {
+
+                flex-basis:
+                    clamp(145px,27vw,175px);
+
+                width:
+                    clamp(145px,27vw,175px);
+            }
+        }
+
+
+        @media (max-width: 500px) {
+
+            #zertiva-choice-section {
+
+                padding-left:
+                    10px;
+
+                padding-right:
+                    10px;
+            }
+
+
+            .zertiva-proof {
+
+                padding:
+                    17px;
+
+                border-radius:
+                    17px;
+            }
+
+
+            .zertiva-stats {
+
+                gap:
+                    6px;
+            }
+
+
+            .zertiva-stats div {
+
+                padding:
+                    11px 3px;
+
+                border-radius:
+                    11px;
+            }
+
+
+            .zertiva-phone {
+
+                flex-basis:
+                    clamp(125px,34vw,155px);
+
+                width:
+                    clamp(125px,34vw,155px);
+            }
+
+
+            .zertiva-review-track {
+
+                gap:
+                    12px;
+            }
+        }
+
+
+        @media (max-width: 380px) {
+
+            .zertiva-phone {
+
+                flex-basis:
+                    128px;
+
+                width:
+                    128px;
+            }
+
+
+            .zertiva-review-track {
+
+                gap:
+                    10px;
+            }
+
+
+            .zertiva-proof {
+
+                padding:
+                    15px;
+            }
+        }
+
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .zertiva-review-track {
+
+                transition:
+                    none !important;
+            }
+        }
+
+    `;
+
+
+    document.head.appendChild(
+        style
+    );
+
+
+    /* =========================================================
+       وضع القسم مباشرة بعد Hero
+       ========================================================= */
+
+    const heroSection =
+        hero.closest('section') ||
+        hero.parentElement;
+
+
+    if (
+        heroSection &&
+        heroSection.parentElement
+    ) {
+
+        heroSection.insertAdjacentElement(
+            'afterend',
+            section
+        );
+
+    } else {
+
+        hero.parentElement.appendChild(
+            section
+        );
+
+    }
+
+
+    /* =========================================================
+       CAROUSEL
+       ========================================================= */
+
+    const track =
+        section.querySelector(
+            '.zertiva-review-track'
+        );
+
+
+    const carousel =
+        section.querySelector(
+            '.zertiva-review-carousel'
+        );
+
+
+    const phones =
+        Array.from(
+            section.querySelectorAll(
+                '.zertiva-phone'
+            )
+        );
+
+
+    /* =========================================================
+       عدد الصور الأصلية
+       ========================================================= */
+
+    const ORIGINAL_COUNT =
+        6;
+
+
+    let currentIndex =
+        0;
+
+
+    let timer =
+        null;
+
+
+    let isTransitioning =
+        false;
+
+
+    /* =========================================================
+       حساب المسافة بين الصور
+       ========================================================= */
+
+    function getGap() {
+
+        const computed =
+            window.getComputedStyle(
+                track
+            );
+
+        return (
+            parseFloat(
+                computed.gap
+            ) || 0
+        );
+    }
+
+
+    /* =========================================================
+       عرض الصورة
+       ========================================================= */
+
+    function getItemWidth() {
+
+        if (!phones[0]) {
+            return 0;
+        }
+
+        return phones[0]
+            .getBoundingClientRect()
+            .width;
+    }
+
+
+    /* =========================================================
+       تحريك Carousel
+       ========================================================= */
+
+    function moveCarousel(
+        animate = true
+    ) {
+
+        const itemWidth =
+            getItemWidth();
+
+        const gap =
+            getGap();
+
+
+        if (!itemWidth) {
+            return;
+        }
+
+
+        track.style.transition =
+            animate
+
+                ? 'transform 0.9s cubic-bezier(0.22,0.61,0.36,1)'
+
+                : 'none';
+
+
+        track.style.transform =
+            `translate3d(-${
+                currentIndex *
+                (
+                    itemWidth +
+                    gap
+                )
+            }px,0,0)`;
+    }
+
+
+    /* =========================================================
+       نهاية الانتقال
+       ========================================================= */
+
+    track.addEventListener(
+        'transitionend',
+        function(event) {
+
+            if (
+                event.propertyName !==
+                'transform'
+            ) {
+                return;
+            }
+
+
+            isTransitioning =
+                false;
+
+
+            if (
+                currentIndex >=
+                ORIGINAL_COUNT
+            ) {
+
+                currentIndex =
+                    currentIndex -
+                    ORIGINAL_COUNT;
+
+                moveCarousel(false);
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       الصورة التالية
+       ========================================================= */
+
+    function nextSlide() {
+
+        if (isTransitioning) {
+            return;
+        }
+
+
+        isTransitioning =
+            true;
+
+
+        currentIndex++;
+
+
+        moveCarousel(true);
+    }
+
+
+    /* =========================================================
+       الصورة السابقة
+       ========================================================= */
+
+    function previousSlide() {
+
+        if (isTransitioning) {
+            return;
+        }
+
+
+        if (
+            currentIndex === 0
+        ) {
+
+            currentIndex =
+                ORIGINAL_COUNT;
+
+
+            moveCarousel(false);
+
+
+            requestAnimationFrame(
+                function() {
+
+                    requestAnimationFrame(
+                        function() {
+
+                            isTransitioning =
+                                true;
+
+
+                            currentIndex =
+                                ORIGINAL_COUNT - 1;
+
+
+                            moveCarousel(true);
+
+                        }
+                    );
+
+                }
+            );
+
+
+            return;
+        }
+
+
+        isTransitioning =
+            true;
+
+
+        currentIndex--;
+
+
+        moveCarousel(true);
+    }
+
+
+    /* =========================================================
+       التشغيل التلقائي
+       ========================================================= */
+
+    function startCarousel() {
+
+        clearInterval(
+            timer
+        );
+
+
+        timer =
+            setInterval(
+                nextSlide,
+                4000
+            );
+    }
+
+
+    /* =========================================================
+       السحب بالماوس واللمس
+       ========================================================= */
+
+    let isDragging =
+        false;
+
+
+    let startX =
+        0;
+
+
+    let startTranslate =
+        0;
+
+
+    let dragDistance =
+        0;
+
+
+    /* =========================================================
+       الحصول على مكان Track الحالي
+       ========================================================= */
+
+    function getCurrentTranslate() {
+
+        const transform =
+            window.getComputedStyle(
+                track
+            ).transform;
+
+
+        if (
+            !transform ||
+            transform === 'none'
+        ) {
+
+            return 0;
+        }
+
+
+        const matrix =
+            new DOMMatrix(
+                transform
+            );
+
+
+        return matrix.m41;
+    }
+
+
+    /* =========================================================
+       بداية السحب
+       ========================================================= */
+
+    carousel.addEventListener(
+        'pointerdown',
+        function(event) {
+
+            if (isTransitioning) {
+                return;
+            }
+
+
+            isDragging =
+                true;
+
+
+            startX =
+                event.clientX;
+
+
+            startTranslate =
+                getCurrentTranslate();
+
+
+            dragDistance =
+                0;
+
+
+            track.style.transition =
+                'none';
+
+
+            try {
+
+                carousel.setPointerCapture(
+                    event.pointerId
+                );
+
+            } catch (e) {}
+
+
+            clearInterval(
+                timer
+            );
+
+        }
+    );
+
+
+    /* =========================================================
+       أثناء السحب
+       ========================================================= */
+
+    carousel.addEventListener(
+        'pointermove',
+        function(event) {
+
+            if (!isDragging) {
+                return;
+            }
+
+
+            const delta =
+                event.clientX -
+                startX;
+
+
+            dragDistance =
+                delta;
+
+
+            track.style.transform =
+                `translate3d(${
+                    startTranslate +
+                    delta
+                }px,0,0)`;
+
+        }
+    );
+
+
+    /* =========================================================
+       نهاية السحب
+       ========================================================= */
+
+    carousel.addEventListener(
+        'pointerup',
+        function(event) {
+
+            if (!isDragging) {
+                return;
+            }
+
+
+            isDragging =
+                false;
+
+
+            try {
+
+                carousel.releasePointerCapture(
+                    event.pointerId
+                );
+
+            } catch (e) {}
+
+
+            const threshold =
+                45;
+
+
+            if (
+                Math.abs(
+                    dragDistance
+                ) > threshold
+            ) {
+
+
+                if (
+                    dragDistance < 0
+                ) {
+
+                    if (
+                        currentIndex >=
+                        ORIGINAL_COUNT
+                    ) {
+
+                        currentIndex =
+                            0;
+                    }
+
+
+                    currentIndex++;
+
+
+                    isTransitioning =
+                        true;
+
+
+                    moveCarousel(true);
+
+
+                } else {
+
+                    previousSlide();
+
+                }
+
+
+            } else {
+
+                moveCarousel(true);
+
+            }
+
+
+            startCarousel();
+
+        }
+    );
+
+
+    /* =========================================================
+       إلغاء السحب
+       ========================================================= */
+
+    carousel.addEventListener(
+        'pointercancel',
+        function() {
+
+            if (!isDragging) {
+                return;
+            }
+
+
+            isDragging =
+                false;
+
+
+            moveCarousel(true);
+
+
+            startCarousel();
+
+        }
+    );
+
+
+    /* =========================================================
+       إعادة حساب مكان الصور عند تغيير حجم الشاشة
+       ========================================================= */
+
+    let resizeTimer =
+        null;
+
+
+    window.addEventListener(
+        'resize',
+        function() {
+
+            clearTimeout(
+                resizeTimer
+            );
+
+
+            resizeTimer =
+                setTimeout(
+                    function() {
+
+                        moveCarousel(false);
+
+                    },
+                    180
+                );
+
+        },
+        {
+            passive:
+                true
+        }
+    );
+
+
+    /* =========================================================
+       تشغيل أولي
+       ========================================================= */
+
+    requestAnimationFrame(
+        function() {
+
+            moveCarousel(false);
+
+            startCarousel();
+
+        }
+    );
+
+})();
+
+
+
+/* =========================================================
+   3. FOOTER — شفاف بالكامل
+   ========================================================= */
+
+(function() {
+
+    /* =====================================================
+       حذف النسخة السابقة فقط
+       ===================================================== */
+
+    document
+        .getElementById(
+            'zertiva-simple-footer'
+        )
+        ?.remove();
+
+
+    document
+        .getElementById(
+            'zertiva-simple-footer-style'
+        )
+        ?.remove();
+
+
+    /* =====================================================
+       CSS
+       ===================================================== */
+
+    const style =
+        document.createElement('style');
+
+    style.id =
+        'zertiva-simple-footer-style';
+
+
+    style.textContent = `
+
+
+        /* =====================================================
+           FOOTER TRANSPARENT
+           ===================================================== */
+
+        #zertiva-simple-footer,
+        #zertiva-simple-footer::before,
+        #zertiva-simple-footer::after,
+        #zertiva-simple-footer .zertiva-footer-inner,
+        #zertiva-simple-footer .zertiva-footer-top,
+        #zertiva-simple-footer .zertiva-footer-bottom {
+
+            background:
+                transparent !important;
+
+            background-color:
+                transparent !important;
+
+            background-image:
+                none !important;
+        }
+
+
+        /* =====================================================
+           المسافة الأكبر بين الصور والـ Footer
+           التعديل الوحيد هنا خارج شكل الـ Footer
+           ===================================================== */
+
+        #zertiva-simple-footer {
+
+            width:
+                100%;
+
+            margin:
+                85px 0 0;
+
+            padding:
+                16px 20px 12px;
+
+            color:
+                #d1d5db;
+
+            font-family:
+                inherit;
+
+            box-sizing:
+                border-box;
+        }
+
+
+        #zertiva-simple-footer *,
+        #zertiva-simple-footer *::before,
+        #zertiva-simple-footer *::after {
+
+            box-sizing:
+                border-box;
+        }
+
+
+        .zertiva-footer-inner {
+
+            width:
+                min(1120px, 100%);
+
+            margin:
+                0 auto;
+        }
+
+
+        /* =====================================================
+           السطر العلوي
+           ===================================================== */
+
+        .zertiva-footer-top {
+
+            width:
+                100%;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                25px;
+
+            padding:
+                12px 0;
+
+            border-top:
+                1px solid
+                rgba(
+                    100,
+                    116,
+                    139,
+                    0.32
+                );
+        }
+
+
+        /* =====================================================
+           Logo + Zertiva + Social
+           ===================================================== */
+
+        .zertiva-footer-brand {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                7px;
+
+            min-width:
+                0;
+        }
+
+
+        .zertiva-footer-logo {
+
+            width:
+                27px;
+
+            height:
+                27px;
+
+            object-fit:
+                cover;
+
+            display:
+                block;
+
+            flex-shrink:
+                0;
+
+            border-radius:
+                8px;
+
+            border:
+                1px solid
+                rgba(
+                    148,
+                    163,
+                    184,
+                    0.14
+                );
+
+            box-shadow:
+                0 2px 8px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.16
+                );
+        }
+
+
+        /* =====================================================
+           Zertiva — أبيض خفيف
+           ===================================================== */
+
+        .zertiva-footer-name {
+
+            color:
+                #f1f5f9 !important;
+
+            font-size:
+                0.76rem;
+
+            font-weight:
+                400;
+
+            line-height:
+                1;
+
+            white-space:
+                nowrap;
+
+            letter-spacing:
+                0.01em;
+        }
+
+
+        /* =====================================================
+           Socials
+           ===================================================== */
+
+        .zertiva-footer-socials {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                2px;
+
+            margin-left:
+                3px;
+        }
+
+
+        .zertiva-footer-social {
+
+            width:
+                21px;
+
+            height:
+                21px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            color:
+                #94a3b8 !important;
+
+            text-decoration:
+                none;
+
+            transition:
+                color 0.2s ease,
+                opacity 0.2s ease;
+        }
+
+
+        .zertiva-footer-social:hover {
+
+            color:
+                #e2e8f0 !important;
+
+            opacity:
+                0.9;
+        }
+
+
+        .zertiva-footer-social svg {
+
+            width:
+                13px;
+
+            height:
+                13px;
+
+            display:
+                block;
+        }
+
+
+        /* =====================================================
+           روابط الموقع
+           ===================================================== */
+
+        .zertiva-footer-links {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                flex-end;
+
+            gap:
+                clamp(
+                    11px,
+                    1.7vw,
+                    21px
+                );
+
+            direction:
+                rtl;
+
+            white-space:
+                nowrap;
+        }
+
+
+        .zertiva-footer-links a {
+
+            color:
+                #cbd5e1 !important;
+
+            text-decoration:
+                none;
+
+            font-size:
+                0.62rem;
+
+            font-weight:
+                400;
+
+            line-height:
+                1;
+
+            transition:
+                color 0.2s ease;
+        }
+
+
+        .zertiva-footer-links a:hover {
+
+            color:
+                #ffffff !important;
+        }
+
+
+        /* =====================================================
+           السطر السفلي
+           ===================================================== */
+
+        .zertiva-footer-bottom {
+
+            width:
+                100%;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                20px;
+
+            padding:
+                13px 0 0;
+
+            /* =================================================
+               الخط الفاصل الأوسط — أوضح قليلاً
+               ومتناسق مع #0a0e1a
+               ================================================= */
+
+            border-top:
+                1px solid
+                rgba(
+                    100,
+                    116,
+                    139,
+                    0.38
+                );
+        }
+
+
+        /* =====================================================
+           الدومين
+           ===================================================== */
+
+        .zertiva-footer-domain {
+
+            order:
+                1;
+
+            color:
+                #f1f5f9 !important;
+
+            font-size:
+                0.57rem;
+
+            font-weight:
+                400;
+
+            text-decoration:
+                none;
+
+            line-height:
+                1.5;
+
+            white-space:
+                nowrap;
+
+            transition:
+                color 0.2s ease;
+        }
+
+
+        .zertiva-footer-domain:hover {
+
+            color:
+                #ffffff !important;
+        }
+
+
+        /* =====================================================
+           حقوق النشر
+           ===================================================== */
+
+        .zertiva-footer-copy {
+
+            order:
+                2;
+
+            color:
+                #f1f5f9 !important;
+
+            font-size:
+                0.57rem;
+
+            font-weight:
+                400;
+
+            line-height:
+                1.5;
+
+            white-space:
+                nowrap;
+        }
+
+
+        /* =====================================================
+           MOBILE
+           ===================================================== */
+
+        @media (max-width: 650px) {
+
+            #zertiva-simple-footer {
+
+                padding:
+                    14px 12px 10px;
+
+                margin-top:
+                    75px;
+            }
+
+
+            .zertiva-footer-top {
+
+                gap:
+                    12px;
+
+                padding-top:
+                    10px;
+
+                padding-bottom:
+                    10px;
+            }
+
+
+            .zertiva-footer-logo {
+
+                width:
+                    24px;
+
+                height:
+                    24px;
+
+                border-radius:
+                    7px;
+            }
+
+
+            .zertiva-footer-name {
+
+                font-size:
+                    0.69rem;
+            }
+
+
+            .zertiva-footer-links {
+
+                gap:
+                    8px;
+            }
+
+
+            .zertiva-footer-links a {
+
+                font-size:
+                    0.54rem;
+            }
+
+
+            .zertiva-footer-copy,
+            .zertiva-footer-domain {
+
+                font-size:
+                    0.50rem;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+
+            #zertiva-simple-footer {
+
+                padding:
+                    12px 9px 9px;
+
+                margin-top:
+                    65px;
+            }
+
+
+            .zertiva-footer-top {
+
+                gap:
+                    7px;
+            }
+
+
+            .zertiva-footer-brand {
+
+                gap:
+                    4px;
+            }
+
+
+            .zertiva-footer-logo {
+
+                width:
+                    22px;
+
+                height:
+                    22px;
+
+                border-radius:
+                    6px;
+            }
+
+
+            .zertiva-footer-name {
+
+                font-size:
+                    0.63rem;
+            }
+
+
+            .zertiva-footer-social {
+
+                width:
+                    18px;
+
+                height:
+                    18px;
+            }
+
+
+            .zertiva-footer-social svg {
+
+                width:
+                    11px;
+
+                height:
+                    11px;
+            }
+
+
+            .zertiva-footer-links {
+
+                gap:
+                    6px;
+            }
+
+
+            .zertiva-footer-links a {
+
+                font-size:
+                    0.49rem;
+            }
+
+
+            .zertiva-footer-bottom {
+
+                gap:
+                    8px;
+
+                padding-top:
+                    10px;
+            }
+
+
+            .zertiva-footer-copy,
+            .zertiva-footer-domain {
+
+                font-size:
+                    0.46rem;
+            }
+        }
+
+    `;
+
+
+    document.head.appendChild(
+        style
+    );
+
+
+    /* =====================================================
+       إنشاء Footer
+       ===================================================== */
+
+    const footer =
+        document.createElement('footer');
+
+    footer.id =
+        'zertiva-simple-footer';
+
+
+    footer.innerHTML = `
+
+        <div class="zertiva-footer-inner">
+
+
+            <!-- ==========================================
+                 السطر العلوي
+                 ========================================== -->
+
+            <div class="zertiva-footer-top">
+
+
+                <div class="zertiva-footer-brand">
+
+
+                    <img
+                        class="zertiva-footer-logo"
+                        src="images/logo.webp"
+                        alt="Zertiva"
+                    >
+
+
+                    <span class="zertiva-footer-name">
+                        Zertiva
+                    </span>
+
+
+                    <div class="zertiva-footer-socials">
+
+
+                        <!-- WhatsApp -->
+
+                        <a
+                            class="zertiva-footer-social"
+                            href="https://wa.me/212665881925"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="WhatsApp"
+                        >
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                            >
+
+                                <path d="M20.52 3.48A11.87 11.87 0 0 0 12.07 0C5.5 0 .15 5.35.15 11.92c0 2.1.55 4.15 1.6 5.96L.05 24l6.27-1.64a11.9 11.9 0 0 0 5.75 1.46h.01c6.57 0 11.92-5.35 11.92-11.92a11.87 11.87 0 0 0-3.48-8.42ZM12.08 21.82h-.01a9.88 9.88 0 0 1-5.04-1.38l-.36-.21-3.72.97.99-3.63-.23-.37a9.9 9.9 0 0 1-1.52-5.28C2.19 6.45 6.63 2.01 12.08 2.01c2.64 0 5.12 1.03 6.98 2.89a9.82 9.82 0 0 1 2.9 7c0 5.45-4.44 9.92-9.88 9.92Zm5.43-7.43c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.74-1.64-2.03-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.21 5.08 4.5.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/>
+
+                            </svg>
+
+                        </a>
+
+
+                        <!-- TikTok -->
+
+                        <a
+                            class="zertiva-footer-social"
+                            href="https://www.tiktok.com/@zertivab2"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="TikTok"
+                        >
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                            >
+
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.23V2h-3.42v13.67a2.91 2.91 0 1 1-2-2.77V9.42a6.34 6.34 0 1 0 5.42 6.25V8.79a8.16 8.16 0 0 0 4.77 1.52V6.9a4.84 4.84 0 0 1-1-.21Z"/>
+
+                            </svg>
+
+                        </a>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- ========================================
+                     روابط الموقع
+                     ======================================== -->
+
+                <nav
+                    class="zertiva-footer-links"
+                    aria-label="Footer navigation"
+                >
+
+                    <a href="#home">
+                        الرئيسية
+                    </a>
+
+                    <a href="#lesen">
+                        Lesen
+                    </a>
+
+                    <a href="#hoeren">
+                        Hören
+                    </a>
+
+                    <a href="#schreiben">
+                        Schreiben
+                    </a>
+
+                    <a href="#upgrade">
+                        الترقية
+                    </a>
+
+                </nav>
+
+
+            </div>
+
+
+            <!-- ==========================================
+                 السطر السفلي
+                 ========================================== -->
+
+            <div class="zertiva-footer-bottom">
+
+
+                <a
+                    class="zertiva-footer-domain"
+                    href="https://zertivab2.online/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    zertivab2.online
+                </a>
+
+
+                <span class="zertiva-footer-copy">
+                    © 2025 Zertiva. جميع الحقوق محفوظة.
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+    `;
+
+
+    /* =====================================================
+       Footer في نهاية الصفحة
+       ===================================================== */
+
+    document.body.appendChild(
+        footer
+    );
+
+
+    /*
+     * مهم:
+     * لا نقوم هنا بتغيير خلفية body أو أي parent عام.
+     * الـ Footer نفسه فقط شفاف.
+     */
+
+})();
+
+</script>
 </body>
 </html>  
