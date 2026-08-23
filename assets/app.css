@@ -166,19 +166,16 @@ body {
     text-shadow: 0 0 10px rgba(56, 189, 248, 0.15);
 }
 
+.telc-premium {
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    color: #347da3 !important;
+    font-weight: inherit;
+    letter-spacing: 0.2px;
+}
+
 .hero-description-wrapper {
     margin-bottom: 25px;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 /* تم حذف النصوص القديمة واستبدالها بالتصميم الجديد */
