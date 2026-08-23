@@ -5813,6 +5813,9 @@ if (expiryText) {
     style.id = 'zertiva-hero-mobile-style';
 
     style.textContent = `
+
+
+
         @media (max-width: 769px) {
 
             .hero-content-side .hero-description-wrapper {
@@ -5823,9 +5826,16 @@ if (expiryText) {
                 box-sizing: border-box !important;
             }
 
-            /* هنا تم حذف قاعدة .hero-intro-text التي تفرض width:100% وغيرها،
-               لأننا نريد الاحتفاظ بإزاحة 10px المطبقة في CSS الأصلي.
-               كما تم حذف أي تعديل على .hero-title لأنه متعارض مع التعديل المطلوب. */
+            .hero-content-side .hero-intro-text {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                box-sizing: border-box !important;
+                text-align: right !important;
+            }
 
             .hero-content-side .hero-actions-container {
                 display: flex !important;
@@ -5911,7 +5921,11 @@ if (expiryText) {
                 margin-right: 4px !important;
             }
 
-            /* تم حذف قاعدة .hero-intro-text لأنها تتعارض مع التعديل المطلوب */
+            .hero-content-side .hero-intro-text {
+
+                width: 100% !important;
+                max-width: 100% !important;
+            }
         }
 
         @media (min-width: 770px) {
