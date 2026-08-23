@@ -1907,6 +1907,20 @@ body.dark-mode .mobile-banner span {
     border-color: rgba(255, 255, 255, 0.25) !important;
     transform: scale(1.05);
 }
+    /* ===== Zertiva Badge ===== */
+@keyframes zs1 {
+    0% { opacity: 0; transform: translateY(8px); box-shadow: 0 0 0 rgba(56,189,248,0); }
+    100% { opacity: 1; transform: none; box-shadow: 0 0 24px rgba(56,189,248,.13); }
+}
+@keyframes zsDot {
+    0%, 100% { opacity: .45; box-shadow: 0 0 4px rgba(56,189,248,.4); transform: scale(.9); }
+    50% { opacity: 1; box-shadow: 0 0 12px rgba(56,189,248,.9); transform: scale(1.15); }
+}
+@media (max-width: 600px) {
+    .zs-badge { font-size: 11px !important; padding: 6px 11px !important; }
+    .zs-title { font-size: 20px !important; }
+    .zs-desc { font-size: 13px !important; line-height: 1.7 !important; }
+}
 </style>
     
 </head>
@@ -6154,9 +6168,10 @@ if (expiryText) {
                 <div class="zertiva-photo-placeholder">
 
 
-                    <div class="zertiva-photo-icon">
-                        ✦
-                    </div>
+                   <div class="zs-badge" style="display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border:1px solid rgba(56,189,248,.28);border-radius:999px;background:rgba(30,41,59,.55);color:#e2e8f0;font-size:12px;font-weight:600;animation:zs1 .8s cubic-bezier(.22,1,.36,1) both;direction:rtl;">
+    <span style="order:1;">🎓 نجاحات حقيقية لطلابنا</span>
+    <i style="order:2;width:5px;height:5px;border-radius:50%;background:#38bdf8;display:inline-block;flex-shrink:0;animation:zsDot 2.5s ease-in-out infinite;"></i>
+</div>
 
 
                     <h3>
