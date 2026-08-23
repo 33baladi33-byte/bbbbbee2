@@ -7735,6 +7735,31 @@ body:has(#list.active) #backHomeBtn {
     color: #38bdf8;
     font-weight: 500;
 }
+/* ========================================
+   تعديلات hero-intro-text - تحريك 10px لليسار
+   ======================================== */
+
+.hero-intro-text {
+    margin-left: -10px !important;
+    padding-left: 10px !important;
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 21px !important;
+        line-height: 1.3 !important;
+    }
+
+    .hero-title + p {
+        font-size: 17px !important;
+        line-height: 1.4 !important;
+    }
+
+    .hero-intro-text {
+        font-size: 14px !important;
+        line-height: 1.85 !important;
+    }
+}
 /* ============================================
    studySession.css - النسخة النهائية (متكاملة)
    ============================================ */
