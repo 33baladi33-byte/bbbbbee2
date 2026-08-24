@@ -25,7 +25,7 @@
             --text: #e2e8f0;
             --muted: #94a3b8;
             --blue: #38bdf8;
-            --blue-dark: #2a6b8a;
+            --blue-dark: #1a4a6a;
             --border: rgba(226, 232, 240, .09);
             --white-soft: rgba(255, 255, 255, .055);
             --green: #5eead4;
@@ -183,27 +183,37 @@
             padding: 75px 18px 45px;
         }
 
+        /* =========================================================
+           OFFER BADGE — now with auto_awesome + dark blue
+           ========================================================= */
+
         .offer-badge {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 5px 12px;
-            border: 1px solid rgba(42, 107, 138, .35);
+            padding: 5px 14px;
+            border: 1px solid rgba(26, 74, 106, .55);
             border-radius: 999px;
-            background: rgba(42, 107, 138, .12);
-            color: #b0d9ec;
+            background: rgba(26, 74, 106, .20);
+            color: #b8dff0;
             font-size: 11px;
             font-weight: 600;
-            box-shadow: 0 0 20px rgba(42, 107, 138, .05);
+            box-shadow: 0 0 25px rgba(26, 74, 106, .08);
+            transition: .3s ease;
+        }
+        .offer-badge:hover {
+            background: rgba(26, 74, 106, .28);
+            border-color: rgba(26, 74, 106, .70);
+            box-shadow: 0 0 35px rgba(26, 74, 106, .12);
         }
         .offer-symbol {
             display: inline-flex;
             align-items: center;
-            gap: 1px;
+            justify-content: center;
             color: #7fc9e8;
         }
         .offer-symbol .material-symbols-rounded {
-            font-size: 12px !important;
+            font-size: 14px !important;
             font-variation-settings:
                 'FILL' 1,
                 'wght' 400,
@@ -885,7 +895,7 @@
         }
 
         /* =========================================================
-           WHATSAPP TESTIMONIALS — with images instead of emojis
+           WHATSAPP TESTIMONIALS — with images
            ========================================================= */
 
         .testimonials {
@@ -1634,11 +1644,11 @@
             }
             .offer-badge {
                 font-size: 9px;
-                padding: 4px 9px;
+                padding: 4px 10px;
                 gap: 4px;
             }
             .offer-symbol .material-symbols-rounded {
-                font-size: 9px !important;
+                font-size: 11px !important;
             }
             .hero h1 {
                 font-size: 26px;
@@ -1807,15 +1817,13 @@
     <main>
 
         <!-- =========================================================
-             HERO
+             HERO — with auto_awesome + dark blue badge
              ========================================================= -->
 
         <section class="hero">
             <div class="offer-badge">
                 <span class="offer-symbol">
-                    <span class="material-symbols-rounded">star</span>
-                    <span class="material-symbols-rounded">star</span>
-                    <span class="material-symbols-rounded">star</span>
+                    <span class="material-symbols-rounded">auto_awesome</span>
                 </span>
                 <span>عرض خاص: وفر حتى لـ 70 DH</span>
             </div>
