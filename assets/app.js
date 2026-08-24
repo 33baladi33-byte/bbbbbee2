@@ -29194,6 +29194,11 @@ var MyApp = (() => {
     window._cachedUserData = data || null;
     window.userStudyPlan = data && data.studyPlan === true;
     window.userStudyPlanUntil = data && data.studyPlanUntil || null;
+    if (user && user.email) {
+      localStorage.setItem("zertiva_user_email", user.email);
+    } else {
+      localStorage.removeItem("zertiva_user_email");
+    }
     const profileEmail = document.getElementById("profileEmail");
     const profileEmailText = document.getElementById("profileEmailText");
     const profileExpiry = document.getElementById("profileExpiry");
