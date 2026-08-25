@@ -2398,13 +2398,10 @@ const pricingData = {
            ========================================================= */
 
              function getUserEmail() {
-            // 1. أولاً نتحقق من البريد المخزن من auth.js
             const storedEmail = localStorage.getItem('zertiva_user_email');
             if (storedEmail && storedEmail.includes('@')) {
                 return storedEmail;
             }
-
-            // 2. محاولة قراءة من localStorage بطرق أخرى (للتوافق مع الإصدارات القديمة)
             const possibleKeys = ["user", "currentUser", "userData", "userProfile", "profile", "email"];
             for (const key of possibleKeys) {
                 try {
@@ -2421,31 +2418,48 @@ const pricingData = {
                     }
                 } catch {}
             }
-            
-            // 3. إذا لم نجد بريداً، نرسل "لم يسجل الدخول"
             return "---";
         }
 
         /* =========================================================
-           WHATSAPP
+           WHATSAPP (نفس الوظيفة الأصلية، لم تتغير)
            ========================================================= */
 
         function openWhatsApp(plan, duration, price) {
             const email = getUserEmail();
             const message = `مرحباً، أريد الانضمام إلى العائلة :
-        المدة: ${duration}
-        الخطة: ${plan}
-        الثمن: ${price} DH
-        الإيميل: ${email}`;
+المدة: ${duration}
+الخطة: ${plan}
+الثمن: ${price} DH
+الإيميل: ${email}`;
             const url = "https://wa.me/212665881925?text=" + encodeURIComponent(message);
             window.open(url, "_blank", "noopener,noreferrer");
         }
 
         /* =========================================================
-           CREATE PLAN
+           دالة معالجة اختيار الخطة (مع التحقق من تسجيل الدخول)
            ========================================================= */
 
-               function createPlan(type, data) {
+        function handlePlanSelection(plan, duration, price) {
+            const user = firebase.auth().currentUser;
+
+            if (user) {
+                // ✅ مسجل الدخول → واتساب مباشرة
+                openWhatsApp(plan, duration, price);
+            } else {
+                // ❌ غير مسجل → تخزين الخطة وفتح نموذج إنشاء الحساب الأصلي
+                const planData = { plan, duration, price };
+                localStorage.setItem('pendingSubscription', JSON.stringify(planData));
+                // الذهاب إلى الصفحة الرئيسية مع أمر فتح نافذة إنشاء الحساب
+                window.location.href = 'index.html?action=signup';
+            }
+        }
+
+        /* =========================================================
+           CREATE PLAN (مع بيانات custom بدلاً من onclick المباشر)
+           ========================================================= */
+
+        function createPlan(type, data) {
             const isStandard = type === "standard";
             const isPro = type === "pro";
             const isMax = type === "max";
@@ -2464,7 +2478,6 @@ const pricingData = {
                         </li>
                     `).join("");
 
-            // تعديل: إزالة onclick المباشر واستخدام data attributes لربطها لاحقاً
             return `
                         <article class="plan ${type}" data-plan-name="${name}" data-plan-period="${data.period}" data-plan-price="${data.price}">
                             <div class="plan-top">
@@ -2494,7 +2507,25 @@ const pricingData = {
         }
 
         /* =========================================================
-           RENDER PRICING
+           ربط الأزرار بعد التحميل
+           ========================================================= */
+
+        function attachPlanButtonEvents() {
+            document.querySelectorAll('.plan-button').forEach(btn => {
+                // إزالة أي مستمع قديم
+                btn.onclick = null;
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const plan = this.dataset.planName || 'Standard';
+                    const duration = this.dataset.planPeriod || 'غير محدد';
+                    const price = this.dataset.planPrice || '0';
+                    handlePlanSelection(plan, duration, price);
+                });
+            });
+        }
+
+        /* =========================================================
+           RENDER PRICING (مع استدعاء ربط الأزرار بعد الإنشاء)
            ========================================================= */
 
         function renderPricing(duration) {
@@ -2512,45 +2543,9 @@ const pricingData = {
                     grid.style.opacity = "1";
                     grid.style.transform = "translateY(0)";
                 });
-                // بعد إعادة الرسم، ربط الأزرار بالدالة الجديدة
+                // ربط الأزرار بعد إضافة العناصر
                 attachPlanButtonEvents();
             }, 100);
-        }
-
-        /* =========================================================
-           ربط أزرار الخطط بالدالة الجديدة
-           ========================================================= */
-        function attachPlanButtonEvents() {
-            document.querySelectorAll('.plan-button').forEach(btn => {
-                // إزالة أي مستمع قديم
-                btn.onclick = null;
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const plan = this.dataset.planName || 'Standard';
-                    const duration = this.dataset.planPeriod || 'غير محدد';
-                    const price = this.dataset.planPrice || '0';
-                    handlePlanSelection(plan, duration, price);
-                });
-            });
-        }
-
-        /* =========================================================
-           دالة معالجة اختيار الخطة مع التحقق من تسجيل الدخول
-           ========================================================= */
-        function handlePlanSelection(plan, duration, price) {
-            // التحقق من حالة المستخدم باستخدام Firebase Auth
-            const user = firebase.auth().currentUser;
-
-            if (user) {
-                // الحالة 1: المستخدم مسجل الدخول → واتساب مباشرة
-                openWhatsApp(plan, duration, price);
-            } else {
-                // الحالة 2: المستخدم غير مسجل → تخزين الخطة والذهاب إلى صفحة إنشاء الحساب
-                const planData = { plan, duration, price };
-                localStorage.setItem('pendingSubscription', JSON.stringify(planData));
-                // إعادة التوجيه إلى الصفحة الرئيسية مع أمر فتح نافذة إنشاء الحساب
-                window.location.href = 'index.html?action=signup';
-            }
         }
 
         /* =========================================================
@@ -2594,8 +2589,9 @@ const pricingData = {
         });
 
         /* =========================================================
-           معالجة auto_whatsapp عند العودة من إنشاء الحساب
+           معالجة العودة من إنشاء الحساب مع الخطة المختارة
            ========================================================= */
+
         (function handleAutoWhatsApp() {
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('auto_whatsapp') === 'true') {
@@ -2603,7 +2599,6 @@ const pricingData = {
                 if (pending) {
                     try {
                         const data = JSON.parse(pending);
-                        // التأكد من أن المستخدم مسجل الآن (نظام auth)
                         const user = firebase.auth().currentUser;
                         if (user) {
                             openWhatsApp(data.plan, data.duration, data.price);
@@ -2630,7 +2625,7 @@ const pricingData = {
 
         renderPricing("15");
 
-        console.log("✅ Zertiva Subscribe Page loaded successfully.");
+        console.log("✅ Zertiva Subscribe Page loaded successfully (with login check).");
     </script>
 
 <script>
