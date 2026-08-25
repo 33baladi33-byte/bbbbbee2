@@ -2258,10 +2258,7 @@ body.dark-mode .mobile-banner span {
         <span class="star-big">✧</span>
         <span class="star-small">✦</span>
     </div>
-    <!-- أيقونة الترس -->
-    <div class="shape2-settings" id="profileSettingsIcon">
-        <span class="material-symbols-outlined">settings</span>
-    </div>
+    <!-- (تم حذف زر الإعدادات) -->
 
     <!-- الأفاتار والمعلومات -->
     <div class="shape2-left">
@@ -2296,7 +2293,7 @@ body.dark-mode .mobile-banner span {
                 <div class="shape2-value uid" id="profileUidValue">---</div>
                 <div class="shape2-chevron">›</div>
             </div>
-            <div class="shape2-info-row">
+                     <div class="shape2-info-row" id="profilePlannerRowClickable">
                 <div class="shape2-icon"><span class="material-symbols-outlined">schedule</span></div>
                 <div class="shape2-label">لديك</div>
                 <div class="shape2-value" id="profilePlannerText">0 يوم</div>
@@ -2307,12 +2304,33 @@ body.dark-mode .mobile-banner span {
         <button id="downloadReportBtn" class="shape2-stats">
             <span class="material-symbols-outlined">monitoring</span> إحصائياتي
         </button>
-        <!-- زر تسجيل خروج -->
+            <!-- زر تسجيل خروج -->
         <button id="profileLogoutBtn" class="shape2-logout">
             <span class="material-symbols-outlined">logout</span> تسجيل خروج
         </button>
     </div>
 </div>
+</div>
+
+<!-- ===== نافذة تعديل المعلومات (فتح من صف لديك) ===== -->
+<div id="editInfoModal" class="edit-info-overlay" style="display:none;">
+    <div class="edit-info-card">
+        <div class="edit-info-header">
+            <span>تعديل المعلومات الخاصة بي</span>
+            <button id="closeEditInfoModal" class="close-edit-modal">✕</button>
+        </div>
+        <div class="edit-info-body">
+            <div style="margin-bottom:14px;">
+                <label style="display:block; font-size:13px; color:#a6afbd; margin-bottom:4px;">تاريخ الامتحان</label>
+                <input type="date" id="editExamDateInput" style="width:100%; padding:10px; border-radius:8px; border:1px solid #2a3042; background:#111621; color:#e7eaf0;">
+            </div>
+            <div style="margin-bottom:20px;">
+                <label style="display:block; font-size:13px; color:#a6afbd; margin-bottom:4px;">كم ساعة تراجع يومياً</label>
+                <input type="number" id="editDailyHoursInput" min="1" max="12" value="4" style="width:100%; padding:10px; border-radius:8px; border:1px solid #2a3042; background:#111621; color:#e7eaf0;">
+            </div>
+            <button id="saveEditInfoBtn" class="save-edit-btn">فحص</button>
+        </div>
+    </div>
 </div>
 
 <!-- ===== نافذة تسجيل الدخول / إنشاء حساب / نسيت كلمة المرور (مودال موحد) ===== -->
