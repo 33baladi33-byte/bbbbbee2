@@ -29993,6 +29993,9 @@ var MyApp = (() => {
         }
         originalUpdateUI(user, data);
       };
+      window.openAuthModal = openAuthModal;
+      window.closeAuthModalFunc = closeAuthModalFunc;
+      window.showForm = showForm;
       console.log("\u{1F389} \u062A\u0645 \u0627\u0639\u062A\u0645\u0627\u062F \u0627\u0644\u0628\u0646\u064A\u0629 \u0627\u0644\u0646\u0647\u0627\u0626\u064A\u0629 \u0644\u0640 Zertiva \u0628\u0646\u0633\u0628\u0629 100/100.");
     }
   });

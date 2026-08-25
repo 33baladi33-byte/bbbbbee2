@@ -7820,6 +7820,19 @@ body:has(#list.active) #backHomeBtn {
     outline: none;
     border-color: #38bdf8;
 }
+/* إخفاء زر إنشاء حساب في غير الصفحة الرئيسية */
+#list #navSignupBtn,
+#exam #navSignupBtn,
+body:has(#list.active) #navSignupBtn,
+body:has(#exam.active) #navSignupBtn {
+    display: none !important;
+}
+
+/* إظهاره فقط في الصفحة الرئيسية */
+#home #navSignupBtn,
+body:has(#home.active) #navSignupBtn {
+    display: inline-flex !important;
+}
 /* ============================================
    studySession.css - النسخة النهائية (متكاملة)
    ============================================ */
