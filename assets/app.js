@@ -23352,9 +23352,20 @@ var MyApp = (() => {
                   this.showNotAvailable("\u0644\u0627 \u062A\u0648\u062C\u062F \u0623\u0633\u0626\u0644\u0629 \u0635\u0627\u0644\u062D\u0629 \u0644\u0644\u062A\u062F\u0631\u064A\u0628 \u0641\u064A \u0647\u0630\u0647 \u0627\u0644\u0645\u0631\u062D\u0644\u0629");
                   return;
                 }
-                this.questions = this.shuffleArray(allQuestions);
+                let selectedQuestions = [];
+                if (examIds.length > 5) {
+                  const shuffledExamIds = this.shuffleArray([...examIds]);
+                  const selectedExamIds = shuffledExamIds.slice(0, 5);
+                  selectedQuestions = allQuestions.filter((q) => selectedExamIds.includes(q.examId));
+                  if (selectedQuestions.length === 0) {
+                    selectedQuestions = allQuestions;
+                  }
+                } else {
+                  selectedQuestions = allQuestions;
+                }
+                this.questions = this.shuffleArray(selectedQuestions);
                 this.allQuestions = this.questions.slice();
-                console.log(`\u{1F4CA} \u062A\u0645 \u062C\u0645\u0639 ${this.questions.length} \u0633\u0624\u0627\u0644 \u0645\u0646 ${examIds.length} \u0627\u0645\u062A\u062D\u0627\u0646`);
+                console.log(`\u{1F4CA} \u062A\u0645 \u062C\u0645\u0639 ${this.questions.length} \u0633\u0624\u0627\u0644 \u0645\u0646 ${examIds.length} \u0627\u0645\u062A\u062D\u0627\u0646 (\u062A\u0645 \u0627\u062E\u062A\u064A\u0627\u0631 ${Math.min(examIds.length, 5)} \u0627\u0645\u062A\u062D\u0627\u0646 \u0639\u0634\u0648\u0627\u0626\u064A\u0627)`);
                 if (this.sharedOptions.length === 0 && examIds.length > 0) {
                   const firstId = examIds[0];
                   if (this.examSharedOptionsMap[firstId]) {
@@ -23767,7 +23778,7 @@ var MyApp = (() => {
             this.updateCard(`
                 <div class="memory-trainer-intro">
                     <h2>\u0627\u0633\u062A\u062F\u0639\u0627\u0621 \u0645\u062A\u0642\u062F\u0645 \u{1F9E9}</h2>
-                    <p style="font-size:14px;color:#334155;margin:4px 0 2px 0;">\u0647\u0627\u062F \u0627\u0644\u0645\u064A\u0632\u0629 \u063A\u062F\u064A \u062A\u062E\u0644\u064A\u0643 \u062A\u062A\u062F\u0631\u0628 \u0639\u0644\u0649 \u062C\u0645\u064A\u0639 \u0623\u0633\u0626\u0644\u0629 \u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u0627\u0644\u0645\u0631\u062D\u0644\u0629 ${currentStage} \u0645\u0646 ${skillLabel}.</p>
+                    <p style="font-size:14px;color:#334155;margin:4px 0 2px 0;">\u0647\u0627\u062F \u0627\u0644\u0645\u064A\u0632\u0629 \u063A\u062F\u064A \u062A\u062E\u0644\u064A\u0643 \u062A\u0631\u0627\u062C\u0639 5 \u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u0641\u064A \u0643\u0644 \u0645\u0631\u0629 \u0645\u0646 \u0627\u0644\u0645\u0631\u062D\u0644\u0629 ${currentStage} \u0641\u064A ${skillLabel}.</p>
                     <p style="font-size:13px;color:#64748B;margin:2px 0 12px 0;">\u0643\u0644\u0645\u0627 \u062A\u062F\u0631\u0628\u062A \u0623\u0643\u062B\u0631\u060C \u0623\u0635\u0628\u062D \u0627\u0644\u0646\u0638\u0627\u0645 \u0623\u0643\u062B\u0631 \u0630\u0643\u0627\u0621\u064B \u0641\u064A \u0627\u062E\u062A\u064A\u0627\u0631 \u0627\u0644\u0623\u0633\u0626\u0644\u0629.</p>
                     <div style="margin:10px 0 14px 0;background:#FFFFFF;border:1px solid #E8EEF5;border-radius:6px;padding:6px 10px;text-align:left;">
                         <div style="display:flex;align-items:center;gap:10px;">
@@ -23779,6 +23790,7 @@ var MyApp = (() => {
                     </div>
                     <p style="font-size:12px;color:#94A3B8;margin:4px 0 4px 0;">${total} \u0646\u0635 \u0644\u0644\u062A\u062F\u0631\u064A\u0628</p>
                     <p style="font-size:11px;color:#94A3B8;margin:0 0 12px 0;">\u0627\u0644\u0645\u0631\u062D\u0644\u0629 ${currentStage} / ${totalStages}</p>
+                    <p style="font-size:11px;color:#94A3B8;margin:0 0 6px 0;">\u0641\u064A \u0643\u0644 \u0645\u0631\u0629: 5 \u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u0641\u0642\u0637</p>
                     ${buttonHtml}
                 </div>
             `);
@@ -23786,7 +23798,7 @@ var MyApp = (() => {
             this.updateCard(`
                 <div class="memory-trainer-intro">
                     <h2>\u0627\u0633\u062A\u062F\u0639\u0627\u0621 \u0645\u062A\u0642\u062F\u0645 \u{1F9E9}</h2>
-                    <p style="font-size:14px;color:#334155;margin:4px 0 2px 0;">\u0647\u0627\u062F \u0627\u0644\u0645\u064A\u0632\u0629 \u063A\u062F\u064A \u062A\u062E\u0644\u064A\u0643 \u062A\u062A\u062F\u0631\u0628 \u0639\u0644\u0649 \u062C\u0645\u064A\u0639 \u0623\u0633\u0626\u0644\u0629 \u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u0627\u0644\u0645\u0631\u062D\u0644\u0629.</p>
+                    <p style="font-size:14px;color:#334155;margin:4px 0 2px 0;">\u0647\u0627\u062F \u0627\u0644\u0645\u064A\u0632\u0629 \u063A\u062F\u064A \u062A\u062E\u0644\u064A\u0643 \u062A\u0631\u0627\u062C\u0639 5 \u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u0641\u064A \u0643\u0644 \u0645\u0631\u0629 \u0645\u0646 \u0627\u0644\u0645\u0631\u062D\u0644\u0629 \u0627\u0644\u062D\u0627\u0644\u064A\u0629.</p>
                     <p style="font-size:13px;color:#64748B;margin:2px 0 12px 0;">\u0643\u0644\u0645\u0627 \u062A\u062F\u0631\u0628\u062A \u0623\u0643\u062B\u0631\u060C \u0623\u0635\u0628\u062D \u0627\u0644\u0646\u0638\u0627\u0645 \u0623\u0643\u062B\u0631 \u0630\u0643\u0627\u0621\u064B \u0641\u064A \u0627\u062E\u062A\u064A\u0627\u0631 \u0627\u0644\u0623\u0633\u0626\u0644\u0629.</p>
                     <div style="margin:10px 0 14px 0;background:#FFFFFF;border:1px solid #E8EEF5;border-radius:6px;padding:6px 10px;text-align:left;">
                         <div style="display:flex;align-items:center;gap:10px;">
@@ -23797,6 +23809,7 @@ var MyApp = (() => {
                         </div>
                     </div>
                     <p style="font-size:12px;color:#94A3B8;margin:4px 0 4px 0;">\u062C\u0627\u0631\u064A \u0627\u0644\u062A\u062D\u0645\u064A\u0644...</p>
+                    <p style="font-size:11px;color:#94A3B8;margin:0 0 6px 0;">\u0641\u064A \u0643\u0644 \u0645\u0631\u0629: 5 \u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u0641\u0642\u0637</p>
                     <button class="memory-trainer-btn locked" onclick="window.location.href='subscribe.html'" style="padding:8px 20px;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;margin-top:12px;background:#64748B;color:#cbd5e1;opacity:0.7;">\u{1F512} \u0645\u062A\u0627\u062D \u0644\u0644\u062D\u0633\u0627\u0628 \u0627\u0644\u0643\u0627\u0645\u0644</button>
                 </div>
             `);
@@ -29253,36 +29266,29 @@ var MyApp = (() => {
     const isPremium = data && data.plan === "premium" && (!data.premiumUntil || new Date(data.premiumUntil).getTime() > Date.now());
     _currentUserStatus = isPremium ? "premium" : "free";
     if (isPremium) {
-      if (profileStatus) profileStatus.innerHTML = `<span class="status-premium">\u2705 \u0645\u0634\u062A\u0631\u0643 (Pro)</span>`;
+      if (profileStatus) profileStatus.textContent = "\u0645\u0634\u062A\u0631\u0643 (Pro)";
       if (profileExpiryText && data.premiumUntil) {
-        profileExpiryText.textContent = `\u0627\u0644\u0635\u0644\u0627\u062D\u064A\u0629: \u062D\u062A\u0649 ${new Date(data.premiumUntil).toLocaleDateString("ar-EG")}`;
+        profileExpiryText.textContent = new Date(data.premiumUntil).toLocaleDateString("ar-EG");
       } else if (profileExpiryText) {
-        profileExpiryText.textContent = `\u0627\u0644\u0635\u0644\u0627\u062D\u064A\u0629: \u062D\u0633\u0627\u0628 \u062F\u0627\u0626\u0645`;
+        profileExpiryText.textContent = "\u062D\u0633\u0627\u0628 \u062F\u0627\u0626\u0645";
       }
+      const premiumStatus = document.getElementById("profilePremiumStatus");
+      if (premiumStatus) premiumStatus.textContent = "\u0645\u0641\u0639\u0644\u0629";
       if (navSubscribeBtn2) navSubscribeBtn2.style.display = "none";
       if (featuresSubscribeBtn) featuresSubscribeBtn.style.display = "none";
       if (settingsBtn2) settingsBtn2.style.display = "inline-flex";
-      const oldBtn = document.getElementById("dropdownUpgradeBtn");
-      if (oldBtn) oldBtn.remove();
     } else {
-      if (profileStatus) profileStatus.innerHTML = `<span class="status-free"><span class="material-symbols-outlined" style="font-size: 16px; vertical-align: middle; margin-left: 4px;">credit_card_off</span> \u0645\u062C\u0627\u0646\u064A</span>`;
-      if (profileExpiryText) profileExpiryText.textContent = "\u062D\u0633\u0627\u0628 \u0645\u062C\u0627\u0646\u064A / \u0627\u0646\u062A\u0647\u062A \u0627\u0644\u0635\u0644\u0627\u062D\u064A\u0629";
+      if (profileStatus) profileStatus.textContent = "\u0645\u062C\u0627\u0646\u064A";
+      if (profileExpiryText) profileExpiryText.textContent = "\u062D\u0633\u0627\u0628 \u0645\u062C\u0627\u0646\u064A";
+      const premiumStatus = document.getElementById("profilePremiumStatus");
+      if (premiumStatus) premiumStatus.textContent = "\u063A\u064A\u0631 \u0645\u0641\u0639\u0644\u0629";
       if (navSubscribeBtn2) navSubscribeBtn2.style.display = "inline-flex";
       if (featuresSubscribeBtn) featuresSubscribeBtn.style.display = "inline-flex";
       if (settingsBtn2) settingsBtn2.style.display = "none";
-      const oldBtn = document.getElementById("dropdownUpgradeBtn");
-      if (!oldBtn && profileDropdown2) {
-        const upgradeBtn = document.createElement("button");
-        upgradeBtn.id = "dropdownUpgradeBtn";
-        upgradeBtn.innerHTML = "\u0627\u0644\u062A\u0631\u0642\u064A\u0629 \u0625\u0644\u0649 \u0627\u0644\u062D\u0633\u0627\u0628 \u0627\u0644\u0643\u0627\u0645\u0644 \u2192";
-        upgradeBtn.style.cssText = `
-                margin-top: 12px; background: #64748B; color: white; border: none;
-                padding: 10px 15px; border-radius: 25px; cursor: pointer; width: 100%;
-                font-size: 13px; font-weight: bold; transition: all 0.3s ease;
-            `;
-        upgradeBtn.onclick = () => window.location.href = "subscribe.html";
-        profileDropdown2.appendChild(upgradeBtn);
-      }
+    }
+    const avatarEl = document.getElementById("profileAvatar");
+    if (avatarEl && user.email) {
+      avatarEl.textContent = user.email.charAt(0).toUpperCase();
     }
     if (typeof window.renderInitialExamList === "function") {
       const listPage = document.getElementById("list");
@@ -29740,6 +29746,14 @@ var MyApp = (() => {
           if (profileDropdown) profileDropdown.classList.toggle("show");
         });
         if (profileLogoutBtn) profileLogoutBtn.addEventListener("click", () => handleLogout(true));
+        const profileSettingsIcon = document.getElementById("profileSettingsIcon");
+        if (profileSettingsIcon) {
+          profileSettingsIcon.addEventListener("click", (e) => {
+            e.stopPropagation();
+            settingsModal.classList.add("active");
+            if (profileDropdown) profileDropdown.classList.remove("show");
+          });
+        }
         if (settingsBtn && settingsModal) {
           settingsBtn.addEventListener("click", (e) => {
             e.stopPropagation();
