@@ -25323,8 +25323,8 @@ var MyApp = (() => {
         };
         div.onclick = /* @__PURE__ */ (function(title, id) {
           return function() {
-            if (typeof window.showPremiumModal === "function") {
-              window.showPremiumModal(title + " (" + id + ")");
+            if (typeof window.showLockedCard === "function") {
+              window.showLockedCard(title + " (" + id + ")");
             } else {
               window.location.href = "subscribe.html";
             }
@@ -25530,8 +25530,8 @@ var MyApp = (() => {
     const isPremium = userStatus === "premium";
     const isFree = isExamFree(skill, examId);
     if (!isPremium && !isFree) {
-      if (typeof window.showPremiumModal === "function") {
-        window.showPremiumModal(examTitle + " (" + examId + ")");
+      if (typeof window.showLockedCard === "function") {
+        window.showLockedCard(examTitle + " (" + examId + ")");
       } else {
         window.location.href = "subscribe.html";
       }
@@ -27223,6 +27223,132 @@ var MyApp = (() => {
             console.log("[EXAMS] \u062A\u0648\u0642\u0641 \u0627\u0644\u0645\u0631\u0627\u0642\u0628\u0629 \u0628\u0639\u062F \u0627\u0644\u0645\u0647\u0644\u0629");
           }, 5e3);
         }
+      };
+      window.showLockedCard = function(examTitle) {
+        document.getElementById("site-locked-content-card")?.remove();
+        document.getElementById("site-locked-content-style")?.remove();
+        const style = document.createElement("style");
+        style.id = "site-locked-content-style";
+        style.textContent = `
+        #site-locked-content-card {
+            display: block;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(320px, calc(100vw - 30px));
+            box-sizing: border-box;
+            padding: 20px 18px 17px;
+            direction: rtl;
+            font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+            color: #ffffff;
+            background:
+                radial-gradient(180px 120px at 0% 0%, rgba(37, 99, 235, .13), transparent 72%),
+                radial-gradient(180px 120px at 100% 100%, rgba(59, 130, 246, .08), transparent 72%),
+                linear-gradient(145deg, #121a2a 0%, #0d1422 48%, #090f1b 100%);
+            border: 1px solid rgba(148, 163, 184, .20);
+            border-radius: 19px;
+            box-shadow:
+                0 25px 65px rgba(0, 0, 0, .65),
+                0 8px 25px rgba(0, 0, 0, .35),
+                0 0 35px rgba(37, 99, 235, .07),
+                inset 0 1px 0 rgba(255, 255, 255, .055);
+            overflow: hidden;
+            z-index: 999999;
+            animation: siteLockedAppear .26s cubic-bezier(.2,.8,.2,1);
+        }
+        @keyframes siteLockedAppear {
+            from { opacity: 0; transform: translate(-50%, -47%) scale(.96); }
+            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+        .site-locked-icon-box {
+            width: 56px; height: 56px;
+            margin: 0 auto 12px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 15px;
+            background: linear-gradient(145deg, #25344a, #151f30);
+            border: 1px solid rgba(148,163,184,.28);
+            box-shadow: 0 8px 22px rgba(0,0,0,.35), 0 0 18px rgba(37,99,235,.10), inset 0 1px 0 rgba(255,255,255,.09), inset 0 -8px 20px rgba(0,0,0,.16);
+        }
+        .site-locked-icon {
+            color: #dbeafe; font-size: 30px;
+            text-shadow: 0 0 7px rgba(255,255,255,.40), 0 0 14px rgba(96,165,250,.45), 0 0 25px rgba(37,99,235,.22);
+            animation: sparkleGlow 2.8s ease-in-out infinite;
+        }
+        @keyframes sparkleGlow {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(96,165,250,.28)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 9px rgba(96,165,250,.50)); }
+        }
+        .site-locked-title { text-align: center; color: #f1f5f9; font-size: 19px; font-weight: 600; margin-bottom: 3px; }
+        .site-locked-description { text-align: center; color: #7f8da1; font-size: 11px; margin-bottom: 14px; }
+        .site-locked-plan {
+            width: 100%; min-height: 41px;
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+            border-radius: 12px;
+            background: linear-gradient(180deg, rgba(31,41,55,.92), rgba(20,28,40,.94));
+            border: 1px solid rgba(148,163,184,.18);
+            color: #cbd5e1; font-size: 11px; font-weight: 500; margin-bottom: 11px;
+        }
+        .site-locked-pro { color: #60a5fa; font-weight: 700; }
+        .site-locked-pro-sparkle { color: #bfdbfe; font-size: 15px; }
+        .site-locked-upgrade {
+            width: 100%; height: 44px; border: 0; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            color: #ffffff;
+            background: linear-gradient(100deg, #1d4ed8 0%, #2563eb 45%, #3157dc 72%, #3730a3 100%);
+            font-family: inherit; font-size: 13px; font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 7px 18px rgba(37,99,235,.20), inset 0 1px 0 rgba(255,255,255,.13), inset 0 -2px 0 rgba(0,0,0,.12);
+        }
+        .site-locked-upgrade:hover { filter: brightness(1.08); }
+        .site-locked-upgrade:active { transform: scale(.985); }
+        .site-locked-upgrade-icon { color: #e0edff; font-size: 18px; }
+        .site-locked-footer { margin-top: 9px; text-align: center; color: #566276; font-size: 9px; }
+        @media (max-width: 500px) {
+            #site-locked-content-card { width: min(310px, calc(100vw - 26px)); padding: 18px 16px 15px; border-radius: 18px; }
+            .site-locked-icon-box { width: 52px; height: 52px; margin-bottom: 10px; }
+            .site-locked-title { font-size: 18px; }
+            .site-locked-description { font-size: 10px; margin-bottom: 12px; }
+            .site-locked-upgrade { height: 42px; font-size: 12px; }
+        }
+        @media (max-width: 340px) {
+            #site-locked-content-card { width: calc(100vw - 22px); padding: 16px 14px 13px; }
+            .site-locked-icon-box { width: 48px; height: 48px; border-radius: 13px; }
+            .site-locked-title { font-size: 17px; }
+            .site-locked-plan { min-height: 39px; font-size: 10px; }
+            .site-locked-upgrade { height: 40px; border-radius: 11px; }
+        }
+    `;
+        document.head.appendChild(style);
+        const card = document.createElement("div");
+        card.id = "site-locked-content-card";
+        card.innerHTML = `
+        <div class="site-locked-icon-box"><span class="material-symbols-outlined site-locked-icon">auto_awesome</span></div>
+        <div class="site-locked-title">\u0645\u062D\u062A\u0648\u0649 \u0645\u0642\u0641\u0644</div>
+        <div class="site-locked-description">\u062A\u0631\u0642\u064A\u0629 \u0627\u0644\u062D\u0633\u0627\u0628 \u0644\u0644\u0648\u0635\u0648\u0644 \u0625\u0644\u0649 \u0647\u0630\u0627 \u0627\u0644\u0645\u062D\u062A\u0648\u0649</div>
+        <div class="site-locked-plan">
+            <span>\u064A\u062A\u0637\u0644\u0628 \u0628\u0627\u0642\u0629:</span>
+            <span class="site-locked-pro">Pro</span>
+            <span class="material-symbols-outlined site-locked-pro-sparkle">auto_awesome</span>
+        </div>
+        <button type="button" id="siteLockedUpgrade" class="site-locked-upgrade">
+            <span class="material-symbols-outlined site-locked-upgrade-icon">auto_awesome</span>
+            <span class="site-locked-upgrade-text">\u062A\u0631\u0642\u064A\u0629 \u0627\u0644\u062D\u0633\u0627\u0628 \u0627\u0644\u0622\u0646</span>
+        </button>
+        <div class="site-locked-footer">\u0627\u0641\u062A\u062D \u0627\u0644\u0645\u064A\u0632\u0627\u062A \u0648\u0627\u0644\u0645\u062D\u062A\u0648\u0649 \u0627\u0644\u0645\u0645\u064A\u0632</div>
+    `;
+        document.body.appendChild(card);
+        document.getElementById("siteLockedUpgrade")?.addEventListener("click", function() {
+          window.location.href = "subscribe.html";
+        });
+        setTimeout(() => {
+          document.addEventListener("click", function close(e) {
+            if (!card.contains(e.target) && e.target.id !== "siteLockedUpgrade") {
+              card.remove();
+              document.removeEventListener("click", close);
+            }
+          });
+        }, 100);
       };
       currentExamData = null;
       currentSkill2 = "lesen1";
