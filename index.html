@@ -2163,6 +2163,11 @@ body.dark-mode .mobile-banner span {
 <body>
 <body class="home-page">
 <div class="top-bar">
+
+
+
+
+    
 <div class="left-side">
     <!-- بما أننا استخدمنا direction: ltr في CSS، الترتيب من اليسار إلى اليمين هو: -->
     <!-- 👤 (profile)  ->  ⚙️ (settings)  ->  🎮 (game)  ->  (باقي الأزرار غير الظاهرة حالياً) -->
@@ -2235,7 +2240,7 @@ body.dark-mode .mobile-banner span {
 <div id="profileDropdown" class="profile-dropdown">
     <!-- النجوم -->
     <div class="shape2-sparkles">
-        <span class="star-big">✧</span>
+        <span class="star-big">✧</et currentScale = 105span>
         <span class="star-small">✦</span>
     </div>
     <!-- (تم حذف زر الإعدادات) -->
@@ -3329,7 +3334,47 @@ if (listPage2) observerPremium.observe(listPage2, { attributes: true, attributeF
         }, 1500);
     }
 })();
+
+// =========================================================
+// معالجة طلب إنشاء حساب من صفحة الاشتراك
+// =========================================================
+document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const action = urlParams.get('action');
+    
+    if (action === 'signup') {
+        // فتح نافذة إنشاء الحساب
+        if (typeof openAuthModal === 'function') {
+            openAuthModal('signup');
+        }
+        // إزالة المعلمة من الرابط لتجنب إعادة الفتح عند التحديث
+        if (window.history && window.history.replaceState) {
+            const newUrl = window.location.pathname + window.location.hash;
+            window.history.replaceState({}, document.title, newUrl);
+        }
+    }
+
+    // مراقبة تسجيل الدخول للتعامل مع الخطة المعلقة
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            const pending = localStorage.getItem('pendingSubscription');
+            if (pending) {
+                // إذا كان هناك خطة معلقة، نفتح واتساب ونمسح الخطة
+                try {
+                    const data = JSON.parse(pending);
+                    // الانتقال إلى subscribe.html مع فتح واتساب مباشرة
+                    window.location.href = 'subscribe.html?auto_whatsapp=true';
+                    // (سنقوم بمعالجة auto_whatsapp في subscribe.html)
+                } catch (e) {
+                    localStorage.removeItem('pendingSubscription');
+                }
+            }
+        }
+    });
+});
 </script>
+
+
 
 <!-- تم نقل نافذة الجلسة إلى أسفل الملف -->
 
