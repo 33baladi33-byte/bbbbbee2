@@ -2267,10 +2267,165 @@
         </div>
     </footer>
 
+
+
+
+
+
+
     <div class="toast" id="toast"></div>
 
+<!-- ===== نافذة تسجيل الدخول / إنشاء حساب (نفس الموجودة في index.html) ===== -->
+<div id="authModal" class="settings-modal">
+    <div class="settings-modal-content" style="max-width: 380px;">
+      <div class="settings-modal-header" style="display: flex; justify-content: center; align-items: center; position: relative;">
+    <h3 id="authModalTitle" style="text-align: center; flex: 1; margin: 0;">تسجيل الدخول</h3>
+    <button id="closeAuthModal" class="close-settings-btn" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);">✕</button>
+</div>
+        <div class="settings-modal-body" id="authModalBody">
+            <!-- ===== نموذج تسجيل الدخول ===== -->
+            <div id="loginForm">
+                <div style="margin-bottom: 14px;">
+                    <label style="display:block; font-size:13px; color:#94a3b8; margin-bottom:4px;">البريد الإلكتروني</label>
+                    <input type="email" id="authEmail" placeholder="example@gmail.com" style="width:100%; padding:10px 12px; border:1px solid #334155; border-radius:10px; background:#1e293b; color:white; font-size:14px; box-sizing:border-box;">
+                </div>
+             <div style="margin-bottom: 14px;">
+    <label style="display:block; font-size:13px; color:#94a3b8; margin-bottom:4px;">كلمة السر</label>
+    <div class="password-wrapper">
+        <input type="password" id="authPassword" placeholder="••••••••" style="width:100%; padding:10px 12px; border:1px solid #334155; border-radius:10px; background:#1e293b; color:white; font-size:14px; box-sizing:border-box; padding-left:40px;">
+        <span id="togglePassword" class="material-symbols-outlined password-toggle-icon" data-target="authPassword">visibility</span>
+    </div>
+</div>
+                <button id="authLoginBtn" style="width:100%; padding:12px; background:#38bdf8; color:#0a0e1a; border:none; border-radius:10px; font-size:15px; font-weight:600; cursor:pointer; transition:0.3s;">دخول</button>
+                <div style="display:flex; justify-content:space-between; margin-top:12px; font-size:13px;">
+                    <span id="switchToSignup" style="color:#38bdf8; cursor:pointer;">إنشاء حساب جديد</span>
+                    <span id="switchToReset" style="color:#94a3b8; cursor:pointer; font-size:12px;">نسيت كلمة المرور؟</span>
+                </div>
+                <div id="authError" style="color:#ef4444; font-size:13px; margin-top:10px; text-align:center;"></div>
+            </div>
+
+            <!-- ===== نموذج إنشاء حساب ===== -->
+            <div id="signupForm" style="display:none;">
+                <div style="margin-bottom:10px;">
+                    <label style="display:block; font-size:13px; color:#94a3b8; margin-bottom:4px;">اسم المستخدم</label>
+                  <input type="text" id="signupUsername" placeholder="الاسم المستعار" style="width:100%; padding:10px 12px; border:1px solid #334155; border-radius:10px; background:#1e293b; color:white; font-size:14px; box-sizing:border-box;">
+                </div>
+                <div style="margin-bottom:10px;">
+                    <label style="display:block; font-size:13px; color:#94a3b8; margin-bottom:4px;">الإسم العائلي</label>
+                    <input type="text" id="signupLastname" placeholder="الاسم العائلي" style="width:100%; padding:10px 12px; border:1px solid #334155; border-radius:10px; background:#1e293b; color:white; font-size:14px; box-sizing:border-box;">
+                </div>
+                <div style="margin-bottom:10px;">
+                    <label style="display:block; font-size:13px; color:#94a3b8; margin-bottom:4px;">الإسم الشخصي</label>
+                    <input type="text" id="signupFirstname" placeholder="الإسم الشخصي" style="width:100%; padding:10px 12px; border:1px solid #334155; border-radius:10px; background:#1e293b; color:white; font-size:14px; box-sizing:border-box;">
+                </div>
+                <div style="margin-bottom:10px;">
+                    <label style="display:block; font-size:13px; color:#94a3b8; margin-bottom:4px;">البريد الإلكتروني</label>
+                    <input type="email" id="signupEmail" placeholder="example@gmail.com" style="width:100%; padding:10px 12px; border:1px solid #334155; border-radius:10px; background:#1e293b; color:white; font-size:14px; box-sizing:border-box;">
+                </div>
+        <div style="margin-bottom:14px;">
+    <label style="display:block; font-size:13px; color:#94a3b8; margin-bottom:4px;">كلمة السر</label>
+    <div class="password-wrapper">
+        <input type="password" id="signupPassword" placeholder="••••••••" style="width:100%; padding:10px 12px; border:1px solid #334155; border-radius:10px; background:#1e293b; color:white; font-size:14px; box-sizing:border-box; padding-left:40px;">
+        <span id="toggleSignupPassword" class="material-symbols-outlined password-toggle-icon" data-target="signupPassword">visibility</span>
+    </div>
+</div>
+                <button id="authSignupBtn" style="width:100%; padding:12px; background:#38bdf8; color:#0a0e1a; border:none; border-radius:10px; font-size:15px; font-weight:600; cursor:pointer; transition:0.3s;">انشاء</button>
+                <div style="margin-top:12px; font-size:13px; text-align:center;">
+                    <span style="color:#94a3b8;">عندك حساب؟ </span>
+                    <span id="switchToLogin" style="color:#38bdf8; cursor:pointer;">دخل هنا</span>
+                </div>
+                <div id="signupError" style="color:#ef4444; font-size:13px; margin-top:10px; text-align:center;"></div>
+            </div>
+
+            <!-- ===== نموذج نسيت كلمة المرور ===== -->
+            <div id="resetForm" style="display:none;">
+                <p style="color:#94a3b8; font-size:13px; margin-bottom:14px;">أدخل بريدك الإلكتروني وكلمة السر الجديدة</p>
+                <div style="margin-bottom:10px;">
+                    <label style="display:block; font-size:13px; color:#94a3b8; margin-bottom:4px;">البريد الإلكتروني</label>
+                    <input type="email" id="resetEmail" placeholder="example@gmail.com" style="width:100%; padding:10px 12px; border:1px solid #334155; border-radius:10px; background:#1e293b; color:white; font-size:14px; box-sizing:border-box;">
+                </div>
+     <div style="margin-bottom:14px;">
+    <label style="display:block; font-size:13px; color:#94a3b8; margin-bottom:4px;">كلمة السر الجديدة</label>
+    <div class="password-wrapper">
+        <input type="password" id="resetNewPassword" placeholder="••••••••" style="width:100%; padding:10px 12px; border:1px solid #334155; border-radius:10px; background:#1e293b; color:white; font-size:14px; box-sizing:border-box; padding-left:40px;">
+        <span id="toggleResetPassword" class="material-symbols-outlined password-toggle-icon" data-target="resetNewPassword">visibility</span>
+    </div>
+</div>
+                <button id="resetWhatsAppBtn" style="width:100%; padding:12px; background:#25D366; color:white; border:none; border-radius:10px; font-size:15px; font-weight:600; cursor:pointer; transition:0.3s;"> إرسال عبر واتساب</button>
+                <div style="margin-top:12px; font-size:13px; text-align:center;">
+                    <span id="switchToLoginFromReset" style="color:#38bdf8; cursor:pointer;">← العودة لتسجيل الدخول</span>
+                </div>
+                <div id="resetError" style="color:#ef4444; font-size:13px; margin-top:10px; text-align:center;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
+// =========================================================
+// تعريف دوال المودال محلياً في صفحة الاشتراك
+// =========================================================
+function openAuthModal(form = 'login') {
+    const modal = document.getElementById('authModal');
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+    const resetForm = document.getElementById('resetForm');
+    const title = document.getElementById('authModalTitle');
+
+    if (!modal) return;
+
+    // إخفاء الكل
+    if (loginForm) loginForm.style.display = 'none';
+    if (signupForm) signupForm.style.display = 'none';
+    if (resetForm) resetForm.style.display = 'none';
+
+    // إظهار المطلوب
+    if (form === 'login') {
+        if (loginForm) loginForm.style.display = 'block';
+        if (title) title.textContent = 'تسجيل الدخول';
+    } else if (form === 'signup') {
+        if (signupForm) signupForm.style.display = 'block';
+        if (title) title.textContent = 'إنشاء حساب';
+    } else if (form === 'reset') {
+        if (resetForm) resetForm.style.display = 'block';
+        if (title) title.textContent = 'تغيير كلمة المرور';
+    }
+
+    modal.classList.add('active');
+}
+
+function closeAuthModalFunc() {
+    const modal = document.getElementById('authModal');
+    if (modal) modal.classList.remove('active');
+}
+
+// ربط أزرار المودال
+document.addEventListener('DOMContentLoaded', function() {
+    const closeBtn = document.getElementById('closeAuthModal');
+    if (closeBtn) closeBtn.addEventListener('click', closeAuthModalFunc);
+
+    const modal = document.getElementById('authModal');
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeAuthModalFunc();
+        });
+    }
+
+    // التبديل بين النماذج
+    const switchToSignup = document.getElementById('switchToSignup');
+    const switchToLogin = document.getElementById('switchToLogin');
+    const switchToReset = document.getElementById('switchToReset');
+    const switchToLoginFromReset = document.getElementById('switchToLoginFromReset');
+
+    if (switchToSignup) switchToSignup.addEventListener('click', function() { openAuthModal('signup'); });
+    if (switchToLogin) switchToLogin.addEventListener('click', function() { openAuthModal('login'); });
+    if (switchToReset) switchToReset.addEventListener('click', function() { openAuthModal('reset'); });
+    if (switchToLoginFromReset) switchToLoginFromReset.addEventListener('click', function() { openAuthModal('login'); });
+});
+
+// =========================================================
 // تهيئة Firebase (نفس إعدادات الموقع الرئيسي)
+// =========================================================
 const firebaseConfig = {
   apiKey: "AIzaSyABp_TfYLzX76ddo0nE08R7T0N8UEGbjIc",
   authDomain: "zertivab22.firebaseapp.com",
@@ -2287,384 +2442,313 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 window.auth = auth;
 
-// بقية الكود
-const pricingData = {
-    "15": {
-        standard: { price: "0", period: "يوم واحد", old: "", save: "", deals: [], features: ["كل المميزات الموجودة في باقة Pro"] },
-        pro: {
-            price: "49",
-            period: "15 يوما",
-            old: "100 DH",
-            save: "وفر 51 DH",
-            deals: [],
-            features: [
-                "التحدث مع AI",
-                " ✓ يمكن ليك تتدرب على جميع أجزاء امتحان التيلك بي 2 في مكان واحد ",
-                "  ✓ يمكنك تشغيل المؤقت للحرص على اكمالك للاهداف اليومية وتتبع انجازاتك  ",
-                " يمكنك المراجعة بشكل اسرع من خلال ميزة الاسترجاع الدكي في جميع الاجزاء. ",
-                " امكانية اختبار سرعة اجابتك من خلال ميزة التحدي السريع ",
-                "يمكن لك تخدم كل Hören Teile",
-                "يمكن لك تقلد امتلة جيدة جدا في كل مواضيع Mündlich"
-            ]
-        },
-        max: {
-            price: "79",
-            period: "15 يوما",
-            old: "200 DH",
-            save: "وفر 121 DH",
-            deals: [],
-            features: [
-                "✓ تحميل ملف الإحصائيات الخاصة بك بشكل غير محدود",
-                "✓ نظام ذكي كيعرف ليك الامتحانات اللي محتاجة مراجعة، اعتماداً على نتائجك وتقدمك ووقت إجاباتك، باش تعرف فين خاصك تركز وتكون واجد 100%.",
-                "✓ كل المميزات الأخرى الموجودة في باقة Premium"
-            ]
-        }
-    },
-    "30": {
-        standard: { price: "0", period: "يوم واحد", old: "", save: "", deals: [], features: ["كل المميزات الموجودة في باقة Pro"] },
-        pro: {
-            price: "99",
-            period: "شهر واحد",
-            old: "150 DH",
-            save: "وفر 51 DH",
-            deals: [],
-            features: [
-                "التحدث مع AI",
-                "  يمكن ليك تتدرب على جميع أجزاء امتحان التيلك بي 2 في مكان واحد ",
-                "   يمكنك تشغيل المؤقت للحرص على اكمالك للاهداف اليومية وتتبع انجازاتك  ",
-                " يمكنك المراجعة بشكل اسرع من خلال ميزة الاسترجاع الدكي في جميع الاجزاء. ",
-                " امكانية اختبار سرعة اجابتك من خلال ميزة التحدي السريع ",
-                "يمكن لك تخدم كل Hören Teile",
-                "يمكن لك تقلدامتلة جيدة جدا في كل مواضيع Mündlich"
-            ]
-        },
-        max: {
-            price: "149",
-            period: "شهر واحد",
-            old: "250 DH",
-            save: "وفر 101 DH",
-            deals: ["شهرين بـ 269 DH فقط"],
-            features: [
-                "✓ تحميل ملف الإحصائيات الخاصة بك بشكل غير محدود",
-                "✓ نظام ذكي كيعرف ليك الامتحانات اللي محتاجة مراجعة، اعتماداً على نتائجك وتقدمك ووقت إجاباتك، باش تعرف فين خاصك تركز وتكون واجد 100%.",
-                "✓ كل المميزات الأخرى الموجودة في باقة Premium"
-            ]
-        }
-    },
-    "60": {
-        standard: { price: "0", period: "يوم واحد", old: "", save: "", deals: [], features: ["كل المميزات الموجودة في باقة Pro"] },
-        pro: {
-            price: "149",
-            period: "شهرين",
-            old: "200 DH",
-            save: "وفر 51 DH",
-            deals: [],
-            features: [
-                "التحدث مع AI",
-                "  يمكن ليك تتدرب على جميع أجزاء امتحان التيلك بي 2 في مكان واحد ",
-                "   يمكنك تشغيل المؤقت للحرص على اكمالك للاهداف اليومية وتتبع انجازاتك   ",
-                " يمكنك المراجعة بشكل اسرع من خلال ميزة الاسترجاع الدكي في جميع الاجزاء. ",
-                " امكانية اختبار سرعة اجابتك من خلال ميزة التحدي السريع ",
-                "يمكن لك تخدم كل Hören Teile",
-                "يمكن لك تقلدامتلة جيدة جدا في كل مواضيع Mündlich"
-            ]
-        },
-        max: {
-            price: "249",
-            period: "شهرين",
-            old: "350 DH",
-            save: "وفر 101 DH",
-            deals: [],
-            features: [
-                "✓ تحميل ملف الإحصائيات الخاصة بك بشكل غير محدود",
-                "✓ نظام ذكي كيعرف ليك الامتحانات اللي محتاجة مراجعة، اعتماداً على نتائجك وتقدمك ووقت إجاباتك، باش تعرف فين خاصك تركز وتكون واجد 100%.",
-                "✓ كل المميزات الأخرى الموجودة في باقة Premium"
-            ]
-        }
-    },
-    "90": {
-        standard: { price: "0", period: "يوم واحد", old: "", save: "", deals: [], features: ["كل المميزات الموجودة في باقة Pro"] },
-        pro: {
-            price: "229",
-            period: "3 شهور",
-            old: "300 DH",
-            save: "وفر 71 DH",
-            deals: [],
-            features: [
-                "التحدث مع AI",
-                "  يمكن ليك تتدرب على جميع أجزاء امتحان التيلك بي 2 في مكان واحد ",
-                "   يمكنك تشغيل المؤقت للحرص على اكمالك للاهداف اليومية وتتبع انجازاتك   ",
-                " يمكنك المراجعة بشكل اسرع من خلال ميزة الاسترجاع الدكي في جميع الاجزاء. ",
-                " امكانية اختبار سرعة اجابتك من خلال ميزة التحدي السريع ",
-                "يمكن لك تخدم كل Hören Teile",
-                "يمكن لك تقلدامتلة جيدة جدا في كل مواضيع Mündlich"
-            ]
-        },
-        max: {
-            price: "349",
-            period: "3 شهور",
-            old: "450 DH",
-            save: "وفر 101 DH",
-            deals: [],
-            features: [
-                "✓ تحميل ملف الإحصائيات الخاصة بك بشكل غير محدود",
-                "✓ نظام ذكي كيعرف ليك الامتحانات اللي محتاجة مراجعة، اعتماداً على نتائجك وتقدمك ووقت إجاباتك، باش تعرف فين خاصك تركز وتكون واجد 100%.",
-                "✓ كل المميزات الأخرى الموجودة في باقة Premium"
-            ]
+// =========================================================
+// استدعاء وظائف المصادقة عند الضغط على الأزرار
+// =========================================================
+document.addEventListener('DOMContentLoaded', function() {
+    const loginBtn = document.getElementById('authLoginBtn');
+    const signupBtn = document.getElementById('authSignupBtn');
+    const resetBtn = document.getElementById('resetWhatsAppBtn');
+
+    if (loginBtn) {
+        loginBtn.addEventListener('click', function() {
+            const email = document.getElementById('authEmail').value;
+            const password = document.getElementById('authPassword').value;
+            const errorEl = document.getElementById('authError');
+
+            if (!email || !password) {
+                if (errorEl) errorEl.textContent = 'يرجى ملء جميع الحقول';
+                return;
+            }
+
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then(() => {
+                    closeAuthModalFunc();
+                    // التحقق من الخطة المعلقة
+                    checkPendingPlanAndProceed();
+                })
+                .catch((error) => {
+                    if (errorEl) errorEl.textContent = error.message;
+                });
+        });
+    }
+
+    if (signupBtn) {
+        signupBtn.addEventListener('click', function() {
+            const username = document.getElementById('signupUsername').value;
+            const lastname = document.getElementById('signupLastname').value;
+            const firstname = document.getElementById('signupFirstname').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const errorEl = document.getElementById('signupError');
+
+            if (!username || !lastname || !firstname || !email || !password) {
+                if (errorEl) errorEl.textContent = 'يرجى ملء جميع الخانات';
+                return;
+            }
+
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // حفظ بيانات المستخدم الإضافية
+                    const user = userCredential.user;
+                    const db = firebase.firestore();
+                    return db.collection('users').doc(user.uid).set({
+                        email: email,
+                        username: username,
+                        firstname: firstname,
+                        lastname: lastname,
+                        plan: 'free',
+                        premiumUntil: null,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    }).then(() => {
+                        closeAuthModalFunc();
+                        // التحقق من الخطة المعلقة
+                        checkPendingPlanAndProceed();
+                    });
+                })
+                .catch((error) => {
+                    if (errorEl) errorEl.textContent = error.message;
+                });
+        });
+    }
+
+    if (resetBtn) {
+        resetBtn.addEventListener('click', function() {
+            const email = document.getElementById('resetEmail').value;
+            const newPassword = document.getElementById('resetNewPassword').value;
+            const errorEl = document.getElementById('resetError');
+
+            if (!email || !newPassword) {
+                if (errorEl) errorEl.textContent = 'يرجى ملء جميع الحقول';
+                return;
+            }
+
+            const message = `السلام عليكم،\nنسيت كلمة المرور وبغيت نبدلها.\nالبريد الإلكتروني: ${email}`;
+            const waUrl = `https://wa.me/212665881925?text=${encodeURIComponent(message)}`;
+            window.open(waUrl, '_blank');
+            closeAuthModalFunc();
+        });
+    }
+});
+
+// =========================================================
+// دالة التحقق من الخطة المعلقة بعد تسجيل الدخول
+// =========================================================
+function checkPendingPlanAndProceed() {
+    const pending = localStorage.getItem('pendingSubscription');
+    if (pending) {
+        try {
+            const data = JSON.parse(pending);
+            // نفتح واتساب مباشرة
+            openWhatsApp(data.plan, data.duration, data.price);
+            localStorage.removeItem('pendingSubscription');
+        } catch (e) {
+            localStorage.removeItem('pendingSubscription');
         }
     }
-};
+}
 
-        /* =========================================================
-           GET USER EMAIL
-           ========================================================= */
+// مراقبة حالة المصادقة
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        // إذا كان هناك خطة معلقة، نفتح واتساب
+        checkPendingPlanAndProceed();
+    }
+});
 
-             function getUserEmail() {
-            const storedEmail = localStorage.getItem('zertiva_user_email');
-            if (storedEmail && storedEmail.includes('@')) {
-                return storedEmail;
+// =========================================================
+// GET USER EMAIL
+// =========================================================
+function getUserEmail() {
+    const storedEmail = localStorage.getItem('zertiva_user_email');
+    if (storedEmail && storedEmail.includes('@')) {
+        return storedEmail;
+    }
+    const possibleKeys = ["user", "currentUser", "userData", "userProfile", "profile", "email"];
+    for (const key of possibleKeys) {
+        try {
+            const value = localStorage.getItem(key);
+            if (!value) continue;
+            try {
+                const parsed = JSON.parse(value);
+                if (parsed && typeof parsed === "object") {
+                    const email = parsed.email || parsed.emailAddress || parsed.userEmail;
+                    if (email) return email;
+                }
+            } catch {
+                if (value.includes("@")) return value;
             }
-            const possibleKeys = ["user", "currentUser", "userData", "userProfile", "profile", "email"];
-            for (const key of possibleKeys) {
-                try {
-                    const value = localStorage.getItem(key);
-                    if (!value) continue;
-                    try {
-                        const parsed = JSON.parse(value);
-                        if (parsed && typeof parsed === "object") {
-                            const email = parsed.email || parsed.emailAddress || parsed.userEmail;
-                            if (email) return email;
-                        }
-                    } catch {
-                        if (value.includes("@")) return value;
-                    }
-                } catch {}
-            }
-            return "---";
-        }
+        } catch {}
+    }
+    return "---";
+}
 
-        /* =========================================================
-           WHATSAPP (نفس الوظيفة الأصلية، لم تتغير)
-           ========================================================= */
-
-        function openWhatsApp(plan, duration, price) {
-            const email = getUserEmail();
-            const message = `مرحباً، أريد الانضمام إلى العائلة :
+// =========================================================
+// WHATSAPP (نفس الوظيفة الأصلية، لم تتغير)
+// =========================================================
+function openWhatsApp(plan, duration, price) {
+    const email = getUserEmail();
+    const message = `مرحباً، أريد الانضمام إلى العائلة :
 المدة: ${duration}
 الخطة: ${plan}
 الثمن: ${price} DH
 الإيميل: ${email}`;
-            const url = "https://wa.me/212665881925?text=" + encodeURIComponent(message);
-            window.open(url, "_blank", "noopener,noreferrer");
-        }
+    const url = "https://wa.me/212665881925?text=" + encodeURIComponent(message);
+    window.open(url, "_blank", "noopener,noreferrer");
+}
 
-        /* =========================================================
-           دالة معالجة اختيار الخطة (مع التحقق من تسجيل الدخول)
-           ========================================================= */
+// =========================================================
+// دالة معالجة اختيار الخطة (مع التحقق من تسجيل الدخول)
+// =========================================================
+function handlePlanSelection(plan, duration, price) {
+    const user = firebase.auth().currentUser;
 
-        function handlePlanSelection(plan, duration, price) {
-            const user = firebase.auth().currentUser;
-
-            if (user) {
-                // ✅ مسجل الدخول → واتساب مباشرة
-                openWhatsApp(plan, duration, price);
-            } else {
-                // ❌ غير مسجل → تخزين الخطة وفتح نموذج إنشاء الحساب الأصلي
-                const planData = { plan, duration, price };
-                localStorage.setItem('pendingSubscription', JSON.stringify(planData));
-                // الذهاب إلى الصفحة الرئيسية مع أمر فتح نافذة إنشاء الحساب
-                window.location.href = 'index.html?action=signup';
-            }
-        }
-
-        /* =========================================================
-           CREATE PLAN (مع بيانات custom بدلاً من onclick المباشر)
-           ========================================================= */
-
-        function createPlan(type, data) {
-            const isStandard = type === "standard";
-            const isPro = type === "pro";
-            const isMax = type === "max";
-
-            let name = isStandard ? "Standard" : isPro ? "Pro" : "Pro Max";
-            let badge = isPro ? "أفضل قيمة" : isMax ? "Premium" : "أساسي";
-            let button = isStandard ? "ابدأ مجاناً" : isPro ? "اشترك الآن" : "ترقية";
-            let dealsHTML = "";
-            if (data.deals && data.deals.length) {
-                dealsHTML = data.deals.map(deal => `<div class="extra-deal">${deal}</div>`).join("");
-            }
-            const featuresHTML = data.features.map(feature => `
-                        <li class="feature">
-                            <span class="check">✓</span>
-                            <span>${feature}</span>
-                        </li>
-                    `).join("");
-
-            return `
-                        <article class="plan ${type}" data-plan-name="${name}" data-plan-period="${data.period}" data-plan-price="${data.price}">
-                            <div class="plan-top">
-                                <div>
-                                    <h3 class="plan-name">${name}</h3>
-                                    <p class="plan-description">
-                                        ${isStandard ? "ابدأ بالمميزات الأساسية" : isPro ? "الخطة المناسبة للمراجعة" : "أقصى استفادة من Zertiva"}
-                                    </p>
-                                </div>
-                                <span class="plan-badge">${badge}</span>
-                            </div>
-                            <div class="price-area">
-                                <div class="price">
-                                    <span class="price-number">${data.price}</span>
-                                    <span class="price-currency">DH</span>
-                                </div>
-                                <div class="price-period">/ ${data.period}</div>
-                                ${data.old ? `<div class="old-price"><s>${data.old}</s><span class="save">${data.save}</span></div>` : ""}
-                                ${dealsHTML}
-                            </div>
-                            <div class="features-title">المزايا الحصرية</div>
-                            <ul class="features">${featuresHTML}</ul>
-                            <button class="plan-button" data-plan-name="${name}" data-plan-period="${data.period}" data-plan-price="${data.price}">${button}</button>
-                            <div class="plan-note">تفعيل الحساب عبر WhatsApp</div>
-                        </article>
-                    `;
-        }
-
-        /* =========================================================
-           ربط الأزرار بعد التحميل
-           ========================================================= */
-
-        function attachPlanButtonEvents() {
-            document.querySelectorAll('.plan-button').forEach(btn => {
-                // إزالة أي مستمع قديم
-                btn.onclick = null;
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const plan = this.dataset.planName || 'Standard';
-                    const duration = this.dataset.planPeriod || 'غير محدد';
-                    const price = this.dataset.planPrice || '0';
-                    handlePlanSelection(plan, duration, price);
-                });
-            });
-        }
-
-        /* =========================================================
-           RENDER PRICING (مع استدعاء ربط الأزرار بعد الإنشاء)
-           ========================================================= */
-
-        function renderPricing(duration) {
-            const grid = document.getElementById("pricingGrid");
-            const data = pricingData[duration];
-            if (!data) return;
-            grid.style.opacity = "0";
-            grid.style.transform = "translateY(5px)";
-            setTimeout(() => {
-                grid.innerHTML = createPlan("standard", data.standard) +
-                    createPlan("pro", data.pro) +
-                    createPlan("max", data.max);
-                requestAnimationFrame(() => {
-                    grid.style.transition = "opacity .28s ease,transform .28s ease";
-                    grid.style.opacity = "1";
-                    grid.style.transform = "translateY(0)";
-                });
-                // ربط الأزرار بعد إضافة العناصر
-                attachPlanButtonEvents();
-            }, 100);
-        }
-
-        /* =========================================================
-           DURATION BUTTONS
-           ========================================================= */
-
-        document.querySelectorAll(".duration-btn").forEach(button => {
-            button.addEventListener("click", () => {
-                document.querySelectorAll(".duration-btn").forEach(btn => btn.classList.remove("active"));
-                button.classList.add("active");
-                renderPricing(button.dataset.duration);
-            });
-        });
-
-        /* =========================================================
-           FAQ
-           ========================================================= */
-
-        document.querySelectorAll(".faq-question").forEach(button => {
-            button.addEventListener("click", () => {
-                const item = button.closest(".faq-item");
-                document.querySelectorAll(".faq-item").forEach(other => {
-                    if (other !== item) other.classList.remove("open");
-                });
-                item.classList.toggle("open");
-            });
-        });
-
-        /* =========================================================
-           FOOTER LINKS
-           ========================================================= */
-
-        document.getElementById('footerHomeBtn')?.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.location.href = 'index.html';
-        });
-
-        document.getElementById('footerUpgradeBtn')?.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.location.href = '#pricing';
-        });
-
-        /* =========================================================
-           معالجة العودة من إنشاء الحساب مع الخطة المختارة
-           ========================================================= */
-
-        (function handleAutoWhatsApp() {
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('auto_whatsapp') === 'true') {
-                const pending = localStorage.getItem('pendingSubscription');
-                if (pending) {
-                    try {
-                        const data = JSON.parse(pending);
-                        const user = firebase.auth().currentUser;
-                        if (user) {
-                            openWhatsApp(data.plan, data.duration, data.price);
-                            localStorage.removeItem('pendingSubscription');
-                            // إزالة المعلمة من الرابط
-                            if (window.history && window.history.replaceState) {
-                                const newUrl = window.location.pathname + window.location.hash;
-                                window.history.replaceState({}, document.title, newUrl);
-                            }
-                        } else {
-                            // إذا لم يكن مسجلاً بعد، نعيد توجيهه إلى إنشاء حساب
-                            window.location.href = 'index.html?action=signup';
-                        }
-                    } catch (e) {
-                        localStorage.removeItem('pendingSubscription');
-                    }
-                }
-            }
-        })();
-
-        /* =========================================================
-           INITIAL
-           ========================================================= */
-
-        renderPricing("15");
-
-        console.log("✅ Zertiva Subscribe Page loaded successfully (with login check).");
-    </script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // العثور على كل أزرار الاشتراك (ترقية، اشترك الآن، ابدأ مجاناً)
-    var buttons = document.querySelectorAll('button, a');
-    for (var i = 0; i < buttons.length; i++) {
-        var text = (buttons[i].textContent || '').trim();
-        if (/ترقية|اشترك الآن|ابدأ مجانًا|اشترك|التالي/.test(text)) {
-            buttons[i].addEventListener('click', function(e) {
-                e.preventDefault();
-                // الانتقال إلى صفحة إنشاء الحساب في index.html
-                window.location.href = 'index.html?openSignup=1';
-            });
-        }
+    if (user) {
+        // ✅ مسجل الدخول → واتساب مباشرة
+        openWhatsApp(plan, duration, price);
+    } else {
+        // ❌ غير مسجل → تخزين الخطة وفتح نموذج إنشاء الحساب في نفس الصفحة
+        const planData = { plan, duration, price };
+        localStorage.setItem('pendingSubscription', JSON.stringify(planData));
+        // فتح مودال إنشاء الحساب المحلي
+        openAuthModal('signup');
     }
+}
+
+// =========================================================
+// CREATE PLAN (مع بيانات custom بدلاً من onclick المباشر)
+// =========================================================
+function createPlan(type, data) {
+    const isStandard = type === "standard";
+    const isPro = type === "pro";
+    const isMax = type === "max";
+
+    let name = isStandard ? "Standard" : isPro ? "Pro" : "Pro Max";
+    let badge = isPro ? "أفضل قيمة" : isMax ? "Premium" : "أساسي";
+    let button = isStandard ? "ابدأ مجاناً" : isPro ? "اشترك الآن" : "ترقية";
+    let dealsHTML = "";
+    if (data.deals && data.deals.length) {
+        dealsHTML = data.deals.map(deal => `<div class="extra-deal">${deal}</div>`).join("");
+    }
+    const featuresHTML = data.features.map(feature => `
+                <li class="feature">
+                    <span class="check">✓</span>
+                    <span>${feature}</span>
+                </li>
+            `).join("");
+
+    return `
+                <article class="plan ${type}" data-plan-name="${name}" data-plan-period="${data.period}" data-plan-price="${data.price}">
+                    <div class="plan-top">
+                        <div>
+                            <h3 class="plan-name">${name}</h3>
+                            <p class="plan-description">
+                                ${isStandard ? "ابدأ بالمميزات الأساسية" : isPro ? "الخطة المناسبة للمراجعة" : "أقصى استفادة من Zertiva"}
+                            </p>
+                        </div>
+                        <span class="plan-badge">${badge}</span>
+                    </div>
+                    <div class="price-area">
+                        <div class="price">
+                            <span class="price-number">${data.price}</span>
+                            <span class="price-currency">DH</span>
+                        </div>
+                        <div class="price-period">/ ${data.period}</div>
+                        ${data.old ? `<div class="old-price"><s>${data.old}</s><span class="save">${data.save}</span></div>` : ""}
+                        ${dealsHTML}
+                    </div>
+                    <div class="features-title">المزايا الحصرية</div>
+                    <ul class="features">${featuresHTML}</ul>
+                    <button class="plan-button" data-plan-name="${name}" data-plan-period="${data.period}" data-plan-price="${data.price}">${button}</button>
+                    <div class="plan-note">تفعيل الحساب عبر WhatsApp</div>
+                </article>
+            `;
+}
+
+// =========================================================
+// ربط الأزرار بعد التحميل
+// =========================================================
+function attachPlanButtonEvents() {
+    document.querySelectorAll('.plan-button').forEach(btn => {
+        // إزالة أي مستمع قديم
+        btn.onclick = null;
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const plan = this.dataset.planName || 'Standard';
+            const duration = this.dataset.planPeriod || 'غير محدد';
+            const price = this.dataset.planPrice || '0';
+            handlePlanSelection(plan, duration, price);
+        });
+    });
+}
+
+// =========================================================
+// RENDER PRICING (مع استدعاء ربط الأزرار بعد الإنشاء)
+// =========================================================
+function renderPricing(duration) {
+    const grid = document.getElementById("pricingGrid");
+    const data = pricingData[duration];
+    if (!data) return;
+    grid.style.opacity = "0";
+    grid.style.transform = "translateY(5px)";
+    setTimeout(() => {
+        grid.innerHTML = createPlan("standard", data.standard) +
+            createPlan("pro", data.pro) +
+            createPlan("max", data.max);
+        requestAnimationFrame(() => {
+            grid.style.transition = "opacity .28s ease,transform .28s ease";
+            grid.style.opacity = "1";
+            grid.style.transform = "translateY(0)";
+        });
+        // ربط الأزرار بعد إضافة العناصر
+        attachPlanButtonEvents();
+    }, 100);
+}
+
+// =========================================================
+// DURATION BUTTONS
+// =========================================================
+document.querySelectorAll(".duration-btn").forEach(button => {
+    button.addEventListener("click", () => {
+        document.querySelectorAll(".duration-btn").forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+        renderPricing(button.dataset.duration);
+    });
 });
+
+// =========================================================
+// FAQ
+// =========================================================
+document.querySelectorAll(".faq-question").forEach(button => {
+    button.addEventListener("click", () => {
+        const item = button.closest(".faq-item");
+        document.querySelectorAll(".faq-item").forEach(other => {
+            if (other !== item) other.classList.remove("open");
+        });
+        item.classList.toggle("open");
+    });
+});
+
+// =========================================================
+// FOOTER LINKS
+// =========================================================
+document.getElementById('footerHomeBtn')?.addEventListener('click', function(e) {
+    e.preventDefault();
+    window.location.href = 'index.html';
+});
+
+document.getElementById('footerUpgradeBtn')?.addEventListener('click', function(e) {
+    e.preventDefault();
+    window.location.href = '#pricing';
+});
+
+// =========================================================
+// INITIAL
+// =========================================================
+renderPricing("15");
+
+console.log("✅ Zertiva Subscribe Page loaded successfully (with local auth modal).");
 </script>
 </body>
 </html>
