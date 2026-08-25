@@ -2265,9 +2265,25 @@
 
     <div class="toast" id="toast"></div>
 
-
-
 <script>
+// تهيئة Firebase (نفس إعدادات الموقع الرئيسي)
+const firebaseConfig = {
+  apiKey: "AIzaSyABp_TfYLzX76ddo0nE08R7T0N8UEGbjIc",
+  authDomain: "zertivab22.firebaseapp.com",
+  databaseURL: "https://zertivab22-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "zertivab22",
+  storageBucket: "zertivab22.firebasestorage.app",
+  messagingSenderId: "510978830489",
+  appId: "1:510978830489:web:754fc4ebc02a7ab40a4808",
+  measurementId: "G-57CPE84S84"
+};
+firebase.initializeApp(firebaseConfig);
+
+// تأكد من أن auth متاح
+const auth = firebase.auth();
+window.auth = auth;
+
+// بقية الكود
 const pricingData = {
     "15": {
         standard: { price: "0", period: "يوم واحد", old: "", save: "", deals: [], features: ["كل المميزات الموجودة في باقة Pro"] },
