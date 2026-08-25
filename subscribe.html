@@ -2265,8 +2265,8 @@
 
     <div class="toast" id="toast"></div>
 
-    <script>
-    const pricingData = {
+<script>
+const pricingData = {
     "15": {
         standard: { price: "0", period: "يوم واحد", old: "", save: "", deals: [], features: ["كل المميزات الموجودة في باقة Pro"] },
         pro: {
@@ -2305,7 +2305,7 @@
             period: "شهر واحد",
             old: "150 DH",
             save: "وفر 51 DH",
-            deals: [], // ✅ تم حذف السطرين "15 يوم بـ 50 DH فقط" و "شهرين بـ 149 DH فقط"
+            deals: [],
             features: [
                 "التحدث مع AI",
                 "  يمكن ليك تتدرب على جميع أجزاء امتحان التيلك بي 2 في مكان واحد ",
@@ -2432,7 +2432,7 @@
 
         function openWhatsApp(plan, duration, price) {
             const email = getUserEmail();
-            const message = `مرحباً، أريد الانضمام إلى عائلة سهلة:
+            const message = `مرحباً، أريد الانضمام إلى العائلة :
         المدة: ${duration}
         الخطة: ${plan}
         الثمن: ${price} DH
@@ -2464,8 +2464,9 @@
                         </li>
                     `).join("");
 
+            // تعديل: إزالة onclick المباشر واستخدام data attributes لربطها لاحقاً
             return `
-                        <article class="plan ${type}">
+                        <article class="plan ${type}" data-plan-name="${name}" data-plan-period="${data.period}" data-plan-price="${data.price}">
                             <div class="plan-top">
                                 <div>
                                     <h3 class="plan-name">${name}</h3>
@@ -2486,7 +2487,7 @@
                             </div>
                             <div class="features-title">المزايا الحصرية</div>
                             <ul class="features">${featuresHTML}</ul>
-                            <button class="plan-button" onclick="openWhatsApp('${name}','${data.period}','${data.price}')">${button}</button>
+                            <button class="plan-button" data-plan-name="${name}" data-plan-period="${data.period}" data-plan-price="${data.price}">${button}</button>
                             <div class="plan-note">تفعيل الحساب عبر WhatsApp</div>
                         </article>
                     `;
@@ -2511,7 +2512,45 @@
                     grid.style.opacity = "1";
                     grid.style.transform = "translateY(0)";
                 });
+                // بعد إعادة الرسم، ربط الأزرار بالدالة الجديدة
+                attachPlanButtonEvents();
             }, 100);
+        }
+
+        /* =========================================================
+           ربط أزرار الخطط بالدالة الجديدة
+           ========================================================= */
+        function attachPlanButtonEvents() {
+            document.querySelectorAll('.plan-button').forEach(btn => {
+                // إزالة أي مستمع قديم
+                btn.onclick = null;
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const plan = this.dataset.planName || 'Standard';
+                    const duration = this.dataset.planPeriod || 'غير محدد';
+                    const price = this.dataset.planPrice || '0';
+                    handlePlanSelection(plan, duration, price);
+                });
+            });
+        }
+
+        /* =========================================================
+           دالة معالجة اختيار الخطة مع التحقق من تسجيل الدخول
+           ========================================================= */
+        function handlePlanSelection(plan, duration, price) {
+            // التحقق من حالة المستخدم باستخدام Firebase Auth
+            const user = firebase.auth().currentUser;
+
+            if (user) {
+                // الحالة 1: المستخدم مسجل الدخول → واتساب مباشرة
+                openWhatsApp(plan, duration, price);
+            } else {
+                // الحالة 2: المستخدم غير مسجل → تخزين الخطة والذهاب إلى صفحة إنشاء الحساب
+                const planData = { plan, duration, price };
+                localStorage.setItem('pendingSubscription', JSON.stringify(planData));
+                // إعادة التوجيه إلى الصفحة الرئيسية مع أمر فتح نافذة إنشاء الحساب
+                window.location.href = 'index.html?action=signup';
+            }
         }
 
         /* =========================================================
@@ -2553,6 +2592,37 @@
             e.preventDefault();
             window.location.href = '#pricing';
         });
+
+        /* =========================================================
+           معالجة auto_whatsapp عند العودة من إنشاء الحساب
+           ========================================================= */
+        (function handleAutoWhatsApp() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('auto_whatsapp') === 'true') {
+                const pending = localStorage.getItem('pendingSubscription');
+                if (pending) {
+                    try {
+                        const data = JSON.parse(pending);
+                        // التأكد من أن المستخدم مسجل الآن (نظام auth)
+                        const user = firebase.auth().currentUser;
+                        if (user) {
+                            openWhatsApp(data.plan, data.duration, data.price);
+                            localStorage.removeItem('pendingSubscription');
+                            // إزالة المعلمة من الرابط
+                            if (window.history && window.history.replaceState) {
+                                const newUrl = window.location.pathname + window.location.hash;
+                                window.history.replaceState({}, document.title, newUrl);
+                            }
+                        } else {
+                            // إذا لم يكن مسجلاً بعد، نعيد توجيهه إلى إنشاء حساب
+                            window.location.href = 'index.html?action=signup';
+                        }
+                    } catch (e) {
+                        localStorage.removeItem('pendingSubscription');
+                    }
+                }
+            }
+        })();
 
         /* =========================================================
            INITIAL
