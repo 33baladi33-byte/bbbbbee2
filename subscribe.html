@@ -2563,5 +2563,21 @@
         console.log("✅ Zertiva Subscribe Page loaded successfully.");
     </script>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // العثور على كل أزرار الاشتراك (ترقية، اشترك الآن، ابدأ مجاناً)
+    var buttons = document.querySelectorAll('button, a');
+    for (var i = 0; i < buttons.length; i++) {
+        var text = (buttons[i].textContent || '').trim();
+        if (/ترقية|اشترك الآن|ابدأ مجانًا|اشترك|التالي/.test(text)) {
+            buttons[i].addEventListener('click', function(e) {
+                e.preventDefault();
+                // الانتقال إلى صفحة إنشاء الحساب في index.html
+                window.location.href = 'index.html?openSignup=1';
+            });
+        }
+    }
+});
+</script>
 </body>
 </html>
