@@ -2184,12 +2184,10 @@ body.dark-mode .mobile-banner span {
     </svg>
   </button>
 </div>
-
-<!-- زر اشترك الجديد (تصميم Uiverse مع عزل تام) -->
-<button id="navSubscribeBtn" class="subscribe-uiverse-btn">
-  <span class="subscribe-uiverse-text">اشترك</span>
+<!-- زر إنشاء حساب جديد (تصميم Uiverse مع عزل تام) -->
+<button id="navCreateAccountBtn" class="subscribe-uiverse-btn" onclick="openAuthModal('signup')">
+  <span class="subscribe-uiverse-text">إنشاء حساب</span>
   <div class="subscribe-uiverse-icon-container">
-    <!-- الأيقونات المتنوعة -->
     <svg viewBox="0 0 24 24" class="subscribe-uiverse-icon subscribe-uiverse-card-icon">
       <path d="M20,8H4V6H20M20,18H4V12H20M20,4H4C2.89,4 2,4.89 2,6V18C2,19.11 2.89,20 4,20H20C21.11,20 22,19.11 22,18V6C22,4.89 21.11,4 20,4Z" fill="currentColor"></path>
     </svg>
@@ -2207,7 +2205,6 @@ body.dark-mode .mobile-banner span {
     </svg>
   </div>
 </button>
-</div>
     
    <div class="right-side">
     <!-- 💎 علاش حنا؟ - زر Info في المكان الجديد -->
@@ -2366,7 +2363,7 @@ body.dark-mode .mobile-banner span {
             <div id="signupForm" style="display:none;">
                 <div style="margin-bottom:10px;">
                     <label style="display:block; font-size:13px; color:#94a3b8; margin-bottom:4px;">اسم المستخدم</label>
-                    <input type="text" id="signupUsername" placeholder="أحمد" style="width:100%; padding:10px 12px; border:1px solid #334155; border-radius:10px; background:#1e293b; color:white; font-size:14px; box-sizing:border-box;">
+                  <input type="text" id="signupUsername" placeholder="الاسم المستعار" style="width:100%; padding:10px 12px; border:1px solid #334155; border-radius:10px; background:#1e293b; color:white; font-size:14px; box-sizing:border-box;">
                 </div>
                 <div style="margin-bottom:10px;">
                     <label style="display:block; font-size:13px; color:#94a3b8; margin-bottom:4px;">الإسم العائلي</label>
@@ -9099,5 +9096,353 @@ if (expiryText) {
 })();
 
 </script>
+<script>
+/* =========================================================
+   بطاقة المحتوى المقفل
+========================================================= */
+(function () {
+
+    /* =========================================================
+       REMOVE OLD VERSION
+    ========================================================= */
+
+    document.getElementById('site-locked-content-card')?.remove();
+    document.getElementById('site-locked-content-style')?.remove();
+
+    /* =========================================================
+       STYLE
+    ========================================================= */
+
+    const style = document.createElement('style');
+    style.id = 'site-locked-content-style';
+    style.textContent = `
+
+        #site-locked-content-card {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(320px, calc(100vw - 30px));
+            box-sizing: border-box;
+            padding: 20px 18px 17px;
+            direction: rtl;
+            font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+            color: #ffffff;
+            background:
+                radial-gradient(180px 120px at 0% 0%, rgba(37, 99, 235, .13), transparent 72%),
+                radial-gradient(180px 120px at 100% 100%, rgba(59, 130, 246, .08), transparent 72%),
+                linear-gradient(145deg, #121a2a 0%, #0d1422 48%, #090f1b 100%);
+            border: 1px solid rgba(148, 163, 184, .20);
+            border-radius: 19px;
+            box-shadow:
+                0 25px 65px rgba(0, 0, 0, .65),
+                0 8px 25px rgba(0, 0, 0, .35),
+                0 0 35px rgba(37, 99, 235, .07),
+                inset 0 1px 0 rgba(255, 255, 255, .055);
+            overflow: hidden;
+            z-index: 999999;
+            animation: siteLockedAppear .26s cubic-bezier(.2,.8,.2,1);
+        }
+
+        #site-locked-content-card::before {
+            content: "";
+            position: absolute;
+            width: 210px;
+            height: 120px;
+            top: -90px;
+            left: -55px;
+            background: radial-gradient(circle, rgba(59,130,246,.16), transparent 70%);
+            filter: blur(12px);
+            pointer-events: none;
+        }
+
+        #site-locked-content-card::after {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 130px;
+            right: -100px;
+            bottom: -90px;
+            background: radial-gradient(circle, rgba(30,64,175,.13), transparent 70%);
+            filter: blur(15px);
+            pointer-events: none;
+        }
+
+        @keyframes siteLockedAppear {
+            from { opacity: 0; transform: translate(-50%, -47%) scale(.96); }
+            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+
+        .site-locked-icon-box {
+            position: relative;
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            background: linear-gradient(145deg, #25344a, #151f30);
+            border: 1px solid rgba(148,163,184,.28);
+            box-shadow:
+                0 8px 22px rgba(0,0,0,.35),
+                0 0 18px rgba(37,99,235,.10),
+                inset 0 1px 0 rgba(255,255,255,.09),
+                inset 0 -8px 20px rgba(0,0,0,.16);
+        }
+
+        .site-locked-icon {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #dbeafe;
+            font-size: 30px;
+            line-height: 1;
+            font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 28;
+            text-shadow:
+                0 0 7px rgba(255,255,255,.40),
+                0 0 14px rgba(96,165,250,.45),
+                0 0 25px rgba(37,99,235,.22);
+            filter: drop-shadow(0 0 5px rgba(96,165,250,.30));
+            animation: sparkleGlow 2.8s ease-in-out infinite;
+        }
+
+        @keyframes sparkleGlow {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(96,165,250,.28)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 9px rgba(96,165,250,.50)); }
+        }
+
+        .site-locked-title {
+            position: relative;
+            text-align: center;
+            color: #f1f5f9;
+            font-size: 19px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 3px;
+            z-index: 2;
+        }
+
+        .site-locked-description {
+            position: relative;
+            text-align: center;
+            color: #7f8da1;
+            font-size: 11px;
+            line-height: 18px;
+            margin-bottom: 14px;
+            z-index: 2;
+        }
+
+        .site-locked-plan {
+            position: relative;
+            width: 100%;
+            min-height: 41px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            border-radius: 12px;
+            background: linear-gradient(180deg, rgba(31,41,55,.92), rgba(20,28,40,.94));
+            border: 1px solid rgba(148,163,184,.18);
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,.045),
+                inset 0 0 18px rgba(59,130,246,.025),
+                0 4px 12px rgba(0,0,0,.20);
+            color: #cbd5e1;
+            font-size: 11px;
+            font-weight: 500;
+            margin-bottom: 11px;
+            z-index: 2;
+        }
+
+        .site-locked-pro {
+            color: #60a5fa;
+            font-weight: 700;
+            text-shadow: 0 0 8px rgba(96,165,250,.16);
+        }
+
+        .site-locked-pro-sparkle {
+            color: #bfdbfe;
+            font-size: 15px;
+            line-height: 1;
+            font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 18;
+            text-shadow: 0 0 6px rgba(96,165,250,.40);
+        }
+
+        .site-locked-upgrade {
+            position: relative;
+            width: 100%;
+            height: 44px;
+            padding: 0;
+            border: 0;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: #ffffff;
+            background: linear-gradient(100deg, #1d4ed8 0%, #2563eb 45%, #3157dc 72%, #3730a3 100%);
+            box-shadow:
+                0 7px 18px rgba(37,99,235,.20),
+                inset 0 1px 0 rgba(255,255,255,.13),
+                inset 0 -2px 0 rgba(0,0,0,.12);
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            overflow: hidden;
+            transition: filter .18s ease, transform .18s ease, box-shadow .18s ease;
+            z-index: 2;
+        }
+
+        .site-locked-upgrade::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -65%;
+            width: 48%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,.13), transparent);
+            transform: skewX(-18deg);
+            transition: left .55s ease;
+            pointer-events: none;
+        }
+
+        .site-locked-upgrade:hover::before { left: 120%; }
+        .site-locked-upgrade:hover {
+            filter: brightness(1.08);
+            box-shadow:
+                0 9px 23px rgba(37,99,235,.28),
+                0 0 15px rgba(37,99,235,.08),
+                inset 0 1px 0 rgba(255,255,255,.16);
+        }
+        .site-locked-upgrade:active { transform: scale(.985); }
+
+        .site-locked-upgrade-icon {
+            position: relative;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #e0edff;
+            font-size: 18px;
+            line-height: 1;
+            font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 20;
+            text-shadow: 0 0 8px rgba(147,197,253,.40);
+        }
+
+        .site-locked-upgrade-text { position: relative; z-index: 2; }
+
+        .site-locked-footer {
+            position: relative;
+            margin-top: 9px;
+            text-align: center;
+            color: #566276;
+            font-size: 9px;
+            line-height: 15px;
+            z-index: 2;
+        }
+
+        @media (max-width: 500px) {
+            #site-locked-content-card { width: min(310px, calc(100vw - 26px)); padding: 18px 16px 15px; border-radius: 18px; }
+            .site-locked-icon-box { width: 52px; height: 52px; margin-bottom: 10px; }
+            .site-locked-icon { font-size: 27px; }
+            .site-locked-title { font-size: 18px; }
+            .site-locked-description { font-size: 10px; margin-bottom: 12px; }
+            .site-locked-upgrade { height: 42px; font-size: 12px; }
+        }
+
+        @media (max-width: 340px) {
+            #site-locked-content-card { width: calc(100vw - 22px); padding: 16px 14px 13px; }
+            .site-locked-icon-box { width: 48px; height: 48px; border-radius: 13px; }
+            .site-locked-icon { font-size: 25px; }
+            .site-locked-title { font-size: 17px; }
+            .site-locked-plan { min-height: 39px; font-size: 10px; }
+            .site-locked-upgrade { height: 40px; border-radius: 11px; }
+        }
+    `;
+
+    document.head.appendChild(style);
+
+    const card = document.createElement('div');
+    card.id = 'site-locked-content-card';
+    card.innerHTML = `
+        <div class="site-locked-icon-box">
+            <span class="material-symbols-outlined site-locked-icon">auto_awesome</span>
+        </div>
+        <div class="site-locked-title">محتوى مقفل</div>
+        <div class="site-locked-description">ترقية الحساب للوصول إلى هذا المحتوى</div>
+        <div class="site-locked-plan">
+            <span>يتطلب باقة:</span>
+            <span class="site-locked-pro">Pro</span>
+            <span class="material-symbols-outlined site-locked-pro-sparkle">auto_awesome</span>
+        </div>
+        <button type="button" id="siteLockedUpgrade" class="site-locked-upgrade">
+            <span class="material-symbols-outlined site-locked-upgrade-icon">auto_awesome</span>
+            <span class="site-locked-upgrade-text">ترقية الحساب الآن</span>
+        </button>
+        <div class="site-locked-footer">افتح الميزات والمحتوى المميز</div>
+    `;
+
+    document.body.appendChild(card);
+
+    // ربط زر الترقية بفتح صفحة الاشتراك الموجودة
+    document.getElementById('siteLockedUpgrade')?.addEventListener('click', function () {
+        window.openUpgradePage();
+    });
+
+})();
+</script>
+
+<script>
+/* =========================================================
+   ربط زر الترقية بصفحة الاشتراك وربط خيارات الاشتراك بإنشاء الحساب
+========================================================= */
+(function () {
+    // الدالة التي تفتح صفحة الاشتراك الموجودة
+    window.openUpgradePage = function () {
+        window.location.href = 'subscribe.html';
+    };
+
+    // الدالة التي تفتح نافذة إنشاء الحساب الموجودة
+    window.openSignupPage = function () {
+        if (typeof window.openAuthModal === 'function') {
+            window.openAuthModal('signup');
+        }
+    };
+
+    // ربط جميع أزرار الاشتراك الموجودة في الصفحة الرئيسية بالانتقال إلى إنشاء الحساب
+    function bindSubscribeToSignup() {
+        var buttons = document.querySelectorAll('button, a');
+        for (var i = 0; i < buttons.length; i++) {
+            var text = (buttons[i].textContent || '').trim();
+            if (/ترقية|اشترك الآن|ابدأ مجانًا|اشترك/.test(text)) {
+                buttons[i].addEventListener('click', function (e) {
+                    e.preventDefault();
+                    window.openSignupPage();
+                });
+            }
+        }
+    }
+    bindSubscribeToSignup();
+
+    // عند الضغط على أي عنصر يحتوي على كلاس "locked-exam" تظهر بطاقة المحتوى المقفل
+    function showLockedCard() {
+        var lockedCard = document.getElementById('site-locked-content-card');
+        if (lockedCard) {
+            lockedCard.style.display = 'block';
+        }
+    }
+    var lockedElements = document.querySelectorAll('.locked-exam');
+    for (var i = 0; i < lockedElements.length; i++) {
+        lockedElements[i].addEventListener('click', function (e) {
+            e.preventDefault();
+            showLockedCard();
+        });
+    }
+})();
+</script>
 </body>
-</html>  
+</html>
