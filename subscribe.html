@@ -2815,20 +2815,17 @@ function openWhatsApp(plan, duration, price) {
         uid = user.uid || '---';
     }
 
-    // بناء الرسالة مع جميع البيانات
-    const message = `مرحباً، أريد الانضمام إلى العائلة :
+    // بناء الرسالة بتنسيق نظيف (سطر فارغ بعد المقدمة)
+    const message = `مرحباً، أريد الانضمام إلى العائلة:
+
 المدة: ${duration}
 الخطة: ${plan}
 الثمن: ${price} DH
-Email: ${email}
-Id: ${uid}`;
+الإيميل: ${email}
+رقم الحساب: ${uid}`;
 
     const url = "https://wa.me/212665881925?text=" + encodeURIComponent(message);
     window.open(url, "_blank", "noopener,noreferrer");
-
-    console.log('✅ تم إرسال رسالة واتساب مع البيانات التالية:');
-    console.log('📧 البريد الإلكتروني:', email);
-    console.log('🆔 معرف المستخدم:', uid);
 }
 
 // =========================================================
