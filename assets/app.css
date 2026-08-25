@@ -7757,6 +7757,69 @@ body:has(#list.active) #backHomeBtn {
         line-height: 1.85 !important;
     }
 }
+
+/* ===== نافذة تعديل المعلومات ===== */
+.edit-info-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.edit-info-card {
+    background: #111621;
+    border: 1px solid rgba(148,163,184,0.2);
+    border-radius: 16px;
+    padding: 20px 24px;
+    width: 90%;
+    max-width: 360px;
+    direction: rtl;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+}
+.edit-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    color: #f1f5f9;
+    font-size: 16px;
+    font-weight: 600;
+}
+.close-edit-modal {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-size: 22px;
+    cursor: pointer;
+}
+.save-edit-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #2563eb, #38bdf8);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.edit-info-body input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #2a3042;
+    background: #111621;
+    color: #e7eaf0;
+    margin-bottom: 14px;
+    box-sizing: border-box;
+}
+.edit-info-body input:focus {
+    outline: none;
+    border-color: #38bdf8;
+}
 /* ============================================
    studySession.css - النسخة النهائية (متكاملة)
    ============================================ */

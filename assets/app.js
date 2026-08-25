@@ -29767,6 +29767,63 @@ var MyApp = (() => {
             profileDropdown.classList.remove("show");
           }
         });
+        const plannerRow = document.getElementById("profilePlannerRowClickable");
+        const editInfoModal = document.getElementById("editInfoModal");
+        const closeEditInfoModal = document.getElementById("closeEditInfoModal");
+        const saveEditInfoBtn = document.getElementById("saveEditInfoBtn");
+        const examDateInput = document.getElementById("editExamDateInput");
+        const dailyHoursInput = document.getElementById("editDailyHoursInput");
+        if (plannerRow) {
+          plannerRow.addEventListener("click", function(e) {
+            e.stopPropagation();
+            profileDropdown.classList.remove("show");
+            let savedDate = localStorage.getItem("zertiva_exam_date");
+            let savedHours = parseInt(localStorage.getItem("zertiva_daily_hours")) || 4;
+            if (savedDate) examDateInput.value = savedDate;
+            else {
+              const today = /* @__PURE__ */ new Date();
+              today.setDate(today.getDate() + 30);
+              examDateInput.value = today.toISOString().split("T")[0];
+            }
+            dailyHoursInput.value = savedHours;
+            editInfoModal.style.display = "flex";
+          });
+        }
+        if (closeEditInfoModal) {
+          closeEditInfoModal.addEventListener("click", function() {
+            editInfoModal.style.display = "none";
+          });
+        }
+        if (editInfoModal) {
+          editInfoModal.addEventListener("click", function(e) {
+            if (e.target === editInfoModal) editInfoModal.style.display = "none";
+          });
+        }
+        if (saveEditInfoBtn) {
+          saveEditInfoBtn.addEventListener("click", function() {
+            const date = examDateInput.value;
+            const hours = parseInt(dailyHoursInput.value) || 4;
+            if (!date) {
+              alert("\u064A\u0631\u062C\u0649 \u0627\u062E\u062A\u064A\u0627\u0631 \u062A\u0627\u0631\u064A\u062E \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646.");
+              return;
+            }
+            if (hours < 1 || hours > 12) {
+              alert("\u0639\u062F\u062F \u0627\u0644\u0633\u0627\u0639\u0627\u062A \u0628\u064A\u0646 1 \u0648 12.");
+              return;
+            }
+            localStorage.setItem("zertiva_exam_date", date);
+            localStorage.setItem("zertiva_daily_hours", String(hours));
+            const today = /* @__PURE__ */ new Date();
+            today.setHours(0, 0, 0, 0);
+            const examDate = new Date(date);
+            examDate.setHours(0, 0, 0, 0);
+            const diff = Math.ceil((examDate - today) / (1e3 * 60 * 60 * 24));
+            const remaining = Math.max(diff, 0);
+            const profilePlannerText = document.getElementById("profilePlannerText");
+            if (profilePlannerText) profilePlannerText.textContent = remaining + " \u064A\u0648\u0645";
+            editInfoModal.style.display = "none";
+          });
+        }
         const loginInputs = [authEmail, authPassword];
         loginInputs.forEach((input) => {
           if (input) {
