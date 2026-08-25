@@ -2360,7 +2360,6 @@
         </div>
     </div>
 </div>
-
 <script>
 // =========================================================
 // تعريف دوال المودال محلياً في صفحة الاشتراك
@@ -2374,12 +2373,10 @@ function openAuthModal(form = 'login') {
 
     if (!modal) return;
 
-    // إخفاء الكل
     if (loginForm) loginForm.style.display = 'none';
     if (signupForm) signupForm.style.display = 'none';
     if (resetForm) resetForm.style.display = 'none';
 
-    // إظهار المطلوب
     if (form === 'login') {
         if (loginForm) loginForm.style.display = 'block';
         if (title) title.textContent = 'تسجيل الدخول';
@@ -2411,7 +2408,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // التبديل بين النماذج
     const switchToSignup = document.getElementById('switchToSignup');
     const switchToLogin = document.getElementById('switchToLogin');
     const switchToReset = document.getElementById('switchToReset');
@@ -2437,125 +2433,138 @@ const firebaseConfig = {
   measurementId: "G-57CPE84S84"
 };
 firebase.initializeApp(firebaseConfig);
-
-// تأكد من أن auth متاح
 const auth = firebase.auth();
 window.auth = auth;
 
 // =========================================================
-// استدعاء وظائف المصادقة عند الضغط على الأزرار
+// بيانات الخطط (pricingData)
 // =========================================================
-document.addEventListener('DOMContentLoaded', function() {
-    const loginBtn = document.getElementById('authLoginBtn');
-    const signupBtn = document.getElementById('authSignupBtn');
-    const resetBtn = document.getElementById('resetWhatsAppBtn');
-
-    if (loginBtn) {
-        loginBtn.addEventListener('click', function() {
-            const email = document.getElementById('authEmail').value;
-            const password = document.getElementById('authPassword').value;
-            const errorEl = document.getElementById('authError');
-
-            if (!email || !password) {
-                if (errorEl) errorEl.textContent = 'يرجى ملء جميع الحقول';
-                return;
-            }
-
-            firebase.auth().signInWithEmailAndPassword(email, password)
-                .then(() => {
-                    closeAuthModalFunc();
-                    // التحقق من الخطة المعلقة
-                    checkPendingPlanAndProceed();
-                })
-                .catch((error) => {
-                    if (errorEl) errorEl.textContent = error.message;
-                });
-        });
-    }
-
-    if (signupBtn) {
-        signupBtn.addEventListener('click', function() {
-            const username = document.getElementById('signupUsername').value;
-            const lastname = document.getElementById('signupLastname').value;
-            const firstname = document.getElementById('signupFirstname').value;
-            const email = document.getElementById('signupEmail').value;
-            const password = document.getElementById('signupPassword').value;
-            const errorEl = document.getElementById('signupError');
-
-            if (!username || !lastname || !firstname || !email || !password) {
-                if (errorEl) errorEl.textContent = 'يرجى ملء جميع الخانات';
-                return;
-            }
-
-            firebase.auth().createUserWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    // حفظ بيانات المستخدم الإضافية
-                    const user = userCredential.user;
-                    const db = firebase.firestore();
-                    return db.collection('users').doc(user.uid).set({
-                        email: email,
-                        username: username,
-                        firstname: firstname,
-                        lastname: lastname,
-                        plan: 'free',
-                        premiumUntil: null,
-                        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-                        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-                    }).then(() => {
-                        closeAuthModalFunc();
-                        // التحقق من الخطة المعلقة
-                        checkPendingPlanAndProceed();
-                    });
-                })
-                .catch((error) => {
-                    if (errorEl) errorEl.textContent = error.message;
-                });
-        });
-    }
-
-    if (resetBtn) {
-        resetBtn.addEventListener('click', function() {
-            const email = document.getElementById('resetEmail').value;
-            const newPassword = document.getElementById('resetNewPassword').value;
-            const errorEl = document.getElementById('resetError');
-
-            if (!email || !newPassword) {
-                if (errorEl) errorEl.textContent = 'يرجى ملء جميع الحقول';
-                return;
-            }
-
-            const message = `السلام عليكم،\nنسيت كلمة المرور وبغيت نبدلها.\nالبريد الإلكتروني: ${email}`;
-            const waUrl = `https://wa.me/212665881925?text=${encodeURIComponent(message)}`;
-            window.open(waUrl, '_blank');
-            closeAuthModalFunc();
-        });
-    }
-});
-
-// =========================================================
-// دالة التحقق من الخطة المعلقة بعد تسجيل الدخول
-// =========================================================
-function checkPendingPlanAndProceed() {
-    const pending = localStorage.getItem('pendingSubscription');
-    if (pending) {
-        try {
-            const data = JSON.parse(pending);
-            // نفتح واتساب مباشرة
-            openWhatsApp(data.plan, data.duration, data.price);
-            localStorage.removeItem('pendingSubscription');
-        } catch (e) {
-            localStorage.removeItem('pendingSubscription');
+const pricingData = {
+    "15": {
+        standard: { price: "0", period: "يوم واحد", old: "", save: "", deals: [], features: ["كل المميزات الموجودة في باقة Pro"] },
+        pro: {
+            price: "49",
+            period: "15 يوما",
+            old: "100 DH",
+            save: "وفر 51 DH",
+            deals: [],
+            features: [
+                "التحدث مع AI",
+                " ✓ يمكن ليك تتدرب على جميع أجزاء امتحان التيلك بي 2 في مكان واحد ",
+                "  ✓ يمكنك تشغيل المؤقت للحرص على اكمالك للاهداف اليومية وتتبع انجازاتك  ",
+                " يمكنك المراجعة بشكل اسرع من خلال ميزة الاسترجاع الدكي في جميع الاجزاء. ",
+                " امكانية اختبار سرعة اجابتك من خلال ميزة التحدي السريع ",
+                "يمكن لك تخدم كل Hören Teile",
+                "يمكن لك تقلد امتلة جيدة جدا في كل مواضيع Mündlich"
+            ]
+        },
+        max: {
+            price: "79",
+            period: "15 يوما",
+            old: "200 DH",
+            save: "وفر 121 DH",
+            deals: [],
+            features: [
+                "✓ تحميل ملف الإحصائيات الخاصة بك بشكل غير محدود",
+                "✓ نظام ذكي كيعرف ليك الامتحانات اللي محتاجة مراجعة، اعتماداً على نتائجك وتقدمك ووقت إجاباتك، باش تعرف فين خاصك تركز وتكون واجد 100%.",
+                "✓ كل المميزات الأخرى الموجودة في باقة Premium"
+            ]
+        }
+    },
+    "30": {
+        standard: { price: "0", period: "يوم واحد", old: "", save: "", deals: [], features: ["كل المميزات الموجودة في باقة Pro"] },
+        pro: {
+            price: "99",
+            period: "شهر واحد",
+            old: "150 DH",
+            save: "وفر 51 DH",
+            deals: [],
+            features: [
+                "التحدث مع AI",
+                "  يمكن ليك تتدرب على جميع أجزاء امتحان التيلك بي 2 في مكان واحد ",
+                "   يمكنك تشغيل المؤقت للحرص على اكمالك للاهداف اليومية وتتبع انجازاتك  ",
+                " يمكنك المراجعة بشكل اسرع من خلال ميزة الاسترجاع الدكي في جميع الاجزاء. ",
+                " امكانية اختبار سرعة اجابتك من خلال ميزة التحدي السريع ",
+                "يمكن لك تخدم كل Hören Teile",
+                "يمكن لك تقلدامتلة جيدة جدا في كل مواضيع Mündlich"
+            ]
+        },
+        max: {
+            price: "149",
+            period: "شهر واحد",
+            old: "250 DH",
+            save: "وفر 101 DH",
+            deals: ["شهرين بـ 269 DH فقط"],
+            features: [
+                "✓ تحميل ملف الإحصائيات الخاصة بك بشكل غير محدود",
+                "✓ نظام ذكي كيعرف ليك الامتحانات اللي محتاجة مراجعة، اعتماداً على نتائجك وتقدمك ووقت إجاباتك، باش تعرف فين خاصك تركز وتكون واجد 100%.",
+                "✓ كل المميزات الأخرى الموجودة في باقة Premium"
+            ]
+        }
+    },
+    "60": {
+        standard: { price: "0", period: "يوم واحد", old: "", save: "", deals: [], features: ["كل المميزات الموجودة في باقة Pro"] },
+        pro: {
+            price: "149",
+            period: "شهرين",
+            old: "200 DH",
+            save: "وفر 51 DH",
+            deals: [],
+            features: [
+                "التحدث مع AI",
+                "  يمكن ليك تتدرب على جميع أجزاء امتحان التيلك بي 2 في مكان واحد ",
+                "   يمكنك تشغيل المؤقت للحرص على اكمالك للاهداف اليومية وتتبع انجازاتك   ",
+                " يمكنك المراجعة بشكل اسرع من خلال ميزة الاسترجاع الدكي في جميع الاجزاء. ",
+                " امكانية اختبار سرعة اجابتك من خلال ميزة التحدي السريع ",
+                "يمكن لك تخدم كل Hören Teile",
+                "يمكن لك تقلدامتلة جيدة جدا في كل مواضيع Mündlich"
+            ]
+        },
+        max: {
+            price: "249",
+            period: "شهرين",
+            old: "350 DH",
+            save: "وفر 101 DH",
+            deals: [],
+            features: [
+                "✓ تحميل ملف الإحصائيات الخاصة بك بشكل غير محدود",
+                "✓ نظام ذكي كيعرف ليك الامتحانات اللي محتاجة مراجعة، اعتماداً على نتائجك وتقدمك ووقت إجاباتك، باش تعرف فين خاصك تركز وتكون واجد 100%.",
+                "✓ كل المميزات الأخرى الموجودة في باقة Premium"
+            ]
+        }
+    },
+    "90": {
+        standard: { price: "0", period: "يوم واحد", old: "", save: "", deals: [], features: ["كل المميزات الموجودة في باقة Pro"] },
+        pro: {
+            price: "229",
+            period: "3 شهور",
+            old: "300 DH",
+            save: "وفر 71 DH",
+            deals: [],
+            features: [
+                "التحدث مع AI",
+                "  يمكن ليك تتدرب على جميع أجزاء امتحان التيلك بي 2 في مكان واحد ",
+                "   يمكنك تشغيل المؤقت للحرص على اكمالك للاهداف اليومية وتتبع انجازاتك   ",
+                " يمكنك المراجعة بشكل اسرع من خلال ميزة الاسترجاع الدكي في جميع الاجزاء. ",
+                " امكانية اختبار سرعة اجابتك من خلال ميزة التحدي السريع ",
+                "يمكن لك تخدم كل Hören Teile",
+                "يمكن لك تقلدامتلة جيدة جدا في كل مواضيع Mündlich"
+            ]
+        },
+        max: {
+            price: "349",
+            period: "3 شهور",
+            old: "450 DH",
+            save: "وفر 101 DH",
+            deals: [],
+            features: [
+                "✓ تحميل ملف الإحصائيات الخاصة بك بشكل غير محدود",
+                "✓ نظام ذكي كيعرف ليك الامتحانات اللي محتاجة مراجعة، اعتماداً على نتائجك وتقدمك ووقت إجاباتك، باش تعرف فين خاصك تركز وتكون واجد 100%.",
+                "✓ كل المميزات الأخرى الموجودة في باقة Premium"
+            ]
         }
     }
-}
-
-// مراقبة حالة المصادقة
-firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-        // إذا كان هناك خطة معلقة، نفتح واتساب
-        checkPendingPlanAndProceed();
-    }
-});
+};
 
 // =========================================================
 // GET USER EMAIL
@@ -2611,7 +2620,6 @@ function handlePlanSelection(plan, duration, price) {
         // ❌ غير مسجل → تخزين الخطة وفتح نموذج إنشاء الحساب في نفس الصفحة
         const planData = { plan, duration, price };
         localStorage.setItem('pendingSubscription', JSON.stringify(planData));
-        // فتح مودال إنشاء الحساب المحلي
         openAuthModal('signup');
     }
 }
@@ -2671,7 +2679,6 @@ function createPlan(type, data) {
 // =========================================================
 function attachPlanButtonEvents() {
     document.querySelectorAll('.plan-button').forEach(btn => {
-        // إزالة أي مستمع قديم
         btn.onclick = null;
         btn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -2701,7 +2708,6 @@ function renderPricing(duration) {
             grid.style.opacity = "1";
             grid.style.transform = "translateY(0)";
         });
-        // ربط الأزرار بعد إضافة العناصر
         attachPlanButtonEvents();
     }, 100);
 }
@@ -2741,6 +2747,114 @@ document.getElementById('footerHomeBtn')?.addEventListener('click', function(e) 
 document.getElementById('footerUpgradeBtn')?.addEventListener('click', function(e) {
     e.preventDefault();
     window.location.href = '#pricing';
+});
+
+// =========================================================
+// معالجة العودة من إنشاء الحساب مع الخطة المختارة
+// =========================================================
+function checkPendingPlanAndProceed() {
+    const pending = localStorage.getItem('pendingSubscription');
+    if (pending) {
+        try {
+            const data = JSON.parse(pending);
+            openWhatsApp(data.plan, data.duration, data.price);
+            localStorage.removeItem('pendingSubscription');
+        } catch (e) {
+            localStorage.removeItem('pendingSubscription');
+        }
+    }
+}
+
+// مراقبة حالة المصادقة
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        checkPendingPlanAndProceed();
+    }
+});
+
+// ربط أزرار تسجيل الدخول وإنشاء الحساب في المودال
+document.addEventListener('DOMContentLoaded', function() {
+    const loginBtn = document.getElementById('authLoginBtn');
+    const signupBtn = document.getElementById('authSignupBtn');
+    const resetBtn = document.getElementById('resetWhatsAppBtn');
+
+    if (loginBtn) {
+        loginBtn.addEventListener('click', function() {
+            const email = document.getElementById('authEmail').value;
+            const password = document.getElementById('authPassword').value;
+            const errorEl = document.getElementById('authError');
+
+            if (!email || !password) {
+                if (errorEl) errorEl.textContent = 'يرجى ملء جميع الحقول';
+                return;
+            }
+
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then(() => {
+                    closeAuthModalFunc();
+                    checkPendingPlanAndProceed();
+                })
+                .catch((error) => {
+                    if (errorEl) errorEl.textContent = error.message;
+                });
+        });
+    }
+
+    if (signupBtn) {
+        signupBtn.addEventListener('click', function() {
+            const username = document.getElementById('signupUsername').value;
+            const lastname = document.getElementById('signupLastname').value;
+            const firstname = document.getElementById('signupFirstname').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const errorEl = document.getElementById('signupError');
+
+            if (!username || !lastname || !firstname || !email || !password) {
+                if (errorEl) errorEl.textContent = 'يرجى ملء جميع الخانات';
+                return;
+            }
+
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    const db = firebase.firestore();
+                    return db.collection('users').doc(user.uid).set({
+                        email: email,
+                        username: username,
+                        firstname: firstname,
+                        lastname: lastname,
+                        plan: 'free',
+                        premiumUntil: null,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    }).then(() => {
+                        closeAuthModalFunc();
+                        checkPendingPlanAndProceed();
+                    });
+                })
+                .catch((error) => {
+                    if (errorEl) errorEl.textContent = error.message;
+                });
+        });
+    }
+
+    if (resetBtn) {
+        resetBtn.addEventListener('click', function() {
+            const email = document.getElementById('resetEmail').value;
+            const newPassword = document.getElementById('resetNewPassword').value;
+            const errorEl = document.getElementById('resetError');
+
+            if (!email || !newPassword) {
+                if (errorEl) errorEl.textContent = 'يرجى ملء جميع الحقول';
+                return;
+            }
+
+            const message = `السلام عليكم،\nنسيت كلمة المرور وبغيت نبدلها.\nالبريد الإلكتروني: ${email}`;
+            const waUrl = `https://wa.me/212665881925?text=${encodeURIComponent(message)}`;
+            window.open(waUrl, '_blank');
+            closeAuthModalFunc();
+        });
+    }
 });
 
 // =========================================================
