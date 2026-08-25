@@ -132,156 +132,187 @@
 }
 
 /* ========================================
-   Profile Dropdown (التصميم القديم)
+   Profile Dropdown (الشكل 2 بالضبط)
    ======================================== */
 .profile-dropdown {
     position: absolute;
-    top: 60px;
-    left: 10px;
-    left: auto;
-    background: #0f172a;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    padding: 15px 20px;
-    min-width: 250px;
-    z-index: 9999;
-    display: none;
-    direction: rtl;
+    top: 75px;
+    left: 15px;
+    width: 340px;
+    background: #0B1120;
     border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 24px;
+    padding: 24px 20px;
+    direction: rtl;
+    z-index: 100000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    box-sizing: border-box;
+    display: none;
 }
 
 .profile-dropdown.show {
     display: block;
 }
-.profile-email {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    font-weight: 500;
-    font-size: 14px;
+
+.profile-settings-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    color: #94a3b8;
+    transition: all 0.2s;
+}
+.profile-settings-icon:hover {
     color: #38bdf8;
-    margin-bottom: 10px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #334155;
-    line-height: 1.4;
+    transform: rotate(45deg);
 }
 
-.profile-expiry {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    font-weight: 400;
-    font-size: 13px;
-    color: #94a3b8;
-    margin-bottom: 8px;
-    line-height: 1.5;
+.profile-avatar-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
 }
-
-.profile-status {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    font-weight: 500;
-    font-size: 13px;
-    margin-top: 8px;
-    padding-top: 8px;
-    border-top: 1px solid #334155;
-    line-height: 1.5;
-}
-
-.profile-uid {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    font-weight: 400;
-    font-size: 12px;
-    color: #94a3b8;
-    margin-top: 8px;
-    padding: 6px 0;
-    border-top: 1px solid #334155;
+.profile-avatar {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #2e4b8e, #1e3a8a);
+    border-radius: 50%;
     display: flex;
     align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    border: 2px solid rgba(255,255,255,0.1);
+}
+
+.profile-user-info {
+    text-align: center;
+    margin-bottom: 18px;
+}
+.profile-email {
+    font-size: 15px;
+    font-weight: 600;
+    color: #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 6px;
-    line-height: 1.5;
-}
-
-.profile-uid .uid-label {
-    font-weight: 500;
-    color: #64748b;
-}
-
-.profile-uid .uid-value {
-    font-family: "SF Mono", "Menlo", "Monaco", monospace;
-    font-size: 11px;
-    letter-spacing: 0.02em;
-    color: #cbd5e1;
     word-break: break-all;
 }
-
-.profile-logout {
-    margin-top: 12px;
-    background: #ef4444;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 25px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 13px;
-    transition: background 0.2s;
+.profile-check {
+    color: #4ade80;
+    font-size: 18px;
+}
+.profile-status {
+    font-size: 12px;
+    color: #94a3b8;
+    margin-top: 3px;
 }
 
-.profile-logout:hover {
-    background: #dc2626;
+.profile-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
 }
-
-/* زر الترقية (يظهر فقط عند عدم تسجيل الدخول) */
-#dropdownUpgradeBtn {
-    margin-top: 12px;
-    background: #64748B;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 25px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 13px;
-    font-weight: bold;
-    transition: all 0.3s ease;
+.profile-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 31px;
+    padding: 0 7px;
+    border-radius: 8px;
+    background: linear-gradient(180deg, rgba(27,33,45,.90), rgba(18,24,35,.93));
+    border: 1px solid rgba(148,163,184,.11);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.035), 0 2px 7px rgba(0,0,0,.12);
 }
-
-#dropdownUpgradeBtn:hover {
-    background: #475569;
+.profile-row:hover {
+    border-color: rgba(96,165,250,.22);
 }
-
-/* زر تحميل التقرير */
-.profile-report-btn {
-    margin-top: 12px;
-    background: rgba(56, 189, 248, 0.12);
-    color: #38bdf8;
-    border: 1px solid rgba(56, 189, 248, 0.2);
-    padding: 10px 15px;
-    border-radius: 25px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 13px;
+.row-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #a6afbd;
+    font-size: 9px;
+    white-space: nowrap;
+}
+.row-left .material-symbols-outlined {
+    font-size: 16px;
+    color: #64748b;
+}
+.row-value {
+    color: #e7eaf0;
+    font-size: 9px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.row-value.green {
+    color: #49d982;
     font-weight: 600;
-    transition: all 0.3s ease;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    text-shadow: 0 0 8px rgba(74,222,128,.15);
+}
+.row-value.uid {
+    direction: ltr;
+    font-size: 8px;
+    color: #c0c8d4;
+}
+.row-arrow {
+    color: #606b7c;
+    font-size: 15px;
+}
+
+.profile-stats-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(90deg, #1e3a8a, #2563eb);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
+    cursor: pointer;
+    margin-bottom: 12px;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+.profile-stats-btn:hover {
+    background: linear-gradient(90deg, #2563eb, #3b82f6);
 }
 
-.profile-report-btn:hover {
-    background: rgba(56, 189, 248, 0.2);
-    border-color: #38bdf8;
-    transform: translateY(-1px);
+.profile-logout-btn {
+    width: 100%;
+    padding: 13px;
+    background: rgba(239, 68, 68, 0.05);
+    border: 1px solid #ef4444;
+    border-radius: 12px;
+    color: #ef4444;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
 }
-
-.profile-report-btn:active {
-    transform: scale(0.98);
+.profile-logout-btn:hover {
+    background: rgba(239, 68, 68, 0.15);
 }
-
-/* حالة التحميل (يُضاف عبر JS) */
-.profile-report-btn.loading {
-    opacity: 0.7;
-    pointer-events: none;
+/* إخفاء العناصر القديمة */
+#profilePlannerRow {
+    display: none !important;
 }
-
 
     /* البطاقة الصغيرة المنبثقة */
     .tips-mini-card {
@@ -2015,44 +2046,60 @@ body.dark-mode .mobile-banner span {
   </div>
 </div>
 
-<!-- ===== الملف الشخصي (التصميم القديم مع إضافة UID) ===== -->
+<!-- ===== الملف الشخصي (الشكل 2 بالضبط) ===== -->
 <div id="profileDropdown" class="profile-dropdown">
- <div id="profileEmail" class="profile-email">
-    <span class="material-symbols-outlined" style="font-size: 18px; vertical-align: middle; margin-left: 4px;">mark_email_read</span>
-    <span id="profileEmailText">غير مسجل</span>
-</div>
-   <div id="profileExpiry" class="profile-expiry">
-    <span class="material-symbols-outlined" style="font-size: 16px; vertical-align: middle; margin-left: 4px; color: #94a3b8;">calendar_month</span>
-    <span id="profileExpiryText">حساب مجاني</span>
-</div>
-    <div id="profileStatus" class="profile-status"></div>
-    
-    <!-- ✅ سطر الـ UID -->
-    <div id="profileUid" class="profile-uid">
-        <span class="uid-label">ID:</span>
-        <span class="uid-value" id="profileUidValue">---</span>
+    <!-- أيقونة الترس -->
+    <div class="profile-settings-icon" id="profileSettingsIcon">
+        <span class="material-symbols-outlined">settings</span>
     </div>
-    <!-- ✅ سطر الخطة اليومية (عرض فقط - بدون زر إعدادات) -->
-    <div id="profilePlannerRow" class="profile-uid" style="display: flex; align-items: center; padding: 6px 0; border-top: 1px solid #334155; gap: 6px; position: relative;">
-        <span class="material-symbols-outlined" style="font-size: 16px; color: #94a3b8;">schedule</span>
-        <span id="profilePlannerText" style="color: #94a3b8; font-size: 12px;">لم يتم إعداد الخطة اليومية بعد.</span>
-        <span id="plannerInfoIcon" class="material-symbols-outlined planner-info-icon">info</span>
-        <div id="plannerTooltip" class="planner-tooltip">
-            هذه ليست مدة اشتراكك،<br>
-            بل هي المدة المتبقية حتى تاريخ امتحانك.<br>
-            إذا أردت إضافة أو تعديل موعد الامتحان،<br>
-            اذهب إلى ميزة "الخطة اليومية".
+
+    <!-- الأفاتار -->
+    <div class="profile-avatar-wrap">
+        <div class="profile-avatar" id="profileAvatar">G</div>
+    </div>
+
+    <!-- معلومات المستخدم -->
+    <div class="profile-user-info">
+        <div class="profile-email">
+            <span id="profileEmailText">غير مسجل</span>
+            <span class="profile-check">✓</span>
+        </div>
+        <div class="profile-status" id="profileStatus"></div>
+    </div>
+
+    <!-- صفوف المعلومات -->
+    <div class="profile-info-list">
+        <div class="profile-row">
+            <div class="row-left"><span class="material-symbols-outlined">calendar_month</span> الصلاحية حتى</div>
+            <div class="row-value" id="profileExpiryText">حساب مجاني</div>
+            <div class="row-arrow">›</div>
+        </div>
+        <div class="profile-row">
+            <div class="row-left"><span class="material-symbols-outlined">workspace_premium</span> المراجعة المميزة</div>
+            <div class="row-value green" id="profilePremiumStatus">غير مفعلة</div>
+            <div class="row-arrow">›</div>
+        </div>
+        <div class="profile-row">
+            <div class="row-left"><span class="material-symbols-outlined">person</span> معرف المستخدم</div>
+            <div class="row-value uid" id="profileUidValue">---</div>
+            <div class="row-arrow">›</div>
+        </div>
+        <div class="profile-row">
+            <div class="row-left"><span class="material-symbols-outlined">schedule</span> لديك</div>
+            <div class="row-value" id="profilePlannerText">0 يوم</div>
+            <div class="row-arrow">›</div>
         </div>
     </div>
 
-    <!-- زر تحميل معلوماتي (PDF) -->
-    <button id="downloadReportBtn" class="profile-report-btn">
-        📄 تحميل معلوماتي
+    <!-- زر إحصائياتي -->
+    <button id="downloadReportBtn" class="profile-stats-btn">
+        <span class="material-symbols-outlined">monitoring</span> إحصائياتي
     </button>
-    
-    <button id="profileLogoutBtn" class="profile-logout" style="display: none;"> تسجيل لخروج</button>
-    
-    <!-- زر الترقية (يتم إضافته بواسطة JavaScript عند الحاجة) -->
+
+    <!-- زر تسجيل خروج -->
+    <button id="profileLogoutBtn" class="profile-logout-btn">
+        <span class="material-symbols-outlined">logout</span> تسجيل خروج
+    </button>
 </div>
 </div>
 
@@ -2068,7 +2115,7 @@ body.dark-mode .mobile-banner span {
             <div id="loginForm">
                 <div style="margin-bottom: 14px;">
                     <label style="display:block; font-size:13px; color:#94a3b8; margin-bottom:4px;">البريد الإلكتروني</label>
-                    <input type="email" id="authEmail" placeholder="example@mail.com" style="width:100%; padding:10px 12px; border:1px solid #334155; border-radius:10px; background:#1e293b; color:white; font-size:14px; box-sizing:border-box;">
+                    <input type="email" id="authEmail" placeholder="example@gmail.com" style="width:100%; padding:10px 12px; border:1px solid #334155; border-radius:10px; background:#1e293b; color:white; font-size:14px; box-sizing:border-box;">
                 </div>
              <div style="margin-bottom: 14px;">
     <label style="display:block; font-size:13px; color:#94a3b8; margin-bottom:4px;">كلمة السر</label>
@@ -2101,7 +2148,7 @@ body.dark-mode .mobile-banner span {
                 </div>
                 <div style="margin-bottom:10px;">
                     <label style="display:block; font-size:13px; color:#94a3b8; margin-bottom:4px;">البريد الإلكتروني</label>
-                    <input type="email" id="signupEmail" placeholder="example@mail.com" style="width:100%; padding:10px 12px; border:1px solid #334155; border-radius:10px; background:#1e293b; color:white; font-size:14px; box-sizing:border-box;">
+                    <input type="email" id="signupEmail" placeholder="example@gmail.com" style="width:100%; padding:10px 12px; border:1px solid #334155; border-radius:10px; background:#1e293b; color:white; font-size:14px; box-sizing:border-box;">
                 </div>
         <div style="margin-bottom:14px;">
     <label style="display:block; font-size:13px; color:#94a3b8; margin-bottom:4px;">كلمة السر</label>
@@ -2123,7 +2170,7 @@ body.dark-mode .mobile-banner span {
                 <p style="color:#94a3b8; font-size:13px; margin-bottom:14px;">أدخل بريدك الإلكتروني وكلمة السر الجديدة</p>
                 <div style="margin-bottom:10px;">
                     <label style="display:block; font-size:13px; color:#94a3b8; margin-bottom:4px;">البريد الإلكتروني</label>
-                    <input type="email" id="resetEmail" placeholder="example@mail.com" style="width:100%; padding:10px 12px; border:1px solid #334155; border-radius:10px; background:#1e293b; color:white; font-size:14px; box-sizing:border-box;">
+                    <input type="email" id="resetEmail" placeholder="example@gmail.com" style="width:100%; padding:10px 12px; border:1px solid #334155; border-radius:10px; background:#1e293b; color:white; font-size:14px; box-sizing:border-box;">
                 </div>
      <div style="margin-bottom:14px;">
     <label style="display:block; font-size:13px; color:#94a3b8; margin-bottom:4px;">كلمة السر الجديدة</label>
