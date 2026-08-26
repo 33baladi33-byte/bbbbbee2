@@ -25271,14 +25271,12 @@ var MyApp = (() => {
             this.style.backgroundColor = "rgba(255,255,255,0.95)";
             this.style.transform = "translateX(5px)";
             this.style.borderColor = "#60a5fa";
-            titleSpan.style.color = "#4b5563";
             if (premiumSpan) premiumSpan.style.transform = "scale(1.02)";
           };
           div.onmouseleave = function() {
             this.style.backgroundColor = "rgba(255,255,255,0.75)";
             this.style.transform = "translateX(0)";
             this.style.borderColor = "#e2e8f0";
-            titleSpan.style.color = "#6b7280";
             if (premiumSpan) premiumSpan.style.transform = "scale(1)";
           };
           div.onclick = function(e) {
