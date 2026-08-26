@@ -2204,14 +2204,7 @@ body.dark-mode .mobile-banner span {
 </div>
     
    <div class="right-side">
-    <!-- 💎 علاش حنا؟ - زر Info في المكان الجديد -->
-    <button id="whyPremiumIconBtn" class="why-premium-icon-btn" title="علاش غتنجح معانا؟">
-        <span class="material-symbols-outlined">info</span>
-        <div class="premium-info-card">
-            <span class="card-icon">✨</span>
-            <span class="card-text">هذا <span style="color: #38bdf8;">الموقع</span> مصمم ليقدم أكبر قدر ممكن من الراحة والمساعدة للمستخدم، مع تجربة سهلة، سريعة، وبدون أي تعقيد. وليس مجرد <span style="color: #4ade80;">فوضى</span> جميلة <span style="color: #4ade80;">كالباقي</span>.</span>
-        </div>
-    </button>
+    <!-- تم إزالة زر info بناءً على الطلب -->
     
     <!-- 🔔 الإشعارات -->
     <div class="notification-container">
@@ -3176,48 +3169,6 @@ if (showCardsBtn) {
     }, 5000);
 })();
 
-        // ============================================
-// زر 💎 لماذا؟ (أيقونة Info) - بطاقة منبثقة أنيقة
-// ============================================
-const whyPremiumIconBtn = document.getElementById('whyPremiumIconBtn');
-if (whyPremiumIconBtn) {
-    whyPremiumIconBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        this.classList.toggle('active');
-    });
-    
-    // إغلاق البطاقة عند الضغط خارجها
-    document.addEventListener('click', function(e) {
-        if (!whyPremiumIconBtn.contains(e.target)) {
-            whyPremiumIconBtn.classList.remove('active');
-        }
-    });
-}
-
-// ============================================
-// إظهار/إخفاء أيقونة Info (تظهر فقط في صفحة القائمة)
-// ============================================
-function toggleWhyPremiumBtn() {
-    const whyBtn = document.getElementById('whyPremiumIconBtn');
-    if (!whyBtn) return;
-    
-    const listPage = document.getElementById('list');
-    if (listPage && listPage.classList.contains('active')) {
-        whyBtn.style.display = 'inline-flex';
-    } else {
-        whyBtn.style.display = 'none';
-    }
-}
-
-toggleWhyPremiumBtn();
-
-const observerPremium = new MutationObserver(function() {
-    toggleWhyPremiumBtn();
-});
-
-const listPage2 = document.getElementById('list');
-
-if (listPage2) observerPremium.observe(listPage2, { attributes: true, attributeFilter: ['class'] });
 // ============================================
 // وضع القراءة (Reading Mode) - 4 درجات
 // ============================================
