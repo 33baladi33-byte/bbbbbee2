@@ -164,31 +164,32 @@
 }
 .shape2-sparkles {
     position: absolute;
-    top: 2px;
-    right: 0;
-    width: clamp(22px, 2vw, 28px);
-    height: clamp(22px, 2vw, 28px);
-    pointer-events: none;
+    top: 18px;
+    right: 12px;
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
+    gap: 3px;
+    align-items: center;
+    width: auto;
+    height: auto;
+    pointer-events: none;
+    z-index: 5;
 }
 .shape2-sparkles .star-big {
-    position: absolute;
-    top: 0;
-    right: 0;
+    position: relative;
+    top: auto;
+    right: auto;
     color: #e8ebf2;
-    font-size: clamp(15px, 1.45vw, 19px);
+    font-size: 16px;
     line-height: 1;
-    transform: rotate(-8deg);
+    transform: rotate(-5deg);
     text-shadow: 0 0 5px rgba(255,255,255,.45), 0 0 13px rgba(148,163,184,.28);
 }
 .shape2-sparkles .star-small {
-    position: absolute;
-    top: clamp(10px, 1vw, 12px);
-    right: clamp(8px, 0.8vw, 10px);
+    position: relative;
+    top: auto;
+    right: auto;
     color: #aeb6c4;
-    font-size: clamp(7px, .65vw, 9px);
+    font-size: 9px;
     line-height: 1;
     text-shadow: 0 0 7px rgba(255,255,255,.35);
 }
