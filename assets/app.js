@@ -29332,6 +29332,7 @@ var MyApp = (() => {
       if (profileUidValue) profileUidValue.textContent = "---";
       if (profileLogoutBtn2) profileLogoutBtn2.style.display = "none";
       if (navLoginBtn2) navLoginBtn2.style.display = "inline-block";
+      if (navSignupBtn) navSignupBtn.style.display = "inline-flex";
       if (navSubscribeBtn2) navSubscribeBtn2.style.display = "inline-flex";
       if (featuresSubscribeBtn) featuresSubscribeBtn.style.display = "inline-flex";
       if (profileIcon2) profileIcon2.style.display = "none";
@@ -29356,6 +29357,7 @@ var MyApp = (() => {
     if (profileUidValue) profileUidValue.textContent = user.uid;
     if (profileLogoutBtn2) profileLogoutBtn2.style.display = "block";
     if (navLoginBtn2) navLoginBtn2.style.display = "none";
+    if (navSignupBtn) navSignupBtn.style.display = "none";
     if (profileIcon2) profileIcon2.style.display = "flex";
     if (studyPlannerBtn) studyPlannerBtn.style.display = isHomePage ? "none" : "inline-flex";
     const isPremium = data && data.plan === "premium" && (!data.premiumUntil || new Date(data.premiumUntil).getTime() > Date.now());
