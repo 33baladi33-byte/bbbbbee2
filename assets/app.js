@@ -26309,6 +26309,36 @@ var MyApp = (() => {
     const container = document.getElementById("m\xFCndlich");
     if (!container) return;
     container.innerHTML = "";
+    const noteWrapper = document.createElement("div");
+    noteWrapper.className = "m\xFCndlich-header-note-wrapper";
+    noteWrapper.style.cssText = `
+    margin-bottom: clamp(16px, 2.5vw, 24px);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  `;
+    const noteDiv = document.createElement("div");
+    noteDiv.style.cssText = `
+    background: #e3f2fd !important;
+    padding: clamp(8px, 1.2vw, 12px) clamp(14px, 2vw, 20px) !important;
+    border-radius: 10px !important;
+    border: 1px solid #d0e0ff !important;
+    color: #0d47a1 !important;
+    font-size: clamp(0.7rem, 1.4vw, 0.85rem) !important;
+    line-height: 1.7 !important;
+    font-family: inherit !important;
+    text-align: right !important;
+    direction: rtl !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03) !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    word-wrap: break-word !important;
+  `;
+    noteDiv.innerHTML = `\u2726 \u064A\u0645\u0643\u0646\u0643 \u0623\u062E\u0630 \u0623\u0641\u0643\u0627\u0631 \u0645\u0646 \u0647\u0646\u0627 \u0648\u0645\u0639\u0631\u0641\u0629 \u0643\u064A\u0641 \u064A\u0645\u0643\u0646 \u0623\u0646 \u064A\u0643\u0648\u0646 \u0647\u062F\u0627 \u0627\u0644\u062C\u0632\u0621\u060C \u0648\u064A\u0645\u0643\u0646\u0643 \u0627\u0644\u062A\u0642\u0644\u064A\u062F \u0642\u0644\u064A\u0644\u0627\u060C \u0644\u0643\u0646 \u064A\u062C\u0628 \u0623\u0646 \u062A\u0639\u0645\u0644 \u0646\u0633\u062E\u0629 \u062E\u0627\u0635\u0629 \u0628\u0643 \u0648\u0644\u0627 \u062A\u0642\u0644\u062F\u0647 \u062D\u0631\u0641\u064A\u0627.`;
+    noteWrapper.appendChild(noteDiv);
+    container.appendChild(noteWrapper);
     const parts = examData.parts || {};
     const allgemeinCard = createM\u00FCndlichCard("\u{1F4D6} \u0627\u0644\u0641\u0643\u0631\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 (Allgemeine Idee)", parts.allgemein || "\u0644\u0627 \u064A\u0648\u062C\u062F \u0646\u0635");
     container.appendChild(allgemeinCard);
