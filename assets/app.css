@@ -7725,6 +7725,14 @@ body:has(#exam.active) #navSignupBtn {
 body:has(#home.active) #navSignupBtn {
     display: inline-flex !important;
 }
+/* تثبيت لون عناوين الامتحانات المقفلة */
+.item .premium-badge ~ .exam-title {
+    color: #4b5563 !important;
+    transition: none !important;
+}
+.item .premium-badge ~ .exam-title:hover {
+    color: #4b5563 !important;
+}
 /* ============================================
    studySession.css - النسخة النهائية (متكاملة)
    ============================================ */
