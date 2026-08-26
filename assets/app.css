@@ -583,9 +583,6 @@ body {
     display: none !important;
 }
 
-/* ========================================
-   TOP BAR
-   ======================================== */
 .top-bar {
     display: flex;
     justify-content: space-between;
@@ -593,8 +590,7 @@ body {
     padding: 12px 30px;
     background: linear-gradient(135deg, #161922 0%, #202534 50%, #262D40 100%);
     box-shadow: 0 1px 0 rgba(255,255,255,0.03), 0 8px 25px rgba(0,0,0,0.15);
-    position: sticky;
-    top: 0;
+    position: static;
     z-index: 100;
     transition: all 0.3s ease;
 }
@@ -3909,7 +3905,7 @@ body:has(#exam.active) .left-side #navSubscribeBtn { order: 4 !important; }
 }
 
 /* ============================================
-   أيقونة Info الجديدة (علاش غتنجح معانا؟)
+   أيقونة Info الجديدة (علاش غتنجح معانا؟) - ثابتة
    ============================================ */
 .why-premium-icon-btn {
     background: rgba(255,255,255,0.05);
@@ -3930,6 +3926,11 @@ body:has(#exam.active) .left-side #navSubscribeBtn { order: 4 !important; }
     top: 82px !important;
     right: 30px !important;
     z-index: 9999 !important;
+    /* إضافة للحفاظ على الخلفية والظل عند التمرير */
+    background: rgba(15, 23, 42, 0.85) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
 }
 
 .why-premium-icon-btn:hover {

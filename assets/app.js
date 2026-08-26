@@ -26113,24 +26113,7 @@ var MyApp = (() => {
       badge = document.createElement("span");
       badge.className = "custom-badge";
       badge.innerHTML = `
-            <span class="material-symbols-outlined" style="font-size:12px; line-height:1;">layers</span>
-            <span style="font-size:9px; font-weight:600;">${exam.versions.length}</span>
-        `;
-      badge.style.cssText = `
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            gap: 2px !important;
-            background: linear-gradient(135deg, #334155, #1e293b) !important;
-            color: #f1f5f9 !important;
-            border-radius: 999px !important;
-            padding: 0 8px 0 4px !important;
-            height: 22px !important;
-            flex-shrink: 0 !important;
-            pointer-events: none !important;
-            user-select: none !important;
-            line-height: 1 !important;
-            border: 1px solid #475569 !important;
+            <span>${exam.versions.length} \u062A\u0639\u062F\u064A\u0644\u0627\u062A</span>
         `;
       badge.title = `${exam.versions.length} \u062A\u0639\u062F\u064A\u0644\u0627\u062A`;
       let rightSide = el.querySelector(".exam-right-icons");
