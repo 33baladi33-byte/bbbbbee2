@@ -25267,6 +25267,7 @@ var MyApp = (() => {
           div.appendChild(rightSide);
           titleSpan.style.color = "#4b5563";
           titleSpan.style.transition = "none";
+          titleSpan.classList.add("locked-title");
           div.onmouseenter = function() {
             this.style.backgroundColor = "rgba(255,255,255,0.95)";
             this.style.transform = "translateX(5px)";
@@ -25305,6 +25306,7 @@ var MyApp = (() => {
         div.appendChild(rightSide);
         titleSpan.style.color = "#4b5563";
         titleSpan.style.transition = "none";
+        titleSpan.classList.add("locked-title");
         div.onmouseenter = function() {
           this.style.backgroundColor = "rgba(255,255,255,0.95)";
           this.style.transform = "translateX(5px)";
