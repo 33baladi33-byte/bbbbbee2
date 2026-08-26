@@ -1791,6 +1791,7 @@ body:has(#exam.active) .top-bar {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
+    font-weight: 600 !important;
 }
 
 .premium-badge {

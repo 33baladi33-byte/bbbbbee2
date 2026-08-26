@@ -26049,13 +26049,11 @@ var MyApp = (() => {
       if (versionBadge) {
         const vSize = 8 * contentMultiplier;
         versionBadge.style.cssText = `
-                display: inline-flex !important;
-                align-items: center !important;
-                justify-content: center !important;
                 font-size: ${vSize}px !important;
                 height: ${Math.max(10, Math.min(18, 14 * contentMultiplier))}px !important;
                 padding: 0 5px !important;
                 line-height: 1 !important;
+                /* \u0644\u0627 \u0646\u0636\u0639 background, color, border, box-shadow \u0647\u0646\u0627\u060C \u062A\u062A\u0631\u0643 \u0644\u0644\u0640 CSS */
             `;
         const numSpan = versionBadge.querySelector("span:last-child");
         if (numSpan) {
@@ -26065,6 +26063,12 @@ var MyApp = (() => {
                     line-height: 1 !important;
                 `;
         }
+        versionBadge.style.removeProperty("background");
+        versionBadge.style.removeProperty("background-color");
+        versionBadge.style.removeProperty("color");
+        versionBadge.style.removeProperty("border");
+        versionBadge.style.removeProperty("box-shadow");
+        versionBadge.style.removeProperty("border-radius");
       }
     });
     console.log("\u{1F7E6} Grid View \u0645\u0639 \u0646\u0638\u0627\u0645 \u0627\u0644\u062D\u062C\u0645 \u0627\u0644\u0645\u062A\u062F\u0631\u062C (60%-150%)");
