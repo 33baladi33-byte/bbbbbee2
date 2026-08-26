@@ -27137,6 +27137,105 @@ var MyApp = (() => {
     data.forEach((item) => targetContainer.appendChild(item.el));
     console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u062D\u0633\u0628 \u0627\u0644\u0648\u0642\u062A (\u0645\u0646 \u0627\u0644\u0623\u0636\u0639\u0641 \u0625\u0644\u0649 \u0627\u0644\u0623\u0642\u0648\u0649)");
   }
+  function applyCustomStylesToExams() {
+    const oldIds = [
+      "zertiva-title-left-fix",
+      "custom-badge-gray-rect",
+      "card-size-up",
+      "horizontal-card-140",
+      "horizontal-card-140-fixed",
+      "horizontal-card-fix-overlap",
+      "horizontal-card-no-overlap-1",
+      "horizontal-card-no-overlap-2",
+      "horizontal-card-no-overlap-3",
+      "horizontal-card-final-fix"
+    ];
+    oldIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) el.remove();
+    });
+    const styleTitle = document.createElement("style");
+    styleTitle.id = "zertiva-title-left-fix";
+    styleTitle.textContent = `
+        #examsList > .item .exam-title,
+        #examGridContainer .item .exam-title {
+            text-align: left !important;
+            align-self: flex-start !important;
+            margin-left: 0 !important;
+            margin-right: auto !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+        }
+    `;
+    document.head.appendChild(styleTitle);
+    const styleCard = document.createElement("style");
+    styleCard.id = "card-size-up";
+    styleCard.textContent = `
+        #examsList > .item,
+        #examGridContainer .item {
+            min-height: clamp(95px, 12vh, 115px) !important;
+            padding: 10px 16px !important;
+            border-radius: 14px !important;
+        }
+    `;
+    document.head.appendChild(styleCard);
+    const styleBadge = document.createElement("style");
+    styleBadge.id = "custom-badge-gray-rect";
+    styleBadge.textContent = `
+        #examsList .custom-badge,
+        #examGridContainer .custom-badge {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background: #f1f3f5 !important;
+            color: #111827 !important;
+            border: none !important;
+            border-radius: 4px !important;
+            padding: 0 5px !important;
+            height: 16px !important;
+            font-size: 8px !important;
+            font-weight: 600 !important;
+            line-height: 1 !important;
+            white-space: nowrap !important;
+            box-shadow: none !important;
+            flex-shrink: 0 !important;
+            pointer-events: none !important;
+            user-select: none !important;
+            margin-left: 5px !important;
+        }
+        #examsList .custom-badge .material-symbols-outlined,
+        #examGridContainer .custom-badge .material-symbols-outlined {
+            display: none !important;
+        }
+        #examsList .custom-badge span:last-child,
+        #examGridContainer .custom-badge span:last-child {
+            color: #111827 !important;
+            font-size: 8px !important;
+            font-weight: 600 !important;
+            white-space: nowrap !important;
+        }
+    `;
+    document.head.appendChild(styleBadge);
+    document.querySelectorAll(".custom-badge").forEach((badge) => {
+      const icon = badge.querySelector(".material-symbols-outlined");
+      if (icon) icon.remove();
+      let textSpan = badge.querySelector("span:last-child");
+      if (!textSpan) {
+        textSpan = document.createElement("span");
+        badge.appendChild(textSpan);
+      }
+      const match = textSpan.textContent.match(/\d+/);
+      if (match) {
+        textSpan.textContent = match[0] + " \u062A\u0639\u062F\u064A\u0644\u0627\u062A";
+      }
+      badge.style.background = "";
+      badge.style.backgroundColor = "";
+      badge.style.border = "";
+      badge.style.boxShadow = "";
+    });
+    console.log("\u2705 \u062A\u0645: Badge \u0631\u0645\u0627\u062F\u064A \u0641\u0627\u062A\u062D \u0646\u0627\u0639\u0645 + \u0646\u0635 \u0623\u0633\u0648\u062F + \u0628\u062F\u0648\u0646 \u0625\u0637\u0627\u0631 \u0623\u0648 \u0638\u0644");
+  }
   var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY;
   var init_exams = __esm({
     "exams.js"() {
@@ -28756,6 +28855,7 @@ var MyApp = (() => {
         setTimeout(tryPlace, 100);
         console.log("\u2705 \u0632\u0631 check_circle \u062C\u0627\u0647\u0632 (\u0645\u0639 \u0646\u0642\u0644 \u062F\u064A\u0646\u0627\u0645\u064A\u0643\u064A \u0644\u0644\u0647\u0627\u062A\u0641).");
       })();
+      window.applyCustomStylesToExams = applyCustomStylesToExams;
     }
   });
 
