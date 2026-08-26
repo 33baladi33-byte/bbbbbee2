@@ -26052,30 +26052,15 @@ var MyApp = (() => {
                 display: inline-flex !important;
                 align-items: center !important;
                 justify-content: center !important;
-                gap: 1px !important;
-                background: linear-gradient(135deg, #334155, #1e293b) !important;
-                color: #f1f5f9 !important;
-                border-radius: 999px !important;
-                padding: 0 4px 0 2px !important;
-                height: ${Math.max(10, Math.min(18, 14 * contentMultiplier))}px !important;
-                flex-shrink: 0 !important;
-                pointer-events: none !important;
-                user-select: none !important;
-                line-height: 1 !important;
-                border: 1px solid #475569 !important;
                 font-size: ${vSize}px !important;
+                height: ${Math.max(10, Math.min(18, 14 * contentMultiplier))}px !important;
+                padding: 0 5px !important;
+                line-height: 1 !important;
             `;
-        const icon = versionBadge.querySelector(".material-symbols-outlined");
-        if (icon) {
-          icon.style.cssText = `
-                    font-size: ${vSize}px !important;
-                    line-height: 1 !important;
-                `;
-        }
         const numSpan = versionBadge.querySelector("span:last-child");
         if (numSpan) {
           numSpan.style.cssText = `
-                    font-size: ${vSize * 0.85}px !important;
+                    font-size: ${vSize}px !important;
                     font-weight: 600 !important;
                     line-height: 1 !important;
                 `;

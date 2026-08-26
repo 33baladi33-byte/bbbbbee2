@@ -5984,6 +5984,10 @@ body:has(#exam.active) .left-side #navSubscribeBtn { order: 4 !important; }
         font-size: 12px;
     }
 }
+/* ============================================
+   Custom Badge - مع أيقونة layers (نسخة جديدة)
+   ============================================ */
+
 .custom-badge {
     display: inline-flex !important;
     align-items: center !important;
@@ -6012,6 +6016,26 @@ body:has(#exam.active) .left-side #navSubscribeBtn { order: 4 !important; }
     font-size: 8px !important;
     font-weight: 600 !important;
     white-space: nowrap !important;
+}
+/* ضمان عدم تجاوز الستايلات المدمجة للتصميم الفاتح */
+.custom-badge[style] {
+    background: #f1f3f5 !important;
+    color: #111827 !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 4px !important;
+}
+/* ============================================
+   تثبيت لون عنوان الامتحانات المقفلة
+   ============================================ */
+.item .premium-badge ~ .exam-title,
+.item .exam-title[style*="color: #6b7280"] {
+    color: #6b7280 !important;
+    transition: none !important;
+}
+.item .premium-badge ~ .exam-title:hover,
+.item .exam-title[style*="color: #6b7280"]:hover {
+    color: #6b7280 !important;
 }
 /* ============================================
    زر الاختصارات و Popover
