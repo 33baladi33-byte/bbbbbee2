@@ -22607,142 +22607,82 @@ var MyApp = (() => {
     if (questions.length === 0 || sharedOptions.length === 0) return;
     const originalElements = container.querySelectorAll(".question-card, .check-btn, .result-box");
     originalElements.forEach((el) => el.style.display = "none");
-    const root = document.createElement("div");
+    const root = document.createElement("section");
     root.id = "lesen1-matching-root";
-    root.style.cssText = `
-        width:100%;
-        max-width:100%;
-        box-sizing:border-box;
-        margin:16px 0;
-        padding:clamp(9px,1vw,14px);
-        background:#ffffff;
-        border:1px solid rgba(100,120,140,.16);
-        border-radius:16px;
-        color:#17212b;
-        display:flex;
-        flex-direction:column;
-        height:min(760px,calc(100vh - 70px));
-        min-height:520px;
-        overflow:hidden;
-        position:relative;
-        z-index:10;
-    `;
+    root.className = "zl1-root";
     const header = document.createElement("div");
-    header.style.cssText = "flex:0 0 38px;min-height:38px;display:flex;align-items:center;justify-content:space-between;gap:10px;";
-    const title = document.createElement("div");
-    title.textContent = "Lesen Teil 1";
-    title.style.cssText = "font-size:clamp(16px,1.35vw,21px);font-weight:800;letter-spacing:-.02em;";
+    header.className = "zl1-header";
+    const mainTitle = document.createElement("div");
+    mainTitle.className = "zl1-main-title";
+    mainTitle.textContent = "Lesen Teil 1";
     const progress = document.createElement("div");
-    progress.style.cssText = "display:flex;align-items:center;gap:7px;padding:5px 9px;border-radius:999px;border:1px solid rgba(90,120,145,.16);background:#f5f7fa;color:#536170;font-size:11px;font-weight:750;white-space:nowrap;";
+    progress.className = "zl1-progress";
     const progressText = document.createElement("span");
-    progressText.id = "lesen1-matching-progress";
-    progressText.textContent = "0 / " + questions.length + " zugeordnet";
     const progressBar = document.createElement("span");
-    progressBar.style.cssText = "width:58px;height:5px;background:#e5ebf1;border-radius:99px;overflow:hidden;";
+    progressBar.className = "zl1-progress-bar";
     const progressFill = document.createElement("span");
-    progressFill.id = "lesen1-matching-progress-fill";
-    progressFill.style.cssText = "width:0%;height:100%;background:#67afea;border-radius:inherit;transition:width .22s ease;";
+    progressFill.className = "zl1-progress-fill";
     progressBar.appendChild(progressFill);
-    progress.appendChild(progressText);
-    progress.appendChild(progressBar);
-    header.appendChild(title);
-    header.appendChild(progress);
+    progress.append(progressText, progressBar);
+    header.append(mainTitle, progress);
     root.appendChild(header);
     const textArea = document.createElement("div");
-    textArea.style.cssText = "flex:1 1 0;min-height:0;width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;overscroll-behavior-x:contain;overscroll-behavior-y:none;display:flex;";
+    textArea.className = "zl1-text-area";
     const textGrid = document.createElement("div");
-    textGrid.style.cssText = "display:flex;flex-wrap:nowrap;gap:clamp(7px,.8vw,11px);min-width:100%;height:100%;align-items:stretch;";
+    textGrid.className = "zl1-text-grid";
     const textCards = [];
     questions.forEach((q, idx) => {
       const card = document.createElement("div");
-      card.className = "lesen1-matching-text-card";
+      card.className = "zl1-text-card";
       card.dataset.textIndex = idx;
-      card.style.cssText = `
-            flex:0 0 calc(20% - 10px);
-            min-width:0;
-            min-height:0;
-            height:100%;
-            display:flex;
-            flex-direction:column;
-            border-radius:12px;
-            border:1px solid rgba(100,120,140,.18);
-            background:#ffffff;
-            overflow:hidden;
-            cursor:pointer;
-            transition:border-color .18s ease,box-shadow .18s ease,background .18s ease;
-        `;
       const head = document.createElement("div");
-      head.style.cssText = "flex:0 0 35px;min-height:35px;display:flex;align-items:center;justify-content:space-between;gap:6px;padding:5px 8px;box-sizing:border-box;background:#f7f9fb;border-bottom:1px solid rgba(100,120,140,.14);";
+      head.className = "zl1-text-head";
       const label = document.createElement("span");
+      label.className = "zl1-text-label";
       label.textContent = "TEXT " + (idx + 1);
-      label.style.cssText = "font-size:10px;font-weight:850;letter-spacing:.03em;white-space:nowrap;";
       const badge = document.createElement("span");
-      badge.className = "lesen1-matching-text-badge";
-      badge.style.cssText = "min-width:21px;height:21px;padding:0 5px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#67afea;color:#ffffff;font-size:10px;font-weight:850;opacity:0;transform:scale(.92);transition:.18s ease;";
-      head.appendChild(label);
-      head.appendChild(badge);
+      badge.className = "zl1-text-badge";
+      head.append(label, badge);
       const body = document.createElement("div");
-      body.style.cssText = "flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;padding:clamp(9px,.9vw,13px);box-sizing:border-box;font-size:clamp(11px,.82vw,13.5px);line-height:1.62;font-weight:500;color:#273440;word-break:normal;overflow-wrap:break-word;white-space:normal;scrollbar-width:thin;";
+      body.className = "zl1-text-body";
       body.textContent = q.text;
-      card.appendChild(head);
-      card.appendChild(body);
+      card.append(head, body);
       textGrid.appendChild(card);
       textCards.push({ card, badge, head, body, index: idx });
     });
     textArea.appendChild(textGrid);
     root.appendChild(textArea);
     const answerArea = document.createElement("div");
-    answerArea.style.cssText = "flex:0 1 auto;min-height:0;max-height:55%;box-sizing:border-box;display:flex;flex-direction:column;border-radius:13px;border:1px solid rgba(100,120,140,.16);background:#f6f8fa;padding:8px;overflow:hidden;";
+    answerArea.className = "zl1-answer-area";
     const answerHeader = document.createElement("div");
-    answerHeader.style.cssText = "flex:0 0 30px;min-height:30px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 2px;";
+    answerHeader.className = "zl1-answer-header";
     const answerTitle = document.createElement("div");
+    answerTitle.className = "zl1-answer-title";
     answerTitle.textContent = "TITEL ZUORDNEN";
-    answerTitle.style.cssText = "font-size:11px;font-weight:850;letter-spacing:.02em;white-space:nowrap;";
     answerHeader.appendChild(answerTitle);
     answerArea.appendChild(answerHeader);
     const titleArea = document.createElement("div");
-    titleArea.style.cssText = "flex:1 1 auto;min-height:0;width:100%;overflow-x:hidden;overflow-y:auto;padding:2px 0;scrollbar-width:thin;";
+    titleArea.className = "zl1-title-area";
     const titleGrid = document.createElement("div");
-    titleGrid.style.cssText = "width:100%;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));grid-auto-rows:1fr;gap:8px 12px;box-sizing:border-box;align-content:start;";
+    titleGrid.className = "zl1-title-grid";
     const titleCards = [];
     sharedOptions.forEach((opt, idx) => {
       const card = document.createElement("div");
-      card.className = "lesen1-matching-title-card";
+      card.className = "zl1-title-card";
       card.dataset.titleIndex = idx;
       card.draggable = true;
-      card.style.cssText = `
-            width:100%;
-            min-width:0;
-            min-height:40px;
-            box-sizing:border-box;
-            padding:8px 12px;
-            border-radius:9px;
-            border:1px solid rgba(100,120,140,.17);
-            background:#ffffff;
-            cursor:pointer;
-            user-select:none;
-            display:grid;
-            grid-template-columns:26px minmax(0,1fr);
-            align-items:center;
-            gap:8px;
-            overflow:hidden;
-            transition:border-color .18s ease,background .18s ease,box-shadow .18s ease,transform .18s ease;
-        `;
       const letter = document.createElement("span");
+      letter.className = "zl1-title-letter";
       letter.textContent = String.fromCharCode(65 + idx);
-      letter.style.cssText = "width:26px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:7px;background:#edf2f6;color:#526170;font-size:11px;font-weight:850;flex-shrink:0;";
       const content = document.createElement("div");
-      content.style.cssText = "min-width:0;width:100%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;overflow:hidden;";
+      content.className = "zl1-title-content";
       const titleText = document.createElement("span");
+      titleText.className = "zl1-title-text";
       titleText.textContent = opt;
-      titleText.style.cssText = "display:block;width:100%;max-width:100%;box-sizing:border-box;font-size:clamp(9px,.8vw,12px);line-height:1.3;font-weight:650;color:#273440;white-space:normal;overflow-wrap:anywhere;word-break:normal;overflow:hidden;text-overflow:clip;text-align:left;";
       const matchBadge = document.createElement("div");
-      matchBadge.className = "lesen1-matching-title-badge";
-      matchBadge.style.cssText = "margin-top:2px;min-height:0;max-width:100%;font-size:8px;color:#6c7885;font-weight:750;line-height:1.1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;";
-      content.appendChild(titleText);
-      content.appendChild(matchBadge);
-      card.appendChild(letter);
-      card.appendChild(content);
+      matchBadge.className = "zl1-title-match";
+      content.append(titleText, matchBadge);
+      card.append(letter, content);
       titleGrid.appendChild(card);
       titleCards.push({ card, letter, titleText, matchBadge, index: idx });
     });
@@ -22815,30 +22755,16 @@ var MyApp = (() => {
       textCards.forEach(({ card, badge, index }) => {
         const linkedTitle = matchingState.matches.get(index);
         const isSelected = matchingState.selectedText === index;
-        card.style.borderColor = linkedTitle !== void 0 ? "#70b4eb" : isSelected ? "#f59e0b" : "#e2e8f0";
-        card.style.background = linkedTitle !== void 0 ? "#f7fbff" : isSelected ? "#fef9e7" : "#ffffff";
-        card.style.boxShadow = linkedTitle !== void 0 ? "0 0 0 2px rgba(112,180,235,.10)" : isSelected ? "0 0 0 2px #f59e0b" : "none";
-        if (linkedTitle !== void 0) {
-          badge.textContent = String.fromCharCode(65 + linkedTitle);
-          badge.style.opacity = "1";
-          badge.style.transform = "scale(1)";
-        } else {
-          badge.textContent = "";
-          badge.style.opacity = "0";
-          badge.style.transform = "scale(.92)";
-        }
+        card.classList.toggle("zl1-selected", isSelected);
+        card.classList.toggle("zl1-linked", linkedTitle !== void 0);
+        badge.textContent = linkedTitle !== void 0 ? String.fromCharCode(65 + linkedTitle) : "";
       });
       titleCards.forEach(({ card, matchBadge, index }) => {
         const linkedText = matchingState.titleToText.get(index);
         const isSelected = matchingState.selectedTitle === index;
-        card.style.borderColor = linkedText !== void 0 ? "#70b4eb" : isSelected ? "#f59e0b" : "#e2e8f0";
-        card.style.background = linkedText !== void 0 ? "#f2f9ff" : isSelected ? "#fef9e7" : "#ffffff";
-        card.style.boxShadow = linkedText !== void 0 ? "0 0 0 2px rgba(112,180,235,.08)" : isSelected ? "0 0 0 2px #f59e0b" : "none";
-        if (linkedText !== void 0) {
-          matchBadge.textContent = "TEXT " + (linkedText + 1);
-        } else {
-          matchBadge.textContent = "";
-        }
+        card.classList.toggle("zl1-selected", isSelected);
+        card.classList.toggle("zl1-linked", linkedText !== void 0);
+        matchBadge.textContent = linkedText !== void 0 ? "TEXT " + (linkedText + 1) : "";
       });
     }
     textCards.forEach(({ card, index }) => {
@@ -22865,17 +22791,17 @@ var MyApp = (() => {
       card.addEventListener("dragover", (e) => {
         e.preventDefault();
         e.dataTransfer.dropEffect = "move";
-        card.style.borderColor = "#70b4eb";
+        card.classList.add("zl1-selected");
       });
       card.addEventListener("dragleave", () => {
         if (!matchingState.matches.has(index)) {
-          card.style.borderColor = "#e2e8f0";
+          card.classList.remove("zl1-selected");
         }
       });
       card.addEventListener("drop", (e) => {
         e.preventDefault();
-        card.style.borderColor = "#e2e8f0";
         const titleIdx = parseInt(e.dataTransfer.getData("text/plain"));
+        card.classList.remove("zl1-selected");
         if (isNaN(titleIdx)) return;
         connect(index, titleIdx);
         matchingState.selectedText = null;
@@ -22906,10 +22832,10 @@ var MyApp = (() => {
       card.addEventListener("dragstart", (e) => {
         e.dataTransfer.setData("text/plain", String(index));
         e.dataTransfer.effectAllowed = "move";
-        card.style.borderColor = "#70b4eb";
+        card.classList.add("zl1-selected");
       });
       card.addEventListener("dragend", () => {
-        card.style.borderColor = "#e2e8f0";
+        card.classList.remove("zl1-selected");
       });
     });
     document.querySelectorAll("#teil1 .question-card select").forEach((select, idx) => {
@@ -22929,48 +22855,6 @@ var MyApp = (() => {
     _lesen1MatchingActive = true;
     window._lesen1MatchingActive = true;
     updateUI2();
-    function applyTitleResponsive() {
-      const grid = titleGrid;
-      if (window.innerWidth <= 560) {
-        grid.style.gridTemplateColumns = "repeat(2, 1fr)";
-        grid.style.gridAutoRows = "1fr";
-        grid.style.width = "max-content";
-        grid.style.minWidth = "100%";
-        grid.style.overflowX = "auto";
-      } else {
-        grid.style.gridTemplateColumns = "repeat(auto-fit, minmax(135px, 1fr))";
-        grid.style.width = "100%";
-        grid.style.minWidth = "0";
-        grid.style.overflowX = "hidden";
-      }
-      if (window.innerWidth <= 560) {
-        const cards = titleGrid.querySelectorAll(".lesen1-matching-title-card");
-        cards.forEach((c) => {
-          c.style.width = "auto";
-          c.style.minWidth = "0";
-          c.style.maxWidth = "none";
-          c.style.height = "auto";
-          c.style.minHeight = "40px";
-          c.style.padding = "8px 12px";
-          c.style.gridTemplateColumns = "26px minmax(0, 1fr)";
-          c.style.gap = "8px";
-        });
-      } else {
-        const cards = titleGrid.querySelectorAll(".lesen1-matching-title-card");
-        cards.forEach((c) => {
-          c.style.width = "100%";
-          c.style.minWidth = "0";
-          c.style.maxWidth = "none";
-          c.style.height = "100%";
-          c.style.minHeight = "40px";
-          c.style.padding = "8px 12px";
-          c.style.gridTemplateColumns = "26px minmax(0, 1fr)";
-          c.style.gap = "8px";
-        });
-      }
-    }
-    window.addEventListener("resize", applyTitleResponsive);
-    applyTitleResponsive();
   }
   function destroyLesen1Matching() {
     if (_lesen1MatchingInstance) {
@@ -26295,6 +26179,9 @@ var MyApp = (() => {
       if (skill === "lesen1") {
         const interleavingRow2 = document.getElementById("interleavingRow");
         if (interleavingRow2) {
+          const playBtn2 = document.getElementById("playTimerBtn");
+          const oldMatchingBtn = document.getElementById("lesen1MatchingToggleBtn");
+          if (oldMatchingBtn) oldMatchingBtn.remove();
           const matchingBtn = document.createElement("button");
           matchingBtn.id = "lesen1MatchingToggleBtn";
           matchingBtn.className = "interleaving-icon-btn";
@@ -26334,8 +26221,8 @@ var MyApp = (() => {
               this.style.borderColor = isActive ? "rgba(56,189,248,0.3)" : "rgba(255,255,255,0.08)";
             }
           };
-          if (playBtn && playBtn.parentNode) {
-            playBtn.parentNode.insertBefore(matchingBtn, playBtn.nextSibling);
+          if (playBtn2 && playBtn2.parentNode) {
+            playBtn2.parentNode.insertBefore(matchingBtn, playBtn2.nextSibling);
           } else {
             interleavingRow2.appendChild(matchingBtn);
           }

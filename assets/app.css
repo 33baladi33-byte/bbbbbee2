@@ -7733,46 +7733,476 @@ body:has(#exam.active) #navSignupBtn {
 
 /* ============================================
    نظام المطابقة الجديد لـ Lesen Teil 1
+   مطابق تماماً لـ Prototype السابق
    ============================================ */
 
-/* تنسيق بطاقات المطابقة الجديدة */
-#lesen1-matching-root .lesen1-matching-text-card:hover {
+#lesen1-matching-root {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 16px 0;
+    padding: clamp(9px, 1vw, 14px);
+    background: #ffffff;
+    border: 1px solid rgba(100,120,140,.16);
+    border-radius: 16px;
+    box-shadow: 0 7px 25px rgba(20,35,50,.06);
+    color: #17212b;
+    font-family: inherit;
+    display: flex;
+    flex-direction: column;
+    height: min(760px, calc(100vh - 70px));
+    min-height: 520px;
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+}
+
+#lesen1-matching-root .zl1-header {
+    flex: 0 0 38px;
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+#lesen1-matching-root .zl1-main-title {
+    font-size: clamp(16px, 1.35vw, 21px);
+    font-weight: 800;
+    letter-spacing: -.02em;
+}
+
+#lesen1-matching-root .zl1-progress {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 9px;
+    border-radius: 999px;
+    border: 1px solid rgba(90,120,145,.16);
+    background: #f5f7fa;
+    color: #536170;
+    font-size: 11px;
+    font-weight: 750;
+    white-space: nowrap;
+}
+
+#lesen1-matching-root .zl1-progress-bar {
+    width: 58px;
+    height: 5px;
+    background: #e5ebf1;
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+#lesen1-matching-root .zl1-progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #67afea;
+    border-radius: inherit;
+    transition: width .22s ease;
+}
+
+/* منطقة النصوص */
+#lesen1-matching-root .zl1-text-area {
+    flex: 1 1 0;
+    min-height: 0;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    overscroll-behavior-x: contain;
+    overscroll-behavior-y: none;
+    touch-action: pan-x;
+    display: flex;
+}
+
+#lesen1-matching-root .zl1-text-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: clamp(7px, .8vw, 11px);
+    min-width: 100%;
+    height: 100%;
+    align-items: stretch;
+}
+
+#lesen1-matching-root .zl1-text-card {
+    flex: 0 0 calc(20% - 10px);
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    border: 1px solid rgba(100,120,140,.18);
+    background: #ffffff;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+
+#lesen1-matching-root .zl1-text-card:hover {
     box-shadow: 0 5px 16px rgba(30,50,70,.06);
 }
-#lesen1-matching-root .lesen1-matching-text-card.zl1-selected,
-#lesen1-matching-root .lesen1-matching-text-card.zl1-linked {
+
+#lesen1-matching-root .zl1-text-card.zl1-selected,
+#lesen1-matching-root .zl1-text-card.zl1-linked {
     border-color: #70b4eb;
     background: #f7fbff;
     box-shadow: 0 0 0 2px rgba(112,180,235,.10);
 }
-#lesen1-matching-root .lesen1-matching-title-card:hover {
+
+#lesen1-matching-root .zl1-text-head {
+    flex: 0 0 35px;
+    min-height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    padding: 5px 8px;
+    box-sizing: border-box;
+    background: #f7f9fb;
+    border-bottom: 1px solid rgba(100,120,140,.14);
+    user-select: none;
+}
+
+#lesen1-matching-root .zl1-text-label {
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: .03em;
+    white-space: nowrap;
+}
+
+#lesen1-matching-root .zl1-text-badge {
+    min-width: 21px;
+    height: 21px;
+    padding: 0 5px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background: #67afea;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 850;
+    opacity: 0;
+    transform: scale(.92);
+    transition: .18s ease;
+}
+
+#lesen1-matching-root .zl1-linked .zl1-text-badge {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#lesen1-matching-root .zl1-text-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: clamp(9px, .9vw, 13px);
+    box-sizing: border-box;
+    font-size: clamp(11px, .82vw, 13.5px);
+    line-height: 1.62;
+    font-weight: 500;
+    color: #273440;
+    word-break: normal;
+    overflow-wrap: break-word;
+    white-space: normal;
+    scrollbar-width: thin;
+}
+
+#lesen1-matching-root .zl1-text-body::-webkit-scrollbar {
+    width: 5px;
+}
+#lesen1-matching-root .zl1-text-body::-webkit-scrollbar-thumb {
+    background: rgba(90,115,140,.27);
+    border-radius: 99px;
+}
+
+/* منطقة العناوين */
+#lesen1-matching-root .zl1-answer-area {
+    flex: 0 1 auto;
+    min-height: 0;
+    max-height: 55%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    border-radius: 13px;
+    border: 1px solid rgba(100,120,140,.16);
+    background: #f6f8fa;
+    padding: 8px;
+    overflow: hidden;
+}
+
+#lesen1-matching-root .zl1-answer-header {
+    flex: 0 0 30px;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 0 2px;
+}
+
+#lesen1-matching-root .zl1-answer-title {
+    font-size: 11px;
+    font-weight: 850;
+    letter-spacing: .02em;
+    white-space: nowrap;
+}
+
+#lesen1-matching-root .zl1-title-area {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 2px 0;
+    scrollbar-width: thin;
+}
+
+#lesen1-matching-root .zl1-title-area::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+#lesen1-matching-root .zl1-title-area::-webkit-scrollbar-thumb {
+    background: rgba(90,115,140,.22);
+    border-radius: 99px;
+}
+
+#lesen1-matching-root .zl1-title-grid {
+    width: 100%;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+    grid-auto-rows: 1fr;
+    gap: 8px 12px;
+    box-sizing: border-box;
+    align-content: start;
+}
+
+@media (min-width: 1041px) {
+    #lesen1-matching-root .zl1-title-grid {
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    }
+}
+@media (max-width: 1040px) and (min-width: 641px) {
+    #lesen1-matching-root .zl1-title-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+}
+@media (max-width: 640px) and (min-width: 561px) {
+    #lesen1-matching-root .zl1-title-grid {
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+    }
+    #lesen1-matching-root .zl1-title-area {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+}
+
+#lesen1-matching-root .zl1-title-card {
+    width: 100%;
+    min-width: 0;
+    min-height: 40px;
+    box-sizing: border-box;
+    padding: 8px 12px;
+    border-radius: 9px;
+    border: 1px solid rgba(100,120,140,.17);
+    background: #ffffff;
+    cursor: pointer;
+    user-select: none;
+    display: grid;
+    grid-template-columns: 26px minmax(0, 1fr);
+    align-items: center;
+    gap: 8px;
+    overflow: hidden;
+    transition: border-color .18s ease, background .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+#lesen1-matching-root .zl1-title-card:hover {
     transform: translateY(-1px);
     box-shadow: 0 3px 10px rgba(30,50,70,.05);
 }
-#lesen1-matching-root .lesen1-matching-title-card.zl1-selected,
-#lesen1-matching-root .lesen1-matching-title-card.zl1-linked {
+
+#lesen1-matching-root .zl1-title-card.zl1-selected,
+#lesen1-matching-root .zl1-title-card.zl1-linked {
     border-color: #70b4eb;
     background: #f2f9ff;
     box-shadow: 0 0 0 2px rgba(112,180,235,.08);
 }
-/* إخفاء زر التصحيح في الوضع الجديد (عبر CSS احتياطياً) */
+
+#lesen1-matching-root .zl1-title-letter {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    background: #edf2f6;
+    color: #526170;
+    font-size: 11px;
+    font-weight: 850;
+    flex-shrink: 0;
+}
+
+#lesen1-matching-root .zl1-title-card.zl1-selected .zl1-title-letter,
+#lesen1-matching-root .zl1-title-card.zl1-linked .zl1-title-letter {
+    background: #67afea;
+    color: #ffffff;
+}
+
+#lesen1-matching-root .zl1-title-content {
+    min-width: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+#lesen1-matching-root .zl1-title-text {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    font-size: clamp(9px, .8vw, 12px);
+    line-height: 1.3;
+    font-weight: 650;
+    color: #273440;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    overflow: hidden;
+    text-overflow: clip;
+    text-align: left;
+}
+
+#lesen1-matching-root .zl1-title-match {
+    margin-top: 2px;
+    min-height: 0;
+    max-width: 100%;
+    font-size: 8px;
+    color: #6c7885;
+    font-weight: 750;
+    line-height: 1.1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* إخفاء عناصر غير مطلوبة */
 #lesen1-matching-root .zl1-actions,
 #lesen1-matching-root .zl1-result {
     display: none !important;
 }
-/* Responsive للعناوين تحت 560px */
+
+/* تحت 560px: حجم ثابت مع سكرول أفقي (كما في البروتوتايب) */
 @media (max-width: 560px) {
+    #lesen1-matching-root .zl1-title-area {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: thin;
+        touch-action: pan-x;
+        overscroll-behavior-x: contain;
+        overscroll-behavior-y: none;
+    }
     #lesen1-matching-root .zl1-title-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        width: max-content !important;
-        min-width: 100% !important;
-        overflow-x: auto !important;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 1fr;
+        gap: 8px 12px;
+        width: max-content;
+        min-width: 100%;
+        align-content: start;
+        justify-content: start;
     }
     #lesen1-matching-root .zl1-title-card {
-        min-height: 40px !important;
-        padding: 8px 12px !important;
-        grid-template-columns: 26px minmax(0, 1fr) !important;
-        gap: 8px !important;
+        min-height: 40px;
+        padding: 8px 12px;
+        grid-template-columns: 26px minmax(0, 1fr);
+        gap: 8px;
+        height: auto;
+        width: auto;
+        max-width: none;
+    }
+    #lesen1-matching-root .zl1-title-letter {
+        width: 26px;
+        height: 26px;
+        font-size: 11px;
+        flex-shrink: 0;
+    }
+    #lesen1-matching-root .zl1-title-text {
+        font-size: clamp(9px, .8vw, 12px);
+        line-height: 1.3;
+    }
+    #lesen1-matching-root .zl1-title-match {
+        font-size: 8px;
+    }
+    #lesen1-matching-root .zl1-title-area::-webkit-scrollbar {
+        width: 0;
+        height: 5px;
+    }
+    #lesen1-matching-root .zl1-title-area::-webkit-scrollbar-thumb {
+        background: rgba(90,115,140,.22);
+        border-radius: 99px;
+    }
+}
+
+/* فوق 850px: خانات العناوين متساوية الحجم */
+@media (min-width: 851px) {
+    #lesen1-matching-root .zl1-title-grid {
+        align-items: stretch;
+        align-content: stretch;
+        grid-auto-rows: 1fr;
+    }
+    #lesen1-matching-root .zl1-title-card {
+        width: 100%;
+        height: 100%;
+        min-height: 40px;
+        box-sizing: border-box;
+    }
+}
+
+/* تحسينات عامة للهواتف */
+@media (max-width: 650px) {
+    #lesen1-matching-root {
+        margin: 8px 0;
+        padding: 8px;
+        border-radius: 13px;
+        height: calc(100vh - 20px);
+        min-height: 480px;
+    }
+    #lesen1-matching-root .zl1-header {
+        flex-basis: 32px;
+        min-height: 32px;
+    }
+    #lesen1-matching-root .zl1-main-title {
+        font-size: 14px;
+    }
+    #lesen1-matching-root .zl1-progress {
+        font-size: 9px;
+        padding: 4px 7px;
+    }
+    #lesen1-matching-root .zl1-progress-bar {
+        width: 38px;
+        height: 4px;
+    }
+    #lesen1-matching-root .zl1-text-body {
+        font-size: 12px;
+        line-height: 1.58;
+        padding: 10px;
+    }
+    #lesen1-matching-root .zl1-answer-header {
+        flex-basis: 27px;
+        min-height: 27px;
+    }
+    #lesen1-matching-root .zl1-answer-title {
+        font-size: 10px;
     }
 }
 /* ============================================
