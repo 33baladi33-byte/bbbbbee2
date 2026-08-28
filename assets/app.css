@@ -593,6 +593,7 @@ body {
     position: static;
     z-index: 100;
     transition: all 0.3s ease;
+    overflow: visible !important;
 }
 .left-side {
     display: flex;
@@ -676,23 +677,22 @@ body {
     animation: badgePulse 2.5s ease-in-out infinite;
 }
 .notification-dropdown {
-    position: fixed;
-    top: 60px;
-    right: 20px;
-    width: 340px;
-    max-width: 90vw;
-    max-height: 400px;
-    background: #0f172a;
-    border-radius: 16px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-    z-index: 999999;
-    display: none;
-    overflow: hidden;
-    flex-direction: column;
-    border: 1px solid rgba(56, 189, 248, 0.2);
+    position: fixed !important;
+    top: 60px !important;
+    right: 20px !important;
+    z-index: 9999999 !important;
+    background: #0f172a !important;
+    border: 1px solid rgba(56, 189, 248, 0.2) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3) !important;
+    width: 340px !important;
+    max-width: 90vw !important;
+    max-height: 400px !important;
+    overflow: hidden !important;
+    flex-direction: column !important;
     box-sizing: border-box !important;
-    flex-shrink: 0 !important;
     min-width: 280px !important;
+    display: none !important;
 }
 
 .notification-dropdown.active {
@@ -7729,6 +7729,51 @@ body:has(#exam.active) #navSignupBtn {
 .item .locked-title:hover,
 .item .exam-title[style*="color: #4b5563"]:hover {
     color: #4b5563 !important;
+}
+
+/* ============================================
+   نظام المطابقة الجديد لـ Lesen Teil 1
+   ============================================ */
+
+/* تنسيق بطاقات المطابقة الجديدة */
+#lesen1-matching-root .lesen1-matching-text-card:hover {
+    box-shadow: 0 5px 16px rgba(30,50,70,.06);
+}
+#lesen1-matching-root .lesen1-matching-text-card.zl1-selected,
+#lesen1-matching-root .lesen1-matching-text-card.zl1-linked {
+    border-color: #70b4eb;
+    background: #f7fbff;
+    box-shadow: 0 0 0 2px rgba(112,180,235,.10);
+}
+#lesen1-matching-root .lesen1-matching-title-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(30,50,70,.05);
+}
+#lesen1-matching-root .lesen1-matching-title-card.zl1-selected,
+#lesen1-matching-root .lesen1-matching-title-card.zl1-linked {
+    border-color: #70b4eb;
+    background: #f2f9ff;
+    box-shadow: 0 0 0 2px rgba(112,180,235,.08);
+}
+/* إخفاء زر التصحيح في الوضع الجديد (عبر CSS احتياطياً) */
+#lesen1-matching-root .zl1-actions,
+#lesen1-matching-root .zl1-result {
+    display: none !important;
+}
+/* Responsive للعناوين تحت 560px */
+@media (max-width: 560px) {
+    #lesen1-matching-root .zl1-title-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        width: max-content !important;
+        min-width: 100% !important;
+        overflow-x: auto !important;
+    }
+    #lesen1-matching-root .zl1-title-card {
+        min-height: 40px !important;
+        padding: 8px 12px !important;
+        grid-template-columns: 26px minmax(0, 1fr) !important;
+        gap: 8px !important;
+    }
 }
 /* ============================================
    studySession.css - النسخة النهائية (متكاملة)
