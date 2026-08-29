@@ -40,7 +40,7 @@ var MyApp = (() => {
   var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 
   // sentenceReorder.js
-  var _SentenceReorder, SentenceReorder;
+  var _SentenceReorder, SentenceReorder2;
   var init_sentenceReorder = __esm({
     "sentenceReorder.js"() {
       console.log("\u{1F9E9} sentenceReorder.js \u064A\u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647...");
@@ -625,14 +625,14 @@ var MyApp = (() => {
       __publicField(_SentenceReorder, "currentText", "");
       __publicField(_SentenceReorder, "isFirstTime", true);
       __publicField(_SentenceReorder, "isAnimating", false);
-      SentenceReorder = _SentenceReorder;
-      window.SentenceReorder = SentenceReorder;
+      SentenceReorder2 = _SentenceReorder;
+      window.SentenceReorder = SentenceReorder2;
       if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", () => {
-          SentenceReorder.init();
+          SentenceReorder2.init();
         });
       } else {
-        SentenceReorder.init();
+        SentenceReorder2.init();
       }
       console.log("\u2705 sentenceReorder.js \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647");
     }
@@ -18693,4093 +18693,5218 @@ var MyApp = (() => {
   });
 
   // engine.js
-  function isExamFree(skill, examNumber) {
-    if (skill === "m\xFCndlich1" || skill === "m\xFCndlich3") {
-      return false;
-    }
-    if (skill === "m\xFCndlich2" || skill === "m\xFCndlich") {
-      return examNumber <= 2;
-    }
-    if (skill === "schreiben") {
-      return examNumber <= 2;
-    }
-    switch (skill) {
-      case "hoeren1":
-        return examNumber <= 4;
-      case "hoeren2":
-        return false;
-      // القسم كامل مدفوع
-      case "hoeren3":
-        return examNumber <= 3;
-      case "lesen1":
-        return false;
-      // القسم كامل مدفوع
-      case "lesen2":
-        return examNumber <= 3;
-      case "lesen3":
-        return examNumber <= 2;
-      case "sprach1":
-        return examNumber <= 4;
-      case "sprach2":
-        return examNumber <= 3;
-      default:
-        return false;
+  function resetLesen2Order() {
+    lesen2OriginalNodes = null;
+    lesen2ShuffledNodes = null;
+    lesen2OrderSaved = false;
+    console.log("\u{1F504} \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u062A\u0631\u062A\u064A\u0628 Lesen2");
+  }
+  function resetLesen3Order() {
+    lesen3OriginalNodes = null;
+    lesen3ShuffledNodes = null;
+    lesen3OrderSaved = false;
+    console.log("\u{1F504} \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u062A\u0631\u062A\u064A\u0628 Lesen3");
+  }
+  function updateTimerDisplay(text) {
+    const container = document.getElementById("retryCounterBox");
+    if (!container) return;
+    const timeBox = container.querySelectorAll("div")[2];
+    if (timeBox) {
+      timeBox.innerHTML = `\u0623\u062C\u0628\u062A \u0639\u0644\u0649 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 \u0641\u064A: <strong style="font-weight:700;">${text}</strong>`;
     }
   }
-  function saveExamResult(skill, examId, score) {
+  function saveExamTime(skill, examId, timeMs) {
+    if (!skill || !examId) return;
     try {
-      const key = `exam_result_${skill}_${examId}`;
-      localStorage.setItem(key, score.toString());
-      saveExamHistory(skill, examId, score);
-      const lastReviewKey = `exam_last_review_${skill}_${examId}`;
-      const today = (/* @__PURE__ */ new Date()).toISOString().slice(0, 10);
-      localStorage.setItem(lastReviewKey, today);
+      const key = `exam_time_${skill}_${examId}`;
+      localStorage.setItem(key, String(timeMs));
+      if (typeof window.updateRetryCounter === "function") {
+        window.updateRetryCounter();
+      }
+      const listPage = document.getElementById("list");
+      if (listPage && listPage.classList.contains("active")) {
+        updateExamTimeInList(skill, examId, timeMs);
+      }
     } catch (e) {
-      console.error("\u274C \u062E\u0637\u0623 \u0641\u064A \u062D\u0641\u0638 \u0627\u0644\u0646\u062A\u064A\u062C\u0629:", e);
+      console.error("\u274C \u062E\u0637\u0623 \u0641\u064A \u062D\u0641\u0638 \u0648\u0642\u062A \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646:", e);
     }
   }
-  function getExamResult(skill, examId) {
+  function getExamTime2(skill, examId) {
     try {
-      const key = `exam_result_${skill}_${examId}`;
-      const result = localStorage.getItem(key);
-      return result ? parseFloat(result) : null;
+      const key = `exam_time_${skill}_${examId}`;
+      const val = localStorage.getItem(key);
+      return val ? parseInt(val, 10) : null;
     } catch (e) {
-      console.error("\u274C \u062E\u0637\u0623 \u0641\u064A \u0627\u0633\u062A\u0631\u062C\u0627\u0639 \u0627\u0644\u0646\u062A\u064A\u062C\u0629:", e);
+      console.error("\u274C \u062E\u0637\u0623 \u0641\u064A \u0627\u0633\u062A\u0631\u062C\u0627\u0639 \u0648\u0642\u062A \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646:", e);
       return null;
     }
   }
-  function saveRetryCount(skill, examId, count) {
-    try {
-      const key = `exam_retry_${skill}_${examId}`;
-      localStorage.setItem(key, count.toString());
-    } catch (e) {
-      console.error("\u274C \u062E\u0637\u0623 \u0641\u064A \u062D\u0641\u0638 \u0639\u062F\u062F \u0627\u0644\u0625\u0639\u0627\u062F\u0627\u062A:", e);
+  function formatTime(ms) {
+    if (ms === null || ms === void 0) return "\u2014";
+    const seconds = Math.floor(ms / 1e3);
+    if (seconds < 60) {
+      return `${seconds} \u062B\u0627\u0646\u064A\u0629`;
+    } else {
+      const minutes = (seconds / 60).toFixed(2);
+      return `${minutes} \u062F\u0642\u064A\u0642\u0629`;
     }
   }
-  function getRetryCount(skill, examId) {
-    try {
-      const key = `exam_retry_${skill}_${examId}`;
-      const value = localStorage.getItem(key);
-      return value ? parseInt(value, 10) : 0;
-    } catch (e) {
-      console.error("\u274C \u062E\u0637\u0623 \u0641\u064A \u0627\u0633\u062A\u0631\u062C\u0627\u0639 \u0639\u062F\u062F \u0627\u0644\u0625\u0639\u0627\u062F\u0627\u062A:", e);
-      return 0;
-    }
+  function getTimeColor(ms) {
+    if (ms === null || ms === void 0) return "gray";
+    const seconds = ms / 1e3;
+    if (seconds < 60) return "green";
+    if (seconds < 120) return "orange";
+    return "red";
   }
-  function incrementRetryCount(skill, examId) {
-    const current = getRetryCount(skill, examId);
-    const newCount = current + 1;
-    saveRetryCount(skill, examId, newCount);
-    return newCount;
-  }
-  function saveExamHistory(skill, examId, score) {
-    try {
-      const historyKey = `exam_history_${skill}_${examId}`;
-      const history = getExamHistory(skill, examId);
-      const timestamp = (/* @__PURE__ */ new Date()).toISOString();
-      history.push({ score, date: timestamp });
-      localStorage.setItem(historyKey, JSON.stringify(history));
-    } catch (e) {
-      console.error("\u274C \u062E\u0637\u0623 \u0641\u064A \u062D\u0641\u0638 \u0633\u062C\u0644 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646:", e);
-    }
-  }
-  function getExamHistory(skill, examId) {
-    try {
-      const historyKey = `exam_history_${skill}_${examId}`;
-      const data = localStorage.getItem(historyKey);
-      return data ? JSON.parse(data) : [];
-    } catch (e) {
-      console.error("\u274C \u062E\u0637\u0623 \u0641\u064A \u0627\u0633\u062A\u0631\u062C\u0627\u0639 \u0633\u062C\u0644 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646:", e);
-      return [];
-    }
-  }
-  function getLastAttemptDate(skill, examId) {
-    const lastReviewKey = `exam_last_review_${skill}_${examId}`;
-    const lastReview = localStorage.getItem(lastReviewKey);
-    if (lastReview) return lastReview;
-    const history = getExamHistory(skill, examId);
-    if (history.length === 0) return null;
-    return history[history.length - 1].date;
-  }
-  function getAllScores(skill, examId) {
-    const history = getExamHistory(skill, examId);
-    return history.map((item) => item.score);
-  }
-  function getLastReviewDays(skill, examId) {
-    const lastReviewKey = `exam_last_review_${skill}_${examId}`;
-    const lastDate = localStorage.getItem(lastReviewKey);
-    if (!lastDate) return null;
-    const now = /* @__PURE__ */ new Date();
-    const last = new Date(lastDate);
-    now.setHours(0, 0, 0, 0);
-    last.setHours(0, 0, 0, 0);
-    const diff = Math.floor((now - last) / (1e3 * 3600 * 24));
-    return diff;
-  }
-  async function getUserStatusForExam() {
-    try {
-      if (typeof window.getUserStatusGlobal === "function") {
-        const status = await window.getUserStatusGlobal();
-        return status;
-      }
-    } catch (error) {
-      console.warn("\u26A0\uFE0F \u0641\u0634\u0644 \u062C\u0644\u0628 \u062D\u0627\u0644\u0629 \u0627\u0644\u0645\u0633\u062A\u062E\u062F\u0645:", error);
-    }
-    return "free";
-  }
-  function destroyAllMatchingModes() {
-    if (window.Lesen1Matching && typeof window.Lesen1Matching.destroy === "function") {
-      try {
-        window.Lesen1Matching.destroy();
-        console.log("\u2705 \u062A\u0645 \u0625\u0644\u063A\u0627\u0621 Lesen 1 Matching Mode");
-      } catch (e) {
-        console.warn("\u26A0\uFE0F \u0641\u0634\u0644 \u0625\u0644\u063A\u0627\u0621 Lesen 1 Matching Mode:", e);
+  function updateExamTimeInList(skill, examId, timeMs) {
+    const listContainer = document.getElementById("examsList");
+    if (!listContainer) return;
+    const cards = listContainer.querySelectorAll(".item");
+    for (let card of cards) {
+      const titleSpan = card.querySelector(".exam-title");
+      if (!titleSpan) continue;
+      const match = titleSpan.textContent.match(/^(\d+):/);
+      if (!match) continue;
+      const id = parseInt(match[1]);
+      if (id === examId) {
+        const chips = card.querySelectorAll(".exam-chip");
+        for (let chip of chips) {
+          if (chip.querySelector(".material-symbols-outlined")?.textContent === "timer") {
+            const timeStr = formatTime(timeMs);
+            const color = getTimeColor(timeMs);
+            chip.className = `exam-chip score chip-${color}`;
+            chip.innerHTML = `<span class="material-symbols-outlined">timer</span> ${timeStr}`;
+            break;
+          }
+        }
+        break;
       }
     }
-    if (typeof window.disableLesen3Prototype === "function") {
-      try {
-        window.disableLesen3Prototype();
-        console.log("\u2705 \u062A\u0645 \u0625\u0644\u063A\u0627\u0621 Lesen 3 Prototype \u0627\u0644\u062C\u062F\u064A\u062F");
-      } catch (e) {
-        console.warn("\u26A0\uFE0F \u0641\u0634\u0644 \u0625\u0644\u063A\u0627\u0621 Lesen 3 Prototype \u0627\u0644\u062C\u062F\u064A\u062F:", e);
-      }
-    }
-    if (typeof window.destroyL3Prototype === "function") {
-      try {
-        window.destroyL3Prototype();
-        console.log("\u2705 \u062A\u0645 \u0625\u0644\u063A\u0627\u0621 Lesen 3 Prototype \u0627\u0644\u0642\u062F\u064A\u0645");
-      } catch (e) {
-        console.warn("\u26A0\uFE0F \u0641\u0634\u0644 \u0625\u0644\u063A\u0627\u0621 Lesen 3 Prototype \u0627\u0644\u0642\u062F\u064A\u0645:", e);
-      }
-    }
-    if (window.matchingSelectedAnswers) {
-      window.matchingSelectedAnswers = {};
-    }
-    if (window.matchingAvailableOptions) {
-      window.matchingAvailableOptions = [];
-    }
-    if (window.teil3UserAnswers) {
-      window.teil3UserAnswers = {};
-    }
-    document.querySelectorAll("#zl1m-matching-root, #zertiva-l3-prototype-root").forEach((el) => el.remove());
-    document.querySelectorAll("#zl1m-matching-style, #zertiva-l3-prototype-style").forEach((el) => el.remove());
-    if (window.isInterleavingActive) {
-      window.isInterleavingActive = false;
-      const interleavingBtn = document.getElementById("interleavingBtn");
-      if (interleavingBtn) {
-        interleavingBtn.classList.remove("active");
-        interleavingBtn.title = "Interleaving: OFF";
-      }
-    }
-    document.querySelectorAll("#zl1m-matching-wrapper").forEach((el) => el.remove());
   }
-  function renderTeileList() {
-    const container = document.getElementById("teileList");
+  function renderSchreibenExam() {
+    const container = document.getElementById("schreiben");
     if (!container) return;
     container.innerHTML = "";
-    const isLargeScreen = window.innerWidth >= 1080;
-    const justifyContent = isLargeScreen ? "center" : "flex-start";
-    container.style.cssText = `
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: ${justifyContent};
-    align-items: center;
-    margin-bottom: 30px;
-  `;
-    for (let i = 0; i < teile.length; i++) {
-      const teil = teile[i];
-      const isActive = activeTeilId === i;
-      const btn = document.createElement("button");
-      btn.textContent = teil.name;
-      btn.style.cssText = `
-      height: 42px;
-      padding: 0 18px;
-      background: ${isActive ? "#FFFFFF" : "#161922"};
-      border: ${isActive ? "1px solid #E2E8F0" : "none"};
-      border-radius: 14px;
-      font-size: 15px;
-      font-weight: 600;
-      font-family: inherit;
-      color: ${isActive ? "#161922" : "#BFC6D4"};
-      cursor: pointer;
-      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-      white-space: nowrap;
-    `;
-      btn.onmouseenter = () => {
-        if (!isActive) {
-          btn.style.background = "#202534";
-          btn.style.color = "#FFFFFF";
-        }
-      };
-      btn.onmouseleave = () => {
-        if (!isActive) {
-          btn.style.background = "#161922";
-          btn.style.color = "#BFC6D4";
-        }
-      };
-      btn.onclick = /* @__PURE__ */ (function(skill, teilName, index) {
-        return function() {
-          activeTeilId = index;
-          renderTeileList();
-          renderExamListForSkill(skill, teilName);
-        };
-      })(teil.skill, teil.name, i);
-      container.appendChild(btn);
+    const data = currentSchreibenData;
+    const twoColumns = document.createElement("div");
+    twoColumns.style.display = "flex";
+    twoColumns.style.gap = "30px";
+    twoColumns.style.flexWrap = "wrap";
+    const leftColumn = document.createElement("div");
+    leftColumn.style.flex = "1";
+    leftColumn.style.minWidth = "350px";
+    leftColumn.style.backgroundColor = "#f9f9f9";
+    leftColumn.style.padding = "20px";
+    leftColumn.style.borderRadius = "12px";
+    leftColumn.style.border = "1px solid #ddd";
+    leftColumn.style.maxHeight = "80vh";
+    leftColumn.style.overflowY = "auto";
+    const situationTitle = document.createElement("h3");
+    situationTitle.innerHTML = "\u{1F4CC} SITUATION";
+    situationTitle.style.color = "#2c3e66";
+    situationTitle.style.marginTop = "0";
+    situationTitle.style.borderBottom = "2px solid #2c3e66";
+    situationTitle.style.paddingBottom = "8px";
+    leftColumn.appendChild(situationTitle);
+    const situationDiv = document.createElement("div");
+    situationDiv.style.backgroundColor = "white";
+    situationDiv.style.padding = "15px";
+    situationDiv.style.borderRadius = "8px";
+    situationDiv.style.border = "1px solid #e0e0e0";
+    situationDiv.style.marginBottom = "20px";
+    const situationText = document.createElement("div");
+    situationText.innerHTML = `<strong style="font-size:16px; color:#007bff;">${data.situation.title}</strong><br><br>${data.situation.text.replace(/\n/g, "<br>")}`;
+    situationText.style.fontSize = "14px";
+    situationText.style.lineHeight = "1.6";
+    situationDiv.appendChild(situationText);
+    leftColumn.appendChild(situationDiv);
+    const aufgabeTitle = document.createElement("h3");
+    aufgabeTitle.innerHTML = "\u{1F4DD} AUFGABE";
+    aufgabeTitle.style.color = "#2c3e66";
+    aufgabeTitle.style.marginTop = "15px";
+    aufgabeTitle.style.borderBottom = "2px solid #2c3e66";
+    aufgabeTitle.style.paddingBottom = "8px";
+    leftColumn.appendChild(aufgabeTitle);
+    const aufgabeDiv = document.createElement("div");
+    aufgabeDiv.style.backgroundColor = "white";
+    aufgabeDiv.style.padding = "15px";
+    aufgabeDiv.style.borderRadius = "8px";
+    aufgabeDiv.style.border = "1px solid #e0e0e0";
+    const wordCount = document.createElement("div");
+    wordCount.innerHTML = `<strong>\u270F\uFE0F ${data.aufgabe.wordCount}</strong>`;
+    wordCount.style.marginBottom = "15px";
+    wordCount.style.color = "#e67e22";
+    wordCount.style.fontSize = "16px";
+    aufgabeDiv.appendChild(wordCount);
+    const description = document.createElement("div");
+    description.innerHTML = data.aufgabe.description;
+    description.style.marginBottom = "15px";
+    description.style.fontSize = "14px";
+    description.style.lineHeight = "1.6";
+    aufgabeDiv.appendChild(description);
+    const pointsTitle = document.createElement("div");
+    pointsTitle.innerHTML = "<strong>\u25B8 Bitte beachten Sie:</strong>";
+    pointsTitle.style.marginBottom = "10px";
+    pointsTitle.style.marginTop = "10px";
+    aufgabeDiv.appendChild(pointsTitle);
+    const pointsList = document.createElement("ul");
+    pointsList.style.margin = "0";
+    pointsList.style.paddingLeft = "20px";
+    for (let i = 0; i < data.aufgabe.points.length; i++) {
+      const li = document.createElement("li");
+      li.innerHTML = data.aufgabe.points[i];
+      li.style.marginBottom = "8px";
+      li.style.fontSize = "14px";
+      pointsList.appendChild(li);
     }
+    aufgabeDiv.appendChild(pointsList);
+    leftColumn.appendChild(aufgabeDiv);
+    const rightColumn = document.createElement("div");
+    rightColumn.style.flex = "1";
+    rightColumn.style.minWidth = "350px";
+    rightColumn.style.backgroundColor = "#f0f8ff";
+    rightColumn.style.padding = "20px";
+    rightColumn.style.borderRadius = "12px";
+    rightColumn.style.border = "1px solid #d0e0ff";
+    rightColumn.style.maxHeight = "80vh";
+    rightColumn.style.overflowY = "auto";
+    if (window.innerWidth <= 768) {
+      rightColumn.style.display = "none";
+    }
+    const templateTitle = document.createElement("div");
+    let cleanTitle = data.template.title;
+    cleanTitle = cleanTitle.replace(/✦/g, "").trim();
+    templateTitle.innerHTML = `\u2726 ${cleanTitle}`;
+    templateTitle.style.backgroundColor = "#e3f2fd";
+    templateTitle.style.padding = "10px";
+    templateTitle.style.borderRadius = "8px";
+    templateTitle.style.marginBottom = "15px";
+    templateTitle.style.fontSize = "13px";
+    templateTitle.style.color = "#0d47a1";
+    templateTitle.style.fontWeight = "bold";
+    rightColumn.appendChild(templateTitle);
+    const templateBox = document.createElement("div");
+    templateBox.style.backgroundColor = "white";
+    templateBox.style.padding = "20px";
+    templateBox.style.borderRadius = "12px";
+    templateBox.style.border = "1px solid #ccc";
+    templateBox.style.fontFamily = "monospace";
+    templateBox.style.fontSize = "13px";
+    templateBox.style.lineHeight = "1.6";
+    templateBox.style.whiteSpace = "pre-wrap";
+    let templateText = data.template.text;
+    const bluePoints = data.template.colors.blue_points || [];
+    let htmlText = templateText.replace(/\n/g, "<br>");
+    for (let i = 0; i < bluePoints.length; i++) {
+      const point = bluePoints[i];
+      const regex = new RegExp(`(${point.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`, "g");
+      htmlText = htmlText.replace(regex, `<span style="color: ${data.template.colors.blue}; font-weight: bold;">$1</span>`);
+    }
+    templateBox.innerHTML = htmlText;
+    rightColumn.appendChild(templateBox);
+    twoColumns.appendChild(leftColumn);
+    twoColumns.appendChild(rightColumn);
+    container.appendChild(twoColumns);
   }
-  function renderM\u00FCndlichPartTabs() {
-    const container = document.getElementById("examsList");
-    if (!container) return;
-    const oldTabs = container.querySelector(".m\xFCndlich-tabs");
-    if (oldTabs) oldTabs.remove();
-    const tabsDiv = document.createElement("div");
-    tabsDiv.className = "m\xFCndlich-tabs";
-    tabsDiv.style.cssText = `
-    display: flex;
-    gap: 12px;
-    margin-bottom: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 10px 0;
-  `;
-    const parts = [
-      { id: 1, name: "Teil 1 ", skill: "m\xFCndlich1" },
-      { id: 2, name: "Teil 2 ", skill: "m\xFCndlich2" },
-      { id: 3, name: "Teil 3 ", skill: "m\xFCndlich3" }
-    ];
-    parts.forEach((part) => {
-      const btn = document.createElement("button");
-      btn.textContent = part.name;
-      btn.style.cssText = `
-      background: ${currentM\u00FCndlichPart === part.id ? "#4a6fa5" : "#eef2f7"};
-      color: ${currentM\u00FCndlichPart === part.id ? "white" : "#2c3e66"};
-      border: none;
-      padding: 8px 20px;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 500;
-      transition: all 0.2s;
-    `;
-      btn.onmouseenter = () => {
-        if (currentM\u00FCndlichPart !== part.id) {
-          btn.style.background = "#dee2e8";
-        }
-      };
-      btn.onmouseleave = () => {
-        if (currentM\u00FCndlichPart !== part.id) {
-          btn.style.background = "#eef2f7";
-        }
-      };
-      btn.onclick = () => {
-        currentM\u00FCndlichPart = part.id;
-        const skillToRender = part.skill;
-        const displayName = `M\xFCndlich - ${part.name}`;
-        renderExamListForSkill(skillToRender, displayName);
-      };
-      tabsDiv.appendChild(btn);
-    });
-    container.insertBefore(tabsDiv, container.firstChild);
+  function isSprach2WordUsed(word) {
+    for (let key in sprach2UserAnswers) {
+      if (sprach2UserAnswers[key] === word) {
+        return true;
+      }
+    }
+    return false;
   }
-  function getFlattenedExamList(exams) {
-    const flattened = [];
-    exams.forEach((exam) => {
-      if (exam.versions && exam.versions.length > 1) {
-        exam.versions.forEach((v) => {
-          flattened.push({
-            id: v.id,
-            title: v.title,
-            file: v.file,
-            skill: currentSkill,
-            isVersion: true,
-            parentId: exam.id
-          });
-        });
+  function clearSprach2WordSelection() {
+    document.querySelectorAll(".sprach2-word-card").forEach((card) => {
+      if (isSprach2WordUsed(card.textContent)) {
+        card.style.backgroundColor = "#d4edda";
+        card.style.border = "2px solid #28a745";
+        card.style.opacity = "0.85";
       } else {
-        flattened.push({
-          id: exam.id,
-          title: exam.title,
-          file: exam.hasFile ? getActualFileName(exam.id) : null,
-          skill: currentSkill,
-          isVersion: false,
-          parentId: exam.id
-        });
+        card.style.backgroundColor = "#ffffff";
+        card.style.border = "1px solid #7c6ce6";
+        card.style.opacity = "1";
       }
-    });
-    return flattened;
-  }
-  async function renderExamListForSkill(skill, teilName) {
-    currentSkill = skill;
-    window.currentSkill = skill;
-    const ORDER_MODE_KEY = "examOrderMode";
-    localStorage.removeItem(ORDER_MODE_KEY);
-    const container = document.getElementById("examsList");
-    if (!container) return;
-    container.innerHTML = "";
-    if (skill === "m\xFCndlich1" || skill === "m\xFCndlich2" || skill === "m\xFCndlich3" || skill === "m\xFCndlich") {
-      renderM\u00FCndlichPartTabs();
-    }
-    const headerDiv = document.createElement("div");
-    headerDiv.className = "teil-header";
-    headerDiv.innerHTML = `<strong> ${teilName || getTeilNameBySkill(skill)}</strong>`;
-    container.appendChild(headerDiv);
-    if (SKILL_CONFIG[skill]) {
-      renderMemoryProgressBar(skill, container);
-    }
-    let targetSkill = skill;
-    let targetExams = examsDatabase[skill] || [];
-    if (skill === "m\xFCndlich") {
-      if (currentM\u00FCndlichPart === 1) {
-        targetSkill = "m\xFCndlich1";
-        targetExams = examsDatabase.m\u00FCndlich1 || [];
-      } else if (currentM\u00FCndlichPart === 2) {
-        targetSkill = "m\xFCndlich2";
-        targetExams = examsDatabase.m\u00FCndlich2 || [];
-      } else if (currentM\u00FCndlichPart === 3) {
-        targetSkill = "m\xFCndlich3";
-        targetExams = examsDatabase.m\u00FCndlich3 || [];
-      }
-    }
-    currentExamsList = targetExams;
-    if (targetExams.length === 0) {
-      container.innerHTML += '<div class="item" style="text-align:center; color:#999;">\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u0645\u062A\u0627\u062D\u0629 \u062D\u0627\u0644\u064A\u0627\u064B \u0641\u064A \u0647\u0630\u0627 \u0627\u0644\u062C\u0632\u0621</div>';
-      return;
-    }
-    const userStatus = await getUserStatusForExam();
-    const isPremium = userStatus === "premium";
-    const versionIds = /* @__PURE__ */ new Set();
-    targetExams.forEach((exam) => {
-      if (exam.versions && exam.versions.length > 1) {
-        exam.versions.forEach((v) => {
-          if (v.id !== exam.id) {
-            versionIds.add(v.id);
-          }
-        });
-      }
-    });
-    const mainExams = targetExams.filter((exam) => !versionIds.has(exam.id));
-    for (let i = 0; i < mainExams.length; i++) {
-      const exam = mainExams[i];
-      const examNumber = exam.id;
-      const isFreeExam = isExamFree(skill, examNumber);
-      const div = document.createElement("div");
-      div.className = "item";
-      const titleSpan = document.createElement("span");
-      titleSpan.className = "exam-title";
-      if (skill === "tips") {
-        titleSpan.textContent = `${exam.title}`;
-        titleSpan.style.textAlign = "center";
-        titleSpan.style.display = "block";
-        titleSpan.style.width = "100%";
-      } else {
-        titleSpan.textContent = `${exam.id}: ${exam.title}`;
-      }
-      div.appendChild(titleSpan);
-      const forbiddenChipsSkills = ["schreiben", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3"];
-      if (!forbiddenChipsSkills.includes(targetSkill)) {
-        let getScoreColor = function(score2) {
-          if (score2 === null || score2 < 0) return "gray";
-          if (score2 <= 9) return "gray";
-          if (score2 <= 20) return "orange";
-          return "green";
-        }, getRetryColor = function(count) {
-          if (count <= 6) return "gray";
-          if (count <= 14) return "orange";
-          return "green";
-        }, getDaysColor = function(days) {
-          if (days === null) return "gray";
-          if (days <= 3) return "green";
-          if (days <= 5) return "orange";
-          return "gray";
-        }, getMemoryColor = function(progress) {
-          if (progress < 40) return "gray";
-          if (progress < 80) return "orange";
-          return "green";
-        };
-        const chipsContainer = document.createElement("div");
-        chipsContainer.className = "exam-info-chips";
-        const scoreChip = document.createElement("span");
-        const score = getExamResult(targetSkill, exam.id);
-        const scoreColor = getScoreColor(score);
-        scoreChip.className = `exam-chip score chip-${scoreColor}`;
-        scoreChip.innerHTML = `<span class="material-symbols-outlined">bar_chart</span> ${score !== null ? score + "/25" : "\u2014"}`;
-        chipsContainer.appendChild(scoreChip);
-        const retryChip = document.createElement("span");
-        const retryCount = getRetryCount(targetSkill, exam.id);
-        const retryColor = getRetryColor(retryCount);
-        retryChip.className = `exam-chip attempts chip-${retryColor}`;
-        retryChip.innerHTML = `<span class="material-symbols-outlined">repeat</span> ${retryCount}`;
-        chipsContainer.appendChild(retryChip);
-        const daysChip = document.createElement("span");
-        const reviewDays = getLastReviewDays(targetSkill, exam.id);
-        const daysColor = getDaysColor(reviewDays);
-        daysChip.className = `exam-chip days chip-${daysColor}`;
-        if (reviewDays !== null) {
-          daysChip.innerHTML = `<span class="material-symbols-outlined">calendar_month</span> ${reviewDays === 0 ? "\u0627\u0644\u064A\u0648\u0645" : `\u0645\u0646\u0630 ${reviewDays} \u064A\u0648\u0645`}`;
-        } else {
-          daysChip.innerHTML = `<span class="material-symbols-outlined">calendar_month</span> \u2014`;
-        }
-        chipsContainer.appendChild(daysChip);
-        const memoryChip = document.createElement("span");
-        const memoryProgress = getExamProgress(targetSkill, exam.id);
-        const memoryColor = getMemoryColor(memoryProgress);
-        memoryChip.className = `exam-chip memory chip-${memoryColor}`;
-        memoryChip.innerHTML = `<span class="material-symbols-outlined">auto_awesome</span> ${memoryProgress}%`;
-        chipsContainer.appendChild(memoryChip);
-        const timeMs = window.getExamTime ? window.getExamTime(targetSkill, exam.id) : null;
-        const timeText = timeMs !== null ? window.formatTime(timeMs) : "\u2014";
-        const timeColor = timeMs !== null ? window.getTimeColor(timeMs) : "gray";
-        const timeChip = document.createElement("span");
-        timeChip.className = `exam-chip score chip-${timeColor}`;
-        timeChip.innerHTML = `<span class="material-symbols-outlined">timer</span> ${timeText}`;
-        chipsContainer.appendChild(timeChip);
-        div.appendChild(chipsContainer);
-      }
-      const hasVersions = exam.versions && exam.versions.length > 1;
-      if (hasVersions) {
-        let allVersionsLocked = true;
-        if (exam.versions && exam.versions.length > 1) {
-          for (let v of exam.versions) {
-            const isFree = isExamFree(skill, v.id);
-            if (isFree) {
-              allVersionsLocked = false;
-              break;
-            }
-          }
-          if (isPremium) {
-            allVersionsLocked = false;
-          }
-        }
-        if (allVersionsLocked) {
-          div.style.backgroundColor = "rgba(255,255,255,0.75)";
-          div.style.border = "1px solid #e2e8f0";
-          div.style.opacity = "1";
-          div.style.transition = "all 0.25s ease";
-          div.style.cursor = "pointer";
-          const rightSide = document.createElement("span");
-          rightSide.className = "exam-right-icons";
-          const premiumSpan = document.createElement("span");
-          premiumSpan.className = "premium-badge";
-          premiumSpan.innerHTML = "Premium";
-          rightSide.appendChild(premiumSpan);
-          div.appendChild(rightSide);
-          titleSpan.style.color = "#4b5563";
-          titleSpan.style.transition = "none";
-          titleSpan.classList.add("locked-title");
-          div.onmouseenter = function() {
-            this.style.backgroundColor = "rgba(255,255,255,0.95)";
-            this.style.transform = "translateX(5px)";
-            this.style.borderColor = "#60a5fa";
-            if (premiumSpan) premiumSpan.style.transform = "scale(1.02)";
-          };
-          div.onmouseleave = function() {
-            this.style.backgroundColor = "rgba(255,255,255,0.75)";
-            this.style.transform = "translateX(0)";
-            this.style.borderColor = "#e2e8f0";
-            if (premiumSpan) premiumSpan.style.transform = "scale(1)";
-          };
-          div.onclick = function(e) {
-            e.stopPropagation();
-            showVersionsPopup(exam, targetSkill);
-          };
-        } else {
-          div.style.cursor = "pointer";
-          div.onclick = function(e) {
-            e.stopPropagation();
-            showVersionsPopup(exam, targetSkill);
-          };
-        }
-      } else if (!isPremium && !isFreeExam) {
-        div.style.backgroundColor = "rgba(255,255,255,0.75)";
-        div.style.border = "1px solid #e2e8f0";
-        div.style.opacity = "1";
-        div.style.transition = "all 0.25s ease";
-        div.style.cursor = "pointer";
-        const rightSide = document.createElement("span");
-        rightSide.className = "exam-right-icons";
-        const premiumSpan = document.createElement("span");
-        premiumSpan.className = "premium-badge";
-        premiumSpan.innerHTML = "Premium";
-        rightSide.appendChild(premiumSpan);
-        div.appendChild(rightSide);
-        titleSpan.style.color = "#4b5563";
-        titleSpan.style.transition = "none";
-        titleSpan.classList.add("locked-title");
-        div.onmouseenter = function() {
-          this.style.backgroundColor = "rgba(255,255,255,0.95)";
-          this.style.transform = "translateX(5px)";
-          this.style.borderColor = "#60a5fa";
-          if (premiumSpan) premiumSpan.style.transform = "scale(1.02)";
-        };
-        div.onmouseleave = function() {
-          this.style.backgroundColor = "rgba(255,255,255,0.75)";
-          this.style.transform = "translateX(0)";
-          this.style.borderColor = "#e2e8f0";
-          if (premiumSpan) premiumSpan.style.transform = "scale(1)";
-        };
-        div.onclick = /* @__PURE__ */ (function(title, id) {
-          return function() {
-            if (typeof window.showLockedCard === "function") {
-              window.showLockedCard(title + " (" + id + ")");
-            } else {
-              window.location.href = "subscribe.html";
-            }
-          };
-        })(exam.title, exam.id);
-      } else if (exam.hasFile || exam.versions && exam.versions.length > 0) {
-        div.onclick = /* @__PURE__ */ (function(id, title, skillPath) {
-          return function() {
-            const actualSkill = skillPath || targetSkill;
-            let file = null;
-            const examObj = targetExams.find((e) => e.id === id);
-            if (examObj && examObj.versions && examObj.versions.length > 0) {
-              const version = examObj.versions.find((v) => v.id === id);
-              if (version) file = version.file;
-              else file = examObj.versions[0].file;
-            }
-            openExam(id, title, actualSkill, file);
-          };
-        })(exam.id, exam.title, exam.skillPath || targetSkill);
-      } else {
-        div.style.opacity = "0.6";
-        div.style.backgroundColor = "#f8f9fa";
-        div.onclick = () => alert(`\u26A0\uFE0F \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 \u0631\u0642\u0645 ${exam.id} \u0633\u064A\u062A\u0645 \u0625\u0636\u0627\u0641\u062A\u0647 \u0642\u0631\u064A\u0628\u0627\u064B.`);
-      }
-      container.appendChild(div);
-    }
-    createViewModeToggles();
-    restoreOriginalOrder();
-    const mode2 = getViewModeIndex2();
-    if (mode2 === 1) {
-      applyExamListView("grid");
-    } else {
-      applyExamListView("list");
-    }
-    addVersionBadgesFixed();
-    if (localStorage.getItem("plannerToggleState") === "true") {
-      if (typeof window.applyExamColors === "function") {
-        setTimeout(window.applyExamColors, 50);
-      }
-    }
-    const savedOrder = localStorage.getItem("examOrderMode");
-    if (savedOrder === "1" && typeof applyLeaderboardOrder === "function") {
-      applyLeaderboardOrder();
-    }
-  }
-  function showVersionsPopup(exam, skill) {
-    const overlay = document.createElement("div");
-    overlay.id = "versionsPopupAuto";
-    overlay.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.3);
-    backdrop-filter: blur(3px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 99999;
-    animation: fadeIn 0.2s ease;
-  `;
-    const modal = document.createElement("div");
-    modal.style.cssText = `
-    background: #1a1f2e;
-    border-radius: 20px;
-    padding: 28px 24px;
-    max-width: 380px;
-    width: 90%;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    border: 1px solid #2a3042;
-    animation: scaleIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-    color: #e2e8f0;
-    text-align: center;
-  `;
-    getUserStatusForExam().then((userStatus) => {
-      const isPremium = userStatus === "premium";
-      let versionsHtml = exam.versions.map((v, i) => {
-        const savedScore = getExamResult(skill, v.id);
-        const retryCount = getRetryCount(skill, v.id);
-        const reviewDays = getLastReviewDays(skill, v.id);
-        const progress = getExamProgress(skill, v.id);
-        let chipsHtml = `
-        <span class="exam-chip score"><span class="material-symbols-outlined">bar_chart</span> ${savedScore !== null ? savedScore + "/25" : "\u2014"}</span>
-        <span class="exam-chip attempts"><span class="material-symbols-outlined">repeat</span> ${retryCount}</span>
-        <span class="exam-chip days"><span class="material-symbols-outlined">calendar_month</span> ${reviewDays !== null ? reviewDays === 0 ? "\u0627\u0644\u064A\u0648\u0645" : `\u0645\u0646\u0630 ${reviewDays} \u064A\u0648\u0645` : "\u2014"}</span>
-        <span class="exam-chip memory"><span class="material-symbols-outlined">auto_awesome</span> ${progress}%</span>
-      `;
-        return `
-        <div style="background: #0f1421; border-radius: 12px; padding: 10px 14px; margin-bottom: 8px; border-left: 3px solid #4a6fa5; text-align: right; cursor: pointer; transition: background 0.2s ease;" 
-             onclick="closeVersionsPopupAndOpen('${skill}', ${v.id}, '${v.file}', '${v.title}')">
-          <div style="font-size: 13px; font-weight: 500; color: #e2e8f0; margin-bottom: 4px;">${v.title}</div>
-          <div class="exam-info-chips" style="display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 4px; justify-content: flex-start;">
-            ${chipsHtml}
-          </div>
-        </div>
-      `;
-      }).join("");
-      modal.innerHTML = `
-      <h4 style="margin:0 0 16px 0; font-size:16px; font-weight:600; color:#a8b5d9;">\u{1F4CB} \u0647\u0630\u0627 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 \u0644\u0647 ${exam.versions.length} \u062A\u0639\u062F\u064A\u0644\u0627\u062A</h4>
-      <div style="border-top:1px solid #2a3042; margin-bottom:14px;"></div>
-      ${versionsHtml}
-      <button onclick="this.closest('#versionsPopupAuto').remove()" style="margin-top:14px; background: #334155; border: none; padding: 8px 24px; border-radius: 30px; color: #e2e8f0; cursor: pointer; font-weight: 500; width:100%;">\u0625\u063A\u0644\u0627\u0642</button>
-    `;
-      overlay.appendChild(modal);
-      document.body.appendChild(overlay);
-      overlay.onclick = (e) => {
-        if (e.target === overlay) overlay.remove();
-      };
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") overlay.remove();
-      }, { once: true });
-      if (!document.getElementById("modal-style-auto")) {
-        const style = document.createElement("style");
-        style.id = "modal-style-auto";
-        style.textContent = `
-        @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-        @keyframes scaleIn { from { transform:scale(0.9); opacity:0; } to { transform:scale(1); opacity:1; } }
-      `;
-        document.head.appendChild(style);
-      }
+      card.classList.remove("selected-for-link");
     });
   }
-  function setupLockedNextButton() {
-    const nextBtn = document.getElementById("nextExamBtn");
-    if (!nextBtn) return;
-    getUserStatusForExam().then((status) => {
-      const isPremium = status === "premium";
-      const flatList = getFlattenedExamList(currentExamsList);
-      const currentIndex = flatList.findIndex((e) => e.id === currentExamId);
-      const nextExam = flatList[currentIndex + 1];
-      if (nextExam) {
-        const nextExamId = nextExam.id;
-        const isNextFree = isExamFree(currentSkill, nextExamId);
-        if (!isPremium && !isNextFree && nextBtn.style.display !== "none") {
-          nextBtn.style.position = "relative";
-          nextBtn.style.paddingLeft = "35px";
-          let lockIcon = nextBtn.querySelector(".next-lock-icon");
-          if (!lockIcon) {
-            lockIcon = document.createElement("span");
-            lockIcon.className = "next-lock-icon";
-            lockIcon.innerHTML = "\u{1F512}";
-            lockIcon.style.cssText = "position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 14px; color: #ef4444;";
-            nextBtn.appendChild(lockIcon);
-          }
-          nextBtn.style.backgroundColor = "#b0bec5";
-          nextBtn.style.opacity = "0.8";
-          nextBtn.onclick = function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            if (typeof window.showPremiumModal === "function") {
-              window.showPremiumModal(nextExam.title + " (" + nextExamId + ")");
-            } else {
-              window.location.href = "subscribe.html";
-            }
-            return false;
-          };
-        } else if (isPremium || isNextFree) {
-          const lockIcon = nextBtn.querySelector(".next-lock-icon");
-          if (lockIcon) lockIcon.remove();
-          nextBtn.style.backgroundColor = "";
-          nextBtn.style.opacity = "1";
-          nextBtn.style.paddingLeft = "";
-          nextBtn.onclick = () => {
-            if (nextExam.isVersion) {
-              openExam(nextExam.id, nextExam.title, nextExam.skill, nextExam.file);
-            } else {
-              openExam(nextExam.id, nextExam.title, nextExam.skill);
-            }
-          };
+  function clearSprach2ButtonSelection() {
+    document.querySelectorAll(".sprach2-gap-btn").forEach((btn) => {
+      btn.classList.remove("selected-for-link");
+      btn.style.border = "none";
+      const btnId = btn.id;
+      const match = btnId.match(/sprach2_btn_(\d+)/);
+      if (match) {
+        const qId = parseInt(match[1]);
+        if (sprach2UserAnswers[qId]) {
+          btn.style.backgroundColor = "#d4edda";
+          btn.style.border = "2px solid #28a745";
         }
       }
     });
   }
-  function getTeilNameBySkill(skill) {
-    if (skill === "m\xFCndlich1") return "M\xFCndlich - Teil 1 \u{1F4D6}";
-    if (skill === "m\xFCndlich2") return "M\xFCndlich - Teil 2 \u{1F5E3}\uFE0F";
-    if (skill === "m\xFCndlich3") return "M\xFCndlich - Teil 3 \u{1F3AF}";
-    const teil = teile.find((t) => t.skill === skill);
-    return teil ? teil.name : skill;
-  }
-  function getActualFileName(examId) {
-    const allSkills = ["lesen1", "lesen2", "lesen3", "sprach1", "sprach2", "hoeren1", "hoeren2", "hoeren3", "schreiben", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3", "tips"];
-    for (const skill of allSkills) {
-      const exams = examsDatabase[skill] || [];
-      for (const exam of exams) {
-        if (exam.id === examId && exam.versions && exam.versions.length > 0) {
-          const version = exam.versions.find((v) => v.id === examId);
-          if (version) return version.file;
-          return exam.versions[0].file;
-        }
-      }
-    }
-    return `exam${examId}.json`;
-  }
-  function shouldHideHelpButton(skill) {
-    const hiddenSkills = ["schreiben", "tips", "m\xFCndlich1", "m\xFCndlich3"];
-    return hiddenSkills.includes(skill);
-  }
-  async function openExam(examId, examTitle, skill, fileName = null) {
-    destroyAllMatchingModes();
-    const userStatus = await getUserStatusForExam();
-    const isPremium = userStatus === "premium";
-    const isFree = isExamFree(skill, examId);
-    if (!isPremium && !isFree) {
-      if (typeof window.showLockedCard === "function") {
-        window.showLockedCard(examTitle + " (" + examId + ")");
-      } else {
-        window.location.href = "subscribe.html";
-      }
-      return;
-    }
-    currentExamId = examId;
-    currentSkill = skill;
-    window.currentSkill = skill;
-    window.currentExamId = examId;
-    const interleavingRow = document.getElementById("interleavingRow");
-    if (interleavingRow) {
-      const forbiddenSkills = ["schreiben", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3"];
-      const isForbidden = forbiddenSkills.includes(skill);
-      if (isForbidden) {
-        interleavingRow.style.display = "none";
-      } else {
-        interleavingRow.style.display = "flex";
-        const swapBtn = document.getElementById("interleavingBtn");
-        const gameBtn = document.getElementById("rapidGameBtn");
-        const memoryToggleBtn = document.getElementById("memoryToggleBtn");
-        const playBtn = document.getElementById("playTimerBtn");
-        if (skill === "sprach1" || skill === "sprach2") {
-          if (swapBtn) swapBtn.style.display = "none";
-          if (gameBtn) gameBtn.style.display = "";
-          if (memoryToggleBtn) memoryToggleBtn.style.display = "";
-          if (playBtn) playBtn.style.display = "";
-        } else {
-          if (swapBtn) swapBtn.style.display = "";
-          if (gameBtn) gameBtn.style.display = "";
-          if (memoryToggleBtn) memoryToggleBtn.style.display = "";
-          if (playBtn) playBtn.style.display = "";
-        }
-      }
-    }
-    const shortcutsBtn = document.getElementById("shortcutsToggleBtn");
-    if (shortcutsBtn) {
-      const forbiddenSkills = ["schreiben", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3"];
-      if (forbiddenSkills.includes(skill)) {
-        shortcutsBtn.style.display = "none";
-      } else {
-        shortcutsBtn.style.display = "flex";
-      }
-    }
-    if (shouldHideHelpButton(skill)) {
-      const helpBtn = document.getElementById("globalHelpButton");
-      if (helpBtn) helpBtn.style.display = "none";
-    } else {
-      const helpBtn = document.getElementById("globalHelpButton");
-      if (helpBtn) helpBtn.style.display = "block";
-    }
-    const finalFileName = fileName || getActualFileName(examId);
-    try {
-      const response = await fetch(`data/${skill}/${finalFileName}`);
-      if (!response.ok) {
-        alert(`\u26A0\uFE0F \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 "${examTitle}" \u0633\u064A\u062A\u0645 \u0625\u0636\u0627\u0641\u062A\u0647 \u0642\u0631\u064A\u0628\u0627\u064B.
-\u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u0645\u0637\u0644\u0648\u0628: data/${skill}/${finalFileName}`);
-        return;
-      }
-      currentExamData = await response.json();
-      window.currentExamData = currentExamData;
-      window.currentExamId = examId;
-      window.currentSkill = skill;
-      if (window.memoryEngine) {
-        window.memoryEngine.setExamData(currentExamData);
-      }
-      window.updateAskAIContext(skill, examId);
-      document.getElementById("home").classList.remove("active");
-      document.getElementById("list").classList.remove("active");
-      document.getElementById("exam").classList.add("active");
-      document.getElementById("examTitle").innerHTML = currentExamData.title;
-      const forbiddenSkills = ["schreiben", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3"];
-      if (!forbiddenSkills.includes(skill) && typeof addRetryCounterToExam === "function") {
-        addRetryCounterToExam();
-      }
-      const playBtn = document.getElementById("playTimerBtn");
-      if (playBtn) {
-        const newPlayBtn = playBtn.cloneNode(true);
-        playBtn.parentNode.replaceChild(newPlayBtn, playBtn);
-        const freshPlayBtn = document.getElementById("playTimerBtn");
-        freshPlayBtn.addEventListener("click", function(e) {
-          e.stopPropagation();
-          const skill2 = window.currentSkill || "";
-          const examId2 = window.currentExamId || 1;
-          if (!skill2 || !examId2) {
-            console.warn("\u26A0\uFE0F \u0644\u0627 \u064A\u0645\u0643\u0646 \u0628\u062F\u0621 \u0627\u0644\u0639\u062F\u0627\u062F: skill \u0623\u0648 examId \u063A\u064A\u0631 \u0645\u0639\u0631\u0641");
-            return;
-          }
-          if (examTimer.isRunning) {
-            examTimer.stop();
-          } else {
-            if (examTimer.skill === skill2 && examTimer.examId === examId2 && examTimer.lastElapsed > 0) {
-              examTimer.resume();
-            } else {
-              examTimer.start(skill2, examId2);
-            }
-          }
-        });
-      }
-      updateExamNavButtons();
-      if (skill === "lesen1" && currentExamData && currentExamData.type === "matching") {
-        const interleavingRow2 = document.getElementById("interleavingRow");
-        if (!interleavingRow2) return;
-        let matchingBtn = document.getElementById("lesen1MatchingBtn");
-        if (!matchingBtn) {
-          matchingBtn = document.createElement("button");
-          matchingBtn.id = "lesen1MatchingBtn";
-          matchingBtn.className = "interleaving-icon-btn";
-          matchingBtn.title = "\u0648\u0636\u0639 \u0627\u0644\u0645\u0637\u0627\u0628\u0642\u0629 (Matching)";
-          matchingBtn.innerHTML = '<span class="material-symbols-outlined">compare_arrows</span>';
-          const playBtn2 = interleavingRow2.querySelector("#playTimerBtn");
-          if (playBtn2) {
-            playBtn2.parentNode.insertBefore(matchingBtn, playBtn2.nextSibling);
-          } else {
-            interleavingRow2.appendChild(matchingBtn);
-          }
-        }
-        const prefKey = "lesen1_matching_mode_preference";
-        let useMatching = true;
-        try {
-          const saved = localStorage.getItem(prefKey);
-          if (saved !== null) {
-            useMatching = saved === "true";
-          }
-        } catch (e) {
-        }
-        const toggleMatchingMode = function(forceState) {
-          const container = document.getElementById("teil1");
-          if (!container) {
-            console.warn("\u0644\u0627 \u062A\u0648\u062C\u062F \u062D\u0627\u0648\u064A\u0629 teil1");
-            return;
-          }
-          const selects = container.querySelectorAll("select");
-          if (selects.length !== 5) {
-            console.warn("\u064A\u062C\u0628 \u0623\u0646 \u064A\u0643\u0648\u0646 \u0647\u0646\u0627\u0643 5 selects \u0641\u064A Lesen Teil 1");
-            return;
-          }
-          const data = {
-            selects,
-            questions: currentExamData.questions || [],
-            sharedOptions: currentExamData.sharedOptions || [],
-            currentAnswers: window.matchingSelectedAnswers || {},
-            availableOptions: window.matchingAvailableOptions || []
-          };
-          let targetState;
-          if (typeof forceState === "boolean") {
-            targetState = forceState;
-          } else {
-            const currentMatchingVisible = !!document.getElementById("zl1m-matching-root");
-            targetState = !currentMatchingVisible;
-          }
-          if (targetState) {
-            if (window.Lesen1Matching && typeof window.Lesen1Matching.mount === "function") {
-              container.style.display = "none";
-              let matchingWrapper = document.getElementById("zl1m-matching-wrapper");
-              if (!matchingWrapper) {
-                matchingWrapper = document.createElement("div");
-                matchingWrapper.id = "zl1m-matching-wrapper";
-                matchingWrapper.style.width = "100%";
-                container.parentNode.insertBefore(matchingWrapper, container.nextSibling);
-              }
-              if (!document.getElementById("zl1m-matching-root")) {
-                window.Lesen1Matching.mount(matchingWrapper, data);
-              }
-              matchingBtn.classList.add("active");
-              matchingBtn.title = "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A";
-              try {
-                localStorage.setItem(prefKey, "true");
-              } catch (e) {
-              }
-            } else {
-              console.error("\u274C Matching Module \u063A\u064A\u0631 \u0645\u062D\u0645\u0651\u0644.");
-              alert("\u26A0\uFE0F \u0648\u062D\u062F\u0629 \u0627\u0644\u0645\u0637\u0627\u0628\u0642\u0629 \u063A\u064A\u0631 \u0645\u062A\u0648\u0641\u0631\u0629. \u064A\u0631\u062C\u0649 \u062A\u062D\u062F\u064A\u062B \u0627\u0644\u0635\u0641\u062D\u0629.");
-            }
-          } else {
-            if (window.Lesen1Matching && typeof window.Lesen1Matching.destroy === "function") {
-              window.Lesen1Matching.destroy();
-              const wrapper = document.getElementById("zl1m-matching-wrapper");
-              if (wrapper) wrapper.remove();
-              container.style.display = "block";
-              matchingBtn.classList.remove("active");
-              matchingBtn.title = "\u0648\u0636\u0639 \u0627\u0644\u0645\u0637\u0627\u0628\u0642\u0629 (Matching)";
-              try {
-                localStorage.setItem(prefKey, "false");
-              } catch (e) {
-              }
-            }
-          }
-        };
-        matchingBtn.removeEventListener("click", matchingBtn._clickHandler);
-        const clickHandler = function(e) {
-          e.stopPropagation();
-          toggleMatchingMode();
-        };
-        matchingBtn.addEventListener("click", clickHandler);
-        matchingBtn._clickHandler = clickHandler;
-        setTimeout(function() {
-          if (useMatching) {
-            toggleMatchingMode(true);
-          } else {
-            toggleMatchingMode(false);
-          }
-        }, 50);
-      }
-      if (currentExamData.type === "matching") {
-        if (typeof window.loadMatchingExam === "function") {
-          window.loadMatchingExam(currentExamData);
-        } else {
-          buildTeil1(currentExamData.questions || []);
-        }
-      } else if (currentExamData.type === "truefalse") {
-        const container = document.getElementById(currentSkill);
-        if (container && typeof window.buildTrueFalseExam === "function") {
-          window.buildTrueFalseExam(container, currentExamData.questions, currentExamData.note);
-        } else {
-          buildTeil1(currentExamData.questions || []);
-        }
-      } else if (currentExamData.type === "teil2") {
-        if (typeof window.loadTeil2Exam === "function") {
-          window.loadTeil2Exam(currentExamData);
-        } else {
-          buildTeil1(currentExamData.questions || []);
-        }
-      } else if (currentExamData.type === "teil3") {
-        if (typeof window.mountLesen3Prototype === "function") {
-          window.mountLesen3Prototype();
-        } else {
-          console.error("\u274C mountLesen3Prototype \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629");
-          const container = document.getElementById("teil3");
-          if (container) {
-            container.innerHTML = '<div style="text-align:center;padding:20px;color:#999;">\u26A0\uFE0F \u0646\u0638\u0627\u0645 Lesen Teil 3 \u063A\u064A\u0631 \u0645\u062A\u0648\u0641\u0631 \u062D\u0627\u0644\u064A\u0627\u064B. \u064A\u0631\u062C\u0649 \u062A\u062D\u062F\u064A\u062B \u0627\u0644\u0635\u0641\u062D\u0629.</div>';
-          }
-        }
-      } else if (currentExamData.type === "sprach1") {
-        if (typeof window.loadSprach1Exam === "function") {
-          window.loadSprach1Exam(currentExamData);
-        } else {
-          buildTeil1(currentExamData.questions || []);
-        }
-      } else if (currentExamData.type === "sprach2") {
-        if (typeof window.loadSprach2Exam === "function") {
-          window.loadSprach2Exam(currentExamData);
-        } else {
-          buildTeil1(currentExamData.questions || []);
-        }
-      } else if (currentExamData.type === "schreiben") {
-        if (typeof window.loadSchreibenExam === "function") {
-          window.loadSchreibenExam(currentExamData);
-        } else {
-          buildTeil1(currentExamData.questions || []);
-        }
-      } else if (currentExamData.type === "m\xFCndlich") {
-        renderM\u00FCndlichExam(currentExamData);
-      } else if (currentExamData.type === "info") {
-        renderInfoExam(currentExamData);
-      } else if (currentExamData.type === "tips") {
-        renderTipsExam(currentExamData);
-      } else {
-        buildTeil1(currentExamData.questions || []);
-      }
-      const teilIndex = teile.findIndex((t) => t.skill === skill);
-      if (teilIndex !== -1) {
-        showTeil(teilIndex + 1);
-      } else {
-        showTeil(10);
-      }
-      const containerEl = document.getElementById(skill);
-      if (containerEl) {
-        containerEl.style.display = "block";
-      }
-      if (typeof window.resetInterleaving === "function") {
-        window.resetInterleaving();
-      }
-      if (typeof window.initInterleaving === "function") {
-        window.initInterleaving();
-      }
-      if (skill.startsWith("hoeren") && typeof window.rebuildTrueFalseCards === "function") {
-        window.rebuildTrueFalseCards();
-      } else if (skill === "lesen1" && typeof window.rebuildLesen1 === "function") {
-        window.rebuildLesen1();
-      } else if (skill === "lesen2" && typeof window.rebuildLesen2 === "function") {
-        window.rebuildLesen2();
-      } else if (skill === "lesen3" && typeof window.rebuildLesen3 === "function") {
-        window.rebuildLesen3();
-      }
-    } catch (e) {
-      console.error("\u274C \u062E\u0637\u0623:", e);
-      alert("\u062E\u0637\u0623 \u0641\u064A \u062A\u062D\u0645\u064A\u0644 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646: " + e.message);
-    }
-  }
-  function updateExamNavButtons() {
-    const prevBtn = document.getElementById("prevExamBtn");
-    const nextBtn = document.getElementById("nextExamBtn");
-    const memoryBtn = document.getElementById("memoryTrainerBtn");
-    if (!prevBtn || !nextBtn) return;
-    const flatList = getFlattenedExamList(currentExamsList);
-    const currentIndex = flatList.findIndex((e) => e.id === currentExamId);
-    const hasPrev = currentIndex > 0;
-    const hasNext = currentIndex < flatList.length - 1;
-    if (hasPrev) {
-      prevBtn.style.display = "inline-block";
-      prevBtn.onclick = () => {
-        const prevExam = flatList[currentIndex - 1];
-        if (prevExam.isVersion) {
-          openExam(prevExam.id, prevExam.title, prevExam.skill, prevExam.file);
-        } else {
-          openExam(prevExam.id, prevExam.title, prevExam.skill);
-        }
-      };
-    } else {
-      prevBtn.style.display = "none";
-    }
-    if (hasNext) {
-      nextBtn.style.display = "inline-block";
-      nextBtn.onclick = () => {
-        const nextExam = flatList[currentIndex + 1];
-        if (nextExam.isVersion) {
-          openExam(nextExam.id, nextExam.title, nextExam.skill, nextExam.file);
-        } else {
-          openExam(nextExam.id, nextExam.title, nextExam.skill);
-        }
-      };
-    } else {
-      nextBtn.style.display = "none";
-    }
-    if (memoryBtn) {
-      if (currentSkill && SKILL_CONFIG[currentSkill]) {
-        memoryBtn.style.display = "inline-flex";
-        memoryBtn.onclick = function() {
-          if (window.startMemoryTrainerForExam) {
-            window.startMemoryTrainerForExam(currentSkill);
-          } else {
-            alert("\u26A0\uFE0F \u0645\u064A\u0632\u0629 \u062A\u062F\u0631\u064A\u0628 \u0627\u0644\u0630\u0627\u0643\u0631\u0629 \u063A\u064A\u0631 \u0645\u062A\u0648\u0641\u0631\u0629 \u062D\u0627\u0644\u064A\u0627\u064B.");
-          }
-        };
-      } else {
-        memoryBtn.style.display = "none";
-      }
-    }
-    setupLockedNextButton();
-  }
-  function createViewModeToggles() {
-    const header = document.querySelector(".teil-header");
-    if (!header) {
-      setTimeout(createViewModeToggles, 500);
-      return;
-    }
-    const showTogglesSkills = ["hoeren1", "hoeren2", "hoeren3", "lesen1", "lesen2", "lesen3", "sprach1", "sprach2"];
-    if (!showTogglesSkills.includes(currentSkill)) {
-      const oldBtn12 = document.getElementById("viewModeToggleBtn1");
-      const oldBtn22 = document.getElementById("viewModeToggleBtn2");
-      if (oldBtn12) oldBtn12.style.display = "none";
-      if (oldBtn22) oldBtn22.style.display = "none";
-      return;
-    }
-    if (header.style.position !== "relative") {
-      header.style.position = "relative";
-    }
-    const oldBtn1 = document.getElementById("viewModeToggleBtn1");
-    if (oldBtn1) oldBtn1.remove();
-    const oldBtn2 = document.getElementById("viewModeToggleBtn2");
-    if (oldBtn2) oldBtn2.remove();
-    let currentState = 2;
-    const ICONS_CYCLE = ["leaderboard", "timer_arrow_down", "123"];
-    const btn1 = document.createElement("button");
-    btn1.id = "viewModeToggleBtn1";
-    btn1.className = "view-mode-toggle-btn-1";
-    btn1.title = "\u062A\u0628\u062F\u064A\u0644 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0642\u0627\u0626\u0645\u0629";
-    const nextIconIndex = (currentState + 1) % 3;
-    btn1.innerHTML = `<span class="material-symbols-outlined">${ICONS_CYCLE[nextIconIndex]}</span>`;
-    btn1.onclick = function(e) {
-      e.stopPropagation();
-      let nextState = (currentState + 1) % 3;
-      currentState = nextState;
-      const span = this.querySelector(".material-symbols-outlined");
-      if (span) {
-        let nextIconIndex2 = (currentState + 1) % 3;
-        span.textContent = ICONS_CYCLE[nextIconIndex2];
-      }
-      if (currentState === 0) {
-        applyLeaderboardOrder();
-      } else if (currentState === 1) {
-        applyTimeOrder();
-      } else {
-        restoreOriginalOrder();
-      }
-    };
-    header.appendChild(btn1);
-    const btn2 = document.createElement("button");
-    btn2.id = "viewModeToggleBtn2";
-    btn2.className = "view-mode-toggle-btn-2";
-    btn2.title = "\u062A\u0628\u062F\u064A\u0644 \u0634\u0643\u0644 \u0627\u0644\u0639\u0631\u0636";
-    let currentIndex2 = getViewModeIndex2();
-    const displayIndex2 = currentIndex2 === 0 ? 1 : 0;
-    const iconName2 = VIEW_ICONS_2[displayIndex2];
-    btn2.innerHTML = `<span class="material-symbols-outlined">${iconName2}</span>`;
-    btn2.onclick = function(e) {
-      e.stopPropagation();
-      currentIndex2 = (currentIndex2 + 1) % VIEW_ICONS_2.length;
-      setViewModeIndex2(currentIndex2);
-      const newDisplayIndex = currentIndex2 === 0 ? 1 : 0;
-      const span = this.querySelector(".material-symbols-outlined");
-      if (span) {
-        span.textContent = VIEW_ICONS_2[newDisplayIndex];
-      }
-      if (currentIndex2 === 1) {
-        setExamListMode("grid");
-        applyExamListView("grid");
-      } else {
-        setExamListMode("list");
-        applyExamListView("list");
-      }
-    };
-    header.appendChild(btn2);
-    applyExamListView(getExamListMode());
-  }
-  function applyExamListView(mode) {
-    const list = document.getElementById("examsList");
-    if (!list) return;
-    const allowedSkills = ["hoeren1", "hoeren2", "hoeren3", "lesen1", "lesen2", "lesen3", "sprach1", "sprach2", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3", "schreiben"];
-    if (!allowedSkills.includes(currentSkill)) {
-      return;
-    }
-    const oldGrid = document.getElementById("examGridContainer");
-    if (oldGrid) {
-      while (oldGrid.firstChild) {
-        list.appendChild(oldGrid.firstChild);
-      }
-      oldGrid.remove();
-    }
-    if (mode === "list") {
-      [...list.querySelectorAll(".item")].forEach((el) => {
-        el.style.cssText = `
-                display: flex !important;
-                flex-direction: row !important;
-                justify-content: flex-start !important; /* \u2190 \u062A\u063A\u064A\u064A\u0631 \u0645\u0646 space-between \u0625\u0644\u0649 flex-start */
-                align-items: center !important;
-                height: auto !important;
-                padding: 8px 12px !important;
-                margin-bottom: 8px !important;
-                background: white !important;
-                border: 1px solid #e2e8f0 !important;
-                border-radius: 10px !important;
-                box-shadow: none !important;
-                min-height: 44px !important;
-                font-size: 0.65rem !important;
-                cursor: pointer !important;
-            `;
-        const title = el.querySelector(".exam-title");
-        if (title) {
-          title.style.textAlign = "left";
-          title.style.marginRight = "auto";
-        }
-        const rightSide = el.querySelector(".exam-right-icons");
-        if (rightSide) {
-          rightSide.style.marginLeft = "auto";
-        }
-      });
-      console.log("\u{1F4C4} List View (\u0645\u062D\u0627\u0630\u0627\u0629 \u064A\u0633\u0627\u0631)");
-      return;
-    }
-    const exams = [...list.querySelectorAll(".item")].filter(
-      (el) => !el.classList.contains("teil-header") && !el.classList.contains("memory-progress-bar-container")
-    );
-    if (!exams.length) return;
-    const grid = document.createElement("div");
-    grid.id = "examGridContainer";
-    grid.style.cssText = `
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-        gap: 6px;
-        margin-top: 8px;
-    `;
-    const firstExam = exams[0];
-    list.insertBefore(grid, firstExam);
-    let maxHeight = 0;
-    exams.forEach((item) => {
-      const clone = item.cloneNode(true);
-      clone.style.cssText = `
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 42px;
-            padding: 8px 4px;
-            background: #fafbfc;
-            border: 1px solid #e8ecef;
-            border-radius: 6px;
-            margin: 0;
-            box-shadow: none;
-            text-align: center;
-            font-size: 12px;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            visibility: hidden;
-            position: absolute;
-            pointer-events: none;
-        `;
-      document.body.appendChild(clone);
-      const height = clone.offsetHeight;
-      document.body.removeChild(clone);
-      if (height > maxHeight) maxHeight = height;
-    });
-    const fixedHeight = Math.min(Math.max(maxHeight, 50), 60);
-    let scaleFactor = 0.8;
-    try {
-      const saved = localStorage.getItem("siteFontScale");
-      if (saved) {
-        const val = parseFloat(saved);
-        if (!isNaN(val) && val >= 60 && val <= 150) {
-          scaleFactor = val / 100;
-        }
-      }
-    } catch (e) {
-    }
-    const contentMultiplier = 1.142857 * scaleFactor - 0.2142856;
-    const titleRatio = 0.65;
-    const heightFactor = 1 + 0.2 * (contentMultiplier - 1);
-    const adaptedHeight = Math.min(Math.max(fixedHeight * heightFactor, 42), 100);
-    exams.forEach((item) => {
-      grid.appendChild(item);
-      item.style.cssText = `
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: ${adaptedHeight}px;
-            padding: 4px 4px;
-            background: #fafbfc;
-            border: 1px solid #e8ecef;
-            border-radius: 6px;
-            margin: 0;
-            box-shadow: none;
-            text-align: center;
-            font-size: ${11 * contentMultiplier}px;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            overflow: visible;
-        `;
-      item.addEventListener("mouseenter", function() {
-        const isPremium = this.querySelector(".premium-badge") !== null;
-        if (isPremium) {
-          this.style.backgroundColor = "rgba(255,255,255,0.95)";
-          this.style.transform = "translateY(-3px)";
-          this.style.borderColor = "#60a5fa";
-          this.style.boxShadow = "0 4px 12px rgba(47, 128, 237, 0.15)";
-        } else {
-          this.style.backgroundColor = "#f1f5f9";
-          this.style.transform = "translateY(-3px)";
-          this.style.borderColor = "#2F80ED";
-          this.style.boxShadow = "0 4px 12px rgba(47, 128, 237, 0.15)";
-        }
-        const title2 = this.querySelector(".exam-title");
-        if (title2) {
-          const isPremium2 = this.querySelector(".premium-badge") !== null;
-          title2.style.color = isPremium2 ? "#4b5563" : "#1e293b";
-        }
-        const premiumSpan = this.querySelector(".premium-badge");
-        if (premiumSpan) premiumSpan.style.transform = "scale(1.02)";
-      });
-      item.addEventListener("mouseleave", function() {
-        const isPremium = this.querySelector(".premium-badge") !== null;
-        if (isPremium) {
-          this.style.backgroundColor = "rgba(255,255,255,0.75)";
-          this.style.transform = "translateY(0)";
-          this.style.borderColor = "#e2e8f0";
-          this.style.boxShadow = "none";
-        } else {
-          this.style.backgroundColor = "#fafbfc";
-          this.style.transform = "translateY(0)";
-          this.style.borderColor = "#e8ecef";
-          this.style.boxShadow = "none";
-        }
-        const title2 = this.querySelector(".exam-title");
-        if (title2) {
-          const isPremium2 = this.querySelector(".premium-badge") !== null;
-          title2.style.color = isPremium2 ? "#6b7280" : "#1a202c";
-        }
-        const premiumSpan = this.querySelector(".premium-badge");
-        if (premiumSpan) premiumSpan.style.transform = "scale(1)";
-      });
-      item.addEventListener("mousedown", function() {
-        this.style.transform = "scale(0.98)";
-        this.style.backgroundColor = "#e2e8f0";
-        this.style.transition = "all 0.05s ease";
-      });
-      item.addEventListener("mouseup", function() {
-        const isPremium = this.querySelector(".premium-badge") !== null;
-        this.style.transform = "scale(1)";
-        this.style.backgroundColor = isPremium ? "rgba(255,255,255,0.95)" : "#f1f5f9";
-        this.style.transition = "all 0.25s ease";
-      });
-      const title = item.querySelector(".exam-title");
-      if (title) {
-        title.style.cssText = `
-                font-size: ${11 * contentMultiplier * titleRatio}px;
-                line-height: 1.1;
-                max-width: 95%;
-                white-space: normal;
-                word-break: break-word;
-                text-align: center;
-                flex-shrink: 1;
-                transition: color 0.25s ease;
-            `;
-      }
-      const badge = item.querySelector(".exam-result-badge");
-      if (badge) {
-        badge.style.cssText = `
-                font-size: ${8 * contentMultiplier}px;
-                line-height: 1;
-            `;
-      }
-      item.querySelectorAll(".exam-chip").forEach((chip) => {
-        chip.style.cssText = `
-                font-size: ${8 * contentMultiplier + 2}px;
-                line-height: 1;
-            `;
-        const icon = chip.querySelector(".material-symbols-outlined");
-        if (icon) {
-          icon.style.cssText = `
-                    font-size: ${8 * contentMultiplier + 4}px !important;
-                    line-height: 1;
-                `;
-        }
-      });
-      const versionBadge = item.querySelector(".custom-badge");
-      if (versionBadge) {
-        const vSize = 8 * contentMultiplier;
-        versionBadge.style.cssText = `
-                font-size: ${vSize}px !important;
-                height: ${Math.max(10, Math.min(18, 14 * contentMultiplier))}px !important;
-                padding: 0 5px !important;
-                line-height: 1 !important;
-                /* \u0644\u0627 \u0646\u0636\u0639 background, color, border, box-shadow \u0647\u0646\u0627\u060C \u062A\u062A\u0631\u0643 \u0644\u0644\u0640 CSS */
-            `;
-        const numSpan = versionBadge.querySelector("span:last-child");
-        if (numSpan) {
-          numSpan.style.cssText = `
-                    font-size: ${vSize}px !important;
-                    font-weight: 600 !important;
-                    line-height: 1 !important;
-                `;
-        }
-        versionBadge.style.removeProperty("background");
-        versionBadge.style.removeProperty("background-color");
-        versionBadge.style.removeProperty("color");
-        versionBadge.style.removeProperty("border");
-        versionBadge.style.removeProperty("box-shadow");
-        versionBadge.style.removeProperty("border-radius");
-      }
-    });
-    console.log("\u{1F7E6} Grid View \u0645\u0639 \u0646\u0638\u0627\u0645 \u0627\u0644\u062D\u062C\u0645 \u0627\u0644\u0645\u062A\u062F\u0631\u062C (60%-150%)");
-  }
-  function addVersionBadgesFixed() {
-    const container = document.getElementById("examsList");
-    if (!container) return;
-    const skill = currentSkill || "lesen1";
-    if (!["lesen1", "lesen2", "lesen3", "sprach1", "sprach2"].includes(skill)) return;
-    const items = container.querySelectorAll(".item:not(.teil-header):not(.memory-progress-bar-container)");
-    if (!items.length) return;
-    items.forEach((el) => {
-      const title = el.querySelector(".exam-title");
-      if (!title) return;
-      const match = title.textContent.match(/^(\d+):/);
-      if (!match) return;
-      const examId = parseInt(match[1]);
-      const exam = currentExamsList.find((e) => e.id === examId);
-      if (!exam || !exam.versions || exam.versions.length <= 1) return;
-      let badge = el.querySelector(".custom-badge");
-      if (badge) {
-        const countSpan = badge.querySelector("span:last-child");
-        if (countSpan && countSpan.textContent === String(exam.versions.length)) {
-          return;
-        }
-        badge.remove();
-      }
-      badge = document.createElement("span");
-      badge.className = "custom-badge";
-      badge.innerHTML = `
-            <span>${exam.versions.length} \u062A\u0639\u062F\u064A\u0644\u0627\u062A</span>
-        `;
-      badge.title = `${exam.versions.length} \u062A\u0639\u062F\u064A\u0644\u0627\u062A`;
-      let rightSide = el.querySelector(".exam-right-icons");
-      if (rightSide) {
-        rightSide.appendChild(badge);
-      } else {
-        rightSide = document.createElement("span");
-        rightSide.className = "exam-right-icons";
-        rightSide.style.cssText = `
-                display: flex !important;
-                align-items: center !important;
-                gap: 6px !important;
-                flex-shrink: 0 !important;
-                margin-right: 4px !important;
-            `;
-        rightSide.appendChild(badge);
-        el.appendChild(rightSide);
-      }
-    });
-  }
-  function goBackToExamsList() {
-    if (currentSkill) {
-      if (currentSkill === "m\xFCndlich1") {
-        document.getElementById("home").classList.remove("active");
-        document.getElementById("exam").classList.remove("active");
-        document.getElementById("list").classList.add("active");
-        renderExamListForSkill("m\xFCndlich1", "M\xFCndlich - Teil 1 \u{1F4D6}");
-      } else if (currentSkill === "m\xFCndlich2") {
-        document.getElementById("home").classList.remove("active");
-        document.getElementById("exam").classList.remove("active");
-        document.getElementById("list").classList.add("active");
-        renderExamListForSkill("m\xFCndlich2", "M\xFCndlich - Teil 2 \u{1F5E3}\uFE0F");
-      } else if (currentSkill === "m\xFCndlich3") {
-        document.getElementById("home").classList.remove("active");
-        document.getElementById("exam").classList.remove("active");
-        document.getElementById("list").classList.add("active");
-        renderExamListForSkill("m\xFCndlich3", "M\xFCndlich - Teil 3 \u{1F3AF}");
-      } else if (currentSkill.startsWith("m\xFCndlich")) {
-        renderExamListForSkill("m\xFCndlich", getTeilNameBySkill("m\xFCndlich"));
-      } else {
-        const teil = teile.find((t) => t.skill === currentSkill);
-        if (teil) {
-          document.getElementById("home").classList.remove("active");
-          document.getElementById("exam").classList.remove("active");
-          document.getElementById("list").classList.add("active");
-          renderExamListForSkill(teil.skill, teil.name);
-        } else {
-          goList();
-        }
-      }
-    } else {
-      goList();
-    }
-  }
-  function renderInfoExam(examData) {
-    let containerId = currentSkill;
-    if (currentSkill === "m\xFCndlich1" || currentSkill === "m\xFCndlich3") {
-      containerId = "m\xFCndlich";
-    }
-    const container = document.getElementById(containerId);
-    if (!container) {
-      console.error("\u274C \u0627\u0644\u062D\u0627\u0648\u064A\u0629 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629:", containerId);
-      return;
-    }
-    container.innerHTML = "";
-    const content = examData.content;
-    if (!content) {
-      container.innerHTML = "<div class='error'>\u26A0\uFE0F \u0644\u0627 \u064A\u0648\u062C\u062F \u0645\u062D\u062A\u0648\u0649 \u0644\u0644\u0639\u0631\u0636</div>";
-      return;
-    }
-    let html = `
-    <div style="max-width: 1300px; margin: 0 auto; padding: 20px;">
-      <div style="background: #ffffff; padding: 14px 20px; border-radius: 12px; border: 1px solid #e0e4e8; color: #5a6874; font-size: 0.85rem; margin-bottom: 20px;">
-        \u{1F4A1} \u0647\u0630\u0647 \u0627\u0644\u0623\u0645\u062B\u0644\u0629 \u0641\u0642\u0637 \u0644\u0643\u064A \u062A\u0641\u0647\u0645\u0648\u0627 \u0637\u0631\u064A\u0642\u0629 \u0633\u064A\u0631 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u060C \u0648\u0644\u064A\u0633 \u0645\u0637\u0644\u0648\u0628\u064B\u0627 \u0645\u0646\u0643\u0645 \u062D\u0641\u0638 \u0646\u0641\u0633 \u0627\u0644\u0627\u0642\u062A\u0631\u0627\u062D\u0627\u062A \u0623\u0648 \u0627\u0633\u062A\u0639\u0645\u0627\u0644\u0647\u0627 \u062D\u0631\u0641\u064A\u064B\u0627.
-      </div>
-  `;
-    if (content.phase1) {
-      html += `<div style="margin-bottom: 35px;"><div style="font-size: 1.3rem; font-weight: 600; color: #2c3e66; border-right: 3px solid #4a6fa5; padding-right: 12px; margin-bottom: 20px;">\u{1F4D6} ${content.phase1.title}</div>`;
-      html += `<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px;">`;
-      content.phase1.questions.forEach((q) => {
-        html += `
-        <div style="background: #ffffff; border-radius: 16px; padding: 18px; border: 1px solid #e8ecef;">
-          <div style="font-weight: 600; color: #2c3e66; margin-bottom: 8px;">${q.german}</div>
-          <div style="color: #6c7a89; font-size: 0.85rem; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid #e8ecef;">${q.arabic}</div>
-          <div style="background: #f8fafc; padding: 12px; border-radius: 12px; font-size: 0.8rem; color: #2c3e66; line-height: 1.5;">
-            <div style="font-weight: 600; color: #4a6fa5; margin-bottom: 6px; font-size: 0.75rem;">\u{1F4CB} \u0645\u062B\u0627\u0644:</div>
-            <div>${q.example.replace(/\n/g, "<br>")}</div>
-          </div>
-        </div>
-      `;
-      });
-      html += `</div></div>`;
-    }
-    if (content.phase2) {
-      html += `<div style="margin-bottom: 35px;"><div style="font-size: 1.3rem; font-weight: 600; color: #2c3e66; border-right: 3px solid #4a6fa5; padding-right: 12px; margin-bottom: 20px;">\u{1F3AF} ${content.phase2.title}</div>`;
-      if (content.phase2.note) {
-        html += `<div style="background: #ffffff; padding: 12px 18px; border-radius: 12px; border: 1px solid #e0e4e8; margin-bottom: 20px; font-size: 0.85rem; color: #4a6fa5; text-align: center;">\u{1F4DD} ${content.phase2.note}</div>`;
-      }
-      html += `<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px;">`;
-      content.phase2.topics.forEach((topic) => {
-        html += `
-        <div style="background: #f8f9fb; border-radius: 16px; padding: 18px; border: 1px solid #e8ecef;">
-          <div style="font-size: 1.1rem; font-weight: 600; color: #2c3e66;">\u{1F4DA} ${topic.title}</div>
-          <ul style="list-style: none; padding: 0; margin: 16px 0;">
-            ${topic.points.map((p) => `<li style="font-size: 0.8rem; color: #5a6874; margin-bottom: 6px; padding-right: 12px; position: relative;">\u2022 ${p}</li>`).join("")}
-          </ul>
-          <div style="background: #ffffff; padding: 12px; border-radius: 12px; margin-top: 12px; border-right: 2px solid #4a6fa5;">
-            <div style="font-size: 0.7rem; font-weight: 600; color: #4a6fa5; margin-bottom: 6px;">\u{1F4AC} \u0623\u0633\u0626\u0644\u0629 \u0642\u062F \u064A\u0637\u0631\u062D\u0647\u0627 \u0627\u0644\u0634\u0631\u064A\u0643 \u0639\u0644\u064A\u0643:</div>
-            ${topic.partnerQuestions.map((q) => `<div style="font-size: 0.75rem; color: #2c3e66; margin-bottom: 6px;">\u{1F4CC} ${q.german}<br><small style="color: #8a9aa8;">${q.arabic}</small></div>`).join("")}
-          </div>
-        </div>
-      `;
-      });
-      html += `</div></div>`;
-    }
-    if (content.groups) {
-      html += `<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 24px; margin-bottom: 40px;">`;
-      content.groups.forEach((group) => {
-        html += `
-        <div style="background: #f8f9fb; border-radius: 16px; padding: 20px; border: 1px solid #e8ecef; display: flex; flex-direction: column;">
-          <div style="font-size: 1.2rem; font-weight: 600; color: #2c3e66; margin-bottom: 12px;">${group.title}</div>
-          <div style="font-size: 0.85rem; color: #6c7a89; margin-bottom: 20px;">${group.topics}</div>
-          <button class="toggle-suggestions-btn" style="background: transparent; border: 1px solid #4a6fa5; padding: 8px 18px; border-radius: 30px; cursor: pointer; color: #4a6fa5; width: fit-content; margin-top: auto;" data-group="${group.id}">\u0623\u0645\u062B\u0644\u0629 \u2192</button>
-          <div class="suggestions-content" data-group="${group.id}" style="display: none; margin-top: 20px; padding-top: 20px; border-top: 1px solid #e8ecef;">
-            <ul style="list-style: none; padding: 0;">
-              ${group.suggestions.map((s, idx) => `<li style="background: #ffffff; padding: 10px 14px; margin-bottom: 8px; border-radius: 12px; border-right: 2px solid #cbd5e1;"><span style="font-weight: 600; color: #4a6fa5;">${idx + 1}.</span> ${s}</li>`).join("")}
-            </ul>
-          </div>
-        </div>
-      `;
-      });
-      html += `</div>`;
-      if (content.methodology) {
-        html += `
-        <div style="background: #f8f9fb; border-radius: 16px; padding: 20px; border: 1px solid #e8ecef;">
-          <div style="font-size: 1.2rem; font-weight: 600; color: #2c3e66;">\u{1F4CC} ${content.methodology.title}</div>
-          <div style="font-size: 0.85rem; color: #6c7a89; margin: 12px 0;">${content.methodology.description}</div>
-          <button id="toggleDialogBtn" style="background: transparent; border: 1px solid #4a6fa5; padding: 8px 18px; border-radius: 30px; cursor: pointer; color: #4a6fa5;">\u0645\u062B\u0627\u0644 \u2192</button>
-          <div id="dialogContent" style="display: none; margin-top: 16px; background: #ffffff; padding: 16px; border-radius: 16px; border: 1px solid #e8ecef;">
-            ${content.methodology.dialog.map((line) => `<div style="margin-bottom: 12px;"><span style="font-weight: 700; color: #4a6fa5;">${line.speaker}:</span> ${line.text}</div>`).join("")}
-          </div>
-        </div>
-      `;
-      }
-    }
-    if (content.footerMessage) {
-      html += `<div style="text-align: center; padding: 20px; margin-top: 20px; border-top: 1px solid #e0e4e8;"><div style="font-size: 0.9rem; color: #5a6874; background: #ffffff; display: inline-block; padding: 10px 25px; border-radius: 40px; border: 1px solid #e0e4e8;">${content.footerMessage}</div></div>`;
-    }
-    html += `</div>`;
-    container.innerHTML = html;
-    document.querySelectorAll(".toggle-suggestions-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const groupId = btn.getAttribute("data-group");
-        const contentDiv = document.querySelector(`.suggestions-content[data-group="${groupId}"]`);
-        if (contentDiv) {
-          const isOpen = contentDiv.style.display === "block";
-          contentDiv.style.display = isOpen ? "none" : "block";
-          btn.textContent = isOpen ? "\u0623\u0645\u062B\u0644\u0629 \u2192" : "\u0625\u062E\u0641\u0627\u0621 \u2190";
-        }
-      });
-    });
-    const dialogBtn = document.getElementById("toggleDialogBtn");
-    if (dialogBtn) {
-      dialogBtn.addEventListener("click", () => {
-        const dialogDiv = document.getElementById("dialogContent");
-        if (dialogDiv) {
-          const isOpen = dialogDiv.style.display === "block";
-          dialogDiv.style.display = isOpen ? "none" : "block";
-          dialogBtn.textContent = isOpen ? "\u0645\u062B\u0627\u0644 \u2192" : "\u0625\u062E\u0641\u0627\u0621 \u2190";
-        }
-      });
-    }
-  }
-  function renderTipsExam(examData) {
-    const container = document.getElementById("tips");
+  function renderSprach2Exam() {
+    const container = document.getElementById("sprach2");
     if (!container) return;
     container.innerHTML = "";
-    const content = examData.content || "";
-    const paragraphs = content.split("\n\n");
-    for (let i = 0; i < paragraphs.length; i++) {
-      const p = paragraphs[i];
-      if (p.trim() === "") continue;
-      const card = document.createElement("div");
-      card.style.cssText = `
-      background: #f8f9fa;
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-right: 4px solid #28a745;
-      border-left: 1px solid #e0e0e0;
-      border-top: 1px solid #e0e0e0;
-      border-bottom: 1px solid #e0e0e0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      font-size: 16px;
-      line-height: 1.7;
-      color: #333;
-      white-space: pre-wrap;
-    `;
-      let formattedText = p;
-      formattedText = formattedText.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
-      formattedText = formattedText.replace(/^(.*?):/gm, "<strong>$1:</strong>");
-      card.innerHTML = formattedText;
-      container.appendChild(card);
+    const text = currentSprach2Data.text;
+    const options = currentSprach2Data.options;
+    const allOptions = currentSprach2Data.allOptions;
+    const twoColumns = document.createElement("div");
+    twoColumns.style.display = "flex";
+    twoColumns.style.gap = "30px";
+    twoColumns.style.flexWrap = "wrap";
+    const leftColumn = document.createElement("div");
+    leftColumn.style.flex = "1.5";
+    leftColumn.style.minWidth = "400px";
+    leftColumn.style.backgroundColor = "#f9f9f9";
+    leftColumn.style.padding = "20px";
+    leftColumn.style.borderRadius = "12px";
+    leftColumn.style.border = "1px solid #ddd";
+    leftColumn.style.maxHeight = "600px";
+    leftColumn.style.overflowY = "auto";
+    const leftTitle = document.createElement("h3");
+    leftTitle.innerHTML = "\u{1F4DD} Text";
+    leftTitle.style.marginTop = "0";
+    leftTitle.style.color = "#2c3e66";
+    leftColumn.appendChild(leftTitle);
+    let htmlText = text;
+    for (let i = 1; i <= options.length; i++) {
+      const btnId = `sprach2_btn_${i}`;
+      const currentAnswer = sprach2UserAnswers[i];
+      const btnText = currentAnswer || `__( ${i} )__`;
+      let btnStyle = "background-color: #e0e0e0; border: none; padding: 4px 12px; border-radius: 20px; cursor: pointer; font-size: 14px; font-weight: bold; margin: 0 2px;";
+      if (currentAnswer) {
+        btnStyle = "background-color: #d4edda; border: 2px solid #28a745; padding: 4px 12px; border-radius: 20px; cursor: pointer; font-size: 14px; font-weight: bold; margin: 0 2px; color: #155724;";
+      }
+      const btnHtml = `<button id="${btnId}" class="sprach2-gap-btn" data-qid="${i}" style="${btnStyle}">${btnText}</button>`;
+      htmlText = htmlText.replace(`__( ${i} )__`, btnHtml);
+      htmlText = htmlText.replace(`......(${i})......`, btnHtml);
+      htmlText = htmlText.replace(`......(${i})`, btnHtml);
+      htmlText = htmlText.replace(`.....( ${i} ).....`, btnHtml);
     }
-  }
-  function renderM\u00FCndlichExam(examData) {
-    const container = document.getElementById("m\xFCndlich");
-    if (!container) return;
-    container.innerHTML = "";
-    const noteWrapper = document.createElement("div");
-    noteWrapper.className = "m\xFCndlich-header-note-wrapper";
-    noteWrapper.style.cssText = `
-    margin-bottom: clamp(16px, 2.5vw, 24px);
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-  `;
-    const noteDiv = document.createElement("div");
-    noteDiv.style.cssText = `
-    background: #e3f2fd !important;
-    padding: clamp(8px, 1.2vw, 12px) clamp(14px, 2vw, 20px) !important;
-    border-radius: 10px !important;
-    border: 1px solid #d0e0ff !important;
-    color: #0d47a1 !important;
-    font-size: clamp(0.7rem, 1.4vw, 0.85rem) !important;
-    line-height: 1.7 !important;
-    font-family: inherit !important;
-    text-align: right !important;
-    direction: rtl !important;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.03) !important;
-    font-weight: 500 !important;
-    transition: all 0.2s ease !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    word-wrap: break-word !important;
-  `;
-    noteDiv.innerHTML = `\u2726 \u064A\u0645\u0643\u0646\u0643 \u0623\u062E\u0630 \u0623\u0641\u0643\u0627\u0631 \u0645\u0646 \u0647\u0646\u0627 \u0648\u0645\u0639\u0631\u0641\u0629 \u0643\u064A\u0641 \u064A\u0645\u0643\u0646 \u0623\u0646 \u064A\u0643\u0648\u0646 \u0647\u062F\u0627 \u0627\u0644\u062C\u0632\u0621\u060C \u0648\u064A\u0645\u0643\u0646\u0643 \u0627\u0644\u062A\u0642\u0644\u064A\u062F \u0642\u0644\u064A\u0644\u0627\u060C \u0644\u0643\u0646 \u064A\u062C\u0628 \u0623\u0646 \u062A\u0639\u0645\u0644 \u0646\u0633\u062E\u0629 \u062E\u0627\u0635\u0629 \u0628\u0643 \u0648\u0644\u0627 \u062A\u0642\u0644\u062F\u0647 \u062D\u0631\u0641\u064A\u0627.`;
-    noteWrapper.appendChild(noteDiv);
-    container.appendChild(noteWrapper);
-    const parts = examData.parts || {};
-    const allgemeinCard = createM\u00FCndlichCard("\u{1F4D6} \u0627\u0644\u0641\u0643\u0631\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 (Allgemeine Idee)", parts.allgemein || "\u0644\u0627 \u064A\u0648\u062C\u062F \u0646\u0635");
-    container.appendChild(allgemeinCard);
-    const meinungCard = createM\u00FCndlichCard("\u{1F4AD} \u0627\u0644\u0631\u0623\u064A (Meinung)", parts.meinung || "\u0644\u0627 \u064A\u0648\u062C\u062F \u0646\u0635");
-    container.appendChild(meinungCard);
-    const erfahrungCard = createM\u00FCndlichCard("\u2728 \u0627\u0644\u062A\u062C\u0631\u0628\u0629 (Erfahrung)", parts.erfahrung || "\u0644\u0627 \u064A\u0648\u062C\u062F \u0646\u0635");
-    container.appendChild(erfahrungCard);
-  }
-  function createM\u00FCndlichCard(title, text) {
-    const card = document.createElement("div");
-    card.style.cssText = `
-    background: #f8f9fa;
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  `;
-    const titleDiv = document.createElement("div");
-    titleDiv.style.cssText = `
-    font-size: 18px;
-    font-weight: bold;
-    color: #2c3e66;
-    border-right: 4px solid #007bff;
-    padding-right: 12px;
-    margin-bottom: 15px;
-  `;
-    titleDiv.innerHTML = title;
-    card.appendChild(titleDiv);
     const textDiv = document.createElement("div");
-    textDiv.style.cssText = `
-    font-size: 15px;
-    line-height: 1.6;
-    color: #333;
-    white-space: pre-wrap;
-  `;
-    textDiv.innerHTML = text;
-    card.appendChild(textDiv);
-    return card;
-  }
-  function showTeil(teilNumber) {
-    teile.forEach((teil, idx) => {
-      const container = document.getElementById(teil.container);
-      if (container) container.style.display = idx + 1 === teilNumber ? "block" : "none";
-    });
-  }
-  function goHome() {
-    document.getElementById("home").classList.add("active");
-    document.getElementById("list").classList.remove("active");
-    document.getElementById("exam").classList.remove("active");
-    const homeBtn = document.getElementById("backHomeBtn");
-    if (homeBtn) homeBtn.style.display = "none";
-  }
-  function goList() {
-    document.getElementById("home").classList.remove("active");
-    document.getElementById("list").classList.add("active");
-    document.getElementById("exam").classList.remove("active");
-    renderTeileList();
-    window.renderInitialExamList();
-    const homeBtn = document.getElementById("backHomeBtn");
-    if (homeBtn) homeBtn.style.display = "block";
-  }
-  function buildTeil1(questions) {
-    const container = document.getElementById("teil1");
-    if (!container) {
-      console.warn("\u26A0\uFE0F buildTeil1: \u0627\u0644\u062D\u0627\u0648\u064A\u0629 teil1 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629");
-      return;
-    }
-    if (!questions || !Array.isArray(questions) || questions.length === 0) {
-      console.warn("\u26A0\uFE0F buildTeil1: \u0644\u0627 \u062A\u0648\u062C\u062F \u0623\u0633\u0626\u0644\u0629 \u0644\u0639\u0631\u0636\u0647\u0627");
-      container.innerHTML = '<div style="text-align:center; padding:20px; color:#999;">\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0623\u0633\u0626\u0644\u0629 \u0641\u064A \u0647\u0630\u0627 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646</div>';
-      return;
-    }
-    container.innerHTML = "";
-    let userAnswers = {};
-    for (let i = 0; i < questions.length; i++) {
-      const q = questions[i];
-      const questionId = q.id !== void 0 ? q.id : i;
-      const card = document.createElement("div");
-      card.className = "question-card";
-      card.dataset.questionId = questionId;
-      card.id = `q_${questionId}`;
-      const questionText = document.createElement("div");
-      questionText.className = "question-text";
-      questionText.innerHTML = `<strong>${i + 1}. ${q.text}</strong>`;
-      card.appendChild(questionText);
-      const optionsDiv = document.createElement("div");
-      optionsDiv.className = "options-container";
-      for (let j = 0; j < q.options.length; j++) {
-        const label = document.createElement("label");
-        label.className = "option-label";
-        const radioId = `q_${questionId}_${j}`;
-        label.innerHTML = `<input type="radio" name="q_${questionId}" value="${j}" class="option-input" id="${radioId}"> <span>${q.options[j]}</span>`;
-        label.onclick = /* @__PURE__ */ (function(qId, ansIdx) {
-          return function() {
-            userAnswers[qId] = ansIdx;
+    textDiv.innerHTML = htmlText;
+    textDiv.style.lineHeight = "1.8";
+    textDiv.style.fontSize = "14px";
+    textDiv.style.textAlign = "justify";
+    for (let i = 1; i <= options.length; i++) {
+      const btn = textDiv.querySelector(`#sprach2_btn_${i}`);
+      if (btn) {
+        btn.addEventListener("click", /* @__PURE__ */ (function(qId) {
+          return function(e) {
+            e.stopPropagation();
+            if (sprach2UserAnswers[qId]) {
+              const oldWord = sprach2UserAnswers[qId];
+              delete sprach2UserAnswers[qId];
+              pushAnswerToHistory({
+                type: "sprach2_link",
+                qId,
+                word: oldWord,
+                action: "remove"
+              });
+              const wordCard = document.getElementById(`sprach2_word_${oldWord}`);
+              if (wordCard) {
+                wordCard.style.backgroundColor = "#e0f2fe";
+                wordCard.style.border = "1px solid #7dd3fc";
+                wordCard.style.color = "#4a4a4a";
+                wordCard.style.cursor = "pointer";
+                wordCard.style.opacity = "1";
+                wordCard.classList.remove("selected-for-link");
+                const newCard = wordCard.cloneNode(true);
+                wordCard.parentNode.replaceChild(newCard, wordCard);
+                newCard.onclick = /* @__PURE__ */ (function(w) {
+                  return function() {
+                    if (sprach2SelectedQuestionId) {
+                      if (isSprach2WordUsed(w)) {
+                        alert(` \u0643\u0644\u0645\u0629 "${w}" \u062A\u0645 \u0627\u0633\u062A\u062E\u062F\u0627\u0645\u0647\u0627 \u0628\u0627\u0644\u0641\u0639\u0644!`);
+                        sprach2SelectedQuestionId = null;
+                        clearSprach2ButtonSelection();
+                        return;
+                      }
+                      sprach2UserAnswers[sprach2SelectedQuestionId] = w;
+                      const targetBtn = document.getElementById(`sprach2_btn_${sprach2SelectedQuestionId}`);
+                      if (targetBtn) {
+                        targetBtn.textContent = w;
+                        targetBtn.style.backgroundColor = "#d4edda";
+                        targetBtn.style.border = "2px solid #28a745";
+                        targetBtn.style.color = "#155724";
+                      }
+                      const cardEl = document.getElementById(`sprach2_word_${w}`);
+                      if (cardEl) {
+                        cardEl.style.backgroundColor = "#d4edda";
+                        cardEl.style.border = "2px solid #28a745";
+                        cardEl.style.color = "#155724";
+                        cardEl.style.cursor = "default";
+                        cardEl.style.opacity = "0.85";
+                      }
+                      sprach2SelectedQuestionId = null;
+                      clearSprach2ButtonSelection();
+                    } else {
+                      clearSprach2WordSelection();
+                      newCard.classList.add("selected-for-link");
+                      newCard.style.backgroundColor = "#e0f2fe";
+                      newCard.style.border = "2px solid #7dd3fc";
+                      sprach2SelectedWordForLinking = w;
+                    }
+                  };
+                })(oldWord);
+                newCard.onmouseenter = function() {
+                  if (!this.classList.contains("selected-for-link") && !isSprach2WordUsed(this.textContent)) {
+                    this.style.backgroundColor = "#f0f9ff";
+                    this.style.transform = "scale(1.02)";
+                  }
+                };
+                newCard.onmouseleave = function() {
+                  if (!this.classList.contains("selected-for-link") && !isSprach2WordUsed(this.textContent)) {
+                    this.style.backgroundColor = "#e0f2fe";
+                    this.style.transform = "scale(1)";
+                  }
+                };
+              }
+              btn.textContent = `__( ${qId} )__`;
+              btn.style.backgroundColor = "#e0e0e0";
+              btn.style.color = "#333";
+              btn.classList.remove("selected-for-link");
+              btn.style.border = "none";
+              const parentDiv = btn.parentElement;
+              const existingMsg = parentDiv.querySelector(".correct-answer-hint");
+              if (existingMsg) existingMsg.remove();
+              setTimeout(() => {
+                if (document.activeElement === btn) {
+                  btn.blur();
+                }
+                const examContainer = document.getElementById("exam");
+                if (examContainer && !document.activeElement?.closest?.("#exam")) {
+                  examContainer.setAttribute("tabindex", "-1");
+                  examContainer.focus({ preventScroll: true });
+                }
+              }, 5);
+              return;
+            }
+            if (sprach2SelectedWordForLinking) {
+              const word = sprach2SelectedWordForLinking;
+              if (isSprach2WordUsed(word)) {
+                alert(` \u0643\u0644\u0645\u0629 "${word}" \u062A\u0645 \u0627\u0633\u062A\u062E\u062F\u0627\u0645\u0647\u0627 \u0628\u0627\u0644\u0641\u0639\u0644!`);
+                sprach2SelectedWordForLinking = null;
+                clearSprach2WordSelection();
+                return;
+              }
+              sprach2UserAnswers[qId] = word;
+              btn.textContent = word;
+              btn.style.backgroundColor = "#d4edda";
+              btn.style.border = "2px solid #28a745";
+              btn.style.color = "#155724";
+              pushAnswerToHistory({
+                type: "sprach2_link",
+                qId,
+                word,
+                action: "add"
+              });
+              const wordCard = document.getElementById(`sprach2_word_${word}`);
+              if (wordCard) {
+                wordCard.style.backgroundColor = "#d4edda";
+                wordCard.style.border = "2px solid #28a745";
+                wordCard.style.color = "#155724";
+                wordCard.style.cursor = "default";
+                wordCard.style.opacity = "0.85";
+              }
+              sprach2SelectedWordForLinking = null;
+              clearSprach2WordSelection();
+              setTimeout(() => {
+                if (document.activeElement === btn) {
+                  btn.blur();
+                }
+                const examContainer = document.getElementById("exam");
+                if (examContainer && !document.activeElement?.closest?.("#exam")) {
+                  examContainer.setAttribute("tabindex", "-1");
+                  examContainer.focus({ preventScroll: true });
+                }
+              }, 5);
+            } else {
+              clearSprach2ButtonSelection();
+              btn.classList.add("selected-for-link");
+              btn.style.border = "2px solid #7dd3fc";
+              btn.style.backgroundColor = "#e0f2fe";
+              sprach2SelectedQuestionId = qId;
+            }
           };
-        })(questionId, j);
-        optionsDiv.appendChild(label);
+        })(i));
       }
-      card.appendChild(optionsDiv);
-      container.appendChild(card);
     }
+    leftColumn.appendChild(textDiv);
+    const rightColumn = document.createElement("div");
+    rightColumn.style.flex = "0.8";
+    rightColumn.style.minWidth = "250px";
+    rightColumn.style.backgroundColor = "#f0f8ff";
+    rightColumn.style.padding = "20px";
+    rightColumn.style.borderRadius = "12px";
+    rightColumn.style.border = "1px solid #d0e0ff";
+    rightColumn.style.maxHeight = "600px";
+    rightColumn.style.overflowY = "auto";
+    const rightTitle = document.createElement("h3");
+    rightTitle.innerHTML = "\u{1F4CB} W\xF6rter";
+    rightTitle.style.marginTop = "0";
+    rightTitle.style.color = "#2c3e66";
+    rightColumn.appendChild(rightTitle);
+    const wordsGrid = document.createElement("div");
+    wordsGrid.style.display = "grid";
+    wordsGrid.style.gridTemplateColumns = "repeat(3, 1fr)";
+    wordsGrid.style.gap = "12px";
+    const sortedOptions = [...allOptions].sort();
+    for (let i = 0; i < sortedOptions.length; i++) {
+      const word = sortedOptions[i];
+      const wordCard = document.createElement("div");
+      wordCard.className = "sprach2-word-card";
+      wordCard.id = `sprach2_word_${word}`;
+      wordCard.textContent = word;
+      wordCard.style.borderRadius = "8px";
+      wordCard.style.padding = "8px 12px";
+      wordCard.style.textAlign = "center";
+      wordCard.style.transition = "all 0.2s";
+      wordCard.style.fontWeight = "500";
+      if (isSprach2WordUsed(word)) {
+        wordCard.style.backgroundColor = "#d4edda";
+        wordCard.style.border = "2px solid #28a745";
+        wordCard.style.color = "#155724";
+        wordCard.style.cursor = "default";
+        wordCard.style.opacity = "0.85";
+      } else {
+        wordCard.style.backgroundColor = "#ffffff";
+        wordCard.style.border = "1px solid #7c6ce6";
+        wordCard.style.color = "#4a4a4a";
+        wordCard.style.cursor = "pointer";
+        wordCard.style.opacity = "1";
+        wordCard.onclick = /* @__PURE__ */ (function(w) {
+          return function() {
+            if (sprach2SelectedQuestionId) {
+              if (isSprach2WordUsed(w)) {
+                alert(`\u0643\u0644\u0645\u0629 "${w}" \u062A\u0645 \u0627\u0633\u062A\u062E\u062F\u0627\u0645\u0647\u0627 \u0628\u0627\u0644\u0641\u0639\u0644!`);
+                sprach2SelectedQuestionId = null;
+                clearSprach2ButtonSelection();
+                return;
+              }
+              sprach2UserAnswers[sprach2SelectedQuestionId] = w;
+              const targetBtn = document.getElementById(`sprach2_btn_${sprach2SelectedQuestionId}`);
+              if (targetBtn) {
+                targetBtn.textContent = w;
+                targetBtn.style.backgroundColor = "#d4edda";
+                targetBtn.style.border = "2px solid #28a745";
+                targetBtn.style.color = "#155724";
+              }
+              const cardEl = document.getElementById(`sprach2_word_${w}`);
+              if (cardEl) {
+                cardEl.style.backgroundColor = "#d4edda";
+                cardEl.style.border = "2px solid #28a745";
+                cardEl.style.color = "#155724";
+                cardEl.style.cursor = "default";
+                cardEl.style.opacity = "0.85";
+              }
+              pushAnswerToHistory({
+                type: "sprach2_link",
+                qId: sprach2SelectedQuestionId,
+                word: w,
+                action: "add"
+              });
+              sprach2SelectedQuestionId = null;
+              clearSprach2ButtonSelection();
+              setTimeout(() => {
+                if (document.activeElement === this) {
+                  this.blur();
+                }
+                const examContainer = document.getElementById("exam");
+                if (examContainer && !document.activeElement?.closest?.("#exam")) {
+                  examContainer.setAttribute("tabindex", "-1");
+                  examContainer.focus({ preventScroll: true });
+                }
+              }, 5);
+            } else {
+              clearSprach2WordSelection();
+              wordCard.classList.add("selected-for-link");
+              wordCard.style.backgroundColor = "#e0f2fe";
+              wordCard.style.border = "2px solid #7dd3fc";
+              sprach2SelectedWordForLinking = w;
+            }
+          };
+        })(word);
+        wordCard.onmouseenter = function() {
+          if (!this.classList.contains("selected-for-link") && !isSprach2WordUsed(this.textContent)) {
+            this.style.backgroundColor = "#f0f9ff";
+            this.style.transform = "scale(1.02)";
+          }
+        };
+        wordCard.onmouseleave = function() {
+          if (!this.classList.contains("selected-for-link") && !isSprach2WordUsed(this.textContent)) {
+            this.style.backgroundColor = "#ffffff";
+            this.style.transform = "scale(1)";
+          }
+        };
+      }
+      wordsGrid.appendChild(wordCard);
+    }
+    rightColumn.appendChild(wordsGrid);
+    twoColumns.appendChild(leftColumn);
+    twoColumns.appendChild(rightColumn);
+    container.appendChild(twoColumns);
+    const buttonContainer = document.createElement("div");
+    buttonContainer.style.display = "flex";
+    buttonContainer.style.gap = "15px";
+    buttonContainer.style.justifyContent = "center";
+    buttonContainer.style.marginTop = "25px";
     const checkBtn = document.createElement("button");
     checkBtn.innerText = "\u2705 \u062A\u0635\u062D\u064A\u062D";
     checkBtn.className = "check-btn";
-    checkBtn.onclick = function() {
-      checkTeil1(questions, userAnswers);
-    };
-    container.appendChild(checkBtn);
+    checkBtn.style.padding = "12px 24px";
+    checkBtn.style.backgroundColor = "#2c3e66";
+    checkBtn.style.color = "white";
+    checkBtn.style.border = "none";
+    checkBtn.style.borderRadius = "8px";
+    checkBtn.style.cursor = "pointer";
+    checkBtn.style.fontSize = "16px";
+    checkBtn.onclick = checkSprach2Exam;
+    buttonContainer.appendChild(checkBtn);
+    const resetBtn = document.createElement("button");
+    resetBtn.innerText = "\u21BA";
+    resetBtn.style.padding = "8px 12px";
+    resetBtn.style.backgroundColor = "#6c757d";
+    resetBtn.style.color = "white";
+    resetBtn.style.border = "none";
+    resetBtn.style.borderRadius = "6px";
+    resetBtn.style.cursor = "pointer";
+    resetBtn.style.fontSize = "16px";
+    resetBtn.style.fontWeight = "bold";
+    resetBtn.onclick = resetSprach2Exam;
+    buttonContainer.appendChild(resetBtn);
+    container.appendChild(buttonContainer);
     const resultDiv = document.createElement("div");
-    resultDiv.id = "teil1Result";
+    resultDiv.id = "sprach2Result";
+    resultDiv.className = "result-box";
+    resultDiv.style.display = "none";
+    resultDiv.style.marginTop = "20px";
+    resultDiv.style.padding = "15px";
+    resultDiv.style.borderRadius = "8px";
+    resultDiv.style.textAlign = "center";
+    resultDiv.style.fontWeight = "bold";
+    container.appendChild(resultDiv);
+  }
+  function resetSprach2Exam() {
+    sprach2UserAnswers = {};
+    sprach2SelectedQuestionId = null;
+    sprach2SelectedWordForLinking = null;
+    for (let i = 1; i <= currentSprach2Data.options.length; i++) {
+      const btn = document.getElementById(`sprach2_btn_${i}`);
+      if (btn) {
+        btn.textContent = `__( ${i} )__`;
+        btn.style.backgroundColor = "#e0e0e0";
+        btn.style.color = "#333";
+        btn.classList.remove("selected-for-link");
+        btn.style.border = "none";
+      }
+    }
+    const allWords = document.querySelectorAll(".sprach2-word-card");
+    allWords.forEach((card) => {
+      card.style.backgroundColor = "#ffffff";
+      card.style.border = "1px solid #7c6ce6";
+      card.style.color = "#4a4a4a";
+      card.style.cursor = "pointer";
+      card.style.opacity = "1";
+      card.classList.remove("selected-for-link");
+    });
+    const resultDiv = document.getElementById("sprach2Result");
+    if (resultDiv) resultDiv.style.display = "none";
+    console.log("\u2705 \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 Sprachbausteine Teil 2");
+  }
+  function checkSprach2Exam() {
+    const options = currentSprach2Data.options;
+    let score = 0;
+    const total = options.length;
+    const pointsPerQuestion = 25 / total;
+    document.querySelectorAll(".correct-answer-hint").forEach((el) => el.remove());
+    for (let i = 0; i < options.length; i++) {
+      const opt = options[i];
+      const userAnswer = sprach2UserAnswers[opt.id];
+      const isCorrect = userAnswer === opt.correct;
+      const btn = document.getElementById(`sprach2_btn_${opt.id}`);
+      if (isCorrect) {
+        score++;
+        if (btn) {
+          btn.textContent = opt.correct;
+          btn.style.backgroundColor = "#d4edda";
+          btn.style.border = "2px solid #28a745";
+          btn.style.color = "#155724";
+          btn.style.opacity = "0.85";
+        }
+      } else {
+        if (btn) {
+          btn.style.backgroundColor = "#fee2e2";
+          btn.style.color = "#dc2626";
+          btn.style.border = "1px solid #dc2626";
+          btn.textContent = opt.correct;
+          btn.style.opacity = "0.85";
+          if (userAnswer) {
+            btn.title = `\u0625\u062C\u0627\u0628\u062A\u0643: ${userAnswer}`;
+          } else {
+            btn.title = "\u0644\u0645 \u062A\u062C\u0628 \u0639\u0644\u0649 \u0647\u0630\u0627 \u0627\u0644\u0633\u0624\u0627\u0644";
+          }
+        }
+      }
+    }
+    const usedWords = Object.values(sprach2UserAnswers);
+    document.querySelectorAll(".sprach2-word-card").forEach((card) => {
+      const word = card.textContent;
+      if (usedWords.includes(word)) {
+        card.style.backgroundColor = "#d4edda";
+        card.style.border = "2px solid #28a745";
+        card.style.color = "#155724";
+        card.style.opacity = "0.85";
+      } else {
+        card.style.backgroundColor = "#ffffff";
+        card.style.border = "1px solid #7c6ce6";
+        card.style.color = "#4a4a4a";
+        card.style.opacity = "1";
+      }
+    });
+    const finalScore = (score * pointsPerQuestion).toFixed(2);
+    const resultDiv = document.getElementById("sprach2Result");
+    if (resultDiv) {
+      resultDiv.innerHTML = `\u0627\u0644\u0646\u062A\u064A\u062C\u0629: ${finalScore} / 25`;
+      resultDiv.style.display = "block";
+    }
+    if (finalScore >= 20) {
+      resultDiv.style.backgroundColor = "#d4edda";
+      resultDiv.style.color = "#155724";
+    } else if (finalScore >= 15) {
+      resultDiv.style.backgroundColor = "#fff3cd";
+      resultDiv.style.color = "#856404";
+    } else {
+      resultDiv.style.backgroundColor = "#f8d7da";
+      resultDiv.style.color = "#721c24";
+    }
+    if (typeof window.saveExamResultGlobal === "function") {
+      const examId = currentSprach2Data.id || window.currentExamId || 1;
+      window.saveExamResultGlobal("sprach2", examId, parseFloat(finalScore));
+    }
+    const retryCount = window.incrementRetryCount(currentSkill, window.currentExamId || 1);
+    if (typeof window.updateRetryCounter === "function") {
+      window.updateRetryCounter();
+    }
+    if (typeof window.updateDailyPlanSilent === "function") {
+      window.updateDailyPlanSilent();
+    }
+    if (typeof window.removeColorFromExam === "function") {
+      const examId = window.currentExamId;
+      if (examId) {
+        window.removeColorFromExam(examId);
+      }
+    }
+    if (examTimer2.isRunning) {
+      const elapsed = examTimer2.stop();
+      if (elapsed !== null) {
+        const skill = window.currentSkill || "";
+        const examId = window.currentExamId || 1;
+        if (skill && examId) {
+          saveExamTime(skill, examId, elapsed);
+        }
+      }
+    }
+  }
+  function renderSprach1Exam() {
+    const container = document.getElementById("sprach1");
+    if (!container) return;
+    container.innerHTML = "";
+    const text = currentSprach1Data.text;
+    const options = currentSprach1Data.options;
+    const twoColumns = document.createElement("div");
+    twoColumns.style.display = "flex";
+    twoColumns.style.gap = "30px";
+    twoColumns.style.flexWrap = "wrap";
+    const leftColumn = document.createElement("div");
+    leftColumn.style.flex = "1.5";
+    leftColumn.style.minWidth = "400px";
+    leftColumn.style.backgroundColor = "#f9f9f9";
+    leftColumn.style.padding = "20px";
+    leftColumn.style.borderRadius = "12px";
+    leftColumn.style.border = "1px solid #ddd";
+    leftColumn.style.maxHeight = "600px";
+    leftColumn.style.overflowY = "auto";
+    const leftTitle = document.createElement("h3");
+    leftTitle.innerHTML = "\u{1F4DD} Text";
+    leftTitle.style.marginTop = "0";
+    leftTitle.style.color = "#2c3e66";
+    leftColumn.appendChild(leftTitle);
+    let htmlText = text;
+    for (let i = 1; i <= options.length; i++) {
+      const btnId = `sprach1_btn_${i}`;
+      const currentAnswer = sprach1UserAnswers[i];
+      const btnText = currentAnswer || `__(${i})__`;
+      const btnHtml = `<button id="${btnId}" class="sprach1-gap-btn" style="background-color: #e0e0e0; border: none; padding: 4px 12px; border-radius: 20px; cursor: pointer; font-size: 14px; font-weight: bold; margin: 0 2px;">${btnText}</button>`;
+      htmlText = htmlText.replace(`\u2304 __ (${i}) __ \u2304`, btnHtml);
+    }
+    const textDiv = document.createElement("div");
+    textDiv.innerHTML = htmlText;
+    textDiv.style.lineHeight = "1.8";
+    textDiv.style.fontSize = "14px";
+    textDiv.style.textAlign = "justify";
+    for (let i = 1; i <= options.length; i++) {
+      const btn = textDiv.querySelector(`#sprach1_btn_${i}`);
+      if (btn) {
+        btn.onclick = /* @__PURE__ */ (function(qId) {
+          return function() {
+            openSprach1Dropdown(qId);
+          };
+        })(i);
+      }
+    }
+    leftColumn.appendChild(textDiv);
+    const rightColumn = document.createElement("div");
+    rightColumn.style.flex = "0.8";
+    rightColumn.style.minWidth = "250px";
+    rightColumn.style.backgroundColor = "#f0f8ff";
+    rightColumn.style.padding = "20px";
+    rightColumn.style.borderRadius = "12px";
+    rightColumn.style.border = "1px solid #d0e0ff";
+    rightColumn.style.maxHeight = "600px";
+    rightColumn.style.overflowY = "auto";
+    const rightTitle = document.createElement("h3");
+    rightTitle.innerHTML = "\u{1F4CB} Optionen";
+    rightTitle.style.marginTop = "0";
+    rightTitle.style.color = "#2c3e66";
+    rightColumn.appendChild(rightTitle);
+    const optionsContainer = document.createElement("div");
+    optionsContainer.id = "sprach1_options_container";
+    for (let i = 0; i < options.length; i++) {
+      const opt = options[i];
+      const optDiv = document.createElement("div");
+      optDiv.className = "sprach1-option-group";
+      optDiv.id = `sprach1_opt_group_${opt.id}`;
+      optDiv.style.marginBottom = "20px";
+      optDiv.style.padding = "10px";
+      optDiv.style.backgroundColor = "white";
+      optDiv.style.borderRadius = "8px";
+      optDiv.style.border = "1px solid #ddd";
+      const optTitle = document.createElement("div");
+      optTitle.innerHTML = `<strong>${opt.id} Optionen</strong>`;
+      optTitle.style.marginBottom = "10px";
+      optTitle.style.color = "#7c6ce6";
+      optDiv.appendChild(optTitle);
+      const optList = document.createElement("div");
+      optList.style.display = "flex";
+      optList.style.flexWrap = "wrap";
+      optList.style.gap = "15px";
+      for (let j = 0; j < opt.options.length; j++) {
+        const optionLabel = document.createElement("label");
+        optionLabel.style.display = "inline-flex";
+        optionLabel.style.alignItems = "center";
+        optionLabel.style.gap = "5px";
+        optionLabel.style.cursor = "pointer";
+        optionLabel.style.padding = "5px 10px";
+        optionLabel.style.borderRadius = "5px";
+        optionLabel.style.backgroundColor = "#f8f9fa";
+        optionLabel.style.border = "1px solid #ccc";
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = `sprach1_q${opt.id}`;
+        radio.value = opt.options[j];
+        radio.id = `sprach1_opt_${opt.id}_${j}`;
+        if (sprach1UserAnswers[opt.id] === opt.options[j]) {
+          radio.checked = true;
+        }
+        radio.onchange = /* @__PURE__ */ (function(qId, selectedValue) {
+          return function() {
+            selectSprach1Option(qId, selectedValue);
+          };
+        })(opt.id, opt.options[j]);
+        const optionText = document.createElement("span");
+        optionText.textContent = opt.options[j];
+        optionText.style.fontSize = "13px";
+        optionLabel.appendChild(radio);
+        optionLabel.appendChild(optionText);
+        optList.appendChild(optionLabel);
+      }
+      optDiv.appendChild(optList);
+      optionsContainer.appendChild(optDiv);
+    }
+    rightColumn.appendChild(optionsContainer);
+    twoColumns.appendChild(leftColumn);
+    twoColumns.appendChild(rightColumn);
+    container.appendChild(twoColumns);
+    const buttonContainer = document.createElement("div");
+    buttonContainer.style.display = "flex";
+    buttonContainer.style.gap = "15px";
+    buttonContainer.style.justifyContent = "center";
+    buttonContainer.style.marginTop = "25px";
+    const checkBtn = document.createElement("button");
+    checkBtn.innerText = "\u2705 \u062A\u0635\u062D\u064A\u062D";
+    checkBtn.className = "check-btn";
+    checkBtn.style.padding = "12px 24px";
+    checkBtn.style.backgroundColor = "#2c3e66";
+    checkBtn.style.color = "white";
+    checkBtn.style.border = "none";
+    checkBtn.style.borderRadius = "8px";
+    checkBtn.style.cursor = "pointer";
+    checkBtn.style.fontSize = "16px";
+    checkBtn.onclick = checkSprach1Exam;
+    buttonContainer.appendChild(checkBtn);
+    const resetBtn = document.createElement("button");
+    resetBtn.innerText = "\u21BA";
+    resetBtn.style.padding = "8px 12px";
+    resetBtn.style.backgroundColor = "#6c757d";
+    resetBtn.style.color = "white";
+    resetBtn.style.border = "none";
+    resetBtn.style.borderRadius = "6px";
+    resetBtn.style.cursor = "pointer";
+    resetBtn.style.fontSize = "16px";
+    resetBtn.style.fontWeight = "bold";
+    resetBtn.onclick = resetSprach1Exam;
+    buttonContainer.appendChild(resetBtn);
+    container.appendChild(buttonContainer);
+    const resultDiv = document.createElement("div");
+    resultDiv.id = "sprach1Result";
     resultDiv.className = "result-box";
     resultDiv.style.display = "none";
     container.appendChild(resultDiv);
   }
-  function checkTeil1(questions, answers) {
+  function openSprach1Dropdown(questionId) {
+    if (sprach1OpenDropdownId) {
+      const oldList2 = document.getElementById(`sprach1_dropdown_list_${sprach1OpenDropdownId}`);
+      if (oldList2) oldList2.remove();
+    }
+    const btn = document.getElementById(`sprach1_btn_${questionId}`);
+    if (!btn) return;
+    const oldList = document.getElementById(`sprach1_dropdown_list_${questionId}`);
+    if (oldList) oldList.remove();
+    const dropdownList = document.createElement("div");
+    dropdownList.id = `sprach1_dropdown_list_${questionId}`;
+    dropdownList.style.position = "absolute";
+    dropdownList.style.backgroundColor = "white";
+    dropdownList.style.border = "1px solid #ccc";
+    dropdownList.style.borderRadius = "8px";
+    dropdownList.style.padding = "5px 0";
+    dropdownList.style.zIndex = "1000";
+    dropdownList.style.minWidth = "150px";
+    dropdownList.style.boxShadow = "0 2px 10px rgba(0,0,0,0.2)";
+    const optionItem = currentSprach1Data.options.find((opt) => opt.id === questionId);
+    if (optionItem) {
+      for (let i = 0; i < optionItem.options.length; i++) {
+        const opt = optionItem.options[i];
+        const optDiv = document.createElement("div");
+        optDiv.textContent = opt;
+        optDiv.style.padding = "8px 12px";
+        optDiv.style.cursor = "pointer";
+        optDiv.style.transition = "background 0.2s";
+        optDiv.addEventListener("mouseenter", function() {
+          this.style.backgroundColor = "#e8e4ff";
+        });
+        optDiv.addEventListener("mouseleave", function() {
+          this.style.backgroundColor = "white";
+        });
+        optDiv.addEventListener("click", /* @__PURE__ */ (function(qId, selectedValue) {
+          return function() {
+            selectSprach1Option(qId, selectedValue);
+            dropdownList.remove();
+            sprach1OpenDropdownId = null;
+          };
+        })(questionId, opt));
+        dropdownList.appendChild(optDiv);
+      }
+    }
+    const rect = btn.getBoundingClientRect();
+    dropdownList.style.position = "fixed";
+    dropdownList.style.top = `${rect.bottom + 5}px`;
+    dropdownList.style.left = `${rect.left}px`;
+    document.body.appendChild(dropdownList);
+    sprach1OpenDropdownId = questionId;
+    setTimeout(() => {
+      document.addEventListener("click", function closeDropdown(e) {
+        if (!dropdownList.contains(e.target) && e.target !== btn) {
+          dropdownList.remove();
+          document.removeEventListener("click", closeDropdown);
+          sprach1OpenDropdownId = null;
+        }
+      });
+    }, 0);
+  }
+  function selectSprach1Option(questionId, selectedValue) {
+    sprach1UserAnswers[questionId] = selectedValue;
+    const btn = document.getElementById(`sprach1_btn_${questionId}`);
+    if (btn) {
+      btn.textContent = selectedValue;
+      btn.style.backgroundColor = "#d4edda";
+      btn.style.color = "#155724";
+    }
+    for (let i = 0; i < currentSprach1Data.options.length; i++) {
+      const opt = currentSprach1Data.options[i];
+      if (opt.id === questionId) {
+        for (let j = 0; j < opt.options.length; j++) {
+          const radio = document.getElementById(`sprach1_opt_${questionId}_${j}`);
+          if (radio && radio.value === selectedValue) {
+            radio.checked = true;
+          }
+        }
+        break;
+      }
+    }
+  }
+  function resetSprach1Exam() {
+    sprach1UserAnswers = {};
+    for (let i = 1; i <= currentSprach1Data.options.length; i++) {
+      const btn = document.getElementById(`sprach1_btn_${i}`);
+      if (btn) {
+        btn.textContent = `__(${i})__`;
+        btn.style.backgroundColor = "#e0e0e0";
+        btn.style.color = "#333";
+      }
+      for (let j = 0; j < currentSprach1Data.options.length; j++) {
+        const opt = currentSprach1Data.options[j];
+        if (opt.id === i) {
+          for (let k = 0; k < opt.options.length; k++) {
+            const radio = document.getElementById(`sprach1_opt_${i}_${k}`);
+            if (radio) radio.checked = false;
+          }
+          break;
+        }
+      }
+    }
+    const resultDiv = document.getElementById("sprach1Result");
+    if (resultDiv) resultDiv.style.display = "none";
+    console.log("\u2705 \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 Sprachbausteine Teil 1");
+  }
+  function checkSprach1Exam() {
+    const options = currentSprach1Data.options;
     let score = 0;
-    const total = questions.length;
+    const total = options.length;
     const pointsPerQuestion = 25 / total;
-    for (let i = 0; i < questions.length; i++) {
-      const q = questions[i];
-      const questionId = q.id !== void 0 ? q.id : i;
-      const card = document.getElementById(`q_${questionId}`);
-      const userAnswer = answers[questionId];
-      const isCorrect = userAnswer === q.correct;
+    for (let i = 0; i < options.length; i++) {
+      const opt = options[i];
+      const userAnswer = sprach1UserAnswers[opt.id];
+      const isCorrect = userAnswer === opt.options[opt.correct];
       if (isCorrect) {
         score++;
-        if (card) {
-          card.classList.add("correct-answer-card");
-          card.classList.remove("wrong-answer-card");
-          const oldMsg = card.querySelector(".correct-message");
-          if (oldMsg) oldMsg.remove();
+      }
+      const btn = document.getElementById(`sprach1_btn_${opt.id}`);
+      if (btn) {
+        if (isCorrect) {
+          btn.style.backgroundColor = "#28a745";
+          btn.style.color = "white";
+        } else {
+          btn.style.backgroundColor = "#fef0e0";
+          btn.style.color = "#e67e22";
         }
-      } else {
-        if (card) {
-          card.classList.add("wrong-answer-card");
-          card.classList.remove("correct-answer-card");
-          let correctMsg = card.querySelector(".correct-message");
-          if (!correctMsg) {
-            correctMsg = document.createElement("div");
-            correctMsg.className = "correct-message";
-            card.appendChild(correctMsg);
-          }
-          correctMsg.innerHTML = "\u2705 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629: " + q.options[q.correct];
+      }
+      const optGroup = document.getElementById(`sprach1_opt_group_${opt.id}`);
+      if (optGroup) {
+        if (isCorrect) {
+          optGroup.style.backgroundColor = "#d4edda";
+          optGroup.style.border = "2px solid #28a745";
+        } else {
+          optGroup.style.backgroundColor = "#fef0e0";
+          optGroup.style.border = "2px solid #e67e22";
+        }
+      }
+      const correctAnswer = opt.options[opt.correct];
+      const correctIndex = opt.options.indexOf(correctAnswer);
+      const correctRadio = document.getElementById(`sprach1_opt_${opt.id}_${correctIndex}`);
+      if (correctRadio) {
+        const parentLabel = correctRadio.parentElement;
+        if (parentLabel && !isCorrect) {
+          parentLabel.style.backgroundColor = "#d4edda";
+          parentLabel.style.border = "2px solid #28a745";
         }
       }
     }
     const finalScore = (score * pointsPerQuestion).toFixed(2);
-    const resultDiv = document.getElementById("teil1Result");
+    const resultDiv = document.getElementById("sprach1Result");
     if (resultDiv) {
-      resultDiv.innerHTML = "\u0627\u0644\u0646\u062A\u064A\u062C\u0629: " + finalScore + " / 25";
+      resultDiv.innerHTML = `\u0627\u0644\u0646\u062A\u064A\u062C\u0629: ${finalScore} / 25`;
       resultDiv.style.display = "block";
     }
-    saveExamResult(currentSkill, currentExamId, parseFloat(finalScore));
-    const retryCount = incrementRetryCount(currentSkill, currentExamId);
+    if (finalScore >= 20) {
+      resultDiv.style.backgroundColor = "#d4edda";
+      resultDiv.style.color = "#155724";
+    } else if (finalScore >= 15) {
+      resultDiv.style.backgroundColor = "#fff3cd";
+      resultDiv.style.color = "#856404";
+    } else {
+      resultDiv.style.backgroundColor = "#f8d7da";
+      resultDiv.style.color = "#721c24";
+    }
+    if (typeof window.saveExamResultGlobal === "function") {
+      const examId = currentSprach1Data.id || window.currentExamId || 1;
+      window.saveExamResultGlobal("sprach1", examId, parseFloat(finalScore));
+    }
+    const retryCount = window.incrementRetryCount(currentSkill, window.currentExamId || 1);
     if (typeof window.updateRetryCounter === "function") {
       window.updateRetryCounter();
     }
+    if (typeof window.updateDailyPlanSilent === "function") {
+      window.updateDailyPlanSilent();
+    }
     if (typeof window.removeColorFromExam === "function") {
-      window.removeColorFromExam(currentExamId);
-    }
-    if (document.getElementById("list").classList.contains("active")) {
-      renderExamListForSkill(currentSkill, getTeilNameBySkill(currentSkill));
-    }
-  }
-  function getStageKey(skill) {
-    return `${skill}_stage`;
-  }
-  function getCurrentStage(skill) {
-    const key = getStageKey(skill);
-    try {
-      const stage = parseInt(localStorage.getItem(key)) || 1;
-      const config = SKILL_CONFIG[skill];
-      const totalStages = config ? Math.ceil(config.totalExams / config.examsPerStage) : 1;
-      return Math.max(1, Math.min(stage, totalStages));
-    } catch {
-      return 1;
-    }
-  }
-  function setCurrentStage(skill, stage) {
-    try {
-      localStorage.setItem(getStageKey(skill), String(stage));
-    } catch (e) {
-      console.warn("\u26A0\uFE0F \u0644\u0627 \u064A\u0645\u0643\u0646 \u062D\u0641\u0638 \u0627\u0644\u0645\u0631\u062D\u0644\u0629:", e);
-    }
-  }
-  function getTotalStages(skill) {
-    const config = SKILL_CONFIG[skill];
-    if (!config) return 1;
-    return Math.ceil(config.totalExams / config.examsPerStage);
-  }
-  function getExamsForStage(skill, stage) {
-    const config = SKILL_CONFIG[skill];
-    if (!config) return [];
-    const start = (stage - 1) * config.examsPerStage;
-    const end = Math.min(start + config.examsPerStage, config.totalExams);
-    const exams = [];
-    for (let i = start + 1; i <= end; i++) exams.push(i);
-    return exams;
-  }
-  function buildSentenceId(skill, examId, questionIndex) {
-    return `${skill}_exam${examId}_${questionIndex}`;
-  }
-  function getSentenceLevel(skill, examId, questionIndex) {
-    const key = buildSentenceId(skill, examId, questionIndex);
-    try {
-      const data = JSON.parse(localStorage.getItem(LEVELS_KEY) || "{}");
-      return data[key] !== void 0 ? data[key] : 0;
-    } catch {
-      return 0;
-    }
-  }
-  function setSentenceLevel(skill, examId, questionIndex, level) {
-    const key = buildSentenceId(skill, examId, questionIndex);
-    try {
-      const data = JSON.parse(localStorage.getItem(LEVELS_KEY) || "{}");
-      let newLevel = Math.max(0, Math.min(MAX_LEVEL, level));
-      data[key] = newLevel;
-      localStorage.setItem(LEVELS_KEY, JSON.stringify(data));
-    } catch (e) {
-      console.error("\u274C \u062E\u0637\u0623 \u0641\u064A \u062D\u0641\u0638 \u0627\u0644\u0645\u0633\u062A\u0648\u0649:", e);
-    }
-  }
-  function increaseLevel(skill, examId, questionIndex) {
-    const current = getSentenceLevel(skill, examId, questionIndex);
-    if (current < MAX_LEVEL) setSentenceLevel(skill, examId, questionIndex, current + 1);
-  }
-  function decreaseLevel(skill, examId, questionIndex) {
-    const current = getSentenceLevel(skill, examId, questionIndex);
-    if (current > 0) setSentenceLevel(skill, examId, questionIndex, current - 1);
-  }
-  function getExamProgress(skill, examId) {
-    const prefix = `${skill}_exam${examId}_`;
-    try {
-      const data = JSON.parse(localStorage.getItem(LEVELS_KEY) || "{}");
-      let totalLevels = 0, count = 0;
-      for (const key in data) {
-        if (key.startsWith(prefix)) {
-          totalLevels += data[key];
-          count++;
-        }
-      }
-      if (count === 0) return 0;
-      return Math.min(100, Math.round(totalLevels / (count * MAX_LEVEL) * 100));
-    } catch {
-      return 0;
-    }
-  }
-  function getStageProgress(skill) {
-    const config = SKILL_CONFIG[skill];
-    if (!config) return 0;
-    const currentStage = getCurrentStage(skill);
-    const examIds = getExamsForStage(skill, currentStage);
-    if (examIds.length === 0) return 0;
-    const data = JSON.parse(localStorage.getItem(LEVELS_KEY) || "{}");
-    let totalLevels = 0, count = 0;
-    for (const examId of examIds) {
-      const prefix = `${skill}_exam${examId}_`;
-      for (const key in data) {
-        if (key.startsWith(prefix)) {
-          totalLevels += data[key];
-          count++;
-        }
+      const examId = window.currentExamId;
+      if (examId) {
+        window.removeColorFromExam(examId);
       }
     }
-    if (count === 0) return 0;
-    return Math.min(100, Math.round(totalLevels / (count * MAX_LEVEL) * 100));
-  }
-  function getOverallProgress(skill) {
-    const totalStages = getTotalStages(skill);
-    if (totalStages <= 0) return 0;
-    const currentStage = getCurrentStage(skill);
-    const stageProgress = getStageProgress(skill);
-    const overall = (currentStage - 1 + stageProgress / 100) / totalStages * 100;
-    return Math.min(100, Math.round(overall));
-  }
-  function renderMemoryProgressBar(skill, container) {
-    const percent = getOverallProgress(skill);
-    const currentStage = getCurrentStage(skill);
-    const totalStages = getTotalStages(skill);
-    const bar = document.createElement("div");
-    bar.className = "memory-progress-bar-container";
-    bar.innerHTML = `
-        <span class="memory-progress-label">\u{1F9E0} \u0627\u0644\u0630\u0627\u0643\u0631\u0629</span>
-        <div style="display:flex; align-items:center; gap:8px; flex:1;">
-            <div class="memory-progress-track" style="flex:1;">
-                <div class="memory-progress-fill" style="width: ${percent}%;"></div>
-            </div>
-            <span class="memory-progress-percent">${percent}%</span>
-        </div>
-        <span style="font-size:11px; color:#64748B; min-width:60px; text-align:left;">
-            \u0627\u0644\u0645\u0631\u062D\u0644\u0629 ${currentStage}/${totalStages}
-        </span>
-        <button class="memory-progress-btn" title="\u0645\u062A\u0627\u0628\u0639\u0629 \u0627\u0644\u062A\u062F\u0631\u064A\u0628" onclick="window.startMemoryTrainerFromList('${skill}')">
-            \u25B6
-        </button>
-        <button class="memory-progress-btn reset" title="\u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u0627\u0644\u062A\u0642\u062F\u0645" onclick="window.resetSkillProgress('${skill}');">
-    \u21BA
-</button>
-    `;
-    container.insertBefore(bar, container.firstChild);
-  }
-  function resetAllLevels() {
-    const skill = window.currentSkill || window.memoryTrainer?.currentSkill;
-    if (skill) {
-      resetSkillProgress(skill);
-    } else {
-      console.warn("\u26A0\uFE0F resetAllLevels: \u0644\u0645 \u064A\u062A\u0645 \u062A\u062D\u062F\u064A\u062F \u0627\u0644\u0645\u0647\u0627\u0631\u0629 \u0627\u0644\u062D\u0627\u0644\u064A\u0629\u060C \u0627\u0633\u062A\u062E\u062F\u0627\u0645 hoeren1 \u0643\u0627\u0641\u062A\u0631\u0627\u0636\u064A");
-      resetSkillProgress("hoeren1");
+    const elapsed = examTimer2.finalize();
+    if (elapsed !== null) {
+      const skill = window.currentSkill || "";
+      const examId = window.currentExamId || 1;
+      if (skill && examId) {
+        saveExamTime(skill, examId, elapsed);
+      }
     }
   }
-  function restoreOriginalOrder() {
-    const list = document.getElementById("examsList");
-    if (!list) return;
-    const gridContainer = document.getElementById("examGridContainer");
-    const targetContainer = gridContainer || list;
-    const exams = [...targetContainer.querySelectorAll(".item")].filter(
-      (el) => !el.classList.contains("teil-header") && !el.classList.contains("memory-progress-bar-container")
-    );
-    if (exams.length === 0) {
-      console.warn("\u26A0\uFE0F restoreOriginalOrder: \u0644\u0627 \u062A\u0648\u062C\u062F \u0639\u0646\u0627\u0635\u0631 \u0644\u062A\u0631\u062A\u064A\u0628\u0647\u0627");
+  function checkTrueFalseExam(container, questions, answers, correctNumbersContainer) {
+    let questionsToCheck = questions;
+    const skillId = container.id;
+    const data = _hoerenData[skillId];
+    if (data && data.originalQuestions && data.originalQuestions.length > 0) {
+      questionsToCheck = data.originalQuestions;
+    }
+    if (!questionsToCheck || !Array.isArray(questionsToCheck) || questionsToCheck.length === 0) {
+      console.error("\u274C \u062E\u0637\u0623: \u0644\u0627 \u062A\u0648\u062C\u062F \u0623\u0633\u0626\u0644\u0629 \u0644\u0644\u062A\u0635\u062D\u064A\u062D");
+      let resultDiv2 = container.querySelector("#truefalseResult");
+      if (!resultDiv2) {
+        resultDiv2 = document.createElement("div");
+        resultDiv2.id = "truefalseResult";
+        resultDiv2.className = "result-box";
+        container.appendChild(resultDiv2);
+      }
+      resultDiv2.innerHTML = "\u274C \u0644\u0627 \u062A\u0648\u062C\u062F \u0623\u0633\u0626\u0644\u0629 \u0641\u064A \u0647\u0630\u0627 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646";
+      resultDiv2.style.display = "block";
       return;
     }
-    const examMap = {};
-    exams.forEach((el) => {
-      const title = el.querySelector(".exam-title");
-      if (!title) return;
-      const text = title.textContent || "";
-      const match = text.match(/^(\d+):/);
-      if (match) {
-        const num = parseInt(match[1], 10);
-        examMap[num] = el;
-      }
-    });
-    const sortedKeys = Object.keys(examMap).map(Number).sort((a, b) => a - b);
-    const fragment = document.createDocumentFragment();
-    sortedKeys.forEach((num) => {
-      if (examMap[num]) {
-        fragment.appendChild(examMap[num]);
-      }
-    });
-    exams.forEach((el) => {
-      if (!fragment.contains(el)) {
-        fragment.appendChild(el);
-      }
-    });
-    if (fragment.childNodes.length > 0) {
-      targetContainer.appendChild(fragment);
-      console.log(`\u{1F4CB} \u062A\u0645 \u0627\u0633\u062A\u0639\u0627\u062F\u0629 \u0627\u0644\u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0623\u0635\u0644\u064A (123) \u0628\u0646\u062C\u0627\u062D (${sortedKeys.length} \u0639\u0646\u0635\u0631)`);
-    }
-  }
-  function applyLeaderboardOrder() {
-    const list = document.getElementById("examsList");
-    if (!list) return;
-    const gridContainer = document.getElementById("examGridContainer");
-    const targetContainer = gridContainer || list;
-    const exams = [...targetContainer.querySelectorAll(".item")].filter(
-      (el) => !el.classList.contains("teil-header") && !el.classList.contains("memory-progress-bar-container")
-    );
-    if (exams.length === 0) {
-      console.warn("\u26A0\uFE0F applyLeaderboardOrder: \u0644\u0627 \u062A\u0648\u062C\u062F \u0639\u0646\u0627\u0635\u0631");
-      return;
-    }
-    const data = exams.map((el, index) => {
-      let score = Infinity;
-      let hasResult = false;
-      const chips = el.querySelectorAll(".exam-chip");
-      for (let chip of chips) {
-        const icon = chip.querySelector(".material-symbols-outlined");
-        if (icon && icon.textContent === "bar_chart") {
-          const txt = chip.textContent.replace(icon.textContent, "").trim();
-          if (txt !== "\u2014") {
-            const m = txt.match(/^(\d+)\s*\/\s*\d+/);
-            if (m) {
-              score = parseInt(m[1], 10);
-              hasResult = true;
-            }
-          }
+    let score = 0;
+    const total = questionsToCheck.length;
+    const pointsPerQuestion = 25 / total;
+    const cards = container.querySelectorAll(".question-card");
+    for (const card of cards) {
+      const textSpan = card.querySelector("span");
+      if (!textSpan) continue;
+      const match = textSpan.textContent.match(/^(\d+)\s+(.+)$/);
+      if (!match) continue;
+      const displayNumber = parseInt(match[1]);
+      const questionText = match[2].trim();
+      let q = null;
+      let qIndex = -1;
+      for (let i = 0; i < questionsToCheck.length; i++) {
+        if (questionsToCheck[i].displayNumber === displayNumber) {
+          q = questionsToCheck[i];
+          qIndex = i;
           break;
         }
       }
-      if (!hasResult) {
-        const skill = currentSkill || "";
-        const title = el.querySelector(".exam-title");
-        let examId = null;
-        if (title) {
-          const match = title.textContent.match(/^(\d+):/);
-          if (match) examId = parseInt(match[1]);
+      if (!q) {
+        for (let i = 0; i < questionsToCheck.length; i++) {
+          if (questionsToCheck[i].text.trim() === questionText) {
+            q = questionsToCheck[i];
+            qIndex = i;
+            break;
+          }
         }
+      }
+      if (!q) continue;
+      const userAnswer = answers[displayNumber];
+      const isCorrect = userAnswer === q.correct;
+      card.classList.remove("correct-answer-card", "wrong-answer-card");
+      const oldMsg = card.querySelector(".correct-message");
+      if (oldMsg) oldMsg.remove();
+      if (isCorrect && userAnswer !== void 0) {
+        score++;
+        card.classList.add("correct-answer-card");
+      } else {
+        card.classList.add("wrong-answer-card");
+        const correctMsg = document.createElement("div");
+        correctMsg.className = "correct-message";
+        correctMsg.style.marginTop = "10px";
+        correctMsg.style.fontSize = "14px";
+        correctMsg.style.fontWeight = "bold";
+        correctMsg.style.color = "#28a745";
+        correctMsg.innerHTML = `\u2705 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629: ${q.correct ? "Richtig" : "Falsch"}`;
+        card.appendChild(correctMsg);
+      }
+      const radios = card.querySelectorAll('input[type="radio"]');
+      for (let r = 0; r < radios.length; r++) {
+        const radio = radios[r];
+        const radioValue = radio.value === "true";
+        const parentLabel = radio.parentElement;
+        if (isCorrect && userAnswer !== void 0) {
+          if (radio.checked) {
+            parentLabel.style.backgroundColor = "#d4edda";
+            parentLabel.style.border = "2px solid #28a745";
+          }
+        } else {
+          if (radio.checked) {
+            parentLabel.style.backgroundColor = "#fef0e0";
+            parentLabel.style.border = "2px solid #e67e22";
+          }
+          if (radioValue === q.correct) {
+            parentLabel.style.backgroundColor = "#d4edda";
+            parentLabel.style.border = "2px solid #28a745";
+          }
+        }
+      }
+    }
+    if (correctNumbersContainer) {
+      correctNumbersContainer.style.display = "block";
+      let correctNumbers = [];
+      for (const card of cards) {
+        const textSpan = card.querySelector("span");
+        if (!textSpan) continue;
+        const match = textSpan.textContent.match(/^(\d+)/);
+        if (!match) continue;
+        const displayNumber = parseInt(match[1]);
+        let q = null;
+        for (let i = 0; i < questionsToCheck.length; i++) {
+          if (questionsToCheck[i].displayNumber === displayNumber) {
+            q = questionsToCheck[i];
+            break;
+          }
+        }
+        if (q && q.correct === true) {
+          correctNumbers.push(displayNumber);
+        }
+      }
+      if (correctNumbers.length > 0) {
+        correctNumbersContainer.innerHTML = `\u25B8 \u0627\u0644\u0625\u062C\u0627\u0628\u0627\u062A \u0627\u0644\u0635\u062D\u064A\u062D\u0629: ${correctNumbers.join(" - ")}`;
+      } else {
+        correctNumbersContainer.innerHTML = "\u25B8 \u0644\u0627 \u062A\u0648\u062C\u062F \u0625\u062C\u0627\u0628\u0627\u062A \u0635\u062D\u064A\u062D\u0629 \u0641\u064A \u0647\u0630\u0627 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646";
+      }
+    }
+    const finalScore = (score * pointsPerQuestion).toFixed(2);
+    let resultDiv = container.querySelector("#truefalseResult");
+    if (!resultDiv) {
+      resultDiv = document.createElement("div");
+      resultDiv.id = "truefalseResult";
+      resultDiv.className = "result-box";
+      container.appendChild(resultDiv);
+    }
+    resultDiv.innerHTML = `\u0627\u0644\u0646\u062A\u064A\u062C\u0629: ${finalScore} / 25`;
+    resultDiv.style.display = "block";
+    resultDiv.style.visibility = "visible";
+    resultDiv.style.opacity = "1";
+    if (finalScore >= 20) {
+      resultDiv.style.backgroundColor = "#28a745";
+      resultDiv.style.color = "white";
+    } else if (finalScore >= 15) {
+      resultDiv.style.backgroundColor = "#ffc107";
+      resultDiv.style.color = "#333";
+    } else {
+      resultDiv.style.backgroundColor = "#dc3545";
+      resultDiv.style.color = "white";
+    }
+    if (typeof window.saveExamResultGlobal === "function") {
+      const skill = container.id || "hoeren";
+      const examId = window.currentExamId || 1;
+      window.saveExamResultGlobal(skill, examId, parseFloat(finalScore));
+    }
+    const retryCount = window.incrementRetryCount(currentSkill, window.currentExamId || 1);
+    if (typeof window.updateRetryCounter === "function") {
+      window.updateRetryCounter();
+    }
+    if (typeof window.updateDailyPlanSilent === "function") {
+      window.updateDailyPlanSilent();
+    }
+    if (typeof window.removeColorFromExam === "function") {
+      const examId = window.currentExamId;
+      if (examId) {
+        window.removeColorFromExam(examId);
+      }
+    }
+    if (examTimer2.isRunning) {
+      const elapsed = examTimer2.stop();
+      if (elapsed !== null) {
+        const skill = container.id || window.currentSkill || "";
+        const examId = window.currentExamId || 1;
         if (skill && examId) {
-          const stored = getExamResult(skill, examId);
-          if (stored !== null) {
-            score = stored;
-            hasResult = true;
-          }
-        }
-      }
-      return { el, score, hasResult, originalIndex: index };
-    });
-    data.sort((a, b) => {
-      if (a.hasResult && b.hasResult) {
-        if (a.score === b.score) return a.originalIndex - b.originalIndex;
-        return a.score - b.score;
-      }
-      if (!a.hasResult && b.hasResult) return -1;
-      if (a.hasResult && !b.hasResult) return 1;
-      return a.originalIndex - b.originalIndex;
-    });
-    data.forEach((item) => targetContainer.appendChild(item.el));
-    console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u062D\u0633\u0628 \u0627\u0644\u0646\u062A\u064A\u062C\u0629 (\u2014 \u0623\u0648\u0644\u0627\u064B\u060C \u062B\u0645 \u0627\u0644\u0623\u0636\u0639\u0641 \u0641\u0627\u0644\u0623\u0642\u0648\u0649)");
-  }
-  function getViewModeIndex2() {
-    try {
-      const saved = localStorage.getItem(VIEW_MODE_KEY_2);
-      if (saved !== null) return parseInt(saved);
-    } catch {
-    }
-    return 0;
-  }
-  function setViewModeIndex2(index) {
-    try {
-      localStorage.setItem(VIEW_MODE_KEY_2, String(index));
-    } catch {
-    }
-  }
-  function getExamListMode() {
-    return localStorage.getItem(EXAM_LIST_MODE_KEY) || "list";
-  }
-  function setExamListMode(mode) {
-    localStorage.setItem(EXAM_LIST_MODE_KEY, mode);
-  }
-  function resetSkillProgress(skill) {
-    if (!skill) {
-      console.warn("\u26A0\uFE0F resetSkillProgress: \u0644\u0645 \u064A\u062A\u0645 \u062A\u062D\u062F\u064A\u062F \u0627\u0644\u0645\u0647\u0627\u0631\u0629");
-      return;
-    }
-    const skillName = getSkillDisplayName(skill);
-    showResetModal(skill, skillName);
-  }
-  function getSkillDisplayName(skill) {
-    const names = {
-      "hoeren1": "H\xF6ren 1",
-      "hoeren2": "H\xF6ren 2",
-      "hoeren3": "H\xF6ren 3",
-      "lesen1": "Lesen 1",
-      "lesen2": "Lesen 2",
-      "lesen3": "Lesen 3",
-      "sprach1": "Sprachbausteine 1",
-      "sprach2": "Sprachbausteine 2"
-    };
-    return names[skill] || skill;
-  }
-  function showResetModal(skill, skillName) {
-    const oldModal = document.getElementById("resetConfirmModal");
-    if (oldModal) oldModal.remove();
-    const overlay = document.createElement("div");
-    overlay.id = "resetConfirmModal";
-    overlay.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.4);
-        backdrop-filter: blur(4px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 100000;
-        animation: fadeIn 0.2s ease;
-    `;
-    const modal = document.createElement("div");
-    modal.style.cssText = `
-        background: #1a1f2e;
-        border-radius: 20px;
-        padding: 28px 30px;
-        max-width: 400px;
-        width: 90%;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        border: 1px solid #2a3042;
-        animation: scaleIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-        color: #e2e8f0;
-        text-align: center;
-    `;
-    modal.innerHTML = `
-        <div style="font-size: 32px; margin-bottom: 10px;">\u{1F504}</div>
-        <h3 style="margin: 0 0 6px 0; font-size: 18px; font-weight: 600; color: #f1f5f9;">\u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u0645\u0633\u062A\u0648\u0649 \u0627\u0644\u062A\u062F\u0631\u064A\u0628</h3>
-        <p style="margin: 6px 0 16px 0; font-size: 14px; color: #94a3b8; line-height: 1.6;">
-            \u0647\u0644 \u0623\u0646\u062A \u0645\u062A\u0623\u0643\u062F \u0623\u0646\u0643 \u062A\u0631\u064A\u062F \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u062A\u0642\u062F\u0645\u0643 \u0641\u064A<br>
-            <strong style="color: #38bdf8;">${skillName}</strong>\u061F
-        </p>
-        <p style="margin: 0 0 20px 0; font-size: 12px; color: #64748b;">
-            \u0644\u0646 \u064A\u062A\u0645 \u062D\u0630\u0641 \u0623\u064A \u062A\u0642\u062F\u0645 \u0641\u064A \u0628\u0627\u0642\u064A \u0627\u0644\u0623\u062C\u0632\u0627\u0621.
-        </p>
-        <div style="display: flex; gap: 12px; justify-content: center;">
-            <button class="reset-modal-cancel" style="
-                padding: 10px 24px;
-                border: 1px solid #334155;
-                border-radius: 10px;
-                background: transparent;
-                color: #94a3b8;
-                font-size: 14px;
-                font-weight: 500;
-                cursor: pointer;
-                transition: all 0.2s ease;
-                flex: 1;
-            "
-            onmouseover="this.style.background='#1e293b'; this.style.borderColor='#475569';"
-            onmouseout="this.style.background='transparent'; this.style.borderColor='#334155';"
-            >
-                \u0625\u0644\u063A\u0627\u0621
-            </button>
-            <button class="reset-modal-confirm" style="
-                padding: 10px 24px;
-                border: none;
-                border-radius: 10px;
-                background: #dc2626;
-                color: white;
-                font-size: 14px;
-                font-weight: 600;
-                cursor: pointer;
-                transition: all 0.2s ease;
-                flex: 1;
-            "
-            onmouseover="this.style.background='#b91c1c';"
-            onmouseout="this.style.background='#dc2626';"
-            >
-                \u0625\u0639\u0627\u062F\u0629 \u0627\u0644\u062A\u0639\u064A\u064A\u0646
-            </button>
-        </div>
-    `;
-    overlay.appendChild(modal);
-    document.body.appendChild(overlay);
-    overlay.addEventListener("click", (e) => {
-      if (e.target === overlay) {
-        overlay.remove();
-      }
-    });
-    document.addEventListener("keydown", function escHandler(e) {
-      if (e.key === "Escape") {
-        overlay.remove();
-        document.removeEventListener("keydown", escHandler);
-      }
-    });
-    modal.querySelector(".reset-modal-cancel").addEventListener("click", () => {
-      overlay.remove();
-    });
-    modal.querySelector(".reset-modal-confirm").addEventListener("click", () => {
-      const LEVELS_KEY3 = "memory_levels";
-      try {
-        const data = JSON.parse(localStorage.getItem(LEVELS_KEY3) || "{}");
-        const prefix = `${skill}_exam`;
-        const newData = {};
-        for (const key in data) {
-          if (!key.startsWith(prefix)) {
-            newData[key] = data[key];
-          }
-        }
-        localStorage.setItem(LEVELS_KEY3, JSON.stringify(newData));
-        const allKeys = Object.keys(localStorage);
-        const lastReviewKeys = allKeys.filter((k) => k.startsWith(`exam_last_review_${skill}_`));
-        for (const key of lastReviewKeys) {
-          localStorage.removeItem(key);
-        }
-        console.log(`\u2705 \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u062A\u0642\u062F\u0645 ${skillName} (\u0628\u0645\u0627 \u0641\u064A \u0630\u0644\u0643 \u062A\u0648\u0627\u0631\u064A\u062E \u0627\u0644\u0645\u0631\u0627\u062C\u0639\u0629 \u0627\u0644\u0645\u0633\u062A\u0642\u0644\u0629)`);
-        overlay.remove();
-        location.reload();
-      } catch (e) {
-        console.error("\u274C \u062E\u0637\u0623 \u0641\u064A \u0625\u0639\u0627\u062F\u0629 \u0627\u0644\u062A\u0639\u064A\u064A\u0646:", e);
-        overlay.remove();
-      }
-    });
-  }
-  function addRetryCounterToExam() {
-    const forbiddenSkills = ["schreiben", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3"];
-    if (forbiddenSkills.includes(currentSkill)) {
-      const oldCounter2 = document.getElementById("retryCounterBox");
-      if (oldCounter2) oldCounter2.remove();
-      return;
-    }
-    const oldCounter = document.getElementById("retryCounterBox");
-    if (oldCounter) oldCounter.remove();
-    const retryCount = window.getRetryCount ? window.getRetryCount(currentSkill, currentExamId) : 0;
-    const reviewDays = window.getLastReviewDays ? window.getLastReviewDays(currentSkill, currentExamId) : null;
-    const timeMs = window.getExamTime ? window.getExamTime(currentSkill, currentExamId) : null;
-    let reviewText = "";
-    if (reviewDays === null) {
-      reviewText = "\u0644\u0645 \u064A\u064F\u0631\u0627\u062C\u0639";
-    } else if (reviewDays === 0) {
-      reviewText = "\u0627\u0644\u064A\u0648\u0645";
-    } else {
-      reviewText = `\u0645\u0646\u0630 ${reviewDays} \u064A\u0648\u0645`;
-    }
-    let timeText = "\u0644\u0645 \u064A\u064F\u0633\u062C\u0644";
-    let timeColor = "gray";
-    if (timeMs !== null) {
-      timeText = window.formatTime(timeMs);
-      timeColor = window.getTimeColor(timeMs);
-    }
-    const container = document.createElement("div");
-    container.id = "retryCounterBox";
-    container.style.cssText = `
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-        background: transparent;
-        margin-right: 0;
-        margin-left: auto;
-        flex-shrink: 0;
-    `;
-    const reviewBox = document.createElement("div");
-    let reviewColor = "#64748b";
-    if (reviewDays === null) {
-      reviewColor = "#94a3b8";
-    } else if (reviewDays === 0) {
-      reviewColor = "#22c55e";
-    } else if (reviewDays <= 3) {
-      reviewColor = "#22c55e";
-    } else if (reviewDays <= 7) {
-      reviewColor = "#eab308";
-    } else {
-      reviewColor = "#ef4444";
-    }
-    reviewBox.innerHTML = `\u0622\u062E\u0631 \u0645\u0631\u0627\u062C\u0639\u0629: <strong style="color:${reviewColor};font-weight:700;">${reviewText}</strong>`;
-    reviewBox.style.cssText = `
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 12px;
-        padding: 8px 16px;
-        font-size: 14px;
-        font-family: 'Segoe UI', Arial, sans-serif;
-        color: #1e293b;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        white-space: nowrap;
-        width: 100%;
-        box-sizing: border-box;
-        text-align: right;
-    `;
-    const retryBox = document.createElement("div");
-    retryBox.innerHTML = `\u0639\u0627\u0648\u062F\u062A \u0647\u0630\u0627 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 <strong style="color:#2563eb;font-weight:700;">${retryCount}</strong> ${retryCount === 1 ? "\u0645\u0631\u0629" : "\u0645\u0631\u0627\u062A"}`;
-    retryBox.style.cssText = `
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 12px;
-        padding: 8px 16px;
-        font-size: 14px;
-        font-family: 'Segoe UI', Arial, sans-serif;
-        color: #1e293b;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        white-space: nowrap;
-        width: 100%;
-        box-sizing: border-box;
-        text-align: right;
-    `;
-    const timeBox = document.createElement("div");
-    timeBox.innerHTML = `\u0623\u062C\u0628\u062A \u0639\u0644\u0649 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 \u0641\u064A: <strong style="color:${timeColor};font-weight:700;">${timeText}</strong>`;
-    timeBox.style.cssText = `
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 12px;
-        padding: 8px 16px;
-        font-size: 14px;
-        font-family: 'Segoe UI', Arial, sans-serif;
-        color: #1e293b;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        white-space: nowrap;
-        width: 100%;
-        box-sizing: border-box;
-        text-align: right;
-    `;
-    container.appendChild(reviewBox);
-    container.appendChild(retryBox);
-    container.appendChild(timeBox);
-    const interleavingRow = document.getElementById("interleavingRow");
-    if (interleavingRow) {
-      interleavingRow.style.display = "flex";
-      interleavingRow.style.alignItems = "center";
-      interleavingRow.style.justifyContent = "space-between";
-      interleavingRow.style.flexWrap = "wrap";
-      interleavingRow.style.gap = "10px";
-      interleavingRow.appendChild(container);
-    } else {
-      const btnContainer = document.querySelector('#exam .exam-controls, .exam-controls, .controls-row, [style*="gap: 10px"]');
-      if (btnContainer) {
-        btnContainer.style.display = "flex";
-        btnContainer.style.alignItems = "center";
-        btnContainer.style.justifyContent = "space-between";
-        btnContainer.style.flexWrap = "wrap";
-        btnContainer.appendChild(container);
-      } else {
-        const containerEl = document.querySelector("#exam, .exam-content, .exam-box, .page.active");
-        if (containerEl) {
-          const wrapper = document.createElement("div");
-          wrapper.style.cssText = "display: flex; flex-direction: column; align-items: flex-end; margin: 0 0 15px 0;";
-          wrapper.appendChild(container);
-          containerEl.prepend(wrapper);
+          saveExamTime(skill, examId, elapsed);
         }
       }
     }
+    setTimeout(() => {
+      resultDiv.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }, 100);
   }
-  function updateRetryCounter() {
-    const forbiddenSkills = ["schreiben", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3"];
-    if (forbiddenSkills.includes(currentSkill)) {
-      const oldCounter = document.getElementById("retryCounterBox");
-      if (oldCounter) oldCounter.remove();
-      return;
-    }
-    const container = document.getElementById("retryCounterBox");
-    if (!container) {
-      addRetryCounterToExam();
-      return;
-    }
-    const retryCount = window.getRetryCount ? window.getRetryCount(currentSkill, currentExamId) : 0;
-    const reviewDays = window.getLastReviewDays ? window.getLastReviewDays(currentSkill, currentExamId) : null;
-    const timeMs = window.getExamTime ? window.getExamTime(currentSkill, currentExamId) : null;
-    let reviewText = "";
-    if (reviewDays === null) {
-      reviewText = "\u0644\u0645 \u064A\u064F\u0631\u0627\u062C\u0639";
-    } else if (reviewDays === 0) {
-      reviewText = "\u0627\u0644\u064A\u0648\u0645";
-    } else {
-      reviewText = `\u0645\u0646\u0630 ${reviewDays} \u064A\u0648\u0645`;
-    }
-    const timeText = timeMs !== null ? window.formatTime(timeMs) : "\u0644\u0645 \u064A\u064F\u0633\u062C\u0644";
-    const timeColor = timeMs !== null ? window.getTimeColor(timeMs) : "gray";
-    const retryBox = container.querySelectorAll("div")[1];
-    if (retryBox) {
-      retryBox.innerHTML = `\u0639\u0627\u0648\u062F\u062A \u0647\u0630\u0627 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 <strong style="color:#2563eb;font-weight:700;">${retryCount}</strong> ${retryCount === 1 ? "\u0645\u0631\u0629" : "\u0645\u0631\u0627\u062A"}`;
-      retryBox.style.textAlign = "right";
-    }
-    const reviewBox = container.querySelectorAll("div")[0];
-    if (reviewBox) {
-      let reviewColor = "#64748b";
-      if (reviewDays === null) {
-        reviewColor = "#94a3b8";
-      } else if (reviewDays === 0) {
-        reviewColor = "#22c55e";
-      } else if (reviewDays <= 3) {
-        reviewColor = "#22c55e";
-      } else if (reviewDays <= 7) {
-        reviewColor = "#eab308";
-      } else {
-        reviewColor = "#ef4444";
+  function renderMatchingQuestions2() {
+    const container = document.getElementById("teil1");
+    if (!container) return;
+    container.innerHTML = "";
+    const questions = currentMatchingExamData2.questions;
+    for (let i = 0; i < questions.length; i++) {
+      const q = questions[i];
+      const card = document.createElement("div");
+      card.className = "question-card";
+      card.id = `matching_q_${i}`;
+      const questionText = document.createElement("div");
+      questionText.className = "question-text";
+      questionText.innerHTML = `<strong>${i + 1}. ${q.text}</strong>`;
+      card.appendChild(questionText);
+      const select = document.createElement("select");
+      select.style.width = "100%";
+      select.style.padding = "8px";
+      select.style.marginTop = "10px";
+      select.style.borderRadius = "8px";
+      select.style.border = "1px solid #ccc";
+      const defaultOption = document.createElement("option");
+      defaultOption.value = "";
+      defaultOption.textContent = "-- \u0627\u062E\u062A\u0631 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 --";
+      select.appendChild(defaultOption);
+      for (let j = 0; j < matchingAvailableOptions2.length; j++) {
+        const option = document.createElement("option");
+        option.value = matchingAvailableOptions2[j];
+        option.textContent = matchingAvailableOptions2[j];
+        select.appendChild(option);
       }
-      reviewBox.innerHTML = `\u0622\u062E\u0631 \u0645\u0631\u0627\u062C\u0639\u0629: <strong style="color:${reviewColor};font-weight:700;">${reviewText}</strong>`;
-      reviewBox.style.textAlign = "right";
-    }
-    const timeBox = container.querySelectorAll("div")[2];
-    if (timeBox) {
-      timeBox.innerHTML = `\u0623\u062C\u0628\u062A \u0639\u0644\u0649 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 \u0641\u064A: <strong style="color:${timeColor};font-weight:700;">${timeText}</strong>`;
-      timeBox.style.textAlign = "right";
-    }
-  }
-  function applyTimeOrder() {
-    const list = document.getElementById("examsList");
-    if (!list) return;
-    const gridContainer = document.getElementById("examGridContainer");
-    const targetContainer = gridContainer || list;
-    const exams = [...targetContainer.querySelectorAll(".item")].filter(
-      (el) => !el.classList.contains("teil-header") && !el.classList.contains("memory-progress-bar-container")
-    );
-    if (exams.length === 0) {
-      console.warn("\u26A0\uFE0F applyTimeOrder: \u0644\u0627 \u062A\u0648\u062C\u062F \u0639\u0646\u0627\u0635\u0631");
-      return;
-    }
-    const data = exams.map((el, index) => {
-      let timeMs = null;
-      const chips = el.querySelectorAll(".exam-chip");
-      for (let chip of chips) {
-        const icon = chip.querySelector(".material-symbols-outlined");
-        if (icon && icon.textContent === "timer") {
-          const text = chip.textContent.replace(icon.textContent, "").trim();
-          if (text === "\u2014") {
-            timeMs = null;
-          } else if (text.includes("\u062B\u0627\u0646\u064A\u0629")) {
-            const secs = parseFloat(text.replace("\u062B\u0627\u0646\u064A\u0629", "").trim());
-            timeMs = isNaN(secs) ? null : secs * 1e3;
-          } else if (text.includes("\u062F\u0642\u064A\u0642\u0629")) {
-            const mins = parseFloat(text.replace("\u062F\u0642\u064A\u0642\u0629", "").trim());
-            timeMs = isNaN(mins) ? null : mins * 60 * 1e3;
+      select.onchange = /* @__PURE__ */ (function(idx) {
+        return function() {
+          const oldVal = matchingSelectedAnswers2[idx];
+          if (oldVal) matchingAvailableOptions2.push(oldVal);
+          const newVal = select.value;
+          if (newVal) {
+            const index = matchingAvailableOptions2.indexOf(newVal);
+            if (index !== -1) matchingAvailableOptions2.splice(index, 1);
+            matchingSelectedAnswers2[idx] = newVal;
           } else {
-            const num = parseFloat(text);
-            timeMs = isNaN(num) ? null : num * 1e3;
+            delete matchingSelectedAnswers2[idx];
           }
-          break;
-        }
-      }
-      if (timeMs === null) {
-        const skill = currentSkill || "";
-        const title = el.querySelector(".exam-title");
-        let examId = null;
-        if (title) {
-          const match = title.textContent.match(/^(\d+):/);
-          if (match) examId = parseInt(match[1]);
-        }
-        if (skill && examId) {
-          const stored = getExamTime(skill, examId);
-          if (stored !== null) timeMs = stored;
-        }
-      }
-      return { el, timeMs, originalIndex: index };
-    });
-    data.sort((a, b) => {
-      if (a.timeMs === null && b.timeMs === null) return a.originalIndex - b.originalIndex;
-      if (a.timeMs === null) return -1;
-      if (b.timeMs === null) return 1;
-      if (a.timeMs === b.timeMs) return a.originalIndex - b.originalIndex;
-      return a.timeMs - b.timeMs;
-    });
-    data.forEach((item) => targetContainer.appendChild(item.el));
-    console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u062D\u0633\u0628 \u0627\u0644\u0648\u0642\u062A (\u0645\u0646 \u0627\u0644\u0623\u0636\u0639\u0641 \u0625\u0644\u0649 \u0627\u0644\u0623\u0642\u0648\u0649)");
-  }
-  var teile, currentExamData, currentSkill, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY;
-  var init_engine = __esm({
-    "engine.js"() {
-      window.isInterleavingActive = false;
-      teile = [
-        { id: 1, name: "H\xF6ren 1", container: "hoeren1", skill: "hoeren1" },
-        { id: 2, name: "H\xF6ren 2", container: "hoeren2", skill: "hoeren2" },
-        { id: 3, name: "H\xF6ren 3", container: "hoeren3", skill: "hoeren3" },
-        { id: 4, name: "Lesen 1", container: "teil1", skill: "lesen1" },
-        { id: 5, name: "Lesen 2", container: "teil2", skill: "lesen2" },
-        { id: 6, name: "Lesen 3", container: "teil3", skill: "lesen3" },
-        { id: 7, name: "Sprach 1", container: "sprach1", skill: "sprach1" },
-        { id: 8, name: "Sprach 2", container: "sprach2", skill: "sprach2" },
-        { id: 9, name: "Schreiben", container: "schreiben", skill: "schreiben" },
-        { id: 10, name: "M\xFCndlich", container: "m\xFCndlich", skill: "m\xFCndlich" }
-      ];
-      window.currentSkill = "";
-      window.currentExamId = null;
-      window.currentExamData = null;
-      window.askAIContext = {
-        questionIndex: 0
-      };
-      window.updateAskAIContext = function(skill, examId) {
-        window.currentSkill = skill;
-        window.currentExamId = examId;
-        window.askAIContext.questionIndex = 0;
-        console.log("\u{1F504} AskAI Context: skill=" + skill + ", exam=" + examId);
-      };
-      window.renderInitialExamList = function() {
-        if (typeof window.getUserStatusGlobal !== "function") {
-          const hoeren1Teil = teile.find((t) => t.skill === "hoeren1");
-          if (hoeren1Teil) {
-            renderExamListForSkill(hoeren1Teil.skill, hoeren1Teil.name);
-          }
-          return;
-        }
-        let firstRenderDone = false;
-        let lastStatus = window.getUserStatusGlobal();
-        const performRender = (force = false) => {
-          const currentStatus = window.getUserStatusGlobal();
-          if (!force && currentStatus === lastStatus && firstRenderDone) return;
-          const hoeren1Teil = teile.find((t) => t.skill === "hoeren1");
-          if (hoeren1Teil) {
-            console.log(`[EXAMS] renderInitialExamList: \u0631\u0633\u0645 \u0627\u0644\u0642\u0627\u0626\u0645\u0629 (\u0627\u0644\u062D\u0627\u0644\u0629: ${currentStatus})`);
-            renderExamListForSkill(hoeren1Teil.skill, hoeren1Teil.name);
-            firstRenderDone = true;
-            lastStatus = currentStatus;
-          }
-        };
-        performRender(true);
-        if (window.auth && window.auth.currentUser && lastStatus === "free") {
-          const checkInterval = setInterval(() => {
-            const newStatus = window.getUserStatusGlobal();
-            if (newStatus !== lastStatus) {
-              performRender(true);
-              if (newStatus === "premium") {
-                clearInterval(checkInterval);
-                console.log("[EXAMS] \u062A\u0645 \u0627\u0644\u062A\u0628\u062F\u064A\u0644 \u0625\u0644\u0649 premium\u060C \u062A\u0648\u0642\u0641 \u0627\u0644\u0645\u0631\u0627\u0642\u0628\u0629");
-              }
+          document.querySelectorAll("#teil1 select").forEach((sel, sidx) => {
+            const currentVal = sel.value;
+            sel.innerHTML = "";
+            const optDefault = document.createElement("option");
+            optDefault.value = "";
+            optDefault.textContent = "-- \u0627\u062E\u062A\u0631 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 --";
+            sel.appendChild(optDefault);
+            for (let k = 0; k < matchingAvailableOptions2.length; k++) {
+              const opt = document.createElement("option");
+              opt.value = matchingAvailableOptions2[k];
+              opt.textContent = matchingAvailableOptions2[k];
+              if (currentVal === matchingAvailableOptions2[k]) opt.selected = true;
+              sel.appendChild(opt);
             }
-            if (newStatus === "premium") {
-              clearInterval(checkInterval);
-            }
-          }, 200);
-          setTimeout(() => {
-            clearInterval(checkInterval);
-            console.log("[EXAMS] \u062A\u0648\u0642\u0641 \u0627\u0644\u0645\u0631\u0627\u0642\u0628\u0629 \u0628\u0639\u062F \u0627\u0644\u0645\u0647\u0644\u0629");
-          }, 5e3);
-        }
-      };
-      window.showLockedCard = function(examTitle) {
-        document.getElementById("site-locked-content-card")?.remove();
-        document.getElementById("site-locked-content-style")?.remove();
-        const style = document.createElement("style");
-        style.id = "site-locked-content-style";
-        style.textContent = `
-        #site-locked-content-card {
-            display: block;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: min(320px, calc(100vw - 30px));
-            box-sizing: border-box;
-            padding: 20px 18px 17px;
-            direction: rtl;
-            font-family: "Segoe UI", Tahoma, Arial, sans-serif;
-            color: #ffffff;
-            background:
-                radial-gradient(180px 120px at 0% 0%, rgba(37, 99, 235, .13), transparent 72%),
-                radial-gradient(180px 120px at 100% 100%, rgba(59, 130, 246, .08), transparent 72%),
-                linear-gradient(145deg, #121a2a 0%, #0d1422 48%, #090f1b 100%);
-            border: 1px solid rgba(148, 163, 184, .20);
-            border-radius: 19px;
-            box-shadow:
-                0 25px 65px rgba(0, 0, 0, .65),
-                0 8px 25px rgba(0, 0, 0, .35),
-                0 0 35px rgba(37, 99, 235, .07),
-                inset 0 1px 0 rgba(255, 255, 255, .055);
-            overflow: hidden;
-            z-index: 999999;
-            animation: siteLockedAppear .26s cubic-bezier(.2,.8,.2,1);
-        }
-        @keyframes siteLockedAppear {
-            from { opacity: 0; transform: translate(-50%, -47%) scale(.96); }
-            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        }
-        .site-locked-icon-box {
-            width: 56px; height: 56px;
-            margin: 0 auto 12px;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 15px;
-            background: linear-gradient(145deg, #25344a, #151f30);
-            border: 1px solid rgba(148,163,184,.28);
-            box-shadow: 0 8px 22px rgba(0,0,0,.35), 0 0 18px rgba(37,99,235,.10), inset 0 1px 0 rgba(255,255,255,.09), inset 0 -8px 20px rgba(0,0,0,.16);
-        }
-        .site-locked-icon {
-            color: #dbeafe; font-size: 30px;
-            text-shadow: 0 0 7px rgba(255,255,255,.40), 0 0 14px rgba(96,165,250,.45), 0 0 25px rgba(37,99,235,.22);
-            animation: sparkleGlow 2.8s ease-in-out infinite;
-        }
-        @keyframes sparkleGlow {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(96,165,250,.28)); }
-            50% { transform: scale(1.05); filter: drop-shadow(0 0 9px rgba(96,165,250,.50)); }
-        }
-        .site-locked-title { text-align: center; color: #f1f5f9; font-size: 19px; font-weight: 600; margin-bottom: 3px; }
-        .site-locked-description { text-align: center; color: #7f8da1; font-size: 11px; margin-bottom: 14px; }
-        .site-locked-plan {
-            width: 100%; min-height: 41px;
-            display: flex; align-items: center; justify-content: center; gap: 6px;
-            border-radius: 12px;
-            background: linear-gradient(180deg, rgba(31,41,55,.92), rgba(20,28,40,.94));
-            border: 1px solid rgba(148,163,184,.18);
-            color: #cbd5e1; font-size: 11px; font-weight: 500; margin-bottom: 11px;
-        }
-        .site-locked-pro { color: #60a5fa; font-weight: 700; }
-        .site-locked-pro-sparkle { color: #bfdbfe; font-size: 15px; }
-        .site-locked-upgrade {
-            width: 100%; height: 44px; border: 0; border-radius: 12px;
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-            color: #ffffff;
-            background: linear-gradient(100deg, #1d4ed8 0%, #2563eb 45%, #3157dc 72%, #3730a3 100%);
-            font-family: inherit; font-size: 13px; font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 7px 18px rgba(37,99,235,.20), inset 0 1px 0 rgba(255,255,255,.13), inset 0 -2px 0 rgba(0,0,0,.12);
-        }
-        .site-locked-upgrade:hover { filter: brightness(1.08); }
-        .site-locked-upgrade:active { transform: scale(.985); }
-        .site-locked-upgrade-icon { color: #e0edff; font-size: 18px; }
-        .site-locked-footer { margin-top: 9px; text-align: center; color: #566276; font-size: 9px; }
-        @media (max-width: 500px) {
-            #site-locked-content-card { width: min(310px, calc(100vw - 26px)); padding: 18px 16px 15px; border-radius: 18px; }
-            .site-locked-icon-box { width: 52px; height: 52px; margin-bottom: 10px; }
-            .site-locked-title { font-size: 18px; }
-            .site-locked-description { font-size: 10px; margin-bottom: 12px; }
-            .site-locked-upgrade { height: 42px; font-size: 12px; }
-        }
-        @media (max-width: 340px) {
-            #site-locked-content-card { width: calc(100vw - 22px); padding: 16px 14px 13px; }
-            .site-locked-icon-box { width: 48px; height: 48px; border-radius: 13px; }
-            .site-locked-title { font-size: 17px; }
-            .site-locked-plan { min-height: 39px; font-size: 10px; }
-            .site-locked-upgrade { height: 40px; border-radius: 11px; }
-        }
-    `;
-        document.head.appendChild(style);
-        const card = document.createElement("div");
-        card.id = "site-locked-content-card";
-        card.innerHTML = `
-        <div class="site-locked-icon-box"><span class="material-symbols-outlined site-locked-icon">auto_awesome</span></div>
-        <div class="site-locked-title">\u0645\u062D\u062A\u0648\u0649 \u0645\u0642\u0641\u0644</div>
-        <div class="site-locked-description">\u062A\u0631\u0642\u064A\u0629 \u0627\u0644\u062D\u0633\u0627\u0628 \u0644\u0644\u0648\u0635\u0648\u0644 \u0625\u0644\u0649 \u0647\u0630\u0627 \u0627\u0644\u0645\u062D\u062A\u0648\u0649</div>
-        <div class="site-locked-plan">
-            <span>\u064A\u062A\u0637\u0644\u0628 \u0628\u0627\u0642\u0629:</span>
-            <span class="site-locked-pro">Pro</span>
-            <span class="material-symbols-outlined site-locked-pro-sparkle">auto_awesome</span>
-        </div>
-        <button type="button" id="siteLockedUpgrade" class="site-locked-upgrade">
-            <span class="material-symbols-outlined site-locked-upgrade-icon">auto_awesome</span>
-            <span class="site-locked-upgrade-text">\u062A\u0631\u0642\u064A\u0629 \u0627\u0644\u062D\u0633\u0627\u0628 \u0627\u0644\u0622\u0646</span>
-        </button>
-        <div class="site-locked-footer">\u0627\u0641\u062A\u062D \u0627\u0644\u0645\u064A\u0632\u0627\u062A \u0648\u0627\u0644\u0645\u062D\u062A\u0648\u0649 \u0627\u0644\u0645\u0645\u064A\u0632</div>
-    `;
-        document.body.appendChild(card);
-        document.getElementById("siteLockedUpgrade")?.addEventListener("click", function() {
-          window.location.href = "subscribe.html";
-        });
-        setTimeout(() => {
-          document.addEventListener("click", function close(e) {
-            if (!card.contains(e.target) && e.target.id !== "siteLockedUpgrade") {
-              card.remove();
-              document.removeEventListener("click", close);
+            if (currentVal && !matchingAvailableOptions2.includes(currentVal)) {
+              const hiddenOpt = document.createElement("option");
+              hiddenOpt.value = currentVal;
+              hiddenOpt.textContent = currentVal;
+              hiddenOpt.selected = true;
+              sel.appendChild(hiddenOpt);
             }
           });
-        }, 100);
-      };
-      currentExamData = null;
-      currentSkill = "lesen1";
-      currentExamId = null;
-      currentExamsList = [];
-      currentM\u00FCndlichPart = 2;
-      tipsExams = [
-        { id: 1, title: "\u0643\u064A\u0641\u0627\u0634 \u062A\u0646\u062C\u062D \u0628\u062F\u0643\u0627\u0621", enabled: true, hasFile: true }
-      ];
-      lesenExams = [
-        {
-          id: 1,
-          title: "kellner (Jugend Forscher)",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 1, file: "exam1.json", title: "kellner (Jugend Forscher)" },
-            { id: 101, file: "exam1b.json", title: "kellner (Jugend Forscher) (\u0627\u0644\u062A\u0639\u062F\u064A\u0644 1)" }
-          ]
-        },
-        {
-          id: 2,
-          title: "sport ist gesund",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 2, file: "exam2.json", title: "sport ist gesund" },
-            { id: 3, file: "exam3.json", title: "sport ist gesund (\u0627\u0644\u062A\u0639\u062F\u064A\u0644 1)" },
-            { id: 103, file: "exam3b.json", title: "sport ist gesund (\u0627\u0644\u062A\u0639\u062F\u064A\u0644 2)" }
-          ]
-        },
-        {
-          id: 4,
-          title: "Tanzkurs",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 4, file: "exam4.json", title: "Tanzkurs" },
-            { id: 5, file: "exam5.json", title: "Tanzkurs (\u0627\u0644\u062A\u0639\u062F\u064A\u0644 1)" },
-            { id: 102, file: "exam5b.json", title: "Tanzkurs (\u0627\u0644\u062A\u0639\u062F\u064A\u0644 2)" },
-            { id: 106, file: "exam5c.json", title: "Tanzkurs (\u0627\u0644\u062A\u0639\u062F\u064A\u0644 3)" }
-          ]
-        },
-        { id: 6, title: "Impfung", enabled: true, hasFile: true, versions: [{ id: 6, file: "exam6.json", title: "Impfung" }] },
-        { id: 7, title: "Insel", enabled: true, hasFile: true, versions: [{ id: 7, file: "exam7.json", title: "Insel" }] },
-        {
-          id: 8,
-          title: "Bilder",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 8, file: "exam8.json", title: "Bilder" },
-            { id: 104, file: "exam8b.json", title: "Bilder (\u0627\u0644\u062A\u0639\u062F\u064A\u0644 1)" }
-          ]
-        },
-        {
-          id: 9,
-          title: "Grundschule",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 9, file: "exam9.json", title: "Grundschule" },
-            { id: 105, file: "exam9b.json", title: "Grundschule (\u0627\u0644\u062A\u0639\u062F\u064A\u0644 1)" }
-          ]
-        },
-        {
-          id: 10,
-          title: "\xD6sterreich - Naschmarkt",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 10, file: "exam10.json", title: "\xD6sterreich - Naschmarkt" },
-            { id: 107, file: "exam10b.json", title: "\xD6sterreich - Naschmarkt (\u0627\u0644\u062A\u0639\u062F\u064A\u0644 1)" }
-          ]
-        },
-        {
-          id: 11,
-          title: "Insekten",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 11, file: "exam11.json", title: "Insekten" },
-            { id: 12, file: "exam12.json", title: "Insekten (\u0627\u0644\u062A\u0639\u062F\u064A\u0644 1)" }
-          ]
-        },
-        { id: 13, title: "das Benzin", enabled: true, hasFile: true, versions: [{ id: 13, file: "exam13.json", title: "das Benzin" }] },
-        { id: 14, title: "Kaffee", enabled: true, hasFile: true, versions: [{ id: 14, file: "exam14.json", title: "Kaffee" }] },
-        {
-          id: 15,
-          title: "Programmierer",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 15, file: "exam15.json", title: "Programmierer" },
-            { id: 16, file: "exam16.json", title: "Programmierer (\u0627\u0644\u062A\u0639\u062F\u064A\u0644 1)" },
-            { id: 17, file: "exam17.json", title: "Programmierer (\u0627\u0644\u062A\u0639\u062F\u064A\u0644 2)" }
-          ]
-        },
-        { id: 18, title: "Trampolin", enabled: true, hasFile: true, versions: [{ id: 18, file: "exam18.json", title: "Trampolin" }] },
-        { id: 19, title: "Bonbons", enabled: true, hasFile: true, versions: [{ id: 19, file: "exam19.json", title: "Bonbons" }] },
-        { id: 20, title: "Umwelt", enabled: true, hasFile: true, versions: [{ id: 20, file: "exam20.json", title: "Umwelt" }] },
-        {
-          id: 21,
-          title: "Licht",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 21, file: "exam21.json", title: "Licht" },
-            { id: 22, file: "exam22.json", title: "Licht (\u0627\u0644\u062A\u0639\u062F\u064A\u0644 1)" }
-          ]
-        },
-        {
-          id: 23,
-          title: "Kartoffel",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 23, file: "exam23.json", title: "Kartoffel" },
-            { id: 24, file: "exam24.json", title: "Kartoffel (\u0627\u0644\u062A\u0639\u062F\u064A\u0644 1)" }
-          ]
-        },
-        { id: 25, title: "Bienen", enabled: true, hasFile: true, versions: [{ id: 25, file: "exam25.json", title: "Bienen" }] },
-        { id: 26, title: "Spiele", enabled: true, hasFile: true, versions: [{ id: 26, file: "exam26.json", title: "Spiele" }] },
-        { id: 27, title: "Geld", enabled: true, hasFile: true, versions: [{ id: 27, file: "exam27.json", title: "Geld" }] },
-        { id: 28, title: "Kinder und Schulen", enabled: true, hasFile: true, versions: [{ id: 28, file: "exam28.json", title: "Kinder und Schulen" }] },
-        { id: 29, title: "Kindertelefon", enabled: true, hasFile: true, versions: [{ id: 29, file: "exam29.json", title: "Kindertelefon" }] },
-        {
-          id: 30,
-          title: "Alpen",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 30, file: "exam30.json", title: "Alpen" },
-            { id: 31, file: "exam31.json", title: "Alpen (\u0627\u0644\u062A\u0639\u062F\u064A\u0644 1)" },
-            { id: 32, file: "exam32.json", title: "Alpen (\u0627\u0644\u062A\u0639\u062F\u064A\u0644 2)" }
-          ]
-        },
-        { id: 33, title: "Suchtmittel - Nase", enabled: true, hasFile: true, versions: [{ id: 33, file: "exam33.json", title: "Suchtmittel - Nase" }] },
-        { id: 34, title: "\u0627\u0644\u0627\u0646\u062A\u062E\u0627\u0628\u0627\u062A \u0648\u0627\u0644\u0645\u0631\u0623\u0629 \u0627\u0644\u0631\u0648\u0633\u064A\u0629", enabled: true, hasFile: true, versions: [{ id: 34, file: "exam34.json", title: "\u0627\u0644\u0627\u0646\u062A\u062E\u0627\u0628\u0627\u062A \u0648\u0627\u0644\u0645\u0631\u0623\u0629 \u0627\u0644\u0631\u0648\u0633\u064A\u0629" }] },
-        {
-          id: 35,
-          title: "kein Zeit",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 35, file: "exam35.json", title: "kein Zeit" },
-            { id: 36, file: "exam36.json", title: "kein Zeit (\u0627\u0644\u062A\u0639\u062F\u064A\u0644 1)" }
-          ]
-        },
-        {
-          id: 37,
-          title: "Limonade",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 37, file: "exam37.json", title: "Limonade" },
-            { id: 38, file: "exam38.json", title: "Limonade (\u0627\u0644\u062A\u0639\u062F\u064A\u0644 1)" },
-            { id: 39, file: "exam39.json", title: "Limonade (\u0627\u0644\u062A\u0639\u062F\u064A\u0644 2)" }
-          ]
-        },
-        { id: 40, title: "Auf dem Weg", enabled: true, hasFile: true, versions: [{ id: 40, file: "exam40.json", title: "Auf dem Weg" }] },
-        {
-          id: 41,
-          title: "Schlafzug",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 41, file: "exam41.json", title: "Schlafzug" },
-            { id: 42, file: "exam42.json", title: "Schlafzug (\u0627\u0644\u062A\u0639\u062F\u064A\u0644 1)" }
-          ]
-        },
-        { id: 43, title: "L\xF6wen", enabled: true, hasFile: true, versions: [{ id: 43, file: "exam43.json", title: "L\xF6wen" }] },
-        { id: 44, title: "Fisch", enabled: true, hasFile: true, versions: [{ id: 44, file: "exam44.json", title: "Fisch" }] },
-        { id: 45, title: "Frauen im Arbeitsmarkt", enabled: true, hasFile: true, versions: [{ id: 45, file: "exam45.json", title: "Frauen im Arbeitsmarkt" }] },
-        { id: 46, title: "Baby TV", enabled: true, hasFile: true, versions: [{ id: 46, file: "exam46.json", title: "Baby TV" }] },
-        { id: 47, title: "B\xE4der", enabled: true, hasFile: true, versions: [{ id: 47, file: "exam47.json", title: "B\xE4der" }] },
-        { id: 48, title: "Farben", enabled: true, hasFile: true, versions: [{ id: 48, file: "exam48.json", title: "Farben" }] },
-        { id: 49, title: "Wetter", enabled: true, hasFile: true, versions: [{ id: 49, file: "exam49.json", title: "Wetter" }] },
-        { id: 50, title: "Computer", enabled: true, hasFile: true, versions: [{ id: 50, file: "exam50.json", title: "Computer" }] },
-        { id: 51, title: "Nordsee", enabled: true, hasFile: true, versions: [{ id: 51, file: "exam51.json", title: "Nordsee" }] },
-        { id: 52, title: "Autos", enabled: true, hasFile: true, versions: [{ id: 52, file: "exam52.json", title: "Autos" }] },
-        { id: 53, title: "Evolution", enabled: true, hasFile: true, versions: [{ id: 53, file: "exam53.json", title: "Evolution" }] },
-        { id: 54, title: "Ged\xE4chtnis", enabled: true, hasFile: true, versions: [{ id: 54, file: "exam54.json", title: "Ged\xE4chtnis" }] },
-        { id: 55, title: "Wohnen", enabled: true, hasFile: true, versions: [{ id: 55, file: "exam55.json", title: "Wohnen" }] },
-        { id: 56, title: " Lebensmodelle", enabled: true, hasFile: true, versions: [{ id: 56, file: "exam56.json", title: " Lebensmodelle" }] }
-      ];
-      lesen2Exams = [
-        {
-          id: 1,
-          title: "Krista",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 1, file: "exam1.json", title: "Krista" },
-            { id: 2, file: "exam2.json", title: "Krista (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        {
-          id: 3,
-          title: "Der Ein-Personen-Karneval",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 3, file: "exam3.json", title: "Der Ein-Personen-Karneval" },
-            { id: 4, file: "exam4.json", title: "Der Ein-Personen-Karneval (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        {
-          id: 5,
-          title: "ein leben f\xFCr den Kaffee",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 5, file: "exam5.json", title: "ein leben f\xFCr den Kaffee" },
-            { id: 6, file: "exam6.json", title: "ein leben f\xFCr den Kaffee (\u0645\u0639\u062F\u0644 1)" },
-            { id: 7, file: "exam7.json", title: "ein leben f\xFCr den Kaffee (\u0645\u0639\u062F\u0644 2)" }
-          ]
-        },
-        { id: 8, title: "Kreditkarte", enabled: true, hasFile: true, versions: [{ id: 8, file: "exam8.json", title: "Kreditkarte" }] },
-        {
-          id: 9,
-          title: "Ged\xE4chtnis",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 9, file: "exam9.json", title: "Ged\xE4chtnis" },
-            { id: 10, file: "exam10.json", title: "Ged\xE4chtnis (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 11, title: "Kaufentscheidungen", enabled: true, hasFile: true, versions: [{ id: 11, file: "exam11.json", title: "Kaufentscheidungen" }] },
-        { id: 12, title: "Kellnern - Nebenjob", enabled: true, hasFile: true, versions: [{ id: 12, file: "exam12.json", title: "Kellnern - Nebenjob" }] },
-        { id: 13, title: "die Ern\xE4hrung", enabled: true, hasFile: true, versions: [{ id: 13, file: "exam13.json", title: "die Ern\xE4hrung" }] },
-        { id: 14, title: "Geschichte des Hauspersonals", enabled: true, hasFile: true, versions: [{ id: 14, file: "exam14.json", title: "Geschichte des Hauspersonals" }] },
-        { id: 15, title: "\xD6sterreich, das Land der Poolbesitzer", enabled: true, hasFile: true, versions: [{ id: 15, file: "exam15.json", title: "\xD6sterreich, das Land der Poolbesitzer" }] },
-        {
-          id: 16,
-          title: "Gro\xDFraumb\xFCros",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 16, file: "exam16.json", title: "Gro\xDFraumb\xFCros" },
-            { id: 108, file: "exam16b.json", title: "Gro\xDFraumb\xFCros (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 17, title: "Korbjagd zu Pferde", enabled: true, hasFile: true, versions: [{ id: 17, file: "exam17.json", title: "Korbjagd zu Pferde" }] },
-        {
-          id: 18,
-          title: "Mehrsprachige Erziehung",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 18, file: "exam18.json", title: "Mehrsprachige Erziehung" },
-            { id: 19, file: "exam19.json", title: "Mehrsprachige Erziehung (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 20, title: "Verpackungen im Supermarkt", enabled: true, hasFile: true, versions: [{ id: 20, file: "exam20.json", title: "Verpackungen im Supermarkt" }] },
-        {
-          id: 21,
-          title: "Der Puppenmacher",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 21, file: "exam21.json", title: "Der Puppenmacher" },
-            { id: 22, file: "exam22.json", title: "Der Puppenmacher (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 23, title: "Lehrkr\xE4ftepreis", enabled: true, hasFile: true, versions: [{ id: 23, file: "exam23.json", title: "Lehrkr\xE4ftepreis" }] },
-        {
-          id: 24,
-          title: "Wer parkt, muss zahlen",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 24, file: "exam24.json", title: "Wer parkt, muss zahlen" },
-            { id: 25, file: "exam25.json", title: "Wer parkt, muss zahlen (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 26, title: "Familiengl\xFCck oder Generationskonflikte", enabled: true, hasFile: true, versions: [{ id: 26, file: "exam26.json", title: "Familiengl\xFCck oder Generationskonflikte" }] },
-        {
-          id: 27,
-          title: "Traumfrau und Traummann gesucht",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 27, file: "exam27.json", title: "Traumfrau und Traummann gesucht" },
-            { id: 28, file: "exam28.json", title: "Traumfrau und Traummann gesucht (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 29, title: "Wie Babys lernen", enabled: true, hasFile: true, versions: [{ id: 29, file: "exam29.json", title: "Wie Babys lernen" }] },
-        {
-          id: 30,
-          title: "Volkskrankheit R\xFCckenschmerz",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 30, file: "exam30.json", title: "Volkskrankheit R\xFCckenschmerz" },
-            { id: 31, file: "exam31.json", title: "Volkskrankheit R\xFCckenschmerz (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 32, title: "Die ganze Welt auf dem eigenen PC", enabled: true, hasFile: true, versions: [{ id: 32, file: "exam32.json", title: "Die ganze Welt auf dem eigenen PC" }] },
-        { id: 33, title: "Die deutschen und ihre Ern\xE4hrung", enabled: true, hasFile: true, versions: [{ id: 33, file: "exam33.json", title: "Die deutschen und ihre Ern\xE4hrung" }] },
-        { id: 34, title: "Weniger Euro-Bl\xFCten in Deutschland", enabled: true, hasFile: true, versions: [{ id: 34, file: "exam34.json", title: "Weniger Euro-Bl\xFCten in Deutschland" }] },
-        {
-          id: 35,
-          title: "Nachtzug",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 35, file: "exam35.json", title: "Nachtzug" },
-            { id: 36, file: "exam36.json", title: "Nachtzug (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 37, title: "Wie zwei US-Teenager Million\xE4re wurden", enabled: true, hasFile: true, versions: [{ id: 37, file: "exam37.json", title: "Wie zwei US-Teenager Million\xE4re wurden" }] }
-      ];
-      lesen3Exams = [
-        {
-          id: 1,
-          title: "Filme - Fernsehprogramme",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 1, file: "exam1.json", title: "Filme - Fernsehprogramme" },
-            { id: 2, file: "exam2.json", title: "Filme - Fernsehprogramme (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        {
-          id: 3,
-          title: "Im Katalog eines Buchversands",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 3, file: "exam3.json", title: "Im Katalog eines Buchversands" },
-            { id: 109, file: "exam3b.json", title: "Im Katalog eines Buchversands (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        {
-          id: 4,
-          title: "kein Zeit",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 4, file: "exam4.json", title: "kein Zeit" },
-            { id: 5, file: "exam5.json", title: "kein Zeit (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        {
-          id: 6,
-          title: "Musik - spielt Gitarre",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 6, file: "exam6.json", title: "Musik - spielt Gitarre" },
-            { id: 110, file: "exam6b.json", title: "Musik - spielt Gitarre (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        {
-          id: 7,
-          title: "Die schwangere Frau",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 7, file: "exam7.json", title: "Die schwangere Frau" },
-            { id: 8, file: "exam8.json", title: "Die schwangere Frau (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 9, title: "Unterst\xFCtzung in Mathematik", enabled: true, hasFile: true, versions: [{ id: 9, file: "exam9.json", title: "Unterst\xFCtzung in Mathematik" }] },
-        {
-          id: 10,
-          title: "Ganztagesausflug",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 10, file: "exam10.json", title: "Ganztagesausflug" },
-            { id: 111, file: "exam10b.json", title: "Ganztagesausflug (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 11, title: "Ihren Eltern zur Silberhochzeit", enabled: true, hasFile: true, versions: [{ id: 11, file: "exam11.json", title: "Ihren Eltern zur Silberhochzeit" }] },
-        {
-          id: 12,
-          title: "Rechtsanwalt",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 12, file: "exam12.json", title: "Rechtsanwalt" },
-            { id: 13, file: "exam13.json", title: "Rechtsanwalt (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 14, title: "Au-pair M\xE4dchen", enabled: true, hasFile: true, versions: [{ id: 14, file: "exam14.json", title: "Au-pair M\xE4dchen" }] },
-        { id: 15, title: "Hautprobleme", enabled: true, hasFile: true, versions: [{ id: 15, file: "exam15.json", title: "Hautprobleme" }] },
-        { id: 16, title: "Eine Bekannte ist schwanger", enabled: true, hasFile: true, versions: [{ id: 16, file: "exam16.json", title: "Eine Bekannte ist schwanger" }] },
-        { id: 17, title: "Die Tochter einer Bekannten wird vier Jahre alt", enabled: true, hasFile: true, versions: [{ id: 17, file: "exam17.json", title: "Die Tochter einer Bekannten wird vier Jahre alt" }] },
-        { id: 18, title: "Tierdokumentationen", enabled: true, hasFile: true, versions: [{ id: 18, file: "exam18.json", title: "Tierdokumentationen" }] },
-        { id: 19, title: "Aufr\xE4umen", enabled: true, hasFile: true, versions: [{ id: 19, file: "exam19.json", title: "Aufr\xE4umen" }] },
-        { id: 20, title: "Erholung und Reisen", enabled: true, hasFile: true, versions: [{ id: 20, file: "exam20.json", title: "Erholung und Reisen" }] },
-        {
-          id: 21,
-          title: "Sport",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 21, file: "exam21.json", title: "Sport" },
-            { id: 22, file: "exam22.json", title: "Sport (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 23, title: "Wein und Insekten", enabled: true, hasFile: true, versions: [{ id: 23, file: "exam23.json", title: "Wein und Insekten" }] },
-        {
-          id: 24,
-          title: "Reisef\xFChrer",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 24, file: "exam24.json", title: "Reisef\xFChrer" },
-            { id: 112, file: "exam24b.json", title: "Reisef\xFChrer (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 25, title: "Gartenbau", enabled: true, hasFile: true, versions: [{ id: 25, file: "exam25.json", title: "Gartenbau" }] },
-        { id: 26, title: "Haushaltshilfe", enabled: true, hasFile: true, versions: [{ id: 26, file: "exam26.json", title: "Haushaltshilfe" }] },
-        { id: 27, title: "Einwanderung", enabled: true, hasFile: true, versions: [{ id: 27, file: "exam27.json", title: "Einwanderung" }] },
-        {
-          id: 28,
-          title: "Musikinstrumente",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 28, file: "exam28.json", title: "Musikinstrumente" },
-            { id: 29, file: "exam29.json", title: "Musikinstrumente (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 30, title: "Arbeitsorganisation", enabled: true, hasFile: true, versions: [{ id: 30, file: "exam30.json", title: "Arbeitsorganisation" }] },
-        { id: 31, title: "Hunde", enabled: true, hasFile: true, versions: [{ id: 31, file: "exam31.json", title: "Hunde" }] },
-        { id: 32, title: "schnelle Wasserfahrzeuge", enabled: true, hasFile: true, versions: [{ id: 32, file: "exam32.json", title: "schnelle Wasserfahrzeuge" }] },
-        {
-          id: 33,
-          title: "ein paar Tage in Berlin",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 33, file: "exam33.json", title: "ein paar Tage in Berlin" },
-            { id: 34, file: "exam34.json", title: "ein paar Tage in Berlin (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 35, title: "Autos", enabled: true, hasFile: true, versions: [{ id: 35, file: "exam35.json", title: "Autos" }] },
-        { id: 36, title: "M\xF6bel f\xFCr die neue Wohnung", enabled: true, hasFile: true, versions: [{ id: 36, file: "exam36.json", title: "M\xF6bel f\xFCr die neue Wohnung" }] },
-        { id: 37, title: "Gesch\xE4ftsreisen - \u0631\u062D\u0644\u0627\u062A \u0627\u0644\u0639\u0645\u0644", enabled: true, hasFile: true, versions: [{ id: 37, file: "exam37.json", title: "Gesch\xE4ftsreisen - \u0631\u062D\u0644\u0627\u062A \u0627\u0644\u0639\u0645\u0644" }] }
-      ];
-      sprach1Exams = [
-        {
-          id: 1,
-          title: "Hallo Ferdinand",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 1, file: "exam1.json", title: "Hallo Ferdinand" },
-            { id: 2, file: "exam2.json", title: "Hallo Ferdinand (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 3, title: "Liebe Vanessa", enabled: true, hasFile: true, versions: [{ id: 3, file: "exam3.json", title: "Liebe Vanessa" }] },
-        { id: 4, title: "Hallo Judith / Lina", enabled: true, hasFile: true, versions: [{ id: 4, file: "exam4.json", title: "Hallo Judith / Lina" }] },
-        {
-          id: 5,
-          title: "Liebe Karin",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 5, file: "exam5.json", title: "Liebe Karin" },
-            { id: 6, file: "exam6.json", title: "Liebe Karin (\u0645\u0639\u062F\u0644)" },
-            { id: 113, file: "exam6b.json", title: "Liebe Karin (\u0645\u0639\u062F\u0644 2)" }
-          ]
-        },
-        { id: 7, title: "Hallo Leon", enabled: true, hasFile: true, versions: [{ id: 7, file: "exam7.json", title: "Hallo Leon" }] },
-        {
-          id: 8,
-          title: "Sehr geehrter Herr Martini",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 8, file: "exam8.json", title: "Sehr geehrter Herr Martini" },
-            { id: 9, file: "exam9.json", title: "Sehr geehrter Herr Martini (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 10, title: "Liebe Maria, lieber Timur", enabled: true, hasFile: true, versions: [{ id: 10, file: "exam10.json", title: "Liebe Maria, lieber Timur" }] },
-        {
-          id: 11,
-          title: "Lieber Justus",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 11, file: "exam11.json", title: "Lieber Justus" },
-            { id: 12, file: "exam12.json", title: "Lieber Justus (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 13, title: "Lieber Thomas", enabled: true, hasFile: true, versions: [{ id: 13, file: "exam13.json", title: "Lieber Thomas" }] },
-        { id: 14, title: "Sehr geehrte Frau Goronska", enabled: true, hasFile: true, versions: [{ id: 14, file: "exam14.json", title: "Sehr geehrte Frau Goronska" }] },
-        { id: 15, title: "Liebe Agnieszka", enabled: true, hasFile: true, versions: [{ id: 15, file: "exam15.json", title: "Liebe Agnieszka" }] },
-        { id: 16, title: "Liebe Anna", enabled: true, hasFile: true, versions: [{ id: 16, file: "exam16.json", title: "Liebe Anna" }] },
-        {
-          id: 17,
-          title: "Sehr geehrter Herr Dr. Moosberger (\u0645\u0639\u062F\u0644)",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 17, file: "exam17.json", title: "Sehr geehrter Herr Dr. Moosberger (\u0645\u0639\u062F\u0644)" },
-            { id: 18, file: "exam18.json", title: "Sehr geehrter Herr Dr. Dobromil" }
-          ]
-        },
-        { id: 19, title: "Liebe Lina, lieber Florian", enabled: true, hasFile: true, versions: [{ id: 19, file: "exam19.json", title: "Liebe Lina, lieber Florian" }] },
-        {
-          id: 20,
-          title: "Liebes Julian",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 20, file: "exam20.json", title: "Liebes Julian" },
-            { id: 114, file: "exam20b.json", title: "Liebes Julian (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 21, title: "Liebe Meike", enabled: true, hasFile: true, versions: [{ id: 21, file: "exam21.json", title: "Liebe Meike" }] },
-        {
-          id: 22,
-          title: "Liebe Corinna (\u0645\u0639\u062F\u0644)",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 22, file: "exam22.json", title: "Liebe Corinna (\u0645\u0639\u062F\u0644)" },
-            { id: 23, file: "exam23.json", title: "Liebe Corinna" }
-          ]
-        },
-        { id: 24, title: "Liebe Ida", enabled: true, hasFile: true, versions: [{ id: 24, file: "exam24.json", title: "Liebe Ida" }] },
-        { id: 25, title: "Liebe Paola", enabled: true, hasFile: true, versions: [{ id: 25, file: "exam25.json", title: "Liebe Paola" }] },
-        { id: 26, title: "Liebe Jutta", enabled: true, hasFile: true, versions: [{ id: 26, file: "exam26.json", title: "Liebe Jutta" }] },
-        { id: 27, title: "Liebe Familie Geissler", enabled: true, hasFile: true, versions: [{ id: 27, file: "exam27.json", title: "Liebe Familie Geissler" }] },
-        {
-          id: 28,
-          title: "Liebe Andrea",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 28, file: "exam28.json", title: "Liebe Andrea" },
-            { id: 29, file: "exam29.json", title: "Liebe Andrea (\u0645\u0639\u062F\u0644)" },
-            { id: 115, file: "exam29b.json", title: "Liebe Andrea (\u0645\u0639\u062F\u0644 2)" }
-          ]
-        },
-        { id: 30, title: "Hallo Maria", enabled: true, hasFile: true, versions: [{ id: 30, file: "exam30.json", title: "Hallo Maria" }] },
-        {
-          id: 31,
-          title: "Sehr geehrte Frau Szabo",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 31, file: "exam31.json", title: "Sehr geehrte Frau Szabo" },
-            { id: 32, file: "exam32.json", title: "Sehr geehrte Frau Szabo (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 33, title: "Lieber Igor", enabled: true, hasFile: true, versions: [{ id: 33, file: "exam33.json", title: "Lieber Igor" }] },
-        { id: 34, title: "Liebe Lara", enabled: true, hasFile: true, versions: [{ id: 34, file: "exam34.json", title: "Liebe Lara" }] },
-        { id: 35, title: "Lieber David", enabled: true, hasFile: true, versions: [{ id: 35, file: "exam35.json", title: "Lieber David" }] },
-        { id: 36, title: "Sehr geehrter Herr Wenzel", enabled: true, hasFile: true, versions: [{ id: 36, file: "exam36.json", title: "Sehr geehrter Herr Wenzel" }] },
-        { id: 37, title: "Liebe Autorinnen und Autoren", enabled: true, hasFile: true, versions: [{ id: 37, file: "exam37.json", title: "Liebe Autorinnen und Autoren" }] },
-        { id: 38, title: "Liebe Clara", enabled: true, hasFile: true, versions: [{ id: 38, file: "exam38.json", title: "Liebe Clara" }] },
-        { id: 39, title: "Sehr geehrte Frau Melchior", enabled: true, hasFile: true, versions: [{ id: 39, file: "exam39.json", title: "Sehr geehrte Frau Melchior" }] },
-        {
-          id: 40,
-          title: "Liebe Sandra",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 40, file: "exam40.json", title: "Liebe Sandra" },
-            { id: 116, file: "exam40b.json", title: "Liebe Sandra (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 41, title: "Liebe Anna(\u0627\u0644\u062C\u062F\u064A\u062F)", enabled: true, hasFile: true, versions: [{ id: 41, file: "exam41.json", title: "Liebe Anna(\u0627\u0644\u062C\u062F\u064A\u062F)" }] },
-        { id: 42, title: "Hi Jens", enabled: true, hasFile: true, versions: [{ id: 42, file: "exam42.json", title: "Hi Jens" }] }
-      ];
-      sprach2Exams = [
-        {
-          id: 1,
-          title: "Das Fahrrad",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 1, file: "exam1.json", title: "Das Fahrrad" },
-            { id: 2, file: "exam2.json", title: "Das Fahrrad (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        {
-          id: 3,
-          title: "Man(n) kocht selbst",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 3, file: "exam3.json", title: "Man(n) kocht selbst" },
-            { id: 117, file: "exam3b.json", title: "Man(n) kocht selbst (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        {
-          id: 4,
-          title: "Jugend diskutiert - mach mit!",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 4, file: "exam4.json", title: "Jugend diskutiert - mach mit!" },
-            { id: 118, file: "exam4b.json", title: "Jugend diskutiert - mach mit! (\u0645\u0639\u062F\u0644 1)" },
-            { id: 119, file: "exam4c.json", title: "Jugend diskutiert - mach mit! (\u0645\u0639\u062F\u0644 2)" }
-          ]
-        },
-        { id: 5, title: "Theater f\xFCr Kinder und Jugendliche", enabled: true, hasFile: true, versions: [{ id: 5, file: "exam5.json", title: "Theater f\xFCr Kinder und Jugendliche" }] },
-        { id: 6, title: "Umgang mit Haustieren", enabled: true, hasFile: true, versions: [{ id: 6, file: "exam6.json", title: "Umgang mit Haustieren" }] },
-        {
-          id: 7,
-          title: "Liebesgr\xFC\xDFe aus der K\xFChltruhe",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 7, file: "exam7.json", title: "Liebesgr\xFC\xDFe aus der K\xFChltruhe" },
-            { id: 8, file: "exam8.json", title: "Liebesgr\xFC\xDFe aus der K\xFChltruhe (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 9, title: "Online-Sprachkurse", enabled: true, hasFile: true, versions: [{ id: 9, file: "exam9.json", title: "Online-Sprachkurse" }] },
-        {
-          id: 10,
-          title: "Deutschland \u2013 ein Paradies f\xFCr Kinder?",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 10, file: "exam10.json", title: "Deutschland \u2013 ein Paradies f\xFCr Kinder?" },
-            { id: 11, file: "exam11.json", title: "Deutschland \u2013 ein Paradies f\xFCr Kinder? (\u0645\u0639\u062F\u0644 1)" },
-            { id: 12, file: "exam12.json", title: "Deutschland \u2013 ein Paradies f\xFCr Kinder? (\u0645\u0639\u062F\u0644 2)" }
-          ]
-        },
-        {
-          id: 13,
-          title: "Das Schicksal des Braunb\xE4ren",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 13, file: "exam13.json", title: "Das Schicksal des Braunb\xE4ren" },
-            { id: 14, file: "exam14.json", title: "Das Schicksal des Braunb\xE4ren (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        {
-          id: 15,
-          title: "Was steckt hinter Bio?",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 15, file: "exam15.json", title: "Was steckt hinter Bio?" },
-            { id: 16, file: "exam16.json", title: "Was genau sind eigentlich Bio-Lebensmittel (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 17, title: "Sicherer Schulweg", enabled: true, hasFile: true, versions: [{ id: 17, file: "exam17.json", title: "Sicherer Schulweg" }] },
-        { id: 18, title: "Der Hund als intelligentes Wesen", enabled: true, hasFile: true, versions: [{ id: 18, file: "exam18.json", title: "Der Hund als intelligentes Wesen" }] },
-        { id: 19, title: "Die wichtigsten Regeln auf der Skipiste", enabled: true, hasFile: true, versions: [{ id: 19, file: "exam19.json", title: "Die wichtigsten Regeln auf der Skipiste" }] },
-        { id: 20, title: "Kaffee und Kuchen \u2013 ein St\xFCck Tradition", enabled: true, hasFile: true, versions: [{ id: 20, file: "exam20.json", title: "Kaffee und Kuchen \u2013 ein St\xFCck Tradition" }] },
-        { id: 21, title: "Fische sind schlauer, als wir denken", enabled: true, hasFile: true, versions: [{ id: 21, file: "exam21.json", title: "Fische sind schlauer, als wir denken" }] },
-        {
-          id: 22,
-          title: "Schwarzarbeit kann teuer werden",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 22, file: "exam22.json", title: "Schwarzarbeit kann teuer werden" },
-            { id: 23, file: "exam23.json", title: "Schwarzarbeit kann teuer werden (\u0645\u0639\u062F\u0644 1)" }
-          ]
-        },
-        { id: 24, title: "Schwarzarbeit kann teuer werden (\u0645\u0639\u062F\u0644 2)", enabled: true, hasFile: true, versions: [{ id: 24, file: "exam24.json", title: "Schwarzarbeit kann teuer werden (\u0645\u0639\u062F\u0644 2)" }] },
-        { id: 25, title: "Teamarbeit als Schl\xFCssel zum Erfolg", enabled: true, hasFile: true, versions: [{ id: 25, file: "exam25.json", title: "Teamarbeit als Schl\xFCssel zum Erfolg" }] },
-        { id: 26, title: "Teamarbeit als Schl\xFCssel zum Erfolg (\u0645\u0639\u062F\u0644)", enabled: true, hasFile: true, versions: [{ id: 26, file: "exam26.json", title: "Teamarbeit als Schl\xFCssel zum Erfolg (\u0645\u0639\u062F\u0644)" }] },
-        {
-          id: 27,
-          title: "Wie Handschrift wieder cool wird (\u0645\u0639\u062F\u0644)",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 27, file: "exam27.json", title: "Wie Handschrift wieder cool wird (\u0645\u0639\u062F\u0644)" },
-            { id: 28, file: "exam28.json", title: "Wie Handschrift wieder cool wird" }
-          ]
-        },
-        { id: 29, title: "Ausbildung mit \xFCber 30", enabled: true, hasFile: true, versions: [{ id: 29, file: "exam29.json", title: "Ausbildung mit \xFCber 30" }] },
-        { id: 30, title: "Verlernen die Deutschen die H\xF6flichkeit?", enabled: true, hasFile: true, versions: [{ id: 30, file: "exam30.json", title: "Verlernen die Deutschen die H\xF6flichkeit?" }] },
-        { id: 31, title: "Joggen: Mehr als nur Laufen", enabled: true, hasFile: true, versions: [{ id: 31, file: "exam31.json", title: "Joggen: Mehr als nur Laufen" }] },
-        {
-          id: 32,
-          title: "Der kl\xFCgste Freund des Menschen",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 32, file: "exam32.json", title: "Der kl\xFCgste Freund des Menschen" },
-            { id: 33, file: "exam33.json", title: "Der kl\xFCgste Freund des Menschen (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 34, title: "Manipulierte Bilder", enabled: true, hasFile: true, versions: [{ id: 34, file: "exam34.json", title: "Manipulierte Bilder" }] },
-        {
-          id: 35,
-          title: "Ma\xDFgeschneidert nach Bodyscanning",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 35, file: "exam35.json", title: "Ma\xDFgeschneidert nach Bodyscanning" },
-            { id: 36, file: "exam36.json", title: "Ma\xDFgeschneidert nach Bodyscanning (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        {
-          id: 37,
-          title: "Im Restaurant",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 37, file: "exam37.json", title: "Im Restaurant" },
-            { id: 38, file: "exam38.json", title: "Im Restaurant (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        {
-          id: 39,
-          title: "Lernen ist kein Privileg der Jugend",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 39, file: "exam39.json", title: "Lernen ist kein Privileg der Jugend" },
-            { id: 40, file: "exam40.json", title: "Lernen ist kein Privileg der Jugend (\u0645\u0639\u062F\u0644)" }
-          ]
-        },
-        { id: 41, title: "Wie TV-Bilder die Fantasie von Kindern pr\xE4gen", enabled: true, hasFile: true, versions: [{ id: 41, file: "exam41.json", title: "Wie TV-Bilder die Fantasie von Kindern pr\xE4gen" }] },
-        { id: 42, title: "St\xE4dte vor dem Infarkt", enabled: true, hasFile: true, versions: [{ id: 42, file: "exam42.json", title: "St\xE4dte vor dem Infarkt" }] },
-        { id: 43, title: "Es ist erst 6 Uhr morgens", enabled: true, hasFile: true, versions: [{ id: 43, file: "exam43.json", title: "Es ist erst 6 Uhr morgens" }] },
-        { id: 44, title: "Die Katzen", enabled: true, hasFile: true, versions: [{ id: 44, file: "exam44.json", title: "Die Katzen" }] },
-        {
-          id: 45,
-          title: "Teleshopping \u2013 nicht immer gut und g\xFCnstig",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 45, file: "exam45.json", title: "Teleshopping \u2013 nicht immer gut und g\xFCnstig" },
-            { id: 46, file: "exam46.json", title: "Die R\xFCckkehr des Nachtzugs" },
-            { id: 47, file: "exam47.json", title: "Die Reise im Schlafwagen" }
-          ]
-        },
-        {
-          id: 48,
-          title: "Theaterprojekt f\xFCr Kinder ",
-          enabled: true,
-          hasFile: true,
-          versions: [
-            { id: 48, file: "exam48.json", title: "Theaterprojekt f\xFCr Kinder (\u0627\u0644\u0645\u0639\u062F\u0644 1)" },
-            { id: 49, file: "exam49.json", title: "Theater f\xFCr Kinder und Jugendliche (\u0627\u0644\u0645\u0639\u062F\u0644 2)" }
-          ]
+          if (window.memoryEngine && window.memoryEngine.isActive) {
+            setTimeout(colorSelectOptions, 50);
+          }
+        };
+      })(i);
+      card.appendChild(select);
+      container.appendChild(card);
+    }
+    const buttonContainer = document.createElement("div");
+    buttonContainer.style.display = "flex";
+    buttonContainer.style.gap = "15px";
+    buttonContainer.style.justifyContent = "center";
+    buttonContainer.style.marginTop = "20px";
+    const checkBtn = document.createElement("button");
+    checkBtn.innerText = "\u2705 \u062A\u0635\u062D\u064A\u062D";
+    checkBtn.className = "check-btn";
+    checkBtn.style.padding = "12px 24px";
+    checkBtn.style.backgroundColor = "#2c3e66";
+    checkBtn.style.color = "white";
+    checkBtn.style.border = "none";
+    checkBtn.style.borderRadius = "8px";
+    checkBtn.style.fontSize = "16px";
+    checkBtn.onclick = () => {
+      checkMatchingExam();
+    };
+    buttonContainer.appendChild(checkBtn);
+    const resetBtn = document.createElement("button");
+    resetBtn.innerText = "\u21BA";
+    resetBtn.style.padding = "8px 12px";
+    resetBtn.style.backgroundColor = "#6c757d";
+    resetBtn.style.color = "white";
+    resetBtn.style.border = "none";
+    resetBtn.style.borderRadius = "6px";
+    resetBtn.style.fontSize = "16px";
+    resetBtn.style.fontWeight = "bold";
+    resetBtn.onclick = () => {
+      matchingSelectedAnswers2 = {};
+      matchingAvailableOptions2 = [...currentMatchingExamData2.sharedOptions];
+      renderMatchingQuestions2();
+    };
+    buttonContainer.appendChild(resetBtn);
+    container.appendChild(buttonContainer);
+    const resultDiv = document.createElement("div");
+    resultDiv.id = "matchingResult";
+    resultDiv.className = "result-box";
+    resultDiv.style.display = "none";
+    container.appendChild(resultDiv);
+  }
+  function checkMatchingExam() {
+    const questions = currentMatchingExamData2.questions;
+    let score = 0;
+    const total = questions.length;
+    const pointsPerQuestion = 25 / total;
+    for (let i = 0; i < questions.length; i++) {
+      const card = document.getElementById(`matching_q_${i}`);
+      const userAnswer = matchingSelectedAnswers2[i];
+      const correctAnswer = currentMatchingExamData2.sharedOptions[questions[i].correct];
+      const isCorrect = userAnswer === correctAnswer;
+      if (card) {
+        card.classList.remove("correct-answer-card", "wrong-answer-card");
+        const oldMsg = card.querySelector(".correct-message");
+        if (oldMsg) oldMsg.remove();
+        const selectElem = card.querySelector("select");
+        if (isCorrect && userAnswer) {
+          score++;
+          card.classList.add("correct-answer-card");
+          if (selectElem) {
+            selectElem.style.backgroundColor = "#d4edda";
+            selectElem.style.border = "2px solid #28a745";
+            selectElem.style.color = "#155724";
+          }
+        } else {
+          card.classList.add("wrong-answer-card");
+          if (selectElem) {
+            selectElem.style.backgroundColor = "#fef0e0";
+            selectElem.style.border = "2px solid #e67e22";
+            selectElem.style.color = "#155724";
+            let optionExists = false;
+            for (let j = 0; j < selectElem.options.length; j++) {
+              if (selectElem.options[j].value === correctAnswer) {
+                optionExists = true;
+                const cleanText = selectElem.options[j].textContent.replace(/^✅\s*/, "");
+                selectElem.options[j].textContent = `\u2705 ${cleanText}`;
+                selectElem.options[j].selected = true;
+                break;
+              }
+            }
+            if (!optionExists) {
+              let msg = card.querySelector(".correct-answer-message");
+              if (!msg) {
+                msg = document.createElement("div");
+                msg.className = "correct-answer-message";
+                msg.style.cssText = "margin-top: 6px; font-size: 12px; color: #28a745;";
+                card.appendChild(msg);
+              }
+              msg.innerHTML = `\u2705 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629: ${correctAnswer}`;
+            }
+          }
         }
-      ];
-      schreibenExams = [
-        { id: 1, title: "Fotobuch", enabled: true, hasFile: true },
-        { id: 2, title: "Abenteuer TIKKI TAKKA", enabled: true, hasFile: true },
-        { id: 3, title: "Informatik-Shop", enabled: true, hasFile: true },
-        { id: 4, title: "Kosmetik-Shop", enabled: true, hasFile: true },
-        { id: 5, title: "Partyservice", enabled: true, hasFile: true },
-        { id: 6, title: "ESS Firma", enabled: true, hasFile: true },
-        { id: 7, title: "Kursbeschreibung (Wohndesign)", enabled: true, hasFile: true },
-        { id: 8, title: "Renovierungskurs", enabled: true, hasFile: true },
-        { id: 9, title: "Engagement f\xFCr Jugendliche", enabled: true, hasFile: true },
-        { id: 10, title: "Wohnen auf Zeit in Oranienburg", enabled: true, hasFile: true },
-        { id: 11, title: "Autovermietung Neustadt", enabled: true, hasFile: true },
-        { id: 12, title: "Freizeitverein", enabled: true, hasFile: true },
-        { id: 13, title: "Naturmuseum", enabled: true, hasFile: true },
-        { id: 14, title: "Backstage-Musical-Tour", enabled: true, hasFile: true },
-        { id: 15, title: "KULTUR UND KULINARIK", enabled: true, hasFile: true },
-        { id: 16, title: "Mehr bewegen - aber wie? (Fahrradtour)", enabled: true, hasFile: true },
-        { id: 17, title: "Super Clean-Staubsaugroboter", enabled: true, hasFile: true },
-        { id: 18, title: "Apartment-Haus", enabled: true, hasFile: true },
-        { id: 19, title: "Kostenlose Apps f\xFCr dein Handy!", enabled: true, hasFile: true },
-        { id: 20, title: "Nie mehr schlaflos in Deutschland - Komfort-Matratze", enabled: true, hasFile: true },
-        { id: 21, title: "Schmelzk\xE4se Alpengeschmack", enabled: true, hasFile: true },
-        { id: 22, title: "Meine Kiste: Obst und Gem\xFCse", enabled: true, hasFile: true },
-        { id: 23, title: "Hotel mit Thermen", enabled: true, hasFile: true },
-        { id: 24, title: "Kopfh\xF6rer", enabled: true, hasFile: true },
-        { id: 25, title: "Badezimmer renovieren", enabled: true, hasFile: true },
-        { id: 26, title: "FREIZEITBAD MEERESRAUSCHEN", enabled: true, hasFile: true },
-        { id: 27, title: "Reiseb\xFCro Sonnenschein", enabled: true, hasFile: true },
-        { id: 28, title: "Kursbeschreibung (sich vorstellen)", enabled: true, hasFile: true },
-        { id: 29, title: "FITWATCH Smartwatch", enabled: true, hasFile: true },
-        { id: 30, title: "Securvia Reisegep\xE4ckversicherung", enabled: true, hasFile: true },
-        { id: 31, title: "DIGIBIKE - Das smarte Hightech-Fahrrad", enabled: true, hasFile: true },
-        { id: 32, title: "SPORTHEINPARKPLATZ F\xDCR KINDER", enabled: true, hasFile: true },
-        { id: 33, title: "Online-Training f\xFCr guten Schlaf", enabled: true, hasFile: true },
-        { id: 34, title: "Hollandblumen-Onlineshop", enabled: true, hasFile: true },
-        { id: 35, title: "In Offenbach zu Hause", enabled: true, hasFile: true },
-        { id: 36, title: "Nachbarschaft.net", enabled: true, hasFile: true },
-        { id: 37, title: "Zeitschrift - Abonnentenservice", enabled: true, hasFile: true },
-        { id: 38, title: "Fotografieren f\xFCr Fortgeschrittene", enabled: true, hasFile: true },
-        { id: 39, title: "Umzugsunternehmen B\xFChler", enabled: true, hasFile: true },
-        { id: 40, title: "Schl\xFCsseldienst", enabled: true, hasFile: true },
-        { id: 41, title: "T & W Elektronikversicherung", enabled: true, hasFile: true },
-        { id: 42, title: "Waldschwimmbad Langen", enabled: true, hasFile: true }
-      ];
-      m\u00FCndlich1Exams = [
-        { id: 1, title: " \u062A\u0642\u062F\u064A\u0645 \u0648\u062A\u0643\u0644\u0645 \u0639\u0646 \u0645\u0648\u0636\u0648\u0639  ", enabled: true, hasFile: true, skillPath: "m\xFCndlich1" }
-      ];
-      m\u00FCndlich2Exams = [
-        { id: 1, title: "Antibiotika \u2013 Gibt es Alternativen?", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 2, title: "Selbst gekocht", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 3, title: "Arbeiten bis 75", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 4, title: "Praktische Lerntipps", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 5, title: "Schuluniform \u2013 Pro und Kontra", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 6, title: "Ist 'bequemes Essen' gut f\xFCr uns?", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 7, title: "Alternative Lebensform im Alter", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 8, title: "Gl\xFCcklich ohne Geld und Karriere", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 9, title: "Sch\xF6nheitsoperationen bei Minderj\xE4hrigen", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 10, title: "Kinderuniversit\xE4ten", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 11, title: "Fast Food", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 12, title: "Zweisprachigkeit bei Kindern", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 13, title: "Blutspende", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 14, title: "Lachen und Gesundheit", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 15, title: "Gefundene Sachen \u2013 behalten oder abgeben?", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 16, title: "Tiere als Geschenk", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 17, title: "Hausaufgaben \u2013 notwendig oder nicht?", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 18, title: "Wie lange d\xFCrfen Jugendliche abends ausgehen?", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 19, title: "Rauchen", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 20, title: "Hochbegabte Kinder \u2013 Spezialschulen oder Integration", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 21, title: "Hochzeit nur zu zweit", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 22, title: "Stadtwohnung oder Haus im Gr\xFCnen", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 23, title: "Leistungssport und Doping", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 24, title: "Fernsehen bildet", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 25, title: "Kinderkonten", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 26, title: "Haustausch im Urlaub", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 27, title: "Solarium im Winter \u2013 gut oder schlecht", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 28, title: "Ist Schulqualit\xE4t messbar?", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 29, title: "Hausfrau auf Lebenszeit", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 30, title: "Fernsehen macht Kinder dumm", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 31, title: "Kinder untersch\xE4tzen Gefahren von Handy und Internet", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 32, title: "Sind Klassenfahrten sinnvoll?", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 33, title: "Wo wohnt man am besten im Alter", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 34, title: "Ganztagsschule \u2013 Pro und Contra", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 35, title: "Verbot von Gewaltspielen \u2013 Pro und Kontra", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 36, title: "Eine Woche ohne Internet", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 37, title: "Digitales Unterrichtsmaterial in Schulen", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 38, title: "Tierversuche \u2013 Pro und Contra", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 39, title: "Englisch als weltweite Unternehmenssprache", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 40, title: "Trinkgeld geben", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 41, title: "Teilzeitarbeit f\xFCr M\xE4nner", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 42, title: "Nahrungserg\xE4nzungsmittel", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" }
-      ];
-      m\u00FCndlich3Exams = [
-        { id: 1, title: " \u0627\u0644\u062A\u062E\u0637\u064A\u0637 \u0648\u062D\u0644 \u0645\u0634\u0643\u0644 ", enabled: true, hasFile: true, skillPath: "m\xFCndlich3" }
-      ];
-      examsDatabase = {
-        lesen1: lesenExams,
-        lesen2: lesen2Exams,
-        lesen3: lesen3Exams,
-        sprach1: sprach1Exams,
-        sprach2: sprach2Exams,
-        hoeren1: [
-          { id: 1, title: "Die Deutsche Lufthansa", enabled: true, hasFile: true },
-          { id: 2, title: "Die Piloten der Lufthansa", enabled: true, hasFile: true },
-          { id: 3, title: "Die Stadt Friedrichsberg", enabled: true, hasFile: true },
-          { id: 4, title: "Erdbeben", enabled: true, hasFile: true },
-          { id: 5, title: "Bierkonsum", enabled: true, hasFile: true },
-          { id: 6, title: "Bierkonsum (Mittel)", enabled: true, hasFile: true },
-          { id: 7, title: "Deutsches Schiff", enabled: true, hasFile: true },
-          { id: 8, title: "Weniger V\xF6gel - Viele Kunden", enabled: true, hasFile: true },
-          { id: 9, title: "Europ\xE4ische Union", enabled: true, hasFile: true },
-          { id: 10, title: "Unwettersch\xE4den", enabled: true, hasFile: true },
-          { id: 11, title: "Nicht sicher", enabled: true, hasFile: true },
-          { id: 12, title: "Nicht sicher 2", enabled: true, hasFile: true },
-          { id: 13, title: "Frau J\xFCrgens", enabled: true, hasFile: true },
-          { id: 14, title: "Die Wahlbeteiligung", enabled: true, hasFile: true },
-          { id: 15, title: "Die Wetterlage in den Alpen", enabled: true, hasFile: true },
-          { id: 16, title: "Wetter in den Alpen (Mittel)", enabled: true, hasFile: true },
-          { id: 17, title: "Insel Bali", enabled: true, hasFile: true },
-          { id: 18, title: "Die Fluggesellschaft", enabled: true, hasFile: true },
-          { id: 19, title: "Der Fluggesellschaft (Mittel)", enabled: true, hasFile: true },
-          { id: 20, title: "Der Bau", enabled: true, hasFile: true },
-          { id: 21, title: "50-Euro", enabled: true, hasFile: true },
-          { id: 22, title: "Das Schladminger", enabled: true, hasFile: true },
-          { id: 23, title: "Bei den Europawahlen (Linksparteien)", enabled: true, hasFile: true },
-          { id: 24, title: "Bei den Europawahlen (CDU/CSU)", enabled: true, hasFile: true },
-          { id: 25, title: "Die Bundesl\xE4nder", enabled: true, hasFile: true },
-          { id: 26, title: "Bio-Siegels", enabled: true, hasFile: true },
-          { id: 27, title: "Berufen (bonbon)", enabled: true, hasFile: true },
-          { id: 28, title: "Die Zahl der Arbeitslosen (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 29, title: "BILD AM SONNTAG (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 30, title: "Studentenparty in Frankreich (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 31, title: "Deutsche Filmmuseum (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 32, title: "Ein Treffen bei der Integrationsbeauftragten (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 33, title: "die Konjunkturentwicklung negativ (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 34, title: "internationalen Konferenz (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 35, title: "Um Tickets zu gewinnen (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 36, title: "Die tschechische Stadt Pilsen (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 37, title: "Laut Statistischem Bundesamt (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 38, title: "In Frankfurt haben Manager (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 39, title: "F\xFCr die Polizei in Berlin (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 40, title: "Die Sprecherin ist verheiratet (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 41, title: "Bei der Sportveranstaltung (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 42, title: "Das Bundesfamilienministerium (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 43, title: "Meeresk\xFCsten (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 44, title: "Bauern warnen (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 45, title: "Nach Ansicht mancher (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true }
-        ],
-        hoeren2: [
-          { id: 1, title: "Herr Gasser und Frau Janke", enabled: true, hasFile: true },
-          { id: 2, title: "Suza Hotop", enabled: true, hasFile: true },
-          { id: 3, title: "Suza Hotop (Mittel)", enabled: true, hasFile: true },
-          { id: 4, title: "Professor Steiner", enabled: true, hasFile: true },
-          { id: 5, title: "Professor Steiner (Mittel)", enabled: true, hasFile: true },
-          { id: 6, title: "Mallorca", enabled: true, hasFile: true },
-          { id: 7, title: "Mallorca (Mittel)", enabled: true, hasFile: true },
-          { id: 8, title: "In dem Restaurant", enabled: true, hasFile: true },
-          { id: 9, title: "Julia", enabled: true, hasFile: true },
-          { id: 10, title: "Carina", enabled: true, hasFile: true },
-          { id: 11, title: "Carina (Mittel)", enabled: true, hasFile: true },
-          { id: 12, title: "Frau Schenk", enabled: true, hasFile: true },
-          { id: 13, title: "Frau Schenk (Mittel)", enabled: true, hasFile: true },
-          { id: 14, title: "Herr Karimov", enabled: true, hasFile: true },
-          { id: 15, title: "Nadine", enabled: true, hasFile: true },
-          { id: 16, title: "Markus", enabled: true, hasFile: true },
-          { id: 17, title: "Markus (Mittel)", enabled: true, hasFile: true },
-          { id: 18, title: "Roland (Spielen)", enabled: true, hasFile: true },
-          { id: 19, title: "Roland (aufsteigen)", enabled: true, hasFile: true },
-          { id: 20, title: "Roland (einer h\xF6heren Lige)", enabled: true, hasFile: true },
-          { id: 21, title: "Die Deutschen machen", enabled: true, hasFile: true },
-          { id: 22, title: "Herr Scherer", enabled: true, hasFile: true },
-          { id: 23, title: "Beim Wettkampf", enabled: true, hasFile: true },
-          { id: 24, title: "Vanessa", enabled: true, hasFile: true },
-          { id: 25, title: "Zu Beginn", enabled: true, hasFile: true },
-          { id: 26, title: "Die TU Dresden", enabled: true, hasFile: true },
-          { id: 27, title: "Lisa Eisenberg", enabled: true, hasFile: true },
-          { id: 28, title: "Franz Schumacher", enabled: true, hasFile: true },
-          { id: 29, title: "Meron Makeba", enabled: true, hasFile: true },
-          { id: 30, title: "Frau Kedar Malta", enabled: true, hasFile: true },
-          { id: 31, title: "Frau Keder aus Malta", enabled: true, hasFile: true },
-          { id: 32, title: "Nadine Wagner (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 33, title: "Mirjam Pressier (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 34, title: "Mirjam Pressier - \u0644\u064A\u062F\u0639\u062A (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 35, title: "Frau Pesina (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 36, title: "Herr Werner (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 37, title: "Wohnmobil (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 38, title: "Stra\xDFenkinder - Die Kinder (Kids) (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 39, title: "Familie - Eltern (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 40, title: "Revolution Day (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 41, title: "Bicycle (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 42, title: "Die Radiosendung (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 43, title: "psychische (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 44, title: "Herr Kemper (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 45, title: "Frau Hahn (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 46, title: "Wohnmobilen (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 47, title: "Bibliothek (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 48, title: "Eisschwimmen (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 49, title: "Die Ausbildung (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 50, title: "Thomas", enabled: true, hasFile: true },
-          { id: 51, title: "Frau Kiddar 3", enabled: true, hasFile: true },
-          { id: 52, title: "Bio-Essen: Obst, Gem\xFCse und Lieferung", enabled: true, hasFile: true },
-          { id: 53, title: "Influencerin - Maria im Interview", enabled: true, hasFile: true },
-          { id: 54, title: "Vom Marktstand zum eigenen Gesch\xE4ft", enabled: true, hasFile: true },
-          { id: 55, title: "Interview mit Bauingenieur - Herr B\xF6hm", enabled: true, hasFile: true }
-        ],
-        hoeren3: [
-          { id: 1, title: "Telefon", enabled: true, hasFile: true },
-          { id: 2, title: "Musikfestivals", enabled: true, hasFile: true },
-          { id: 3, title: "Musikfestivals (Mittel)", enabled: true, hasFile: true },
-          { id: 4, title: "Fahrschule", enabled: true, hasFile: true },
-          { id: 5, title: "Im S\xFCden Deutschlands (regnen)", enabled: true, hasFile: true },
-          { id: 6, title: "Im S\xFCden Deutschlands (Schnee)", enabled: true, hasFile: true },
-          { id: 7, title: "Internet pr\xFCfen", enabled: true, hasFile: true },
-          { id: 8, title: "Ehrenamts", enabled: true, hasFile: true },
-          { id: 9, title: "Ehrenamts (Mittel)", enabled: true, hasFile: true },
-          { id: 10, title: "Demonstration", enabled: true, hasFile: true },
-          { id: 11, title: "Wochenanfang", enabled: true, hasFile: true },
-          { id: 12, title: "Im August", enabled: true, hasFile: true },
-          { id: 13, title: "Fundb\xFCro", enabled: true, hasFile: true },
-          { id: 14, title: "Ausgang 26", enabled: true, hasFile: true },
-          { id: 15, title: "Ausgang 26 (Mittel)", enabled: true, hasFile: true },
-          { id: 16, title: "Blutspenden", enabled: true, hasFile: true },
-          { id: 17, title: "Reitturnier", enabled: true, hasFile: true },
-          { id: 18, title: "Delikatessen", enabled: true, hasFile: true },
-          { id: 19, title: "F\xFCr ein Konzert (Bus gratis)", enabled: true, hasFile: true },
-          { id: 20, title: "F\xFCr ein Konzert (in der ganzen Stadt)", enabled: true, hasFile: true },
-          { id: 21, title: "In Raum C23", enabled: true, hasFile: true },
-          { id: 22, title: "Trainingsausfahrten", enabled: true, hasFile: true },
-          { id: 23, title: "Das Gesch\xE4ft", enabled: true, hasFile: true },
-          { id: 24, title: "Nach einer Gro\xDFdemonstration", enabled: true, hasFile: true },
-          { id: 25, title: "Das Fest (ohne Frankfurt)", enabled: true, hasFile: true },
-          { id: 26, title: "Das Fest (mit Frankfurt)", enabled: true, hasFile: true },
-          { id: 27, title: "Radio Konzert", enabled: true, hasFile: true },
-          { id: 28, title: "Wanderung (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 29, title: "Bayern Radio (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 30, title: "Die Gruppe Die Prinzen (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 31, title: "sp\xE4testens in Hannover (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 32, title: "F\xFCr das Konzert mit Romano (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 33, title: "Gartenausstellung K\xF6Ga (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 34, title: "den Opel-Zoo (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 35, title: "Der Christkindlesmarkt in N\xFCrnberg (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 36, title: "Das Gesch\xE4ft f\xFCr \xF6sterreichische Spezialit\xE4ten (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 37, title: "Alle Fl\xFCge der Fluglinie AirMer (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 38, title: "Auto gewinnen (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 39, title: "Die Fahrradtouren von Berlin (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 40, title: "Die Literaturmesse f\xFCr Kleinverleger (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 41, title: "Fu\xDFballspiels im Ostpark (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 42, title: "Das Treffen (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 43, title: "im Frankfurter Zoo (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 44, title: "Ein Teil der kostenlosen Veranstaltungen (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 45, title: "Auf der Viktoriabr\xFCcke (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 46, title: "Die Buchpr\xE4sentation (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 47, title: "Beim Klassik-Radio (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 48, title: "Sie H\xF6ren Den Anrufbeantworter-Buchhandlung", enabled: true, hasFile: true }
-        ],
-        schreiben: schreibenExams,
-        m\u00FCndlich: m\u00FCndlich2Exams,
-        m\u00FCndlich1: m\u00FCndlich1Exams,
-        m\u00FCndlich2: m\u00FCndlich2Exams,
-        m\u00FCndlich3: m\u00FCndlich3Exams,
-        tips: tipsExams
-      };
-      activeTeilId = null;
-      window.closeVersionsPopupAndOpen = function(skill, id, file, title) {
-        const popup = document.getElementById("versionsPopupAuto");
-        if (popup) popup.remove();
-        window.openExam(id, title, skill, file);
-      };
-      window.saveExamResultGlobal = function(skill, examId, score) {
-        saveExamResult(skill, examId, score);
-        if (document.getElementById("list").classList.contains("active") && currentSkill === skill) {
-          renderExamListForSkill(currentSkill, getTeilNameBySkill(currentSkill));
+      }
+    }
+    const finalScore = (score * pointsPerQuestion).toFixed(2);
+    const resultDiv = document.getElementById("matchingResult");
+    if (resultDiv) {
+      resultDiv.innerHTML = `\u0627\u0644\u0646\u062A\u064A\u062C\u0629: ${finalScore} / 25`;
+      resultDiv.style.display = "block";
+    }
+    if (finalScore >= 20) {
+      resultDiv.style.backgroundColor = "#d4edda";
+      resultDiv.style.color = "#155724";
+    } else if (finalScore >= 15) {
+      resultDiv.style.backgroundColor = "#fff3cd";
+      resultDiv.style.color = "#856404";
+    } else {
+      resultDiv.style.backgroundColor = "#f8d7da";
+      resultDiv.style.color = "#721c24";
+    }
+    if (typeof window.saveExamResultGlobal === "function") {
+      const examId = currentMatchingExamData2.id || window.currentExamId || 1;
+      window.saveExamResultGlobal("lesen1", examId, parseFloat(finalScore));
+    }
+    const retryCount = window.incrementRetryCount(currentSkill, window.currentExamId || 1);
+    if (typeof window.updateRetryCounter === "function") {
+      window.updateRetryCounter();
+    }
+    if (typeof window.updateDailyPlanSilent === "function") {
+      window.updateDailyPlanSilent();
+    }
+    if (typeof window.removeColorFromExam === "function") {
+      const examId = window.currentExamId;
+      if (examId) {
+        window.removeColorFromExam(examId);
+      }
+    }
+    if (examTimer2.isRunning) {
+      const elapsed = examTimer2.stop();
+      if (elapsed !== null) {
+        const skill = window.currentSkill || "";
+        const examId = window.currentExamId || 1;
+        if (skill && examId) {
+          saveExamTime(skill, examId, elapsed);
         }
-      };
-      document.addEventListener("DOMContentLoaded", function() {
-        const startBtn = document.getElementById("startBtn");
-        const backHomeBtn = document.getElementById("backHomeBtn");
-        const backToListBtn = document.getElementById("backToListBtn");
-        const backArrowFromExam = document.getElementById("backArrowFromExam");
-        if (startBtn) startBtn.onclick = function() {
-          goList();
-        };
-        if (backHomeBtn) backHomeBtn.onclick = function() {
-          goHome();
-        };
-        if (backToListBtn) backToListBtn.onclick = function() {
-          goList();
-        };
-        if (backArrowFromExam) {
-          backArrowFromExam.onclick = function() {
-            goBackToExamsList();
+      }
+    }
+  }
+  function renderTeil2Exam() {
+    const container = document.getElementById("teil2");
+    if (!container) return;
+    container.innerHTML = "";
+    const twoColumns = document.createElement("div");
+    twoColumns.style.display = "flex";
+    twoColumns.style.gap = "30px";
+    twoColumns.style.flexWrap = "wrap";
+    const textColumn = document.createElement("div");
+    textColumn.style.flex = "1";
+    textColumn.style.minWidth = "300px";
+    textColumn.style.backgroundColor = "#f9f9f9";
+    textColumn.style.padding = "20px";
+    textColumn.style.borderRadius = "12px";
+    textColumn.style.border = "1px solid #ddd";
+    textColumn.style.maxHeight = "600px";
+    textColumn.style.overflowY = "auto";
+    const textTitle = document.createElement("h3");
+    textTitle.innerHTML = "Text";
+    textTitle.style.marginTop = "0";
+    textTitle.style.color = "#2c3e66";
+    textColumn.appendChild(textTitle);
+    const textContent = document.createElement("div");
+    textContent.innerHTML = currentTeil2Data.text;
+    textContent.style.lineHeight = "1.7";
+    textContent.style.fontSize = "14px";
+    textContent.style.textAlign = "justify";
+    textColumn.appendChild(textContent);
+    const questionsColumn = document.createElement("div");
+    questionsColumn.style.flex = "1";
+    questionsColumn.style.minWidth = "300px";
+    questionsColumn.style.backgroundColor = "#fff";
+    questionsColumn.style.padding = "20px";
+    questionsColumn.style.borderRadius = "12px";
+    questionsColumn.style.border = "1px solid #ddd";
+    const questionsTitle = document.createElement("h3");
+    questionsTitle.innerHTML = "Fragen";
+    questionsTitle.style.marginTop = "0";
+    questionsTitle.style.color = "#2c3e66";
+    questionsColumn.appendChild(questionsTitle);
+    const questionsContainer = document.createElement("div");
+    questionsContainer.id = "teil2_questions_container";
+    const questions = currentTeil2Data.questions;
+    for (let i = 0; i < questions.length; i++) {
+      const q = questions[i];
+      const card = document.createElement("div");
+      card.className = "question-card";
+      card.id = "teil2_q_" + i;
+      card.style.marginBottom = "20px";
+      card.style.padding = "15px";
+      card.style.border = "1px solid #e0e0e0";
+      card.style.borderRadius = "10px";
+      card.style.backgroundColor = "#fafafa";
+      const questionText = document.createElement("div");
+      questionText.className = "question-text";
+      questionText.innerHTML = `<strong>${i + 1}. ${q.text}</strong>`;
+      questionText.style.marginBottom = "12px";
+      card.appendChild(questionText);
+      const optionsDiv = document.createElement("div");
+      optionsDiv.className = "options-container";
+      optionsDiv.style.display = "flex";
+      optionsDiv.style.flexDirection = "column";
+      optionsDiv.style.gap = "8px";
+      for (let j = 0; j < q.options.length; j++) {
+        const label = document.createElement("label");
+        label.className = "option-label";
+        label.style.display = "flex";
+        label.style.alignItems = "center";
+        label.style.gap = "10px";
+        label.style.cursor = "pointer";
+        label.style.padding = "8px 12px";
+        label.style.borderRadius = "8px";
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = `teil2_q${i}`;
+        radio.value = j;
+        radio.style.cursor = "pointer";
+        radio.onchange = /* @__PURE__ */ (function(qIdx, ansIdx) {
+          return function() {
+            teil2UserAnswers[qIdx] = ansIdx;
+            const cardElem = document.getElementById(`teil2_q_${qIdx}`);
+            if (cardElem) cardElem.classList.remove("correct-answer-card", "wrong-answer-card");
           };
+        })(i, j);
+        const optionText = document.createElement("span");
+        optionText.innerHTML = q.options[j];
+        label.appendChild(radio);
+        label.appendChild(optionText);
+        optionsDiv.appendChild(label);
+      }
+      card.appendChild(optionsDiv);
+      questionsContainer.appendChild(card);
+    }
+    questionsColumn.appendChild(questionsContainer);
+    const buttonContainer = document.createElement("div");
+    buttonContainer.style.display = "flex";
+    buttonContainer.style.gap = "15px";
+    buttonContainer.style.justifyContent = "center";
+    buttonContainer.style.marginTop = "20px";
+    const checkBtn = document.createElement("button");
+    checkBtn.innerText = "\u2705 \u062A\u0635\u062D\u064A\u062D";
+    checkBtn.className = "check-btn";
+    checkBtn.style.padding = "12px 24px";
+    checkBtn.style.backgroundColor = "#2c3e66";
+    checkBtn.style.color = "white";
+    checkBtn.style.border = "none";
+    checkBtn.style.borderRadius = "8px";
+    checkBtn.style.fontSize = "16px";
+    checkBtn.onclick = checkTeil2Exam;
+    buttonContainer.appendChild(checkBtn);
+    const resetBtn = document.createElement("button");
+    resetBtn.innerText = "\u21BA";
+    resetBtn.style.padding = "8px 12px";
+    resetBtn.style.backgroundColor = "#6c757d";
+    resetBtn.style.color = "white";
+    resetBtn.style.border = "none";
+    resetBtn.style.borderRadius = "6px";
+    resetBtn.style.fontSize = "16px";
+    resetBtn.style.fontWeight = "bold";
+    resetBtn.onclick = function() {
+      teil2UserAnswers = {};
+      questionsColumn.querySelectorAll('input[type="radio"]').forEach((radio) => radio.checked = false);
+      for (let i = 0; i < questions.length; i++) {
+        const card = document.getElementById(`teil2_q_${i}`);
+        if (card) {
+          card.classList.remove("correct-answer-card", "wrong-answer-card");
+          card.style.backgroundColor = "#fafafa";
+          card.style.border = "1px solid #e0e0e0";
         }
-        const examsContainer = document.getElementById("examsList");
-        if (examsContainer) {
-          examsContainer.innerHTML = '<div class="welcome-message">\u{1F448} \u0627\u062E\u062A\u0631 \u0627\u0644\u0642\u0633\u0645 (Teil) \u0645\u0646 \u0627\u0644\u0623\u0639\u0644\u0649 \u0644\u0639\u0631\u0636 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A</div>';
+        const oldMsg = document.querySelector(`#teil2_q_${i} .correct-message`);
+        if (oldMsg) oldMsg.remove();
+        const optionLabels = document.querySelectorAll(`#teil2_q_${i} .option-label`);
+        optionLabels.forEach((label) => {
+          label.style.backgroundColor = "";
+          label.style.border = "";
+        });
+      }
+      const resultDiv2 = document.getElementById("teil2Result");
+      if (resultDiv2) {
+        resultDiv2.style.display = "none";
+        resultDiv2.innerHTML = "";
+      }
+    };
+    buttonContainer.appendChild(resetBtn);
+    questionsColumn.appendChild(buttonContainer);
+    const resultDiv = document.createElement("div");
+    resultDiv.id = "teil2Result";
+    resultDiv.className = "result-box";
+    resultDiv.style.display = "none";
+    questionsColumn.appendChild(resultDiv);
+    twoColumns.appendChild(textColumn);
+    twoColumns.appendChild(questionsColumn);
+    container.appendChild(twoColumns);
+  }
+  function checkTeil2Exam() {
+    const questions = currentTeil2Data.questions;
+    let score = 0;
+    const total = questions.length;
+    const pointsPerQuestion = 25 / total;
+    for (let i = 0; i < total; i++) {
+      const q = questions[i];
+      const card = document.getElementById(`teil2_q_${i}`);
+      const userAnswer = teil2UserAnswers[i];
+      const isCorrect = userAnswer === q.correct;
+      if (card) {
+        card.classList.remove("correct-answer-card", "wrong-answer-card");
+        const oldMsg = card.querySelector(".correct-message");
+        if (oldMsg) oldMsg.remove();
+        if (isCorrect && userAnswer !== void 0) {
+          score++;
+          card.classList.add("correct-answer-card");
+        } else {
+          card.classList.add("wrong-answer-card");
+          const correctMsg = document.createElement("div");
+          correctMsg.className = "correct-message";
+          correctMsg.style.color = "#28a745";
+          correctMsg.style.marginTop = "10px";
+          correctMsg.style.fontSize = "13px";
+          correctMsg.innerHTML = `\u2705 : ${q.options[q.correct]}`;
+          card.appendChild(correctMsg);
+        }
+        const radios = card.querySelectorAll(".option-label");
+        for (let r = 0; r < radios.length; r++) {
+          const radioInput = radios[r].querySelector("input");
+          if (radioInput) {
+            const radioValue = parseInt(radioInput.value);
+            if (isCorrect && userAnswer !== void 0) {
+              if (radioInput.checked) {
+                radios[r].style.backgroundColor = "#d4edda";
+                radios[r].style.border = "2px solid #28a745";
+              }
+            } else {
+              if (radioInput.checked) {
+                radios[r].style.backgroundColor = "#fef0e0";
+                radios[r].style.border = "2px solid #e67e22";
+              }
+              if (radioValue === q.correct) {
+                radios[r].style.backgroundColor = "#d4edda";
+                radios[r].style.border = "2px solid #28a745";
+              }
+            }
+          }
+        }
+      }
+    }
+    const finalScore = (score * pointsPerQuestion).toFixed(2);
+    const resultDiv = document.getElementById("teil2Result");
+    if (resultDiv) {
+      resultDiv.innerHTML = `\u0627\u0644\u0646\u062A\u064A\u062C\u0629: ${finalScore} / 25`;
+      resultDiv.style.display = "block";
+    }
+    if (finalScore >= 20) {
+      resultDiv.style.backgroundColor = "#d4edda";
+      resultDiv.style.color = "#155724";
+    } else if (finalScore >= 15) {
+      resultDiv.style.backgroundColor = "#fff3cd";
+      resultDiv.style.color = "#856404";
+    } else {
+      resultDiv.style.backgroundColor = "#f8d7da";
+      resultDiv.style.color = "#721c24";
+    }
+    if (typeof window.saveExamResultGlobal === "function") {
+      const examId = currentTeil2Data.id || window.currentExamId || 1;
+      window.saveExamResultGlobal("lesen2", examId, parseFloat(finalScore));
+    }
+    const retryCount = window.incrementRetryCount(currentSkill, window.currentExamId || 1);
+    if (typeof window.updateRetryCounter === "function") {
+      window.updateRetryCounter();
+    }
+    if (typeof window.updateDailyPlanSilent === "function") {
+      window.updateDailyPlanSilent();
+    }
+    if (typeof window.removeColorFromExam === "function") {
+      const examId = window.currentExamId;
+      if (examId) {
+        window.removeColorFromExam(examId);
+      }
+    }
+    if (examTimer2.isRunning) {
+      const elapsed = examTimer2.stop();
+      if (elapsed !== null) {
+        const skill = window.currentSkill || "";
+        const examId = window.currentExamId || 1;
+        if (skill && examId) {
+          saveExamTime(skill, examId, elapsed);
+        }
+      }
+    }
+  }
+  function updateTeil3SelectOptions() {
+    const items = currentTeil3Data.items;
+    const situations = currentTeil3Data.situations;
+    const usedSituations = /* @__PURE__ */ new Set();
+    for (let key in teil3UserAnswers) {
+      const val = teil3UserAnswers[key];
+      if (val !== void 0 && val !== null && val !== "" && val !== "none") {
+        usedSituations.add(val);
+      }
+    }
+    for (let i = 0; i < items.length; i++) {
+      const select = document.getElementById(`teil3_select_${i}`);
+      if (!select) continue;
+      const currentAnswer = teil3UserAnswers[i];
+      const isNoneAnswer = currentAnswer === "none";
+      select.innerHTML = "";
+      const defaultOption = document.createElement("option");
+      defaultOption.value = "";
+      defaultOption.textContent = "-- \u0627\u062E\u062A\u0631 \u0627\u0644\u0639\u0646\u0648\u0627\u0646 --";
+      select.appendChild(defaultOption);
+      const noTitleOption = document.createElement("option");
+      noTitleOption.value = "none";
+      noTitleOption.textContent = "\u2727 \u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646 \u2727";
+      select.appendChild(noTitleOption);
+      for (let s = 0; s < situations.length; s++) {
+        if (usedSituations.has(s) && currentAnswer !== s) {
+          continue;
+        }
+        const option = document.createElement("option");
+        option.value = s;
+        option.textContent = `${String.fromCharCode(97 + s)}. ${situations[s]}`;
+        select.appendChild(option);
+      }
+      if (isNoneAnswer) {
+        select.value = "none";
+      } else if (currentAnswer !== void 0 && currentAnswer !== null && currentAnswer !== "") {
+        if (!usedSituations.has(currentAnswer) || currentAnswer !== void 0) {
+          select.value = currentAnswer;
+        }
+      }
+    }
+    if (window.memoryEngine && window.memoryEngine.isActive) {
+      setTimeout(colorSelectOptions, 50);
+    }
+  }
+  function updateTeil3RightSideColors() {
+    const items = currentTeil3Data.items;
+    const situations = currentTeil3Data.situations;
+    for (let i = 0; i < situations.length; i++) {
+      const sitDiv = document.getElementById(`teil3_sit_${i}`);
+      if (!sitDiv) continue;
+      let isUsed = false;
+      for (let j = 0; j < items.length; j++) {
+        const answer = teil3UserAnswers[j];
+        if (answer !== void 0 && answer !== null && answer !== "" && answer !== "none" && answer === i) {
+          isUsed = true;
+          break;
+        }
+      }
+      if (isUsed) {
+        sitDiv.style.backgroundColor = "#e9ecef";
+        sitDiv.style.border = "1px solid #adb5bd";
+        sitDiv.style.color = "#212529";
+        sitDiv.classList.add("used");
+      } else {
+        if (teil3SelectedSit !== i && teil3SelectedSitForLink !== i) {
+          sitDiv.style.backgroundColor = "white";
+          sitDiv.style.border = "1px solid #ddd";
+          sitDiv.style.color = "#212529";
+          sitDiv.classList.remove("used");
+        } else if (teil3SelectedSitForLink === i) {
+          sitDiv.style.backgroundColor = "#e0f2fe";
+          sitDiv.style.border = "1px solid #7dd3fc";
+        }
+      }
+    }
+  }
+  function updateTeil3CardStyle(idx) {
+    const card = document.getElementById(`teil3_card_${idx}`);
+    const answer = teil3UserAnswers[idx];
+    if (answer !== void 0 && answer !== null && answer !== "") {
+      card.style.backgroundColor = "#e9ecef";
+      card.style.border = "1px solid #adb5bd";
+    } else if (teil3SelectedItem === idx || teil3SelectedItemForLink === idx) {
+      card.style.backgroundColor = "#e0f2fe";
+      card.style.border = "1px solid #7dd3fc";
+    } else {
+      card.style.backgroundColor = "#fafafa";
+      card.style.border = "1px solid #e0e0e0";
+    }
+  }
+  function clearTeil3ItemSelection() {
+    if (teil3SelectedItem !== null) {
+      updateTeil3CardStyle(teil3SelectedItem);
+      teil3SelectedItem = null;
+    }
+    if (teil3SelectedItemForLink !== null) {
+      updateTeil3CardStyle(teil3SelectedItemForLink);
+      teil3SelectedItemForLink = null;
+    }
+  }
+  function clearTeil3SituationSelection() {
+    if (teil3SelectedSit !== null) {
+      const sitDiv = document.getElementById(`teil3_sit_${teil3SelectedSit}`);
+      if (sitDiv && !sitDiv.classList.contains("used")) {
+        sitDiv.style.backgroundColor = "white";
+        sitDiv.style.border = "1px solid #ddd";
+      }
+      teil3SelectedSit = null;
+    }
+    if (teil3SelectedSitForLink !== null) {
+      const sitDiv = document.getElementById(`teil3_sit_${teil3SelectedSitForLink}`);
+      if (sitDiv && !sitDiv.classList.contains("used")) {
+        sitDiv.style.backgroundColor = "white";
+        sitDiv.style.border = "1px solid #ddd";
+      }
+      teil3SelectedSitForLink = null;
+    }
+  }
+  function handleTeil3ItemClick(itemIdx) {
+    const items = currentTeil3Data.items;
+    const currentAnswer = teil3UserAnswers[itemIdx];
+    if (teil3SelectedItemForLink === itemIdx) {
+      teil3SelectedItemForLink = null;
+      updateTeil3CardStyle(itemIdx);
+      return;
+    }
+    if (teil3SelectedSitForLink !== null) {
+      const sitIdx = teil3SelectedSitForLink;
+      if (currentAnswer === sitIdx) {
+        pushTeil3LinkToHistory(itemIdx, null, "remove", currentAnswer);
+        delete teil3UserAnswers[itemIdx];
+        const selectElem2 = document.getElementById(`teil3_select_${itemIdx}`);
+        if (selectElem2) selectElem2.selectedIndex = 0;
+        updateTeil3CardStyle(itemIdx);
+        updateTeil3SelectOptions();
+        updateTeil3RightSideColors();
+        teil3SelectedSitForLink = null;
+        clearTeil3SituationSelection();
+        return;
+      }
+      pushTeil3LinkToHistory(itemIdx, sitIdx, "add", teil3UserAnswers[itemIdx]);
+      teil3UserAnswers[itemIdx] = sitIdx;
+      const selectElem = document.getElementById(`teil3_select_${itemIdx}`);
+      if (selectElem) selectElem.value = sitIdx;
+      updateTeil3SelectOptions();
+      updateTeil3RightSideColors();
+      updateTeil3CardStyle(itemIdx);
+      teil3SelectedSitForLink = null;
+      clearTeil3SituationSelection();
+      return;
+    }
+    if (currentAnswer !== void 0 && currentAnswer !== null && currentAnswer !== "") {
+      pushTeil3LinkToHistory(itemIdx, null, "remove", currentAnswer);
+      delete teil3UserAnswers[itemIdx];
+      const selectElem = document.getElementById(`teil3_select_${itemIdx}`);
+      if (selectElem) selectElem.selectedIndex = 0;
+      updateTeil3CardStyle(itemIdx);
+      updateTeil3SelectOptions();
+      updateTeil3RightSideColors();
+      return;
+    }
+    if (teil3SelectedItemForLink !== null) {
+      updateTeil3CardStyle(teil3SelectedItemForLink);
+    }
+    teil3SelectedItemForLink = itemIdx;
+    updateTeil3CardStyle(itemIdx);
+    if (teil3SelectedSitForLink !== null) {
+      clearTeil3SituationSelection();
+      teil3SelectedSitForLink = null;
+    }
+  }
+  function handleTeil3SituationClick(sitIdx) {
+    const items = currentTeil3Data.items;
+    const situations = currentTeil3Data.situations;
+    let linkedItemIdx = null;
+    for (let j = 0; j < items.length; j++) {
+      const answer = teil3UserAnswers[j];
+      if (answer !== void 0 && answer !== null && answer !== "" && answer !== "none" && answer === sitIdx) {
+        linkedItemIdx = j;
+        break;
+      }
+    }
+    if (teil3SelectedSitForLink === sitIdx) {
+      if (linkedItemIdx !== null) {
+        const previousSit = teil3UserAnswers[linkedItemIdx];
+        pushTeil3LinkToHistory(linkedItemIdx, null, "remove", previousSit);
+        delete teil3UserAnswers[linkedItemIdx];
+        const selectElem = document.getElementById(`teil3_select_${linkedItemIdx}`);
+        if (selectElem) selectElem.selectedIndex = 0;
+        updateTeil3CardStyle(linkedItemIdx);
+        updateTeil3SelectOptions();
+        updateTeil3RightSideColors();
+      }
+      teil3SelectedSitForLink = null;
+      clearTeil3SituationSelection();
+      return;
+    }
+    if (teil3SelectedItemForLink !== null) {
+      const itemIdx = teil3SelectedItemForLink;
+      const currentAnswer = teil3UserAnswers[itemIdx];
+      if (currentAnswer === sitIdx) {
+        pushTeil3LinkToHistory(itemIdx, null, "remove", currentAnswer);
+        delete teil3UserAnswers[itemIdx];
+        const selectElem2 = document.getElementById(`teil3_select_${itemIdx}`);
+        if (selectElem2) selectElem2.selectedIndex = 0;
+        updateTeil3CardStyle(itemIdx);
+        updateTeil3SelectOptions();
+        updateTeil3RightSideColors();
+        teil3SelectedItemForLink = null;
+        return;
+      }
+      pushTeil3LinkToHistory(itemIdx, sitIdx, "add", teil3UserAnswers[itemIdx]);
+      teil3UserAnswers[itemIdx] = sitIdx;
+      const selectElem = document.getElementById(`teil3_select_${itemIdx}`);
+      if (selectElem) selectElem.value = sitIdx;
+      updateTeil3SelectOptions();
+      updateTeil3RightSideColors();
+      updateTeil3CardStyle(itemIdx);
+      teil3SelectedItemForLink = null;
+      return;
+    }
+    if (linkedItemIdx !== null) {
+      const previousSit = teil3UserAnswers[linkedItemIdx];
+      pushTeil3LinkToHistory(linkedItemIdx, null, "remove", previousSit);
+      delete teil3UserAnswers[linkedItemIdx];
+      const selectElem = document.getElementById(`teil3_select_${linkedItemIdx}`);
+      if (selectElem) selectElem.selectedIndex = 0;
+      updateTeil3CardStyle(linkedItemIdx);
+      updateTeil3SelectOptions();
+      updateTeil3RightSideColors();
+      return;
+    }
+    if (teil3SelectedSitForLink !== null) {
+      const prevSitDiv = document.getElementById(`teil3_sit_${teil3SelectedSitForLink}`);
+      if (prevSitDiv && !prevSitDiv.classList.contains("used")) {
+        prevSitDiv.style.backgroundColor = "white";
+        prevSitDiv.style.border = "1px solid #ddd";
+      }
+    }
+    teil3SelectedSitForLink = sitIdx;
+    const sitDiv = document.getElementById(`teil3_sit_${sitIdx}`);
+    if (sitDiv) {
+      sitDiv.style.backgroundColor = "#e0f2fe";
+      sitDiv.style.border = "1px solid #7dd3fc";
+    }
+    if (teil3SelectedItemForLink !== null) {
+      updateTeil3CardStyle(teil3SelectedItemForLink);
+      teil3SelectedItemForLink = null;
+    }
+  }
+  function renderTeil3Exam() {
+    const container = document.getElementById("teil3");
+    if (!container) return;
+    container.innerHTML = "";
+    const items = currentTeil3Data.items;
+    const situations = currentTeil3Data.situations;
+    const twoColumns = document.createElement("div");
+    twoColumns.style.display = "flex";
+    twoColumns.style.gap = "30px";
+    twoColumns.style.flexWrap = "wrap";
+    const leftColumn = document.createElement("div");
+    leftColumn.style.flex = "2";
+    leftColumn.style.minWidth = "500px";
+    const leftTitle = document.createElement("h3");
+    leftTitle.innerHTML = "Anzeigen";
+    leftTitle.style.marginTop = "0";
+    leftTitle.style.color = "#2c3e66";
+    leftTitle.style.marginBottom = "15px";
+    leftColumn.appendChild(leftTitle);
+    const itemsGrid = document.createElement("div");
+    itemsGrid.style.display = "grid";
+    itemsGrid.style.gridTemplateColumns = "1fr 1fr";
+    itemsGrid.style.gap = "20px";
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      const card = document.createElement("div");
+      card.className = "question-card";
+      card.id = `teil3_card_${i}`;
+      card.style.padding = "15px";
+      card.style.border = "1px solid #e0e0e0";
+      card.style.borderRadius = "12px";
+      card.style.backgroundColor = "#fafafa";
+      card.style.transition = "all 0.2s";
+      card.style.cursor = "pointer";
+      card.setAttribute("data-item-index", i);
+      const itemTitle = document.createElement("div");
+      itemTitle.style.fontWeight = "bold";
+      itemTitle.style.fontSize = "16px";
+      itemTitle.style.color = "#2c3e66";
+      itemTitle.style.marginBottom = "10px";
+      itemTitle.innerHTML = `Anzeige ${String.fromCharCode(65 + i)}`;
+      card.appendChild(itemTitle);
+      const itemText = document.createElement("div");
+      itemText.style.fontSize = "13px";
+      itemText.style.lineHeight = "1.5";
+      itemText.style.marginBottom = "12px";
+      itemText.style.color = "#555";
+      itemText.innerHTML = item.text;
+      card.appendChild(itemText);
+      const select = document.createElement("select");
+      select.className = "teil3-original-select";
+      select.style.width = "100%";
+      select.style.padding = "8px";
+      select.style.marginTop = "10px";
+      select.style.borderRadius = "8px";
+      select.style.border = "1px solid #ccc";
+      select.id = `teil3_select_${i}`;
+      select.innerHTML = "";
+      const defaultOption = document.createElement("option");
+      defaultOption.value = "";
+      defaultOption.textContent = "-- \u0627\u062E\u062A\u0631 \u0627\u0644\u0639\u0646\u0648\u0627\u0646 --";
+      defaultOption.selected = true;
+      select.appendChild(defaultOption);
+      const noTitleOption = document.createElement("option");
+      noTitleOption.value = "none";
+      noTitleOption.textContent = "\u2727 \u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646 \u2727";
+      select.appendChild(noTitleOption);
+      for (let s = 0; s < situations.length; s++) {
+        const option = document.createElement("option");
+        option.value = s;
+        option.textContent = `${String.fromCharCode(97 + s)}. ${situations[s]}`;
+        select.appendChild(option);
+      }
+      select.onchange = /* @__PURE__ */ (function(idx) {
+        return function() {
+          let val = select.value;
+          if (val === "none") {
+            teil3UserAnswers[idx] = "none";
+          } else if (val !== "") {
+            teil3UserAnswers[idx] = parseInt(val);
+          } else {
+            delete teil3UserAnswers[idx];
+          }
+          updateTeil3SelectOptions();
+          updateTeil3RightSideColors();
+          updateTeil3CardStyle(idx);
+          clearTeil3ItemSelection();
+          clearTeil3SituationSelection();
+        };
+      })(i);
+      card.appendChild(select);
+      card.addEventListener("click", /* @__PURE__ */ (function(idx) {
+        return function(e) {
+          if (e.target.tagName === "SELECT" || e.target.closest("select")) return;
+          e.stopPropagation();
+          handleTeil3ItemClick(idx);
+        };
+      })(i));
+      itemsGrid.appendChild(card);
+    }
+    leftColumn.appendChild(itemsGrid);
+    const rightColumn = document.createElement("div");
+    rightColumn.style.flex = "1";
+    rightColumn.style.minWidth = "250px";
+    rightColumn.style.backgroundColor = "#f0f8ff";
+    rightColumn.style.padding = "20px";
+    rightColumn.style.borderRadius = "12px";
+    rightColumn.style.border = "1px solid #d0e0ff";
+    rightColumn.style.maxHeight = "600px";
+    rightColumn.style.overflowY = "auto";
+    const rightTitle = document.createElement("h3");
+    rightTitle.innerHTML = "Situationen";
+    rightTitle.style.marginTop = "0";
+    rightTitle.style.color = "#2c3e66";
+    rightTitle.style.marginBottom = "15px";
+    rightColumn.appendChild(rightTitle);
+    const situationsList = document.createElement("div");
+    situationsList.id = "teil3_situations_list";
+    for (let i = 0; i < situations.length; i++) {
+      const sitDiv = document.createElement("div");
+      sitDiv.className = "teil3-situation-item";
+      sitDiv.id = `teil3_sit_${i}`;
+      sitDiv.setAttribute("data-sit-index", i);
+      sitDiv.style.padding = "10px 12px";
+      sitDiv.style.marginBottom = "8px";
+      sitDiv.style.backgroundColor = "white";
+      sitDiv.style.borderRadius = "6px";
+      sitDiv.style.border = "1px solid #ddd";
+      sitDiv.style.fontSize = "13px";
+      sitDiv.style.cursor = "pointer";
+      sitDiv.style.transition = "all 0.2s";
+      sitDiv.innerHTML = `${String.fromCharCode(97 + i)}. ${situations[i]}`;
+      sitDiv.onclick = /* @__PURE__ */ (function(sitIdx) {
+        return function(e) {
+          e.stopPropagation();
+          handleTeil3SituationClick(sitIdx);
+        };
+      })(i);
+      sitDiv.onmouseenter = function() {
+        if (!this.classList.contains("used") && this.style.backgroundColor !== "#e0f2fe") {
+          this.style.backgroundColor = "#f0f9ff";
+        }
+      };
+      sitDiv.onmouseleave = function() {
+        if (!this.classList.contains("used") && this.style.backgroundColor !== "#e0f2fe") {
+          this.style.backgroundColor = "white";
+        }
+      };
+      situationsList.appendChild(sitDiv);
+    }
+    rightColumn.appendChild(situationsList);
+    twoColumns.appendChild(leftColumn);
+    twoColumns.appendChild(rightColumn);
+    container.appendChild(twoColumns);
+    const buttonContainer = document.createElement("div");
+    buttonContainer.style.display = "flex";
+    buttonContainer.style.gap = "15px";
+    buttonContainer.style.justifyContent = "center";
+    buttonContainer.style.marginTop = "25px";
+    const checkBtn = document.createElement("button");
+    checkBtn.innerText = "\u2705 \u062A\u0635\u062D\u064A\u062D";
+    checkBtn.className = "check-btn";
+    checkBtn.style.padding = "12px 24px";
+    checkBtn.style.backgroundColor = "#2c3e66";
+    checkBtn.style.color = "white";
+    checkBtn.style.border = "none";
+    checkBtn.style.borderRadius = "8px";
+    checkBtn.style.fontSize = "16px";
+    checkBtn.onclick = checkTeil3Exam;
+    buttonContainer.appendChild(checkBtn);
+    const resetBtn = document.createElement("button");
+    resetBtn.innerText = "\u21BA";
+    resetBtn.style.padding = "8px 12px";
+    resetBtn.style.backgroundColor = "#6c757d";
+    resetBtn.style.color = "white";
+    resetBtn.style.border = "none";
+    resetBtn.style.borderRadius = "6px";
+    resetBtn.style.fontSize = "16px";
+    resetBtn.style.fontWeight = "bold";
+    resetBtn.onclick = function() {
+      teil3UserAnswers = {};
+      teil3SelectedItem = null;
+      teil3SelectedSit = null;
+      teil3SelectedItemForLink = null;
+      teil3SelectedSitForLink = null;
+      for (let i = 0; i < items.length; i++) {
+        const select = document.getElementById(`teil3_select_${i}`);
+        if (select) select.selectedIndex = 0;
+        updateTeil3CardStyle(i);
+      }
+      updateTeil3SelectOptions();
+      updateTeil3RightSideColors();
+      document.querySelectorAll("#teil3 .correct-message").forEach((msg) => msg.remove());
+      const resultDiv2 = document.getElementById("teil3Result");
+      if (resultDiv2) {
+        resultDiv2.style.display = "none";
+        resultDiv2.innerHTML = "";
+      }
+    };
+    buttonContainer.appendChild(resetBtn);
+    container.appendChild(buttonContainer);
+    const resultDiv = document.createElement("div");
+    resultDiv.id = "teil3Result";
+    resultDiv.className = "result-box";
+    resultDiv.style.display = "none";
+    container.appendChild(resultDiv);
+    updateTeil3SelectOptions();
+    updateTeil3RightSideColors();
+  }
+  function checkTeil3Exam() {
+    const items = currentTeil3Data.items;
+    let score = 0;
+    let total = items.length;
+    document.querySelectorAll("#teil3 .correct-message").forEach((msg) => msg.remove());
+    for (let i = 0; i < total; i++) {
+      const card = document.getElementById(`teil3_card_${i}`);
+      const userAnswer = teil3UserAnswers[i];
+      const correctIndex = items[i].correct;
+      let isCorrect = false;
+      let correctText = "";
+      let correctValue = null;
+      if (correctIndex === null || correctIndex === void 0) {
+        correctText = "\u2727 \u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646 \u2727";
+        correctValue = "none";
+        isCorrect = userAnswer === "none" || userAnswer === null || userAnswer === void 0 || userAnswer === "";
+      } else {
+        correctText = `${String.fromCharCode(97 + correctIndex)}. ${currentTeil3Data.situations[correctIndex]}`;
+        correctValue = correctIndex;
+        isCorrect = userAnswer === correctIndex;
+      }
+      if (card) {
+        card.classList.remove("correct-answer-card", "wrong-answer-card");
+        const selectElem = card.querySelector("select");
+        if (isCorrect && userAnswer !== void 0 && userAnswer !== null && userAnswer !== "") {
+          score++;
+          card.classList.add("correct-answer-card");
+          card.style.backgroundColor = "#d4edda";
+          card.style.border = "2px solid #28a745";
+          if (selectElem) {
+            selectElem.style.backgroundColor = "#d4edda";
+            selectElem.style.border = "2px solid #28a745";
+            selectElem.style.color = "#155724";
+          }
+        } else {
+          card.classList.add("wrong-answer-card");
+          card.style.backgroundColor = "#fef0e0";
+          card.style.border = "2px solid #e67e22";
+          if (selectElem) {
+            selectElem.style.backgroundColor = "#fef0e0";
+            selectElem.style.border = "2px solid #e67e22";
+            selectElem.style.color = "#155724";
+            let optionExists = false;
+            for (let j = 0; j < selectElem.options.length; j++) {
+              const optValue = selectElem.options[j].value;
+              if (optValue === correctValue || correctValue === "none" && optValue === "none" || correctValue !== null && correctValue !== void 0 && parseInt(optValue) === correctValue) {
+                optionExists = true;
+                const originalText = selectElem.options[j].textContent;
+                const cleanText = originalText.replace(/^✅\s*/, "");
+                selectElem.options[j].textContent = `\u2705 ${cleanText}`;
+                selectElem.options[j].selected = true;
+                break;
+              }
+            }
+            if (!optionExists) {
+              let msg = card.querySelector(".correct-answer-message");
+              if (!msg) {
+                msg = document.createElement("div");
+                msg.className = "correct-answer-message";
+                msg.style.cssText = "margin-top: 6px; font-size: 12px; color: #28a745;";
+                card.appendChild(msg);
+              }
+              let correctDisplay = correctText || (correctValue === "none" ? "\u2727 \u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646 \u2727" : correctValue);
+              msg.innerHTML = `\u2705 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629: ${correctDisplay}`;
+            }
+          }
+        }
+      }
+    }
+    const finalScore = (score * 25 / total).toFixed(2);
+    const resultDiv = document.getElementById("teil3Result");
+    if (resultDiv) {
+      resultDiv.innerHTML = `\u0627\u0644\u0646\u062A\u064A\u062C\u0629: ${finalScore} / 25`;
+      resultDiv.style.display = "block";
+    }
+    if (finalScore >= 20) {
+      resultDiv.style.backgroundColor = "#d4edda";
+      resultDiv.style.color = "#155724";
+    } else if (finalScore >= 15) {
+      resultDiv.style.backgroundColor = "#fff3cd";
+      resultDiv.style.color = "#856404";
+    } else {
+      resultDiv.style.backgroundColor = "#f8d7da";
+      resultDiv.style.color = "#721c24";
+    }
+    if (typeof window.saveExamResultGlobal === "function") {
+      const examId = currentTeil3Data.id || window.currentExamId || 1;
+      window.saveExamResultGlobal("lesen3", examId, parseFloat(finalScore));
+    }
+    const retryCount = window.incrementRetryCount(currentSkill, window.currentExamId || 1);
+    if (typeof window.updateRetryCounter === "function") {
+      window.updateRetryCounter();
+    }
+    if (typeof window.updateDailyPlanSilent === "function") {
+      window.updateDailyPlanSilent();
+    }
+    if (typeof window.removeColorFromExam === "function") {
+      const examId = window.currentExamId;
+      if (examId) {
+        window.removeColorFromExam(examId);
+      }
+    }
+    if (examTimer2.isRunning) {
+      const elapsed = examTimer2.stop();
+      if (elapsed !== null) {
+        const skill = window.currentSkill || "";
+        const examId = window.currentExamId || 1;
+        if (skill && examId) {
+          saveExamTime(skill, examId, elapsed);
+        }
+      }
+    }
+  }
+  function applyMobileStylesToEngine() {
+    if (window.innerWidth <= 768) {
+      const allQuestionCards = document.querySelectorAll(".question-card");
+      allQuestionCards.forEach((card) => {
+        card.style.padding = "10px";
+        card.style.marginBottom = "12px";
+        card.style.borderRadius = "10px";
+      });
+      const allQuestionTexts = document.querySelectorAll(".question-text");
+      allQuestionTexts.forEach((text) => {
+        text.style.fontSize = "0.75rem";
+        text.style.marginBottom = "8px";
+      });
+      const allOptionLabels = document.querySelectorAll(".option-label");
+      allOptionLabels.forEach((label) => {
+        label.style.padding = "6px 8px";
+        label.style.fontSize = "0.7rem";
+        label.style.marginBottom = "5px";
+      });
+      const allCheckBtns = document.querySelectorAll(".check-btn");
+      allCheckBtns.forEach((btn) => {
+        btn.style.padding = "8px 16px";
+        btn.style.fontSize = "0.75rem";
+      });
+      document.querySelectorAll("button").forEach((btn) => {
+        if (btn.textContent === "\u21BA") {
+          btn.style.padding = "6px 10px";
+          btn.style.fontSize = "14px";
         }
       });
-      renderTeileList();
-      SKILL_CONFIG = {
-        hoeren1: { totalExams: 45, examsPerStage: 15, totalSentences: 108 },
-        hoeren2: { totalExams: 55, examsPerStage: 15, totalSentences: 273 },
-        hoeren3: { totalExams: 48, examsPerStage: 15, totalSentences: 105 },
-        lesen1: { totalExams: 55, examsPerStage: 15, totalSentences: 275 },
-        lesen2: { totalExams: 37, examsPerStage: 15, totalSentences: 185 },
-        lesen3: { totalExams: 37, examsPerStage: 15, totalSentences: 120 },
-        sprach1: { totalExams: 41, examsPerStage: 15, totalSentences: 205 },
-        sprach2: { totalExams: 49, examsPerStage: 15, totalSentences: 245 }
+      const allResultBoxes = document.querySelectorAll(".result-box");
+      allResultBoxes.forEach((box) => {
+        box.style.padding = "6px 12px";
+        box.style.fontSize = "11px";
+        box.style.bottom = "15px";
+      });
+      const teil3Container = document.getElementById("teil3");
+      if (teil3Container) {
+        let itemsGrid = teil3Container.querySelector('[style*="grid-template-columns: 1fr 1fr"]');
+        if (!itemsGrid) {
+          itemsGrid = teil3Container.querySelector('.items-grid, [class*="grid"]');
+        }
+        if (itemsGrid) {
+          itemsGrid.style.display = "grid";
+          itemsGrid.style.gridTemplateColumns = "1fr 1fr";
+          itemsGrid.style.gap = "4px";
+          itemsGrid.style.width = "100%";
+        }
+        const cards = teil3Container.querySelectorAll(".question-card");
+        cards.forEach((card) => {
+          card.style.padding = "6px";
+          card.style.marginBottom = "0";
+          card.style.borderRadius = "8px";
+          card.style.width = "100%";
+          card.style.boxSizing = "border-box";
+          card.style.overflow = "hidden";
+          const title = card.querySelector('div[style*="font-weight: bold"]');
+          if (title) title.style.fontSize = "0.6rem";
+          const text = card.querySelector('div[style*="font-size: 13px"]');
+          if (text) text.style.fontSize = "0.55rem";
+          const select = card.querySelector("select");
+          if (select) {
+            select.style.fontSize = "0.5rem";
+            select.style.padding = "4px";
+          }
+        });
+        const situationTitle = teil3Container.querySelector("h3");
+        if (situationTitle && situationTitle.textContent.includes("Situationen")) {
+          situationTitle.style.display = "none";
+        }
+        const rightColumn = teil3Container.querySelector('div[style*="flex: 1"]:last-child, div[style*="min-width: 250px"]');
+        if (rightColumn) rightColumn.style.display = "none";
+        const leftColumn = teil3Container.querySelector('div[style*="flex: 2"]:first-child, div[style*="min-width: 500px"]');
+        if (leftColumn) {
+          leftColumn.style.width = "100%";
+          leftColumn.style.maxWidth = "100%";
+          leftColumn.style.flex = "none";
+        }
+      }
+    }
+  }
+  function applyTeil1CorrectionColors() {
+    if (window.innerWidth > 768) return;
+    const selects = document.querySelectorAll("#teil1 select");
+    selects.forEach((select) => {
+      const card = select.closest(".question-card");
+      if (!card) return;
+      const isCorrect = card.classList.contains("correct-answer-card");
+      const isWrong = card.classList.contains("wrong-answer-card");
+      if (isCorrect) {
+        select.style.setProperty("background-color", "#d4edda", "important");
+        select.style.setProperty("border", "2px solid #28a745", "important");
+        select.style.setProperty("color", "#155724", "important");
+      } else if (isWrong) {
+        select.style.setProperty("background-color", "#fef0e0", "important");
+        select.style.setProperty("border", "2px solid #e67e22", "important");
+        select.style.setProperty("color", "#155724", "important");
+      }
+    });
+  }
+  function applyTeil3CorrectionColors() {
+    if (window.innerWidth > 768) return;
+    const selects = document.querySelectorAll("#teil3 select");
+    selects.forEach((select) => {
+      const card = select.closest(".question-card");
+      if (!card) return;
+      const isCorrect = card.classList.contains("correct-answer-card");
+      const isWrong = card.classList.contains("wrong-answer-card");
+      if (isCorrect) {
+        select.style.setProperty("background-color", "#d4edda", "important");
+        select.style.setProperty("border", "2px solid #28a745", "important");
+        select.style.setProperty("color", "#155724", "important");
+      } else if (isWrong) {
+        select.style.setProperty("background-color", "#fef0e0", "important");
+        select.style.setProperty("border", "2px solid #e67e22", "important");
+        select.style.setProperty("color", "#155724", "important");
+      }
+    });
+  }
+  function getColorByIndex(index) {
+    const colors = [
+      "#D8ECFF",
+      "#DDF7E5",
+      "#FFF2CC",
+      "#F5E1FF",
+      "#FFE4D6",
+      "#E3F6F5",
+      "#FCE8F3",
+      "#E8F5D0",
+      "#FFD1DC",
+      "#E6E9FF",
+      "#FFEFD6",
+      "#E7F4E4"
+    ];
+    return colors[index % colors.length] || "#D8ECFF";
+  }
+  function getTextColorByIndex(index) {
+    const textColors = [
+      "#1565C0",
+      "#2E7D32",
+      "#F57C00",
+      "#6A1B9A",
+      "#BF360C",
+      "#00695C",
+      "#880E4F",
+      "#33691E",
+      "#C62828",
+      "#3949AB",
+      "#E65100",
+      "#5D4037"
+    ];
+    return textColors[index % textColors.length] || "#1565C0";
+  }
+  function highlightTextInContainer(container, searchText, colorIndex) {
+    if (!container || !searchText) return;
+    const walker = document.createTreeWalker(
+      container,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode: function(node) {
+          if (node.parentElement?.classList?.contains("memory-highlight")) return NodeFilter.FILTER_REJECT;
+          if (node.parentElement?.tagName === "SCRIPT") return NodeFilter.FILTER_REJECT;
+          if (node.parentElement?.tagName === "BUTTON") return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      }
+    );
+    const textNodes = [];
+    let currentNode = walker.nextNode();
+    while (currentNode) {
+      textNodes.push(currentNode);
+      currentNode = walker.nextNode();
+    }
+    textNodes.forEach((node) => {
+      const text = node.textContent;
+      const index = text.indexOf(searchText);
+      if (index !== -1) {
+        if (!window._originalTexts) window._originalTexts = /* @__PURE__ */ new Map();
+        if (!window._originalTexts.has(node)) {
+          window._originalTexts.set(node, text);
+        }
+        const before = text.substring(0, index);
+        const after = text.substring(index + searchText.length);
+        const fragment = document.createDocumentFragment();
+        if (before) fragment.appendChild(document.createTextNode(before));
+        const span = document.createElement("span");
+        span.className = `memory-highlight color${colorIndex}`;
+        const bgColor = getColorByIndex(colorIndex);
+        const txtColor = getTextColorByIndex(colorIndex);
+        span.style.backgroundColor = bgColor;
+        span.style.color = txtColor;
+        span.style.fontWeight = "bold";
+        span.style.padding = "1px 3px";
+        span.style.borderRadius = "3px";
+        span.textContent = searchText;
+        fragment.appendChild(span);
+        if (after) fragment.appendChild(document.createTextNode(after));
+        node.parentNode.replaceChild(fragment, node);
+      }
+    });
+  }
+  function highlightSelectOption(container, searchText, colorIndex) {
+    if (!container || !searchText) return;
+    const searchTrimmed = searchText.trim();
+    const txtColor = getTextColorByIndex(colorIndex);
+    const selects = container.querySelectorAll("select");
+    selects.forEach((select) => {
+      for (let i = 0; i < select.options.length; i++) {
+        const option = select.options[i];
+        if (option.textContent.trim() === searchTrimmed) {
+          option.style.color = txtColor;
+          option.style.fontWeight = "bold";
+          option.style.backgroundColor = "";
+          option.style.border = "";
+          option.style.padding = "";
+          option.style.borderRadius = "";
+          option.style.opacity = "";
+          break;
+        }
+      }
+    });
+    const labels = container.querySelectorAll("label");
+    labels.forEach((label) => {
+      const spans = label.querySelectorAll("span");
+      spans.forEach((span) => {
+        if (span.textContent.trim() === searchTrimmed) {
+          span.style.color = txtColor;
+          span.style.fontWeight = "bold";
+          span.style.backgroundColor = "";
+          span.style.border = "";
+          span.style.padding = "";
+          span.style.borderRadius = "";
+          span.style.opacity = "";
+        }
+      });
+    });
+    const wordCards = container.querySelectorAll(".sprach2-word-card");
+    wordCards.forEach((card) => {
+      const textElement = card.querySelector("span") || card;
+      if (textElement.textContent.trim() === searchTrimmed) {
+        textElement.style.color = txtColor;
+        textElement.style.fontWeight = "bold";
+      }
+    });
+    const allElements = container.querySelectorAll('.option, .option-btn, .choice, [class*="option"]');
+    allElements.forEach((el) => {
+      if (el.textContent.trim() === searchTrimmed) {
+        el.style.color = txtColor;
+        el.style.fontWeight = "bold";
+        el.style.backgroundColor = "";
+        el.style.border = "";
+        el.style.padding = "";
+        el.style.borderRadius = "";
+        el.style.opacity = "";
+      }
+    });
+  }
+  function applyAutoHighlights(examData) {
+    if (!examData) return;
+    if (examData.type === "matching" && examData.questions) {
+      const container = document.getElementById("teil1");
+      if (!container) return;
+      const questions = examData.questions || [];
+      const options = examData.sharedOptions || [];
+      questions.forEach((q, index) => {
+        const firstWords = getFirstWords(q.text, 7);
+        const color = q.highlightColor !== void 0 ? q.highlightColor : index % 12;
+        highlightTextInContainer(container, firstWords, color);
+        const correctOption = options[q.correct];
+        if (correctOption) {
+          highlightSelectOption(container, correctOption, color);
+        }
+      });
+      return;
+    }
+    if (examData.type === "teil3" && examData.items) {
+      const container = document.getElementById("teil3");
+      if (!container) return;
+      const items = examData.items || [];
+      const memoryHighlights = examData.memoryHighlights || [];
+      if (memoryHighlights.length > 0) {
+        memoryHighlights.forEach((highlight) => {
+          const color = highlight.color || 0;
+          const parts = highlight.parts || [];
+          parts.forEach((partText) => {
+            if (!partText || partText.trim() === "") return;
+            highlightTextInContainer(container, partText, color);
+          });
+        });
+      }
+      items.forEach((item, index) => {
+        if (item.correct === null || item.correct === void 0) return;
+        const color = item.highlightColor !== void 0 ? item.highlightColor : index % 12;
+        const correctIndex = item.correct;
+        const selects = container.querySelectorAll("select");
+        selects.forEach((select, idx) => {
+          if (idx === index) {
+            const optionsArray = [...select.options];
+            const firstRealOptionIndex = optionsArray.findIndex(
+              (opt) => /^[a-z]\./i.test(opt.textContent.trim())
+            );
+            const offset = firstRealOptionIndex !== -1 ? firstRealOptionIndex : 2;
+            const optionIndex = correctIndex + offset;
+            if (select.options[optionIndex]) {
+              const option = select.options[optionIndex];
+              option.style.backgroundColor = getColorByIndex(color);
+              option.style.color = getTextColorByIndex(color);
+              option.style.fontWeight = "bold";
+              option.style.padding = "2px 4px";
+              option.style.borderRadius = "3px";
+            }
+          }
+        });
+      });
+      return;
+    }
+    if ((examData.type === "sprach1" || examData.type === "sprach2") && examData.options) {
+      const containerId = examData.type === "sprach1" ? "sprach1" : "sprach2";
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const buttons = container.querySelectorAll('button.sprach1-gap-btn, button.sprach2-gap-btn, button[id*="sprach1_btn"], button[id*="sprach2_btn"]');
+      examData.options.forEach((option, index) => {
+        const highlight = option.memoryHighlight;
+        if (!highlight) return;
+        const color = highlight.color !== void 0 ? highlight.color : index % 12;
+        const bgColor = getColorByIndex(color);
+        const txtColor = getTextColorByIndex(color);
+        const btnId = containerId === "sprach1" ? `sprach1_btn_${option.id}` : `sprach2_btn_${option.id}`;
+        let btn = document.getElementById(btnId);
+        if (!btn) {
+          for (let b of buttons) {
+            if (b.textContent.includes(`(${option.id})`)) {
+              btn = b;
+              break;
+            }
+          }
+        }
+        if (btn) {
+          let prevNode = btn.previousSibling;
+          let beforeText = "";
+          while (prevNode) {
+            if (prevNode.nodeType === 3) {
+              beforeText = prevNode.textContent + beforeText;
+            } else if (prevNode.nodeType === 1) {
+              if (prevNode.tagName === "BUTTON" || prevNode.tagName === "SPAN" || prevNode.tagName === "DIV") {
+                break;
+              }
+              beforeText = prevNode.textContent + beforeText;
+            }
+            prevNode = prevNode.previousSibling;
+          }
+          beforeText = beforeText.trim();
+          let nextNode = btn.nextSibling;
+          let afterText = "";
+          while (nextNode) {
+            if (nextNode.nodeType === 3) {
+              afterText += nextNode.textContent;
+            } else if (nextNode.nodeType === 1) {
+              if (nextNode.tagName === "BUTTON" || nextNode.tagName === "SPAN" || nextNode.tagName === "DIV") {
+                break;
+              }
+              afterText += nextNode.textContent;
+            }
+            nextNode = nextNode.nextSibling;
+          }
+          afterText = afterText.trim();
+          if (highlight.before) {
+            const beforeNode = btn.previousSibling;
+            if (beforeNode && beforeNode.nodeType === 3) {
+              const text = beforeNode.textContent;
+              const trimmedBefore = highlight.before.trim();
+              const idx = text.lastIndexOf(trimmedBefore);
+              if (idx !== -1) {
+                const before = text.substring(0, idx);
+                const after = text.substring(idx + trimmedBefore.length);
+                const fragment = document.createDocumentFragment();
+                if (before) fragment.appendChild(document.createTextNode(before));
+                const span = document.createElement("span");
+                span.className = `memory-highlight color${color}`;
+                span.style.backgroundColor = bgColor;
+                span.style.color = txtColor;
+                span.style.fontWeight = "bold";
+                span.style.padding = "1px 3px";
+                span.style.borderRadius = "3px";
+                span.textContent = trimmedBefore;
+                fragment.appendChild(span);
+                if (after) fragment.appendChild(document.createTextNode(after));
+                beforeNode.parentNode.replaceChild(fragment, beforeNode);
+              }
+            }
+          }
+          if (highlight.after) {
+            const afterNode = btn.nextSibling;
+            if (afterNode && afterNode.nodeType === 3) {
+              const text = afterNode.textContent;
+              const trimmedAfter = highlight.after.trim();
+              const idx = text.indexOf(trimmedAfter);
+              if (idx !== -1) {
+                const before = text.substring(0, idx);
+                const after = text.substring(idx + trimmedAfter.length);
+                const fragment = document.createDocumentFragment();
+                if (before) fragment.appendChild(document.createTextNode(before));
+                const span = document.createElement("span");
+                span.className = `memory-highlight color${color}`;
+                span.style.backgroundColor = bgColor;
+                span.style.color = txtColor;
+                span.style.fontWeight = "bold";
+                span.style.padding = "1px 3px";
+                span.style.borderRadius = "3px";
+                span.textContent = trimmedAfter;
+                fragment.appendChild(span);
+                if (after) fragment.appendChild(document.createTextNode(after));
+                afterNode.parentNode.replaceChild(fragment, afterNode);
+              }
+            }
+          }
+          if (highlight.connector) {
+            btn.style.backgroundColor = bgColor;
+            btn.style.color = txtColor;
+            btn.style.fontWeight = "bold";
+            btn.style.border = `2px solid ${txtColor}`;
+            btn.style.borderRadius = "20px";
+            btn.style.padding = "4px 12px";
+            btn.style.opacity = "0.85";
+          }
+          if (highlight.connector) {
+            highlightSelectOption(container, highlight.connector, color);
+          }
+        }
+      });
+      return;
+    }
+  }
+  function getFirstWords(text, wordCount = 7) {
+    let cleanText = text.replace(/^Text\s*\d+:\s*/, "");
+    const words = cleanText.trim().split(/\s+/);
+    return words.slice(0, wordCount).join(" ");
+  }
+  function colorSelectOptions() {
+    if (window.memoryEngine && !window.memoryEngine.isActive) {
+      console.log("\u23ED\uFE0F colorSelectOptions: \u0627\u0644\u062A\u0644\u0648\u064A\u0646 \u0645\u0639\u0637\u0644\u060C \u062A\u062E\u0637\u064A \u062A\u0644\u0648\u064A\u0646 \u0627\u0644\u062E\u064A\u0627\u0631\u0627\u062A");
+      return;
+    }
+    const examData = window.currentExamData || (window.memoryEngine ? window.memoryEngine.currentExamData : null);
+    if (!examData) {
+      console.log("\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0628\u064A\u0627\u0646\u0627\u062A \u0627\u0645\u062A\u062D\u0627\u0646 \u0644\u0644\u062A\u0644\u0648\u064A\u0646");
+      return;
+    }
+    if (examData.type === "matching" && examData.questions) {
+      const container = document.getElementById("teil1");
+      if (!container) return;
+      const questions = examData.questions || [];
+      const options = examData.sharedOptions || [];
+      const selects = container.querySelectorAll("select");
+      selects.forEach((select, index) => {
+        const q = questions[index];
+        if (!q) return;
+        const color = q.highlightColor !== void 0 ? q.highlightColor : index % 12;
+        const correctOption = options[q.correct];
+        if (!correctOption) return;
+        for (let i = 0; i < select.options.length; i++) {
+          const option = select.options[i];
+          if (option.textContent.includes(correctOption) || correctOption.includes(option.textContent)) {
+            option.style.backgroundColor = getColorByIndex(color);
+            option.style.color = getTextColorByIndex(color);
+            option.style.fontWeight = "bold";
+            option.style.padding = "2px 4px";
+            option.style.borderRadius = "3px";
+            break;
+          }
+        }
+      });
+      return;
+    }
+    if (examData.type === "teil3" && examData.items) {
+      const container = document.getElementById("teil3");
+      if (!container) return;
+      const items = examData.items || [];
+      const selects = container.querySelectorAll("select");
+      selects.forEach((select, index) => {
+        const item = items[index];
+        if (!item || item.correct === null || item.correct === void 0) return;
+        const color = item.highlightColor !== void 0 ? item.highlightColor : index % 12;
+        const correctIndex = item.correct;
+        const optionsArray = [...select.options];
+        const firstRealOptionIndex = optionsArray.findIndex(
+          (opt) => /^[a-z]\./i.test(opt.textContent.trim())
+        );
+        const offset = firstRealOptionIndex !== -1 ? firstRealOptionIndex : 2;
+        const optionIndex = correctIndex + offset;
+        if (select.options[optionIndex]) {
+          const option = select.options[optionIndex];
+          option.style.backgroundColor = getColorByIndex(color);
+          option.style.color = getTextColorByIndex(color);
+          option.style.fontWeight = "bold";
+          option.style.padding = "2px 4px";
+          option.style.borderRadius = "3px";
+        }
+      });
+      return;
+    }
+    if ((examData.type === "sprach1" || examData.type === "sprach2") && examData.options) {
+      const containerId = examData.type === "sprach1" ? "sprach1" : "sprach2";
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      examData.options.forEach((option, index) => {
+        const highlight = option.memoryHighlight;
+        if (!highlight || !highlight.connector) return;
+        const color = highlight.color !== void 0 ? highlight.color : index % 12;
+        highlightSelectOption(container, highlight.connector, color);
+      });
+    }
+  }
+  function rebuildTrueFalseCards() {
+    console.log("========== REBUILD ==========");
+    if (typeof window.getUserStatusForExam === "function") {
+      window.getUserStatusForExam().then((status) => {
+        console.log("\u{1F4CA} \u062D\u0627\u0644\u0629 \u0627\u0644\u0645\u0633\u062A\u062E\u062F\u0645 \u0641\u064A rebuild:", status);
+      });
+    }
+    if (!window.currentSkill) {
+      console.warn("\u26A0\uFE0F window.currentSkill \u063A\u064A\u0631 \u0645\u0639\u0631\u0641\u060C \u0627\u0633\u062A\u062E\u062F\u0627\u0645 hoeren1 \u0643\u0627\u0641\u062A\u0631\u0627\u0636\u064A");
+      window.currentSkill = "hoeren1";
+    }
+    const activeSkill = window.currentSkill || "hoeren1";
+    const data = _hoerenData[activeSkill];
+    if (!data) {
+      console.warn(`\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0628\u064A\u0627\u0646\u0627\u062A \u0644\u0640 ${activeSkill}`);
+      console.log("========== END REBUILD (NO DATA) ==========");
+      return;
+    }
+    const container = document.getElementById(activeSkill);
+    if (!container) {
+      console.warn(`\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u062D\u0627\u0648\u064A\u0629 ${activeSkill}`);
+      console.log("========== END REBUILD (NO CONTAINER) ==========");
+      return;
+    }
+    container.style.display = "block";
+    data.container = container;
+    console.log(`container =`, container);
+    console.log(`questions =`, data.questions);
+    console.log(`questions length =`, data.questions ? data.questions.length : 0);
+    console.log(`interleaving =`, window.isInterleavingActive);
+    const savedAnswers = window._trueFalseUserAnswers ? { ...window._trueFalseUserAnswers } : {};
+    let questionsToUse = data.questions;
+    if (window.isInterleavingActive) {
+      const order = interleavingOrders[activeSkill];
+      if (order && order.length === data.questions.length) {
+        const ordered = [];
+        for (let idx of order) {
+          if (idx <= data.questions.length) {
+            ordered.push(data.questions[idx - 1]);
+          }
+        }
+        if (ordered.length === data.questions.length) {
+          questionsToUse = ordered;
+          console.log(`\u2705 Interleaving: \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0623\u0633\u0626\u0644\u0629 (${activeSkill})`);
+        }
+      }
+    }
+    console.log("questionsToUse:");
+    questionsToUse.forEach((q, i) => {
+      console.log(i + 1, q.text);
+    });
+    console.log("cards before delete =", container.querySelectorAll(".question-card").length);
+    const oldCards = container.querySelectorAll(".question-card");
+    oldCards.forEach((card) => card.remove());
+    window._trueFalseUserAnswers = {};
+    const result = container.querySelector("#truefalseResult");
+    if (result) {
+      result.style.display = "none";
+      result.innerHTML = "";
+    }
+    const numbers = container.querySelector("#truefalseCorrectNumbers");
+    if (numbers) {
+      numbers.style.display = "none";
+    }
+    const allMessages = container.querySelectorAll(".correct-message");
+    allMessages.forEach((msg) => msg.remove());
+    const allCards = container.querySelectorAll(".question-card");
+    allCards.forEach((card) => {
+      card.classList.remove("correct-answer-card", "wrong-answer-card");
+    });
+    const allLabels = container.querySelectorAll(".option-label");
+    allLabels.forEach((label) => {
+      label.style.backgroundColor = "white";
+      label.style.border = "1px solid #ccc";
+    });
+    let buttonsContainer = null;
+    let createNewButtons = false;
+    const allDivs = container.querySelectorAll("div");
+    for (let el of allDivs) {
+      const btns = el.querySelectorAll("button");
+      if (btns.length >= 2) {
+        const hasPr\u00FCfen = btns[0].textContent.includes("Pr\xFCfen") || btns[1].textContent.includes("Pr\xFCfen");
+        const hasReset = btns[0].textContent === "\u21BA" || btns[1].textContent === "\u21BA";
+        if (hasPr\u00FCfen && hasReset) {
+          buttonsContainer = el;
+          break;
+        }
+      }
+    }
+    if (!buttonsContainer) {
+      const checkBtn = container.querySelector(".check-btn");
+      if (checkBtn) {
+        let parent = checkBtn.parentElement;
+        while (parent && parent !== container) {
+          if (parent.querySelectorAll("button").length >= 2) {
+            buttonsContainer = parent;
+            break;
+          }
+          parent = parent.parentElement;
+        }
+      }
+    }
+    if (!buttonsContainer) {
+      container.querySelectorAll(".check-btn").forEach((btn) => {
+        const parent = btn.closest("div");
+        if (parent && parent.children.length <= 3) {
+          parent.remove();
+        } else {
+          btn.remove();
+        }
+      });
+      container.querySelectorAll("button").forEach((btn) => {
+        if (btn.textContent === "\u21BA") {
+          const parent = btn.closest("div");
+          if (parent && parent.children.length <= 2) {
+            parent.remove();
+          } else {
+            btn.remove();
+          }
+        }
+      });
+      createNewButtons = true;
+    }
+    for (let i = 0; i < questionsToUse.length; i++) {
+      const q = questionsToUse[i];
+      const questionId = q.displayNumber;
+      const div = document.createElement("div");
+      div.className = "question-card";
+      div.dataset.questionId = questionId;
+      div.style.display = "flex";
+      div.style.alignItems = "center";
+      div.style.gap = "15px";
+      div.style.marginBottom = "12px";
+      div.style.flexWrap = "wrap";
+      div.style.padding = "12px";
+      div.style.border = "1px solid #ddd";
+      div.style.borderRadius = "10px";
+      div.style.backgroundColor = "#f9f9f9";
+      div.id = `truefalse_card_${questionId}`;
+      const labelTrue = document.createElement("label");
+      labelTrue.className = "option-label";
+      labelTrue.style.display = "inline-flex";
+      labelTrue.style.alignItems = "center";
+      labelTrue.style.gap = "5px";
+      labelTrue.style.cursor = "pointer";
+      labelTrue.style.marginRight = "15px";
+      labelTrue.style.padding = "5px 10px";
+      labelTrue.style.border = "1px solid #ccc";
+      labelTrue.style.borderRadius = "5px";
+      labelTrue.style.backgroundColor = "white";
+      const radioTrue = document.createElement("input");
+      radioTrue.type = "radio";
+      radioTrue.name = `q_${questionId}`;
+      radioTrue.value = "true";
+      radioTrue.id = `q_${questionId}_true`;
+      radioTrue.onchange = /* @__PURE__ */ (function(qId) {
+        return function() {
+          window._trueFalseUserAnswers[qId] = true;
+        };
+      })(questionId);
+      labelTrue.appendChild(radioTrue);
+      labelTrue.appendChild(document.createTextNode(" Richtig"));
+      const labelFalse = document.createElement("label");
+      labelFalse.className = "option-label";
+      labelFalse.style.display = "inline-flex";
+      labelFalse.style.alignItems = "center";
+      labelFalse.style.gap = "5px";
+      labelFalse.style.cursor = "pointer";
+      labelFalse.style.padding = "5px 10px";
+      labelFalse.style.border = "1px solid #ccc";
+      labelFalse.style.borderRadius = "5px";
+      labelFalse.style.backgroundColor = "white";
+      const radioFalse = document.createElement("input");
+      radioFalse.type = "radio";
+      radioFalse.name = `q_${questionId}`;
+      radioFalse.value = "false";
+      radioFalse.id = `q_${questionId}_false`;
+      radioFalse.onchange = /* @__PURE__ */ (function(qId) {
+        return function() {
+          window._trueFalseUserAnswers[qId] = false;
+        };
+      })(questionId);
+      labelFalse.appendChild(radioFalse);
+      labelFalse.appendChild(document.createTextNode(" Falsch"));
+      const textSpan = document.createElement("span");
+      const displayNumber = q.displayNumber || i + 1;
+      textSpan.innerHTML = `<strong>${displayNumber}</strong> ${q.text}`;
+      textSpan.style.flex = "1";
+      textSpan.style.minWidth = "200px";
+      div.appendChild(labelTrue);
+      div.appendChild(labelFalse);
+      div.appendChild(textSpan);
+      if (buttonsContainer && buttonsContainer.parentNode === container) {
+        container.insertBefore(div, buttonsContainer);
+      } else {
+        container.appendChild(div);
+      }
+    }
+    console.log("cards after rebuild =", container.querySelectorAll(".question-card").length);
+    if (createNewButtons) {
+      const activeSkill2 = window.currentSkill || "hoeren1";
+      const data2 = _hoerenData[activeSkill2];
+      const finalQuestions = data2.questions;
+      const newButtonContainer = document.createElement("div");
+      newButtonContainer.style.display = "flex";
+      newButtonContainer.style.gap = "15px";
+      newButtonContainer.style.justifyContent = "space-between";
+      newButtonContainer.style.alignItems = "center";
+      newButtonContainer.style.marginTop = "25px";
+      const correctNumbersContainer = document.createElement("div");
+      correctNumbersContainer.id = "truefalseCorrectNumbers";
+      correctNumbersContainer.style.backgroundColor = "#e3f2fd";
+      correctNumbersContainer.style.color = "#0d47a1";
+      correctNumbersContainer.style.padding = "10px 15px";
+      correctNumbersContainer.style.borderRadius = "8px";
+      correctNumbersContainer.style.fontWeight = "bold";
+      correctNumbersContainer.style.fontSize = "14px";
+      correctNumbersContainer.style.border = "1px solid #90caf9";
+      correctNumbersContainer.style.display = "none";
+      correctNumbersContainer.innerHTML = "\u25B8 : ";
+      const buttonsDiv = document.createElement("div");
+      buttonsDiv.style.display = "flex";
+      buttonsDiv.style.gap = "15px";
+      const checkBtnNew = document.createElement("button");
+      checkBtnNew.innerText = "\u{1F4DD} Pr\xFCfen";
+      checkBtnNew.className = "check-btn";
+      checkBtnNew.style.padding = "12px 24px";
+      checkBtnNew.style.backgroundColor = "#2c3e66";
+      checkBtnNew.style.color = "white";
+      checkBtnNew.style.border = "none";
+      checkBtnNew.style.borderRadius = "8px";
+      checkBtnNew.style.cursor = "pointer";
+      checkBtnNew.style.fontSize = "16px";
+      checkBtnNew.onclick = () => {
+        const data3 = _hoerenData[activeSkill2];
+        const questionsToCheck = data3 && data3.originalQuestions.length > 0 ? data3.originalQuestions : finalQuestions;
+        checkTrueFalseExam(container, questionsToCheck, window._trueFalseUserAnswers, correctNumbersContainer);
       };
-      LEVELS_KEY = "memory_levels";
-      MAX_LEVEL = 5;
-      window.loadStageExams = async function(skill) {
-        const config = SKILL_CONFIG[skill];
-        if (!config) {
-          console.warn(`\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0625\u0639\u062F\u0627\u062F\u0627\u062A \u0644\u0644\u0645\u0647\u0627\u0631\u0629: ${skill}`);
+      const resetBtnNew = document.createElement("button");
+      resetBtnNew.innerText = "\u21BA";
+      resetBtnNew.style.padding = "8px 12px";
+      resetBtnNew.style.backgroundColor = "#6c757d";
+      resetBtnNew.style.color = "white";
+      resetBtnNew.style.border = "none";
+      resetBtnNew.style.borderRadius = "6px";
+      resetBtnNew.style.cursor = "pointer";
+      resetBtnNew.style.fontSize = "16px";
+      resetBtnNew.style.fontWeight = "bold";
+      resetBtnNew.onclick = function() {
+        for (let key in window._trueFalseUserAnswers) delete window._trueFalseUserAnswers[key];
+        container.querySelectorAll('input[type="radio"]').forEach((radio) => radio.checked = false);
+        container.querySelectorAll(".question-card").forEach((card) => card.classList.remove("correct-answer-card", "wrong-answer-card"));
+        container.querySelectorAll(".correct-message").forEach((msg) => msg.remove());
+        container.querySelectorAll(".option-label").forEach((label) => {
+          label.style.backgroundColor = "white";
+          label.style.border = "1px solid #ccc";
+        });
+        correctNumbersContainer.style.display = "none";
+        const resultDiv = container.querySelector("#truefalseResult");
+        if (resultDiv) {
+          resultDiv.style.display = "none";
+          resultDiv.innerHTML = "";
+        }
+      };
+      buttonsDiv.appendChild(checkBtnNew);
+      buttonsDiv.appendChild(resetBtnNew);
+      newButtonContainer.appendChild(correctNumbersContainer);
+      newButtonContainer.appendChild(buttonsDiv);
+      container.appendChild(newButtonContainer);
+      buttonsContainer = newButtonContainer;
+    }
+    if (Object.keys(savedAnswers).length > 0) {
+      const allRadios = container.querySelectorAll('input[type="radio"]');
+      allRadios.forEach((radio) => {
+        const name = radio.name;
+        const match = name.match(/q_(\d+)/);
+        if (match) {
+          const qId = parseInt(match[1]);
+          if (savedAnswers[qId] !== void 0) {
+            const expectedValue = savedAnswers[qId] ? "true" : "false";
+            if (radio.value === expectedValue) {
+              radio.checked = true;
+            }
+          }
+        }
+      });
+      window._trueFalseUserAnswers = savedAnswers;
+    }
+    console.log("===== FINAL HTML =====");
+    console.log(container.innerText.substring(0, 300));
+    console.log("===== FIRST CARD TEXT IN DOM =====");
+    const allSpans = container.querySelectorAll(".question-card span");
+    allSpans.forEach((span, idx) => {
+      console.log(`span ${idx + 1}:`, span.innerText);
+    });
+    console.log("========== END REBUILD ==========");
+  }
+  function rebuildLesen1() {
+    console.log("\u{1F504} \u0625\u0639\u0627\u062F\u0629 \u0628\u0646\u0627\u0621 Lesen 1...");
+    const container = document.getElementById("teil1");
+    if (!container) {
+      console.warn("\u26A0\uFE0F #teil1 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F");
+      return;
+    }
+    const cards = [...container.querySelectorAll(".question-card")];
+    if (cards.length === 0) {
+      console.warn("\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0628\u0637\u0627\u0642\u0627\u062A \u0641\u064A #teil1");
+      return;
+    }
+    console.log(`\u{1F4E6} \u0639\u062F\u062F \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A: ${cards.length}`);
+    if (!lesen1OrderSaved) {
+      lesen1OriginalNodes = [...cards];
+      console.log("\u{1F4BE} \u062A\u0645 \u062D\u0641\u0638 \u0627\u0644\u0639\u0642\u062F \u0627\u0644\u0623\u0635\u0644\u064A\u0629:", lesen1OriginalNodes.map((c) => c.id));
+      const order = interleavingOrders.lesen1;
+      if (order && order.length === cards.length) {
+        const orderedCards = [];
+        for (let idx of order) {
+          if (idx <= cards.length) {
+            orderedCards.push(cards[idx - 1]);
+          }
+        }
+        if (orderedCards.length === cards.length) {
+          lesen1ShuffledNodes = [...orderedCards];
+          console.log("\u{1F4BE} \u062A\u0645 \u062D\u0641\u0638 \u0627\u0644\u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0645\u062E\u062A\u0644\u0637:", lesen1ShuffledNodes.map((c) => c.id));
+        } else {
+          lesen1ShuffledNodes = [...cards];
+        }
+      } else {
+        lesen1ShuffledNodes = [...cards];
+        console.log("\u{1F4BE} \u0644\u0627 \u064A\u0648\u062C\u062F \u062A\u0631\u062A\u064A\u0628 \u0645\u062D\u062F\u062F\u060C \u0627\u0633\u062A\u062E\u062F\u0627\u0645 \u0627\u0644\u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u062D\u0627\u0644\u064A");
+      }
+      lesen1OrderSaved = true;
+    }
+    let targetNodes = window.isInterleavingActive ? lesen1ShuffledNodes : lesen1OriginalNodes;
+    console.log(`\u{1F504} \u062A\u0637\u0628\u064A\u0642 \u0627\u0644\u062A\u0631\u062A\u064A\u0628: ${window.isInterleavingActive ? "\u0645\u062E\u062A\u0644\u0637" : "\u0623\u0635\u0644\u064A"}`, targetNodes.map((c) => c.id));
+    const firstNonCard = container.querySelector(":scope > :not(.question-card)");
+    cards.forEach((card) => card.remove());
+    if (firstNonCard) {
+      for (let i = 0; i < targetNodes.length; i++) {
+        container.insertBefore(targetNodes[i], firstNonCard);
+      }
+    } else {
+      for (let node of targetNodes) {
+        container.appendChild(node);
+      }
+    }
+    console.log("\u2705 \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A \u0628\u0646\u062C\u0627\u062D");
+  }
+  function rebuildLesen2() {
+    console.log("\u{1F504} \u0625\u0639\u0627\u062F\u0629 \u0628\u0646\u0627\u0621 Lesen 2...");
+    const container = document.getElementById("teil2");
+    if (!container) {
+      console.warn("\u26A0\uFE0F #teil2 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F");
+      return;
+    }
+    let questionsContainer = null;
+    const allDivs = container.querySelectorAll("div");
+    for (const div of allDivs) {
+      const directCards = [...div.children].filter(
+        (el) => el.classList && el.classList.contains("question-card")
+      );
+      if (directCards.length > 0) {
+        questionsContainer = div;
+        console.log("\u2705 \u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u062D\u0627\u0648\u064A\u0629 \u0627\u0644\u0623\u0633\u0626\u0644\u0629 (\u0623\u0628\u0646\u0627\u0621 \u0645\u0628\u0627\u0634\u0631\u064A\u0646):", questionsContainer);
+        break;
+      }
+    }
+    if (!questionsContainer) {
+      questionsContainer = document.getElementById("teil2_questions_container");
+      if (questionsContainer) {
+        console.log("\u2705 \u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u062D\u0627\u0648\u064A\u0629 \u0627\u0644\u0623\u0633\u0626\u0644\u0629 \u0628\u0648\u0627\u0633\u0637\u0629 ID:", questionsContainer);
+      }
+    }
+    if (!questionsContainer) {
+      console.error("\u274C \u0644\u0645 \u064A\u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u062D\u0627\u0648\u064A\u0629 \u0627\u0644\u0623\u0633\u0626\u0644\u0629 \u0641\u064A #teil2");
+      return;
+    }
+    const cards = [...questionsContainer.querySelectorAll(".question-card")];
+    if (cards.length === 0) {
+      console.warn("\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0628\u0637\u0627\u0642\u0627\u062A \u0641\u064A \u062D\u0627\u0648\u064A\u0629 \u0627\u0644\u0623\u0633\u0626\u0644\u0629\u060C \u0625\u0639\u0627\u062F\u0629 \u0627\u0644\u0645\u062D\u0627\u0648\u0644\u0629 \u0628\u0639\u062F 50ms");
+      setTimeout(rebuildLesen2, 50);
+      return;
+    }
+    console.log(`\u{1F4E6} \u0639\u062F\u062F \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A: ${cards.length}`);
+    if (!lesen2OrderSaved) {
+      lesen2OriginalNodes = [...cards];
+      console.log("\u{1F4BE} \u062A\u0645 \u062D\u0641\u0638 \u0627\u0644\u0639\u0642\u062F \u0627\u0644\u0623\u0635\u0644\u064A\u0629 \u0644\u0640 Lesen2:", lesen2OriginalNodes.map((c) => c.id));
+      const order = interleavingOrders.lesen2;
+      if (order && order.length === cards.length) {
+        const orderedCards = [];
+        for (let idx of order) {
+          if (idx <= cards.length) {
+            orderedCards.push(cards[idx - 1]);
+          }
+        }
+        if (orderedCards.length === cards.length) {
+          lesen2ShuffledNodes = [...orderedCards];
+          console.log("\u{1F4BE} \u062A\u0645 \u062D\u0641\u0638 \u0627\u0644\u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0645\u062E\u062A\u0644\u0637 \u0644\u0640 Lesen2:", lesen2ShuffledNodes.map((c) => c.id));
+        } else {
+          lesen2ShuffledNodes = [...cards];
+        }
+      } else {
+        lesen2ShuffledNodes = [...cards];
+        console.log("\u{1F4BE} \u0644\u0627 \u064A\u0648\u062C\u062F \u062A\u0631\u062A\u064A\u0628 \u0645\u062D\u062F\u062F\u060C \u0627\u0633\u062A\u062E\u062F\u0627\u0645 \u0627\u0644\u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u062D\u0627\u0644\u064A");
+      }
+      lesen2OrderSaved = true;
+    }
+    let targetNodes = window.isInterleavingActive ? lesen2ShuffledNodes : lesen2OriginalNodes;
+    console.log(`\u{1F504} \u062A\u0637\u0628\u064A\u0642 \u0627\u0644\u062A\u0631\u062A\u064A\u0628: ${window.isInterleavingActive ? "\u0645\u062E\u062A\u0644\u0637" : "\u0623\u0635\u0644\u064A"}`, targetNodes.map((c) => c.id));
+    cards.forEach((card) => card.remove());
+    for (let i = 0; i < targetNodes.length; i++) {
+      questionsContainer.appendChild(targetNodes[i]);
+    }
+    console.log("\u2705 \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0631\u062A\u064A\u0628 \u0628\u0637\u0627\u0642\u0627\u062A Lesen2 \u0628\u0646\u062C\u0627\u062D \u062F\u0627\u062E\u0644 \u062D\u0627\u0648\u064A\u0629 \u0627\u0644\u0623\u0633\u0626\u0644\u0629");
+  }
+  function rebuildLesen3() {
+    console.log("\u{1F504} \u0625\u0639\u0627\u062F\u0629 \u0628\u0646\u0627\u0621 Lesen 3...");
+    const container = document.getElementById("teil3");
+    if (!container) {
+      console.warn("\u26A0\uFE0F #teil3 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F");
+      return;
+    }
+    let questionsContainer = null;
+    const allDivs = container.querySelectorAll("div");
+    for (const div of allDivs) {
+      const directCards = [...div.children].filter(
+        (el) => el.classList && el.classList.contains("question-card")
+      );
+      if (directCards.length > 0) {
+        questionsContainer = div;
+        console.log("\u2705 \u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u062D\u0627\u0648\u064A\u0629 \u0627\u0644\u0623\u0633\u0626\u0644\u0629 \u0644\u0640 Lesen3 (\u0623\u0628\u0646\u0627\u0621 \u0645\u0628\u0627\u0634\u0631\u064A\u0646):", questionsContainer);
+        break;
+      }
+    }
+    if (!questionsContainer) {
+      console.error("\u274C \u0644\u0645 \u064A\u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u062D\u0627\u0648\u064A\u0629 \u0627\u0644\u0623\u0633\u0626\u0644\u0629 \u0641\u064A #teil3");
+      return;
+    }
+    const cards = [...questionsContainer.querySelectorAll(".question-card")];
+    if (cards.length === 0) {
+      console.warn("\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0628\u0637\u0627\u0642\u0627\u062A \u0641\u064A \u062D\u0627\u0648\u064A\u0629 \u0627\u0644\u0623\u0633\u0626\u0644\u0629 \u0644\u0640 Lesen3\u060C \u0625\u0639\u0627\u062F\u0629 \u0627\u0644\u0645\u062D\u0627\u0648\u0644\u0629 \u0628\u0639\u062F 50ms");
+      setTimeout(rebuildLesen3, 50);
+      return;
+    }
+    console.log(`\u{1F4E6} \u0639\u062F\u062F \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A: ${cards.length}`);
+    if (!lesen3OrderSaved) {
+      lesen3OriginalNodes = [...cards];
+      console.log("\u{1F4BE} \u062A\u0645 \u062D\u0641\u0638 \u0627\u0644\u0639\u0642\u062F \u0627\u0644\u0623\u0635\u0644\u064A\u0629 \u0644\u0640 Lesen3:", lesen3OriginalNodes.map((c) => c.id));
+      const order = interleavingOrders.lesen3;
+      if (order && order.length === cards.length) {
+        const orderedCards = [];
+        for (let idx of order) {
+          if (idx <= cards.length) {
+            orderedCards.push(cards[idx - 1]);
+          }
+        }
+        if (orderedCards.length === cards.length) {
+          lesen3ShuffledNodes = [...orderedCards];
+          console.log("\u{1F4BE} \u062A\u0645 \u062D\u0641\u0638 \u0627\u0644\u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0645\u062E\u062A\u0644\u0637 \u0644\u0640 Lesen3:", lesen3ShuffledNodes.map((c) => c.id));
+        } else {
+          lesen3ShuffledNodes = [...cards];
+        }
+      } else {
+        lesen3ShuffledNodes = [...cards];
+        console.log("\u{1F4BE} \u0644\u0627 \u064A\u0648\u062C\u062F \u062A\u0631\u062A\u064A\u0628 \u0645\u062D\u062F\u062F\u060C \u0627\u0633\u062A\u062E\u062F\u0627\u0645 \u0627\u0644\u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u062D\u0627\u0644\u064A");
+      }
+      lesen3OrderSaved = true;
+    }
+    let targetNodes = window.isInterleavingActive ? lesen3ShuffledNodes : lesen3OriginalNodes;
+    console.log(`\u{1F504} \u062A\u0637\u0628\u064A\u0642 \u0627\u0644\u062A\u0631\u062A\u064A\u0628: ${window.isInterleavingActive ? "\u0645\u062E\u062A\u0644\u0637" : "\u0623\u0635\u0644\u064A"}`, targetNodes.map((c) => c.id));
+    cards.forEach((card) => card.remove());
+    for (let i = 0; i < targetNodes.length; i++) {
+      questionsContainer.appendChild(targetNodes[i]);
+    }
+    console.log("\u2705 \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0631\u062A\u064A\u0628 \u0628\u0637\u0627\u0642\u0627\u062A Lesen3 \u0628\u0646\u062C\u0627\u062D \u062F\u0627\u062E\u0644 \u062D\u0627\u0648\u064A\u0629 \u0627\u0644\u0623\u0633\u0626\u0644\u0629");
+  }
+  function resetLesen1Order() {
+    lesen1OriginalNodes = null;
+    lesen1ShuffledNodes = null;
+    lesen1OrderSaved = false;
+    console.log("\u{1F504} \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u062A\u0631\u062A\u064A\u0628 Lesen1");
+  }
+  function toggleInterleaving() {
+    if (_toggleInProgress) {
+      console.log("\u23ED\uFE0F \u0639\u0645\u0644\u064A\u0629 \u062A\u0628\u062F\u064A\u0644 \u0642\u064A\u062F \u0627\u0644\u062A\u0646\u0641\u064A\u0630\u060C \u062A\u062E\u0637\u064A");
+      return;
+    }
+    console.log("========== TOGGLE ==========");
+    console.log("before =", window.isInterleavingActive);
+    _toggleInProgress = true;
+    window.isInterleavingActive = !window.isInterleavingActive;
+    console.log("after =", window.isInterleavingActive);
+    console.log("currentSkill =", window.currentSkill);
+    console.log("============================");
+    const btn = document.getElementById("interleavingBtn");
+    if (btn) {
+      if (window.isInterleavingActive) {
+        btn.classList.add("active");
+        btn.title = "Interleaving: ON";
+      } else {
+        btn.classList.remove("active");
+        btn.title = "Interleaving: OFF";
+      }
+    }
+    const currentSkill3 = window.currentSkill || "hoeren1";
+    if (currentSkill3.startsWith("hoeren")) {
+      console.log(`Calling rebuildTrueFalseCards for ${currentSkill3}...`);
+      const data = _hoerenData[currentSkill3];
+      if (data && data.questions && data.questions.length > 0) {
+        if (typeof rebuildTrueFalseCards === "function") {
+          setTimeout(() => {
+            rebuildTrueFalseCards();
+            _toggleInProgress = false;
+          }, 50);
+        } else {
+          console.error("\u274C \u062F\u0627\u0644\u0629 rebuildTrueFalseCards \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629!");
+          _toggleInProgress = false;
+        }
+      } else {
+        console.warn(`\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0623\u0633\u0626\u0644\u0629 \u0644\u0640 ${currentSkill3}\u060C \u0627\u0646\u062A\u0638\u0631 \u062A\u062D\u0645\u064A\u0644 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646`);
+        _toggleInProgress = false;
+      }
+    } else if (currentSkill3 === "lesen1") {
+      console.log(`Calling rebuildLesen1...`);
+      if (typeof rebuildLesen1 === "function") {
+        setTimeout(() => {
+          rebuildLesen1();
+          _toggleInProgress = false;
+        }, 50);
+      } else {
+        console.error("\u274C \u062F\u0627\u0644\u0629 rebuildLesen1 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629!");
+        _toggleInProgress = false;
+      }
+    } else if (currentSkill3 === "lesen2") {
+      console.log(`Calling rebuildLesen2...`);
+      if (typeof rebuildLesen2 === "function") {
+        rebuildLesen2();
+        _toggleInProgress = false;
+      } else {
+        console.error("\u274C \u062F\u0627\u0644\u0629 rebuildLesen2 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629!");
+        _toggleInProgress = false;
+      }
+    } else if (currentSkill3 === "lesen3") {
+      console.log(`Calling rebuildLesen3...`);
+      if (typeof rebuildLesen3 === "function") {
+        rebuildLesen3();
+        _toggleInProgress = false;
+      } else {
+        console.error("\u274C \u062F\u0627\u0644\u0629 rebuildLesen3 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629!");
+        _toggleInProgress = false;
+      }
+    } else {
+      console.log(`\u26A0\uFE0F Interleaving \u063A\u064A\u0631 \u0645\u062F\u0639\u0648\u0645 \u0644\u0640 ${currentSkill3} \u062D\u0627\u0644\u064A\u0627\u064B`);
+      window.isInterleavingActive = !window.isInterleavingActive;
+      if (btn) {
+        btn.classList.remove("active");
+        btn.title = "Interleaving: OFF";
+      }
+      alert(`\u26A0\uFE0F Interleaving \u064A\u0639\u0645\u0644 \u0641\u0642\u0637 \u0639\u0644\u0649 H\xF6ren Teil 1,2,3 \u0648 Lesen 1 \u0648 Lesen 2 \u062D\u0627\u0644\u064A\u0627\u064B (\u0627\u0644\u0645\u0647\u0627\u0631\u0629 \u0627\u0644\u062D\u0627\u0644\u064A\u0629: ${currentSkill3})`);
+      _toggleInProgress = false;
+    }
+  }
+  function initInterleaving() {
+    console.log("\u{1F504} \u062A\u0647\u064A\u0626\u0629 \u0632\u0631 Interleaving...");
+    const btn = document.getElementById("interleavingBtn");
+    if (!btn) {
+      console.warn("\u26A0\uFE0F \u0632\u0631 Interleaving \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F \u0641\u064A \u0627\u0644\u0635\u0641\u062D\u0629!");
+      return;
+    }
+    if (_interleavingInitialized) {
+      console.log("\u23ED\uFE0F \u0632\u0631 Interleaving \u062A\u0645 \u062A\u0647\u064A\u0626\u062A\u0647 \u0645\u0633\u0628\u0642\u0627\u064B\u060C \u062A\u062E\u0637\u064A");
+      return;
+    }
+    console.log("\u2705 \u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u0632\u0631 Interleaving");
+    const newBtn = btn.cloneNode(true);
+    btn.parentNode.replaceChild(newBtn, btn);
+    const freshBtn = document.getElementById("interleavingBtn");
+    freshBtn.addEventListener("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log("\u{1F525} \u062A\u0645 \u0627\u0644\u0636\u063A\u0637 \u0639\u0644\u0649 \u0627\u0644\u0632\u0631!");
+      toggleInterleaving();
+    });
+    window.isInterleavingActive = false;
+    freshBtn.classList.remove("active");
+    freshBtn.title = "Interleaving: OFF";
+    _interleavingInitialized = true;
+    console.log("\u2705 \u0632\u0631 Interleaving \u062A\u0645 \u062A\u0647\u064A\u0626\u062A\u0647 \u0628\u0646\u062C\u0627\u062D (\u0645\u0631\u0629 \u0648\u0627\u062D\u062F\u0629)");
+  }
+  function resetInterleaving() {
+    console.log("\u{1F504} \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 Interleaving (\u062D\u0627\u0644\u0629 \u0641\u0642\u0637)");
+    window.isInterleavingActive = false;
+    const btn = document.getElementById("interleavingBtn");
+    if (btn) {
+      btn.classList.remove("active");
+      btn.title = "Interleaving: OFF";
+    }
+    if (typeof resetLesen1Order === "function") {
+      resetLesen1Order();
+    }
+    if (typeof resetLesen2Order === "function") {
+      resetLesen2Order();
+    }
+    if (typeof resetLesen3Order === "function") {
+      resetLesen3Order();
+    }
+    _interleavingInitialized = false;
+    console.log("\u2705 \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u062D\u0627\u0644\u0629 Interleaving");
+  }
+  function pushAnswerToHistory(action) {
+    if (!_historyEnabled) return;
+    _answerHistory.push(action);
+    if (_answerHistory.length > 50) _answerHistory.shift();
+  }
+  function undoLastAnswer() {
+    if (_answerHistory.length === 0) return false;
+    const lastAction = _answerHistory.pop();
+    const skill = window.currentSkill || "";
+    if (skill.startsWith("hoeren")) {
+      if (lastAction.type === "radio") {
+        const radio = document.querySelector(`input[name="${lastAction.name}"]:checked`);
+        if (radio) radio.checked = false;
+        if (window._trueFalseUserAnswers) {
+          const qId = parseInt(lastAction.name.replace("q_", ""));
+          delete window._trueFalseUserAnswers[qId];
+        }
+      }
+    } else if (skill === "lesen1" || skill === "teil1") {
+      if (lastAction.type === "select") {
+        const selectId = lastAction.id;
+        const oldVal = lastAction.oldValue || "";
+        const idx = parseInt(selectId.replace("matching_q_", ""));
+        if (typeof matchingSelectedAnswers2 !== "undefined") {
+          if (oldVal) {
+            matchingSelectedAnswers2[idx] = oldVal;
+          } else {
+            delete matchingSelectedAnswers2[idx];
+          }
+        }
+        if (typeof matchingAvailableOptions2 !== "undefined" && lastAction.newValue) {
+          const newVal = lastAction.newValue;
+          if (!matchingAvailableOptions2.includes(newVal)) {
+            matchingAvailableOptions2.push(newVal);
+          }
+        }
+        if (typeof window.renderMatchingQuestions === "function") {
+          window.renderMatchingQuestions();
+        } else if (typeof renderMatchingQuestions2 === "function") {
+          renderMatchingQuestions2();
+        }
+        const newSelect = document.getElementById(selectId);
+        if (newSelect) {
+          newSelect.value = oldVal;
+          newSelect.dataset.oldValue = oldVal;
+        }
+        console.log(`\u2705 \u062A\u0645 \u0627\u0644\u062A\u0631\u0627\u062C\u0639 \u0639\u0646 \u0627\u062E\u062A\u064A\u0627\u0631 ${selectId}`);
+        return true;
+      }
+    } else if (skill === "lesen2" || skill === "teil2") {
+      if (lastAction.type === "radio") {
+        const radio = document.querySelector(`input[name="${lastAction.name}"]:checked`);
+        if (radio) radio.checked = false;
+        if (typeof teil2UserAnswers !== "undefined") {
+          const idx = parseInt(lastAction.name.replace("teil2_q", ""));
+          delete teil2UserAnswers[idx];
+        }
+      }
+    } else if (skill === "lesen3" || skill === "teil3") {
+      if (lastAction.type === "select") {
+        const select = document.getElementById(lastAction.id);
+        if (select) {
+          select.value = "";
+          if (typeof teil3UserAnswers !== "undefined") {
+            const idx = parseInt(lastAction.id.replace("teil3_select_", ""));
+            delete teil3UserAnswers[idx];
+            if (typeof updateTeil3SelectOptions === "function") updateTeil3SelectOptions();
+            if (typeof updateTeil3RightSideColors === "function") updateTeil3RightSideColors();
+            if (typeof updateTeil3CardStyle === "function") updateTeil3CardStyle(idx);
+          }
+        }
+      } else if (lastAction.type === "teil3_link") {
+        const { itemIdx, sitIdx, action, previousSit } = lastAction;
+        if (action === "add") {
+          delete teil3UserAnswers[itemIdx];
+          const select = document.getElementById(`teil3_select_${itemIdx}`);
+          if (select) select.value = "";
+          if (typeof updateTeil3SelectOptions === "function") updateTeil3SelectOptions();
+          if (typeof updateTeil3RightSideColors === "function") updateTeil3RightSideColors();
+          if (typeof updateTeil3CardStyle === "function") updateTeil3CardStyle(itemIdx);
+        } else if (action === "remove") {
+          if (previousSit !== null && previousSit !== void 0 && previousSit !== "") {
+            teil3UserAnswers[itemIdx] = previousSit;
+            const select = document.getElementById(`teil3_select_${itemIdx}`);
+            if (select) select.value = previousSit;
+            if (typeof updateTeil3SelectOptions === "function") updateTeil3SelectOptions();
+            if (typeof updateTeil3RightSideColors === "function") updateTeil3RightSideColors();
+            if (typeof updateTeil3CardStyle === "function") updateTeil3CardStyle(itemIdx);
+          }
+        }
+      }
+    } else if (skill === "sprach1") {
+      if (lastAction.type === "sprach") {
+        const btn = document.getElementById(lastAction.id);
+        if (btn) {
+          const qId = parseInt(lastAction.id.replace("sprach1_btn_", ""));
+          if (typeof sprach1UserAnswers !== "undefined") {
+            delete sprach1UserAnswers[qId];
+            btn.textContent = `__(${qId})__`;
+            btn.style.backgroundColor = "#e0e0e0";
+            btn.style.color = "#333";
+            const radioName = `sprach1_q${qId}`;
+            document.querySelectorAll(`input[name="${radioName}"]`).forEach((r) => r.checked = false);
+          }
+        }
+      }
+    } else if (skill === "sprach2") {
+      if (lastAction.type === "sprach2_link") {
+        const { qId, word, action } = lastAction;
+        if (action === "add") {
+          delete sprach2UserAnswers[qId];
+          const btn = document.getElementById(`sprach2_btn_${qId}`);
+          if (btn) {
+            btn.textContent = `__( ${qId} )__`;
+            btn.style.backgroundColor = "#e0e0e0";
+            btn.style.color = "#333";
+            btn.classList.remove("selected-for-link");
+            btn.style.border = "none";
+          }
+          const card = document.getElementById(`sprach2_word_${word}`);
+          if (card) {
+            card.style.backgroundColor = "#ffffff";
+            card.style.border = "1px solid #7c6ce6";
+            card.style.color = "#4a4a4a";
+            card.style.cursor = "pointer";
+            card.style.opacity = "1";
+            card.classList.remove("selected-for-link");
+          }
+        } else if (action === "remove") {
+          sprach2UserAnswers[qId] = word;
+          const btn = document.getElementById(`sprach2_btn_${qId}`);
+          if (btn) {
+            btn.textContent = word;
+            btn.style.backgroundColor = "#d4edda";
+            btn.style.border = "2px solid #28a745";
+            btn.style.color = "#155724";
+          }
+          const card = document.getElementById(`sprach2_word_${word}`);
+          if (card) {
+            card.style.backgroundColor = "#d4edda";
+            card.style.border = "2px solid #28a745";
+            card.style.color = "#155724";
+            card.style.cursor = "default";
+            card.style.opacity = "0.85";
+          }
+        }
+      } else if (lastAction.type === "sprach") {
+        const btn = document.getElementById(lastAction.id);
+        if (btn) {
+          const qId = parseInt(lastAction.id.replace("sprach2_btn_", ""));
+          if (typeof sprach2UserAnswers !== "undefined") {
+            const word = sprach2UserAnswers[qId];
+            delete sprach2UserAnswers[qId];
+            btn.textContent = `__( ${qId} )__`;
+            btn.style.backgroundColor = "#e0e0e0";
+            btn.style.color = "#333";
+            if (word) {
+              const card = document.getElementById(`sprach2_word_${word}`);
+              if (card) {
+                card.style.backgroundColor = "#ffffff";
+                card.style.border = "1px solid #7c6ce6";
+                card.style.color = "#4a4a4a";
+                card.style.cursor = "pointer";
+                card.style.opacity = "1";
+              }
+            }
+          }
+        }
+      }
+    }
+    return true;
+  }
+  function pushTeil3LinkToHistory(itemIdx, sitIdx, action, previousSit) {
+    pushAnswerToHistory({
+      type: "teil3_link",
+      itemIdx,
+      sitIdx,
+      action,
+      // 'add' أو 'remove'
+      previousSit: previousSit !== void 0 ? previousSit : null
+    });
+  }
+  function hookAnswerSelection() {
+    document.addEventListener("change", function(e) {
+      if (e.target.type === "radio" && e.target.name && e.target.name.startsWith("q_")) {
+        if (e.target.checked) {
+          pushAnswerToHistory({ type: "radio", name: e.target.name, value: e.target.value });
+        }
+      }
+    });
+    document.addEventListener("change", function(e) {
+      if (e.target.tagName === "SELECT" && e.target.id && e.target.id.startsWith("matching_q_")) {
+        const oldVal = e.target.dataset.oldValue || "";
+        const newVal = e.target.value;
+        if (newVal) {
+          pushAnswerToHistory({ type: "select", id: e.target.id, oldValue: oldVal });
+          e.target.dataset.oldValue = newVal;
+        } else {
+          pushAnswerToHistory({ type: "select", id: e.target.id, oldValue: oldVal });
+          e.target.dataset.oldValue = "";
+        }
+        setTimeout(() => {
+          if (document.activeElement === e.target) {
+            e.target.blur();
+          }
+          const examContainer = document.getElementById("exam");
+          if (examContainer && !document.activeElement?.closest?.("#exam")) {
+            examContainer.setAttribute("tabindex", "-1");
+            examContainer.focus({ preventScroll: true });
+          }
+        }, 5);
+      }
+    });
+    document.addEventListener("change", function(e) {
+      if (e.target.type === "radio" && e.target.name && e.target.name.startsWith("teil2_q")) {
+        if (e.target.checked) {
+          pushAnswerToHistory({ type: "radio", name: e.target.name, value: e.target.value });
+          setTimeout(() => {
+            if (document.activeElement === e.target) {
+              e.target.blur();
+            }
+            const examContainer = document.getElementById("exam");
+            if (examContainer && !document.activeElement?.closest?.("#exam")) {
+              examContainer.setAttribute("tabindex", "-1");
+              examContainer.focus({ preventScroll: true });
+            }
+          }, 5);
+        }
+      }
+    });
+    document.addEventListener("change", function(e) {
+      if (e.target.tagName === "SELECT" && e.target.id && e.target.id.startsWith("teil3_select_")) {
+        const oldVal = e.target.dataset.oldValue || "";
+        const newVal = e.target.value;
+        if (newVal) {
+          pushAnswerToHistory({ type: "select", id: e.target.id, oldValue: oldVal });
+          e.target.dataset.oldValue = newVal;
+        } else {
+          pushAnswerToHistory({ type: "select", id: e.target.id, oldValue: oldVal });
+          e.target.dataset.oldValue = "";
+        }
+        setTimeout(() => {
+          if (document.activeElement === e.target) {
+            e.target.blur();
+          }
+          const examContainer = document.getElementById("exam");
+          if (examContainer && !document.activeElement?.closest?.("#exam")) {
+            examContainer.setAttribute("tabindex", "-1");
+            examContainer.focus({ preventScroll: true });
+          }
+        }, 5);
+      }
+    });
+    document.addEventListener("click", function(e) {
+      if (e.target.id && e.target.id.startsWith("sprach1_btn_")) {
+        const qId = parseInt(e.target.id.replace("sprach1_btn_", ""));
+        if (sprach1UserAnswers && sprach1UserAnswers[qId]) {
+          pushAnswerToHistory({ type: "sprach", id: e.target.id });
+        }
+      }
+      if (e.target.id && e.target.id.startsWith("sprach2_btn_")) {
+        const qId = parseInt(e.target.id.replace("sprach2_btn_", ""));
+        if (sprach2UserAnswers && sprach2UserAnswers[qId]) {
+          pushAnswerToHistory({ type: "sprach", id: e.target.id });
+        }
+      }
+      if (e.target.type === "radio" && e.target.name && e.target.name.startsWith("sprach1_q")) {
+        if (e.target.checked) {
+          pushAnswerToHistory({ type: "sprach", id: "sprach1_btn_" + e.target.name.replace("sprach1_q", "") });
+          setTimeout(() => {
+            if (document.activeElement === e.target) {
+              e.target.blur();
+            }
+            const examContainer = document.getElementById("exam");
+            if (examContainer && !document.activeElement?.closest?.("#exam")) {
+              examContainer.setAttribute("tabindex", "-1");
+              examContainer.focus({ preventScroll: true });
+            }
+          }, 5);
+        }
+      }
+    });
+    document.addEventListener("change", function(e) {
+      if (e.target.type === "radio" && e.target.name && e.target.name.startsWith("q_")) {
+        if (e.target.checked) {
+          setTimeout(() => {
+            if (document.activeElement === e.target) {
+              e.target.blur();
+            }
+            const examContainer = document.getElementById("exam");
+            if (examContainer && !document.activeElement?.closest?.("#exam")) {
+              examContainer.setAttribute("tabindex", "-1");
+              examContainer.focus({ preventScroll: true });
+            }
+          }, 5);
+        }
+      }
+    });
+  }
+  function fixFocusLoss() {
+    const examContainer = document.getElementById("exam");
+    if (!examContainer) return;
+    document.addEventListener("click", function(e) {
+      if (examContainer.contains(e.target)) {
+        setTimeout(() => {
+          if (document.activeElement?.tagName === "INPUT" || document.activeElement?.tagName === "TEXTAREA") {
+            return;
+          }
+          if (!document.activeElement?.closest?.("#exam")) {
+            examContainer.setAttribute("tabindex", "-1");
+            examContainer.focus({ preventScroll: true });
+          }
+        }, 10);
+      }
+    }, true);
+    document.addEventListener("change", function(e) {
+      if (e.target.closest && e.target.closest("#exam")) {
+        setTimeout(() => {
+          if (document.activeElement?.tagName === "INPUT" || document.activeElement?.tagName === "TEXTAREA") {
+            return;
+          }
+          if (!document.activeElement?.closest?.("#exam")) {
+            examContainer.setAttribute("tabindex", "-1");
+            examContainer.focus({ preventScroll: true });
+          }
+        }, 10);
+      }
+    }, true);
+  }
+  function enableHistory() {
+    _historyEnabled = true;
+    _answerHistory = [];
+  }
+  function disableHistory() {
+    _historyEnabled = false;
+    _answerHistory = [];
+  }
+  function isCorrectionVisible() {
+    const resultDiv = document.querySelector('.result-box:not([style*="display: none"])');
+    return resultDiv && resultDiv.style.display !== "none";
+  }
+  function triggerCorrection() {
+    const examContainer = document.getElementById("exam");
+    if (!examContainer) {
+      const checkBtn = document.querySelector(".check-btn");
+      if (checkBtn) {
+        checkBtn.click();
+        return true;
+      }
+      const allBtns2 = document.querySelectorAll("button");
+      for (let btn of allBtns2) {
+        const text = btn.textContent.trim();
+        if (text === "\u062A\u0635\u062D\u064A\u062D" || text === "Pr\xFCfen" || text === "\u2705 \u062A\u0635\u062D\u064A\u062D" || text === "\u{1F4DD} Pr\xFCfen") {
+          btn.click();
+          return true;
+        }
+      }
+      return false;
+    }
+    const allCheckBtns = examContainer.querySelectorAll(".check-btn");
+    for (const checkBtn of allCheckBtns) {
+      const btnStyle = window.getComputedStyle(checkBtn);
+      if (btnStyle.display === "none" || btnStyle.visibility === "hidden" || checkBtn.offsetParent === null) {
+        continue;
+      }
+      let parent = checkBtn.parentElement;
+      let hiddenParent = false;
+      while (parent && parent !== examContainer) {
+        const parentStyle = window.getComputedStyle(parent);
+        if (parentStyle.display === "none" || parentStyle.visibility === "hidden") {
+          hiddenParent = true;
+          break;
+        }
+        parent = parent.parentElement;
+      }
+      if (hiddenParent) {
+        continue;
+      }
+      console.log("\u2705 [Enter] \u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u0632\u0631 \u062A\u0635\u062D\u064A\u062D \u0645\u0631\u0626\u064A\u060C \u0633\u064A\u062A\u0645 \u0627\u0644\u0646\u0642\u0631 \u0639\u0644\u064A\u0647");
+      checkBtn.click();
+      return true;
+    }
+    const allBtns = examContainer.querySelectorAll("button");
+    for (let btn of allBtns) {
+      const text = btn.textContent.trim();
+      const btnStyle = window.getComputedStyle(btn);
+      if (btnStyle.display === "none" || btnStyle.visibility === "hidden" || btn.offsetParent === null) {
+        continue;
+      }
+      if (text === "\u062A\u0635\u062D\u064A\u062D" || text === "Pr\xFCfen" || text === "\u2705 \u062A\u0635\u062D\u064A\u062D" || text === "\u{1F4DD} Pr\xFCfen") {
+        console.log("\u2705 [Enter] \u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u0632\u0631 \u062A\u0635\u062D\u064A\u062D (\u0646\u0635) \u0645\u0631\u0626\u064A\u060C \u0633\u064A\u062A\u0645 \u0627\u0644\u0646\u0642\u0631 \u0639\u0644\u064A\u0647");
+        btn.click();
+        return true;
+      }
+    }
+    console.warn("\u274C [Enter] \u0644\u0645 \u064A\u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u0623\u064A \u0632\u0631 \u062A\u0635\u062D\u064A\u062D \u0645\u0631\u0626\u064A \u0641\u064A #exam");
+    return false;
+  }
+  function triggerNextExam() {
+    const nextBtn = document.getElementById("nextExamBtn");
+    if (nextBtn && nextBtn.style.display !== "none") {
+      nextBtn.click();
+      return true;
+    }
+    return false;
+  }
+  function triggerPrevExam() {
+    const prevBtn = document.getElementById("prevExamBtn");
+    if (prevBtn && prevBtn.style.display !== "none") {
+      prevBtn.click();
+      return true;
+    }
+    return false;
+  }
+  function triggerReset() {
+    const examContainer = document.getElementById("exam");
+    if (!examContainer) return false;
+    let resetBtn = null;
+    const allBtns = examContainer.querySelectorAll("button");
+    for (let btn of allBtns) {
+      const text = btn.textContent.trim();
+      if (text === "\u21BA" || text.includes("\u21BA")) {
+        resetBtn = btn;
+        break;
+      }
+    }
+    if (!resetBtn) {
+      for (let btn of allBtns) {
+        const text = btn.textContent.trim();
+        if (text.includes("\u0625\u0639\u0627\u062F\u0629") || text.includes("Reset") || text.includes("reset")) {
+          resetBtn = btn;
+          break;
+        }
+      }
+    }
+    if (!resetBtn) {
+      resetBtn = examContainer.querySelector('[class*="reset"], [id*="reset"], [class*="Reset"], [id*="Reset"]');
+    }
+    if (resetBtn) {
+      resetBtn.click();
+      return true;
+    }
+    console.warn("\u26A0\uFE0F \u0644\u0645 \u064A\u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u0632\u0631 \u0625\u0639\u0627\u062F\u0629 \u0627\u0644\u0645\u062D\u0627\u0648\u0644\u0629 \u062F\u0627\u062E\u0644 \u0635\u0641\u062D\u0629 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646");
+    return false;
+  }
+  function exitExam() {
+    if (typeof window.goBackToExamsList === "function") {
+      window.goBackToExamsList();
+    } else {
+      const backBtn = document.getElementById("backArrowFromExam");
+      if (backBtn) backBtn.click();
+    }
+  }
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {
+      });
+    } else {
+      document.exitFullscreen().catch(() => {
+      });
+    }
+  }
+  function addSentencePuzzleIcons(container, questions) {
+    if (!container || !questions) return;
+    const cards = container.querySelectorAll(".question-card");
+    cards.forEach((card, index) => {
+      const textSpan = card.querySelector("span");
+      if (!textSpan) return;
+      const match = textSpan.textContent.match(/^(\d+)/);
+      if (!match) return;
+      const questionId = parseInt(match[1]);
+      let question = null;
+      for (let q of questions) {
+        if (q.displayNumber === questionId) {
+          question = q;
+          break;
+        }
+      }
+      if (!question) return;
+      if (question.correct === true) {
+        let icon = card.querySelector(".sentence-puzzle-icon");
+        if (icon) return;
+        icon = document.createElement("span");
+        icon.className = "sentence-puzzle-icon";
+        icon.textContent = "\u{1F500}";
+        icon.style.cssText = `
+                font-size: 16px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                margin-right: 10px;
+                display: inline-block;
+                color: #64748b;
+                opacity: 0.6;
+            `;
+        card.insertBefore(icon, textSpan);
+        icon.onclick = function(e) {
+          e.stopPropagation();
+          if (window.SentenceReorder) {
+            const cleanText = textSpan.textContent.replace(/^\d+\s*/, "");
+            const tempElement = document.createElement("span");
+            tempElement.textContent = cleanText;
+            SentenceReorder.open(container, tempElement, questionId, this);
+          }
+        };
+        icon.addEventListener("mouseenter", function() {
+          this.style.color = "#2c3e66";
+          this.style.opacity = "1";
+          this.style.transform = "scale(1.1)";
+        });
+        icon.addEventListener("mouseleave", function() {
+          this.style.color = "#64748b";
+          this.style.opacity = "0.6";
+          this.style.transform = "scale(1)";
+        });
+      }
+    });
+  }
+  var _hoerenData, interleavingOrders, lesen1OriginalNodes, lesen1ShuffledNodes, lesen1OrderSaved, lesen2OriginalNodes, lesen2ShuffledNodes, lesen2OrderSaved, lesen3OriginalNodes, lesen3ShuffledNodes, lesen3OrderSaved, examTimer2, currentSchreibenData, currentSprach2Data, sprach2UserAnswers, sprach2SelectedQuestionId, sprach2SelectedWordForLinking, currentSprach1Data, sprach1UserAnswers, sprach1OpenDropdownId, currentMatchingExamData2, matchingSelectedAnswers2, matchingAvailableOptions2, currentTeil2Data, teil2UserAnswers, currentTeil3Data, teil3UserAnswers, teil3SelectedItem, teil3SelectedSit, teil3SelectedItemForLink, teil3SelectedSitForLink, originalOpenExamGlobal, MemoryHighlightEngine, memoryEngine, toggleBtn, _toggleInProgress, _interleavingInitialized, _answerHistory, _historyEnabled, originalCheckTrueFalse, MatchingMode, matchingLesen1, matchingLesen3;
+  var init_engine = __esm({
+    "engine.js"() {
+      console.log("\u2705 engine.js \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647");
+      _hoerenData = {
+        hoeren1: { container: null, questions: [], note: "", originalQuestions: [] },
+        hoeren2: { container: null, questions: [], note: "", originalQuestions: [] },
+        hoeren3: { container: null, questions: [], note: "", originalQuestions: [] }
+      };
+      interleavingOrders = {
+        hoeren1: [2, 4, 1, 5, 3],
+        hoeren2: [3, 7, 1, 9, 5, 10, 2, 6, 4, 8],
+        hoeren3: [2, 4, 1, 5, 3],
+        lesen1: [3, 1, 5, 2, 4],
+        lesen2: [4, 2, 5, 1, 3],
+        lesen3: [4, 8, 1, 11, 6, 2, 10, 3, 12, 7, 5, 9]
+      };
+      lesen1OriginalNodes = null;
+      lesen1ShuffledNodes = null;
+      lesen1OrderSaved = false;
+      lesen2OriginalNodes = null;
+      lesen2ShuffledNodes = null;
+      lesen2OrderSaved = false;
+      lesen3OriginalNodes = null;
+      lesen3ShuffledNodes = null;
+      lesen3OrderSaved = false;
+      examTimer2 = {
+        startTime: null,
+        isRunning: false,
+        skill: null,
+        examId: null,
+        intervalId: null,
+        lastElapsed: 0,
+        start(skill, examId) {
+          if (this.isRunning) return;
+          this.startTime = Date.now();
+          this.isRunning = true;
+          this.skill = skill;
+          this.examId = examId;
+          this.lastElapsed = 0;
+          const btn = document.getElementById("playTimerBtn");
+          if (btn) {
+            btn.querySelector(".material-symbols-outlined").textContent = "pause";
+            btn.title = "\u0625\u064A\u0642\u0627\u0641 \u0645\u0624\u0642\u062A";
+          }
+          if (this.intervalId) clearInterval(this.intervalId);
+          this.intervalId = setInterval(() => {
+            if (this.isRunning) {
+              const elapsed = Date.now() - this.startTime + this.lastElapsed;
+              const seconds = Math.floor(elapsed / 1e3);
+              const minutes = (seconds / 60).toFixed(2);
+              updateTimerDisplay(minutes + " \u062F\u0642\u064A\u0642\u0629");
+            }
+          }, 1e3);
+          console.log(`\u23F1\uFE0F \u0628\u062F\u0623 \u0627\u0644\u062A\u0648\u0642\u064A\u062A \u0644\u0644\u0627\u0645\u062A\u062D\u0627\u0646 ${skill} - ${examId}`);
+        },
+        stop() {
+          if (!this.isRunning) return null;
+          const elapsed = Date.now() - this.startTime + this.lastElapsed;
+          this.isRunning = false;
+          this.lastElapsed = elapsed;
+          if (this.intervalId) {
+            clearInterval(this.intervalId);
+            this.intervalId = null;
+          }
+          const skill = this.skill;
+          const examId = this.examId;
+          const btn = document.getElementById("playTimerBtn");
+          if (btn) {
+            btn.querySelector(".material-symbols-outlined").textContent = "play_arrow";
+            btn.title = "\u0627\u0633\u062A\u0626\u0646\u0627\u0641 \u0627\u0644\u062A\u0648\u0642\u064A\u062A";
+          }
+          const seconds = Math.floor(elapsed / 1e3);
+          const minutes = (seconds / 60).toFixed(2);
+          updateTimerDisplay(minutes + " \u062F\u0642\u064A\u0642\u0629");
+          console.log(`\u23F1\uFE0F \u062A\u0648\u0642\u0641 \u0627\u0644\u062A\u0648\u0642\u064A\u062A \u0644\u0644\u0627\u0645\u062A\u062D\u0627\u0646 ${skill} - ${examId}\u060C \u0627\u0644\u0645\u062F\u0629: ${elapsed}ms`);
+          return elapsed;
+        },
+        resume() {
+          if (this.isRunning) return;
+          if (this.skill === null || this.examId === null) return;
+          this.startTime = Date.now();
+          this.isRunning = true;
+          const btn = document.getElementById("playTimerBtn");
+          if (btn) {
+            btn.querySelector(".material-symbols-outlined").textContent = "pause";
+            btn.title = "\u0625\u064A\u0642\u0627\u0641 \u0645\u0624\u0642\u062A";
+          }
+          if (this.intervalId) clearInterval(this.intervalId);
+          this.intervalId = setInterval(() => {
+            if (this.isRunning) {
+              const elapsed = Date.now() - this.startTime + this.lastElapsed;
+              const seconds = Math.floor(elapsed / 1e3);
+              const minutes = (seconds / 60).toFixed(2);
+              updateTimerDisplay(minutes + " \u062F\u0642\u064A\u0642\u0629");
+            }
+          }, 1e3);
+          console.log(`\u23F1\uFE0F \u0627\u0633\u062A\u0626\u0646\u0627\u0641 \u0627\u0644\u062A\u0648\u0642\u064A\u062A \u0644\u0644\u0627\u0645\u062A\u062D\u0627\u0646 ${this.skill} - ${this.examId}`);
+        },
+        finalize() {
+          if (!this.isRunning && this.lastElapsed === 0) {
+            return null;
+          }
+          let elapsed = this.lastElapsed;
+          if (this.isRunning) {
+            elapsed = Date.now() - this.startTime + this.lastElapsed;
+            this.isRunning = false;
+            if (this.intervalId) {
+              clearInterval(this.intervalId);
+              this.intervalId = null;
+            }
+          }
+          const skill = this.skill;
+          const examId = this.examId;
+          this.startTime = null;
+          this.isRunning = false;
+          this.skill = null;
+          this.examId = null;
+          this.lastElapsed = 0;
+          const btn = document.getElementById("playTimerBtn");
+          if (btn) {
+            btn.querySelector(".material-symbols-outlined").textContent = "play_arrow";
+            btn.title = "\u0628\u062F\u0621 \u062A\u0648\u0642\u064A\u062A \u0627\u0644\u062D\u0644";
+          }
+          const seconds = Math.floor(elapsed / 1e3);
+          const minutes = (seconds / 60).toFixed(2);
+          updateTimerDisplay(minutes + " \u062F\u0642\u064A\u0642\u0629");
+          console.log(`\u23F1\uFE0F \u062A\u0645 \u062D\u0641\u0638 \u0648\u0642\u062A \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 ${skill} - ${examId}\u060C \u0627\u0644\u0645\u062F\u0629: ${elapsed}ms`);
+          return elapsed;
+        },
+        reset() {
+          if (this.intervalId) {
+            clearInterval(this.intervalId);
+            this.intervalId = null;
+          }
+          this.startTime = null;
+          this.isRunning = false;
+          this.skill = null;
+          this.examId = null;
+          this.lastElapsed = 0;
+          const btn = document.getElementById("playTimerBtn");
+          if (btn) {
+            btn.querySelector(".material-symbols-outlined").textContent = "play_arrow";
+            btn.title = "\u0628\u062F\u0621 \u062A\u0648\u0642\u064A\u062A \u0627\u0644\u062D\u0644";
+          }
+          updateTimerDisplay("\u0644\u0645 \u064A\u064F\u0633\u062C\u0644");
+        }
+      };
+      window.examTimer = examTimer2;
+      window.saveExamTime = saveExamTime;
+      window.getExamTime = getExamTime2;
+      window.formatTime = formatTime;
+      window.getTimeColor = getTimeColor;
+      window.updateExamTimeInList = updateExamTimeInList;
+      document.addEventListener("beforeunload", function() {
+        if (examTimer2.isRunning) {
+          examTimer2.reset();
+        }
+      });
+      document.addEventListener("pagehide", function() {
+        if (examTimer2.isRunning) {
+          examTimer2.reset();
+        }
+      });
+      window.loadExamFromFile = async function(skill, examId) {
+        try {
+          const response = await fetch(`data/${skill}/exam${examId}.json`);
+          if (response.ok) {
+            return await response.json();
+          }
+          return null;
+        } catch (e) {
+          console.error("\u062E\u0637\u0623:", e);
+          return null;
+        }
+      };
+      currentSchreibenData = null;
+      window.loadSchreibenExam = function(examData) {
+        console.log("\u{1F7E2} loadSchreibenExam", examData.title);
+        currentSchreibenData = examData;
+        renderSchreibenExam();
+      };
+      currentSprach2Data = null;
+      sprach2UserAnswers = {};
+      sprach2SelectedQuestionId = null;
+      sprach2SelectedWordForLinking = null;
+      window.loadSprach2Exam = function(examData) {
+        console.log("\u{1F7E2} loadSprach2Exam", examData.title);
+        currentSprach2Data = examData;
+        sprach2UserAnswers = {};
+        sprach2SelectedQuestionId = null;
+        sprach2SelectedWordForLinking = null;
+        renderSprach2Exam();
+      };
+      currentSprach1Data = null;
+      sprach1UserAnswers = {};
+      window.loadSprach1Exam = function(examData) {
+        console.log("\u{1F7E2} loadSprach1Exam", examData.title);
+        currentSprach1Data = examData;
+        sprach1UserAnswers = {};
+        renderSprach1Exam();
+      };
+      sprach1OpenDropdownId = null;
+      window.buildTrueFalseExam = function(container, questions, note) {
+        if (!questions || !Array.isArray(questions) || questions.length === 0) {
+          console.error("\u274C \u062E\u0637\u0623: \u0644\u0627 \u062A\u0648\u062C\u062F \u0623\u0633\u0626\u0644\u0629 \u0641\u064A \u0647\u0630\u0627 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646");
+          if (container) {
+            container.innerHTML = '<div style="text-align:center; color:#ff6b6b; padding:30px; background:#fff; border-radius:12px;"> \u062D\u062F\u062B \u062E\u0637\u0623 \u0641\u064A \u062A\u062D\u0645\u064A\u0644 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646. \u064A\u0631\u062C\u0649 \u0627\u0644\u0645\u062D\u0627\u0648\u0644\u0629 \u0645\u0631\u0629 \u0623\u062E\u0631\u0649.</div>';
+          }
           return;
         }
-        const exams = examsDatabase[skill] || [];
-        const totalExams = config.totalExams;
-        const currentStage = getCurrentStage(skill);
-        const examIds = getExamsForStage(skill, currentStage);
-        console.log(`\u{1F4DA} \u062A\u062D\u0645\u064A\u0644 \u0627\u0644\u0645\u0631\u062D\u0644\u0629 ${currentStage} \u0645\u0646 ${getTotalStages(skill)} \u0644\u0640 ${skill}`);
-        console.log(`\u{1F4CB} \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A: ${examIds.join(", ")}`);
-        const allCorrect = [], allWrong = [], allQuestions = [];
-        for (const examId of examIds) {
-          const exam = exams.find((e) => e.id === examId);
-          if (!exam || !exam.hasFile) continue;
-          const fileName = getActualFileName(exam.id);
-          try {
-            const response = await fetch(`data/${skill}/${fileName}`);
-            if (response.ok) {
-              const data = await response.json();
-              let questions = [];
-              if (skill === "lesen3") {
-                questions = data.items || [];
-              } else if (skill === "sprach1" || skill === "sprach2") {
-                if (data.options && Array.isArray(data.options)) {
-                  questions = data.options;
-                } else if (data.questions && Array.isArray(data.questions)) {
-                  questions = data.questions;
-                } else {
-                  questions = [];
-                }
-                questions = questions.filter((q) => q.memoryHighlight);
-              } else {
-                questions = data.questions || [];
-              }
-              questions.forEach((q, idx) => {
-                let entry;
-                if (skill === "sprach1" || skill === "sprach2") {
-                  const highlight = q.memoryHighlight || {};
-                  entry = {
-                    text: q.text || "",
-                    correct: q.correct,
-                    options: q.options || [],
-                    examId,
-                    questionIndex: idx,
-                    originalQuestion: q,
-                    memoryHighlight: highlight,
-                    id: q.id,
-                    before: highlight.before || "",
-                    connector: highlight.connector || "",
-                    after: highlight.after || "",
-                    color: 0
-                  };
-                } else {
-                  entry = {
-                    text: q.text,
-                    correct: q.correct,
-                    options: q.options || [],
-                    examId,
-                    questionIndex: idx,
-                    originalQuestion: q
-                  };
-                }
-                allQuestions.push(entry);
-                if (skill === "lesen1" || skill === "lesen2" || skill === "lesen3" || skill === "sprach1" || skill === "sprach2") {
-                  allCorrect.push(entry);
-                } else {
-                  if (q.correct === true) allCorrect.push(entry);
-                  else allWrong.push(entry);
-                }
-              });
-              console.log(`\u2705 \u062A\u0645 \u062A\u062D\u0645\u064A\u0644 ${skill} exam${examId}`);
-            }
-          } catch (e) {
-            console.warn(`\u26A0\uFE0F \u0644\u0627 \u064A\u0645\u0643\u0646 \u062A\u062D\u0645\u064A\u0644 ${skill} exam${examId}`);
+        container.innerHTML = "";
+        container.style.display = "block";
+        const skillId = container.id;
+        if (skillId.startsWith("hoeren")) {
+          const data = _hoerenData[skillId];
+          if (data) {
+            data.container = container;
+            data.questions = questions.map((q, index) => ({
+              ...q,
+              displayNumber: index + 1
+            }));
+            data.note = note || "";
+            data.originalQuestions = data.questions.slice();
+            console.log(`\u2705 \u062A\u0645 \u062A\u062E\u0632\u064A\u0646 \u0628\u064A\u0627\u0646\u0627\u062A ${skillId}`);
           }
         }
-        let sharedOptions = [];
-        if ((skill === "lesen1" || skill === "lesen3") && examIds.length > 0) {
-          const firstExamId = examIds[0];
-          const firstExam = exams.find((e) => e.id === firstExamId);
-          if (firstExam && firstExam.hasFile) {
-            try {
-              const fileName = getActualFileName(firstExamId);
-              const response = await fetch(`data/${skill}/${fileName}`);
-              if (response.ok) {
-                const data = await response.json();
-                if (skill === "lesen1" && data.sharedOptions) {
-                  sharedOptions = data.sharedOptions;
-                  console.log(`\u2705 \u062A\u0645 \u0627\u0633\u062A\u062E\u0631\u0627\u062C sharedOptions \u0644\u0640 ${skill} (${sharedOptions.length} \u0639\u0646\u0648\u0627\u0646)`);
-                } else if (skill === "lesen3" && data.situations) {
-                  sharedOptions = data.situations;
-                  console.log(`\u2705 \u062A\u0645 \u0627\u0633\u062A\u062E\u0631\u0627\u062C situations \u0644\u0640 ${skill} \u0643\u0640 sharedOptions (${sharedOptions.length} \u062D\u0627\u0644\u0629)`);
-                }
+        if (window._trueFalseUserAnswers) {
+          delete window._trueFalseUserAnswers;
+        }
+        window._trueFalseUserAnswers = {};
+        if (note) {
+          const noteDiv = document.createElement("div");
+          noteDiv.style.backgroundColor = "#fff3cd";
+          noteDiv.style.color = "#856404";
+          noteDiv.style.padding = "12px 15px";
+          noteDiv.style.borderRadius = "8px";
+          noteDiv.style.marginBottom = "20px";
+          noteDiv.style.border = "1px solid #ffeeba";
+          noteDiv.style.fontSize = "14px";
+          noteDiv.style.fontWeight = "bold";
+          noteDiv.innerHTML = `\u{1F4CC} <strong>\u0645\u0644\u0627\u062D\u0638\u0629:</strong> ${note}`;
+          container.appendChild(noteDiv);
+        }
+        let finalQuestions = questions;
+        if (skillId.startsWith("hoeren") && window.isInterleavingActive) {
+          const order = interleavingOrders[skillId];
+          if (order && order.length === questions.length) {
+            const orderedQuestions = [];
+            for (let idx of order) {
+              if (idx <= questions.length) {
+                orderedQuestions.push(questions[idx - 1]);
               }
-            } catch (e) {
-              console.warn(`\u26A0\uFE0F \u0644\u0627 \u064A\u0645\u0643\u0646 \u062A\u062D\u0645\u064A\u0644 sharedOptions \u0644\u0640 ${skill}`);
+            }
+            if (orderedQuestions.length === questions.length) {
+              finalQuestions = orderedQuestions;
+              console.log(`\u2705 Interleaving: \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0623\u0633\u0626\u0644\u0629 (${skillId})`);
             }
           }
         }
-        window[`_${skill}_combinedData`] = {
-          questions: allCorrect,
-          wrongQuestions: allWrong,
-          allQuestions,
-          sharedOptions,
-          totalExams: examIds.length,
-          totalCorrect: allCorrect.length,
-          totalWrong: allWrong.length,
-          totalQuestions: allCorrect.length + allWrong.length,
-          currentStage,
-          totalStages: getTotalStages(skill),
-          examIds,
-          isLastStage: currentStage >= getTotalStages(skill)
+        for (let i = 0; i < finalQuestions.length; i++) {
+          const q = finalQuestions[i];
+          const questionId = q.displayNumber;
+          const div = document.createElement("div");
+          div.className = "question-card";
+          div.dataset.questionId = questionId;
+          div.dataset.originalIndex = i;
+          div.style.display = "flex";
+          div.style.alignItems = "center";
+          div.style.gap = "15px";
+          div.style.marginBottom = "12px";
+          div.style.flexWrap = "wrap";
+          div.style.padding = "12px";
+          div.style.border = "1px solid #ddd";
+          div.style.borderRadius = "10px";
+          div.style.backgroundColor = "#f9f9f9";
+          div.id = `truefalse_card_${questionId}`;
+          const labelTrue = document.createElement("label");
+          labelTrue.className = "option-label";
+          labelTrue.style.display = "inline-flex";
+          labelTrue.style.alignItems = "center";
+          labelTrue.style.gap = "5px";
+          labelTrue.style.cursor = "pointer";
+          labelTrue.style.marginRight = "15px";
+          labelTrue.style.padding = "5px 10px";
+          labelTrue.style.border = "1px solid #ccc";
+          labelTrue.style.borderRadius = "5px";
+          labelTrue.style.backgroundColor = "white";
+          const radioTrue = document.createElement("input");
+          radioTrue.type = "radio";
+          radioTrue.name = `q_${questionId}`;
+          radioTrue.value = "true";
+          radioTrue.id = `q_${questionId}_true`;
+          radioTrue.onchange = /* @__PURE__ */ (function(qId) {
+            return function() {
+              window._trueFalseUserAnswers[qId] = true;
+            };
+          })(questionId);
+          labelTrue.appendChild(radioTrue);
+          labelTrue.appendChild(document.createTextNode(" Richtig"));
+          const labelFalse = document.createElement("label");
+          labelFalse.className = "option-label";
+          labelFalse.style.display = "inline-flex";
+          labelFalse.style.alignItems = "center";
+          labelFalse.style.gap = "5px";
+          labelFalse.style.cursor = "pointer";
+          labelFalse.style.padding = "5px 10px";
+          labelFalse.style.border = "1px solid #ccc";
+          labelFalse.style.borderRadius = "5px";
+          labelFalse.style.backgroundColor = "white";
+          const radioFalse = document.createElement("input");
+          radioFalse.type = "radio";
+          radioFalse.name = `q_${questionId}`;
+          radioFalse.value = "false";
+          radioFalse.id = `q_${questionId}_false`;
+          radioFalse.onchange = /* @__PURE__ */ (function(qId) {
+            return function() {
+              window._trueFalseUserAnswers[qId] = false;
+            };
+          })(questionId);
+          labelFalse.appendChild(radioFalse);
+          labelFalse.appendChild(document.createTextNode(" Falsch"));
+          const textSpan = document.createElement("span");
+          const displayNumber = q.displayNumber || i + 1;
+          textSpan.innerHTML = `<strong>${displayNumber}</strong> ${q.text}`;
+          textSpan.style.flex = "1";
+          textSpan.style.minWidth = "200px";
+          div.appendChild(labelTrue);
+          div.appendChild(labelFalse);
+          div.appendChild(textSpan);
+          container.appendChild(div);
+        }
+        const buttonContainer = document.createElement("div");
+        buttonContainer.style.display = "flex";
+        buttonContainer.style.gap = "15px";
+        buttonContainer.style.justifyContent = "space-between";
+        buttonContainer.style.alignItems = "center";
+        buttonContainer.style.marginTop = "25px";
+        const correctNumbersContainer = document.createElement("div");
+        correctNumbersContainer.id = "truefalseCorrectNumbers";
+        correctNumbersContainer.style.backgroundColor = "#e3f2fd";
+        correctNumbersContainer.style.color = "#0d47a1";
+        correctNumbersContainer.style.padding = "10px 15px";
+        correctNumbersContainer.style.borderRadius = "8px";
+        correctNumbersContainer.style.fontWeight = "bold";
+        correctNumbersContainer.style.fontSize = "14px";
+        correctNumbersContainer.style.border = "1px solid #90caf9";
+        correctNumbersContainer.style.display = "none";
+        correctNumbersContainer.innerHTML = "\u25B8 : ";
+        const buttonsDiv = document.createElement("div");
+        buttonsDiv.style.display = "flex";
+        buttonsDiv.style.gap = "15px";
+        const checkBtn = document.createElement("button");
+        checkBtn.innerText = "\u{1F4DD} Pr\xFCfen";
+        checkBtn.className = "check-btn";
+        checkBtn.style.padding = "12px 24px";
+        checkBtn.style.backgroundColor = "#2c3e66";
+        checkBtn.style.color = "white";
+        checkBtn.style.border = "none";
+        checkBtn.style.borderRadius = "8px";
+        checkBtn.style.cursor = "pointer";
+        checkBtn.style.fontSize = "16px";
+        checkBtn.onclick = () => {
+          const data = _hoerenData[skillId];
+          const questionsToCheck = data && data.originalQuestions.length > 0 ? data.originalQuestions : finalQuestions;
+          checkTrueFalseExam(container, questionsToCheck, window._trueFalseUserAnswers, correctNumbersContainer);
         };
-        console.log(`\u2705 \u062A\u0645 \u062A\u062D\u0645\u064A\u0644 ${examIds.length} \u0627\u0645\u062A\u062D\u0627\u0646\u060C ${allCorrect.length} \u062C\u0645\u0644\u0629 \u0635\u062D\u064A\u062D\u0629\u060C ${allWrong.length} \u062C\u0645\u0644\u0629 \u062E\u0627\u0637\u0626\u0629`);
+        const resetBtn = document.createElement("button");
+        resetBtn.innerText = "\u21BA";
+        resetBtn.style.padding = "8px 12px";
+        resetBtn.style.backgroundColor = "#6c757d";
+        resetBtn.style.color = "white";
+        resetBtn.style.border = "none";
+        resetBtn.style.borderRadius = "6px";
+        resetBtn.style.cursor = "pointer";
+        resetBtn.style.fontSize = "16px";
+        resetBtn.style.fontWeight = "bold";
+        resetBtn.onclick = function() {
+          container.querySelectorAll(".sentence-puzzle-icon").forEach((icon) => {
+            icon.remove();
+          });
+          if (window.SentenceReorder) {
+            window.SentenceReorder.isOpen = false;
+            window.SentenceReorder.isCorrect = false;
+            window.SentenceReorder.isAnimating = false;
+            window.SentenceReorder.iconElement = null;
+            window.SentenceReorder.parts = [];
+            window.SentenceReorder.shuffledParts = [];
+            window.SentenceReorder.slots = [];
+            window.SentenceReorder.currentContainer = null;
+            window.SentenceReorder.currentSentenceElement = null;
+            window.SentenceReorder.currentQuestionId = null;
+            window.SentenceReorder.currentText = "";
+          }
+          for (let key in window._trueFalseUserAnswers) {
+            delete window._trueFalseUserAnswers[key];
+          }
+          const allRadios = container.querySelectorAll('input[type="radio"]');
+          allRadios.forEach((radio) => {
+            radio.checked = false;
+          });
+          const cards = container.querySelectorAll(".question-card");
+          cards.forEach((card) => {
+            card.classList.remove("correct-answer-card", "wrong-answer-card");
+          });
+          const allMessages = container.querySelectorAll(".correct-message");
+          allMessages.forEach((msg) => msg.remove());
+          const optionLabels = container.querySelectorAll(".option-label");
+          optionLabels.forEach((label) => {
+            label.style.backgroundColor = "white";
+            label.style.border = "1px solid #ccc";
+          });
+          if (correctNumbersContainer) {
+            correctNumbersContainer.style.display = "none";
+          }
+          const resultDiv2 = container.querySelector("#truefalseResult");
+          if (resultDiv2) {
+            resultDiv2.style.display = "none";
+            resultDiv2.innerHTML = "";
+          }
+        };
+        buttonsDiv.appendChild(checkBtn);
+        buttonsDiv.appendChild(resetBtn);
+        buttonContainer.appendChild(correctNumbersContainer);
+        buttonContainer.appendChild(buttonsDiv);
+        container.appendChild(buttonContainer);
+        let resultDiv = document.getElementById("truefalseResult");
+        if (!resultDiv) {
+          resultDiv = document.createElement("div");
+          resultDiv.id = "truefalseResult";
+          resultDiv.className = "result-box";
+          resultDiv.style.display = "none";
+          container.appendChild(resultDiv);
+        }
       };
-      window.goToNextStage = function(skill) {
-        const totalStages = getTotalStages(skill);
-        let currentStage = getCurrentStage(skill);
-        if (currentStage < totalStages) {
-          currentStage++;
-          setCurrentStage(skill, currentStage);
-          console.log(`\u27A1\uFE0F \u0627\u0644\u0627\u0646\u062A\u0642\u0627\u0644 \u0625\u0644\u0649 \u0627\u0644\u0645\u0631\u062D\u0644\u0629 ${currentStage} \u0644\u0640 ${skill}`);
-          window.loadStageExams(skill).then(() => {
-            if (window.memoryTrainer && window.memoryTrainer.currentSkill === skill) {
-              window.memoryTrainer.start("list");
+      currentMatchingExamData2 = null;
+      matchingSelectedAnswers2 = {};
+      matchingAvailableOptions2 = [];
+      window.loadMatchingExam = function(examData) {
+        console.log("\u{1F7E2} loadMatchingExam", examData.title);
+        resetLesen1Order();
+        currentMatchingExamData2 = examData;
+        matchingSelectedAnswers2 = {};
+        matchingAvailableOptions2 = [...examData.sharedOptions];
+        renderMatchingQuestions2();
+      };
+      currentTeil2Data = null;
+      teil2UserAnswers = {};
+      window.loadTeil2Exam = function(examData) {
+        console.log("\u{1F7E2} loadTeil2Exam", examData.title);
+        if (typeof resetLesen2Order === "function") {
+          resetLesen2Order();
+        }
+        currentTeil2Data = examData;
+        teil2UserAnswers = {};
+        renderTeil2Exam();
+      };
+      currentTeil3Data = null;
+      teil3UserAnswers = {};
+      teil3SelectedItem = null;
+      teil3SelectedSit = null;
+      teil3SelectedItemForLink = null;
+      teil3SelectedSitForLink = null;
+      window.loadTeil3Exam = function(examData) {
+        console.log("\u{1F7E2} loadTeil3Exam", examData.title);
+        currentTeil3Data = examData;
+        teil3UserAnswers = {};
+        teil3SelectedItem = null;
+        teil3SelectedSit = null;
+        teil3SelectedItemForLink = null;
+        teil3SelectedSitForLink = null;
+        renderTeil3Exam();
+      };
+      document.addEventListener("DOMContentLoaded", function() {
+        applyMobileStylesToEngine();
+      });
+      originalOpenExamGlobal = window.openExam;
+      if (originalOpenExamGlobal) {
+        window.openExam = async function(examId, examTitle, skill) {
+          await originalOpenExamGlobal(examId, examTitle, skill);
+          setTimeout(applyMobileStylesToEngine, 100);
+        };
+      }
+      window.addEventListener("resize", function() {
+        setTimeout(applyMobileStylesToEngine, 100);
+      });
+      if (typeof checkMatchingExam === "function") {
+        const originalCheckMatching = checkMatchingExam;
+        window.checkMatchingExam = function() {
+          originalCheckMatching();
+          setTimeout(function() {
+            applyTeil1CorrectionColors();
+          }, 50);
+        };
+      }
+      if (typeof checkTeil3Exam === "function") {
+        const originalCheckTeil3 = checkTeil3Exam;
+        window.checkTeil3Exam = function() {
+          originalCheckTeil3();
+          setTimeout(function() {
+            applyTeil3CorrectionColors();
+          }, 50);
+        };
+      }
+      console.log("\u2705 \u0623\u0644\u0648\u0627\u0646 \u0627\u0644\u062A\u0635\u062D\u064A\u062D \u0644\u0644\u0647\u0627\u062A\u0641 (Teil 1 & Teil 3) \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647\u0627");
+      MemoryHighlightEngine = class {
+        constructor() {
+          this.isActive = false;
+          this._lastAppliedId = null;
+          this._isApplying = false;
+          this._isToggling = false;
+          this.originalTexts = /* @__PURE__ */ new Map();
+          this.container = document.querySelector(".exam-box");
+          this.toggleBtn = document.getElementById("memoryToggleBtn");
+          this.currentExamData = null;
+          this.init();
+        }
+        init() {
+          if (this.toggleBtn) {
+            this.toggleBtn.addEventListener("click", () => this.toggle());
+          }
+          document.addEventListener("examLoaded", (e) => {
+            if (this.isActive && e.detail?.data) {
+              this.removeHighlights();
+              this.applyHighlights();
+            }
+          });
+        }
+        toggle() {
+          if (this._isToggling) return;
+          this._isToggling = true;
+          if (this.isActive) {
+            this.removeHighlights();
+            this.toggleBtn.classList.remove("active");
+            this._lastAppliedId = null;
+          } else {
+            this.applyHighlights();
+            this.toggleBtn.classList.add("active");
+          }
+          this.isActive = !this.isActive;
+          setTimeout(() => {
+            this._isToggling = false;
+          }, 500);
+        }
+        setExamData(data) {
+          this.currentExamData = data;
+          this._lastAppliedId = null;
+          if (this.isActive) {
+            this.removeHighlights();
+            this.applyHighlights();
+          }
+        }
+        applyHighlights() {
+          if (this._isApplying) return;
+          const examData = this.currentExamData || window.currentExamData || {};
+          const examId = examData.id || examData.title || "unknown";
+          if (this._lastAppliedId === examId && this.isActive) {
+            console.log("\u23ED\uFE0F \u062A\u062E\u0637\u064A \u0627\u0644\u062A\u0643\u0631\u0627\u0631 (\u0646\u0641\u0633 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646)", examId);
+            return;
+          }
+          this._isApplying = true;
+          this._lastAppliedId = examId;
+          const memoryHighlights = examData.memoryHighlights || [];
+          if (memoryHighlights.length > 0) {
+            console.log("\u{1F504} \u062A\u0637\u0628\u064A\u0642 \u0627\u0644\u062A\u0644\u0648\u064A\u0646 \u0645\u0646 memoryHighlights");
+            memoryHighlights.forEach((highlight) => {
+              const color = highlight.color || 0;
+              const parts = highlight.parts || [];
+              parts.forEach((partText) => {
+                if (!partText || partText.trim() === "") return;
+                this.highlightText(partText, color);
+              });
+            });
+            this._isApplying = false;
+            console.log(`\u2705 \u062A\u0645 \u062A\u0637\u0628\u064A\u0642 \u0627\u0644\u062A\u0644\u0648\u064A\u0646 (${memoryHighlights.length} \u0645\u062C\u0645\u0648\u0639\u0629)`);
+            return;
+          }
+          if (examData.type === "matching" || examData.type === "teil3" || examData.type === "sprach1" || examData.type === "sprach2") {
+            console.log(`\u{1F504} \u062A\u0637\u0628\u064A\u0642 \u0627\u0644\u062A\u0644\u0648\u064A\u0646 \u0627\u0644\u0622\u0644\u064A \u0644\u0640 ${examData.type}`);
+            applyAutoHighlights(examData);
+            this._isApplying = false;
+            console.log(`\u2705 \u062A\u0645 \u062A\u0637\u0628\u064A\u0642 \u0627\u0644\u062A\u0644\u0648\u064A\u0646 \u0627\u0644\u0622\u0644\u064A \u0644\u0640 ${examData.type}`);
+            setTimeout(colorSelectOptions, 100);
+            return;
+          }
+          console.log("\u{1F4CC} \u0644\u0627 \u062A\u0648\u062C\u062F \u0628\u064A\u0627\u0646\u0627\u062A \u062A\u0644\u0648\u064A\u0646 \u0644\u0647\u0630\u0627 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646");
+          this._isApplying = false;
+        }
+        highlightText(searchText, colorIndex) {
+          if (!this.container) return;
+          highlightTextInContainer(this.container, searchText, colorIndex);
+        }
+        removeHighlights() {
+          if (!this.container) return;
+          const highlights = this.container.querySelectorAll(".memory-highlight");
+          highlights.forEach((span) => {
+            const parent = span.parentNode;
+            const textNode = document.createTextNode(span.textContent);
+            parent.replaceChild(textNode, span);
+            parent.normalize();
+          });
+          const selects = this.container.querySelectorAll("select");
+          selects.forEach((select) => {
+            const options = select.querySelectorAll("option");
+            options.forEach((option) => {
+              option.style.removeProperty("backgroundColor");
+              option.style.removeProperty("color");
+              option.style.removeProperty("fontWeight");
+              option.style.removeProperty("padding");
+              option.style.removeProperty("borderRadius");
+              option.style.removeProperty("opacity");
+              option.style.removeProperty("background");
+              option.style.removeProperty("border");
+              if (option.style.length === 0) {
+                option.removeAttribute("style");
+              }
+            });
+            select.style.removeProperty("backgroundColor");
+            select.style.removeProperty("color");
+            select.style.removeProperty("fontWeight");
+            select.style.removeProperty("border");
+            select.style.removeProperty("padding");
+            select.style.removeProperty("borderRadius");
+            if (select.style.length === 0) {
+              select.removeAttribute("style");
+            }
+          });
+          const labels = this.container.querySelectorAll("label");
+          labels.forEach((label) => {
+            const spans = label.querySelectorAll("span");
+            spans.forEach((span) => {
+              span.style.color = "";
+              span.style.fontWeight = "";
+            });
+            label.style.color = "";
+            label.style.fontWeight = "";
+          });
+          const wordCards = this.container.querySelectorAll(".sprach2-word-card");
+          wordCards.forEach((card) => {
+            const textElement = card.querySelector("span") || card;
+            textElement.style.color = "";
+            textElement.style.fontWeight = "";
+          });
+          const allElements = this.container.querySelectorAll('.option, .option-btn, .choice, [class*="option"]');
+          allElements.forEach((el) => {
+            el.style.color = "";
+            el.style.fontWeight = "";
+          });
+          if (window._originalTexts) {
+            window._originalTexts.clear();
+          }
+          this.originalTexts.clear();
+        }
+      };
+      memoryEngine = new MemoryHighlightEngine();
+      window.memoryEngine = memoryEngine;
+      toggleBtn = document.getElementById("memoryToggleBtn");
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", function() {
+          memoryEngine.toggle();
+          setTimeout(colorSelectOptions, 300);
+        });
+      }
+      document.addEventListener("examLoaded", function(e) {
+        if (e.detail?.data) {
+          window.currentExamData = e.detail.data;
+          if (window.memoryEngine) {
+            window.memoryEngine.setExamData(e.detail.data);
+          }
+          setTimeout(colorSelectOptions, 300);
+        }
+      });
+      window.applyColorToOptions = function() {
+        setTimeout(colorSelectOptions, 100);
+      };
+      if (typeof checkMatchingExam === "function") {
+        const originalCheckMatching = window.checkMatchingExam;
+        window.checkMatchingExam = function() {
+          originalCheckMatching();
+          setTimeout(colorSelectOptions, 200);
+        };
+      }
+      if (typeof checkTeil3Exam === "function") {
+        const originalCheckTeil3 = window.checkTeil3Exam;
+        window.checkTeil3Exam = function() {
+          originalCheckTeil3();
+          setTimeout(colorSelectOptions, 200);
+        };
+      }
+      window.rebuildTrueFalseCards = rebuildTrueFalseCards;
+      window.rebuildLesen1 = rebuildLesen1;
+      window.rebuildLesen2 = rebuildLesen2;
+      window.rebuildLesen3 = rebuildLesen3;
+      window.resetLesen1Order = resetLesen1Order;
+      window.resetLesen2Order = resetLesen2Order;
+      window.resetLesen3Order = resetLesen3Order;
+      _toggleInProgress = false;
+      _interleavingInitialized = false;
+      window.toggleInterleaving = toggleInterleaving;
+      window.initInterleaving = initInterleaving;
+      window.resetInterleaving = resetInterleaving;
+      _answerHistory = [];
+      _historyEnabled = false;
+      document.addEventListener("keydown", function(e) {
+        if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.isContentEditable) {
+          return;
+        }
+        if (document.querySelector(".modal.active, .memory-trainer-overlay, #versionsPopupAuto, #resetConfirmModal")) {
+          if (e.key === "Escape") {
+            const popover = document.getElementById("shortcutsPopover");
+            if (popover && popover.style.display !== "none") {
+              popover.style.display = "none";
+              e.preventDefault();
+              return;
+            }
+            if (window.memoryTrainer && window.memoryTrainer.overlay) {
+              window.memoryTrainer.close();
+              e.preventDefault();
+              return;
+            }
+            const versionsPopup = document.getElementById("versionsPopupAuto");
+            if (versionsPopup) {
+              versionsPopup.remove();
+              e.preventDefault();
+              return;
+            }
+            const resetModal = document.getElementById("resetConfirmModal");
+            if (resetModal) {
+              resetModal.remove();
+              e.preventDefault();
+              return;
+            }
+          }
+          return;
+        }
+        const examPage = document.getElementById("exam");
+        if (!examPage || !examPage.classList.contains("active")) {
+          return;
+        }
+        const key = e.key;
+        if (key === "Escape") {
+          e.preventDefault();
+          exitExam();
+          return;
+        }
+        if (key === "f" || key === "F") {
+          e.preventDefault();
+          toggleFullscreen();
+          return;
+        }
+        if (key === "Enter") {
+          e.preventDefault();
+          triggerCorrection();
+          return;
+        }
+        if (key === "ArrowRight") {
+          e.preventDefault();
+          triggerNextExam();
+          return;
+        }
+        if (key === "ArrowLeft") {
+          e.preventDefault();
+          triggerPrevExam();
+          return;
+        }
+        if (key === "Backspace") {
+          e.preventDefault();
+          e.stopPropagation();
+          triggerReset();
+          return false;
+        }
+        if (key === "1") {
+          e.preventDefault();
+          const memoryToggleBtn = document.getElementById("memoryToggleBtn");
+          if (memoryToggleBtn) memoryToggleBtn.click();
+          return;
+        }
+        if (key === "2") {
+          e.preventDefault();
+          const helpBtn = document.getElementById("globalHelpButton");
+          if (helpBtn && helpBtn.style.display !== "none") {
+            helpBtn.click();
+          }
+          return;
+        }
+        if ((e.ctrlKey || e.metaKey) && key === "z") {
+          e.preventDefault();
+          if (!isCorrectionVisible()) {
+            undoLastAnswer();
+            const examContainer = document.getElementById("exam");
+            if (examContainer) {
+              examContainer.setAttribute("tabindex", "-1");
+              examContainer.focus({ preventScroll: true });
+            }
+          }
+          return;
+        }
+      }, true);
+      document.addEventListener("DOMContentLoaded", function() {
+        const toggleBtn2 = document.getElementById("shortcutsToggleBtn");
+        const popover = document.getElementById("shortcutsPopover");
+        if (toggleBtn2 && popover) {
+          toggleBtn2.addEventListener("click", function(e) {
+            e.stopPropagation();
+            const isVisible = popover.style.display !== "none";
+            popover.style.display = isVisible ? "none" : "block";
+          });
+          document.addEventListener("click", function(e) {
+            if (popover.style.display !== "none" && !popover.contains(e.target) && e.target !== toggleBtn2 && !toggleBtn2.contains(e.target)) {
+              popover.style.display = "none";
+            }
+          });
+          document.addEventListener("keydown", function(e) {
+            if (e.key === "Escape" && popover.style.display !== "none") {
+              popover.style.display = "none";
+            }
+          });
+        }
+        enableHistory();
+        hookAnswerSelection();
+        fixFocusLoss();
+        setTimeout(function() {
+          const origOpenExam = window.openExam;
+          if (typeof origOpenExam === "function") {
+            window.openExam = function(examId, examTitle, skill, fileName) {
+              enableHistory();
+              console.log("\u2705 [HISTORY] \u062A\u0645 \u062A\u0641\u0639\u064A\u0644 enableHistory \u0639\u0646\u062F \u0641\u062A\u062D \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646:", examId, skill);
+              return origOpenExam.call(this, examId, examTitle, skill, fileName);
+            };
+          } else {
+            console.warn("\u26A0\uFE0F [HISTORY] window.openExam \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u060C \u0625\u0639\u0627\u062F\u0629 \u0627\u0644\u0645\u062D\u0627\u0648\u0644\u0629 \u0628\u0639\u062F 200ms");
+            setTimeout(function() {
+              const origOpenExam2 = window.openExam;
+              if (typeof origOpenExam2 === "function") {
+                window.openExam = function(examId, examTitle, skill, fileName) {
+                  enableHistory();
+                  console.log("\u2705 [HISTORY] \u062A\u0645 \u062A\u0641\u0639\u064A\u0644 enableHistory (\u0645\u062D\u0627\u0648\u0644\u0629 \u062B\u0627\u0646\u064A\u0629)");
+                  return origOpenExam2.call(this, examId, examTitle, skill, fileName);
+                };
+              }
+            }, 200);
+          }
+        }, 100);
+      });
+      window.triggerCorrection = triggerCorrection;
+      window.triggerNextExam = triggerNextExam;
+      window.triggerPrevExam = triggerPrevExam;
+      window.triggerReset = triggerReset;
+      window.exitExam = exitExam;
+      window.toggleFullscreen = toggleFullscreen;
+      window.undoLastAnswer = undoLastAnswer;
+      window.pushAnswerToHistory = pushAnswerToHistory;
+      window.enableHistory = enableHistory;
+      window.disableHistory = disableHistory;
+      window.pushTeil3LinkToHistory = pushTeil3LinkToHistory;
+      window.hookAnswerSelection = hookAnswerSelection;
+      window._answerHistory = _answerHistory;
+      console.log("\u2705 \u0646\u0638\u0627\u0645 \u0627\u062E\u062A\u0635\u0627\u0631\u0627\u062A \u0644\u0648\u062D\u0629 \u0627\u0644\u0645\u0641\u0627\u062A\u064A\u062D \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647 \u0628\u0646\u062C\u0627\u062D");
+      console.log("\u2705 \u0646\u0638\u0627\u0645 Interleaving \u062C\u0627\u0647\u0632 - \u064A\u0639\u0645\u0644 \u0639\u0644\u0649 H\xF6ren Teil 1,2,3 \u0648 Lesen 1 \u0648 Lesen 2");
+      originalCheckTrueFalse = checkTrueFalseExam;
+      checkTrueFalseExam = function(container, questions, answers, correctNumbersContainer) {
+        originalCheckTrueFalse(container, questions, answers, correctNumbersContainer);
+        setTimeout(() => {
+          addSentencePuzzleIcons(container, questions);
+        }, 150);
+      };
+      console.log("\u2705 \u062A\u0645 \u0631\u0628\u0637 SentenceReorder \u0645\u0639 engine.js (\u0645\u0639 \u062F\u0639\u0645 Reset)");
+      MatchingMode = class {
+        /**
+         * @param {string} containerId – 'teil1' أو 'teil3'
+         * @param {string} modeName – 'lesen1' أو 'lesen3'
+         */
+        constructor(containerId, modeName) {
+          this.containerId = containerId;
+          this.modeName = modeName;
+          this.isActive = false;
+          this.root = null;
+          this.styleId = `zertiva-matching-style-${modeName}`;
+          this.originalHTML = null;
+          this._selects = [];
+          this._texts = [];
+          this._titles = [];
+          this._matches = /* @__PURE__ */ new Map();
+          this._titleToText = /* @__PURE__ */ new Map();
+          this._selectedText = null;
+          this._selectedTitle = null;
+          this._textElements = /* @__PURE__ */ new Map();
+          this._titleElements = /* @__PURE__ */ new Map();
+          this._progressText = null;
+          this._progressFill = null;
+          this._isDestroyed = false;
+          this._resizeHandler = null;
+          this._captureTimeout = null;
+        }
+        // ---- استخراج النصوص والعناوين من الـ selects الحقيقية ----
+        _extractData() {
+          const container = document.getElementById(this.containerId);
+          if (!container) return false;
+          const selects = Array.from(container.querySelectorAll("select")).filter((sel) => {
+            const rect = sel.getBoundingClientRect();
+            return rect.width > 0 && rect.height > 0 && getComputedStyle(sel).display !== "none";
+          });
+          if (selects.length === 0) return false;
+          let maxSelects = this.modeName === "lesen1" ? 5 : 12;
+          this._selects = selects.slice(0, maxSelects);
+          if (this._selects.length < 5) return false;
+          this._texts = this._selects.map((select, index) => {
+            let text = "\u0646\u0635 \u063A\u064A\u0631 \u0645\u0639\u0631\u0648\u0641";
+            let parent = select.parentElement;
+            if (parent) {
+              const children = Array.from(parent.children);
+              const idx = children.indexOf(select);
+              if (idx > 0) {
+                const prev = children[idx - 1];
+                if (prev && !prev.querySelector("select")) {
+                  const raw = prev.textContent.trim();
+                  if (raw.length > 20) text = raw;
+                }
+              }
+            }
+            if (text === "\u0646\u0635 \u063A\u064A\u0631 \u0645\u0639\u0631\u0648\u0641") {
+              const container2 = select.closest(".question-card, .item, div");
+              if (container2) {
+                const clone = container2.cloneNode(true);
+                clone.querySelectorAll("select, button, input, textarea").forEach((el) => el.remove());
+                const raw = clone.textContent.trim();
+                if (raw.length > 20) text = raw;
+              }
+            }
+            return {
+              id: `text-${index + 1}`,
+              number: index + 1,
+              content: text,
+              select
+            };
+          });
+          const firstSelect = this._selects[0];
+          if (!firstSelect) return false;
+          const options = Array.from(firstSelect.options).map((opt) => ({ value: opt.value, text: opt.textContent.trim() })).filter((opt) => opt.text && !opt.text.includes("\u0627\u062E\u062A\u0631 \u0627\u0644\u0625\u062C\u0627\u0628\u0629") && !opt.text.includes("ausw\xE4hlen") && !opt.text.includes("w\xE4hlen"));
+          this._titles = options.map((opt, idx) => ({
+            id: `title-${idx + 1}`,
+            value: opt.value,
+            text: opt.text,
+            letter: String.fromCharCode(65 + idx)
+          }));
+          if (this._titles.length === 0) return false;
+          this._texts.forEach((text) => {
+            const val = text.select.value;
+            if (val) {
+              const title = this._titles.find((t) => t.value === val);
+              if (title) {
+                this._matches.set(text.id, title.id);
+                this._titleToText.set(title.id, text.id);
+              }
             }
           });
           return true;
-        } else {
-          console.log(`\u{1F3C6} \u062A\u0645 \u0625\u0643\u0645\u0627\u0644 \u062C\u0645\u064A\u0639 \u0645\u0631\u0627\u062D\u0644 ${skill}!`);
-          return false;
         }
-      };
-      window.resetStages = function(skill) {
-        setCurrentStage(skill, 1);
-        console.log(`\u{1F504} \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u0645\u0631\u0627\u062D\u0644 ${skill} \u0625\u0644\u0649 1`);
-        window.loadStageExams(skill);
-      };
-      window.startMemoryTrainerFromList = function(skill = "hoeren1") {
-        const combinedKey = `_${skill}_combinedData`;
-        if (!window[combinedKey]) {
-          window.loadStageExams(skill).then(() => {
-            if (window.memoryTrainer) {
-              window.memoryTrainer.currentSkill = skill;
-              window.memoryTrainer.start("list");
-            }
+        // ---- بناء واجهة Matching ----
+        _buildUI() {
+          const container = document.getElementById(this.containerId);
+          if (!container) return;
+          if (this.originalHTML === null) {
+            this.originalHTML = container.innerHTML;
+          }
+          const root = document.createElement("section");
+          root.className = "zertiva-matching-root";
+          root.id = `zertiva-matching-root-${this.modeName}`;
+          const header = document.createElement("div");
+          header.className = "zertiva-matching-header";
+          const title = document.createElement("div");
+          title.className = "zertiva-matching-main-title";
+          title.textContent = this.modeName === "lesen1" ? "Lesen Teil 1" : "Lesen Teil 3";
+          const progress = document.createElement("div");
+          progress.className = "zertiva-matching-progress";
+          const progressText = document.createElement("span");
+          this._progressText = progressText;
+          const progressBar = document.createElement("span");
+          progressBar.className = "zertiva-matching-progress-bar";
+          const progressFill = document.createElement("span");
+          progressFill.className = "zertiva-matching-progress-fill";
+          this._progressFill = progressFill;
+          progressBar.appendChild(progressFill);
+          progress.append(progressText, progressBar);
+          header.append(title, progress);
+          const textArea = document.createElement("div");
+          textArea.className = "zertiva-matching-text-area";
+          const textGrid = document.createElement("div");
+          textGrid.className = "zertiva-matching-text-grid";
+          textArea.appendChild(textGrid);
+          const answerArea = document.createElement("div");
+          answerArea.className = "zertiva-matching-answer-area";
+          const answerHeader = document.createElement("div");
+          answerHeader.className = "zertiva-matching-answer-header";
+          const answerTitle = document.createElement("div");
+          answerTitle.className = "zertiva-matching-answer-title";
+          answerTitle.textContent = "TITEL ZUORDNEN";
+          answerHeader.appendChild(answerTitle);
+          const titleArea = document.createElement("div");
+          titleArea.className = "zertiva-matching-title-area";
+          const titleGrid = document.createElement("div");
+          titleGrid.className = "zertiva-matching-title-grid";
+          titleArea.appendChild(titleGrid);
+          answerArea.append(answerHeader, titleArea);
+          root.append(header, textArea, answerArea);
+          container.innerHTML = "";
+          container.appendChild(root);
+          this.root = root;
+          this._buildTextCards(textGrid);
+          this._buildTitleCards(titleGrid);
+          this._updateUI();
+          this._resizeHandler = () => this._handleResize();
+          window.addEventListener("resize", this._resizeHandler);
+          this._captureTimeout = setTimeout(() => {
+            this._captureSizes();
+          }, 100);
+        }
+        _buildTextCards(grid) {
+          this._textElements.clear();
+          this._texts.forEach((text, index) => {
+            const card = document.createElement("div");
+            card.className = "zertiva-matching-text-card";
+            card.dataset.textId = text.id;
+            const head = document.createElement("div");
+            head.className = "zertiva-matching-text-head";
+            const label = document.createElement("span");
+            label.className = "zertiva-matching-text-label";
+            label.textContent = `TEXT ${text.number}`;
+            const badge = document.createElement("span");
+            badge.className = "zertiva-matching-text-badge";
+            head.append(label, badge);
+            const body = document.createElement("div");
+            body.className = "zertiva-matching-text-body";
+            body.textContent = text.content;
+            card.append(head, body);
+            grid.appendChild(card);
+            this._textElements.set(text.id, { card, badge });
+            card.addEventListener("click", () => {
+              if (this._isDestroyed) return;
+              if (this._matches.has(text.id)) {
+                this._disconnectText(text.id);
+                this._selectedText = null;
+                this._selectedTitle = null;
+                this._updateUI();
+                return;
+              }
+              if (this._selectedTitle) {
+                this._connect(text.id, this._selectedTitle);
+                this._selectedText = null;
+                this._selectedTitle = null;
+                this._updateUI();
+                return;
+              }
+              this._selectedText = this._selectedText === text.id ? null : text.id;
+              this._selectedTitle = null;
+              this._updateUI();
+            });
+            card.addEventListener("dragover", (e) => {
+              e.preventDefault();
+              e.dataTransfer.dropEffect = "move";
+              card.classList.add("zertiva-selected");
+            });
+            card.addEventListener("dragleave", () => {
+              if (!this._matches.has(text.id)) {
+                card.classList.remove("zertiva-selected");
+              }
+            });
+            card.addEventListener("drop", (e) => {
+              e.preventDefault();
+              card.classList.remove("zertiva-selected");
+              const titleId = e.dataTransfer.getData("text/plain");
+              if (titleId && titleId.startsWith("title-")) {
+                this._connect(text.id, titleId);
+                this._selectedText = null;
+                this._selectedTitle = null;
+                this._updateUI();
+              }
+            });
           });
-          return;
         }
-        if (window.memoryTrainer) {
-          window.memoryTrainer.currentSkill = skill;
-          window.memoryTrainer.start("list");
-        } else {
-          alert("\u26A0\uFE0F \u0645\u064A\u0632\u0629 \u062A\u062F\u0631\u064A\u0628 \u0627\u0644\u0630\u0627\u0643\u0631\u0629 \u063A\u064A\u0631 \u0645\u062A\u0648\u0641\u0631\u0629 \u062D\u0627\u0644\u064A\u0627\u064B.");
-        }
-      };
-      window.startMemoryTrainerForExam = function(skill) {
-        if (window.memoryTrainer) {
-          window.memoryTrainer.currentSkill = skill || window.currentSkill || "hoeren1";
-          window.memoryTrainer.currentExamId = window.currentExamId || 1;
-          window.memoryTrainer.start("single");
-        } else {
-          alert("\u26A0\uFE0F \u0645\u064A\u0632\u0629 \u062A\u062F\u0631\u064A\u0628 \u0627\u0644\u0630\u0627\u0643\u0631\u0629 \u063A\u064A\u0631 \u0645\u062A\u0648\u0641\u0631\u0629 \u062D\u0627\u0644\u064A\u0627\u064B.");
-        }
-      };
-      setTimeout(() => {
-        for (const skill in SKILL_CONFIG) {
-          window.loadStageExams(skill);
-        }
-      }, 500);
-      window.buildSentenceId = buildSentenceId;
-      window.getSentenceLevel = getSentenceLevel;
-      window.setSentenceLevel = setSentenceLevel;
-      window.increaseLevel = increaseLevel;
-      window.decreaseLevel = decreaseLevel;
-      window.getExamProgress = getExamProgress;
-      window.getStageProgress = getStageProgress;
-      window.getOverallProgress = getOverallProgress;
-      window.getCurrentStage = getCurrentStage;
-      window.setCurrentStage = setCurrentStage;
-      window.getTotalStages = getTotalStages;
-      window.getExamsForStage = getExamsForStage;
-      window.SKILL_CONFIG = SKILL_CONFIG;
-      window.resetAllLevels = resetAllLevels;
-      window.loadStageExams = loadStageExams;
-      window.goToNextStage = goToNextStage;
-      window.resetStages = resetStages;
-      window.startMemoryTrainerFromList = startMemoryTrainerFromList;
-      window.startMemoryTrainerForExam = startMemoryTrainerForExam;
-      window.renderInitialExamList = renderInitialExamList;
-      console.log("\u{1F9E0} \u0646\u0638\u0627\u0645 \u0627\u0644\u062A\u0642\u062F\u0645 \u0627\u0644\u0645\u062A\u0648\u0627\u0632\u0646 (\u0627\u0644\u0645\u0631\u0627\u062D\u0644 \u0644\u0643\u0644 \u0645\u0647\u0627\u0631\u0629) \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647 \u0628\u0646\u062C\u0627\u062D");
-      console.log("\u{1F4CA} \u0639\u062F\u062F \u0627\u0644\u0645\u0631\u0627\u062D\u0644:", Object.keys(SKILL_CONFIG).map((s) => `${s}: ${getTotalStages(s)}`).join(", "));
-      VIEW_ICONS_2 = ["view_day", "grid_view"];
-      VIEW_MODE_KEY_2 = "viewModeIconIndex2";
-      EXAM_LIST_MODE_KEY = "examListViewMode";
-      window.openExam = openExam;
-      if (!window.askAIContext) {
-        window.askAIContext = { questionIndex: 0 };
-      }
-      if (!window.currentSkill) {
-        window.currentSkill = "";
-      }
-      if (!window.currentExamId) {
-        window.currentExamId = null;
-      }
-      if (!window.currentExamData) {
-        window.currentExamData = null;
-      }
-      window.addVersionBadgesFixed = addVersionBadgesFixed;
-      window.saveRetryCount = saveRetryCount;
-      window.getRetryCount = getRetryCount;
-      window.incrementRetryCount = incrementRetryCount;
-      window.resetSkillProgress = resetSkillProgress;
-      console.log("\u2705 \u0646\u0638\u0627\u0645 Badge \u0627\u0644\u062A\u0639\u062F\u064A\u0644\u0627\u062A (\u0627\u0644\u0646\u0633\u062E\u0629 \u0627\u0644\u0646\u0647\u0627\u0626\u064A\u0629) \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647");
-      window.examsDatabase = examsDatabase;
-      window.teile = teile;
-      window.saveExamHistory = saveExamHistory;
-      window.getExamHistory = getExamHistory;
-      window.getLastAttemptDate = getLastAttemptDate;
-      window.getAllScores = getAllScores;
-      window.saveExamResult = saveExamResult;
-      window.getExamResult = getExamResult;
-      window.getLastReviewDays = getLastReviewDays;
-      window.addRetryCounterToExam = addRetryCounterToExam;
-      window.updateRetryCounter = updateRetryCounter;
-      try {
-        if (typeof matchingSelectedAnswers !== "undefined") {
-          window.matchingSelectedAnswers = matchingSelectedAnswers;
-        }
-        if (typeof matchingAvailableOptions !== "undefined") {
-          window.matchingAvailableOptions = matchingAvailableOptions;
-        }
-        if (typeof currentMatchingExamData !== "undefined") {
-          window.currentMatchingExamData = currentMatchingExamData;
-        }
-        if (typeof renderMatchingQuestions === "function") {
-          window.renderMatchingQuestions = renderMatchingQuestions;
-        }
-      } catch (e) {
-        console.log("\u2139\uFE0F \u0645\u062A\u063A\u064A\u0631\u0627\u062A Lesen1 \u0633\u062A\u064F\u0635\u062F\u0651\u0631 \u0645\u0646 engine.js");
-      }
-      window.applyTimeOrder = applyTimeOrder;
-      (function() {
-        const btn = document.getElementById("checkCircleBtn");
-        const tooltip = document.getElementById("checkCircleTooltip");
-        if (!btn || !tooltip) return;
-        let isOpen = false;
-        const isMobile = () => window.innerWidth <= 768;
-        function repositionButton() {
-          const wrapper = document.querySelector(".check-circle-wrapper");
-          const header = document.querySelector(".teil-header");
-          if (isMobile()) {
-            if (header) {
-              if (wrapper && wrapper.contains(btn)) {
-                const notice = document.getElementById("topicsNotice");
-                if (notice && header.contains(notice)) {
-                  header.insertBefore(btn, notice);
-                } else {
-                  header.prepend(btn);
-                }
+        _buildTitleCards(grid) {
+          this._titleElements.clear();
+          this._titles.forEach((title, index) => {
+            const card = document.createElement("div");
+            card.className = "zertiva-matching-title-card";
+            card.dataset.titleId = title.id;
+            card.draggable = true;
+            const letter = document.createElement("span");
+            letter.className = "zertiva-matching-title-letter";
+            letter.textContent = title.letter;
+            const content = document.createElement("div");
+            content.className = "zertiva-matching-title-content";
+            const textSpan = document.createElement("span");
+            textSpan.className = "zertiva-matching-title-text";
+            textSpan.textContent = title.text;
+            const match = document.createElement("div");
+            match.className = "zertiva-matching-title-match";
+            content.append(textSpan, match);
+            card.append(letter, content);
+            grid.appendChild(card);
+            this._titleElements.set(title.id, { card, match });
+            card.addEventListener("click", () => {
+              if (this._isDestroyed) return;
+              if (this._titleToText.has(title.id)) {
+                this._disconnectTitle(title.id);
+                this._selectedTitle = null;
+                this._selectedText = null;
+                this._updateUI();
+                return;
               }
-              btn.classList.add("in-header");
-              btn.style.display = "inline-flex";
-              btn.style.opacity = "1";
-              btn.style.visibility = "visible";
-            } else {
-              if (wrapper && wrapper.contains(btn)) {
-                btn.style.display = "none";
+              if (this._selectedText) {
+                this._connect(this._selectedText, title.id);
+                this._selectedText = null;
+                this._selectedTitle = null;
+                this._updateUI();
+                return;
               }
-            }
-            if (wrapper) wrapper.style.display = "none";
-          } else {
-            if (wrapper && !wrapper.contains(btn)) {
-              wrapper.appendChild(btn);
-              btn.classList.remove("in-header");
-              btn.style.display = "inline-flex";
-              btn.style.opacity = "1";
-              btn.style.visibility = "visible";
-            }
-            if (wrapper) wrapper.style.display = "flex";
-          }
-          if (isOpen) {
-            if (isMobile()) {
-              setTimeout(updateTooltipPosition, 10);
-            } else {
-              tooltip.style.top = "";
-              tooltip.style.left = "";
-            }
-          }
+              this._selectedTitle = this._selectedTitle === title.id ? null : title.id;
+              this._selectedText = null;
+              this._updateUI();
+            });
+            card.addEventListener("dragstart", (e) => {
+              e.dataTransfer.setData("text/plain", title.id);
+              e.dataTransfer.effectAllowed = "move";
+              card.classList.add("zertiva-selected");
+            });
+            card.addEventListener("dragend", () => {
+              card.classList.remove("zertiva-selected");
+            });
+          });
         }
-        function updateTooltipPosition() {
-          if (!isMobile()) {
+        // ---- ربط النص بالعنوان ----
+        _connect(textId, titleId) {
+          if (this._matches.get(textId) === titleId) {
+            this._disconnectText(textId);
             return;
           }
-          const rect = btn.getBoundingClientRect();
-          let top = rect.bottom + 6;
-          let left = rect.left;
-          const tw = tooltip.offsetWidth || 200;
-          if (left + tw > window.innerWidth - 10) {
-            left = window.innerWidth - tw - 10;
+          const oldText = this._titleToText.get(titleId);
+          if (oldText && oldText !== textId) {
+            this._matches.delete(oldText);
           }
-          if (left < 10) left = 10;
-          tooltip.style.top = top + "px";
-          tooltip.style.left = left + "px";
-        }
-        btn.addEventListener("click", function(e) {
-          e.stopPropagation();
-          isOpen = !isOpen;
-          const icon = this.querySelector(".material-symbols-outlined");
-          if (isOpen) {
-            tooltip.style.display = "flex";
-            if (icon) icon.style.animation = "none";
-            if (isMobile()) {
-              setTimeout(updateTooltipPosition, 10);
-            }
-          } else {
-            tooltip.style.display = "none";
-            if (icon) icon.style.animation = "";
+          const oldTitle = this._matches.get(textId);
+          if (oldTitle) {
+            this._titleToText.delete(oldTitle);
           }
-        });
-        document.addEventListener("click", function(e) {
-          if (isOpen && !btn.contains(e.target) && !tooltip.contains(e.target)) {
-            isOpen = false;
-            tooltip.style.display = "none";
-            const icon = btn.querySelector(".material-symbols-outlined");
-            if (icon) icon.style.animation = "";
-          }
-        });
-        window.addEventListener("scroll", function() {
-          if (isOpen && isMobile()) updateTooltipPosition();
-        });
-        window.addEventListener("resize", function() {
-          repositionButton();
-          if (isOpen && isMobile()) setTimeout(updateTooltipPosition, 50);
-        });
-        const observer = new MutationObserver(function(mutations) {
-          for (const mutation of mutations) {
-            if (mutation.type === "childList") {
-              for (const node of mutation.addedNodes) {
-                if (node.nodeType === 1) {
-                  const header = node.querySelector ? node.querySelector(".teil-header") : null;
-                  if (header || node.classList && node.classList.contains("teil-header")) {
-                    if (isMobile()) {
-                      repositionButton();
-                      console.log("\u2705 \u062A\u0645 \u0627\u0643\u062A\u0634\u0627\u0641 .teil-header\u060C \u062A\u0645 \u0646\u0642\u0644 \u0627\u0644\u0632\u0631.");
-                    }
-                    break;
-                  }
-                }
-              }
+          this._matches.set(textId, titleId);
+          this._titleToText.set(titleId, textId);
+          const textObj = this._texts.find((t) => t.id === textId);
+          const titleObj = this._titles.find((t) => t.id === titleId);
+          if (textObj && textObj.select && titleObj) {
+            try {
+              textObj.select.value = titleObj.value;
+              textObj.select.dispatchEvent(new Event("change", { bubbles: true }));
+            } catch (_) {
             }
           }
-        });
-        observer.observe(document.body, { childList: true, subtree: true });
-        function tryPlace() {
-          if (document.querySelector(".teil-header") || document.getElementById("examsList")) {
-            repositionButton();
-            console.log("\u2705 \u0632\u0631 check_circle \u0645\u0648\u0636\u0639 (\u0645\u062D\u0627\u0648\u0644\u0629 \u0646\u0627\u062C\u062D\u0629).");
-          } else {
-            setTimeout(tryPlace, 200);
+        }
+        _disconnectText(textId) {
+          const titleId = this._matches.get(textId);
+          if (!titleId) return;
+          this._titleToText.delete(titleId);
+          this._matches.delete(textId);
+          const textObj = this._texts.find((t) => t.id === textId);
+          if (textObj && textObj.select) {
+            try {
+              textObj.select.selectedIndex = 0;
+              textObj.select.dispatchEvent(new Event("change", { bubbles: true }));
+            } catch (_) {
+            }
           }
         }
-        setTimeout(tryPlace, 100);
-        console.log("\u2705 \u0632\u0631 check_circle \u062C\u0627\u0647\u0632 (\u0645\u0639 \u0646\u0642\u0644 \u062F\u064A\u0646\u0627\u0645\u064A\u0643\u064A \u0644\u0644\u0647\u0627\u062A\u0641).");
-      })();
+        _disconnectTitle(titleId) {
+          const textId = this._titleToText.get(titleId);
+          if (textId) this._disconnectText(textId);
+        }
+        // ---- تحديث واجهة المستخدم ----
+        _updateUI() {
+          const total = this._texts.length;
+          const count = this._matches.size;
+          const percent = total ? count / total * 100 : 0;
+          if (this._progressText) {
+            this._progressText.textContent = `${count} / ${total} zugeordnet`;
+          }
+          if (this._progressFill) {
+            this._progressFill.style.width = percent + "%";
+          }
+          this._textElements.forEach((el, textId) => {
+            const linked = this._matches.get(textId);
+            el.card.classList.toggle("zertiva-selected", this._selectedText === textId);
+            el.card.classList.toggle("zertiva-linked", Boolean(linked));
+            el.badge.textContent = "";
+            if (linked) {
+              const title = this._titles.find((t) => t.id === linked);
+              if (title) el.badge.textContent = title.letter;
+            }
+          });
+          this._titleElements.forEach((el, titleId) => {
+            const linked = this._titleToText.get(titleId);
+            el.card.classList.toggle("zertiva-selected", this._selectedTitle === titleId);
+            el.card.classList.toggle("zertiva-linked", Boolean(linked));
+            el.match.textContent = "";
+            if (linked) {
+              const text = this._texts.find((t) => t.id === linked);
+              if (text) el.match.textContent = `TEXT ${text.number}`;
+            }
+          });
+        }
+        // ---- التقاط الأحجام الثابتة للـ responsive ----
+        _captureSizes() {
+          const root = this.root;
+          if (!root) return;
+          const firstText = this._textElements.values().next().value;
+          if (firstText) {
+            const rect = firstText.card.getBoundingClientRect();
+            if (rect.width > 0) {
+              root.style.setProperty("--zertiva-fixed-text-width", rect.width + "px");
+            }
+          }
+          const firstTitle = this._titleElements.values().next().value;
+          if (firstTitle) {
+            const rect = firstTitle.card.getBoundingClientRect();
+            if (rect.width > 0 && rect.height > 0) {
+              root.style.setProperty("--zertiva-fixed-title-width", rect.width + "px");
+              root.style.setProperty("--zertiva-fixed-title-height", rect.height + "px");
+            }
+          }
+        }
+        _handleResize() {
+          if (this._captureTimeout) clearTimeout(this._captureTimeout);
+          this._captureTimeout = setTimeout(() => this._captureSizes(), 50);
+        }
+        // ---- تفعيل Matching ----
+        activate() {
+          if (this.isActive || this._isDestroyed) return;
+          if (!this._extractData()) {
+            console.warn(`\u26A0\uFE0F \u0644\u0627 \u064A\u0645\u0643\u0646 \u062A\u0641\u0639\u064A\u0644 Matching \u0644\u0640 ${this.modeName}: \u0627\u0644\u0628\u064A\u0627\u0646\u0627\u062A \u063A\u064A\u0631 \u0645\u0643\u062A\u0645\u0644\u0629.`);
+            return;
+          }
+          this._buildUI();
+          this.isActive = true;
+          const container = document.getElementById(this.containerId);
+          if (container) container.classList.add("zertiva-matching-active");
+          console.log(`\u2705 Matching mode activated for ${this.modeName}`);
+        }
+        // ---- إلغاء Matching ----
+        deactivate() {
+          if (!this.isActive || this._isDestroyed) return;
+          this._destroy();
+        }
+        _destroy() {
+          if (this._isDestroyed) return;
+          this._isDestroyed = true;
+          this.isActive = false;
+          if (this._resizeHandler) {
+            window.removeEventListener("resize", this._resizeHandler);
+            this._resizeHandler = null;
+          }
+          if (this._captureTimeout) {
+            clearTimeout(this._captureTimeout);
+            this._captureTimeout = null;
+          }
+          const container = document.getElementById(this.containerId);
+          if (container) {
+            container.innerHTML = this.originalHTML || "";
+            container.classList.remove("zertiva-matching-active");
+          }
+          this.root = null;
+          this._textElements.clear();
+          this._titleElements.clear();
+          this._matches.clear();
+          this._titleToText.clear();
+          this._selects = [];
+          this._texts = [];
+          this._titles = [];
+          this._selectedText = null;
+          this._selectedTitle = null;
+          this._progressText = null;
+          this._progressFill = null;
+          this.originalHTML = null;
+          console.log(`\u2705 Matching mode deactivated for ${this.modeName}`);
+        }
+        // ---- تبديل الحالة ----
+        toggle() {
+          if (this.isActive) {
+            this.deactivate();
+          } else {
+            this.activate();
+          }
+        }
+        // ---- إعادة ضبط الإجابات (يُستدعى من زر reset) ----
+        reset() {
+          if (!this.isActive) return;
+          const textIds = Array.from(this._matches.keys());
+          textIds.forEach((id) => this._disconnectText(id));
+          this._selectedText = null;
+          this._selectedTitle = null;
+          this._updateUI();
+        }
+      };
+      matchingLesen1 = new MatchingMode("teil1", "lesen1");
+      matchingLesen3 = new MatchingMode("teil3", "lesen3");
+      window.matchingLesen1 = matchingLesen1;
+      window.matchingLesen3 = matchingLesen3;
+      window.toggleMatchingLesen1 = function() {
+        matchingLesen1.toggle();
+      };
+      window.toggleMatchingLesen3 = function() {
+        matchingLesen3.toggle();
+      };
+      console.log("\u2705 Matching Mode (Lesen 1 & Lesen 3) ready.");
     }
   });
 
@@ -24399,7 +25524,7 @@ var MyApp = (() => {
   });
 
   // exams.js
-  function isExamFree2(skill, examNumber) {
+  function isExamFree(skill, examNumber) {
     if (skill === "m\xFCndlich1" || skill === "m\xFCndlich3") {
       return false;
     }
@@ -24432,11 +25557,11 @@ var MyApp = (() => {
         return false;
     }
   }
-  function saveExamResult2(skill, examId, score) {
+  function saveExamResult(skill, examId, score) {
     try {
       const key = `exam_result_${skill}_${examId}`;
       localStorage.setItem(key, score.toString());
-      saveExamHistory2(skill, examId, score);
+      saveExamHistory(skill, examId, score);
       const lastReviewKey = `exam_last_review_${skill}_${examId}`;
       const today = (/* @__PURE__ */ new Date()).toISOString().slice(0, 10);
       localStorage.setItem(lastReviewKey, today);
@@ -24444,7 +25569,7 @@ var MyApp = (() => {
       console.error("\u274C \u062E\u0637\u0623 \u0641\u064A \u062D\u0641\u0638 \u0627\u0644\u0646\u062A\u064A\u062C\u0629:", e);
     }
   }
-  function getExamResult2(skill, examId) {
+  function getExamResult(skill, examId) {
     try {
       const key = `exam_result_${skill}_${examId}`;
       const result = localStorage.getItem(key);
@@ -24454,7 +25579,7 @@ var MyApp = (() => {
       return null;
     }
   }
-  function saveRetryCount2(skill, examId, count) {
+  function saveRetryCount(skill, examId, count) {
     try {
       const key = `exam_retry_${skill}_${examId}`;
       localStorage.setItem(key, count.toString());
@@ -24462,7 +25587,7 @@ var MyApp = (() => {
       console.error("\u274C \u062E\u0637\u0623 \u0641\u064A \u062D\u0641\u0638 \u0639\u062F\u062F \u0627\u0644\u0625\u0639\u0627\u062F\u0627\u062A:", e);
     }
   }
-  function getRetryCount2(skill, examId) {
+  function getRetryCount(skill, examId) {
     try {
       const key = `exam_retry_${skill}_${examId}`;
       const value = localStorage.getItem(key);
@@ -24472,16 +25597,16 @@ var MyApp = (() => {
       return 0;
     }
   }
-  function incrementRetryCount2(skill, examId) {
-    const current = getRetryCount2(skill, examId);
+  function incrementRetryCount(skill, examId) {
+    const current = getRetryCount(skill, examId);
     const newCount = current + 1;
-    saveRetryCount2(skill, examId, newCount);
+    saveRetryCount(skill, examId, newCount);
     return newCount;
   }
-  function saveExamHistory2(skill, examId, score) {
+  function saveExamHistory(skill, examId, score) {
     try {
       const historyKey = `exam_history_${skill}_${examId}`;
-      const history = getExamHistory2(skill, examId);
+      const history = getExamHistory(skill, examId);
       const timestamp = (/* @__PURE__ */ new Date()).toISOString();
       history.push({ score, date: timestamp });
       localStorage.setItem(historyKey, JSON.stringify(history));
@@ -24489,7 +25614,7 @@ var MyApp = (() => {
       console.error("\u274C \u062E\u0637\u0623 \u0641\u064A \u062D\u0641\u0638 \u0633\u062C\u0644 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646:", e);
     }
   }
-  function getExamHistory2(skill, examId) {
+  function getExamHistory(skill, examId) {
     try {
       const historyKey = `exam_history_${skill}_${examId}`;
       const data = localStorage.getItem(historyKey);
@@ -24499,19 +25624,19 @@ var MyApp = (() => {
       return [];
     }
   }
-  function getLastAttemptDate2(skill, examId) {
+  function getLastAttemptDate(skill, examId) {
     const lastReviewKey = `exam_last_review_${skill}_${examId}`;
     const lastReview = localStorage.getItem(lastReviewKey);
     if (lastReview) return lastReview;
-    const history = getExamHistory2(skill, examId);
+    const history = getExamHistory(skill, examId);
     if (history.length === 0) return null;
     return history[history.length - 1].date;
   }
-  function getAllScores2(skill, examId) {
-    const history = getExamHistory2(skill, examId);
+  function getAllScores(skill, examId) {
+    const history = getExamHistory(skill, examId);
     return history.map((item) => item.score);
   }
-  function getLastReviewDays2(skill, examId) {
+  function getLastReviewDays(skill, examId) {
     const lastReviewKey = `exam_last_review_${skill}_${examId}`;
     const lastDate = localStorage.getItem(lastReviewKey);
     if (!lastDate) return null;
@@ -24522,7 +25647,7 @@ var MyApp = (() => {
     const diff = Math.floor((now - last) / (1e3 * 3600 * 24));
     return diff;
   }
-  async function getUserStatusForExam2() {
+  async function getUserStatusForExam() {
     try {
       if (typeof window.getUserStatusGlobal === "function") {
         const status = await window.getUserStatusGlobal();
@@ -24533,53 +25658,7 @@ var MyApp = (() => {
     }
     return "free";
   }
-  function destroyAllMatchingModes2() {
-    if (window.Lesen1Matching && typeof window.Lesen1Matching.destroy === "function") {
-      try {
-        window.Lesen1Matching.destroy();
-        console.log("\u2705 \u062A\u0645 \u0625\u0644\u063A\u0627\u0621 Lesen 1 Matching Mode");
-      } catch (e) {
-        console.warn("\u26A0\uFE0F \u0641\u0634\u0644 \u0625\u0644\u063A\u0627\u0621 Lesen 1 Matching Mode:", e);
-      }
-    }
-    if (typeof window.disableLesen3Prototype === "function") {
-      try {
-        window.disableLesen3Prototype();
-        console.log("\u2705 \u062A\u0645 \u0625\u0644\u063A\u0627\u0621 Lesen 3 Prototype");
-      } catch (e) {
-        console.warn("\u26A0\uFE0F \u0641\u0634\u0644 \u0625\u0644\u063A\u0627\u0621 Lesen 3 Prototype:", e);
-      }
-    }
-    if (typeof window.destroyL3Prototype === "function") {
-      try {
-        window.destroyL3Prototype();
-        console.log("\u2705 \u062A\u0645 \u0625\u0644\u063A\u0627\u0621 Lesen 3 Prototype \u0627\u0644\u0642\u062F\u064A\u0645");
-      } catch (e) {
-        console.warn("\u26A0\uFE0F \u0641\u0634\u0644 \u0625\u0644\u063A\u0627\u0621 Lesen 3 Prototype \u0627\u0644\u0642\u062F\u064A\u0645:", e);
-      }
-    }
-    if (window.matchingSelectedAnswers) {
-      window.matchingSelectedAnswers = {};
-    }
-    if (window.matchingAvailableOptions) {
-      window.matchingAvailableOptions = [];
-    }
-    if (window.teil3UserAnswers) {
-      window.teil3UserAnswers = {};
-    }
-    document.querySelectorAll("#zl1m-matching-root, #zertiva-l3-prototype-root").forEach((el) => el.remove());
-    document.querySelectorAll("#zl1m-matching-style, #zertiva-l3-prototype-style").forEach((el) => el.remove());
-    if (window.isInterleavingActive) {
-      window.isInterleavingActive = false;
-      const interleavingBtn = document.getElementById("interleavingBtn");
-      if (interleavingBtn) {
-        interleavingBtn.classList.remove("active");
-        interleavingBtn.title = "Interleaving: OFF";
-      }
-    }
-    document.querySelectorAll("#zl1m-matching-wrapper").forEach((el) => el.remove());
-  }
-  function renderTeileList2() {
+  function renderTeileList() {
     const container = document.getElementById("teileList");
     if (!container) return;
     container.innerHTML = "";
@@ -24593,9 +25672,9 @@ var MyApp = (() => {
     align-items: center;
     margin-bottom: 30px;
   `;
-    for (let i = 0; i < teile2.length; i++) {
-      const teil = teile2[i];
-      const isActive = activeTeilId2 === i;
+    for (let i = 0; i < teile.length; i++) {
+      const teil = teile[i];
+      const isActive = activeTeilId === i;
       const btn = document.createElement("button");
       btn.textContent = teil.name;
       btn.style.cssText = `
@@ -24626,15 +25705,15 @@ var MyApp = (() => {
       };
       btn.onclick = /* @__PURE__ */ (function(skill, teilName, index) {
         return function() {
-          activeTeilId2 = index;
-          renderTeileList2();
-          renderExamListForSkill2(skill, teilName);
+          activeTeilId = index;
+          renderTeileList();
+          renderExamListForSkill(skill, teilName);
         };
       })(teil.skill, teil.name, i);
       container.appendChild(btn);
     }
   }
-  function renderM\u00FCndlichPartTabs2() {
+  function renderM\u00FCndlichPartTabs() {
     const container = document.getElementById("examsList");
     if (!container) return;
     const oldTabs = container.querySelector(".m\xFCndlich-tabs");
@@ -24658,8 +25737,8 @@ var MyApp = (() => {
       const btn = document.createElement("button");
       btn.textContent = part.name;
       btn.style.cssText = `
-      background: ${currentM\u00FCndlichPart2 === part.id ? "#4a6fa5" : "#eef2f7"};
-      color: ${currentM\u00FCndlichPart2 === part.id ? "white" : "#2c3e66"};
+      background: ${currentM\u00FCndlichPart === part.id ? "#4a6fa5" : "#eef2f7"};
+      color: ${currentM\u00FCndlichPart === part.id ? "white" : "#2c3e66"};
       border: none;
       padding: 8px 20px;
       border-radius: 30px;
@@ -24669,26 +25748,26 @@ var MyApp = (() => {
       transition: all 0.2s;
     `;
       btn.onmouseenter = () => {
-        if (currentM\u00FCndlichPart2 !== part.id) {
+        if (currentM\u00FCndlichPart !== part.id) {
           btn.style.background = "#dee2e8";
         }
       };
       btn.onmouseleave = () => {
-        if (currentM\u00FCndlichPart2 !== part.id) {
+        if (currentM\u00FCndlichPart !== part.id) {
           btn.style.background = "#eef2f7";
         }
       };
       btn.onclick = () => {
-        currentM\u00FCndlichPart2 = part.id;
+        currentM\u00FCndlichPart = part.id;
         const skillToRender = part.skill;
         const displayName = `M\xFCndlich - ${part.name}`;
-        renderExamListForSkill2(skillToRender, displayName);
+        renderExamListForSkill(skillToRender, displayName);
       };
       tabsDiv.appendChild(btn);
     });
     container.insertBefore(tabsDiv, container.firstChild);
   }
-  function getFlattenedExamList2(exams) {
+  function getFlattenedExamList(exams) {
     const flattened = [];
     exams.forEach((exam) => {
       if (exam.versions && exam.versions.length > 1) {
@@ -24706,7 +25785,7 @@ var MyApp = (() => {
         flattened.push({
           id: exam.id,
           title: exam.title,
-          file: exam.hasFile ? getActualFileName2(exam.id) : null,
+          file: exam.hasFile ? getActualFileName(exam.id) : null,
           skill: currentSkill2,
           isVersion: false,
           parentId: exam.id
@@ -24715,7 +25794,7 @@ var MyApp = (() => {
     });
     return flattened;
   }
-  async function renderExamListForSkill2(skill, teilName) {
+  async function renderExamListForSkill(skill, teilName) {
     currentSkill2 = skill;
     window.currentSkill = skill;
     const ORDER_MODE_KEY = "examOrderMode";
@@ -24724,35 +25803,35 @@ var MyApp = (() => {
     if (!container) return;
     container.innerHTML = "";
     if (skill === "m\xFCndlich1" || skill === "m\xFCndlich2" || skill === "m\xFCndlich3" || skill === "m\xFCndlich") {
-      renderM\u00FCndlichPartTabs2();
+      renderM\u00FCndlichPartTabs();
     }
     const headerDiv = document.createElement("div");
     headerDiv.className = "teil-header";
-    headerDiv.innerHTML = `<strong> ${teilName || getTeilNameBySkill2(skill)}</strong>`;
+    headerDiv.innerHTML = `<strong> ${teilName || getTeilNameBySkill(skill)}</strong>`;
     container.appendChild(headerDiv);
-    if (SKILL_CONFIG2[skill]) {
-      renderMemoryProgressBar2(skill, container);
+    if (SKILL_CONFIG[skill]) {
+      renderMemoryProgressBar(skill, container);
     }
     let targetSkill = skill;
-    let targetExams = examsDatabase2[skill] || [];
+    let targetExams = examsDatabase[skill] || [];
     if (skill === "m\xFCndlich") {
-      if (currentM\u00FCndlichPart2 === 1) {
+      if (currentM\u00FCndlichPart === 1) {
         targetSkill = "m\xFCndlich1";
-        targetExams = examsDatabase2.m\u00FCndlich1 || [];
-      } else if (currentM\u00FCndlichPart2 === 2) {
+        targetExams = examsDatabase.m\u00FCndlich1 || [];
+      } else if (currentM\u00FCndlichPart === 2) {
         targetSkill = "m\xFCndlich2";
-        targetExams = examsDatabase2.m\u00FCndlich2 || [];
-      } else if (currentM\u00FCndlichPart2 === 3) {
+        targetExams = examsDatabase.m\u00FCndlich2 || [];
+      } else if (currentM\u00FCndlichPart === 3) {
         targetSkill = "m\xFCndlich3";
-        targetExams = examsDatabase2.m\u00FCndlich3 || [];
+        targetExams = examsDatabase.m\u00FCndlich3 || [];
       }
     }
-    currentExamsList2 = targetExams;
+    currentExamsList = targetExams;
     if (targetExams.length === 0) {
       container.innerHTML += '<div class="item" style="text-align:center; color:#999;">\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u0645\u062A\u0627\u062D\u0629 \u062D\u0627\u0644\u064A\u0627\u064B \u0641\u064A \u0647\u0630\u0627 \u0627\u0644\u062C\u0632\u0621</div>';
       return;
     }
-    const userStatus = await getUserStatusForExam2();
+    const userStatus = await getUserStatusForExam();
     const isPremium = userStatus === "premium";
     const versionIds = /* @__PURE__ */ new Set();
     targetExams.forEach((exam) => {
@@ -24768,7 +25847,7 @@ var MyApp = (() => {
     for (let i = 0; i < mainExams.length; i++) {
       const exam = mainExams[i];
       const examNumber = exam.id;
-      const isFreeExam = isExamFree2(skill, examNumber);
+      const isFreeExam = isExamFree(skill, examNumber);
       const div = document.createElement("div");
       div.className = "item";
       const titleSpan = document.createElement("span");
@@ -24806,19 +25885,19 @@ var MyApp = (() => {
         const chipsContainer = document.createElement("div");
         chipsContainer.className = "exam-info-chips";
         const scoreChip = document.createElement("span");
-        const score = getExamResult2(targetSkill, exam.id);
+        const score = getExamResult(targetSkill, exam.id);
         const scoreColor = getScoreColor(score);
         scoreChip.className = `exam-chip score chip-${scoreColor}`;
         scoreChip.innerHTML = `<span class="material-symbols-outlined">bar_chart</span> ${score !== null ? score + "/25" : "\u2014"}`;
         chipsContainer.appendChild(scoreChip);
         const retryChip = document.createElement("span");
-        const retryCount = getRetryCount2(targetSkill, exam.id);
+        const retryCount = getRetryCount(targetSkill, exam.id);
         const retryColor = getRetryColor(retryCount);
         retryChip.className = `exam-chip attempts chip-${retryColor}`;
         retryChip.innerHTML = `<span class="material-symbols-outlined">repeat</span> ${retryCount}`;
         chipsContainer.appendChild(retryChip);
         const daysChip = document.createElement("span");
-        const reviewDays = getLastReviewDays2(targetSkill, exam.id);
+        const reviewDays = getLastReviewDays(targetSkill, exam.id);
         const daysColor = getDaysColor(reviewDays);
         daysChip.className = `exam-chip days chip-${daysColor}`;
         if (reviewDays !== null) {
@@ -24828,7 +25907,7 @@ var MyApp = (() => {
         }
         chipsContainer.appendChild(daysChip);
         const memoryChip = document.createElement("span");
-        const memoryProgress = getExamProgress2(targetSkill, exam.id);
+        const memoryProgress = getExamProgress(targetSkill, exam.id);
         const memoryColor = getMemoryColor(memoryProgress);
         memoryChip.className = `exam-chip memory chip-${memoryColor}`;
         memoryChip.innerHTML = `<span class="material-symbols-outlined">auto_awesome</span> ${memoryProgress}%`;
@@ -24847,7 +25926,7 @@ var MyApp = (() => {
         let allVersionsLocked = true;
         if (exam.versions && exam.versions.length > 1) {
           for (let v of exam.versions) {
-            const isFree = isExamFree2(skill, v.id);
+            const isFree = isExamFree(skill, v.id);
             if (isFree) {
               allVersionsLocked = false;
               break;
@@ -24887,13 +25966,13 @@ var MyApp = (() => {
           };
           div.onclick = function(e) {
             e.stopPropagation();
-            showVersionsPopup2(exam, targetSkill);
+            showVersionsPopup(exam, targetSkill);
           };
         } else {
           div.style.cursor = "pointer";
           div.onclick = function(e) {
             e.stopPropagation();
-            showVersionsPopup2(exam, targetSkill);
+            showVersionsPopup(exam, targetSkill);
           };
         }
       } else if (!isPremium && !isFreeExam) {
@@ -24944,7 +26023,7 @@ var MyApp = (() => {
               if (version) file = version.file;
               else file = examObj.versions[0].file;
             }
-            openExam2(id, title, actualSkill, file);
+            openExam(id, title, actualSkill, file);
           };
         })(exam.id, exam.title, exam.skillPath || targetSkill);
       } else {
@@ -24954,26 +26033,26 @@ var MyApp = (() => {
       }
       container.appendChild(div);
     }
-    createViewModeToggles2();
-    restoreOriginalOrder2();
-    const mode2 = getViewModeIndex22();
+    createViewModeToggles();
+    restoreOriginalOrder();
+    const mode2 = getViewModeIndex2();
     if (mode2 === 1) {
-      applyExamListView2("grid");
+      applyExamListView("grid");
     } else {
-      applyExamListView2("list");
+      applyExamListView("list");
     }
-    addVersionBadgesFixed2();
+    addVersionBadgesFixed();
     if (localStorage.getItem("plannerToggleState") === "true") {
       if (typeof window.applyExamColors === "function") {
         setTimeout(window.applyExamColors, 50);
       }
     }
     const savedOrder = localStorage.getItem("examOrderMode");
-    if (savedOrder === "1" && typeof applyLeaderboardOrder2 === "function") {
-      applyLeaderboardOrder2();
+    if (savedOrder === "1" && typeof applyLeaderboardOrder === "function") {
+      applyLeaderboardOrder();
     }
   }
-  function showVersionsPopup2(exam, skill) {
+  function showVersionsPopup(exam, skill) {
     const overlay = document.createElement("div");
     overlay.id = "versionsPopupAuto";
     overlay.style.cssText = `
@@ -25003,13 +26082,13 @@ var MyApp = (() => {
     color: #e2e8f0;
     text-align: center;
   `;
-    getUserStatusForExam2().then((userStatus) => {
+    getUserStatusForExam().then((userStatus) => {
       const isPremium = userStatus === "premium";
       let versionsHtml = exam.versions.map((v, i) => {
-        const savedScore = getExamResult2(skill, v.id);
-        const retryCount = getRetryCount2(skill, v.id);
-        const reviewDays = getLastReviewDays2(skill, v.id);
-        const progress = getExamProgress2(skill, v.id);
+        const savedScore = getExamResult(skill, v.id);
+        const retryCount = getRetryCount(skill, v.id);
+        const reviewDays = getLastReviewDays(skill, v.id);
+        const progress = getExamProgress(skill, v.id);
         let chipsHtml = `
         <span class="exam-chip score"><span class="material-symbols-outlined">bar_chart</span> ${savedScore !== null ? savedScore + "/25" : "\u2014"}</span>
         <span class="exam-chip attempts"><span class="material-symbols-outlined">repeat</span> ${retryCount}</span>
@@ -25051,17 +26130,17 @@ var MyApp = (() => {
       }
     });
   }
-  function setupLockedNextButton2() {
+  function setupLockedNextButton() {
     const nextBtn = document.getElementById("nextExamBtn");
     if (!nextBtn) return;
-    getUserStatusForExam2().then((status) => {
+    getUserStatusForExam().then((status) => {
       const isPremium = status === "premium";
-      const flatList = getFlattenedExamList2(currentExamsList2);
-      const currentIndex = flatList.findIndex((e) => e.id === currentExamId2);
+      const flatList = getFlattenedExamList(currentExamsList);
+      const currentIndex = flatList.findIndex((e) => e.id === currentExamId);
       const nextExam = flatList[currentIndex + 1];
       if (nextExam) {
         const nextExamId = nextExam.id;
-        const isNextFree = isExamFree2(currentSkill2, nextExamId);
+        const isNextFree = isExamFree(currentSkill2, nextExamId);
         if (!isPremium && !isNextFree && nextBtn.style.display !== "none") {
           nextBtn.style.position = "relative";
           nextBtn.style.paddingLeft = "35px";
@@ -25093,26 +26172,26 @@ var MyApp = (() => {
           nextBtn.style.paddingLeft = "";
           nextBtn.onclick = () => {
             if (nextExam.isVersion) {
-              openExam2(nextExam.id, nextExam.title, nextExam.skill, nextExam.file);
+              openExam(nextExam.id, nextExam.title, nextExam.skill, nextExam.file);
             } else {
-              openExam2(nextExam.id, nextExam.title, nextExam.skill);
+              openExam(nextExam.id, nextExam.title, nextExam.skill);
             }
           };
         }
       }
     });
   }
-  function getTeilNameBySkill2(skill) {
+  function getTeilNameBySkill(skill) {
     if (skill === "m\xFCndlich1") return "M\xFCndlich - Teil 1 \u{1F4D6}";
     if (skill === "m\xFCndlich2") return "M\xFCndlich - Teil 2 \u{1F5E3}\uFE0F";
     if (skill === "m\xFCndlich3") return "M\xFCndlich - Teil 3 \u{1F3AF}";
-    const teil = teile2.find((t) => t.skill === skill);
+    const teil = teile.find((t) => t.skill === skill);
     return teil ? teil.name : skill;
   }
-  function getActualFileName2(examId) {
+  function getActualFileName(examId) {
     const allSkills = ["lesen1", "lesen2", "lesen3", "sprach1", "sprach2", "hoeren1", "hoeren2", "hoeren3", "schreiben", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3", "tips"];
     for (const skill of allSkills) {
-      const exams = examsDatabase2[skill] || [];
+      const exams = examsDatabase[skill] || [];
       for (const exam of exams) {
         if (exam.id === examId && exam.versions && exam.versions.length > 0) {
           const version = exam.versions.find((v) => v.id === examId);
@@ -25123,15 +26202,14 @@ var MyApp = (() => {
     }
     return `exam${examId}.json`;
   }
-  function shouldHideHelpButton2(skill) {
+  function shouldHideHelpButton(skill) {
     const hiddenSkills = ["schreiben", "tips", "m\xFCndlich1", "m\xFCndlich3"];
     return hiddenSkills.includes(skill);
   }
-  async function openExam2(examId, examTitle, skill, fileName = null) {
-    destroyAllMatchingModes2();
-    const userStatus = await getUserStatusForExam2();
+  async function openExam(examId, examTitle, skill, fileName = null) {
+    const userStatus = await getUserStatusForExam();
     const isPremium = userStatus === "premium";
-    const isFree = isExamFree2(skill, examId);
+    const isFree = isExamFree(skill, examId);
     if (!isPremium && !isFree) {
       if (typeof window.showLockedCard === "function") {
         window.showLockedCard(examTitle + " (" + examId + ")");
@@ -25140,7 +26218,7 @@ var MyApp = (() => {
       }
       return;
     }
-    currentExamId2 = examId;
+    currentExamId = examId;
     currentSkill2 = skill;
     window.currentSkill = skill;
     window.currentExamId = examId;
@@ -25178,14 +26256,14 @@ var MyApp = (() => {
         shortcutsBtn.style.display = "flex";
       }
     }
-    if (shouldHideHelpButton2(skill)) {
+    if (shouldHideHelpButton(skill)) {
       const helpBtn = document.getElementById("globalHelpButton");
       if (helpBtn) helpBtn.style.display = "none";
     } else {
       const helpBtn = document.getElementById("globalHelpButton");
       if (helpBtn) helpBtn.style.display = "block";
     }
-    const finalFileName = fileName || getActualFileName2(examId);
+    const finalFileName = fileName || getActualFileName(examId);
     try {
       const response = await fetch(`data/${skill}/${finalFileName}`);
       if (!response.ok) {
@@ -25193,21 +26271,21 @@ var MyApp = (() => {
 \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u0645\u0637\u0644\u0648\u0628: data/${skill}/${finalFileName}`);
         return;
       }
-      currentExamData2 = await response.json();
-      window.currentExamData = currentExamData2;
+      currentExamData = await response.json();
+      window.currentExamData = currentExamData;
       window.currentExamId = examId;
       window.currentSkill = skill;
       if (window.memoryEngine) {
-        window.memoryEngine.setExamData(currentExamData2);
+        window.memoryEngine.setExamData(currentExamData);
       }
       window.updateAskAIContext(skill, examId);
       document.getElementById("home").classList.remove("active");
       document.getElementById("list").classList.remove("active");
       document.getElementById("exam").classList.add("active");
-      document.getElementById("examTitle").innerHTML = currentExamData2.title;
+      document.getElementById("examTitle").innerHTML = currentExamData.title;
       const forbiddenSkills = ["schreiben", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3"];
-      if (!forbiddenSkills.includes(skill) && typeof addRetryCounterToExam2 === "function") {
-        addRetryCounterToExam2();
+      if (!forbiddenSkills.includes(skill) && typeof addRetryCounterToExam === "function") {
+        addRetryCounterToExam();
       }
       const playBtn = document.getElementById("playTimerBtn");
       if (playBtn) {
@@ -25233,172 +26311,64 @@ var MyApp = (() => {
           }
         });
       }
-      updateExamNavButtons2();
-      if (skill === "lesen1" && currentExamData2 && currentExamData2.type === "matching") {
-        const interleavingRow2 = document.getElementById("interleavingRow");
-        if (!interleavingRow2) return;
-        let matchingBtn = document.getElementById("lesen1MatchingBtn");
-        if (!matchingBtn) {
-          matchingBtn = document.createElement("button");
-          matchingBtn.id = "lesen1MatchingBtn";
-          matchingBtn.className = "interleaving-icon-btn";
-          matchingBtn.title = "\u0648\u0636\u0639 \u0627\u0644\u0645\u0637\u0627\u0628\u0642\u0629 (Matching)";
-          matchingBtn.innerHTML = '<span class="material-symbols-outlined">compare_arrows</span>';
-          const playBtn2 = interleavingRow2.querySelector("#playTimerBtn");
-          if (playBtn2) {
-            playBtn2.parentNode.insertBefore(matchingBtn, playBtn2.nextSibling);
-          } else {
-            interleavingRow2.appendChild(matchingBtn);
-          }
-        }
-        const prefKey = "lesen1_matching_mode_preference";
-        let useMatching = true;
-        try {
-          const saved = localStorage.getItem(prefKey);
-          if (saved !== null) {
-            useMatching = saved === "true";
-          }
-        } catch (e) {
-        }
-        const toggleMatchingMode = function(forceState) {
-          const container = document.getElementById("teil1");
-          if (!container) {
-            console.warn("\u0644\u0627 \u062A\u0648\u062C\u062F \u062D\u0627\u0648\u064A\u0629 teil1");
-            return;
-          }
-          const selects = container.querySelectorAll("select");
-          if (selects.length !== 5) {
-            console.warn("\u064A\u062C\u0628 \u0623\u0646 \u064A\u0643\u0648\u0646 \u0647\u0646\u0627\u0643 5 selects \u0641\u064A Lesen Teil 1");
-            return;
-          }
-          const data = {
-            selects,
-            questions: currentExamData2.questions || [],
-            sharedOptions: currentExamData2.sharedOptions || [],
-            currentAnswers: window.matchingSelectedAnswers || {},
-            availableOptions: window.matchingAvailableOptions || []
-          };
-          let targetState;
-          if (typeof forceState === "boolean") {
-            targetState = forceState;
-          } else {
-            const currentMatchingVisible = !!document.getElementById("zl1m-matching-root");
-            targetState = !currentMatchingVisible;
-          }
-          if (targetState) {
-            if (window.Lesen1Matching && typeof window.Lesen1Matching.mount === "function") {
-              container.style.display = "none";
-              let matchingWrapper = document.getElementById("zl1m-matching-wrapper");
-              if (!matchingWrapper) {
-                matchingWrapper = document.createElement("div");
-                matchingWrapper.id = "zl1m-matching-wrapper";
-                matchingWrapper.style.width = "100%";
-                container.parentNode.insertBefore(matchingWrapper, container.nextSibling);
-              }
-              if (!document.getElementById("zl1m-matching-root")) {
-                window.Lesen1Matching.mount(matchingWrapper, data);
-              }
-              matchingBtn.classList.add("active");
-              matchingBtn.title = "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A";
-              try {
-                localStorage.setItem(prefKey, "true");
-              } catch (e) {
-              }
-            } else {
-              console.error("\u274C Matching Module \u063A\u064A\u0631 \u0645\u062D\u0645\u0651\u0644.");
-              alert("\u26A0\uFE0F \u0648\u062D\u062F\u0629 \u0627\u0644\u0645\u0637\u0627\u0628\u0642\u0629 \u063A\u064A\u0631 \u0645\u062A\u0648\u0641\u0631\u0629. \u064A\u0631\u062C\u0649 \u062A\u062D\u062F\u064A\u062B \u0627\u0644\u0635\u0641\u062D\u0629.");
-            }
-          } else {
-            if (window.Lesen1Matching && typeof window.Lesen1Matching.destroy === "function") {
-              window.Lesen1Matching.destroy();
-              const wrapper = document.getElementById("zl1m-matching-wrapper");
-              if (wrapper) wrapper.remove();
-              container.style.display = "block";
-              matchingBtn.classList.remove("active");
-              matchingBtn.title = "\u0648\u0636\u0639 \u0627\u0644\u0645\u0637\u0627\u0628\u0642\u0629 (Matching)";
-              try {
-                localStorage.setItem(prefKey, "false");
-              } catch (e) {
-              }
-            }
-          }
-        };
-        matchingBtn.removeEventListener("click", matchingBtn._clickHandler);
-        const clickHandler = function(e) {
-          e.stopPropagation();
-          toggleMatchingMode();
-        };
-        matchingBtn.addEventListener("click", clickHandler);
-        matchingBtn._clickHandler = clickHandler;
-        setTimeout(function() {
-          if (useMatching) {
-            toggleMatchingMode(true);
-          } else {
-            toggleMatchingMode(false);
-          }
-        }, 50);
-      }
-      if (currentExamData2.type === "matching") {
+      updateExamNavButtons();
+      if (currentExamData.type === "matching") {
         if (typeof window.loadMatchingExam === "function") {
-          window.loadMatchingExam(currentExamData2);
+          window.loadMatchingExam(currentExamData);
         } else {
-          buildTeil12(currentExamData2.questions || []);
+          buildTeil1(currentExamData.questions || []);
         }
-      } else if (currentExamData2.type === "truefalse") {
+      } else if (currentExamData.type === "truefalse") {
         const container = document.getElementById(currentSkill2);
         if (container && typeof window.buildTrueFalseExam === "function") {
-          window.buildTrueFalseExam(container, currentExamData2.questions, currentExamData2.note);
+          window.buildTrueFalseExam(container, currentExamData.questions, currentExamData.note);
         } else {
-          buildTeil12(currentExamData2.questions || []);
+          buildTeil1(currentExamData.questions || []);
         }
-      } else if (currentExamData2.type === "teil2") {
+      } else if (currentExamData.type === "teil2") {
         if (typeof window.loadTeil2Exam === "function") {
-          window.loadTeil2Exam(currentExamData2);
+          window.loadTeil2Exam(currentExamData);
         } else {
-          buildTeil12(currentExamData2.questions || []);
+          buildTeil1(currentExamData.questions || []);
         }
-      } else if (currentExamData2.type === "teil3") {
-        if (typeof window.mountLesen3Prototype === "function") {
-          window.mountLesen3Prototype();
+      } else if (currentExamData.type === "teil3") {
+        if (typeof window.loadTeil3Exam === "function") {
+          window.loadTeil3Exam(currentExamData);
         } else {
-          console.error("\u274C mountLesen3Prototype \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629");
-          const container = document.getElementById("teil3");
-          if (container) {
-            container.innerHTML = '<div style="text-align:center;padding:20px;color:#999;">\u26A0\uFE0F \u0646\u0638\u0627\u0645 Lesen Teil 3 \u063A\u064A\u0631 \u0645\u062A\u0648\u0641\u0631 \u062D\u0627\u0644\u064A\u0627\u064B. \u064A\u0631\u062C\u0649 \u062A\u062D\u062F\u064A\u062B \u0627\u0644\u0635\u0641\u062D\u0629.</div>';
-          }
+          buildTeil1(currentExamData.questions || []);
         }
-      } else if (currentExamData2.type === "sprach1") {
+      } else if (currentExamData.type === "sprach1") {
         if (typeof window.loadSprach1Exam === "function") {
-          window.loadSprach1Exam(currentExamData2);
+          window.loadSprach1Exam(currentExamData);
         } else {
-          buildTeil12(currentExamData2.questions || []);
+          buildTeil1(currentExamData.questions || []);
         }
-      } else if (currentExamData2.type === "sprach2") {
+      } else if (currentExamData.type === "sprach2") {
         if (typeof window.loadSprach2Exam === "function") {
-          window.loadSprach2Exam(currentExamData2);
+          window.loadSprach2Exam(currentExamData);
         } else {
-          buildTeil12(currentExamData2.questions || []);
+          buildTeil1(currentExamData.questions || []);
         }
-      } else if (currentExamData2.type === "schreiben") {
+      } else if (currentExamData.type === "schreiben") {
         if (typeof window.loadSchreibenExam === "function") {
-          window.loadSchreibenExam(currentExamData2);
+          window.loadSchreibenExam(currentExamData);
         } else {
-          buildTeil12(currentExamData2.questions || []);
+          buildTeil1(currentExamData.questions || []);
         }
-      } else if (currentExamData2.type === "m\xFCndlich") {
-        renderM\u00FCndlichExam2(currentExamData2);
-      } else if (currentExamData2.type === "info") {
-        renderInfoExam2(currentExamData2);
-      } else if (currentExamData2.type === "tips") {
-        renderTipsExam2(currentExamData2);
+      } else if (currentExamData.type === "m\xFCndlich") {
+        renderM\u00FCndlichExam(currentExamData);
+      } else if (currentExamData.type === "info") {
+        renderInfoExam(currentExamData);
+      } else if (currentExamData.type === "tips") {
+        renderTipsExam(currentExamData);
       } else {
-        buildTeil12(currentExamData2.questions || []);
+        buildTeil1(currentExamData.questions || []);
       }
-      const teilIndex = teile2.findIndex((t) => t.skill === skill);
+      const teilIndex = teile.findIndex((t) => t.skill === skill);
       if (teilIndex !== -1) {
-        showTeil2(teilIndex + 1);
+        showTeil(teilIndex + 1);
       } else {
-        showTeil2(10);
+        showTeil(10);
       }
       const containerEl = document.getElementById(skill);
       if (containerEl) {
@@ -25424,13 +26394,13 @@ var MyApp = (() => {
       alert("\u062E\u0637\u0623 \u0641\u064A \u062A\u062D\u0645\u064A\u0644 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646: " + e.message);
     }
   }
-  function updateExamNavButtons2() {
+  function updateExamNavButtons() {
     const prevBtn = document.getElementById("prevExamBtn");
     const nextBtn = document.getElementById("nextExamBtn");
     const memoryBtn = document.getElementById("memoryTrainerBtn");
     if (!prevBtn || !nextBtn) return;
-    const flatList = getFlattenedExamList2(currentExamsList2);
-    const currentIndex = flatList.findIndex((e) => e.id === currentExamId2);
+    const flatList = getFlattenedExamList(currentExamsList);
+    const currentIndex = flatList.findIndex((e) => e.id === currentExamId);
     const hasPrev = currentIndex > 0;
     const hasNext = currentIndex < flatList.length - 1;
     if (hasPrev) {
@@ -25438,9 +26408,9 @@ var MyApp = (() => {
       prevBtn.onclick = () => {
         const prevExam = flatList[currentIndex - 1];
         if (prevExam.isVersion) {
-          openExam2(prevExam.id, prevExam.title, prevExam.skill, prevExam.file);
+          openExam(prevExam.id, prevExam.title, prevExam.skill, prevExam.file);
         } else {
-          openExam2(prevExam.id, prevExam.title, prevExam.skill);
+          openExam(prevExam.id, prevExam.title, prevExam.skill);
         }
       };
     } else {
@@ -25451,16 +26421,16 @@ var MyApp = (() => {
       nextBtn.onclick = () => {
         const nextExam = flatList[currentIndex + 1];
         if (nextExam.isVersion) {
-          openExam2(nextExam.id, nextExam.title, nextExam.skill, nextExam.file);
+          openExam(nextExam.id, nextExam.title, nextExam.skill, nextExam.file);
         } else {
-          openExam2(nextExam.id, nextExam.title, nextExam.skill);
+          openExam(nextExam.id, nextExam.title, nextExam.skill);
         }
       };
     } else {
       nextBtn.style.display = "none";
     }
     if (memoryBtn) {
-      if (currentSkill2 && SKILL_CONFIG2[currentSkill2]) {
+      if (currentSkill2 && SKILL_CONFIG[currentSkill2]) {
         memoryBtn.style.display = "inline-flex";
         memoryBtn.onclick = function() {
           if (window.startMemoryTrainerForExam) {
@@ -25473,12 +26443,12 @@ var MyApp = (() => {
         memoryBtn.style.display = "none";
       }
     }
-    setupLockedNextButton2();
+    setupLockedNextButton();
   }
-  function createViewModeToggles2() {
+  function createViewModeToggles() {
     const header = document.querySelector(".teil-header");
     if (!header) {
-      setTimeout(createViewModeToggles2, 500);
+      setTimeout(createViewModeToggles, 500);
       return;
     }
     const showTogglesSkills = ["hoeren1", "hoeren2", "hoeren3", "lesen1", "lesen2", "lesen3", "sprach1", "sprach2"];
@@ -25514,11 +26484,11 @@ var MyApp = (() => {
         span.textContent = ICONS_CYCLE[nextIconIndex2];
       }
       if (currentState === 0) {
-        applyLeaderboardOrder2();
+        applyLeaderboardOrder();
       } else if (currentState === 1) {
-        applyTimeOrder2();
+        applyTimeOrder();
       } else {
-        restoreOriginalOrder2();
+        restoreOriginalOrder();
       }
     };
     header.appendChild(btn1);
@@ -25526,31 +26496,31 @@ var MyApp = (() => {
     btn2.id = "viewModeToggleBtn2";
     btn2.className = "view-mode-toggle-btn-2";
     btn2.title = "\u062A\u0628\u062F\u064A\u0644 \u0634\u0643\u0644 \u0627\u0644\u0639\u0631\u0636";
-    let currentIndex2 = getViewModeIndex22();
+    let currentIndex2 = getViewModeIndex2();
     const displayIndex2 = currentIndex2 === 0 ? 1 : 0;
-    const iconName2 = VIEW_ICONS_22[displayIndex2];
+    const iconName2 = VIEW_ICONS_2[displayIndex2];
     btn2.innerHTML = `<span class="material-symbols-outlined">${iconName2}</span>`;
     btn2.onclick = function(e) {
       e.stopPropagation();
-      currentIndex2 = (currentIndex2 + 1) % VIEW_ICONS_22.length;
-      setViewModeIndex22(currentIndex2);
+      currentIndex2 = (currentIndex2 + 1) % VIEW_ICONS_2.length;
+      setViewModeIndex2(currentIndex2);
       const newDisplayIndex = currentIndex2 === 0 ? 1 : 0;
       const span = this.querySelector(".material-symbols-outlined");
       if (span) {
-        span.textContent = VIEW_ICONS_22[newDisplayIndex];
+        span.textContent = VIEW_ICONS_2[newDisplayIndex];
       }
       if (currentIndex2 === 1) {
-        setExamListMode2("grid");
-        applyExamListView2("grid");
+        setExamListMode("grid");
+        applyExamListView("grid");
       } else {
-        setExamListMode2("list");
-        applyExamListView2("list");
+        setExamListMode("list");
+        applyExamListView("list");
       }
     };
     header.appendChild(btn2);
-    applyExamListView2(getExamListMode2());
+    applyExamListView(getExamListMode());
   }
-  function applyExamListView2(mode) {
+  function applyExamListView(mode) {
     const list = document.getElementById("examsList");
     if (!list) return;
     const allowedSkills = ["hoeren1", "hoeren2", "hoeren3", "lesen1", "lesen2", "lesen3", "sprach1", "sprach2", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3", "schreiben"];
@@ -25787,7 +26757,7 @@ var MyApp = (() => {
     });
     console.log("\u{1F7E6} Grid View \u0645\u0639 \u0646\u0638\u0627\u0645 \u0627\u0644\u062D\u062C\u0645 \u0627\u0644\u0645\u062A\u062F\u0631\u062C (60%-150%)");
   }
-  function addVersionBadgesFixed2() {
+  function addVersionBadgesFixed() {
     const container = document.getElementById("examsList");
     if (!container) return;
     const skill = currentSkill2 || "lesen1";
@@ -25800,7 +26770,7 @@ var MyApp = (() => {
       const match = title.textContent.match(/^(\d+):/);
       if (!match) return;
       const examId = parseInt(match[1]);
-      const exam = currentExamsList2.find((e) => e.id === examId);
+      const exam = currentExamsList.find((e) => e.id === examId);
       if (!exam || !exam.versions || exam.versions.length <= 1) return;
       let badge = el.querySelector(".custom-badge");
       if (badge) {
@@ -25834,41 +26804,41 @@ var MyApp = (() => {
       }
     });
   }
-  function goBackToExamsList2() {
+  function goBackToExamsList() {
     if (currentSkill2) {
       if (currentSkill2 === "m\xFCndlich1") {
         document.getElementById("home").classList.remove("active");
         document.getElementById("exam").classList.remove("active");
         document.getElementById("list").classList.add("active");
-        renderExamListForSkill2("m\xFCndlich1", "M\xFCndlich - Teil 1 \u{1F4D6}");
+        renderExamListForSkill("m\xFCndlich1", "M\xFCndlich - Teil 1 \u{1F4D6}");
       } else if (currentSkill2 === "m\xFCndlich2") {
         document.getElementById("home").classList.remove("active");
         document.getElementById("exam").classList.remove("active");
         document.getElementById("list").classList.add("active");
-        renderExamListForSkill2("m\xFCndlich2", "M\xFCndlich - Teil 2 \u{1F5E3}\uFE0F");
+        renderExamListForSkill("m\xFCndlich2", "M\xFCndlich - Teil 2 \u{1F5E3}\uFE0F");
       } else if (currentSkill2 === "m\xFCndlich3") {
         document.getElementById("home").classList.remove("active");
         document.getElementById("exam").classList.remove("active");
         document.getElementById("list").classList.add("active");
-        renderExamListForSkill2("m\xFCndlich3", "M\xFCndlich - Teil 3 \u{1F3AF}");
+        renderExamListForSkill("m\xFCndlich3", "M\xFCndlich - Teil 3 \u{1F3AF}");
       } else if (currentSkill2.startsWith("m\xFCndlich")) {
-        renderExamListForSkill2("m\xFCndlich", getTeilNameBySkill2("m\xFCndlich"));
+        renderExamListForSkill("m\xFCndlich", getTeilNameBySkill("m\xFCndlich"));
       } else {
-        const teil = teile2.find((t) => t.skill === currentSkill2);
+        const teil = teile.find((t) => t.skill === currentSkill2);
         if (teil) {
           document.getElementById("home").classList.remove("active");
           document.getElementById("exam").classList.remove("active");
           document.getElementById("list").classList.add("active");
-          renderExamListForSkill2(teil.skill, teil.name);
+          renderExamListForSkill(teil.skill, teil.name);
         } else {
-          goList2();
+          goList();
         }
       }
     } else {
-      goList2();
+      goList();
     }
   }
-  function renderInfoExam2(examData) {
+  function renderInfoExam(examData) {
     let containerId = currentSkill2;
     if (currentSkill2 === "m\xFCndlich1" || currentSkill2 === "m\xFCndlich3") {
       containerId = "m\xFCndlich";
@@ -25987,7 +26957,7 @@ var MyApp = (() => {
       });
     }
   }
-  function renderTipsExam2(examData) {
+  function renderTipsExam(examData) {
     const container = document.getElementById("tips");
     if (!container) return;
     container.innerHTML = "";
@@ -26019,7 +26989,7 @@ var MyApp = (() => {
       container.appendChild(card);
     }
   }
-  function renderM\u00FCndlichExam2(examData) {
+  function renderM\u00FCndlichExam(examData) {
     const container = document.getElementById("m\xFCndlich");
     if (!container) return;
     container.innerHTML = "";
@@ -26054,14 +27024,14 @@ var MyApp = (() => {
     noteWrapper.appendChild(noteDiv);
     container.appendChild(noteWrapper);
     const parts = examData.parts || {};
-    const allgemeinCard = createM\u00FCndlichCard2("\u{1F4D6} \u0627\u0644\u0641\u0643\u0631\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 (Allgemeine Idee)", parts.allgemein || "\u0644\u0627 \u064A\u0648\u062C\u062F \u0646\u0635");
+    const allgemeinCard = createM\u00FCndlichCard("\u{1F4D6} \u0627\u0644\u0641\u0643\u0631\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 (Allgemeine Idee)", parts.allgemein || "\u0644\u0627 \u064A\u0648\u062C\u062F \u0646\u0635");
     container.appendChild(allgemeinCard);
-    const meinungCard = createM\u00FCndlichCard2("\u{1F4AD} \u0627\u0644\u0631\u0623\u064A (Meinung)", parts.meinung || "\u0644\u0627 \u064A\u0648\u062C\u062F \u0646\u0635");
+    const meinungCard = createM\u00FCndlichCard("\u{1F4AD} \u0627\u0644\u0631\u0623\u064A (Meinung)", parts.meinung || "\u0644\u0627 \u064A\u0648\u062C\u062F \u0646\u0635");
     container.appendChild(meinungCard);
-    const erfahrungCard = createM\u00FCndlichCard2("\u2728 \u0627\u0644\u062A\u062C\u0631\u0628\u0629 (Erfahrung)", parts.erfahrung || "\u0644\u0627 \u064A\u0648\u062C\u062F \u0646\u0635");
+    const erfahrungCard = createM\u00FCndlichCard("\u2728 \u0627\u0644\u062A\u062C\u0631\u0628\u0629 (Erfahrung)", parts.erfahrung || "\u0644\u0627 \u064A\u0648\u062C\u062F \u0646\u0635");
     container.appendChild(erfahrungCard);
   }
-  function createM\u00FCndlichCard2(title, text) {
+  function createM\u00FCndlichCard(title, text) {
     const card = document.createElement("div");
     card.style.cssText = `
     background: #f8f9fa;
@@ -26093,29 +27063,29 @@ var MyApp = (() => {
     card.appendChild(textDiv);
     return card;
   }
-  function showTeil2(teilNumber) {
-    teile2.forEach((teil, idx) => {
+  function showTeil(teilNumber) {
+    teile.forEach((teil, idx) => {
       const container = document.getElementById(teil.container);
       if (container) container.style.display = idx + 1 === teilNumber ? "block" : "none";
     });
   }
-  function goHome2() {
+  function goHome() {
     document.getElementById("home").classList.add("active");
     document.getElementById("list").classList.remove("active");
     document.getElementById("exam").classList.remove("active");
     const homeBtn = document.getElementById("backHomeBtn");
     if (homeBtn) homeBtn.style.display = "none";
   }
-  function goList2() {
+  function goList() {
     document.getElementById("home").classList.remove("active");
     document.getElementById("list").classList.add("active");
     document.getElementById("exam").classList.remove("active");
-    renderTeileList2();
+    renderTeileList();
     window.renderInitialExamList();
     const homeBtn = document.getElementById("backHomeBtn");
     if (homeBtn) homeBtn.style.display = "block";
   }
-  function buildTeil12(questions) {
+  function buildTeil1(questions) {
     const container = document.getElementById("teil1");
     if (!container) {
       console.warn("\u26A0\uFE0F buildTeil1: \u0627\u0644\u062D\u0627\u0648\u064A\u0629 teil1 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629");
@@ -26160,7 +27130,7 @@ var MyApp = (() => {
     checkBtn.innerText = "\u2705 \u062A\u0635\u062D\u064A\u062D";
     checkBtn.className = "check-btn";
     checkBtn.onclick = function() {
-      checkTeil12(questions, userAnswers);
+      checkTeil1(questions, userAnswers);
     };
     container.appendChild(checkBtn);
     const resultDiv = document.createElement("div");
@@ -26169,7 +27139,7 @@ var MyApp = (() => {
     resultDiv.style.display = "none";
     container.appendChild(resultDiv);
   }
-  function checkTeil12(questions, answers) {
+  function checkTeil1(questions, answers) {
     let score = 0;
     const total = questions.length;
     const pointsPerQuestion = 25 / total;
@@ -26207,46 +27177,46 @@ var MyApp = (() => {
       resultDiv.innerHTML = "\u0627\u0644\u0646\u062A\u064A\u062C\u0629: " + finalScore + " / 25";
       resultDiv.style.display = "block";
     }
-    saveExamResult2(currentSkill2, currentExamId2, parseFloat(finalScore));
-    const retryCount = incrementRetryCount2(currentSkill2, currentExamId2);
+    saveExamResult(currentSkill2, currentExamId, parseFloat(finalScore));
+    const retryCount = incrementRetryCount(currentSkill2, currentExamId);
     if (typeof window.updateRetryCounter === "function") {
       window.updateRetryCounter();
     }
     if (typeof window.removeColorFromExam === "function") {
-      window.removeColorFromExam(currentExamId2);
+      window.removeColorFromExam(currentExamId);
     }
     if (document.getElementById("list").classList.contains("active")) {
-      renderExamListForSkill2(currentSkill2, getTeilNameBySkill2(currentSkill2));
+      renderExamListForSkill(currentSkill2, getTeilNameBySkill(currentSkill2));
     }
   }
-  function getStageKey2(skill) {
+  function getStageKey(skill) {
     return `${skill}_stage`;
   }
-  function getCurrentStage2(skill) {
-    const key = getStageKey2(skill);
+  function getCurrentStage(skill) {
+    const key = getStageKey(skill);
     try {
       const stage = parseInt(localStorage.getItem(key)) || 1;
-      const config = SKILL_CONFIG2[skill];
+      const config = SKILL_CONFIG[skill];
       const totalStages = config ? Math.ceil(config.totalExams / config.examsPerStage) : 1;
       return Math.max(1, Math.min(stage, totalStages));
     } catch {
       return 1;
     }
   }
-  function setCurrentStage2(skill, stage) {
+  function setCurrentStage(skill, stage) {
     try {
-      localStorage.setItem(getStageKey2(skill), String(stage));
+      localStorage.setItem(getStageKey(skill), String(stage));
     } catch (e) {
       console.warn("\u26A0\uFE0F \u0644\u0627 \u064A\u0645\u0643\u0646 \u062D\u0641\u0638 \u0627\u0644\u0645\u0631\u062D\u0644\u0629:", e);
     }
   }
-  function getTotalStages2(skill) {
-    const config = SKILL_CONFIG2[skill];
+  function getTotalStages(skill) {
+    const config = SKILL_CONFIG[skill];
     if (!config) return 1;
     return Math.ceil(config.totalExams / config.examsPerStage);
   }
-  function getExamsForStage2(skill, stage) {
-    const config = SKILL_CONFIG2[skill];
+  function getExamsForStage(skill, stage) {
+    const config = SKILL_CONFIG[skill];
     if (!config) return [];
     const start = (stage - 1) * config.examsPerStage;
     const end = Math.min(start + config.examsPerStage, config.totalExams);
@@ -26254,41 +27224,41 @@ var MyApp = (() => {
     for (let i = start + 1; i <= end; i++) exams.push(i);
     return exams;
   }
-  function buildSentenceId2(skill, examId, questionIndex) {
+  function buildSentenceId(skill, examId, questionIndex) {
     return `${skill}_exam${examId}_${questionIndex}`;
   }
-  function getSentenceLevel2(skill, examId, questionIndex) {
-    const key = buildSentenceId2(skill, examId, questionIndex);
+  function getSentenceLevel(skill, examId, questionIndex) {
+    const key = buildSentenceId(skill, examId, questionIndex);
     try {
-      const data = JSON.parse(localStorage.getItem(LEVELS_KEY2) || "{}");
+      const data = JSON.parse(localStorage.getItem(LEVELS_KEY) || "{}");
       return data[key] !== void 0 ? data[key] : 0;
     } catch {
       return 0;
     }
   }
-  function setSentenceLevel2(skill, examId, questionIndex, level) {
-    const key = buildSentenceId2(skill, examId, questionIndex);
+  function setSentenceLevel(skill, examId, questionIndex, level) {
+    const key = buildSentenceId(skill, examId, questionIndex);
     try {
-      const data = JSON.parse(localStorage.getItem(LEVELS_KEY2) || "{}");
-      let newLevel = Math.max(0, Math.min(MAX_LEVEL2, level));
+      const data = JSON.parse(localStorage.getItem(LEVELS_KEY) || "{}");
+      let newLevel = Math.max(0, Math.min(MAX_LEVEL, level));
       data[key] = newLevel;
-      localStorage.setItem(LEVELS_KEY2, JSON.stringify(data));
+      localStorage.setItem(LEVELS_KEY, JSON.stringify(data));
     } catch (e) {
       console.error("\u274C \u062E\u0637\u0623 \u0641\u064A \u062D\u0641\u0638 \u0627\u0644\u0645\u0633\u062A\u0648\u0649:", e);
     }
   }
-  function increaseLevel2(skill, examId, questionIndex) {
-    const current = getSentenceLevel2(skill, examId, questionIndex);
-    if (current < MAX_LEVEL2) setSentenceLevel2(skill, examId, questionIndex, current + 1);
+  function increaseLevel(skill, examId, questionIndex) {
+    const current = getSentenceLevel(skill, examId, questionIndex);
+    if (current < MAX_LEVEL) setSentenceLevel(skill, examId, questionIndex, current + 1);
   }
-  function decreaseLevel2(skill, examId, questionIndex) {
-    const current = getSentenceLevel2(skill, examId, questionIndex);
-    if (current > 0) setSentenceLevel2(skill, examId, questionIndex, current - 1);
+  function decreaseLevel(skill, examId, questionIndex) {
+    const current = getSentenceLevel(skill, examId, questionIndex);
+    if (current > 0) setSentenceLevel(skill, examId, questionIndex, current - 1);
   }
-  function getExamProgress2(skill, examId) {
+  function getExamProgress(skill, examId) {
     const prefix = `${skill}_exam${examId}_`;
     try {
-      const data = JSON.parse(localStorage.getItem(LEVELS_KEY2) || "{}");
+      const data = JSON.parse(localStorage.getItem(LEVELS_KEY) || "{}");
       let totalLevels = 0, count = 0;
       for (const key in data) {
         if (key.startsWith(prefix)) {
@@ -26297,18 +27267,18 @@ var MyApp = (() => {
         }
       }
       if (count === 0) return 0;
-      return Math.min(100, Math.round(totalLevels / (count * MAX_LEVEL2) * 100));
+      return Math.min(100, Math.round(totalLevels / (count * MAX_LEVEL) * 100));
     } catch {
       return 0;
     }
   }
-  function getStageProgress2(skill) {
-    const config = SKILL_CONFIG2[skill];
+  function getStageProgress(skill) {
+    const config = SKILL_CONFIG[skill];
     if (!config) return 0;
-    const currentStage = getCurrentStage2(skill);
-    const examIds = getExamsForStage2(skill, currentStage);
+    const currentStage = getCurrentStage(skill);
+    const examIds = getExamsForStage(skill, currentStage);
     if (examIds.length === 0) return 0;
-    const data = JSON.parse(localStorage.getItem(LEVELS_KEY2) || "{}");
+    const data = JSON.parse(localStorage.getItem(LEVELS_KEY) || "{}");
     let totalLevels = 0, count = 0;
     for (const examId of examIds) {
       const prefix = `${skill}_exam${examId}_`;
@@ -26320,20 +27290,20 @@ var MyApp = (() => {
       }
     }
     if (count === 0) return 0;
-    return Math.min(100, Math.round(totalLevels / (count * MAX_LEVEL2) * 100));
+    return Math.min(100, Math.round(totalLevels / (count * MAX_LEVEL) * 100));
   }
-  function getOverallProgress2(skill) {
-    const totalStages = getTotalStages2(skill);
+  function getOverallProgress(skill) {
+    const totalStages = getTotalStages(skill);
     if (totalStages <= 0) return 0;
-    const currentStage = getCurrentStage2(skill);
-    const stageProgress = getStageProgress2(skill);
+    const currentStage = getCurrentStage(skill);
+    const stageProgress = getStageProgress(skill);
     const overall = (currentStage - 1 + stageProgress / 100) / totalStages * 100;
     return Math.min(100, Math.round(overall));
   }
-  function renderMemoryProgressBar2(skill, container) {
-    const percent = getOverallProgress2(skill);
-    const currentStage = getCurrentStage2(skill);
-    const totalStages = getTotalStages2(skill);
+  function renderMemoryProgressBar(skill, container) {
+    const percent = getOverallProgress(skill);
+    const currentStage = getCurrentStage(skill);
+    const totalStages = getTotalStages(skill);
     const bar = document.createElement("div");
     bar.className = "memory-progress-bar-container";
     bar.innerHTML = `
@@ -26356,16 +27326,16 @@ var MyApp = (() => {
     `;
     container.insertBefore(bar, container.firstChild);
   }
-  function resetAllLevels2() {
+  function resetAllLevels() {
     const skill = window.currentSkill || window.memoryTrainer?.currentSkill;
     if (skill) {
-      resetSkillProgress2(skill);
+      resetSkillProgress(skill);
     } else {
       console.warn("\u26A0\uFE0F resetAllLevels: \u0644\u0645 \u064A\u062A\u0645 \u062A\u062D\u062F\u064A\u062F \u0627\u0644\u0645\u0647\u0627\u0631\u0629 \u0627\u0644\u062D\u0627\u0644\u064A\u0629\u060C \u0627\u0633\u062A\u062E\u062F\u0627\u0645 hoeren1 \u0643\u0627\u0641\u062A\u0631\u0627\u0636\u064A");
-      resetSkillProgress2("hoeren1");
+      resetSkillProgress("hoeren1");
     }
   }
-  function restoreOriginalOrder2() {
+  function restoreOriginalOrder() {
     const list = document.getElementById("examsList");
     if (!list) return;
     const gridContainer = document.getElementById("examGridContainer");
@@ -26405,7 +27375,7 @@ var MyApp = (() => {
       console.log(`\u{1F4CB} \u062A\u0645 \u0627\u0633\u062A\u0639\u0627\u062F\u0629 \u0627\u0644\u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0623\u0635\u0644\u064A (123) \u0628\u0646\u062C\u0627\u062D (${sortedKeys.length} \u0639\u0646\u0635\u0631)`);
     }
   }
-  function applyLeaderboardOrder2() {
+  function applyLeaderboardOrder() {
     const list = document.getElementById("examsList");
     if (!list) return;
     const gridContainer = document.getElementById("examGridContainer");
@@ -26444,7 +27414,7 @@ var MyApp = (() => {
           if (match) examId = parseInt(match[1]);
         }
         if (skill && examId) {
-          const stored = getExamResult2(skill, examId);
+          const stored = getExamResult(skill, examId);
           if (stored !== null) {
             score = stored;
             hasResult = true;
@@ -26465,35 +27435,35 @@ var MyApp = (() => {
     data.forEach((item) => targetContainer.appendChild(item.el));
     console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u062D\u0633\u0628 \u0627\u0644\u0646\u062A\u064A\u062C\u0629 (\u2014 \u0623\u0648\u0644\u0627\u064B\u060C \u062B\u0645 \u0627\u0644\u0623\u0636\u0639\u0641 \u0641\u0627\u0644\u0623\u0642\u0648\u0649)");
   }
-  function getViewModeIndex22() {
+  function getViewModeIndex2() {
     try {
-      const saved = localStorage.getItem(VIEW_MODE_KEY_22);
+      const saved = localStorage.getItem(VIEW_MODE_KEY_2);
       if (saved !== null) return parseInt(saved);
     } catch {
     }
     return 0;
   }
-  function setViewModeIndex22(index) {
+  function setViewModeIndex2(index) {
     try {
-      localStorage.setItem(VIEW_MODE_KEY_22, String(index));
+      localStorage.setItem(VIEW_MODE_KEY_2, String(index));
     } catch {
     }
   }
-  function getExamListMode2() {
-    return localStorage.getItem(EXAM_LIST_MODE_KEY2) || "list";
+  function getExamListMode() {
+    return localStorage.getItem(EXAM_LIST_MODE_KEY) || "list";
   }
-  function setExamListMode2(mode) {
-    localStorage.setItem(EXAM_LIST_MODE_KEY2, mode);
+  function setExamListMode(mode) {
+    localStorage.setItem(EXAM_LIST_MODE_KEY, mode);
   }
-  function resetSkillProgress2(skill) {
+  function resetSkillProgress(skill) {
     if (!skill) {
       console.warn("\u26A0\uFE0F resetSkillProgress: \u0644\u0645 \u064A\u062A\u0645 \u062A\u062D\u062F\u064A\u062F \u0627\u0644\u0645\u0647\u0627\u0631\u0629");
       return;
     }
-    const skillName = getSkillDisplayName2(skill);
-    showResetModal2(skill, skillName);
+    const skillName = getSkillDisplayName(skill);
+    showResetModal(skill, skillName);
   }
-  function getSkillDisplayName2(skill) {
+  function getSkillDisplayName(skill) {
     const names = {
       "hoeren1": "H\xF6ren 1",
       "hoeren2": "H\xF6ren 2",
@@ -26506,7 +27476,7 @@ var MyApp = (() => {
     };
     return names[skill] || skill;
   }
-  function showResetModal2(skill, skillName) {
+  function showResetModal(skill, skillName) {
     const oldModal = document.getElementById("resetConfirmModal");
     if (oldModal) oldModal.remove();
     const overlay = document.createElement("div");
@@ -26602,9 +27572,9 @@ var MyApp = (() => {
       overlay.remove();
     });
     modal.querySelector(".reset-modal-confirm").addEventListener("click", () => {
-      const LEVELS_KEY3 = "memory_levels";
+      const LEVELS_KEY2 = "memory_levels";
       try {
-        const data = JSON.parse(localStorage.getItem(LEVELS_KEY3) || "{}");
+        const data = JSON.parse(localStorage.getItem(LEVELS_KEY2) || "{}");
         const prefix = `${skill}_exam`;
         const newData = {};
         for (const key in data) {
@@ -26612,7 +27582,7 @@ var MyApp = (() => {
             newData[key] = data[key];
           }
         }
-        localStorage.setItem(LEVELS_KEY3, JSON.stringify(newData));
+        localStorage.setItem(LEVELS_KEY2, JSON.stringify(newData));
         const allKeys = Object.keys(localStorage);
         const lastReviewKeys = allKeys.filter((k) => k.startsWith(`exam_last_review_${skill}_`));
         for (const key of lastReviewKeys) {
@@ -26627,7 +27597,7 @@ var MyApp = (() => {
       }
     });
   }
-  function addRetryCounterToExam2() {
+  function addRetryCounterToExam() {
     const forbiddenSkills = ["schreiben", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3"];
     if (forbiddenSkills.includes(currentSkill2)) {
       const oldCounter2 = document.getElementById("retryCounterBox");
@@ -26636,9 +27606,9 @@ var MyApp = (() => {
     }
     const oldCounter = document.getElementById("retryCounterBox");
     if (oldCounter) oldCounter.remove();
-    const retryCount = window.getRetryCount ? window.getRetryCount(currentSkill2, currentExamId2) : 0;
-    const reviewDays = window.getLastReviewDays ? window.getLastReviewDays(currentSkill2, currentExamId2) : null;
-    const timeMs = window.getExamTime ? window.getExamTime(currentSkill2, currentExamId2) : null;
+    const retryCount = window.getRetryCount ? window.getRetryCount(currentSkill2, currentExamId) : 0;
+    const reviewDays = window.getLastReviewDays ? window.getLastReviewDays(currentSkill2, currentExamId) : null;
+    const timeMs = window.getExamTime ? window.getExamTime(currentSkill2, currentExamId) : null;
     let reviewText = "";
     if (reviewDays === null) {
       reviewText = "\u0644\u0645 \u064A\u064F\u0631\u0627\u062C\u0639";
@@ -26755,7 +27725,7 @@ var MyApp = (() => {
       }
     }
   }
-  function updateRetryCounter2() {
+  function updateRetryCounter() {
     const forbiddenSkills = ["schreiben", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3"];
     if (forbiddenSkills.includes(currentSkill2)) {
       const oldCounter = document.getElementById("retryCounterBox");
@@ -26764,12 +27734,12 @@ var MyApp = (() => {
     }
     const container = document.getElementById("retryCounterBox");
     if (!container) {
-      addRetryCounterToExam2();
+      addRetryCounterToExam();
       return;
     }
-    const retryCount = window.getRetryCount ? window.getRetryCount(currentSkill2, currentExamId2) : 0;
-    const reviewDays = window.getLastReviewDays ? window.getLastReviewDays(currentSkill2, currentExamId2) : null;
-    const timeMs = window.getExamTime ? window.getExamTime(currentSkill2, currentExamId2) : null;
+    const retryCount = window.getRetryCount ? window.getRetryCount(currentSkill2, currentExamId) : 0;
+    const reviewDays = window.getLastReviewDays ? window.getLastReviewDays(currentSkill2, currentExamId) : null;
+    const timeMs = window.getExamTime ? window.getExamTime(currentSkill2, currentExamId) : null;
     let reviewText = "";
     if (reviewDays === null) {
       reviewText = "\u0644\u0645 \u064A\u064F\u0631\u0627\u062C\u0639";
@@ -26808,7 +27778,7 @@ var MyApp = (() => {
       timeBox.style.textAlign = "right";
     }
   }
-  function applyTimeOrder2() {
+  function applyTimeOrder() {
     const list = document.getElementById("examsList");
     if (!list) return;
     const gridContainer = document.getElementById("examGridContainer");
@@ -26867,11 +27837,11 @@ var MyApp = (() => {
     data.forEach((item) => targetContainer.appendChild(item.el));
     console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u062D\u0633\u0628 \u0627\u0644\u0648\u0642\u062A (\u0645\u0646 \u0627\u0644\u0623\u0636\u0639\u0641 \u0625\u0644\u0649 \u0627\u0644\u0623\u0642\u0648\u0649)");
   }
-  var teile2, currentExamData2, currentSkill2, currentExamId2, currentExamsList2, currentM\u00FCndlichPart2, tipsExams2, lesenExams2, lesen2Exams2, lesen3Exams2, sprach1Exams2, sprach2Exams2, schreibenExams2, m\u00FCndlich1Exams2, m\u00FCndlich2Exams2, m\u00FCndlich3Exams2, examsDatabase2, activeTeilId2, SKILL_CONFIG2, LEVELS_KEY2, MAX_LEVEL2, VIEW_ICONS_22, VIEW_MODE_KEY_22, EXAM_LIST_MODE_KEY2;
+  var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY;
   var init_exams = __esm({
     "exams.js"() {
       window.isInterleavingActive = false;
-      teile2 = [
+      teile = [
         { id: 1, name: "H\xF6ren 1", container: "hoeren1", skill: "hoeren1" },
         { id: 2, name: "H\xF6ren 2", container: "hoeren2", skill: "hoeren2" },
         { id: 3, name: "H\xF6ren 3", container: "hoeren3", skill: "hoeren3" },
@@ -26897,9 +27867,9 @@ var MyApp = (() => {
       };
       window.renderInitialExamList = function() {
         if (typeof window.getUserStatusGlobal !== "function") {
-          const hoeren1Teil = teile2.find((t) => t.skill === "hoeren1");
+          const hoeren1Teil = teile.find((t) => t.skill === "hoeren1");
           if (hoeren1Teil) {
-            renderExamListForSkill2(hoeren1Teil.skill, hoeren1Teil.name);
+            renderExamListForSkill(hoeren1Teil.skill, hoeren1Teil.name);
           }
           return;
         }
@@ -26908,10 +27878,10 @@ var MyApp = (() => {
         const performRender = (force = false) => {
           const currentStatus = window.getUserStatusGlobal();
           if (!force && currentStatus === lastStatus && firstRenderDone) return;
-          const hoeren1Teil = teile2.find((t) => t.skill === "hoeren1");
+          const hoeren1Teil = teile.find((t) => t.skill === "hoeren1");
           if (hoeren1Teil) {
             console.log(`[EXAMS] renderInitialExamList: \u0631\u0633\u0645 \u0627\u0644\u0642\u0627\u0626\u0645\u0629 (\u0627\u0644\u062D\u0627\u0644\u0629: ${currentStatus})`);
-            renderExamListForSkill2(hoeren1Teil.skill, hoeren1Teil.name);
+            renderExamListForSkill(hoeren1Teil.skill, hoeren1Teil.name);
             firstRenderDone = true;
             lastStatus = currentStatus;
           }
@@ -27063,15 +28033,15 @@ var MyApp = (() => {
           });
         }, 100);
       };
-      currentExamData2 = null;
+      currentExamData = null;
       currentSkill2 = "lesen1";
-      currentExamId2 = null;
-      currentExamsList2 = [];
-      currentM\u00FCndlichPart2 = 2;
-      tipsExams2 = [
+      currentExamId = null;
+      currentExamsList = [];
+      currentM\u00FCndlichPart = 2;
+      tipsExams = [
         { id: 1, title: "\u0643\u064A\u0641\u0627\u0634 \u062A\u0646\u062C\u062D \u0628\u062F\u0643\u0627\u0621", enabled: true, hasFile: true }
       ];
-      lesenExams2 = [
+      lesenExams = [
         {
           id: 1,
           title: "kellner (Jugend Forscher)",
@@ -27248,7 +28218,7 @@ var MyApp = (() => {
         { id: 55, title: "Wohnen", enabled: true, hasFile: true, versions: [{ id: 55, file: "exam55.json", title: "Wohnen" }] },
         { id: 56, title: " Lebensmodelle", enabled: true, hasFile: true, versions: [{ id: 56, file: "exam56.json", title: " Lebensmodelle" }] }
       ];
-      lesen2Exams2 = [
+      lesen2Exams = [
         {
           id: 1,
           title: "Krista",
@@ -27376,7 +28346,7 @@ var MyApp = (() => {
         },
         { id: 37, title: "Wie zwei US-Teenager Million\xE4re wurden", enabled: true, hasFile: true, versions: [{ id: 37, file: "exam37.json", title: "Wie zwei US-Teenager Million\xE4re wurden" }] }
       ];
-      lesen3Exams2 = [
+      lesen3Exams = [
         {
           id: 1,
           title: "Filme - Fernsehprogramme",
@@ -27507,7 +28477,7 @@ var MyApp = (() => {
         { id: 36, title: "M\xF6bel f\xFCr die neue Wohnung", enabled: true, hasFile: true, versions: [{ id: 36, file: "exam36.json", title: "M\xF6bel f\xFCr die neue Wohnung" }] },
         { id: 37, title: "Gesch\xE4ftsreisen - \u0631\u062D\u0644\u0627\u062A \u0627\u0644\u0639\u0645\u0644", enabled: true, hasFile: true, versions: [{ id: 37, file: "exam37.json", title: "Gesch\xE4ftsreisen - \u0631\u062D\u0644\u0627\u062A \u0627\u0644\u0639\u0645\u0644" }] }
       ];
-      sprach1Exams2 = [
+      sprach1Exams = [
         {
           id: 1,
           title: "Hallo Ferdinand",
@@ -27635,7 +28605,7 @@ var MyApp = (() => {
         { id: 41, title: "Liebe Anna(\u0627\u0644\u062C\u062F\u064A\u062F)", enabled: true, hasFile: true, versions: [{ id: 41, file: "exam41.json", title: "Liebe Anna(\u0627\u0644\u062C\u062F\u064A\u062F)" }] },
         { id: 42, title: "Hi Jens", enabled: true, hasFile: true, versions: [{ id: 42, file: "exam42.json", title: "Hi Jens" }] }
       ];
-      sprach2Exams2 = [
+      sprach2Exams = [
         {
           id: 1,
           title: "Das Fahrrad",
@@ -27809,7 +28779,7 @@ var MyApp = (() => {
           ]
         }
       ];
-      schreibenExams2 = [
+      schreibenExams = [
         { id: 1, title: "Fotobuch", enabled: true, hasFile: true },
         { id: 2, title: "Abenteuer TIKKI TAKKA", enabled: true, hasFile: true },
         { id: 3, title: "Informatik-Shop", enabled: true, hasFile: true },
@@ -27853,10 +28823,10 @@ var MyApp = (() => {
         { id: 41, title: "T & W Elektronikversicherung", enabled: true, hasFile: true },
         { id: 42, title: "Waldschwimmbad Langen", enabled: true, hasFile: true }
       ];
-      m\u00FCndlich1Exams2 = [
+      m\u00FCndlich1Exams = [
         { id: 1, title: " \u062A\u0642\u062F\u064A\u0645 \u0648\u062A\u0643\u0644\u0645 \u0639\u0646 \u0645\u0648\u0636\u0648\u0639  ", enabled: true, hasFile: true, skillPath: "m\xFCndlich1" }
       ];
-      m\u00FCndlich2Exams2 = [
+      m\u00FCndlich2Exams = [
         { id: 1, title: "Antibiotika \u2013 Gibt es Alternativen?", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
         { id: 2, title: "Selbst gekocht", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
         { id: 3, title: "Arbeiten bis 75", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
@@ -27900,15 +28870,15 @@ var MyApp = (() => {
         { id: 41, title: "Teilzeitarbeit f\xFCr M\xE4nner", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
         { id: 42, title: "Nahrungserg\xE4nzungsmittel", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" }
       ];
-      m\u00FCndlich3Exams2 = [
+      m\u00FCndlich3Exams = [
         { id: 1, title: " \u0627\u0644\u062A\u062E\u0637\u064A\u0637 \u0648\u062D\u0644 \u0645\u0634\u0643\u0644 ", enabled: true, hasFile: true, skillPath: "m\xFCndlich3" }
       ];
-      examsDatabase2 = {
-        lesen1: lesenExams2,
-        lesen2: lesen2Exams2,
-        lesen3: lesen3Exams2,
-        sprach1: sprach1Exams2,
-        sprach2: sprach2Exams2,
+      examsDatabase = {
+        lesen1: lesenExams,
+        lesen2: lesen2Exams,
+        lesen3: lesen3Exams,
+        sprach1: sprach1Exams,
+        sprach2: sprach2Exams,
         hoeren1: [
           { id: 1, title: "Die Deutsche Lufthansa", enabled: true, hasFile: true },
           { id: 2, title: "Die Piloten der Lufthansa", enabled: true, hasFile: true },
@@ -28063,23 +29033,23 @@ var MyApp = (() => {
           { id: 47, title: "Beim Klassik-Radio (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
           { id: 48, title: "Sie H\xF6ren Den Anrufbeantworter-Buchhandlung", enabled: true, hasFile: true }
         ],
-        schreiben: schreibenExams2,
-        m\u00FCndlich: m\u00FCndlich2Exams2,
-        m\u00FCndlich1: m\u00FCndlich1Exams2,
-        m\u00FCndlich2: m\u00FCndlich2Exams2,
-        m\u00FCndlich3: m\u00FCndlich3Exams2,
-        tips: tipsExams2
+        schreiben: schreibenExams,
+        m\u00FCndlich: m\u00FCndlich2Exams,
+        m\u00FCndlich1: m\u00FCndlich1Exams,
+        m\u00FCndlich2: m\u00FCndlich2Exams,
+        m\u00FCndlich3: m\u00FCndlich3Exams,
+        tips: tipsExams
       };
-      activeTeilId2 = null;
+      activeTeilId = null;
       window.closeVersionsPopupAndOpen = function(skill, id, file, title) {
         const popup = document.getElementById("versionsPopupAuto");
         if (popup) popup.remove();
         window.openExam(id, title, skill, file);
       };
       window.saveExamResultGlobal = function(skill, examId, score) {
-        saveExamResult2(skill, examId, score);
+        saveExamResult(skill, examId, score);
         if (document.getElementById("list").classList.contains("active") && currentSkill2 === skill) {
-          renderExamListForSkill2(currentSkill2, getTeilNameBySkill2(currentSkill2));
+          renderExamListForSkill(currentSkill2, getTeilNameBySkill(currentSkill2));
         }
       };
       document.addEventListener("DOMContentLoaded", function() {
@@ -28088,17 +29058,17 @@ var MyApp = (() => {
         const backToListBtn = document.getElementById("backToListBtn");
         const backArrowFromExam = document.getElementById("backArrowFromExam");
         if (startBtn) startBtn.onclick = function() {
-          goList2();
+          goList();
         };
         if (backHomeBtn) backHomeBtn.onclick = function() {
-          goHome2();
+          goHome();
         };
         if (backToListBtn) backToListBtn.onclick = function() {
-          goList2();
+          goList();
         };
         if (backArrowFromExam) {
           backArrowFromExam.onclick = function() {
-            goBackToExamsList2();
+            goBackToExamsList();
           };
         }
         const examsContainer = document.getElementById("examsList");
@@ -28106,8 +29076,8 @@ var MyApp = (() => {
           examsContainer.innerHTML = '<div class="welcome-message">\u{1F448} \u0627\u062E\u062A\u0631 \u0627\u0644\u0642\u0633\u0645 (Teil) \u0645\u0646 \u0627\u0644\u0623\u0639\u0644\u0649 \u0644\u0639\u0631\u0636 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A</div>';
         }
       });
-      renderTeileList2();
-      SKILL_CONFIG2 = {
+      renderTeileList();
+      SKILL_CONFIG = {
         hoeren1: { totalExams: 45, examsPerStage: 15, totalSentences: 108 },
         hoeren2: { totalExams: 55, examsPerStage: 15, totalSentences: 273 },
         hoeren3: { totalExams: 48, examsPerStage: 15, totalSentences: 105 },
@@ -28117,25 +29087,25 @@ var MyApp = (() => {
         sprach1: { totalExams: 41, examsPerStage: 15, totalSentences: 205 },
         sprach2: { totalExams: 49, examsPerStage: 15, totalSentences: 245 }
       };
-      LEVELS_KEY2 = "memory_levels";
-      MAX_LEVEL2 = 5;
+      LEVELS_KEY = "memory_levels";
+      MAX_LEVEL = 5;
       window.loadStageExams = async function(skill) {
-        const config = SKILL_CONFIG2[skill];
+        const config = SKILL_CONFIG[skill];
         if (!config) {
           console.warn(`\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0625\u0639\u062F\u0627\u062F\u0627\u062A \u0644\u0644\u0645\u0647\u0627\u0631\u0629: ${skill}`);
           return;
         }
-        const exams = examsDatabase2[skill] || [];
+        const exams = examsDatabase[skill] || [];
         const totalExams = config.totalExams;
-        const currentStage = getCurrentStage2(skill);
-        const examIds = getExamsForStage2(skill, currentStage);
-        console.log(`\u{1F4DA} \u062A\u062D\u0645\u064A\u0644 \u0627\u0644\u0645\u0631\u062D\u0644\u0629 ${currentStage} \u0645\u0646 ${getTotalStages2(skill)} \u0644\u0640 ${skill}`);
+        const currentStage = getCurrentStage(skill);
+        const examIds = getExamsForStage(skill, currentStage);
+        console.log(`\u{1F4DA} \u062A\u062D\u0645\u064A\u0644 \u0627\u0644\u0645\u0631\u062D\u0644\u0629 ${currentStage} \u0645\u0646 ${getTotalStages(skill)} \u0644\u0640 ${skill}`);
         console.log(`\u{1F4CB} \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A: ${examIds.join(", ")}`);
         const allCorrect = [], allWrong = [], allQuestions = [];
         for (const examId of examIds) {
           const exam = exams.find((e) => e.id === examId);
           if (!exam || !exam.hasFile) continue;
-          const fileName = getActualFileName2(exam.id);
+          const fileName = getActualFileName(exam.id);
           try {
             const response = await fetch(`data/${skill}/${fileName}`);
             if (response.ok) {
@@ -28203,7 +29173,7 @@ var MyApp = (() => {
           const firstExam = exams.find((e) => e.id === firstExamId);
           if (firstExam && firstExam.hasFile) {
             try {
-              const fileName = getActualFileName2(firstExamId);
+              const fileName = getActualFileName(firstExamId);
               const response = await fetch(`data/${skill}/${fileName}`);
               if (response.ok) {
                 const data = await response.json();
@@ -28230,18 +29200,18 @@ var MyApp = (() => {
           totalWrong: allWrong.length,
           totalQuestions: allCorrect.length + allWrong.length,
           currentStage,
-          totalStages: getTotalStages2(skill),
+          totalStages: getTotalStages(skill),
           examIds,
-          isLastStage: currentStage >= getTotalStages2(skill)
+          isLastStage: currentStage >= getTotalStages(skill)
         };
         console.log(`\u2705 \u062A\u0645 \u062A\u062D\u0645\u064A\u0644 ${examIds.length} \u0627\u0645\u062A\u062D\u0627\u0646\u060C ${allCorrect.length} \u062C\u0645\u0644\u0629 \u0635\u062D\u064A\u062D\u0629\u060C ${allWrong.length} \u062C\u0645\u0644\u0629 \u062E\u0627\u0637\u0626\u0629`);
       };
       window.goToNextStage = function(skill) {
-        const totalStages = getTotalStages2(skill);
-        let currentStage = getCurrentStage2(skill);
+        const totalStages = getTotalStages(skill);
+        let currentStage = getCurrentStage(skill);
         if (currentStage < totalStages) {
           currentStage++;
-          setCurrentStage2(skill, currentStage);
+          setCurrentStage(skill, currentStage);
           console.log(`\u27A1\uFE0F \u0627\u0644\u0627\u0646\u062A\u0642\u0627\u0644 \u0625\u0644\u0649 \u0627\u0644\u0645\u0631\u062D\u0644\u0629 ${currentStage} \u0644\u0640 ${skill}`);
           window.loadStageExams(skill).then(() => {
             if (window.memoryTrainer && window.memoryTrainer.currentSkill === skill) {
@@ -28255,7 +29225,7 @@ var MyApp = (() => {
         }
       };
       window.resetStages = function(skill) {
-        setCurrentStage2(skill, 1);
+        setCurrentStage(skill, 1);
         console.log(`\u{1F504} \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u0645\u0631\u0627\u062D\u0644 ${skill} \u0625\u0644\u0649 1`);
         window.loadStageExams(skill);
       };
@@ -28287,24 +29257,24 @@ var MyApp = (() => {
         }
       };
       setTimeout(() => {
-        for (const skill in SKILL_CONFIG2) {
+        for (const skill in SKILL_CONFIG) {
           window.loadStageExams(skill);
         }
       }, 500);
-      window.buildSentenceId = buildSentenceId2;
-      window.getSentenceLevel = getSentenceLevel2;
-      window.setSentenceLevel = setSentenceLevel2;
-      window.increaseLevel = increaseLevel2;
-      window.decreaseLevel = decreaseLevel2;
-      window.getExamProgress = getExamProgress2;
-      window.getStageProgress = getStageProgress2;
-      window.getOverallProgress = getOverallProgress2;
-      window.getCurrentStage = getCurrentStage2;
-      window.setCurrentStage = setCurrentStage2;
-      window.getTotalStages = getTotalStages2;
-      window.getExamsForStage = getExamsForStage2;
-      window.SKILL_CONFIG = SKILL_CONFIG2;
-      window.resetAllLevels = resetAllLevels2;
+      window.buildSentenceId = buildSentenceId;
+      window.getSentenceLevel = getSentenceLevel;
+      window.setSentenceLevel = setSentenceLevel;
+      window.increaseLevel = increaseLevel;
+      window.decreaseLevel = decreaseLevel;
+      window.getExamProgress = getExamProgress;
+      window.getStageProgress = getStageProgress;
+      window.getOverallProgress = getOverallProgress;
+      window.getCurrentStage = getCurrentStage;
+      window.setCurrentStage = setCurrentStage;
+      window.getTotalStages = getTotalStages;
+      window.getExamsForStage = getExamsForStage;
+      window.SKILL_CONFIG = SKILL_CONFIG;
+      window.resetAllLevels = resetAllLevels;
       window.loadStageExams = loadStageExams;
       window.goToNextStage = goToNextStage;
       window.resetStages = resetStages;
@@ -28312,11 +29282,11 @@ var MyApp = (() => {
       window.startMemoryTrainerForExam = startMemoryTrainerForExam;
       window.renderInitialExamList = renderInitialExamList;
       console.log("\u{1F9E0} \u0646\u0638\u0627\u0645 \u0627\u0644\u062A\u0642\u062F\u0645 \u0627\u0644\u0645\u062A\u0648\u0627\u0632\u0646 (\u0627\u0644\u0645\u0631\u0627\u062D\u0644 \u0644\u0643\u0644 \u0645\u0647\u0627\u0631\u0629) \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647 \u0628\u0646\u062C\u0627\u062D");
-      console.log("\u{1F4CA} \u0639\u062F\u062F \u0627\u0644\u0645\u0631\u0627\u062D\u0644:", Object.keys(SKILL_CONFIG2).map((s) => `${s}: ${getTotalStages2(s)}`).join(", "));
-      VIEW_ICONS_22 = ["view_day", "grid_view"];
-      VIEW_MODE_KEY_22 = "viewModeIconIndex2";
-      EXAM_LIST_MODE_KEY2 = "examListViewMode";
-      window.openExam = openExam2;
+      console.log("\u{1F4CA} \u0639\u062F\u062F \u0627\u0644\u0645\u0631\u0627\u062D\u0644:", Object.keys(SKILL_CONFIG).map((s) => `${s}: ${getTotalStages(s)}`).join(", "));
+      VIEW_ICONS_2 = ["view_day", "grid_view"];
+      VIEW_MODE_KEY_2 = "viewModeIconIndex2";
+      EXAM_LIST_MODE_KEY = "examListViewMode";
+      window.openExam = openExam;
       if (!window.askAIContext) {
         window.askAIContext = { questionIndex: 0 };
       }
@@ -28329,23 +29299,23 @@ var MyApp = (() => {
       if (!window.currentExamData) {
         window.currentExamData = null;
       }
-      window.addVersionBadgesFixed = addVersionBadgesFixed2;
-      window.saveRetryCount = saveRetryCount2;
-      window.getRetryCount = getRetryCount2;
-      window.incrementRetryCount = incrementRetryCount2;
-      window.resetSkillProgress = resetSkillProgress2;
+      window.addVersionBadgesFixed = addVersionBadgesFixed;
+      window.saveRetryCount = saveRetryCount;
+      window.getRetryCount = getRetryCount;
+      window.incrementRetryCount = incrementRetryCount;
+      window.resetSkillProgress = resetSkillProgress;
       console.log("\u2705 \u0646\u0638\u0627\u0645 Badge \u0627\u0644\u062A\u0639\u062F\u064A\u0644\u0627\u062A (\u0627\u0644\u0646\u0633\u062E\u0629 \u0627\u0644\u0646\u0647\u0627\u0626\u064A\u0629) \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647");
-      window.examsDatabase = examsDatabase2;
-      window.teile = teile2;
-      window.saveExamHistory = saveExamHistory2;
-      window.getExamHistory = getExamHistory2;
-      window.getLastAttemptDate = getLastAttemptDate2;
-      window.getAllScores = getAllScores2;
-      window.saveExamResult = saveExamResult2;
-      window.getExamResult = getExamResult2;
-      window.getLastReviewDays = getLastReviewDays2;
-      window.addRetryCounterToExam = addRetryCounterToExam2;
-      window.updateRetryCounter = updateRetryCounter2;
+      window.examsDatabase = examsDatabase;
+      window.teile = teile;
+      window.saveExamHistory = saveExamHistory;
+      window.getExamHistory = getExamHistory;
+      window.getLastAttemptDate = getLastAttemptDate;
+      window.getAllScores = getAllScores;
+      window.saveExamResult = saveExamResult;
+      window.getExamResult = getExamResult;
+      window.getLastReviewDays = getLastReviewDays;
+      window.addRetryCounterToExam = addRetryCounterToExam;
+      window.updateRetryCounter = updateRetryCounter;
       try {
         if (typeof matchingSelectedAnswers !== "undefined") {
           window.matchingSelectedAnswers = matchingSelectedAnswers;
@@ -28362,7 +29332,7 @@ var MyApp = (() => {
       } catch (e) {
         console.log("\u2139\uFE0F \u0645\u062A\u063A\u064A\u0631\u0627\u062A Lesen1 \u0633\u062A\u064F\u0635\u062F\u0651\u0631 \u0645\u0646 engine.js");
       }
-      window.applyTimeOrder = applyTimeOrder2;
+      window.applyTimeOrder = applyTimeOrder;
       (function() {
         const btn = document.getElementById("checkCircleBtn");
         const tooltip = document.getElementById("checkCircleTooltip");
@@ -30020,7 +30990,7 @@ var MyApp = (() => {
         let currentStartTime = 0;
         let questionStats = {};
         let currentSkill3 = null;
-        let currentExamId3 = null;
+        let currentExamId2 = null;
         let reflexSentences = [];
         function extractFirstWords(text, maxWords) {
           if (!text) return "";
@@ -30120,7 +31090,7 @@ var MyApp = (() => {
           if (gameStarted) return;
           gameStarted = true;
           gamePaused = false;
-          loadGameData(currentSkill3, currentExamId3).then((loaded) => {
+          loadGameData(currentSkill3, currentExamId2).then((loaded) => {
             if (!loaded) {
               showNotAvailableMessage();
               return;
@@ -30356,7 +31326,7 @@ var MyApp = (() => {
         }
         function loadGameData(skill, examId) {
           currentSkill3 = skill;
-          currentExamId3 = examId;
+          currentExamId2 = examId;
           let filePath = `data/games/${skill}/exam${examId}.json`;
           console.log(`\u{1F4C2} \u062C\u0627\u0631\u064A \u062A\u062D\u0645\u064A\u0644: ${filePath}`);
           return fetch(filePath).then((response) => {
@@ -30377,7 +31347,7 @@ var MyApp = (() => {
           currentGameData = data;
           if (skill === "hoeren1" || skill === "hoeren2" || skill === "hoeren3" || skill === "lesen2") {
             reflexSentences = data.sentences || [];
-            console.log(`\u{1F4DD} \u062A\u0645 \u062A\u062D\u0645\u064A\u0644 ${reflexSentences.length} \u062C\u0645\u0644\u0629 \u0644\u0640 ${skill.toUpperCase()} (Exam ${currentExamId3})`);
+            console.log(`\u{1F4DD} \u062A\u0645 \u062A\u062D\u0645\u064A\u0644 ${reflexSentences.length} \u062C\u0645\u0644\u0629 \u0644\u0640 ${skill.toUpperCase()} (Exam ${currentExamId2})`);
             const totalRounds = SETTINGS.roundLength;
             originalQuestions = [];
             for (let i = 0; i < totalRounds; i++) {
@@ -30385,7 +31355,7 @@ var MyApp = (() => {
                 type: "reflex_mode",
                 id: i,
                 questionText: "\u0627\u062E\u062A\u0631 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629",
-                examId: currentExamId3
+                examId: currentExamId2
               });
             }
           } else if (skill === "lesen1" || skill === "lesen3") {
@@ -30472,7 +31442,7 @@ var MyApp = (() => {
         function startGame(skill, examId) {
           if (gameStarted) return;
           currentSkill3 = skill;
-          currentExamId3 = examId;
+          currentExamId2 = examId;
           setSpeedMode("reflex");
           showModeSelectionScreen();
         }
@@ -30846,7 +31816,7 @@ var MyApp = (() => {
           document.body.appendChild(overlay);
           document.getElementById("restartGameBtn").onclick = () => {
             overlay.remove();
-            startGame(currentSkill3, currentExamId3);
+            startGame(currentSkill3, currentExamId2);
           };
           document.getElementById("closeGameBtn").onclick = () => overlay.remove();
           overlay.onclick = (e) => {
@@ -30858,8 +31828,8 @@ var MyApp = (() => {
           if (gameBtn) {
             gameBtn.onclick = () => {
               const currentSkill4 = typeof getCurrentSkill === "function" ? getCurrentSkill() : "lesen1";
-              const currentExamId4 = typeof getCurrentExamId === "function" ? getCurrentExamId() : 1;
-              startGame(currentSkill4, currentExamId4);
+              const currentExamId3 = typeof getCurrentExamId === "function" ? getCurrentExamId() : 1;
+              startGame(currentSkill4, currentExamId3);
             };
             console.log("\u{1F3AE} \u0632\u0631 \u0627\u0644\u0639\u0628 \u062A\u0645 \u0631\u0628\u0637\u0647");
             return;
@@ -31282,7 +32252,7 @@ var MyApp = (() => {
           if (modal) modal.classList.remove("active");
           showMainContent();
         }
-        function updateTimerDisplay() {
+        function updateTimerDisplay2() {
           const { timerMinutes, timerSeconds } = getElements();
           if (!timerMinutes) return;
           const mins = Math.floor(remainingSeconds / 60);
@@ -31425,7 +32395,7 @@ var MyApp = (() => {
             lastSavedMinute = Math.floor(elapsedSeconds / 60);
             clearPauseState();
             closeModal();
-            updateTimerDisplay();
+            updateTimerDisplay2();
             const { timerBar: timerBar2, pauseBtn: pauseBtn2 } = getElements();
             if (timerBar2) {
               timerBar2.style.display = "flex";
@@ -31438,7 +32408,7 @@ var MyApp = (() => {
                 endSession();
               } else {
                 remainingSeconds--;
-                updateTimerDisplay();
+                updateTimerDisplay2();
                 saveElapsedMinutes();
               }
             }, 1e3);
@@ -31452,7 +32422,7 @@ var MyApp = (() => {
           pausedMinutes = 0;
           lastSavedMinute = 0;
           closeModal();
-          updateTimerDisplay();
+          updateTimerDisplay2();
           const { timerBar, pauseBtn } = getElements();
           if (timerBar) {
             timerBar.style.display = "flex";
@@ -31465,7 +32435,7 @@ var MyApp = (() => {
               endSession();
             } else {
               remainingSeconds--;
-              updateTimerDisplay();
+              updateTimerDisplay2();
               saveElapsedMinutes();
             }
           }, 1e3);
@@ -31504,7 +32474,7 @@ var MyApp = (() => {
               endSession();
             } else {
               remainingSeconds--;
-              updateTimerDisplay();
+              updateTimerDisplay2();
               saveElapsedMinutes();
             }
           }, 1e3);
@@ -31669,7 +32639,7 @@ var MyApp = (() => {
               if (savedState.remainingSeconds) {
                 remainingSeconds = savedState.remainingSeconds;
                 totalSeconds = savedState.totalSeconds;
-                updateTimerDisplay();
+                updateTimerDisplay2();
                 const { timerBar, pauseBtn } = getElements();
                 if (timerBar) {
                   timerBar.style.display = "flex";
