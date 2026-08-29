@@ -20001,6 +20001,8 @@ var MyApp = (() => {
     if (examBox) {
       const oldBtns = examBox.querySelectorAll(".teil1-controls");
       oldBtns.forEach((el) => el.remove());
+    }
+    if (examBox) {
       const buttonContainer = document.createElement("div");
       buttonContainer.className = "teil1-controls";
       buttonContainer.style.display = "flex";
@@ -20051,48 +20053,56 @@ var MyApp = (() => {
     const pointsPerQuestion = 25 / total;
     for (let i = 0; i < questions.length; i++) {
       const card = document.getElementById(`matching_q_${i}`);
-      const userAnswer = matchingSelectedAnswers2[i];
-      const correctAnswer = currentMatchingExamData2.sharedOptions[questions[i].correct];
+      if (!card) continue;
+      const selectElem = card.querySelector("select");
+      let userAnswer = null;
+      if (selectElem) {
+        userAnswer = selectElem.value || null;
+      }
+      if (userAnswer === null || userAnswer === "") {
+        userAnswer = matchingSelectedAnswers2[i] || null;
+      }
+      const correctIndex = questions[i].correct;
+      const correctAnswer = currentMatchingExamData2.sharedOptions[correctIndex];
       const isCorrect = userAnswer === correctAnswer;
-      if (card) {
-        card.classList.remove("correct-answer-card", "wrong-answer-card");
-        const oldMsg = card.querySelector(".correct-message");
-        if (oldMsg) oldMsg.remove();
-        const selectElem = card.querySelector("select");
-        if (isCorrect && userAnswer) {
-          score++;
-          card.classList.add("correct-answer-card");
-          if (selectElem) {
-            selectElem.style.backgroundColor = "#d4edda";
-            selectElem.style.border = "2px solid #28a745";
-            selectElem.style.color = "#155724";
+      card.classList.remove("correct-answer-card", "wrong-answer-card");
+      const oldMsg = card.querySelector(".correct-message");
+      if (oldMsg) oldMsg.remove();
+      const oldAnswerMsg = card.querySelector(".correct-answer-message");
+      if (oldAnswerMsg) oldAnswerMsg.remove();
+      if (isCorrect && userAnswer) {
+        score++;
+        card.classList.add("correct-answer-card");
+        if (selectElem) {
+          selectElem.style.backgroundColor = "#d4edda";
+          selectElem.style.border = "2px solid #28a745";
+          selectElem.style.color = "#155724";
+        }
+      } else {
+        card.classList.add("wrong-answer-card");
+        if (selectElem) {
+          selectElem.style.backgroundColor = "#fef0e0";
+          selectElem.style.border = "2px solid #e67e22";
+          selectElem.style.color = "#155724";
+          let optionExists = false;
+          for (let j = 0; j < selectElem.options.length; j++) {
+            if (selectElem.options[j].value === correctAnswer) {
+              optionExists = true;
+              const cleanText = selectElem.options[j].textContent.replace(/^✅\s*/, "");
+              selectElem.options[j].textContent = `\u2705 ${cleanText}`;
+              selectElem.options[j].selected = true;
+              break;
+            }
           }
-        } else {
-          card.classList.add("wrong-answer-card");
-          if (selectElem) {
-            selectElem.style.backgroundColor = "#fef0e0";
-            selectElem.style.border = "2px solid #e67e22";
-            selectElem.style.color = "#155724";
-            let optionExists = false;
-            for (let j = 0; j < selectElem.options.length; j++) {
-              if (selectElem.options[j].value === correctAnswer) {
-                optionExists = true;
-                const cleanText = selectElem.options[j].textContent.replace(/^✅\s*/, "");
-                selectElem.options[j].textContent = `\u2705 ${cleanText}`;
-                selectElem.options[j].selected = true;
-                break;
-              }
+          if (!optionExists) {
+            let msg = card.querySelector(".correct-answer-message");
+            if (!msg) {
+              msg = document.createElement("div");
+              msg.className = "correct-answer-message";
+              msg.style.cssText = "margin-top: 6px; font-size: 12px; color: #28a745;";
+              card.appendChild(msg);
             }
-            if (!optionExists) {
-              let msg = card.querySelector(".correct-answer-message");
-              if (!msg) {
-                msg = document.createElement("div");
-                msg.className = "correct-answer-message";
-                msg.style.cssText = "margin-top: 6px; font-size: 12px; color: #28a745;";
-                card.appendChild(msg);
-              }
-              msg.innerHTML = `\u2705 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629: ${correctAnswer}`;
-            }
+            msg.innerHTML = `\u2705 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629: ${correctAnswer}`;
           }
         }
       }
@@ -20699,14 +20709,10 @@ var MyApp = (() => {
       select.style.border = "1px solid #ccc";
       select.id = `teil3_select_${i}`;
       select.innerHTML = "";
-      const defaultOption = document.createElement("option");
-      defaultOption.value = "";
-      defaultOption.textContent = "-- \u0627\u062E\u062A\u0631 \u0627\u0644\u0639\u0646\u0648\u0627\u0646 --";
-      defaultOption.selected = true;
-      select.appendChild(defaultOption);
       const noTitleOption = document.createElement("option");
       noTitleOption.value = "none";
       noTitleOption.textContent = "\u2727 \u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646 \u2727";
+      noTitleOption.selected = true;
       select.appendChild(noTitleOption);
       for (let s = 0; s < situations.length; s++) {
         const option = document.createElement("option");
@@ -20799,6 +20805,8 @@ var MyApp = (() => {
     if (examBox) {
       const oldBtns = examBox.querySelectorAll(".teil3-controls");
       oldBtns.forEach((el) => el.remove());
+    }
+    if (examBox) {
       const buttonContainer = document.createElement("div");
       buttonContainer.className = "teil3-controls";
       buttonContainer.style.display = "flex";
@@ -23840,9 +23848,11 @@ var MyApp = (() => {
             this._disconnectText(textId);
             return;
           }
-          const oldText = this._titleToText.get(titleId);
-          if (oldText && oldText !== textId) {
-            this._matches.delete(oldText);
+          if (titleId !== "title-none") {
+            const oldText = this._titleToText.get(titleId);
+            if (oldText && oldText !== textId) {
+              this._matches.delete(oldText);
+            }
           }
           const oldTitle = this._matches.get(textId);
           if (oldTitle) {
