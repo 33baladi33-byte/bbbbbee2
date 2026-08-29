@@ -20001,10 +20001,13 @@ var MyApp = (() => {
     if (examBox) {
       const oldContainers = examBox.querySelectorAll(".teil1-controls, .teil3-controls, .matching-exam-controls");
       oldContainers.forEach((el) => el.remove());
-      const orphanBtns = examBox.querySelectorAll("button.check-btn, button.reset-btn");
+      const orphanBtns = examBox.querySelectorAll("button");
       orphanBtns.forEach((btn) => {
-        if (!btn.closest(".interleaving-icon-btn") && !btn.closest("#matchingToggleBtn")) {
-          btn.remove();
+        if (!btn.closest(".interleaving-icon-btn") && !btn.closest("#matchingToggleBtn") && !btn.closest("#prevExamBtn") && !btn.closest("#nextExamBtn")) {
+          const text = btn.textContent.trim();
+          if (text.includes("\u062A\u0635\u062D\u064A\u062D") || text.includes("\u21BA") || text.includes("\u0625\u0639\u0627\u062F\u0629") || text.includes("Reset") || text.includes("reset")) {
+            btn.remove();
+          }
         }
       });
     }
@@ -20081,19 +20084,21 @@ var MyApp = (() => {
       if (isCorrect && userAnswer) {
         score++;
         card.classList.add("correct-answer-card");
+        card.style.backgroundColor = "#d4edda";
+        card.style.border = "2px solid #28a745";
         if (selectElem) {
-          selectElem.style.setProperty("background-color", "#d4edda", "important");
-          selectElem.style.setProperty("border", "2px solid #28a745", "important");
-          selectElem.style.setProperty("color", "#155724", "important");
-          selectElem.style.setProperty("border-radius", "8px", "important");
+          selectElem.style.backgroundColor = "#d4edda";
+          selectElem.style.border = "2px solid #28a745";
+          selectElem.style.color = "#155724";
         }
       } else {
         card.classList.add("wrong-answer-card");
+        card.style.backgroundColor = "#fef0e0";
+        card.style.border = "2px solid #e67e22";
         if (selectElem) {
-          selectElem.style.setProperty("background-color", "#fef0e0", "important");
-          selectElem.style.setProperty("border", "2px solid #e67e22", "important");
-          selectElem.style.setProperty("color", "#155724", "important");
-          selectElem.style.setProperty("border-radius", "8px", "important");
+          selectElem.style.backgroundColor = "#fef0e0";
+          selectElem.style.border = "2px solid #e67e22";
+          selectElem.style.color = "#155724";
           let optionExists = false;
           for (let j = 0; j < selectElem.options.length; j++) {
             if (selectElem.options[j].value === correctAnswer) {
@@ -20161,6 +20166,9 @@ var MyApp = (() => {
           saveExamTime(skill, examId, elapsed);
         }
       }
+    }
+    if (typeof window.applyMatchingCorrection === "function") {
+      setTimeout(window.applyMatchingCorrection, 50);
     }
   }
   function renderTeil2Exam() {
@@ -20815,12 +20823,15 @@ var MyApp = (() => {
     container.appendChild(twoColumns);
     const examBox = document.querySelector(".exam-box");
     if (examBox) {
-      const oldContainers = examBox.querySelectorAll(".teil3-controls, .teil1-controls, .matching-exam-controls");
+      const oldContainers = examBox.querySelectorAll(".teil1-controls, .teil3-controls, .matching-exam-controls");
       oldContainers.forEach((el) => el.remove());
-      const orphanBtns = examBox.querySelectorAll("button.check-btn, button.reset-btn");
+      const orphanBtns = examBox.querySelectorAll("button");
       orphanBtns.forEach((btn) => {
-        if (!btn.closest(".interleaving-icon-btn") && !btn.closest("#matchingToggleBtn")) {
-          btn.remove();
+        if (!btn.closest(".interleaving-icon-btn") && !btn.closest("#matchingToggleBtn") && !btn.closest("#prevExamBtn") && !btn.closest("#nextExamBtn")) {
+          const text = btn.textContent.trim();
+          if (text.includes("\u062A\u0635\u062D\u064A\u062D") || text.includes("\u21BA") || text.includes("\u0625\u0639\u0627\u062F\u0629") || text.includes("Reset") || text.includes("reset")) {
+            btn.remove();
+          }
         }
       });
     }
@@ -20915,20 +20926,18 @@ var MyApp = (() => {
           card.style.backgroundColor = "#d4edda";
           card.style.border = "2px solid #28a745";
           if (selectElem) {
-            selectElem.style.setProperty("background-color", "#d4edda", "important");
-            selectElem.style.setProperty("border", "2px solid #28a745", "important");
-            selectElem.style.setProperty("color", "#155724", "important");
-            selectElem.style.setProperty("border-radius", "8px", "important");
+            selectElem.style.backgroundColor = "#d4edda";
+            selectElem.style.border = "2px solid #28a745";
+            selectElem.style.color = "#155724";
           }
         } else {
           card.classList.add("wrong-answer-card");
           card.style.backgroundColor = "#fef0e0";
           card.style.border = "2px solid #e67e22";
           if (selectElem) {
-            selectElem.style.setProperty("background-color", "#fef0e0", "important");
-            selectElem.style.setProperty("border", "2px solid #e67e22", "important");
-            selectElem.style.setProperty("color", "#155724", "important");
-            selectElem.style.setProperty("border-radius", "8px", "important");
+            selectElem.style.backgroundColor = "#fef0e0";
+            selectElem.style.border = "2px solid #e67e22";
+            selectElem.style.color = "#155724";
             let optionExists = false;
             for (let j = 0; j < selectElem.options.length; j++) {
               const optValue = selectElem.options[j].value;
@@ -21000,6 +21009,9 @@ var MyApp = (() => {
           saveExamTime(skill, examId, elapsed);
         }
       }
+    }
+    if (typeof window.applyMatchingCorrection === "function") {
+      setTimeout(window.applyMatchingCorrection, 50);
     }
   }
   function applyMobileStylesToEngine() {
@@ -22641,6 +22653,230 @@ var MyApp = (() => {
       }
     });
   }
+  function applyMatchingCorrection() {
+    const skill = window.currentSkill;
+    if (!skill || skill !== "lesen1" && skill !== "lesen3") {
+      return;
+    }
+    const root = document.querySelector(".zertiva-matching-root");
+    if (!root) {
+      return;
+    }
+    const examData = window.currentExamData;
+    if (!examData) {
+      return;
+    }
+    root.querySelectorAll(".z-preview-correct, .z-preview-wrong, .z-title-correct, .z-title-wrong").forEach((el) => {
+      el.classList.remove("z-preview-correct", "z-preview-wrong", "z-title-correct", "z-title-wrong");
+    });
+    root.querySelectorAll(".z-preview-correct-answer").forEach((el) => el.remove());
+    const applyToParagraph = (card, isCorrect, correctText) => {
+      card.classList.remove("z-preview-correct", "z-preview-wrong");
+      const body = card.querySelector(".zertiva-matching-text-body");
+      if (body) {
+        const old = body.querySelector(".z-preview-correct-answer");
+        if (old) old.remove();
+        const answerDiv = document.createElement("div");
+        answerDiv.className = "z-preview-correct-answer";
+        answerDiv.style.color = "#2b8c4a";
+        answerDiv.innerHTML = `<strong style="color:#2b8c4a;">\u2713</strong> ${correctText}`;
+        body.insertBefore(answerDiv, body.firstChild);
+      }
+      if (isCorrect) {
+        card.classList.add("z-preview-correct");
+      } else {
+        card.classList.add("z-preview-wrong");
+      }
+    };
+    const applyToTitle = (titleCard, isCorrect, isLinked) => {
+      titleCard.classList.remove("z-preview-correct", "z-preview-wrong", "z-title-correct", "z-title-wrong");
+      if (!isLinked) return;
+      if (isCorrect) {
+        titleCard.classList.add("z-title-correct");
+      } else {
+        titleCard.classList.add("z-title-wrong");
+      }
+    };
+    const paragraphCards = root.querySelectorAll(".zertiva-matching-text-card");
+    const titleCards = root.querySelectorAll(".zertiva-matching-title-card");
+    if (skill === "lesen1") {
+      const container = document.getElementById("teil1");
+      if (!container) return;
+      const selects = container.querySelectorAll("select");
+      const questionSelects = Array.from(selects).slice(0, 5);
+      const questions = examData.questions;
+      const sharedOptions = examData.sharedOptions;
+      const userAnswers = {};
+      questionSelects.forEach((select, index) => {
+        userAnswers[index] = select.value || "";
+      });
+      paragraphCards.forEach((card, index) => {
+        const q = questions[index];
+        if (!q) return;
+        const correctIndex = q.correct;
+        const correctText = sharedOptions[correctIndex] || "";
+        const userAnswer = userAnswers[index] || "";
+        const isCorrect = userAnswer === correctText;
+        applyToParagraph(card, isCorrect, correctText);
+      });
+      titleCards.forEach((titleCard) => {
+        const textEl = titleCard.querySelector(".zertiva-matching-title-text");
+        if (!textEl) return;
+        const titleText = textEl.textContent.trim();
+        let correctIndex = -1;
+        for (let i = 0; i < sharedOptions.length; i++) {
+          if (sharedOptions[i] === titleText) {
+            correctIndex = i;
+            break;
+          }
+        }
+        if (correctIndex === -1) {
+          applyToTitle(titleCard, false, false);
+          return;
+        }
+        let linkedIndex = -1;
+        for (let idx in userAnswers) {
+          if (userAnswers[idx] === titleText) {
+            linkedIndex = parseInt(idx);
+            break;
+          }
+        }
+        if (linkedIndex === -1) {
+          applyToTitle(titleCard, false, false);
+          return;
+        }
+        const q = questions[linkedIndex];
+        if (!q) return;
+        const correctIndexForQ = q.correct;
+        const correctText = sharedOptions[correctIndexForQ] || "";
+        const userAnswer = userAnswers[linkedIndex] || "";
+        const isCorrect = userAnswer === correctText;
+        applyToTitle(titleCard, isCorrect, true);
+      });
+    } else if (skill === "lesen3") {
+      const container = document.getElementById("teil3");
+      if (!container) return;
+      const selects = container.querySelectorAll("select");
+      const questionSelects = Array.from(selects).slice(0, 12);
+      const items = examData.items;
+      const situations = examData.situations;
+      const userAnswers = {};
+      questionSelects.forEach((select, index) => {
+        const val = select.value;
+        if (val === "none" || val === "") {
+          userAnswers[index] = null;
+        } else {
+          userAnswers[index] = parseInt(val);
+        }
+      });
+      paragraphCards.forEach((card, index) => {
+        const item = items[index];
+        if (!item) return;
+        const correctIndex = item.correct;
+        let correctText = "";
+        if (correctIndex === null || correctIndex === void 0) {
+          correctText = "\u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646";
+        } else {
+          correctText = situations[correctIndex] || "";
+        }
+        const userAns = userAnswers[index];
+        let isCorrect = false;
+        if (correctIndex === null || correctIndex === void 0) {
+          isCorrect = userAns === null || userAns === "none";
+        } else {
+          isCorrect = userAns === correctIndex;
+        }
+        applyToParagraph(card, isCorrect, correctText);
+      });
+      titleCards.forEach((titleCard) => {
+        const textEl = titleCard.querySelector(".zertiva-matching-title-text");
+        if (!textEl) return;
+        const titleText = textEl.textContent.trim();
+        let correctIndex = null;
+        if (titleText === "\u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646") {
+          correctIndex = "none";
+        } else {
+          for (let i = 0; i < situations.length; i++) {
+            if (situations[i] === titleText) {
+              correctIndex = i;
+              break;
+            }
+          }
+        }
+        if (correctIndex === null) {
+          applyToTitle(titleCard, false, false);
+          return;
+        }
+        let linkedIndex = -1;
+        for (let idx in userAnswers) {
+          if (userAnswers[idx] === correctIndex || correctIndex === "none" && userAnswers[idx] === null) {
+            linkedIndex = parseInt(idx);
+            break;
+          }
+        }
+        if (linkedIndex === -1) {
+          applyToTitle(titleCard, false, false);
+          return;
+        }
+        const item = items[linkedIndex];
+        if (!item) return;
+        const correctIndexForItem = item.correct;
+        const userAns = userAnswers[linkedIndex];
+        let isCorrect = false;
+        if (correctIndexForItem === null || correctIndexForItem === void 0) {
+          isCorrect = userAns === null || userAns === "none";
+        } else {
+          isCorrect = userAns === correctIndexForItem;
+        }
+        applyToTitle(titleCard, isCorrect, true);
+      });
+    }
+    const styleId = "zertiva-correction-preview-style-v2";
+    if (!document.getElementById(styleId)) {
+      const style = document.createElement("style");
+      style.id = styleId;
+      style.textContent = `
+      .z-preview-correct {
+        border-color: #86d7a1 !important;
+        background: #effbf2 !important;
+        box-shadow: 0 0 0 2px rgba(83,190,112,.10) !important;
+      }
+      .z-preview-wrong {
+        border-color: #f1b16f !important;
+        background: #fff6ec !important;
+        box-shadow: 0 0 0 2px rgba(241,177,111,.10) !important;
+      }
+      .z-preview-correct-answer {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0 0 7px 0;
+        padding: 0;
+        font-size: 10px;
+        line-height: 1.25;
+        font-weight: 750;
+        white-space: normal;
+        color: #2b8c4a;
+      }
+      .z-preview-correct-answer strong {
+        font-weight: 850;
+        margin-right: 3px;
+        color: #2b8c4a;
+      }
+      .z-title-correct {
+        border-color: #86d7a1 !important;
+        background: #f0faf4 !important;
+        box-shadow: 0 0 0 2px rgba(83,190,112,.08) !important;
+      }
+      .z-title-wrong {
+        border-color: #f1b16f !important;
+        background: #fdf6ed !important;
+        box-shadow: 0 0 0 2px rgba(241,177,111,.08) !important;
+      }
+    `;
+      document.head.appendChild(style);
+    }
+  }
   var _hoerenData, interleavingOrders, lesen1OriginalNodes, lesen1ShuffledNodes, lesen1OrderSaved, lesen2OriginalNodes, lesen2ShuffledNodes, lesen2OrderSaved, lesen3OriginalNodes, lesen3ShuffledNodes, lesen3OrderSaved, examTimer2, currentSchreibenData, currentSprach2Data, sprach2UserAnswers, sprach2SelectedQuestionId, sprach2SelectedWordForLinking, currentSprach1Data, sprach1UserAnswers, sprach1OpenDropdownId, currentMatchingExamData2, matchingSelectedAnswers2, matchingAvailableOptions2, currentTeil2Data, teil2UserAnswers, currentTeil3Data, teil3UserAnswers, teil3SelectedItem, teil3SelectedSit, teil3SelectedItemForLink, teil3SelectedSitForLink, originalOpenExamGlobal, MemoryHighlightEngine, memoryEngine, toggleBtn, _toggleInProgress, _interleavingInitialized, _answerHistory, _historyEnabled, originalCheckTrueFalse, MatchingMode, matchingLesen1, matchingLesen3;
   var init_engine = __esm({
     "engine.js"() {
@@ -24010,6 +24246,9 @@ var MyApp = (() => {
           this._saveState(true);
           console.log(`\u2705 Matching mode activated for ${this.modeName}`);
           this._updateMatchingButton(true);
+          if (typeof window.applyMatchingCorrection === "function") {
+            setTimeout(window.applyMatchingCorrection, 300);
+          }
         }
         // ---- إلغاء Matching ----
         deactivate() {
@@ -24088,6 +24327,7 @@ var MyApp = (() => {
         }
       };
       console.log("\u2705 Matching Mode (Lesen 1 & Lesen 3) ready.");
+      window.applyMatchingCorrection = applyMatchingCorrection;
     }
   });
 
