@@ -19997,40 +19997,47 @@ var MyApp = (() => {
       card.appendChild(select);
       container.appendChild(card);
     }
-    const buttonContainer = document.createElement("div");
-    buttonContainer.style.display = "flex";
-    buttonContainer.style.gap = "15px";
-    buttonContainer.style.justifyContent = "center";
-    buttonContainer.style.marginTop = "20px";
-    const checkBtn = document.createElement("button");
-    checkBtn.innerText = "\u2705 \u062A\u0635\u062D\u064A\u062D";
-    checkBtn.className = "check-btn";
-    checkBtn.style.padding = "12px 24px";
-    checkBtn.style.backgroundColor = "#2c3e66";
-    checkBtn.style.color = "white";
-    checkBtn.style.border = "none";
-    checkBtn.style.borderRadius = "8px";
-    checkBtn.style.fontSize = "16px";
-    checkBtn.onclick = () => {
-      checkMatchingExam();
-    };
-    buttonContainer.appendChild(checkBtn);
-    const resetBtn = document.createElement("button");
-    resetBtn.innerText = "\u21BA";
-    resetBtn.style.padding = "8px 12px";
-    resetBtn.style.backgroundColor = "#6c757d";
-    resetBtn.style.color = "white";
-    resetBtn.style.border = "none";
-    resetBtn.style.borderRadius = "6px";
-    resetBtn.style.fontSize = "16px";
-    resetBtn.style.fontWeight = "bold";
-    resetBtn.onclick = () => {
-      matchingSelectedAnswers2 = {};
-      matchingAvailableOptions2 = [...currentMatchingExamData2.sharedOptions];
-      renderMatchingQuestions2();
-    };
-    buttonContainer.appendChild(resetBtn);
-    container.appendChild(buttonContainer);
+    const examBox = document.querySelector(".exam-box");
+    if (examBox) {
+      const oldBtns = examBox.querySelectorAll(".teil1-controls");
+      oldBtns.forEach((el) => el.remove());
+      const buttonContainer = document.createElement("div");
+      buttonContainer.className = "teil1-controls";
+      buttonContainer.style.display = "flex";
+      buttonContainer.style.gap = "15px";
+      buttonContainer.style.justifyContent = "center";
+      buttonContainer.style.marginTop = "20px";
+      buttonContainer.style.flexWrap = "wrap";
+      const checkBtn = document.createElement("button");
+      checkBtn.innerText = "\u2705 \u062A\u0635\u062D\u064A\u062D";
+      checkBtn.className = "check-btn";
+      checkBtn.style.padding = "12px 24px";
+      checkBtn.style.backgroundColor = "#2c3e66";
+      checkBtn.style.color = "white";
+      checkBtn.style.border = "none";
+      checkBtn.style.borderRadius = "8px";
+      checkBtn.style.fontSize = "16px";
+      checkBtn.onclick = () => {
+        checkMatchingExam();
+      };
+      buttonContainer.appendChild(checkBtn);
+      const resetBtn = document.createElement("button");
+      resetBtn.innerText = "\u21BA";
+      resetBtn.style.padding = "8px 12px";
+      resetBtn.style.backgroundColor = "#6c757d";
+      resetBtn.style.color = "white";
+      resetBtn.style.border = "none";
+      resetBtn.style.borderRadius = "6px";
+      resetBtn.style.fontSize = "16px";
+      resetBtn.style.fontWeight = "bold";
+      resetBtn.onclick = () => {
+        matchingSelectedAnswers2 = {};
+        matchingAvailableOptions2 = [...currentMatchingExamData2.sharedOptions];
+        renderMatchingQuestions2();
+      };
+      buttonContainer.appendChild(resetBtn);
+      examBox.appendChild(buttonContainer);
+    }
     const resultDiv = document.createElement("div");
     resultDiv.id = "matchingResult";
     resultDiv.className = "result-box";
@@ -20788,53 +20795,60 @@ var MyApp = (() => {
     twoColumns.appendChild(leftColumn);
     twoColumns.appendChild(rightColumn);
     container.appendChild(twoColumns);
-    const buttonContainer = document.createElement("div");
-    buttonContainer.style.display = "flex";
-    buttonContainer.style.gap = "15px";
-    buttonContainer.style.justifyContent = "center";
-    buttonContainer.style.marginTop = "25px";
-    const checkBtn = document.createElement("button");
-    checkBtn.innerText = "\u2705 \u062A\u0635\u062D\u064A\u062D";
-    checkBtn.className = "check-btn";
-    checkBtn.style.padding = "12px 24px";
-    checkBtn.style.backgroundColor = "#2c3e66";
-    checkBtn.style.color = "white";
-    checkBtn.style.border = "none";
-    checkBtn.style.borderRadius = "8px";
-    checkBtn.style.fontSize = "16px";
-    checkBtn.onclick = checkTeil3Exam;
-    buttonContainer.appendChild(checkBtn);
-    const resetBtn = document.createElement("button");
-    resetBtn.innerText = "\u21BA";
-    resetBtn.style.padding = "8px 12px";
-    resetBtn.style.backgroundColor = "#6c757d";
-    resetBtn.style.color = "white";
-    resetBtn.style.border = "none";
-    resetBtn.style.borderRadius = "6px";
-    resetBtn.style.fontSize = "16px";
-    resetBtn.style.fontWeight = "bold";
-    resetBtn.onclick = function() {
-      teil3UserAnswers = {};
-      teil3SelectedItem = null;
-      teil3SelectedSit = null;
-      teil3SelectedItemForLink = null;
-      teil3SelectedSitForLink = null;
-      for (let i = 0; i < items.length; i++) {
-        const select = document.getElementById(`teil3_select_${i}`);
-        if (select) select.selectedIndex = 0;
-        updateTeil3CardStyle(i);
-      }
-      updateTeil3SelectOptions();
-      updateTeil3RightSideColors();
-      document.querySelectorAll("#teil3 .correct-message").forEach((msg) => msg.remove());
-      const resultDiv2 = document.getElementById("teil3Result");
-      if (resultDiv2) {
-        resultDiv2.style.display = "none";
-        resultDiv2.innerHTML = "";
-      }
-    };
-    buttonContainer.appendChild(resetBtn);
-    container.appendChild(buttonContainer);
+    const examBox = document.querySelector(".exam-box");
+    if (examBox) {
+      const oldBtns = examBox.querySelectorAll(".teil3-controls");
+      oldBtns.forEach((el) => el.remove());
+      const buttonContainer = document.createElement("div");
+      buttonContainer.className = "teil3-controls";
+      buttonContainer.style.display = "flex";
+      buttonContainer.style.gap = "15px";
+      buttonContainer.style.justifyContent = "center";
+      buttonContainer.style.marginTop = "25px";
+      buttonContainer.style.flexWrap = "wrap";
+      const checkBtn = document.createElement("button");
+      checkBtn.innerText = "\u2705 \u062A\u0635\u062D\u064A\u062D";
+      checkBtn.className = "check-btn";
+      checkBtn.style.padding = "12px 24px";
+      checkBtn.style.backgroundColor = "#2c3e66";
+      checkBtn.style.color = "white";
+      checkBtn.style.border = "none";
+      checkBtn.style.borderRadius = "8px";
+      checkBtn.style.fontSize = "16px";
+      checkBtn.onclick = checkTeil3Exam;
+      buttonContainer.appendChild(checkBtn);
+      const resetBtn = document.createElement("button");
+      resetBtn.innerText = "\u21BA";
+      resetBtn.style.padding = "8px 12px";
+      resetBtn.style.backgroundColor = "#6c757d";
+      resetBtn.style.color = "white";
+      resetBtn.style.border = "none";
+      resetBtn.style.borderRadius = "6px";
+      resetBtn.style.fontSize = "16px";
+      resetBtn.style.fontWeight = "bold";
+      resetBtn.onclick = function() {
+        teil3UserAnswers = {};
+        teil3SelectedItem = null;
+        teil3SelectedSit = null;
+        teil3SelectedItemForLink = null;
+        teil3SelectedSitForLink = null;
+        for (let i = 0; i < items.length; i++) {
+          const select = document.getElementById(`teil3_select_${i}`);
+          if (select) select.selectedIndex = 0;
+          updateTeil3CardStyle(i);
+        }
+        updateTeil3SelectOptions();
+        updateTeil3RightSideColors();
+        document.querySelectorAll("#teil3 .correct-message").forEach((msg) => msg.remove());
+        const resultDiv2 = document.getElementById("teil3Result");
+        if (resultDiv2) {
+          resultDiv2.style.display = "none";
+          resultDiv2.innerHTML = "";
+        }
+      };
+      buttonContainer.appendChild(resetBtn);
+      examBox.appendChild(buttonContainer);
+    }
     const resultDiv = document.createElement("div");
     resultDiv.id = "teil3Result";
     resultDiv.className = "result-box";
@@ -23473,7 +23487,6 @@ var MyApp = (() => {
           this.isActive = false;
           this.root = null;
           this.styleId = `zertiva-matching-style-${modeName}`;
-          this.originalHTML = null;
           this._selects = [];
           this._texts = [];
           this._titles = [];
@@ -23488,6 +23501,24 @@ var MyApp = (() => {
           this._isDestroyed = false;
           this._resizeHandler = null;
           this._captureTimeout = null;
+          this._isBuilding = false;
+          this._stateKey = `matching_state_${modeName}`;
+        }
+        // ---- حفظ الحالة ----
+        _saveState(active) {
+          try {
+            localStorage.setItem(this._stateKey, active ? "true" : "false");
+          } catch (e) {
+          }
+        }
+        // ---- استعادة الحالة ----
+        _loadState() {
+          try {
+            const val = localStorage.getItem(this._stateKey);
+            return val === "true";
+          } catch (e) {
+            return false;
+          }
         }
         // ---- استخراج النصوص والعناوين من الـ selects الحقيقية ----
         _extractData() {
@@ -23540,6 +23571,15 @@ var MyApp = (() => {
             text: opt.text,
             letter: String.fromCharCode(65 + idx)
           }));
+          if (this.modeName === "lesen3") {
+            this._titles.push({
+              id: "title-none",
+              value: "",
+              text: "\u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646",
+              letter: ""
+              // لا حرف
+            });
+          }
           if (this._titles.length === 0) return false;
           this._texts.forEach((text) => {
             const val = text.select.value;
@@ -23553,16 +23593,23 @@ var MyApp = (() => {
           });
           return true;
         }
-        // ---- بناء واجهة Matching ----
+        // ---- بناء واجهة Matching (مرة واحدة فقط) ----
         _buildUI() {
+          if (this._isBuilding) return;
+          this._isBuilding = true;
           const container = document.getElementById(this.containerId);
-          if (!container) return;
-          if (this.originalHTML === null) {
-            this.originalHTML = container.innerHTML;
+          if (!container) {
+            this._isBuilding = false;
+            return;
+          }
+          if (this.root && this.root.parentNode) {
+            this._isBuilding = false;
+            return;
           }
           const root = document.createElement("section");
           root.className = "zertiva-matching-root";
           root.id = `zertiva-matching-root-${this.modeName}`;
+          root.style.display = "none";
           const header = document.createElement("div");
           header.className = "zertiva-matching-header";
           const title = document.createElement("div");
@@ -23600,7 +23647,67 @@ var MyApp = (() => {
           titleArea.appendChild(titleGrid);
           answerArea.append(answerHeader, titleArea);
           root.append(header, textArea, answerArea);
-          container.innerHTML = "";
+          const actions = document.createElement("div");
+          actions.className = "zertiva-actions-buttons";
+          actions.style.cssText = "display:flex; justify-content:center; gap:12px; padding:12px 0 0 0; flex-wrap:wrap;";
+          const checkBtn = document.createElement("button");
+          checkBtn.type = "button";
+          checkBtn.className = "check-btn";
+          checkBtn.textContent = "\u2705 \u062A\u0635\u062D\u064A\u062D";
+          checkBtn.style.cssText = "padding:8px 20px; border:none; border-radius:8px; background:#2c3e66; color:white; font-size:14px; font-weight:600; cursor:pointer;";
+          const resetBtn = document.createElement("button");
+          resetBtn.type = "button";
+          resetBtn.className = "reset-btn";
+          resetBtn.textContent = "\u21BA";
+          resetBtn.style.cssText = "padding:8px 12px; border:none; border-radius:8px; background:#6c757d; color:white; font-size:14px; font-weight:600; cursor:pointer;";
+          actions.append(checkBtn, resetBtn);
+          root.appendChild(actions);
+          if (this.modeName === "lesen1") {
+            checkBtn.addEventListener("click", () => {
+              if (typeof window.checkMatchingExam === "function") {
+                window.checkMatchingExam();
+              } else {
+                console.warn("\u26A0\uFE0F checkMatchingExam \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629");
+              }
+            });
+            resetBtn.addEventListener("click", () => {
+              this.reset();
+              this._texts.forEach((text) => {
+                if (text.select) {
+                  text.select.selectedIndex = 0;
+                  text.select.dispatchEvent(new Event("change", { bubbles: true }));
+                }
+              });
+              if (typeof window.renderMatchingQuestions === "function") {
+                window.renderMatchingQuestions();
+              }
+              this._updateUI();
+            });
+          } else if (this.modeName === "lesen3") {
+            checkBtn.addEventListener("click", () => {
+              if (typeof window.checkTeil3Exam === "function") {
+                window.checkTeil3Exam();
+              } else {
+                console.warn("\u26A0\uFE0F checkTeil3Exam \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629");
+              }
+            });
+            resetBtn.addEventListener("click", () => {
+              this.reset();
+              this._texts.forEach((text) => {
+                if (text.select) {
+                  text.select.selectedIndex = 0;
+                  text.select.dispatchEvent(new Event("change", { bubbles: true }));
+                }
+              });
+              if (typeof window.updateTeil3SelectOptions === "function") {
+                window.updateTeil3SelectOptions();
+              }
+              if (typeof window.updateTeil3RightSideColors === "function") {
+                window.updateTeil3RightSideColors();
+              }
+              this._updateUI();
+            });
+          }
           container.appendChild(root);
           this.root = root;
           this._buildTextCards(textGrid);
@@ -23611,6 +23718,7 @@ var MyApp = (() => {
           this._captureTimeout = setTimeout(() => {
             this._captureSizes();
           }, 100);
+          this._isBuilding = false;
         }
         _buildTextCards(grid) {
           this._textElements.clear();
@@ -23684,7 +23792,7 @@ var MyApp = (() => {
             card.draggable = true;
             const letter = document.createElement("span");
             letter.className = "zertiva-matching-title-letter";
-            letter.textContent = title.letter;
+            letter.textContent = title.letter || "";
             const content = document.createElement("div");
             content.className = "zertiva-matching-title-content";
             const textSpan = document.createElement("span");
@@ -23746,7 +23854,7 @@ var MyApp = (() => {
           const titleObj = this._titles.find((t) => t.id === titleId);
           if (textObj && textObj.select && titleObj) {
             try {
-              textObj.select.value = titleObj.value;
+              textObj.select.value = titleObj.value || "";
               textObj.select.dispatchEvent(new Event("change", { bubbles: true }));
             } catch (_) {
             }
@@ -23788,7 +23896,9 @@ var MyApp = (() => {
             el.badge.textContent = "";
             if (linked) {
               const title = this._titles.find((t) => t.id === linked);
-              if (title) el.badge.textContent = title.letter;
+              if (title && title.letter) {
+                el.badge.textContent = title.letter;
+              }
             }
           });
           this._titleElements.forEach((el, titleId) => {
@@ -23798,7 +23908,12 @@ var MyApp = (() => {
             el.match.textContent = "";
             if (linked) {
               const text = this._texts.find((t) => t.id === linked);
-              if (text) el.match.textContent = `TEXT ${text.number}`;
+              if (text) {
+                const title = this._titles.find((t) => t.id === titleId);
+                if (title && title.letter) {
+                  el.match.textContent = `TEXT ${text.number}`;
+                }
+              }
             }
           });
         }
@@ -23833,48 +23948,58 @@ var MyApp = (() => {
             console.warn(`\u26A0\uFE0F \u0644\u0627 \u064A\u0645\u0643\u0646 \u062A\u0641\u0639\u064A\u0644 Matching \u0644\u0640 ${this.modeName}: \u0627\u0644\u0628\u064A\u0627\u0646\u0627\u062A \u063A\u064A\u0631 \u0645\u0643\u062A\u0645\u0644\u0629.`);
             return;
           }
-          this._buildUI();
-          this.isActive = true;
+          if (!this.root || !this.root.parentNode) {
+            this._buildUI();
+          }
+          if (!this.root) {
+            console.warn(`\u26A0\uFE0F \u0641\u0634\u0644 \u0628\u0646\u0627\u0621 Matching \u0644\u0640 ${this.modeName}`);
+            return;
+          }
           const container = document.getElementById(this.containerId);
-          if (container) container.classList.add("zertiva-matching-active");
+          if (container) {
+            Array.from(container.children).forEach((child) => {
+              if (child !== this.root) {
+                child.style.display = "none";
+              }
+            });
+            this.root.style.display = "flex";
+            container.classList.add("zertiva-matching-active");
+          }
+          this.isActive = true;
+          this._saveState(true);
           console.log(`\u2705 Matching mode activated for ${this.modeName}`);
+          this._updateMatchingButton(true);
         }
         // ---- إلغاء Matching ----
         deactivate() {
           if (!this.isActive || this._isDestroyed) return;
-          this._destroy();
-        }
-        _destroy() {
-          if (this._isDestroyed) return;
-          this._isDestroyed = true;
-          this.isActive = false;
-          if (this._resizeHandler) {
-            window.removeEventListener("resize", this._resizeHandler);
-            this._resizeHandler = null;
-          }
-          if (this._captureTimeout) {
-            clearTimeout(this._captureTimeout);
-            this._captureTimeout = null;
-          }
           const container = document.getElementById(this.containerId);
           if (container) {
-            container.innerHTML = this.originalHTML || "";
+            Array.from(container.children).forEach((child) => {
+              if (child !== this.root) {
+                child.style.display = "";
+              }
+            });
+            if (this.root) {
+              this.root.style.display = "none";
+            }
             container.classList.remove("zertiva-matching-active");
           }
-          this.root = null;
-          this._textElements.clear();
-          this._titleElements.clear();
-          this._matches.clear();
-          this._titleToText.clear();
-          this._selects = [];
-          this._texts = [];
-          this._titles = [];
-          this._selectedText = null;
-          this._selectedTitle = null;
-          this._progressText = null;
-          this._progressFill = null;
-          this.originalHTML = null;
+          this.isActive = false;
+          this._saveState(false);
           console.log(`\u2705 Matching mode deactivated for ${this.modeName}`);
+          this._updateMatchingButton(false);
+        }
+        // ---- تحديث زر Matching في الشريط ----
+        _updateMatchingButton(active) {
+          const btn = document.getElementById("matchingToggleBtn");
+          if (!btn) return;
+          const skill = btn.dataset.skill || this.modeName;
+          if (skill === this.modeName) {
+            btn.classList.toggle("active", active);
+            btn.innerHTML = `<span class="material-symbols-outlined">${active ? "compare_arrows" : "swap_horiz"}</span>`;
+            btn.title = active ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
+          }
         }
         // ---- تبديل الحالة ----
         toggle() {
@@ -23903,6 +24028,23 @@ var MyApp = (() => {
       };
       window.toggleMatchingLesen3 = function() {
         matchingLesen3.toggle();
+      };
+      window.restoreMatchingState = function(skill) {
+        if (skill === "lesen1" && matchingLesen1) {
+          const saved = matchingLesen1._loadState();
+          if (saved && !matchingLesen1.isActive) {
+            matchingLesen1.activate();
+          } else if (!saved && matchingLesen1.isActive) {
+            matchingLesen1.deactivate();
+          }
+        } else if (skill === "lesen3" && matchingLesen3) {
+          const saved = matchingLesen3._loadState();
+          if (saved && !matchingLesen3.isActive) {
+            matchingLesen3.activate();
+          } else if (!saved && matchingLesen3.isActive) {
+            matchingLesen3.deactivate();
+          }
+        }
       };
       console.log("\u2705 Matching Mode (Lesen 1 & Lesen 3) ready.");
     }
@@ -26402,6 +26544,20 @@ var MyApp = (() => {
         window.rebuildLesen2();
       } else if (skill === "lesen3" && typeof window.rebuildLesen3 === "function") {
         window.rebuildLesen3();
+      }
+      if (skill === "lesen1" || skill === "lesen3") {
+        setTimeout(() => {
+          if (typeof window.restoreMatchingState === "function") {
+            window.restoreMatchingState(skill);
+          }
+          const matchingBtn = document.getElementById("matchingToggleBtn");
+          if (matchingBtn) {
+            const isActive = skill === "lesen1" && window.matchingLesen1 && window.matchingLesen1.isActive || skill === "lesen3" && window.matchingLesen3 && window.matchingLesen3.isActive;
+            matchingBtn.classList.toggle("active", isActive);
+            matchingBtn.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
+            matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
+          }
+        }, 100);
       }
     } catch (e) {
       console.error("\u274C \u062E\u0637\u0623:", e);

@@ -8212,6 +8212,50 @@ body:has(#exam.active) #navSignupBtn {
     color: #4b5563 !important;
 }
 /* ============================================
+   أزرار Matching داخل exam-box (ثابتة)
+   ============================================ */
+
+.exam-box .teil1-controls,
+.exam-box .teil3-controls {
+    margin-top: 10px !important;
+    padding: 8px 0 !important;
+    border-top: 1px solid rgba(100, 120, 140, 0.1) !important;
+}
+
+.exam-box .teil1-controls .check-btn,
+.exam-box .teil3-controls .check-btn {
+    background: #2c3e66 !important;
+    color: white !important;
+    padding: 10px 24px !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.exam-box .teil1-controls .check-btn:hover,
+.exam-box .teil3-controls .check-btn:hover {
+    background: #1a2a4a !important;
+}
+
+.exam-box .teil1-controls .reset-btn,
+.exam-box .teil3-controls .reset-btn {
+    background: #6c757d !important;
+    color: white !important;
+    padding: 8px 12px !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.exam-box .teil1-controls .reset-btn:hover,
+.exam-box .teil3-controls .reset-btn:hover {
+    background: #5a6268 !important;
+}
+/* ============================================
    studySession.css - النسخة النهائية (متكاملة)
    ============================================ */
 
