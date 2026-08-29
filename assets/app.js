@@ -24012,6 +24012,7 @@ var MyApp = (() => {
           if (styleEl && styleEl.parentNode) {
             styleEl.parentNode.removeChild(styleEl);
           }
+          document.querySelectorAll("#zl1m-matching-wrapper").forEach((el) => el.remove());
           state.texts = [];
           state.titles = [];
           state.matches.clear();
@@ -24024,6 +24025,15 @@ var MyApp = (() => {
           state.dom = null;
           state.container = null;
           state.mounted = false;
+          if (typeof window.matchingSelectedAnswers !== "undefined") {
+            window.matchingSelectedAnswers = {};
+          }
+          if (typeof window.matchingAvailableOptions !== "undefined") {
+            window.matchingAvailableOptions = [];
+          }
+          if (document.getElementById(ROOT_ID)) {
+            document.getElementById(ROOT_ID).remove();
+          }
           console.log("\u2705 Lesen Teil 1 Matching Mode destroyed.");
         }
         window.Lesen1Matching = {
@@ -24679,11 +24689,24 @@ var MyApp = (() => {
           }
           const styleEl = document.getElementById(STYLE_ID);
           if (styleEl) styleEl.remove();
+          document.querySelectorAll("#zertiva-l3-prototype-root").forEach((el) => el.remove());
+          state.matches.clear();
+          state.titleToItem.clear();
+          state.selectedItem = null;
+          state.selectedTitle = null;
           _mounted = false;
           window.__zertivaL3PrototypeActive = false;
           console.log("\u2705 Lesen Teil 3 Prototype destroyed.");
         };
       })();
+      window.addEventListener("beforeunload", function() {
+        if (window.Lesen1Matching && typeof window.Lesen1Matching.destroy === "function") {
+          window.Lesen1Matching.destroy();
+        }
+        if (typeof window.destroyL3Prototype === "function") {
+          window.destroyL3Prototype();
+        }
+      });
     }
   });
 
@@ -26437,6 +26460,44 @@ var MyApp = (() => {
     }
     return "free";
   }
+  function destroyAllMatchingModes() {
+    if (window.Lesen1Matching && typeof window.Lesen1Matching.destroy === "function") {
+      try {
+        window.Lesen1Matching.destroy();
+        console.log("\u2705 \u062A\u0645 \u0625\u0644\u063A\u0627\u0621 Lesen 1 Matching Mode");
+      } catch (e) {
+        console.warn("\u26A0\uFE0F \u0641\u0634\u0644 \u0625\u0644\u063A\u0627\u0621 Lesen 1 Matching Mode:", e);
+      }
+    }
+    if (typeof window.destroyL3Prototype === "function") {
+      try {
+        window.destroyL3Prototype();
+        console.log("\u2705 \u062A\u0645 \u0625\u0644\u063A\u0627\u0621 Lesen 3 Prototype");
+      } catch (e) {
+        console.warn("\u26A0\uFE0F \u0641\u0634\u0644 \u0625\u0644\u063A\u0627\u0621 Lesen 3 Prototype:", e);
+      }
+    }
+    if (window.matchingSelectedAnswers) {
+      window.matchingSelectedAnswers = {};
+    }
+    if (window.matchingAvailableOptions) {
+      window.matchingAvailableOptions = [];
+    }
+    if (window.teil3UserAnswers) {
+      window.teil3UserAnswers = {};
+    }
+    document.querySelectorAll("#zl1m-matching-root, #zertiva-l3-prototype-root").forEach((el) => el.remove());
+    document.querySelectorAll("#zl1m-matching-style, #zertiva-l3-prototype-style").forEach((el) => el.remove());
+    if (window.isInterleavingActive) {
+      window.isInterleavingActive = false;
+      const interleavingBtn = document.getElementById("interleavingBtn");
+      if (interleavingBtn) {
+        interleavingBtn.classList.remove("active");
+        interleavingBtn.title = "Interleaving: OFF";
+      }
+    }
+    document.querySelectorAll("#zl1m-matching-wrapper").forEach((el) => el.remove());
+  }
   function renderTeileList() {
     const container = document.getElementById("teileList");
     if (!container) return;
@@ -26986,6 +27047,7 @@ var MyApp = (() => {
     return hiddenSkills.includes(skill);
   }
   async function openExam(examId, examTitle, skill, fileName = null) {
+    destroyAllMatchingModes();
     const userStatus = await getUserStatusForExam();
     const isPremium = userStatus === "premium";
     const isFree = isExamFree(skill, examId);
@@ -27227,17 +27289,22 @@ var MyApp = (() => {
             l3ToggleBtn = document.createElement("button");
             l3ToggleBtn.id = "lesen3ToggleBtn";
             l3ToggleBtn.className = "interleaving-icon-btn";
-            l3ToggleBtn.title = "\u062A\u0628\u062F\u064A\u0644 \u0648\u0636\u0639 \u0627\u0644\u0639\u0631\u0636 (Prototype)";
-            l3ToggleBtn.innerHTML = '<span class="material-symbols-outlined">swap_horiz</span>';
+            l3ToggleBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 \u0627\u0644\u0645\u0637\u0627\u0628\u0642\u0629 (Matching)";
+            l3ToggleBtn.innerHTML = '<span class="material-symbols-outlined">compare_arrows</span>';
             const matchingBtn = document.getElementById("lesen1MatchingBtn");
             if (matchingBtn) {
               matchingBtn.parentNode.insertBefore(l3ToggleBtn, matchingBtn.nextSibling);
             } else {
-              interleavingRow2.appendChild(l3ToggleBtn);
+              const playBtn2 = interleavingRow2.querySelector("#playTimerBtn");
+              if (playBtn2) {
+                playBtn2.parentNode.insertBefore(l3ToggleBtn, playBtn2);
+              } else {
+                interleavingRow2.appendChild(l3ToggleBtn);
+              }
             }
           }
           const prefKey = "lesen3_prototype_preference";
-          let usePrototype = true;
+          let usePrototype = false;
           try {
             const saved = localStorage.getItem(prefKey);
             if (saved !== null) {
@@ -27264,7 +27331,7 @@ var MyApp = (() => {
                 return;
               }
               l3ToggleBtn.classList.add("active");
-              l3ToggleBtn.title = "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A";
+              l3ToggleBtn.title = "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0646\u0638\u0627\u0645 \u0627\u0644\u0623\u0635\u0644\u064A";
               try {
                 localStorage.setItem(prefKey, "true");
               } catch (e) {
@@ -27281,7 +27348,7 @@ var MyApp = (() => {
                 }
               }
               l3ToggleBtn.classList.remove("active");
-              l3ToggleBtn.title = "\u062A\u0628\u062F\u064A\u0644 \u0648\u0636\u0639 \u0627\u0644\u0639\u0631\u0636 (Prototype)";
+              l3ToggleBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 \u0627\u0644\u0645\u0637\u0627\u0628\u0642\u0629 (Matching)";
               try {
                 localStorage.setItem(prefKey, "false");
               } catch (e) {
@@ -27295,13 +27362,12 @@ var MyApp = (() => {
           };
           l3ToggleBtn.addEventListener("click", clickHandler);
           l3ToggleBtn._clickHandler = clickHandler;
-          setTimeout(function() {
-            if (usePrototype) {
+          l3ToggleBtn.classList.remove("active");
+          if (usePrototype) {
+            setTimeout(function() {
               toggleL3Prototype(true);
-            } else {
-              toggleL3Prototype(false);
-            }
-          }, 100);
+            }, 150);
+          }
         }
       } else if (currentExamData.type === "sprach1") {
         if (typeof window.loadSprach1Exam === "function") {
