@@ -19967,6 +19967,8 @@ var MyApp = (() => {
           } else {
             delete matchingSelectedAnswers2[idx];
           }
+          window.matchingSelectedAnswers = matchingSelectedAnswers2;
+          window.matchingAvailableOptions = matchingAvailableOptions2;
           document.querySelectorAll("#teil1 select").forEach((sel, sidx) => {
             const currentVal = sel.value;
             sel.innerHTML = "";
@@ -20027,6 +20029,8 @@ var MyApp = (() => {
     resetBtn.onclick = () => {
       matchingSelectedAnswers2 = {};
       matchingAvailableOptions2 = [...currentMatchingExamData2.sharedOptions];
+      window.matchingSelectedAnswers = matchingSelectedAnswers2;
+      window.matchingAvailableOptions = matchingAvailableOptions2;
       renderMatchingQuestions2();
     };
     buttonContainer.appendChild(resetBtn);
@@ -22595,357 +22599,7 @@ var MyApp = (() => {
       }
     });
   }
-  function initLesen1Matching(examData) {
-    if (!examData || examData.type !== "matching") return;
-    const container = document.getElementById("teil1");
-    if (!container) return;
-    if (_lesen1MatchingInstance) {
-      destroyLesen1Matching();
-    }
-    const questions = examData.questions || [];
-    const sharedOptions = examData.sharedOptions || [];
-    if (questions.length === 0 || sharedOptions.length === 0) return;
-    const originalElements = container.querySelectorAll(".question-card, .check-btn, .result-box");
-    originalElements.forEach((el) => el.style.display = "none");
-    const root = document.createElement("section");
-    root.id = "zertiva-l1-prototype-root";
-    const header = document.createElement("div");
-    header.className = "zl1-header";
-    const mainTitle = document.createElement("div");
-    mainTitle.className = "zl1-main-title";
-    mainTitle.textContent = "Lesen Teil 1";
-    const progress = document.createElement("div");
-    progress.className = "zl1-progress";
-    const progressText = document.createElement("span");
-    const progressBar = document.createElement("span");
-    progressBar.className = "zl1-progress-bar";
-    const progressFill = document.createElement("span");
-    progressFill.className = "zl1-progress-fill";
-    progressBar.appendChild(progressFill);
-    progress.append(progressText, progressBar);
-    header.append(mainTitle, progress);
-    root.appendChild(header);
-    const textArea = document.createElement("div");
-    textArea.className = "zl1-text-area";
-    const textGrid = document.createElement("div");
-    textGrid.className = "zl1-text-grid";
-    const textElements = /* @__PURE__ */ new Map();
-    questions.forEach((q, idx) => {
-      const card = document.createElement("div");
-      card.className = "zl1-text-card";
-      card.dataset.textId = "text-" + (idx + 1);
-      const head = document.createElement("div");
-      head.className = "zl1-text-head";
-      const label = document.createElement("span");
-      label.className = "zl1-text-label";
-      label.textContent = "TEXT " + (idx + 1);
-      const badge = document.createElement("span");
-      badge.className = "zl1-text-badge";
-      head.append(label, badge);
-      const body = document.createElement("div");
-      body.className = "zl1-text-body";
-      body.textContent = q.text;
-      card.append(head, body);
-      textGrid.appendChild(card);
-      textElements.set("text-" + (idx + 1), { card, badge });
-      card.addEventListener("click", function() {
-        const textId = "text-" + (idx + 1);
-        if (state.matches.has(textId)) {
-          disconnectText(textId);
-          state.selectedText = null;
-          state.selectedTitle = null;
-          updateUI2();
-          return;
-        }
-        if (state.selectedTitle) {
-          connect(textId, state.selectedTitle);
-          state.selectedText = null;
-          state.selectedTitle = null;
-          updateUI2();
-          return;
-        }
-        state.selectedText = state.selectedText === textId ? null : textId;
-        state.selectedTitle = null;
-        updateUI2();
-      });
-      card.addEventListener("dragover", function(e) {
-        e.preventDefault();
-        e.dataTransfer.dropEffect = "move";
-        card.classList.add("zl1-selected");
-      });
-      card.addEventListener("dragleave", function() {
-        if (!state.matches.has("text-" + (idx + 1))) {
-          card.classList.remove("zl1-selected");
-        }
-      });
-      card.addEventListener("drop", function(e) {
-        e.preventDefault();
-        const titleId = e.dataTransfer.getData("text/plain");
-        card.classList.remove("zl1-selected");
-        if (!titleId) return;
-        connect("text-" + (idx + 1), titleId);
-        state.selectedText = null;
-        state.selectedTitle = null;
-        updateUI2();
-      });
-    });
-    textArea.appendChild(textGrid);
-    root.appendChild(textArea);
-    const answerArea = document.createElement("div");
-    answerArea.className = "zl1-answer-area";
-    const answerHeader = document.createElement("div");
-    answerHeader.className = "zl1-answer-header";
-    const answerTitle = document.createElement("div");
-    answerTitle.className = "zl1-answer-title";
-    answerTitle.textContent = "TITEL ZUORDNEN";
-    answerHeader.appendChild(answerTitle);
-    answerArea.appendChild(answerHeader);
-    const titleArea = document.createElement("div");
-    titleArea.className = "zl1-title-area";
-    const titleGrid = document.createElement("div");
-    titleGrid.className = "zl1-title-grid";
-    const titleElements = /* @__PURE__ */ new Map();
-    sharedOptions.forEach((opt, idx) => {
-      const card = document.createElement("div");
-      card.className = "zl1-title-card";
-      card.dataset.titleId = "title-" + (idx + 1);
-      card.draggable = true;
-      const letter = document.createElement("span");
-      letter.className = "zl1-title-letter";
-      letter.textContent = String.fromCharCode(65 + idx);
-      const content = document.createElement("div");
-      content.className = "zl1-title-content";
-      const titleText = document.createElement("span");
-      titleText.className = "zl1-title-text";
-      titleText.textContent = opt;
-      const match = document.createElement("div");
-      match.className = "zl1-title-match";
-      content.append(titleText, match);
-      card.append(letter, content);
-      titleGrid.appendChild(card);
-      titleElements.set("title-" + (idx + 1), { card, match });
-      card.addEventListener("click", function() {
-        const titleId = "title-" + (idx + 1);
-        if (state.titleToText.has(titleId)) {
-          disconnectTitle(titleId);
-          state.selectedTitle = null;
-          state.selectedText = null;
-          updateUI2();
-          return;
-        }
-        if (state.selectedText) {
-          connect(state.selectedText, titleId);
-          state.selectedText = null;
-          state.selectedTitle = null;
-          updateUI2();
-          return;
-        }
-        state.selectedTitle = state.selectedTitle === titleId ? null : titleId;
-        state.selectedText = null;
-        updateUI2();
-      });
-      card.addEventListener("dragstart", function(e) {
-        e.dataTransfer.setData("text/plain", "title-" + (idx + 1));
-        e.dataTransfer.effectAllowed = "move";
-        card.classList.add("zl1-selected");
-      });
-      card.addEventListener("dragend", function() {
-        card.classList.remove("zl1-selected");
-      });
-    });
-    titleArea.appendChild(titleGrid);
-    answerArea.appendChild(titleArea);
-    root.appendChild(answerArea);
-    container.appendChild(root);
-    const state = {
-      texts: questions.map((q, i) => ({ id: "text-" + (i + 1), number: i + 1, content: q.text, select: null })),
-      titles: sharedOptions.map((opt, i) => ({ id: "title-" + (i + 1), value: i, text: opt, letter: String.fromCharCode(65 + i) })),
-      matches: /* @__PURE__ */ new Map(),
-      titleToText: /* @__PURE__ */ new Map(),
-      selectedText: null,
-      selectedTitle: null,
-      original: []
-    };
-    function connect(textId, titleId) {
-      if (state.matches.get(textId) === titleId) {
-        disconnectText(textId);
-        return;
-      }
-      const oldText = state.titleToText.get(titleId);
-      if (oldText && oldText !== textId) {
-        state.matches.delete(oldText);
-      }
-      const oldTitle = state.matches.get(textId);
-      if (oldTitle) {
-        state.titleToText.delete(oldTitle);
-      }
-      state.matches.set(textId, titleId);
-      state.titleToText.set(titleId, textId);
-      const textIndex = parseInt(textId.split("-")[1]) - 1;
-      const select = container.querySelector(`#matching_q_${textIndex} select`);
-      if (select) {
-        const titleIndex = parseInt(titleId.split("-")[1]) - 1;
-        const optionValue = sharedOptions[titleIndex];
-        for (let opt of select.options) {
-          if (opt.value === optionValue) {
-            select.value = optionValue;
-            break;
-          }
-        }
-        select.dispatchEvent(new Event("change", { bubbles: true }));
-      }
-      updateUI2();
-    }
-    function disconnectText(textId) {
-      const titleId = state.matches.get(textId);
-      if (!titleId) return;
-      state.titleToText.delete(titleId);
-      state.matches.delete(textId);
-      const textIndex = parseInt(textId.split("-")[1]) - 1;
-      const select = container.querySelector(`#matching_q_${textIndex} select`);
-      if (select) {
-        select.value = "";
-        select.dispatchEvent(new Event("change", { bubbles: true }));
-      }
-      updateUI2();
-    }
-    function disconnectTitle(titleId) {
-      const textId = state.titleToText.get(titleId);
-      if (!textId) return;
-      disconnectText(textId);
-    }
-    function updateUI2() {
-      const total = questions.length;
-      const count = state.matches.size;
-      progressText.textContent = count + " / " + total + " zugeordnet";
-      progressFill.style.width = (total ? count / total * 100 : 0) + "%";
-      textElements.forEach((elements, textId) => {
-        const linkedTitle = state.matches.get(textId);
-        const isSelected = state.selectedText === textId;
-        elements.card.classList.toggle("zl1-selected", isSelected);
-        elements.card.classList.toggle("zl1-linked", Boolean(linkedTitle));
-        if (linkedTitle) {
-          const title = state.titles.find((t) => t.id === linkedTitle);
-          elements.badge.textContent = title ? title.letter : "";
-        } else {
-          elements.badge.textContent = "";
-        }
-      });
-      titleElements.forEach((elements, titleId) => {
-        const linkedText = state.titleToText.get(titleId);
-        const isSelected = state.selectedTitle === titleId;
-        elements.card.classList.toggle("zl1-selected", isSelected);
-        elements.card.classList.toggle("zl1-linked", Boolean(linkedText));
-        if (linkedText) {
-          const text = state.texts.find((t) => t.id === linkedText);
-          elements.match.textContent = text ? "TEXT " + text.number : "";
-        } else {
-          elements.match.textContent = "";
-        }
-      });
-    }
-    document.querySelectorAll("#teil1 .question-card select").forEach((select, idx) => {
-      select.addEventListener("change", function(e) {
-        const val = select.value;
-        const textId = "text-" + (idx + 1);
-        if (val) {
-          const titleIndex = sharedOptions.indexOf(val);
-          if (titleIndex !== -1) {
-            const titleId = "title-" + (titleIndex + 1);
-            connect(textId, titleId);
-          }
-        } else {
-          disconnectText(textId);
-        }
-      });
-    });
-    _lesen1MatchingInstance = { root, state, textElements, titleElements, container, progressText, progressFill };
-    _lesen1MatchingActive = true;
-    window._lesen1MatchingActive = true;
-    updateUI2();
-    function applyTitleResponsive() {
-      const grid = titleGrid;
-      if (window.innerWidth <= 560) {
-        grid.style.gridTemplateColumns = "repeat(2, 1fr)";
-        grid.style.gridAutoRows = "1fr";
-        grid.style.width = "max-content";
-        grid.style.minWidth = "100%";
-        grid.style.overflowX = "auto";
-      } else {
-        grid.style.gridTemplateColumns = "repeat(auto-fit, minmax(135px, 1fr))";
-        grid.style.width = "100%";
-        grid.style.minWidth = "0";
-        grid.style.overflowX = "hidden";
-      }
-      if (window.innerWidth <= 560) {
-        const cards = titleGrid.querySelectorAll(".zl1-title-card");
-        cards.forEach((c) => {
-          c.style.width = "auto";
-          c.style.minWidth = "0";
-          c.style.maxWidth = "none";
-          c.style.height = "auto";
-          c.style.minHeight = "40px";
-          c.style.padding = "8px 12px";
-          c.style.gridTemplateColumns = "26px minmax(0, 1fr)";
-          c.style.gap = "8px";
-        });
-      } else {
-        const cards = titleGrid.querySelectorAll(".zl1-title-card");
-        cards.forEach((c) => {
-          c.style.width = "100%";
-          c.style.minWidth = "0";
-          c.style.maxWidth = "none";
-          c.style.height = "100%";
-          c.style.minHeight = "40px";
-          c.style.padding = "8px 12px";
-          c.style.gridTemplateColumns = "26px minmax(0, 1fr)";
-          c.style.gap = "8px";
-        });
-      }
-    }
-    window.addEventListener("resize", applyTitleResponsive);
-    applyTitleResponsive();
-    console.log("\u2705 Lesen Teil 1 Matching Prototype initialized successfully.");
-  }
-  function destroyLesen1Matching() {
-    if (_lesen1MatchingInstance) {
-      const root = _lesen1MatchingInstance.root;
-      if (root && root.parentNode) {
-        root.parentNode.removeChild(root);
-      }
-      const container = document.getElementById("teil1");
-      if (container) {
-        const originalElements = container.querySelectorAll(".question-card, .check-btn, .result-box");
-        originalElements.forEach((el) => el.style.display = "");
-      }
-      _lesen1MatchingInstance = null;
-      _lesen1MatchingActive = false;
-      window._lesen1MatchingActive = false;
-    }
-  }
-  function toggleLesen1Matching() {
-    const examData = window.currentExamData;
-    if (!examData || examData.type !== "matching") {
-      console.warn("\u26A0\uFE0F \u0647\u0630\u0627 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 \u0644\u064A\u0633 \u0645\u0646 \u0646\u0648\u0639 matching \u0623\u0648 \u0644\u0627 \u062A\u0648\u062C\u062F \u0628\u064A\u0627\u0646\u0627\u062A");
-      return;
-    }
-    if (_lesen1MatchingActive) {
-      destroyLesen1Matching();
-      const btn = document.getElementById("lesen1MatchingToggleBtn");
-      if (btn) {
-        btn.style.color = "#94a3b8";
-        btn.style.borderColor = "rgba(255,255,255,0.08)";
-      }
-    } else {
-      initLesen1Matching(examData);
-      const btn = document.getElementById("lesen1MatchingToggleBtn");
-      if (btn) {
-        btn.style.color = "#38bdf8";
-        btn.style.borderColor = "rgba(56,189,248,0.3)";
-      }
-    }
-  }
-  var _hoerenData, interleavingOrders, lesen1OriginalNodes, lesen1ShuffledNodes, lesen1OrderSaved, lesen2OriginalNodes, lesen2ShuffledNodes, lesen2OrderSaved, lesen3OriginalNodes, lesen3ShuffledNodes, lesen3OrderSaved, examTimer2, currentSchreibenData, currentSprach2Data, sprach2UserAnswers, sprach2SelectedQuestionId, sprach2SelectedWordForLinking, currentSprach1Data, sprach1UserAnswers, sprach1OpenDropdownId, currentMatchingExamData2, matchingSelectedAnswers2, matchingAvailableOptions2, currentTeil2Data, teil2UserAnswers, currentTeil3Data, teil3UserAnswers, teil3SelectedItem, teil3SelectedSit, teil3SelectedItemForLink, teil3SelectedSitForLink, originalOpenExamGlobal, MemoryHighlightEngine, memoryEngine, toggleBtn, _toggleInProgress, _interleavingInitialized, _answerHistory, _historyEnabled, originalCheckTrueFalse, _lesen1MatchingActive, _lesen1MatchingInstance;
+  var _hoerenData, interleavingOrders, lesen1OriginalNodes, lesen1ShuffledNodes, lesen1OrderSaved, lesen2OriginalNodes, lesen2ShuffledNodes, lesen2OrderSaved, lesen3OriginalNodes, lesen3ShuffledNodes, lesen3OrderSaved, examTimer2, currentSchreibenData, currentSprach2Data, sprach2UserAnswers, sprach2SelectedQuestionId, sprach2SelectedWordForLinking, currentSprach1Data, sprach1UserAnswers, sprach1OpenDropdownId, currentMatchingExamData2, matchingSelectedAnswers2, matchingAvailableOptions2, currentTeil2Data, teil2UserAnswers, currentTeil3Data, teil3UserAnswers, teil3SelectedItem, teil3SelectedSit, teil3SelectedItemForLink, teil3SelectedSitForLink, originalOpenExamGlobal, MemoryHighlightEngine, memoryEngine, toggleBtn, _toggleInProgress, _interleavingInitialized, _answerHistory, _historyEnabled, originalCheckTrueFalse;
   var init_engine = __esm({
     "engine.js"() {
       console.log("\u2705 engine.js \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647");
@@ -23099,6 +22753,24 @@ var MyApp = (() => {
       window.formatTime = formatTime;
       window.getTimeColor = getTimeColor;
       window.updateExamTimeInList = updateExamTimeInList;
+      window.updateMatchingState = function(selectedAnswers, availableOptions) {
+        if (typeof matchingSelectedAnswers2 !== "undefined") {
+          for (let key in selectedAnswers) {
+            matchingSelectedAnswers2[key] = selectedAnswers[key];
+          }
+          for (let key in matchingSelectedAnswers2) {
+            if (!(key in selectedAnswers)) {
+              delete matchingSelectedAnswers2[key];
+            }
+          }
+        }
+        if (typeof matchingAvailableOptions2 !== "undefined") {
+          matchingAvailableOptions2 = availableOptions.slice();
+        }
+        window.matchingSelectedAnswers = matchingSelectedAnswers2;
+        window.matchingAvailableOptions = matchingAvailableOptions2;
+        window.currentMatchingExamData = currentMatchingExamData2;
+      };
       document.addEventListener("beforeunload", function() {
         if (examTimer2.isRunning) {
           examTimer2.reset();
@@ -23383,17 +23055,21 @@ var MyApp = (() => {
       currentMatchingExamData2 = null;
       matchingSelectedAnswers2 = {};
       matchingAvailableOptions2 = [];
+      window.matchingSelectedAnswers = matchingSelectedAnswers2;
+      window.matchingAvailableOptions = matchingAvailableOptions2;
+      window.currentMatchingExamData = currentMatchingExamData2;
       window.loadMatchingExam = function(examData) {
         console.log("\u{1F7E2} loadMatchingExam", examData.title);
         resetLesen1Order();
-        if (window._lesen1MatchingActive && typeof destroyLesen1Matching === "function") {
-          destroyLesen1Matching();
-        }
         currentMatchingExamData2 = examData;
         matchingSelectedAnswers2 = {};
         matchingAvailableOptions2 = [...examData.sharedOptions];
+        window.matchingSelectedAnswers = matchingSelectedAnswers2;
+        window.matchingAvailableOptions = matchingAvailableOptions2;
+        window.currentMatchingExamData = currentMatchingExamData2;
         renderMatchingQuestions2();
       };
+      window.renderMatchingQuestions = renderMatchingQuestions2;
       currentTeil2Data = null;
       teil2UserAnswers = {};
       window.loadTeil2Exam = function(examData) {
@@ -23815,12 +23491,6 @@ var MyApp = (() => {
         }, 150);
       };
       console.log("\u2705 \u062A\u0645 \u0631\u0628\u0637 SentenceReorder \u0645\u0639 engine.js (\u0645\u0639 \u062F\u0639\u0645 Reset)");
-      _lesen1MatchingActive = false;
-      _lesen1MatchingInstance = null;
-      window.initLesen1Matching = initLesen1Matching;
-      window.destroyLesen1Matching = destroyLesen1Matching;
-      window.toggleLesen1Matching = toggleLesen1Matching;
-      window._lesen1MatchingActive = false;
     }
   });
 
@@ -26226,60 +25896,6 @@ var MyApp = (() => {
             }
           }
         });
-      }
-      if (skill === "lesen1") {
-        const interleavingRow2 = document.getElementById("interleavingRow");
-        if (interleavingRow2) {
-          const playBtn2 = document.getElementById("playTimerBtn");
-          const oldMatchingBtn = document.getElementById("lesen1MatchingToggleBtn");
-          if (oldMatchingBtn) oldMatchingBtn.remove();
-          const matchingBtn = document.createElement("button");
-          matchingBtn.id = "lesen1MatchingToggleBtn";
-          matchingBtn.className = "interleaving-icon-btn";
-          matchingBtn.title = "\u062A\u0641\u0639\u064A\u0644/\u0625\u0644\u063A\u0627\u0621 \u0648\u0636\u0639 \u0627\u0644\u0645\u0637\u0627\u0628\u0642\u0629";
-          matchingBtn.innerHTML = `<span class="material-symbols-outlined">compare_arrows</span>`;
-          matchingBtn.style.cssText = `
-                  width: 32px;
-                  height: 32px;
-                  background: transparent;
-                  border: 1px solid rgba(255,255,255,0.08);
-                  border-radius: 10px;
-                  color: #94a3b8;
-                  cursor: pointer;
-                  display: inline-flex;
-                  align-items: center;
-                  justify-content: center;
-                  transition: all 0.2s ease;
-                  font-size: 18px;
-                  padding: 0;
-              `;
-          matchingBtn.onmouseenter = function() {
-            this.style.background = "rgba(255,255,255,0.08)";
-            this.style.borderColor = "rgba(255,255,255,0.15)";
-            this.style.color = "#e2e8f0";
-          };
-          matchingBtn.onmouseleave = function() {
-            this.style.background = "transparent";
-            this.style.borderColor = "rgba(255,255,255,0.08)";
-            this.style.color = "#94a3b8";
-          };
-          matchingBtn.onclick = function(e) {
-            e.stopPropagation();
-            if (typeof window.toggleLesen1Matching === "function") {
-              window.toggleLesen1Matching();
-              const isActive = window._lesen1MatchingActive || false;
-              this.style.color = isActive ? "#38bdf8" : "#94a3b8";
-              this.style.borderColor = isActive ? "rgba(56,189,248,0.3)" : "rgba(255,255,255,0.08)";
-            }
-          };
-          if (playBtn2 && playBtn2.parentNode) {
-            playBtn2.parentNode.insertBefore(matchingBtn, playBtn2.nextSibling);
-          } else {
-            interleavingRow2.appendChild(matchingBtn);
-          }
-          matchingBtn.style.color = "#94a3b8";
-          matchingBtn.style.borderColor = "rgba(255,255,255,0.08)";
-        }
       }
       updateExamNavButtons();
       if (currentExamData.type === "matching") {
