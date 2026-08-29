@@ -24035,6 +24035,655 @@ var MyApp = (() => {
         };
         console.log("\u2705 Lesen Teil 1 Matching Module loaded (integrated into engine.js).");
       })();
+      (function() {
+        "use strict";
+        let _mounted = false;
+        let _container = null;
+        let _originalHTML = "";
+        const ROOT_ID = "zertiva-l3-prototype-root";
+        const STYLE_ID = "zertiva-l3-prototype-style";
+        const state = {
+          items: [],
+          titles: [],
+          matches: /* @__PURE__ */ new Map(),
+          titleToItem: /* @__PURE__ */ new Map(),
+          selectedItem: null,
+          selectedTitle: null
+        };
+        function clean(value) {
+          return String(value || "").replace(/\s+/g, " ").replace(/\u00a0/g, " ").trim();
+        }
+        function buildData() {
+          const examData = window.currentExamData;
+          if (!examData || examData.type !== "teil3") {
+            console.warn("\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0628\u064A\u0627\u0646\u0627\u062A Lesen Teil 3.");
+            return false;
+          }
+          const items = examData.items;
+          const situations = examData.situations;
+          if (!items || !situations || items.length !== 12) {
+            console.warn("\u26A0\uFE0F \u0628\u064A\u0627\u0646\u0627\u062A Lesen Teil 3 \u063A\u064A\u0631 \u0645\u0643\u062A\u0645\u0644\u0629 \u0623\u0648 \u0644\u064A\u0633\u062A 12 \u0641\u0642\u0631\u0629.");
+            return false;
+          }
+          state.items = [];
+          items.forEach((item, index) => {
+            state.items.push({
+              id: "item-" + (index + 1),
+              number: index + 1,
+              text: item.text,
+              correctIndex: item.correct
+            });
+          });
+          state.titles = [];
+          situations.forEach((titleText, index) => {
+            state.titles.push({
+              id: "title-" + (index + 1),
+              value: titleText,
+              text: titleText,
+              letter: String.fromCharCode(65 + index)
+            });
+          });
+          state.matches.clear();
+          state.titleToItem.clear();
+          if (typeof window.teil3UserAnswers !== "undefined") {
+            for (let idx in window.teil3UserAnswers) {
+              const answer = window.teil3UserAnswers[idx];
+              if (answer !== void 0 && answer !== null && answer !== "" && answer !== "none") {
+                const itemId = "item-" + (parseInt(idx) + 1);
+                const titleObj = state.titles.find((t) => t.id === "title-" + (parseInt(answer) + 1));
+                if (titleObj) {
+                  state.matches.set(itemId, titleObj.id);
+                  state.titleToItem.set(titleObj.id, itemId);
+                }
+              }
+            }
+          }
+          return true;
+        }
+        function buildDOM() {
+          const root = document.createElement("section");
+          root.id = ROOT_ID;
+          const header = document.createElement("div");
+          header.className = "zl3-header";
+          const mainTitle = document.createElement("div");
+          mainTitle.className = "zl3-main-title";
+          mainTitle.textContent = "Lesen Teil 3";
+          const progress = document.createElement("div");
+          progress.className = "zl3-progress";
+          const progressText = document.createElement("span");
+          const progressBar = document.createElement("span");
+          progressBar.className = "zl3-progress-bar";
+          const progressFill = document.createElement("span");
+          progressFill.className = "zl3-progress-fill";
+          progressBar.appendChild(progressFill);
+          progress.append(progressText, progressBar);
+          header.append(mainTitle, progress);
+          root.appendChild(header);
+          const textArea = document.createElement("div");
+          textArea.className = "zl3-text-area";
+          const textGrid = document.createElement("div");
+          textGrid.className = "zl3-text-grid";
+          textArea.appendChild(textGrid);
+          root.appendChild(textArea);
+          const answerArea = document.createElement("div");
+          answerArea.className = "zl3-answer-area";
+          const answerHeader = document.createElement("div");
+          answerHeader.className = "zl3-answer-header";
+          const answerTitle = document.createElement("div");
+          answerTitle.className = "zl3-answer-title";
+          answerTitle.textContent = "TITEL ZUORDNEN";
+          answerHeader.appendChild(answerTitle);
+          answerArea.appendChild(answerHeader);
+          const titleArea = document.createElement("div");
+          titleArea.className = "zl3-title-area";
+          const titleGrid = document.createElement("div");
+          titleGrid.className = "zl3-title-grid";
+          titleArea.appendChild(titleGrid);
+          answerArea.appendChild(titleArea);
+          root.appendChild(answerArea);
+          return {
+            root,
+            textGrid,
+            titleGrid,
+            progressText,
+            progressFill
+          };
+        }
+        function connect(itemId, titleId, dom) {
+          if (state.matches.get(itemId) === titleId) {
+            disconnectItem(itemId, dom);
+            return;
+          }
+          const oldItem = state.titleToItem.get(titleId);
+          if (oldItem && oldItem !== itemId) {
+            state.matches.delete(oldItem);
+          }
+          const oldTitle = state.matches.get(itemId);
+          if (oldTitle) {
+            state.titleToItem.delete(oldTitle);
+          }
+          state.matches.set(itemId, titleId);
+          state.titleToItem.set(titleId, itemId);
+          updateOriginalState();
+          updateUI2(dom);
+        }
+        function disconnectItem(itemId, dom) {
+          const titleId = state.matches.get(itemId);
+          if (!titleId) return;
+          state.titleToItem.delete(titleId);
+          state.matches.delete(itemId);
+          updateOriginalState();
+          updateUI2(dom);
+        }
+        function disconnectTitle(titleId, dom) {
+          const itemId = state.titleToItem.get(titleId);
+          if (!itemId) return;
+          disconnectItem(itemId, dom);
+        }
+        function updateOriginalState() {
+          if (typeof window.teil3UserAnswers !== "undefined") {
+            const newAnswers = {};
+            state.matches.forEach((titleId, itemId) => {
+              const match = itemId.match(/item-(\d+)/);
+              if (match) {
+                const idx = parseInt(match[1]) - 1;
+                const titleObj = state.titles.find((t) => t.id === titleId);
+                if (titleObj) {
+                  const titleIndex = parseInt(titleId.replace("title-", "")) - 1;
+                  newAnswers[idx] = titleIndex;
+                }
+              }
+            });
+            for (let key in window.teil3UserAnswers) {
+              if (!(key in newAnswers)) {
+                delete window.teil3UserAnswers[key];
+              }
+            }
+            for (let key in newAnswers) {
+              window.teil3UserAnswers[key] = newAnswers[key];
+            }
+            if (typeof window.updateTeil3SelectOptions === "function") {
+              window.updateTeil3SelectOptions();
+            }
+            if (typeof window.updateTeil3RightSideColors === "function") {
+              window.updateTeil3RightSideColors();
+            }
+          }
+        }
+        function updateUI2(dom) {
+          const total = state.items.length;
+          const count = state.matches.size;
+          const percentage = total ? count / total * 100 : 0;
+          if (dom) {
+            dom.progressText.textContent = count + " / " + total + " zugeordnet";
+            dom.progressFill.style.width = percentage + "%";
+          }
+          const itemCards = dom.textGrid.querySelectorAll(".zl3-text-card");
+          itemCards.forEach((card) => {
+            const itemId = card.dataset.itemId;
+            const linkedTitle = state.matches.get(itemId);
+            card.classList.toggle("zl3-selected", state.selectedItem === itemId);
+            card.classList.toggle("zl3-linked", Boolean(linkedTitle));
+            const badge = card.querySelector(".zl3-text-badge");
+            if (badge) {
+              badge.textContent = "";
+              if (linkedTitle) {
+                const title = state.titles.find((t) => t.id === linkedTitle);
+                if (title) badge.textContent = title.letter;
+              }
+            }
+          });
+          const titleCards = dom.titleGrid.querySelectorAll(".zl3-title-card");
+          titleCards.forEach((card) => {
+            const titleId = card.dataset.titleId;
+            const linkedItem = state.titleToItem.get(titleId);
+            card.classList.toggle("zl3-selected", state.selectedTitle === titleId);
+            card.classList.toggle("zl3-linked", Boolean(linkedItem));
+            const matchSpan = card.querySelector(".zl3-title-match");
+            if (matchSpan) {
+              matchSpan.textContent = "";
+              if (linkedItem) {
+                const itemObj = state.items.find((t) => t.id === linkedItem);
+                if (itemObj) matchSpan.textContent = "TEXT " + itemObj.number;
+              }
+            }
+          });
+        }
+        function createPrototype(container, dom) {
+          const styleEl = document.createElement("style");
+          styleEl.id = STYLE_ID;
+          styleEl.textContent = buildStyles();
+          document.head.appendChild(styleEl);
+          state.items.forEach((item) => {
+            const card = document.createElement("div");
+            card.className = "zl3-text-card";
+            card.dataset.itemId = item.id;
+            const head = document.createElement("div");
+            head.className = "zl3-text-head";
+            const label = document.createElement("span");
+            label.className = "zl3-text-label";
+            label.textContent = "TEXT " + item.number;
+            const badge = document.createElement("span");
+            badge.className = "zl3-text-badge";
+            head.append(label, badge);
+            const body = document.createElement("div");
+            body.className = "zl3-text-body";
+            body.textContent = item.text.length > 100 ? item.text.substring(0, 100) + "\u2026" : item.text;
+            card.append(head, body);
+            dom.textGrid.appendChild(card);
+            card.draggable = true;
+            card.addEventListener("dragstart", function(e) {
+              const ghost = document.createElement("div");
+              ghost.textContent = item.text.substring(0, 30) + (item.text.length > 30 ? "\u2026" : "");
+              ghost.style.cssText = `
+          position: fixed;
+          top: -1000px;
+          left: -1000px;
+          padding: 8px 12px;
+          background: white;
+          border: 1px solid #ccc;
+          border-radius: 6px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+          font-size: 14px;
+          max-width: 200px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          pointer-events: none;
+          z-index: 9999;
+          font-family: inherit;
+        `;
+              document.body.appendChild(ghost);
+              e.dataTransfer.setDragImage(ghost, 0, 0);
+              e.dataTransfer.effectAllowed = "move";
+              e.dataTransfer.setData("text/plain", item.id);
+              card._ghost = ghost;
+            });
+            card.addEventListener("dragend", function() {
+              if (this._ghost && this._ghost.parentNode) {
+                this._ghost.parentNode.removeChild(this._ghost);
+                this._ghost = null;
+              }
+              document.querySelectorAll(".zl3-title-card.zl3-dragover").forEach((el) => el.classList.remove("zl3-dragover"));
+            });
+            card.addEventListener("click", function() {
+              if (state.matches.has(item.id)) {
+                disconnectItem(item.id, dom);
+                state.selectedItem = null;
+                state.selectedTitle = null;
+                updateUI2(dom);
+                return;
+              }
+              if (state.selectedTitle) {
+                connect(item.id, state.selectedTitle, dom);
+                state.selectedItem = null;
+                state.selectedTitle = null;
+                updateUI2(dom);
+                return;
+              }
+              state.selectedItem = state.selectedItem === item.id ? null : item.id;
+              state.selectedTitle = null;
+              updateUI2(dom);
+            });
+            card.addEventListener("dragover", function(e) {
+              e.preventDefault();
+              e.dataTransfer.dropEffect = "none";
+            });
+            card.addEventListener("drop", function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              return false;
+            });
+          });
+          state.titles.forEach((title) => {
+            const card = document.createElement("div");
+            card.className = "zl3-title-card";
+            card.dataset.titleId = title.id;
+            const letter = document.createElement("span");
+            letter.className = "zl3-title-letter";
+            letter.textContent = title.letter;
+            const content = document.createElement("div");
+            content.className = "zl3-title-content";
+            const titleTextEl = document.createElement("span");
+            titleTextEl.className = "zl3-title-text";
+            titleTextEl.textContent = title.text;
+            const matchSpan = document.createElement("div");
+            matchSpan.className = "zl3-title-match";
+            content.append(titleTextEl, matchSpan);
+            card.append(letter, content);
+            dom.titleGrid.appendChild(card);
+            card.addEventListener("click", function() {
+              if (state.titleToItem.has(title.id)) {
+                disconnectTitle(title.id, dom);
+                state.selectedTitle = null;
+                state.selectedItem = null;
+                updateUI2(dom);
+                return;
+              }
+              if (state.selectedItem) {
+                connect(state.selectedItem, title.id, dom);
+                state.selectedItem = null;
+                state.selectedTitle = null;
+                updateUI2(dom);
+                return;
+              }
+              state.selectedTitle = state.selectedTitle === title.id ? null : title.id;
+              state.selectedItem = null;
+              updateUI2(dom);
+            });
+            card.addEventListener("dragover", function(e) {
+              e.preventDefault();
+              e.dataTransfer.dropEffect = "move";
+              card.classList.add("zl3-dragover");
+            });
+            card.addEventListener("dragleave", function() {
+              card.classList.remove("zl3-dragover");
+            });
+            card.addEventListener("drop", function(e) {
+              e.preventDefault();
+              const itemId = e.dataTransfer.getData("text/plain");
+              card.classList.remove("zl3-dragover");
+              if (!itemId) return;
+              connect(itemId, title.id, dom);
+              state.selectedItem = null;
+              state.selectedTitle = null;
+              updateUI2(dom);
+            });
+          });
+          addButtons(dom);
+          updateUI2(dom);
+        }
+        function addButtons(dom) {
+          const btnContainer = document.createElement("div");
+          btnContainer.className = "zl3-actions-buttons";
+          btnContainer.style.cssText = `
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      padding: 12px 0;
+      margin-top: 8px;
+      border-top: 1px solid #eef2f6;
+      flex-wrap: wrap;
+    `;
+          const checkBtn = document.createElement("button");
+          checkBtn.textContent = "\u2705 \u062A\u0635\u062D\u064A\u062D";
+          checkBtn.className = "check-btn";
+          checkBtn.style.cssText = `
+      padding: 10px 24px;
+      background: #2c3e66;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s;
+    `;
+          checkBtn.onmouseenter = () => checkBtn.style.background = "#1e2a4a";
+          checkBtn.onmouseleave = () => checkBtn.style.background = "#2c3e66";
+          checkBtn.onclick = function() {
+            if (typeof window.checkTeil3Exam === "function") {
+              window.checkTeil3Exam();
+              syncFromOriginalState(dom);
+            } else {
+              alert("\u26A0\uFE0F \u062F\u0627\u0644\u0629 \u0627\u0644\u062A\u0635\u062D\u064A\u062D \u063A\u064A\u0631 \u0645\u062A\u0648\u0641\u0631\u0629.");
+            }
+          };
+          const resetBtn = document.createElement("button");
+          resetBtn.textContent = "\u21BA";
+          resetBtn.style.cssText = `
+      padding: 10px 14px;
+      background: #6c757d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s;
+    `;
+          resetBtn.onmouseenter = () => resetBtn.style.background = "#5a6268";
+          resetBtn.onmouseleave = () => resetBtn.style.background = "#6c757d";
+          resetBtn.onclick = function() {
+            state.matches.clear();
+            state.titleToItem.clear();
+            state.selectedItem = null;
+            state.selectedTitle = null;
+            if (typeof window.teil3UserAnswers !== "undefined") {
+              window.teil3UserAnswers = {};
+            }
+            if (typeof window.updateTeil3SelectOptions === "function") {
+              window.updateTeil3SelectOptions();
+            }
+            if (typeof window.updateTeil3RightSideColors === "function") {
+              window.updateTeil3RightSideColors();
+            }
+            const selects = document.querySelectorAll("#teil3 select");
+            selects.forEach((sel) => {
+              sel.selectedIndex = 0;
+              sel.dispatchEvent(new Event("change", { bubbles: true }));
+            });
+            if (typeof window.updateTeil3SelectOptions === "function") window.updateTeil3SelectOptions();
+            if (typeof window.updateTeil3RightSideColors === "function") window.updateTeil3RightSideColors();
+            updateUI2(dom);
+            console.log("\u{1F504} \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u0627\u0644\u0625\u062C\u0627\u0628\u0627\u062A.");
+          };
+          btnContainer.appendChild(checkBtn);
+          btnContainer.appendChild(resetBtn);
+          const answerArea = dom.root.querySelector(".zl3-answer-area");
+          if (answerArea) {
+            answerArea.parentNode.insertBefore(btnContainer, answerArea.nextSibling);
+          } else {
+            dom.root.appendChild(btnContainer);
+          }
+        }
+        function syncFromOriginalState(dom) {
+          if (typeof window.teil3UserAnswers !== "undefined") {
+            state.matches.clear();
+            state.titleToItem.clear();
+            for (let idx in window.teil3UserAnswers) {
+              const answer = window.teil3UserAnswers[idx];
+              if (answer !== void 0 && answer !== null && answer !== "" && answer !== "none") {
+                const itemId = "item-" + (parseInt(idx) + 1);
+                const titleId = "title-" + (parseInt(answer) + 1);
+                const titleObj = state.titles.find((t) => t.id === titleId);
+                if (titleObj) {
+                  state.matches.set(itemId, titleId);
+                  state.titleToItem.set(titleId, itemId);
+                }
+              }
+            }
+            updateUI2(dom);
+          }
+        }
+        function buildStyles() {
+          const css = [];
+          css.push(
+            "#" + ROOT_ID + "{width:100%;max-width:100%;box-sizing:border-box;margin:16px 0;padding:clamp(9px,1vw,14px);background:#ffffff;border:1px solid rgba(100,120,140,.16);border-radius:16px;box-shadow:0 7px 25px rgba(20,35,50,.06);color:#17212b;font-family:inherit;display:flex;flex-direction:column;height:min(760px,calc(100vh - 70px));min-height:520px;overflow:hidden;position:relative;z-index:10;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-header{flex:0 0 38px;min-height:38px;display:flex;align-items:center;justify-content:space-between;gap:10px;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-main-title{font-size:clamp(16px,1.35vw,21px);font-weight:800;letter-spacing:-.02em;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-progress{display:flex;align-items:center;gap:7px;padding:5px 9px;border-radius:999px;border:1px solid rgba(90,120,145,.16);background:#f5f7fa;color:#536170;font-size:11px;font-weight:750;white-space:nowrap;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-progress-bar{width:58px;height:5px;background:#e5ebf1;border-radius:99px;overflow:hidden;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-progress-fill{width:0%;height:100%;background:#67afea;border-radius:inherit;transition:width .22s ease;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-text-area{flex:1 1 0;min-height:0;width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;overscroll-behavior-x:contain;overscroll-behavior-y:none;touch-action:pan-x;display:flex;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-text-grid{display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:auto auto;gap:clamp(7px,.8vw,11px);width:100%;height:100%;align-items:stretch;align-content:start;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-text-card{display:flex;flex-direction:column;border-radius:12px;border:1px solid rgba(100,120,140,.18);background:#ffffff;overflow:hidden;cursor:pointer;transition:border-color .18s ease,box-shadow .18s ease,background .18s ease;min-height:0;height:100%;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-text-card:hover{box-shadow:0 5px 16px rgba(30,50,70,.06);}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-text-card.zl3-selected,#" + ROOT_ID + " .zl3-text-card.zl3-linked{border-color:#70b4eb;background:#f7fbff;box-shadow:0 0 0 2px rgba(112,180,235,.10);}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-text-head{flex:0 0 35px;min-height:35px;display:flex;align-items:center;justify-content:space-between;gap:6px;padding:5px 8px;box-sizing:border-box;background:#f7f9fb;border-bottom:1px solid rgba(100,120,140,.14);cursor:pointer;user-select:none;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-text-label{font-size:10px;font-weight:850;letter-spacing:.03em;white-space:nowrap;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-text-badge{min-width:21px;height:21px;padding:0 5px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#67afea;color:#ffffff;font-size:10px;font-weight:850;opacity:0;transform:scale(.92);transition:.18s ease;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-linked .zl3-text-badge{opacity:1;transform:scale(1);}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-text-body{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;padding:clamp(9px,.9vw,13px);box-sizing:border-box;font-size:clamp(11px,.82vw,13.5px);line-height:1.62;font-weight:500;color:#273440;word-break:normal;overflow-wrap:break-word;white-space:normal;scrollbar-width:thin;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-text-body::-webkit-scrollbar{width:5px;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-text-body::-webkit-scrollbar-thumb{background:rgba(90,115,140,.27);border-radius:99px;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-answer-area{flex:0 1 auto;min-height:0;max-height:55%;box-sizing:border-box;display:flex;flex-direction:column;border-radius:13px;border:1px solid rgba(100,120,140,.16);background:#f6f8fa;padding:8px;overflow:hidden;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-answer-header{flex:0 0 30px;min-height:30px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 2px;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-answer-title{font-size:11px;font-weight:850;letter-spacing:.02em;white-space:nowrap;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-title-area{flex:1 1 auto;min-height:0;width:100%;overflow-x:hidden;overflow-y:auto;padding:2px 0;scrollbar-width:thin;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-title-area::-webkit-scrollbar{width:5px;height:5px;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-title-area::-webkit-scrollbar-thumb{background:rgba(90,115,140,.22);border-radius:99px;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-title-grid{width:100%;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));grid-auto-rows:1fr;gap:8px 12px;box-sizing:border-box;align-content:start;}"
+          );
+          css.push(
+            "@media (min-width:1041px){#" + ROOT_ID + " .zl3-title-grid{grid-template-columns:repeat(auto-fit,minmax(170px,1fr));}}"
+          );
+          css.push(
+            "@media (max-width:1040px) and (min-width:641px){#" + ROOT_ID + " .zl3-title-grid{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));}}"
+          );
+          css.push(
+            "@media (max-width:640px) and (min-width:561px){#" + ROOT_ID + " .zl3-title-grid{grid-template-columns:repeat(2,1fr);width:100%;}#" + ROOT_ID + " .zl3-title-area{overflow-x:hidden;overflow-y:auto;}}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-title-card{width:100%;min-width:0;min-height:40px;box-sizing:border-box;padding:8px 12px;border-radius:9px;border:1px solid rgba(100,120,140,.17);background:#ffffff;cursor:pointer;user-select:none;display:grid;grid-template-columns:26px minmax(0,1fr);align-items:center;gap:8px;overflow:hidden;transition:border-color .18s ease,background .18s ease,box-shadow .18s ease,transform .18s ease;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-title-card:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(30,50,70,.05);}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-title-card.zl3-selected,#" + ROOT_ID + " .zl3-title-card.zl3-linked{border-color:#70b4eb;background:#f2f9ff;box-shadow:0 0 0 2px rgba(112,180,235,.08);}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-title-card.zl3-dragover{border-color:#38bdf8;background:#e8f4fd;box-shadow:0 0 0 2px rgba(56,189,248,0.2);}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-title-letter{width:26px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:7px;background:#edf2f6;color:#526170;font-size:11px;font-weight:850;flex-shrink:0;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-title-card.zl3-selected .zl3-title-letter,#" + ROOT_ID + " .zl3-title-card.zl3-linked .zl3-title-letter{background:#67afea;color:#ffffff;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-title-content{min-width:0;width:100%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;overflow:hidden;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-title-text{display:block;width:100%;max-width:100%;box-sizing:border-box;font-size:clamp(9px,.8vw,12px);line-height:1.3;font-weight:650;color:#273440;white-space:normal;overflow-wrap:anywhere;word-break:normal;overflow:hidden;text-overflow:clip;text-align:left;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-title-match{margin-top:2px;min-height:0;max-width:100%;font-size:8px;color:#6c7885;font-weight:750;line-height:1.1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}"
+          );
+          css.push(
+            "@media (max-width:1000px){#" + ROOT_ID + " .zl3-text-area{overflow-x:auto;overflow-y:hidden;touch-action:pan-x;overscroll-behavior-x:contain;overscroll-behavior-y:none;}#" + ROOT_ID + " .zl3-text-grid{width:max-content;min-width:max-content;max-width:none;flex-wrap:nowrap;display:flex;gap:8px;}#" + ROOT_ID + " .zl3-text-card{flex:0 0 var(--zl3-fixed-text-width,200px);width:var(--zl3-fixed-text-width,200px);min-width:var(--zl3-fixed-text-width,200px);max-width:var(--zl3-fixed-text-width,200px);height:100%;flex-shrink:0;}#" + ROOT_ID + " .zl3-text-area::-webkit-scrollbar{width:0;height:5px;}}"
+          );
+          css.push(
+            "@media (max-width:650px){#" + ROOT_ID + "{margin:8px 0;padding:8px;border-radius:13px;height:calc(100vh - 20px);min-height:480px;}#" + ROOT_ID + " .zl3-header{flex-basis:32px;min-height:32px;}#" + ROOT_ID + " .zl3-main-title{font-size:14px;}#" + ROOT_ID + " .zl3-progress{font-size:9px;padding:4px 7px;}#" + ROOT_ID + " .zl3-progress-bar{width:38px;height:4px;}#" + ROOT_ID + " .zl3-text-body{font-size:12px;line-height:1.58;padding:10px;}#" + ROOT_ID + " .zl3-answer-header{flex-basis:27px;min-height:27px;}#" + ROOT_ID + " .zl3-answer-title{font-size:10px;}}"
+          );
+          css.push(
+            "@media (max-width:560px){#" + ROOT_ID + " .zl3-title-area{width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;overscroll-behavior-x:contain;overscroll-behavior-y:none;touch-action:pan-x;}#" + ROOT_ID + " .zl3-title-grid{display:grid;grid-template-columns:repeat(2,var(--zl3-fixed-title-width,270px));grid-template-rows:repeat(6,var(--zl3-fixed-title-height,40px));grid-auto-flow:row;grid-auto-rows:unset;gap:8px 12px;width:max-content;min-width:max-content;max-width:none;align-content:start;align-items:stretch;justify-content:start;}#" + ROOT_ID + " .zl3-title-card{width:var(--zl3-fixed-title-width,270px);min-width:var(--zl3-fixed-title-width,270px);max-width:var(--zl3-fixed-title-width,270px);height:var(--zl3-fixed-title-height,40px);min-height:var(--zl3-fixed-title-height,40px);max-height:var(--zl3-fixed-title-height,40px);flex-shrink:0;}#" + ROOT_ID + " .zl3-title-area::-webkit-scrollbar{width:0;height:5px;}}"
+          );
+          css.push(
+            "@media (min-width:851px){#" + ROOT_ID + " .zl3-title-grid{align-items:stretch;align-content:stretch;grid-auto-rows:1fr;}#" + ROOT_ID + " .zl3-title-card{width:100%;height:100%;min-height:40px;box-sizing:border-box;}}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl3-actions-buttons{flex:0 0 auto;}"
+          );
+          return css.join("\n");
+        }
+        window.mountL3Prototype = function() {
+          if (_mounted) {
+            console.warn("Prototype already mounted.");
+            return;
+          }
+          const container = document.getElementById("teil3");
+          if (!container) {
+            console.warn("\u26A0\uFE0F \u0627\u0644\u062D\u0627\u0648\u064A\u0629 #teil3 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629.");
+            return;
+          }
+          if (!buildData()) {
+            return;
+          }
+          _originalHTML = container.innerHTML;
+          const dom = buildDOM();
+          _container = dom.root;
+          container.innerHTML = "";
+          container.appendChild(dom.root);
+          createPrototype(container, dom);
+          requestAnimationFrame(function() {
+            const firstTitle = dom.titleGrid.querySelector(".zl3-title-card");
+            if (firstTitle) {
+              const rect = firstTitle.getBoundingClientRect();
+              if (rect.width > 0 && rect.height > 0) {
+                dom.root.style.setProperty("--zl3-fixed-title-width", rect.width + "px");
+                dom.root.style.setProperty("--zl3-fixed-title-height", rect.height + "px");
+              }
+            }
+            updateUI2(dom);
+          });
+          _mounted = true;
+          window.__zertivaL3PrototypeActive = true;
+          console.log("\u2705 Lesen Teil 3 Prototype mounted.");
+        };
+        window.destroyL3Prototype = function() {
+          if (!_mounted) {
+            console.warn("Prototype not mounted.");
+            return;
+          }
+          const container = document.getElementById("teil3");
+          if (container && _container && container.contains(_container)) {
+            if (_originalHTML) {
+              container.innerHTML = _originalHTML;
+            } else {
+              if (typeof window.loadTeil3Exam === "function" && window.currentTeil3Data) {
+                window.loadTeil3Exam(window.currentTeil3Data);
+              } else {
+                container.innerHTML = "";
+              }
+            }
+          }
+          const styleEl = document.getElementById(STYLE_ID);
+          if (styleEl) styleEl.remove();
+          _mounted = false;
+          window.__zertivaL3PrototypeActive = false;
+          console.log("\u2705 Lesen Teil 3 Prototype destroyed.");
+        };
+      })();
     }
   });
 
@@ -26570,6 +27219,89 @@ var MyApp = (() => {
           window.loadTeil3Exam(currentExamData);
         } else {
           buildTeil1(currentExamData.questions || []);
+        }
+        const interleavingRow2 = document.getElementById("interleavingRow");
+        if (interleavingRow2 && skill === "lesen3") {
+          let l3ToggleBtn = document.getElementById("lesen3ToggleBtn");
+          if (!l3ToggleBtn) {
+            l3ToggleBtn = document.createElement("button");
+            l3ToggleBtn.id = "lesen3ToggleBtn";
+            l3ToggleBtn.className = "interleaving-icon-btn";
+            l3ToggleBtn.title = "\u062A\u0628\u062F\u064A\u0644 \u0648\u0636\u0639 \u0627\u0644\u0639\u0631\u0636 (Prototype)";
+            l3ToggleBtn.innerHTML = '<span class="material-symbols-outlined">swap_horiz</span>';
+            const matchingBtn = document.getElementById("lesen1MatchingBtn");
+            if (matchingBtn) {
+              matchingBtn.parentNode.insertBefore(l3ToggleBtn, matchingBtn.nextSibling);
+            } else {
+              interleavingRow2.appendChild(l3ToggleBtn);
+            }
+          }
+          const prefKey = "lesen3_prototype_preference";
+          let usePrototype = true;
+          try {
+            const saved = localStorage.getItem(prefKey);
+            if (saved !== null) {
+              usePrototype = saved === "true";
+            }
+          } catch (e) {
+          }
+          const toggleL3Prototype = function(forceState) {
+            const container = document.getElementById("teil3");
+            if (!container) return;
+            let targetState;
+            if (typeof forceState === "boolean") {
+              targetState = forceState;
+            } else {
+              const currentPrototypeActive = !!document.getElementById("zertiva-l3-prototype-root");
+              targetState = !currentPrototypeActive;
+            }
+            if (targetState) {
+              if (typeof window.mountL3Prototype === "function") {
+                window.mountL3Prototype();
+              } else {
+                console.error("\u274C \u062F\u0627\u0644\u0629 mountL3Prototype \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629.");
+                alert("\u26A0\uFE0F \u0648\u062D\u062F\u0629 Prototype \u063A\u064A\u0631 \u0645\u062A\u0648\u0641\u0631\u0629. \u064A\u0631\u062C\u0649 \u062A\u062D\u062F\u064A\u062B \u0627\u0644\u0635\u0641\u062D\u0629.");
+                return;
+              }
+              l3ToggleBtn.classList.add("active");
+              l3ToggleBtn.title = "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A";
+              try {
+                localStorage.setItem(prefKey, "true");
+              } catch (e) {
+              }
+            } else {
+              if (typeof window.destroyL3Prototype === "function") {
+                window.destroyL3Prototype();
+              } else {
+                if (typeof window.loadTeil3Exam === "function" && window.currentTeil3Data) {
+                  window.loadTeil3Exam(window.currentTeil3Data);
+                } else if (typeof window.openExam === "function") {
+                  const id = window.currentExamId || 1;
+                  window.openExam(id, "", "lesen3");
+                }
+              }
+              l3ToggleBtn.classList.remove("active");
+              l3ToggleBtn.title = "\u062A\u0628\u062F\u064A\u0644 \u0648\u0636\u0639 \u0627\u0644\u0639\u0631\u0636 (Prototype)";
+              try {
+                localStorage.setItem(prefKey, "false");
+              } catch (e) {
+              }
+            }
+          };
+          l3ToggleBtn.removeEventListener("click", l3ToggleBtn._clickHandler);
+          const clickHandler = function(e) {
+            e.stopPropagation();
+            toggleL3Prototype();
+          };
+          l3ToggleBtn.addEventListener("click", clickHandler);
+          l3ToggleBtn._clickHandler = clickHandler;
+          setTimeout(function() {
+            if (usePrototype) {
+              toggleL3Prototype(true);
+            } else {
+              toggleL3Prototype(false);
+            }
+          }, 100);
         }
       } else if (currentExamData.type === "sprach1") {
         if (typeof window.loadSprach1Exam === "function") {
