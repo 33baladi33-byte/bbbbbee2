@@ -25898,6 +25898,74 @@ var MyApp = (() => {
         });
       }
       updateExamNavButtons();
+      if (skill === "lesen1" && currentExamData && currentExamData.type === "matching") {
+        const interleavingRow2 = document.getElementById("interleavingRow");
+        if (interleavingRow2) {
+          let matchingBtn = document.getElementById("lesen1MatchingBtn");
+          if (!matchingBtn) {
+            matchingBtn = document.createElement("button");
+            matchingBtn.id = "lesen1MatchingBtn";
+            matchingBtn.className = "interleaving-icon-btn";
+            matchingBtn.title = "\u0648\u0636\u0639 \u0627\u0644\u0645\u0637\u0627\u0628\u0642\u0629 (Matching)";
+            matchingBtn.innerHTML = '<span class="material-symbols-outlined">compare_arrows</span>';
+            const playBtn2 = interleavingRow2.querySelector("#playTimerBtn");
+            if (playBtn2) {
+              playBtn2.parentNode.insertBefore(matchingBtn, playBtn2.nextSibling);
+            } else {
+              interleavingRow2.appendChild(matchingBtn);
+            }
+          }
+          let isMatchingActive = false;
+          matchingBtn.onclick = function(e) {
+            e.stopPropagation();
+            const container = document.getElementById("teil1");
+            if (!container) {
+              console.warn("\u0644\u0627 \u062A\u0648\u062C\u062F \u062D\u0627\u0648\u064A\u0629 teil1");
+              return;
+            }
+            const selects = container.querySelectorAll("select");
+            if (selects.length !== 5) {
+              console.warn("\u064A\u062C\u0628 \u0623\u0646 \u064A\u0643\u0648\u0646 \u0647\u0646\u0627\u0643 5 selects \u0641\u064A Lesen Teil 1");
+              return;
+            }
+            const data = {
+              selects,
+              questions: currentExamData.questions || [],
+              sharedOptions: currentExamData.sharedOptions || [],
+              currentAnswers: window.matchingSelectedAnswers || {},
+              availableOptions: window.matchingAvailableOptions || []
+            };
+            if (!isMatchingActive) {
+              if (window.Lesen1Matching && typeof window.Lesen1Matching.mount === "function") {
+                container.style.display = "none";
+                let matchingWrapper = document.getElementById("zl1m-matching-wrapper");
+                if (!matchingWrapper) {
+                  matchingWrapper = document.createElement("div");
+                  matchingWrapper.id = "zl1m-matching-wrapper";
+                  matchingWrapper.style.width = "100%";
+                  container.parentNode.insertBefore(matchingWrapper, container.nextSibling);
+                }
+                window.Lesen1Matching.mount(matchingWrapper, data);
+                isMatchingActive = true;
+                matchingBtn.classList.add("active");
+                matchingBtn.title = "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A";
+              } else {
+                console.error("Matching Module \u063A\u064A\u0631 \u0645\u062D\u0645\u0651\u0644.");
+              }
+            } else {
+              if (window.Lesen1Matching && typeof window.Lesen1Matching.destroy === "function") {
+                window.Lesen1Matching.destroy();
+                const wrapper = document.getElementById("zl1m-matching-wrapper");
+                if (wrapper) wrapper.remove();
+                container.style.display = "";
+                isMatchingActive = false;
+                matchingBtn.classList.remove("active");
+                matchingBtn.title = "\u0648\u0636\u0639 \u0627\u0644\u0645\u0637\u0627\u0628\u0642\u0629 (Matching)";
+              }
+            }
+          };
+        }
+      }
       if (currentExamData.type === "matching") {
         if (typeof window.loadMatchingExam === "function") {
           window.loadMatchingExam(currentExamData);
