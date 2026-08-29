@@ -23613,9 +23613,6 @@ var MyApp = (() => {
             "#" + ROOT_ID + " .zl1m-title-card.zl1m-selected,#" + ROOT_ID + " .zl1m-title-card.zl1m-linked{border-color:#70b4eb;background:#f2f9ff;box-shadow:0 0 0 2px rgba(112,180,235,.08);}"
           );
           css.push(
-            "#" + ROOT_ID + " .zl1m-title-card.zl1m-dragover{border-color:#38bdf8;background:#e8f4fd;box-shadow:0 0 0 2px rgba(56,189,248,0.2);}"
-          );
-          css.push(
             "#" + ROOT_ID + " .zl1m-title-letter{width:26px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:7px;background:#edf2f6;color:#526170;font-size:11px;font-weight:850;flex-shrink:0;}"
           );
           css.push(
