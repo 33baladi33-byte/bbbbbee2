@@ -26234,16 +26234,30 @@ var MyApp = (() => {
         const gameBtn = document.getElementById("rapidGameBtn");
         const memoryToggleBtn = document.getElementById("memoryToggleBtn");
         const playBtn = document.getElementById("playTimerBtn");
+        const matchingBtn = document.getElementById("matchingToggleBtn");
         if (skill === "sprach1" || skill === "sprach2") {
           if (swapBtn) swapBtn.style.display = "none";
           if (gameBtn) gameBtn.style.display = "";
           if (memoryToggleBtn) memoryToggleBtn.style.display = "";
           if (playBtn) playBtn.style.display = "";
+          if (matchingBtn) matchingBtn.style.display = "none";
         } else {
           if (swapBtn) swapBtn.style.display = "";
           if (gameBtn) gameBtn.style.display = "";
           if (memoryToggleBtn) memoryToggleBtn.style.display = "";
           if (playBtn) playBtn.style.display = "";
+          if (matchingBtn) {
+            if (skill === "lesen1" || skill === "lesen3") {
+              matchingBtn.style.display = "inline-flex";
+              const isActive = skill === "lesen1" && window.matchingLesen1 && window.matchingLesen1.isActive || skill === "lesen3" && window.matchingLesen3 && window.matchingLesen3.isActive;
+              matchingBtn.classList.toggle("active", isActive);
+              matchingBtn.dataset.skill = skill;
+              matchingBtn.textContent = isActive ? "compare_arrows" : "swap_horiz";
+              matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
+            } else {
+              matchingBtn.style.display = "none";
+            }
+          }
         }
       }
     }
@@ -27837,7 +27851,55 @@ var MyApp = (() => {
     data.forEach((item) => targetContainer.appendChild(item.el));
     console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u062D\u0633\u0628 \u0627\u0644\u0648\u0642\u062A (\u0645\u0646 \u0627\u0644\u0623\u0636\u0639\u0641 \u0625\u0644\u0649 \u0627\u0644\u0623\u0642\u0648\u0649)");
   }
-  var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY;
+  function createMatchingButton() {
+    if (document.getElementById("matchingToggleBtn")) return;
+    const interleavingRow = document.getElementById("interleavingRow");
+    if (!interleavingRow) {
+      setTimeout(createMatchingButton, 200);
+      return;
+    }
+    const playBtn = document.getElementById("playTimerBtn");
+    if (!playBtn) {
+      setTimeout(createMatchingButton, 200);
+      return;
+    }
+    const matchingBtn = document.createElement("button");
+    matchingBtn.id = "matchingToggleBtn";
+    matchingBtn.className = "interleaving-icon-btn";
+    matchingBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
+    matchingBtn.innerHTML = `<span class="material-symbols-outlined">swap_horiz</span>`;
+    matchingBtn.style.display = "none";
+    matchingBtn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      const skill = this.dataset.skill || window.currentSkill;
+      if (skill === "lesen1" && window.matchingLesen1) {
+        window.matchingLesen1.toggle();
+        const isActive = window.matchingLesen1.isActive;
+        this.classList.toggle("active", isActive);
+        this.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
+        this.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
+        this.style.animation = "none";
+        setTimeout(() => {
+          this.style.animation = "matchingPulse 0.3s ease";
+        }, 10);
+      } else if (skill === "lesen3" && window.matchingLesen3) {
+        window.matchingLesen3.toggle();
+        const isActive = window.matchingLesen3.isActive;
+        this.classList.toggle("active", isActive);
+        this.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
+        this.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
+        this.style.animation = "none";
+        setTimeout(() => {
+          this.style.animation = "matchingPulse 0.3s ease";
+        }, 10);
+      } else {
+        console.warn("\u26A0\uFE0F Matching \u063A\u064A\u0631 \u0645\u062A\u0627\u062D \u0644\u0647\u0630\u0647 \u0627\u0644\u0645\u0647\u0627\u0631\u0629");
+      }
+    });
+    interleavingRow.insertBefore(matchingBtn, playBtn);
+    console.log("\u2705 \u0632\u0631 Matching \u062A\u0645 \u0625\u0636\u0627\u0641\u062A\u0647 \u0641\u064A \u0634\u0631\u064A\u0637 \u0627\u0644\u0623\u0632\u0631\u0627\u0631");
+  }
+  var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY, originalOpenExam2;
   var init_exams = __esm({
     "exams.js"() {
       window.isInterleavingActive = false;
@@ -29333,6 +29395,47 @@ var MyApp = (() => {
         console.log("\u2139\uFE0F \u0645\u062A\u063A\u064A\u0631\u0627\u062A Lesen1 \u0633\u062A\u064F\u0635\u062F\u0651\u0631 \u0645\u0646 engine.js");
       }
       window.applyTimeOrder = applyTimeOrder;
+      document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(createMatchingButton, 500);
+      });
+      originalOpenExam2 = window.openExam;
+      if (typeof originalOpenExam2 === "function") {
+        window.openExam = function(examId, examTitle, skill, fileName) {
+          const result = originalOpenExam2.call(this, examId, examTitle, skill, fileName);
+          setTimeout(() => {
+            const matchingBtn = document.getElementById("matchingToggleBtn");
+            if (matchingBtn) {
+              if (skill === "lesen1" || skill === "lesen3") {
+                matchingBtn.style.display = "inline-flex";
+                matchingBtn.dataset.skill = skill;
+                const isActive = skill === "lesen1" && window.matchingLesen1 && window.matchingLesen1.isActive || skill === "lesen3" && window.matchingLesen3 && window.matchingLesen3.isActive;
+                matchingBtn.classList.toggle("active", isActive);
+                matchingBtn.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
+                matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
+              } else {
+                matchingBtn.style.display = "none";
+              }
+            }
+          }, 200);
+          return result;
+        };
+      }
+      window.updateMatchingButtonState = function() {
+        const matchingBtn = document.getElementById("matchingToggleBtn");
+        if (!matchingBtn) return;
+        const skill = matchingBtn.dataset.skill || window.currentSkill;
+        if (skill === "lesen1" && window.matchingLesen1) {
+          const isActive = window.matchingLesen1.isActive;
+          matchingBtn.classList.toggle("active", isActive);
+          matchingBtn.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
+          matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
+        } else if (skill === "lesen3" && window.matchingLesen3) {
+          const isActive = window.matchingLesen3.isActive;
+          matchingBtn.classList.toggle("active", isActive);
+          matchingBtn.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
+          matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
+        }
+      };
       (function() {
         const btn = document.getElementById("checkCircleBtn");
         const tooltip = document.getElementById("checkCircleTooltip");
