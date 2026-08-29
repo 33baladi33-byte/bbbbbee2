@@ -23491,6 +23491,550 @@ var MyApp = (() => {
         }, 150);
       };
       console.log("\u2705 \u062A\u0645 \u0631\u0628\u0637 SentenceReorder \u0645\u0639 engine.js (\u0645\u0639 \u062F\u0639\u0645 Reset)");
+      (function() {
+        "use strict";
+        if (window.__zertivaL1MatchingLoaded) {
+          console.warn("Lesen Teil 1 Matching Module already loaded.");
+          return;
+        }
+        window.__zertivaL1MatchingLoaded = true;
+        const ROOT_ID = "zl1m-matching-root";
+        const STYLE_ID = "zl1m-matching-style";
+        const state = {
+          texts: [],
+          titles: [],
+          matches: /* @__PURE__ */ new Map(),
+          titleToText: /* @__PURE__ */ new Map(),
+          selectedText: null,
+          selectedTitle: null,
+          mounted: false,
+          container: null,
+          originalSelects: [],
+          sharedOptions: [],
+          questionData: [],
+          onUpdate: null
+        };
+        function clean(value) {
+          return String(value || "").replace(/\s+/g, " ").replace(/\u00a0/g, " ").trim();
+        }
+        function buildStyles() {
+          const css = [];
+          css.push(
+            "#" + ROOT_ID + "{width:100%;max-width:100%;box-sizing:border-box;margin:16px 0;padding:clamp(9px,1vw,14px);background:#ffffff;border:1px solid rgba(100,120,140,.16);border-radius:16px;box-shadow:0 7px 25px rgba(20,35,50,.06);color:#17212b;font-family:inherit;display:flex;flex-direction:column;height:min(760px,calc(100vh - 70px));min-height:520px;overflow:hidden;position:relative;z-index:10;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-header{flex:0 0 38px;min-height:38px;display:flex;align-items:center;justify-content:space-between;gap:10px;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-main-title{font-size:clamp(16px,1.35vw,21px);font-weight:800;letter-spacing:-.02em;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-progress{display:flex;align-items:center;gap:7px;padding:5px 9px;border-radius:999px;border:1px solid rgba(90,120,145,.16);background:#f5f7fa;color:#536170;font-size:11px;font-weight:750;white-space:nowrap;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-progress-bar{width:58px;height:5px;background:#e5ebf1;border-radius:99px;overflow:hidden;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-progress-fill{width:0%;height:100%;background:#67afea;border-radius:inherit;transition:width .22s ease;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-text-area{flex:1 1 0;min-height:0;width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;overscroll-behavior-x:contain;overscroll-behavior-y:none;touch-action:pan-x;display:flex;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-text-grid{display:flex;flex-wrap:nowrap;gap:clamp(7px,.8vw,11px);min-width:100%;height:100%;align-items:stretch;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-text-card{flex:0 0 calc(20% - 10px);min-width:0;min-height:0;height:100%;display:flex;flex-direction:column;border-radius:12px;border:1px solid rgba(100,120,140,.18);background:#ffffff;overflow:hidden;cursor:pointer;transition:border-color .18s ease,box-shadow .18s ease,background .18s ease;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-text-card:hover{box-shadow:0 5px 16px rgba(30,50,70,.06);}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-text-card.zl1m-selected,#" + ROOT_ID + " .zl1m-text-card.zl1m-linked{border-color:#70b4eb;background:#f7fbff;box-shadow:0 0 0 2px rgba(112,180,235,.10);}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-text-head{flex:0 0 35px;min-height:35px;display:flex;align-items:center;justify-content:space-between;gap:6px;padding:5px 8px;box-sizing:border-box;background:#f7f9fb;border-bottom:1px solid rgba(100,120,140,.14);cursor:pointer;user-select:none;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-text-label{font-size:10px;font-weight:850;letter-spacing:.03em;white-space:nowrap;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-text-badge{min-width:21px;height:21px;padding:0 5px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#67afea;color:#ffffff;font-size:10px;font-weight:850;opacity:0;transform:scale(.92);transition:.18s ease;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-linked .zl1m-text-badge{opacity:1;transform:scale(1);}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-text-body{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;padding:clamp(9px,.9vw,13px);box-sizing:border-box;font-size:clamp(11px,.82vw,13.5px);line-height:1.62;font-weight:500;color:#273440;word-break:normal;overflow-wrap:break-word;white-space:normal;scrollbar-width:thin;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-text-body::-webkit-scrollbar{width:5px;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-text-body::-webkit-scrollbar-thumb{background:rgba(90,115,140,.27);border-radius:99px;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-answer-area{flex:0 1 auto;min-height:0;max-height:55%;box-sizing:border-box;display:flex;flex-direction:column;border-radius:13px;border:1px solid rgba(100,120,140,.16);background:#f6f8fa;padding:8px;overflow:hidden;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-answer-header{flex:0 0 30px;min-height:30px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 2px;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-answer-title{font-size:11px;font-weight:850;letter-spacing:.02em;white-space:nowrap;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-title-area{flex:1 1 auto;min-height:0;width:100%;overflow-x:hidden;overflow-y:auto;padding:2px 0;scrollbar-width:thin;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-title-area::-webkit-scrollbar{width:5px;height:5px;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-title-area::-webkit-scrollbar-thumb{background:rgba(90,115,140,.22);border-radius:99px;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-title-grid{width:100%;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));grid-auto-rows:1fr;gap:8px 12px;box-sizing:border-box;align-content:start;}"
+          );
+          css.push(
+            "@media (min-width:1041px){#" + ROOT_ID + " .zl1m-title-grid{grid-template-columns:repeat(auto-fit,minmax(170px,1fr));}}"
+          );
+          css.push(
+            "@media (max-width:1040px) and (min-width:641px){#" + ROOT_ID + " .zl1m-title-grid{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));}}"
+          );
+          css.push(
+            "@media (max-width:640px) and (min-width:561px){#" + ROOT_ID + " .zl1m-title-grid{grid-template-columns:repeat(2,1fr);width:100%;}#" + ROOT_ID + " .zl1m-title-area{overflow-x:hidden;overflow-y:auto;}}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-title-card{width:100%;min-width:0;min-height:40px;box-sizing:border-box;padding:8px 12px;border-radius:9px;border:1px solid rgba(100,120,140,.17);background:#ffffff;cursor:pointer;user-select:none;display:grid;grid-template-columns:26px minmax(0,1fr);align-items:center;gap:8px;overflow:hidden;transition:border-color .18s ease,background .18s ease,box-shadow .18s ease,transform .18s ease;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-title-card:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(30,50,70,.05);}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-title-card.zl1m-selected,#" + ROOT_ID + " .zl1m-title-card.zl1m-linked{border-color:#70b4eb;background:#f2f9ff;box-shadow:0 0 0 2px rgba(112,180,235,.08);}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-title-letter{width:26px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:7px;background:#edf2f6;color:#526170;font-size:11px;font-weight:850;flex-shrink:0;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-title-card.zl1m-selected .zl1m-title-letter,#" + ROOT_ID + " .zl1m-title-card.zl1m-linked .zl1m-title-letter{background:#67afea;color:#ffffff;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-title-content{min-width:0;width:100%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;overflow:hidden;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-title-text{display:block;width:100%;max-width:100%;box-sizing:border-box;font-size:clamp(9px,.8vw,12px);line-height:1.3;font-weight:650;color:#273440;white-space:normal;overflow-wrap:anywhere;word-break:normal;overflow:hidden;text-overflow:clip;text-align:left;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-title-match{margin-top:2px;min-height:0;max-width:100%;font-size:8px;color:#6c7885;font-weight:750;line-height:1.1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}"
+          );
+          css.push(
+            "#" + ROOT_ID + " .zl1m-actions,#" + ROOT_ID + " .zl1m-result{display:none !important;}"
+          );
+          css.push(
+            "@media (max-width:1000px){#" + ROOT_ID + " .zl1m-text-area{overflow-x:auto;overflow-y:hidden;touch-action:pan-x;overscroll-behavior-x:contain;overscroll-behavior-y:none;}#" + ROOT_ID + " .zl1m-text-grid{width:max-content;min-width:max-content;max-width:none;flex-wrap:nowrap;gap:8px;}#" + ROOT_ID + " .zl1m-text-card{flex:0 0 var(--zl1m-fixed-text-width,200px);width:var(--zl1m-fixed-text-width,200px);min-width:var(--zl1m-fixed-text-width,200px);max-width:var(--zl1m-fixed-text-width,200px);height:100%;flex-shrink:0;}#" + ROOT_ID + " .zl1m-text-area::-webkit-scrollbar{width:0;height:5px;}}"
+          );
+          css.push(
+            "@media (max-width:650px){#" + ROOT_ID + "{margin:8px 0;padding:8px;border-radius:13px;height:calc(100vh - 20px);min-height:480px;}#" + ROOT_ID + " .zl1m-header{flex-basis:32px;min-height:32px;}#" + ROOT_ID + " .zl1m-main-title{font-size:14px;}#" + ROOT_ID + " .zl1m-progress{font-size:9px;padding:4px 7px;}#" + ROOT_ID + " .zl1m-progress-bar{width:38px;height:4px;}#" + ROOT_ID + " .zl1m-text-body{font-size:12px;line-height:1.58;padding:10px;}#" + ROOT_ID + " .zl1m-answer-header{flex-basis:27px;min-height:27px;}#" + ROOT_ID + " .zl1m-answer-title{font-size:10px;}}"
+          );
+          css.push(
+            "@media (max-width:560px){#" + ROOT_ID + " .zl1m-title-area{width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;overscroll-behavior-x:contain;overscroll-behavior-y:none;touch-action:pan-x;}#" + ROOT_ID + " .zl1m-title-grid{display:grid;grid-template-columns:repeat(2,var(--zl1m-fixed-title-width,270px));grid-template-rows:repeat(5,var(--zl1m-fixed-title-height,40px));grid-auto-flow:row;grid-auto-rows:unset;gap:8px 12px;width:max-content;min-width:max-content;max-width:none;align-content:start;align-items:stretch;justify-content:start;}#" + ROOT_ID + " .zl1m-title-card{width:var(--zl1m-fixed-title-width,270px);min-width:var(--zl1m-fixed-title-width,270px);max-width:var(--zl1m-fixed-title-width,270px);height:var(--zl1m-fixed-title-height,40px);min-height:var(--zl1m-fixed-title-height,40px);max-height:var(--zl1m-fixed-title-height,40px);flex-shrink:0;}#" + ROOT_ID + " .zl1m-title-area::-webkit-scrollbar{width:0;height:5px;}}"
+          );
+          css.push(
+            "@media (min-width:851px){#" + ROOT_ID + " .zl1m-title-grid{align-items:stretch;align-content:stretch;grid-auto-rows:1fr;}#" + ROOT_ID + " .zl1m-title-card{width:100%;height:100%;min-height:40px;box-sizing:border-box;}}"
+          );
+          return css.join("\n");
+        }
+        function buildDOM() {
+          const root = document.createElement("section");
+          root.id = ROOT_ID;
+          const header = document.createElement("div");
+          header.className = "zl1m-header";
+          const mainTitle = document.createElement("div");
+          mainTitle.className = "zl1m-main-title";
+          mainTitle.textContent = "Lesen Teil 1";
+          const progress = document.createElement("div");
+          progress.className = "zl1m-progress";
+          const progressText = document.createElement("span");
+          const progressBar = document.createElement("span");
+          progressBar.className = "zl1m-progress-bar";
+          const progressFill = document.createElement("span");
+          progressFill.className = "zl1m-progress-fill";
+          progressBar.appendChild(progressFill);
+          progress.append(progressText, progressBar);
+          header.append(mainTitle, progress);
+          root.appendChild(header);
+          const textArea = document.createElement("div");
+          textArea.className = "zl1m-text-area";
+          const textGrid = document.createElement("div");
+          textGrid.className = "zl1m-text-grid";
+          textArea.appendChild(textGrid);
+          root.appendChild(textArea);
+          const answerArea = document.createElement("div");
+          answerArea.className = "zl1m-answer-area";
+          const answerHeader = document.createElement("div");
+          answerHeader.className = "zl1m-answer-header";
+          const answerTitle = document.createElement("div");
+          answerTitle.className = "zl1m-answer-title";
+          answerTitle.textContent = "TITEL ZUORDNEN";
+          answerHeader.appendChild(answerTitle);
+          answerArea.appendChild(answerHeader);
+          const titleArea = document.createElement("div");
+          titleArea.className = "zl1m-title-area";
+          const titleGrid = document.createElement("div");
+          titleGrid.className = "zl1m-title-grid";
+          titleArea.appendChild(titleGrid);
+          answerArea.appendChild(titleArea);
+          root.appendChild(answerArea);
+          return {
+            root,
+            textGrid,
+            titleGrid,
+            progressText,
+            progressFill
+          };
+        }
+        function connect(textId, titleId, dom) {
+          if (state.matches.get(textId) === titleId) {
+            disconnectText(textId, dom);
+            return;
+          }
+          const oldText = state.titleToText.get(titleId);
+          if (oldText && oldText !== textId) {
+            state.matches.delete(oldText);
+          }
+          const oldTitle = state.matches.get(textId);
+          if (oldTitle) {
+            state.titleToText.delete(oldTitle);
+          }
+          state.matches.set(textId, titleId);
+          state.titleToText.set(titleId, textId);
+          const textObject = state.texts.find((t) => t.id === textId);
+          const titleObject = state.titles.find((t) => t.id === titleId);
+          if (textObject && textObject.select && titleObject) {
+            try {
+              textObject.select.value = titleObject.value;
+              textObject.select.dispatchEvent(new Event("change", { bubbles: true }));
+            } catch (_) {
+            }
+          }
+          updateOriginalState();
+          updateUI2(dom);
+        }
+        function disconnectText(textId, dom) {
+          const titleId = state.matches.get(textId);
+          if (!titleId) return;
+          state.titleToText.delete(titleId);
+          state.matches.delete(textId);
+          const textObject = state.texts.find((t) => t.id === textId);
+          if (textObject && textObject.select) {
+            try {
+              textObject.select.selectedIndex = 0;
+              textObject.select.dispatchEvent(new Event("change", { bubbles: true }));
+            } catch (_) {
+            }
+          }
+          updateOriginalState();
+          updateUI2(dom);
+        }
+        function disconnectTitle(titleId, dom) {
+          const textId = state.titleToText.get(titleId);
+          if (!textId) return;
+          disconnectText(textId, dom);
+        }
+        function updateOriginalState() {
+          if (typeof window.matchingSelectedAnswers !== "undefined") {
+            const newAnswers = {};
+            state.matches.forEach((titleId, textId) => {
+              const titleObj = state.titles.find((t) => t.id === titleId);
+              if (titleObj) {
+                const match = textId.match(/text-(\d+)/);
+                if (match) {
+                  const idx = parseInt(match[1]) - 1;
+                  window.matchingSelectedAnswers[idx] = titleObj.value;
+                }
+              }
+            });
+            for (let key in window.matchingSelectedAnswers) {
+              const idx = parseInt(key);
+              const textId = `text-${idx + 1}`;
+              if (!state.matches.has(textId)) {
+                delete window.matchingSelectedAnswers[idx];
+              }
+            }
+            if (typeof window.currentMatchingExamData !== "undefined" && window.currentMatchingExamData.sharedOptions) {
+              const allOptions = window.currentMatchingExamData.sharedOptions.slice();
+              const used = Object.values(window.matchingSelectedAnswers).filter((v) => v && v !== "");
+              window.matchingAvailableOptions = allOptions.filter((opt) => !used.includes(opt));
+            }
+          }
+        }
+        function updateUI2(dom) {
+          const total = state.texts.length;
+          const count = state.matches.size;
+          const percentage = total ? count / total * 100 : 0;
+          if (dom) {
+            dom.progressText.textContent = count + " / " + total + " zugeordnet";
+            dom.progressFill.style.width = percentage + "%";
+          }
+          const textCards = dom.textGrid.querySelectorAll(".zl1m-text-card");
+          textCards.forEach((card) => {
+            const textId = card.dataset.textId;
+            const linkedTitle = state.matches.get(textId);
+            card.classList.toggle("zl1m-selected", state.selectedText === textId);
+            card.classList.toggle("zl1m-linked", Boolean(linkedTitle));
+            const badge = card.querySelector(".zl1m-text-badge");
+            if (badge) {
+              badge.textContent = "";
+              if (linkedTitle) {
+                const title = state.titles.find((t) => t.id === linkedTitle);
+                if (title) badge.textContent = title.letter;
+              }
+            }
+          });
+          const titleCards = dom.titleGrid.querySelectorAll(".zl1m-title-card");
+          titleCards.forEach((card) => {
+            const titleId = card.dataset.titleId;
+            const linkedText = state.titleToText.get(titleId);
+            card.classList.toggle("zl1m-selected", state.selectedTitle === titleId);
+            card.classList.toggle("zl1m-linked", Boolean(linkedText));
+            const matchSpan = card.querySelector(".zl1m-title-match");
+            if (matchSpan) {
+              matchSpan.textContent = "";
+              if (linkedText) {
+                const textObj = state.texts.find((t) => t.id === linkedText);
+                if (textObj) matchSpan.textContent = "TEXT " + textObj.number;
+              }
+            }
+          });
+        }
+        function mount(container, data) {
+          if (state.mounted) {
+            console.warn("Matching Mode already mounted.");
+            return;
+          }
+          if (!data || !data.selects || data.selects.length !== 5) {
+            console.error("Invalid data for Matching Mode. Need 5 selects.");
+            return;
+          }
+          state.originalSelects = data.selects;
+          state.sharedOptions = data.sharedOptions || [];
+          state.questionData = data.questions || [];
+          state.texts = [];
+          data.questions.forEach((q, index) => {
+            const select = data.selects[index];
+            let content = q.text || "Text";
+            if (select) {
+              let parent = select.parentElement;
+              for (let level = 0; level < 7 && parent; level++) {
+                const children = Array.from(parent.children);
+                const idx = children.indexOf(select);
+                if (idx > 0) {
+                  for (let i = idx - 1; i >= 0; i--) {
+                    const candidate = children[i];
+                    if (candidate === select || candidate.querySelector("select")) continue;
+                    const txt = clean(candidate.textContent);
+                    if (txt.length >= 80) {
+                      content = txt;
+                      break;
+                    }
+                  }
+                  if (content !== q.text) break;
+                }
+                parent = parent.parentElement;
+              }
+              if (content === q.text) {
+                const containerEl = select.closest("li, article, section, form, fieldset, .question, .task, div");
+                if (containerEl) {
+                  const clone = containerEl.cloneNode(true);
+                  clone.querySelectorAll("select, option, button, input, textarea").forEach((el) => el.remove());
+                  const txt = clean(clone.textContent);
+                  if (txt.length >= 50) content = txt;
+                }
+              }
+            }
+            state.texts.push({
+              id: "text-" + (index + 1),
+              number: index + 1,
+              content,
+              select
+            });
+          });
+          state.titles = [];
+          data.sharedOptions.forEach((titleText, index) => {
+            state.titles.push({
+              id: "title-" + (index + 1),
+              value: titleText,
+              text: titleText,
+              letter: String.fromCharCode(65 + index)
+            });
+          });
+          if (data.currentAnswers) {
+            for (let idx in data.currentAnswers) {
+              const answer = data.currentAnswers[idx];
+              if (answer) {
+                const textId = "text-" + (parseInt(idx) + 1);
+                const titleObj = state.titles.find((t) => t.value === answer);
+                if (titleObj) {
+                  state.matches.set(textId, titleObj.id);
+                  state.titleToText.set(titleObj.id, textId);
+                }
+              }
+            }
+          }
+          const dom = buildDOM();
+          state.container = dom.root;
+          container.appendChild(dom.root);
+          const styleEl = document.createElement("style");
+          styleEl.id = STYLE_ID;
+          styleEl.textContent = buildStyles();
+          document.head.appendChild(styleEl);
+          dom.textGrid = dom.textGrid;
+          dom.titleGrid = dom.titleGrid;
+          dom.progressText = dom.progressText;
+          dom.progressFill = dom.progressFill;
+          state.dom = dom;
+          state.texts.forEach((textItem) => {
+            const card = document.createElement("div");
+            card.className = "zl1m-text-card";
+            card.dataset.textId = textItem.id;
+            const head = document.createElement("div");
+            head.className = "zl1m-text-head";
+            const label = document.createElement("span");
+            label.className = "zl1m-text-label";
+            label.textContent = "TEXT " + textItem.number;
+            const badge = document.createElement("span");
+            badge.className = "zl1m-text-badge";
+            head.append(label, badge);
+            const body = document.createElement("div");
+            body.className = "zl1m-text-body";
+            body.textContent = textItem.content;
+            card.append(head, body);
+            dom.textGrid.appendChild(card);
+            card.addEventListener("click", function() {
+              if (state.matches.has(textItem.id)) {
+                disconnectText(textItem.id, dom);
+                state.selectedText = null;
+                state.selectedTitle = null;
+                updateUI2(dom);
+                return;
+              }
+              if (state.selectedTitle) {
+                connect(textItem.id, state.selectedTitle, dom);
+                state.selectedText = null;
+                state.selectedTitle = null;
+                updateUI2(dom);
+                return;
+              }
+              state.selectedText = state.selectedText === textItem.id ? null : textItem.id;
+              state.selectedTitle = null;
+              updateUI2(dom);
+            });
+            card.addEventListener("dragover", function(e) {
+              e.preventDefault();
+              e.dataTransfer.dropEffect = "move";
+              card.classList.add("zl1m-selected");
+            });
+            card.addEventListener("dragleave", function() {
+              if (!state.matches.has(textItem.id)) {
+                card.classList.remove("zl1m-selected");
+              }
+            });
+            card.addEventListener("drop", function(e) {
+              e.preventDefault();
+              const titleId = e.dataTransfer.getData("text/plain");
+              card.classList.remove("zl1m-selected");
+              if (!titleId) return;
+              connect(textItem.id, titleId, dom);
+              state.selectedText = null;
+              state.selectedTitle = null;
+              updateUI2(dom);
+            });
+          });
+          state.titles.forEach((titleItem) => {
+            const card = document.createElement("div");
+            card.className = "zl1m-title-card";
+            card.dataset.titleId = titleItem.id;
+            card.draggable = true;
+            const letter = document.createElement("span");
+            letter.className = "zl1m-title-letter";
+            letter.textContent = titleItem.letter;
+            const content = document.createElement("div");
+            content.className = "zl1m-title-content";
+            const titleTextEl = document.createElement("span");
+            titleTextEl.className = "zl1m-title-text";
+            titleTextEl.textContent = titleItem.text;
+            const matchSpan = document.createElement("div");
+            matchSpan.className = "zl1m-title-match";
+            content.append(titleTextEl, matchSpan);
+            card.append(letter, content);
+            dom.titleGrid.appendChild(card);
+            card.addEventListener("click", function() {
+              if (state.titleToText.has(titleItem.id)) {
+                disconnectTitle(titleItem.id, dom);
+                state.selectedTitle = null;
+                state.selectedText = null;
+                updateUI2(dom);
+                return;
+              }
+              if (state.selectedText) {
+                connect(state.selectedText, titleItem.id, dom);
+                state.selectedText = null;
+                state.selectedTitle = null;
+                updateUI2(dom);
+                return;
+              }
+              state.selectedTitle = state.selectedTitle === titleItem.id ? null : titleItem.id;
+              state.selectedText = null;
+              updateUI2(dom);
+            });
+            card.addEventListener("dragstart", function(e) {
+              e.dataTransfer.setData("text/plain", titleItem.id);
+              e.dataTransfer.effectAllowed = "move";
+              card.classList.add("zl1m-selected");
+            });
+            card.addEventListener("dragend", function() {
+              card.classList.remove("zl1m-selected");
+            });
+          });
+          updateUI2(dom);
+          state.mounted = true;
+          console.log("\u2705 Lesen Teil 1 Matching Mode mounted.");
+        }
+        function destroy() {
+          if (!state.mounted) {
+            console.warn("Matching Mode not mounted.");
+            return;
+          }
+          if (state.container && state.container.parentNode) {
+            state.container.parentNode.removeChild(state.container);
+          }
+          const styleEl = document.getElementById(STYLE_ID);
+          if (styleEl && styleEl.parentNode) {
+            styleEl.parentNode.removeChild(styleEl);
+          }
+          state.texts = [];
+          state.titles = [];
+          state.matches.clear();
+          state.titleToText.clear();
+          state.selectedText = null;
+          state.selectedTitle = null;
+          state.originalSelects = [];
+          state.sharedOptions = [];
+          state.questionData = [];
+          state.dom = null;
+          state.container = null;
+          state.mounted = false;
+          console.log("\u2705 Lesen Teil 1 Matching Mode destroyed.");
+        }
+        window.Lesen1Matching = {
+          mount,
+          destroy,
+          isMounted: function() {
+            return state.mounted;
+          }
+        };
+        console.log("\u2705 Lesen Teil 1 Matching Module loaded (integrated into engine.js).");
+      })();
     }
   });
 
