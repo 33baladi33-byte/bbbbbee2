@@ -20047,6 +20047,9 @@ var MyApp = (() => {
         matchingSelectedAnswers2 = {};
         matchingAvailableOptions2 = [...currentMatchingExamData2.sharedOptions];
         renderMatchingQuestions2();
+        if (typeof window.clearMatchingCorrection === "function") {
+          window.clearMatchingCorrection();
+        }
       };
       buttonContainer.appendChild(resetBtn);
       examBox.appendChild(buttonContainer);
@@ -20883,6 +20886,9 @@ var MyApp = (() => {
         if (resultDiv2) {
           resultDiv2.style.display = "none";
           resultDiv2.innerHTML = "";
+        }
+        if (typeof window.clearMatchingCorrection === "function") {
+          window.clearMatchingCorrection();
         }
       };
       buttonContainer.appendChild(resetBtn);
@@ -22877,6 +22883,15 @@ var MyApp = (() => {
       document.head.appendChild(style);
     }
   }
+  function clearMatchingCorrection() {
+    const root = document.querySelector(".zertiva-matching-root");
+    if (!root) return;
+    root.querySelectorAll(".z-preview-correct, .z-preview-wrong, .z-title-correct, .z-title-wrong").forEach((el) => {
+      el.classList.remove("z-preview-correct", "z-preview-wrong", "z-title-correct", "z-title-wrong");
+    });
+    root.querySelectorAll(".z-preview-correct-answer").forEach((el) => el.remove());
+    console.log("\u{1F9F9} \u062A\u0645 \u0625\u0632\u0627\u0644\u0629 \u0627\u0644\u062A\u0635\u062D\u064A\u062D \u0627\u0644\u0628\u0635\u0631\u064A \u0645\u0646 Matching Mode");
+  }
   var _hoerenData, interleavingOrders, lesen1OriginalNodes, lesen1ShuffledNodes, lesen1OrderSaved, lesen2OriginalNodes, lesen2ShuffledNodes, lesen2OrderSaved, lesen3OriginalNodes, lesen3ShuffledNodes, lesen3OrderSaved, examTimer2, currentSchreibenData, currentSprach2Data, sprach2UserAnswers, sprach2SelectedQuestionId, sprach2SelectedWordForLinking, currentSprach1Data, sprach1UserAnswers, sprach1OpenDropdownId, currentMatchingExamData2, matchingSelectedAnswers2, matchingAvailableOptions2, currentTeil2Data, teil2UserAnswers, currentTeil3Data, teil3UserAnswers, teil3SelectedItem, teil3SelectedSit, teil3SelectedItemForLink, teil3SelectedSitForLink, originalOpenExamGlobal, MemoryHighlightEngine, memoryEngine, toggleBtn, _toggleInProgress, _interleavingInitialized, _answerHistory, _historyEnabled, originalCheckTrueFalse, MatchingMode, matchingLesen1, matchingLesen3;
   var init_engine = __esm({
     "engine.js"() {
@@ -24246,9 +24261,6 @@ var MyApp = (() => {
           this._saveState(true);
           console.log(`\u2705 Matching mode activated for ${this.modeName}`);
           this._updateMatchingButton(true);
-          if (typeof window.applyMatchingCorrection === "function") {
-            setTimeout(window.applyMatchingCorrection, 300);
-          }
         }
         // ---- إلغاء Matching ----
         deactivate() {
@@ -24297,6 +24309,9 @@ var MyApp = (() => {
           this._selectedText = null;
           this._selectedTitle = null;
           this._updateUI();
+          if (typeof window.clearMatchingCorrection === "function") {
+            window.clearMatchingCorrection();
+          }
         }
       };
       matchingLesen1 = new MatchingMode("teil1", "lesen1");
@@ -24328,6 +24343,7 @@ var MyApp = (() => {
       };
       console.log("\u2705 Matching Mode (Lesen 1 & Lesen 3) ready.");
       window.applyMatchingCorrection = applyMatchingCorrection;
+      window.clearMatchingCorrection = clearMatchingCorrection;
     }
   });
 
