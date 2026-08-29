@@ -23900,7 +23900,6 @@ var MyApp = (() => {
             const card = document.createElement("div");
             card.className = "zl1m-text-card";
             card.dataset.textId = textItem.id;
-            card.draggable = true;
             const head = document.createElement("div");
             head.className = "zl1m-text-head";
             const label = document.createElement("span");
@@ -23914,40 +23913,6 @@ var MyApp = (() => {
             body.textContent = textItem.content;
             card.append(head, body);
             dom.textGrid.appendChild(card);
-            card.addEventListener("dragstart", function(e) {
-              const ghost = document.createElement("div");
-              ghost.textContent = textItem.content.substring(0, 30) + (textItem.content.length > 30 ? "\u2026" : "");
-              ghost.style.cssText = `
-                    position: fixed;
-                    top: -1000px;
-                    left: -1000px;
-                    padding: 8px 12px;
-                    background: white;
-                    border: 1px solid #ccc;
-                    border-radius: 6px;
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                    font-size: 14px;
-                    max-width: 200px;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    pointer-events: none;
-                    z-index: 9999;
-                    font-family: inherit;
-                `;
-              document.body.appendChild(ghost);
-              e.dataTransfer.setDragImage(ghost, 0, 0);
-              e.dataTransfer.effectAllowed = "move";
-              e.dataTransfer.setData("text/plain", textItem.id);
-              card._ghost = ghost;
-            });
-            card.addEventListener("dragend", function(e) {
-              if (this._ghost && this._ghost.parentNode) {
-                this._ghost.parentNode.removeChild(this._ghost);
-                this._ghost = null;
-              }
-              document.querySelectorAll(".zl1m-title-card.zl1m-dragover").forEach((el) => el.classList.remove("zl1m-dragover"));
-            });
             card.addEventListener("click", function() {
               if (state.matches.has(textItem.id)) {
                 disconnectText(textItem.id, dom);
@@ -23969,12 +23934,23 @@ var MyApp = (() => {
             });
             card.addEventListener("dragover", function(e) {
               e.preventDefault();
-              e.dataTransfer.dropEffect = "none";
+              e.dataTransfer.dropEffect = "move";
+              card.classList.add("zl1m-selected");
+            });
+            card.addEventListener("dragleave", function() {
+              if (!state.matches.has(textItem.id)) {
+                card.classList.remove("zl1m-selected");
+              }
             });
             card.addEventListener("drop", function(e) {
               e.preventDefault();
-              e.stopPropagation();
-              return false;
+              const titleId = e.dataTransfer.getData("text/plain");
+              card.classList.remove("zl1m-selected");
+              if (!titleId) return;
+              connect(textItem.id, titleId, dom);
+              state.selectedText = null;
+              state.selectedTitle = null;
+              updateUI2(dom);
             });
           });
           state.titles.forEach((titleItem) => {
@@ -24021,24 +23997,6 @@ var MyApp = (() => {
             });
             card.addEventListener("dragend", function() {
               card.classList.remove("zl1m-selected");
-            });
-            card.addEventListener("dragover", function(e) {
-              e.preventDefault();
-              e.dataTransfer.dropEffect = "move";
-              card.classList.add("zl1m-dragover");
-            });
-            card.addEventListener("dragleave", function() {
-              card.classList.remove("zl1m-dragover");
-            });
-            card.addEventListener("drop", function(e) {
-              e.preventDefault();
-              const textId = e.dataTransfer.getData("text/plain");
-              card.classList.remove("zl1m-dragover");
-              if (!textId) return;
-              connect(textId, titleItem.id, dom);
-              state.selectedText = null;
-              state.selectedTitle = null;
-              updateUI2(dom);
             });
           });
           const btnContainer = document.createElement("div");
