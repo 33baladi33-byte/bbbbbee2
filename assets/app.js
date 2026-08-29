@@ -19999,12 +19999,19 @@ var MyApp = (() => {
     }
     const examBox = document.querySelector(".exam-box");
     if (examBox) {
-      const oldBtns = examBox.querySelectorAll(".teil1-controls");
-      oldBtns.forEach((el) => el.remove());
+      const oldContainers = examBox.querySelectorAll(".teil1-controls, .teil3-controls, .matching-exam-controls");
+      oldContainers.forEach((el) => el.remove());
+      const orphanBtns = examBox.querySelectorAll("button.check-btn, button.reset-btn");
+      orphanBtns.forEach((btn) => {
+        if (!btn.closest(".interleaving-icon-btn") && !btn.closest("#matchingToggleBtn")) {
+          btn.remove();
+        }
+      });
     }
     if (examBox) {
       const buttonContainer = document.createElement("div");
       buttonContainer.className = "teil1-controls";
+      buttonContainer.id = "teil1-exam-controls";
       buttonContainer.style.display = "flex";
       buttonContainer.style.gap = "15px";
       buttonContainer.style.justifyContent = "center";
@@ -20025,6 +20032,7 @@ var MyApp = (() => {
       buttonContainer.appendChild(checkBtn);
       const resetBtn = document.createElement("button");
       resetBtn.innerText = "\u21BA";
+      resetBtn.className = "reset-btn";
       resetBtn.style.padding = "8px 12px";
       resetBtn.style.backgroundColor = "#6c757d";
       resetBtn.style.color = "white";
@@ -20074,16 +20082,18 @@ var MyApp = (() => {
         score++;
         card.classList.add("correct-answer-card");
         if (selectElem) {
-          selectElem.style.backgroundColor = "#d4edda";
-          selectElem.style.border = "2px solid #28a745";
-          selectElem.style.color = "#155724";
+          selectElem.style.setProperty("background-color", "#d4edda", "important");
+          selectElem.style.setProperty("border", "2px solid #28a745", "important");
+          selectElem.style.setProperty("color", "#155724", "important");
+          selectElem.style.setProperty("border-radius", "8px", "important");
         }
       } else {
         card.classList.add("wrong-answer-card");
         if (selectElem) {
-          selectElem.style.backgroundColor = "#fef0e0";
-          selectElem.style.border = "2px solid #e67e22";
-          selectElem.style.color = "#155724";
+          selectElem.style.setProperty("background-color", "#fef0e0", "important");
+          selectElem.style.setProperty("border", "2px solid #e67e22", "important");
+          selectElem.style.setProperty("color", "#155724", "important");
+          selectElem.style.setProperty("border-radius", "8px", "important");
           let optionExists = false;
           for (let j = 0; j < selectElem.options.length; j++) {
             if (selectElem.options[j].value === correctAnswer) {
@@ -20112,6 +20122,8 @@ var MyApp = (() => {
     if (resultDiv) {
       resultDiv.innerHTML = `\u0627\u0644\u0646\u062A\u064A\u062C\u0629: ${finalScore} / 25`;
       resultDiv.style.display = "block";
+      resultDiv.style.visibility = "visible";
+      resultDiv.style.opacity = "1";
     }
     if (finalScore >= 20) {
       resultDiv.style.backgroundColor = "#d4edda";
@@ -20803,12 +20815,19 @@ var MyApp = (() => {
     container.appendChild(twoColumns);
     const examBox = document.querySelector(".exam-box");
     if (examBox) {
-      const oldBtns = examBox.querySelectorAll(".teil3-controls");
-      oldBtns.forEach((el) => el.remove());
+      const oldContainers = examBox.querySelectorAll(".teil3-controls, .teil1-controls, .matching-exam-controls");
+      oldContainers.forEach((el) => el.remove());
+      const orphanBtns = examBox.querySelectorAll("button.check-btn, button.reset-btn");
+      orphanBtns.forEach((btn) => {
+        if (!btn.closest(".interleaving-icon-btn") && !btn.closest("#matchingToggleBtn")) {
+          btn.remove();
+        }
+      });
     }
     if (examBox) {
       const buttonContainer = document.createElement("div");
       buttonContainer.className = "teil3-controls";
+      buttonContainer.id = "teil3-exam-controls";
       buttonContainer.style.display = "flex";
       buttonContainer.style.gap = "15px";
       buttonContainer.style.justifyContent = "center";
@@ -20827,6 +20846,7 @@ var MyApp = (() => {
       buttonContainer.appendChild(checkBtn);
       const resetBtn = document.createElement("button");
       resetBtn.innerText = "\u21BA";
+      resetBtn.className = "reset-btn";
       resetBtn.style.padding = "8px 12px";
       resetBtn.style.backgroundColor = "#6c757d";
       resetBtn.style.color = "white";
@@ -20895,18 +20915,20 @@ var MyApp = (() => {
           card.style.backgroundColor = "#d4edda";
           card.style.border = "2px solid #28a745";
           if (selectElem) {
-            selectElem.style.backgroundColor = "#d4edda";
-            selectElem.style.border = "2px solid #28a745";
-            selectElem.style.color = "#155724";
+            selectElem.style.setProperty("background-color", "#d4edda", "important");
+            selectElem.style.setProperty("border", "2px solid #28a745", "important");
+            selectElem.style.setProperty("color", "#155724", "important");
+            selectElem.style.setProperty("border-radius", "8px", "important");
           }
         } else {
           card.classList.add("wrong-answer-card");
           card.style.backgroundColor = "#fef0e0";
           card.style.border = "2px solid #e67e22";
           if (selectElem) {
-            selectElem.style.backgroundColor = "#fef0e0";
-            selectElem.style.border = "2px solid #e67e22";
-            selectElem.style.color = "#155724";
+            selectElem.style.setProperty("background-color", "#fef0e0", "important");
+            selectElem.style.setProperty("border", "2px solid #e67e22", "important");
+            selectElem.style.setProperty("color", "#155724", "important");
+            selectElem.style.setProperty("border-radius", "8px", "important");
             let optionExists = false;
             for (let j = 0; j < selectElem.options.length; j++) {
               const optValue = selectElem.options[j].value;
@@ -20939,6 +20961,8 @@ var MyApp = (() => {
     if (resultDiv) {
       resultDiv.innerHTML = `\u0627\u0644\u0646\u062A\u064A\u062C\u0629: ${finalScore} / 25`;
       resultDiv.style.display = "block";
+      resultDiv.style.visibility = "visible";
+      resultDiv.style.opacity = "1";
     }
     if (finalScore >= 20) {
       resultDiv.style.backgroundColor = "#d4edda";
@@ -23572,7 +23596,14 @@ var MyApp = (() => {
           });
           const firstSelect = this._selects[0];
           if (!firstSelect) return false;
-          const options = Array.from(firstSelect.options).map((opt) => ({ value: opt.value, text: opt.textContent.trim() })).filter((opt) => opt.text && !opt.text.includes("\u0627\u062E\u062A\u0631 \u0627\u0644\u0625\u062C\u0627\u0628\u0629") && !opt.text.includes("ausw\xE4hlen") && !opt.text.includes("w\xE4hlen"));
+          const options = Array.from(firstSelect.options).map((opt) => ({ value: opt.value, text: opt.textContent.trim() })).filter((opt) => {
+            if (!opt.text) return false;
+            const lowerText = opt.text.toLowerCase();
+            if (lowerText.includes("\u0627\u062E\u062A\u0631 \u0627\u0644\u0625\u062C\u0627\u0628\u0629") || lowerText.includes("\u0627\u062E\u062A\u0631 \u0627\u0644\u0639\u0646\u0648\u0627\u0646") || lowerText.includes("ausw\xE4hlen") || lowerText.includes("w\xE4hlen") || lowerText.includes("\u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646")) {
+              return false;
+            }
+            return true;
+          });
           this._titles = options.map((opt, idx) => ({
             id: `title-${idx + 1}`,
             value: opt.value,
@@ -23580,7 +23611,7 @@ var MyApp = (() => {
             letter: String.fromCharCode(65 + idx)
           }));
           if (this.modeName === "lesen3") {
-            this._titles.push({
+            this._titles.unshift({
               id: "title-none",
               value: "",
               text: "\u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646",
