@@ -25916,8 +25916,10 @@ var MyApp = (() => {
             }
           }
           let isMatchingActive = false;
-          matchingBtn.onclick = function(e) {
+          matchingBtn.removeEventListener("click", matchingBtn._clickHandler);
+          const clickHandler = function(e) {
             e.stopPropagation();
+            console.log("\u{1F501} \u0632\u0631 Matching Mode \u062A\u0645 \u0627\u0644\u0636\u063A\u0637 \u0639\u0644\u064A\u0647");
             const container = document.getElementById("teil1");
             if (!container) {
               console.warn("\u0644\u0627 \u062A\u0648\u062C\u062F \u062D\u0627\u0648\u064A\u0629 teil1");
@@ -25937,6 +25939,7 @@ var MyApp = (() => {
             };
             if (!isMatchingActive) {
               if (window.Lesen1Matching && typeof window.Lesen1Matching.mount === "function") {
+                console.log("\u2705 \u062A\u0634\u063A\u064A\u0644 Matching Mode");
                 container.style.display = "none";
                 let matchingWrapper = document.getElementById("zl1m-matching-wrapper");
                 if (!matchingWrapper) {
@@ -25950,10 +25953,14 @@ var MyApp = (() => {
                 matchingBtn.classList.add("active");
                 matchingBtn.title = "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A";
               } else {
-                console.error("Matching Module \u063A\u064A\u0631 \u0645\u062D\u0645\u0651\u0644.");
+                console.error("\u274C Matching Module \u063A\u064A\u0631 \u0645\u062D\u0645\u0651\u0644.");
+                if (typeof window.loadLesen1Matching === "function") {
+                  window.loadLesen1Matching();
+                }
               }
             } else {
               if (window.Lesen1Matching && typeof window.Lesen1Matching.destroy === "function") {
+                console.log("\u2705 \u0625\u064A\u0642\u0627\u0641 Matching Mode");
                 window.Lesen1Matching.destroy();
                 const wrapper = document.getElementById("zl1m-matching-wrapper");
                 if (wrapper) wrapper.remove();
@@ -25964,6 +25971,8 @@ var MyApp = (() => {
               }
             }
           };
+          matchingBtn.addEventListener("click", clickHandler);
+          matchingBtn._clickHandler = clickHandler;
         }
       }
       if (currentExamData.type === "matching") {
