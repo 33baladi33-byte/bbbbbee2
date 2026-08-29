@@ -24047,9 +24047,25 @@ var MyApp = (() => {
       })();
       (function() {
         "use strict";
-        let _mounted = false;
-        let _container = null;
-        let _originalHTML = "";
+        if (window.__zertivaL3PrototypeActive) {
+          console.warn("Lesen Teil 3 Prototype is already active.");
+          return;
+        }
+        const examData = window.currentExamData;
+        if (!examData || examData.type !== "teil3") {
+          console.warn(
+            "\u26A0\uFE0F \u064A\u0631\u062C\u0649 \u0641\u062A\u062D \u0627\u0645\u062A\u062D\u0627\u0646 Lesen Teil 3 \u0623\u0648\u0644\u0627\u064B."
+          );
+          return;
+        }
+        const items = examData.items;
+        const situations = examData.situations;
+        if (!Array.isArray(items) || !Array.isArray(situations) || items.length !== 12) {
+          console.warn(
+            "\u26A0\uFE0F \u0628\u064A\u0627\u0646\u0627\u062A Lesen Teil 3 \u063A\u064A\u0631 \u0645\u0643\u062A\u0645\u0644\u0629 \u0623\u0648 \u0644\u064A\u0633\u062A 12 \u0641\u0642\u0631\u0629."
+          );
+          return;
+        }
         const ROOT_ID = "zertiva-l3-prototype-root";
         const STYLE_ID = "zertiva-l3-prototype-style";
         const state = {
@@ -24058,213 +24074,287 @@ var MyApp = (() => {
           matches: /* @__PURE__ */ new Map(),
           titleToItem: /* @__PURE__ */ new Map(),
           selectedItem: null,
-          selectedTitle: null
+          selectedTitle: null,
+          mounted: false,
+          container: null
         };
+        window.__zertivaL3PrototypeActive = true;
         function clean(value) {
           return String(value || "").replace(/\s+/g, " ").replace(/\u00a0/g, " ").trim();
         }
-        function buildData() {
-          const examData = window.currentExamData;
-          if (!examData || examData.type !== "teil3") {
-            console.warn("\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0628\u064A\u0627\u0646\u0627\u062A Lesen Teil 3.");
-            return false;
-          }
-          const items = examData.items;
-          const situations = examData.situations;
-          if (!items || !situations || items.length !== 12) {
-            console.warn("\u26A0\uFE0F \u0628\u064A\u0627\u0646\u0627\u062A Lesen Teil 3 \u063A\u064A\u0631 \u0645\u0643\u062A\u0645\u0644\u0629 \u0623\u0648 \u0644\u064A\u0633\u062A 12 \u0641\u0642\u0631\u0629.");
-            return false;
-          }
-          state.items = [];
-          items.forEach((item, index) => {
-            state.items.push({
-              id: "item-" + (index + 1),
-              number: index + 1,
-              text: item.text,
-              correctIndex: item.correct
-            });
+        items.forEach(function(item, index) {
+          state.items.push({
+            id: "item-" + (index + 1),
+            number: index + 1,
+            text: clean(item.text),
+            correctIndex: item.correct
           });
-          state.titles = [];
-          situations.forEach((titleText, index) => {
-            state.titles.push({
-              id: "title-" + (index + 1),
-              value: titleText,
-              text: titleText,
-              letter: String.fromCharCode(65 + index)
-            });
+        });
+        situations.forEach(function(titleText, index) {
+          state.titles.push({
+            id: "title-" + (index + 1),
+            value: titleText,
+            text: clean(titleText),
+            letter: String.fromCharCode(
+              65 + index
+            )
           });
-          state.matches.clear();
-          state.titleToItem.clear();
-          if (typeof window.teil3UserAnswers !== "undefined") {
-            for (let idx in window.teil3UserAnswers) {
-              const answer = window.teil3UserAnswers[idx];
-              if (answer !== void 0 && answer !== null && answer !== "" && answer !== "none") {
-                const itemId = "item-" + (parseInt(idx) + 1);
-                const titleObj = state.titles.find((t) => t.id === "title-" + (parseInt(answer) + 1));
-                if (titleObj) {
-                  state.matches.set(itemId, titleObj.id);
-                  state.titleToItem.set(titleObj.id, itemId);
-                }
+        });
+        if (typeof window.teil3UserAnswers !== "undefined") {
+          for (const idx in window.teil3UserAnswers) {
+            const answer = window.teil3UserAnswers[idx];
+            if (answer === void 0 || answer === null || answer === "" || answer === "none") {
+              continue;
+            }
+            const itemNumber = parseInt(
+              idx,
+              10
+            ) + 1;
+            const titleNumber = parseInt(
+              answer,
+              10
+            ) + 1;
+            const itemId = "item-" + itemNumber;
+            const titleId = "title-" + titleNumber;
+            const titleObject = state.titles.find(
+              function(title) {
+                return title.id === titleId;
               }
-            }
-          }
-          return true;
-        }
-        function buildDOM() {
-          const root = document.createElement("section");
-          root.id = ROOT_ID;
-          const header = document.createElement("div");
-          header.className = "zl3-header";
-          const mainTitle = document.createElement("div");
-          mainTitle.className = "zl3-main-title";
-          mainTitle.textContent = "Lesen Teil 3";
-          const progress = document.createElement("div");
-          progress.className = "zl3-progress";
-          const progressText = document.createElement("span");
-          const progressBar = document.createElement("span");
-          progressBar.className = "zl3-progress-bar";
-          const progressFill = document.createElement("span");
-          progressFill.className = "zl3-progress-fill";
-          progressBar.appendChild(progressFill);
-          progress.append(progressText, progressBar);
-          header.append(mainTitle, progress);
-          root.appendChild(header);
-          const textArea = document.createElement("div");
-          textArea.className = "zl3-text-area";
-          const textGrid = document.createElement("div");
-          textGrid.className = "zl3-text-grid";
-          textArea.appendChild(textGrid);
-          root.appendChild(textArea);
-          const answerArea = document.createElement("div");
-          answerArea.className = "zl3-answer-area";
-          const answerHeader = document.createElement("div");
-          answerHeader.className = "zl3-answer-header";
-          const answerTitle = document.createElement("div");
-          answerTitle.className = "zl3-answer-title";
-          answerTitle.textContent = "TITEL ZUORDNEN";
-          answerHeader.appendChild(answerTitle);
-          answerArea.appendChild(answerHeader);
-          const titleArea = document.createElement("div");
-          titleArea.className = "zl3-title-area";
-          const titleGrid = document.createElement("div");
-          titleGrid.className = "zl3-title-grid";
-          titleArea.appendChild(titleGrid);
-          answerArea.appendChild(titleArea);
-          root.appendChild(answerArea);
-          return {
-            root,
-            textGrid,
-            titleGrid,
-            progressText,
-            progressFill
-          };
-        }
-        function connect(itemId, titleId, dom) {
-          if (state.matches.get(itemId) === titleId) {
-            disconnectItem(itemId, dom);
-            return;
-          }
-          const oldItem = state.titleToItem.get(titleId);
-          if (oldItem && oldItem !== itemId) {
-            state.matches.delete(oldItem);
-          }
-          const oldTitle = state.matches.get(itemId);
-          if (oldTitle) {
-            state.titleToItem.delete(oldTitle);
-          }
-          state.matches.set(itemId, titleId);
-          state.titleToItem.set(titleId, itemId);
-          updateOriginalState();
-          updateUI2(dom);
-        }
-        function disconnectItem(itemId, dom) {
-          const titleId = state.matches.get(itemId);
-          if (!titleId) return;
-          state.titleToItem.delete(titleId);
-          state.matches.delete(itemId);
-          updateOriginalState();
-          updateUI2(dom);
-        }
-        function disconnectTitle(titleId, dom) {
-          const itemId = state.titleToItem.get(titleId);
-          if (!itemId) return;
-          disconnectItem(itemId, dom);
-        }
-        function updateOriginalState() {
-          if (typeof window.teil3UserAnswers !== "undefined") {
-            const newAnswers = {};
-            state.matches.forEach((titleId, itemId) => {
-              const match = itemId.match(/item-(\d+)/);
-              if (match) {
-                const idx = parseInt(match[1]) - 1;
-                const titleObj = state.titles.find((t) => t.id === titleId);
-                if (titleObj) {
-                  const titleIndex = parseInt(titleId.replace("title-", "")) - 1;
-                  newAnswers[idx] = titleIndex;
-                }
-              }
-            });
-            for (let key in window.teil3UserAnswers) {
-              if (!(key in newAnswers)) {
-                delete window.teil3UserAnswers[key];
-              }
-            }
-            for (let key in newAnswers) {
-              window.teil3UserAnswers[key] = newAnswers[key];
-            }
-            if (typeof window.updateTeil3SelectOptions === "function") {
-              window.updateTeil3SelectOptions();
-            }
-            if (typeof window.updateTeil3RightSideColors === "function") {
-              window.updateTeil3RightSideColors();
+            );
+            if (titleObject) {
+              state.matches.set(
+                itemId,
+                titleId
+              );
+              state.titleToItem.set(
+                titleId,
+                itemId
+              );
             }
           }
         }
-        function updateUI2(dom) {
-          const total = state.items.length;
-          const count = state.matches.size;
-          const percentage = total ? count / total * 100 : 0;
-          if (dom) {
-            dom.progressText.textContent = count + " / " + total + " zugeordnet";
-            dom.progressFill.style.width = percentage + "%";
-          }
-          const itemCards = dom.textGrid.querySelectorAll(".zl3-text-card");
-          itemCards.forEach((card) => {
-            const itemId = card.dataset.itemId;
-            const linkedTitle = state.matches.get(itemId);
-            card.classList.toggle("zl3-selected", state.selectedItem === itemId);
-            card.classList.toggle("zl3-linked", Boolean(linkedTitle));
-            const badge = card.querySelector(".zl3-text-badge");
-            if (badge) {
-              badge.textContent = "";
-              if (linkedTitle) {
-                const title = state.titles.find((t) => t.id === linkedTitle);
-                if (title) badge.textContent = title.letter;
-              }
-            }
-          });
-          const titleCards = dom.titleGrid.querySelectorAll(".zl3-title-card");
-          titleCards.forEach((card) => {
-            const titleId = card.dataset.titleId;
-            const linkedItem = state.titleToItem.get(titleId);
-            card.classList.toggle("zl3-selected", state.selectedTitle === titleId);
-            card.classList.toggle("zl3-linked", Boolean(linkedItem));
-            const matchSpan = card.querySelector(".zl3-title-match");
-            if (matchSpan) {
-              matchSpan.textContent = "";
-              if (linkedItem) {
-                const itemObj = state.items.find((t) => t.id === linkedItem);
-                if (itemObj) matchSpan.textContent = "TEXT " + itemObj.number;
-              }
-            }
-          });
-        }
-        function createPrototype(container, dom) {
-          const styleEl = document.createElement("style");
-          styleEl.id = STYLE_ID;
-          styleEl.textContent = buildStyles();
-          document.head.appendChild(styleEl);
-          state.items.forEach((item) => {
+        const root = document.createElement("section");
+        root.id = ROOT_ID;
+        const header = document.createElement("div");
+        header.className = "zl3-header";
+        const mainTitle = document.createElement("div");
+        mainTitle.className = "zl3-main-title";
+        mainTitle.textContent = "Lesen Teil 3";
+        const progress = document.createElement("div");
+        progress.className = "zl3-progress";
+        const progressText = document.createElement("span");
+        const progressBar = document.createElement("span");
+        progressBar.className = "zl3-progress-bar";
+        const progressFill = document.createElement("span");
+        progressFill.className = "zl3-progress-fill";
+        progressBar.appendChild(
+          progressFill
+        );
+        progress.append(
+          progressText,
+          progressBar
+        );
+        header.append(
+          mainTitle,
+          progress
+        );
+        root.appendChild(
+          header
+        );
+        const textArea = document.createElement("div");
+        textArea.className = "zl3-text-area";
+        const textGrid = document.createElement("div");
+        textGrid.className = "zl3-text-grid";
+        textArea.appendChild(
+          textGrid
+        );
+        root.appendChild(
+          textArea
+        );
+        const answerArea = document.createElement("div");
+        answerArea.className = "zl3-answer-area";
+        const answerHeader = document.createElement("div");
+        answerHeader.className = "zl3-answer-header";
+        const answerTitle = document.createElement("div");
+        answerTitle.className = "zl3-answer-title";
+        answerTitle.textContent = "TITEL ZUORDNEN";
+        answerHeader.append(
+          answerTitle
+        );
+        const titleArea = document.createElement("div");
+        titleArea.className = "zl3-title-area";
+        const titleGrid = document.createElement("div");
+        titleGrid.className = "zl3-title-grid";
+        titleArea.appendChild(
+          titleGrid
+        );
+        answerArea.append(
+          answerHeader,
+          titleArea
+        );
+        root.appendChild(
+          answerArea
+        );
+        const actions = document.createElement("div");
+        actions.className = "zl3-actions-buttons";
+        const checkBtn = document.createElement("button");
+        checkBtn.type = "button";
+        checkBtn.textContent = "\u2705 \u062A\u0635\u062D\u064A\u062D";
+        const resetBtn = document.createElement("button");
+        resetBtn.type = "button";
+        resetBtn.textContent = "\u21BA";
+        actions.append(
+          checkBtn,
+          resetBtn
+        );
+        root.appendChild(
+          actions
+        );
+        const style = document.createElement("style");
+        style.id = STYLE_ID;
+        const css = [];
+        css.push(
+          "#" + ROOT_ID + "{width:100%;max-width:100%;box-sizing:border-box;margin:16px 0;padding:clamp(9px,1vw,14px);background:#ffffff;border:1px solid rgba(100,120,140,.16);border-radius:16px;box-shadow:0 7px 25px rgba(20,35,50,.06);color:#17212b;font-family:inherit;display:flex;flex-direction:column;height:min(760px,calc(100vh - 70px));min-height:520px;overflow:hidden;position:relative;z-index:10;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-header{flex:0 0 38px;min-height:38px;display:flex;align-items:center;justify-content:space-between;gap:10px;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-main-title{font-size:clamp(16px,1.35vw,21px);font-weight:800;letter-spacing:-.02em;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-progress{display:flex;align-items:center;gap:7px;padding:5px 9px;border-radius:999px;border:1px solid rgba(90,120,145,.16);background:#f5f7fa;color:#536170;font-size:11px;font-weight:750;white-space:nowrap;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-progress-bar{width:58px;height:5px;background:#e5ebf1;border-radius:99px;overflow:hidden;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-progress-fill{width:0%;height:100%;background:#67afea;border-radius:inherit;transition:width .22s ease;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-text-area{flex:1 1 0;min-height:0;width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;overscroll-behavior-x:contain;overscroll-behavior-y:none;touch-action:pan-x;display:flex;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-text-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:clamp(7px,.8vw,11px);width:100%;height:100%;min-height:0;align-items:stretch;align-content:stretch;box-sizing:border-box;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-text-card{width:100%;min-width:0;min-height:0;height:100%;display:flex;flex-direction:column;border-radius:12px;border:1px solid rgba(100,120,140,.18);background:#ffffff;overflow:hidden;cursor:pointer;box-sizing:border-box;transition:border-color .18s ease,box-shadow .18s ease,background .18s ease;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-text-card:hover{box-shadow:0 5px 16px rgba(30,50,70,.06);}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-text-card.zl3-selected,#" + ROOT_ID + " .zl3-text-card.zl3-linked{border-color:#70b4eb;background:#f7fbff;box-shadow:0 0 0 2px rgba(112,180,235,.10);}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-text-head{flex:0 0 35px;min-height:35px;display:flex;align-items:center;justify-content:space-between;gap:6px;padding:5px 8px;box-sizing:border-box;background:#f7f9fb;border-bottom:1px solid rgba(100,120,140,.14);cursor:pointer;user-select:none;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-text-label{font-size:10px;font-weight:850;letter-spacing:.03em;white-space:nowrap;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-text-badge{min-width:21px;height:21px;padding:0 5px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#67afea;color:#ffffff;font-size:10px;font-weight:850;opacity:0;transform:scale(.92);transition:.18s ease;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-linked .zl3-text-badge{opacity:1;transform:scale(1);}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-text-body{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;padding:clamp(9px,.9vw,13px);box-sizing:border-box;font-size:clamp(11px,.82vw,13.5px);line-height:1.62;font-weight:500;color:#273440;word-break:normal;overflow-wrap:break-word;white-space:normal;scrollbar-width:thin;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-text-body::-webkit-scrollbar{width:5px;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-text-body::-webkit-scrollbar-thumb{background:rgba(90,115,140,.27);border-radius:99px;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-answer-area{flex:0 1 auto;min-height:0;max-height:55%;box-sizing:border-box;display:flex;flex-direction:column;border-radius:13px;border:1px solid rgba(100,120,140,.16);background:#f6f8fa;padding:8px;overflow:hidden;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-answer-header{flex:0 0 30px;min-height:30px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 2px;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-answer-title{font-size:11px;font-weight:850;letter-spacing:.02em;white-space:nowrap;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-title-area{flex:1 1 auto;min-height:0;width:100%;overflow-x:hidden;overflow-y:auto;padding:2px 0;scrollbar-width:thin;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-title-area::-webkit-scrollbar{width:5px;height:5px;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-title-area::-webkit-scrollbar-thumb{background:rgba(90,115,140,.22);border-radius:99px;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-title-grid{width:100%;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));grid-auto-rows:1fr;gap:8px 12px;box-sizing:border-box;align-content:start;}"
+        );
+        css.push(
+          "@media (min-width:1041px){#" + ROOT_ID + " .zl3-title-grid{grid-template-columns:repeat(auto-fit,minmax(170px,1fr));}}"
+        );
+        css.push(
+          "@media (max-width:1040px) and (min-width:641px){#" + ROOT_ID + " .zl3-title-grid{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));}}"
+        );
+        css.push(
+          "@media (max-width:640px) and (min-width:561px){#" + ROOT_ID + " .zl3-title-grid{grid-template-columns:repeat(2,1fr);width:100%;}#" + ROOT_ID + " .zl3-title-area{overflow-x:hidden;overflow-y:auto;}}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-title-card{width:100%;min-width:0;min-height:40px;box-sizing:border-box;padding:8px 12px;border-radius:9px;border:1px solid rgba(100,120,140,.17);background:#ffffff;cursor:pointer;user-select:none;display:grid;grid-template-columns:26px minmax(0,1fr);align-items:center;gap:8px;overflow:hidden;transition:border-color .18s ease,background .18s ease,box-shadow .18s ease,transform .18s ease;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-title-card:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(30,50,70,.05);}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-title-card.zl3-selected,#" + ROOT_ID + " .zl3-title-card.zl3-linked{border-color:#70b4eb;background:#f2f9ff;box-shadow:0 0 0 2px rgba(112,180,235,.08);}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-title-card.zl3-dragover{border-color:#38bdf8;background:#e8f4fd;box-shadow:0 0 0 2px rgba(56,189,248,.20);}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-title-letter{width:26px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:7px;background:#edf2f6;color:#526170;font-size:11px;font-weight:850;flex-shrink:0;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-title-card.zl3-selected .zl3-title-letter,#" + ROOT_ID + " .zl3-title-card.zl3-linked .zl3-title-letter{background:#67afea;color:#ffffff;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-title-content{min-width:0;width:100%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;overflow:hidden;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-title-text{display:block;width:100%;max-width:100%;box-sizing:border-box;font-size:clamp(9px,.8vw,12px);line-height:1.3;font-weight:650;color:#273440;white-space:normal;overflow-wrap:anywhere;word-break:normal;overflow:hidden;text-overflow:clip;text-align:left;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-title-match{margin-top:2px;min-height:0;max-width:100%;font-size:8px;color:#6c7885;font-weight:750;line-height:1.1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-actions-buttons{display:flex;justify-content:center;align-items:center;gap:12px;padding:10px 0 0;flex:0 0 auto;flex-wrap:wrap;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-actions-buttons button{border:0;border-radius:9px;padding:8px 15px;background:#18232e;color:#ffffff;font:inherit;font-size:11px;font-weight:800;cursor:pointer;transition:transform .15s ease,opacity .15s ease,background .15s ease;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-actions-buttons button:hover{transform:translateY(-1px);opacity:.92;}"
+        );
+        css.push(
+          "#" + ROOT_ID + " .zl3-actions-buttons button:last-child{padding-left:12px;padding-right:12px;background:#6c757d;}"
+        );
+        css.push(
+          "@media (max-width:1000px){#" + ROOT_ID + " .zl3-text-area{overflow-x:auto;overflow-y:hidden;touch-action:pan-x;overscroll-behavior-x:contain;overscroll-behavior-y:none;}#" + ROOT_ID + " .zl3-text-grid{width:max-content;min-width:max-content;max-width:none;grid-template-columns:repeat(6,200px);grid-template-rows:repeat(2,minmax(0,1fr));gap:8px;}#" + ROOT_ID + " .zl3-text-card{width:200px;min-width:200px;max-width:200px;height:100%;flex-shrink:0;}#" + ROOT_ID + " .zl3-text-area::-webkit-scrollbar{width:0;height:5px;}}"
+        );
+        css.push(
+          "@media (max-width:650px){#" + ROOT_ID + "{margin:8px 0;padding:8px;border-radius:13px;height:calc(100vh - 20px);min-height:480px;}#" + ROOT_ID + " .zl3-header{flex-basis:32px;min-height:32px;}#" + ROOT_ID + " .zl3-main-title{font-size:14px;}#" + ROOT_ID + " .zl3-progress{font-size:9px;padding:4px 7px;}#" + ROOT_ID + " .zl3-progress-bar{width:38px;height:4px;}#" + ROOT_ID + " .zl3-text-body{font-size:12px;line-height:1.58;padding:10px;}#" + ROOT_ID + " .zl3-answer-header{flex-basis:27px;min-height:27px;}#" + ROOT_ID + " .zl3-answer-title{font-size:10px;}}"
+        );
+        css.push(
+          "@media (max-width:560px){#" + ROOT_ID + " .zl3-title-area{width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;overscroll-behavior-x:contain;overscroll-behavior-y:none;touch-action:pan-x;}#" + ROOT_ID + " .zl3-title-grid{display:grid;grid-template-columns:repeat(2,var(--zl3-fixed-title-width,270px));grid-template-rows:repeat(5,var(--zl3-fixed-title-height,40px));grid-auto-flow:row;grid-auto-rows:unset;gap:8px 12px;width:max-content;min-width:max-content;max-width:none;align-content:start;align-items:stretch;justify-content:start;}#" + ROOT_ID + " .zl3-title-card{width:var(--zl3-fixed-title-width,270px);min-width:var(--zl3-fixed-title-width,270px);max-width:var(--zl3-fixed-title-width,270px);height:var(--zl3-fixed-title-height,40px);min-height:var(--zl3-fixed-title-height,40px);max-height:var(--zl3-fixed-title-height,40px);flex-shrink:0;}#" + ROOT_ID + " .zl3-title-area::-webkit-scrollbar{width:0;height:5px;}}"
+        );
+        css.push(
+          "@media (min-width:851px){#" + ROOT_ID + " .zl3-title-grid{align-items:stretch;align-content:stretch;grid-auto-rows:1fr;}#" + ROOT_ID + " .zl3-title-card{width:100%;height:100%;min-height:40px;box-sizing:border-box;}}"
+        );
+        style.textContent = css.join("\n");
+        document.head.appendChild(
+          style
+        );
+        const itemElements = /* @__PURE__ */ new Map();
+        state.items.forEach(
+          function(item) {
             const card = document.createElement("div");
             card.className = "zl3-text-card";
             card.dataset.itemId = item.id;
@@ -24275,77 +24365,97 @@ var MyApp = (() => {
             label.textContent = "TEXT " + item.number;
             const badge = document.createElement("span");
             badge.className = "zl3-text-badge";
-            head.append(label, badge);
+            head.append(
+              label,
+              badge
+            );
             const body = document.createElement("div");
             body.className = "zl3-text-body";
-            body.textContent = item.text.length > 100 ? item.text.substring(0, 100) + "\u2026" : item.text;
-            card.append(head, body);
-            dom.textGrid.appendChild(card);
+            body.textContent = item.text;
+            card.append(
+              head,
+              body
+            );
+            textGrid.appendChild(
+              card
+            );
+            itemElements.set(
+              item.id,
+              {
+                card,
+                badge
+              }
+            );
+            card.addEventListener(
+              "click",
+              function() {
+                if (state.matches.has(
+                  item.id
+                )) {
+                  disconnectItem(
+                    item.id
+                  );
+                  state.selectedItem = null;
+                  state.selectedTitle = null;
+                  updateUI2();
+                  return;
+                }
+                if (state.selectedTitle) {
+                  connect(
+                    item.id,
+                    state.selectedTitle
+                  );
+                  state.selectedItem = null;
+                  state.selectedTitle = null;
+                  updateUI2();
+                  return;
+                }
+                state.selectedItem = state.selectedItem === item.id ? null : item.id;
+                state.selectedTitle = null;
+                updateUI2();
+              }
+            );
             card.draggable = true;
-            card.addEventListener("dragstart", function(e) {
-              const ghost = document.createElement("div");
-              ghost.textContent = item.text.substring(0, 30) + (item.text.length > 30 ? "\u2026" : "");
-              ghost.style.cssText = `
-          position: fixed;
-          top: -1000px;
-          left: -1000px;
-          padding: 8px 12px;
-          background: white;
-          border: 1px solid #ccc;
-          border-radius: 6px;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-          font-size: 14px;
-          max-width: 200px;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          pointer-events: none;
-          z-index: 9999;
-          font-family: inherit;
-        `;
-              document.body.appendChild(ghost);
-              e.dataTransfer.setDragImage(ghost, 0, 0);
-              e.dataTransfer.effectAllowed = "move";
-              e.dataTransfer.setData("text/plain", item.id);
-              card._ghost = ghost;
-            });
-            card.addEventListener("dragend", function() {
-              if (this._ghost && this._ghost.parentNode) {
-                this._ghost.parentNode.removeChild(this._ghost);
-                this._ghost = null;
+            card.addEventListener(
+              "dragstart",
+              function(event) {
+                event.dataTransfer.setData(
+                  "text/plain",
+                  item.id
+                );
+                event.dataTransfer.effectAllowed = "move";
+                card.classList.add(
+                  "zl3-selected"
+                );
               }
-              document.querySelectorAll(".zl3-title-card.zl3-dragover").forEach((el) => el.classList.remove("zl3-dragover"));
-            });
-            card.addEventListener("click", function() {
-              if (state.matches.has(item.id)) {
-                disconnectItem(item.id, dom);
-                state.selectedItem = null;
-                state.selectedTitle = null;
-                updateUI2(dom);
-                return;
+            );
+            card.addEventListener(
+              "dragend",
+              function() {
+                card.classList.remove(
+                  "zl3-selected"
+                );
               }
-              if (state.selectedTitle) {
-                connect(item.id, state.selectedTitle, dom);
-                state.selectedItem = null;
-                state.selectedTitle = null;
-                updateUI2(dom);
-                return;
+            );
+            card.addEventListener(
+              "dragover",
+              function(event) {
+                event.preventDefault();
+                event.dataTransfer.dropEffect = "none";
               }
-              state.selectedItem = state.selectedItem === item.id ? null : item.id;
-              state.selectedTitle = null;
-              updateUI2(dom);
-            });
-            card.addEventListener("dragover", function(e) {
-              e.preventDefault();
-              e.dataTransfer.dropEffect = "none";
-            });
-            card.addEventListener("drop", function(e) {
-              e.preventDefault();
-              e.stopPropagation();
-              return false;
-            });
-          });
-          state.titles.forEach((title) => {
+            );
+            card.addEventListener(
+              "drop",
+              function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+            );
+          }
+        );
+        const titleElements = /* @__PURE__ */ new Map();
+        state.titles.forEach(
+          function(title) {
             const card = document.createElement("div");
             card.className = "zl3-title-card";
             card.dataset.titleId = title.id;
@@ -24354,107 +24464,292 @@ var MyApp = (() => {
             letter.textContent = title.letter;
             const content = document.createElement("div");
             content.className = "zl3-title-content";
-            const titleTextEl = document.createElement("span");
-            titleTextEl.className = "zl3-title-text";
-            titleTextEl.textContent = title.text;
-            const matchSpan = document.createElement("div");
-            matchSpan.className = "zl3-title-match";
-            content.append(titleTextEl, matchSpan);
-            card.append(letter, content);
-            dom.titleGrid.appendChild(card);
-            card.addEventListener("click", function() {
-              if (state.titleToItem.has(title.id)) {
-                disconnectTitle(title.id, dom);
-                state.selectedTitle = null;
-                state.selectedItem = null;
-                updateUI2(dom);
-                return;
+            const titleTextElement = document.createElement("span");
+            titleTextElement.className = "zl3-title-text";
+            titleTextElement.textContent = title.text;
+            const match = document.createElement("div");
+            match.className = "zl3-title-match";
+            content.append(
+              titleTextElement,
+              match
+            );
+            card.append(
+              letter,
+              content
+            );
+            titleGrid.appendChild(
+              card
+            );
+            titleElements.set(
+              title.id,
+              {
+                card,
+                match
               }
-              if (state.selectedItem) {
-                connect(state.selectedItem, title.id, dom);
+            );
+            card.addEventListener(
+              "click",
+              function() {
+                if (state.titleToItem.has(
+                  title.id
+                )) {
+                  disconnectTitle(
+                    title.id
+                  );
+                  state.selectedTitle = null;
+                  state.selectedItem = null;
+                  updateUI2();
+                  return;
+                }
+                if (state.selectedItem) {
+                  connect(
+                    state.selectedItem,
+                    title.id
+                  );
+                  state.selectedItem = null;
+                  state.selectedTitle = null;
+                  updateUI2();
+                  return;
+                }
+                state.selectedTitle = state.selectedTitle === title.id ? null : title.id;
+                state.selectedItem = null;
+                updateUI2();
+              }
+            );
+            card.addEventListener(
+              "dragover",
+              function(event) {
+                event.preventDefault();
+                event.dataTransfer.dropEffect = "move";
+                card.classList.add(
+                  "zl3-dragover"
+                );
+              }
+            );
+            card.addEventListener(
+              "dragleave",
+              function() {
+                card.classList.remove(
+                  "zl3-dragover"
+                );
+              }
+            );
+            card.addEventListener(
+              "drop",
+              function(event) {
+                event.preventDefault();
+                const itemId = event.dataTransfer.getData(
+                  "text/plain"
+                );
+                card.classList.remove(
+                  "zl3-dragover"
+                );
+                if (!itemId) {
+                  return;
+                }
+                if (!itemId.startsWith(
+                  "item-"
+                )) {
+                  return;
+                }
+                connect(
+                  itemId,
+                  title.id
+                );
                 state.selectedItem = null;
                 state.selectedTitle = null;
-                updateUI2(dom);
-                return;
+                updateUI2();
               }
-              state.selectedTitle = state.selectedTitle === title.id ? null : title.id;
-              state.selectedItem = null;
-              updateUI2(dom);
-            });
-            card.addEventListener("dragover", function(e) {
-              e.preventDefault();
-              e.dataTransfer.dropEffect = "move";
-              card.classList.add("zl3-dragover");
-            });
-            card.addEventListener("dragleave", function() {
-              card.classList.remove("zl3-dragover");
-            });
-            card.addEventListener("drop", function(e) {
-              e.preventDefault();
-              const itemId = e.dataTransfer.getData("text/plain");
-              card.classList.remove("zl3-dragover");
-              if (!itemId) return;
-              connect(itemId, title.id, dom);
-              state.selectedItem = null;
-              state.selectedTitle = null;
-              updateUI2(dom);
-            });
-          });
-          addButtons(dom);
-          updateUI2(dom);
+            );
+          }
+        );
+        function connect(itemId, titleId) {
+          if (state.matches.get(
+            itemId
+          ) === titleId) {
+            disconnectItem(
+              itemId
+            );
+            return;
+          }
+          const oldItem = state.titleToItem.get(
+            titleId
+          );
+          if (oldItem && oldItem !== itemId) {
+            state.matches.delete(
+              oldItem
+            );
+          }
+          const oldTitle = state.matches.get(
+            itemId
+          );
+          if (oldTitle) {
+            state.titleToItem.delete(
+              oldTitle
+            );
+          }
+          state.matches.set(
+            itemId,
+            titleId
+          );
+          state.titleToItem.set(
+            titleId,
+            itemId
+          );
+          updateOriginalState();
+          updateUI2();
         }
-        function addButtons(dom) {
-          const btnContainer = document.createElement("div");
-          btnContainer.className = "zl3-actions-buttons";
-          btnContainer.style.cssText = `
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-      padding: 12px 0;
-      margin-top: 8px;
-      border-top: 1px solid #eef2f6;
-      flex-wrap: wrap;
-    `;
-          const checkBtn = document.createElement("button");
-          checkBtn.textContent = "\u2705 \u062A\u0635\u062D\u064A\u062D";
-          checkBtn.className = "check-btn";
-          checkBtn.style.cssText = `
-      padding: 10px 24px;
-      background: #2c3e66;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background 0.2s;
-    `;
-          checkBtn.onmouseenter = () => checkBtn.style.background = "#1e2a4a";
-          checkBtn.onmouseleave = () => checkBtn.style.background = "#2c3e66";
-          checkBtn.onclick = function() {
+        function disconnectItem(itemId) {
+          const titleId = state.matches.get(
+            itemId
+          );
+          if (!titleId) {
+            return;
+          }
+          state.titleToItem.delete(
+            titleId
+          );
+          state.matches.delete(
+            itemId
+          );
+          updateOriginalState();
+          updateUI2();
+        }
+        function disconnectTitle(titleId) {
+          const itemId = state.titleToItem.get(
+            titleId
+          );
+          if (!itemId) {
+            return;
+          }
+          disconnectItem(
+            itemId
+          );
+        }
+        function updateOriginalState() {
+          if (typeof window.teil3UserAnswers === "undefined") {
+            return;
+          }
+          const newAnswers = {};
+          state.matches.forEach(
+            function(titleId, itemId) {
+              const itemMatch = itemId.match(
+                /item-(\d+)/
+              );
+              const titleMatch = titleId.match(
+                /title-(\d+)/
+              );
+              if (!itemMatch || !titleMatch) {
+                return;
+              }
+              const itemIndex = parseInt(
+                itemMatch[1],
+                10
+              ) - 1;
+              const titleIndex = parseInt(
+                titleMatch[1],
+                10
+              ) - 1;
+              newAnswers[itemIndex] = titleIndex;
+            }
+          );
+          Object.keys(
+            window.teil3UserAnswers
+          ).forEach(
+            function(key) {
+              if (!(key in newAnswers)) {
+                delete window.teil3UserAnswers[key];
+              }
+            }
+          );
+          Object.keys(
+            newAnswers
+          ).forEach(
+            function(key) {
+              window.teil3UserAnswers[key] = newAnswers[key];
+            }
+          );
+          if (typeof window.updateTeil3SelectOptions === "function") {
+            window.updateTeil3SelectOptions();
+          }
+          if (typeof window.updateTeil3RightSideColors === "function") {
+            window.updateTeil3RightSideColors();
+          }
+        }
+        function updateUI2() {
+          const total = state.items.length;
+          const count = state.matches.size;
+          const percentage = total ? count / total * 100 : 0;
+          progressText.textContent = count + " / " + total + " zugeordnet";
+          progressFill.style.width = percentage + "%";
+          itemElements.forEach(
+            function(elements, itemId) {
+              const linkedTitle = state.matches.get(
+                itemId
+              );
+              elements.card.classList.toggle(
+                "zl3-selected",
+                state.selectedItem === itemId
+              );
+              elements.card.classList.toggle(
+                "zl3-linked",
+                Boolean(linkedTitle)
+              );
+              elements.badge.textContent = "";
+              if (linkedTitle) {
+                const title = state.titles.find(
+                  function(item) {
+                    return item.id === linkedTitle;
+                  }
+                );
+                if (title) {
+                  elements.badge.textContent = title.letter;
+                }
+              }
+            }
+          );
+          titleElements.forEach(
+            function(elements, titleId) {
+              const linkedItem = state.titleToItem.get(
+                titleId
+              );
+              elements.card.classList.toggle(
+                "zl3-selected",
+                state.selectedTitle === titleId
+              );
+              elements.card.classList.toggle(
+                "zl3-linked",
+                Boolean(linkedItem)
+              );
+              elements.match.textContent = "";
+              if (linkedItem) {
+                const paragraph = state.items.find(
+                  function(item) {
+                    return item.id === linkedItem;
+                  }
+                );
+                if (paragraph) {
+                  elements.match.textContent = "TEXT " + paragraph.number;
+                }
+              }
+            }
+          );
+        }
+        checkBtn.addEventListener(
+          "click",
+          function() {
             if (typeof window.checkTeil3Exam === "function") {
               window.checkTeil3Exam();
-              syncFromOriginalState(dom);
             } else {
-              alert("\u26A0\uFE0F \u062F\u0627\u0644\u0629 \u0627\u0644\u062A\u0635\u062D\u064A\u062D \u063A\u064A\u0631 \u0645\u062A\u0648\u0641\u0631\u0629.");
+              alert(
+                "\u26A0\uFE0F \u062F\u0627\u0644\u0629 \u0627\u0644\u062A\u0635\u062D\u064A\u062D \u063A\u064A\u0631 \u0645\u062A\u0648\u0641\u0631\u0629."
+              );
             }
-          };
-          const resetBtn = document.createElement("button");
-          resetBtn.textContent = "\u21BA";
-          resetBtn.style.cssText = `
-      padding: 10px 14px;
-      background: #6c757d;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background 0.2s;
-    `;
-          resetBtn.onmouseenter = () => resetBtn.style.background = "#5a6268";
-          resetBtn.onmouseleave = () => resetBtn.style.background = "#6c757d";
-          resetBtn.onclick = function() {
+          }
+        );
+        resetBtn.addEventListener(
+          "click",
+          function() {
             state.matches.clear();
             state.titleToItem.clear();
             state.selectedItem = null;
@@ -24468,236 +24763,135 @@ var MyApp = (() => {
             if (typeof window.updateTeil3RightSideColors === "function") {
               window.updateTeil3RightSideColors();
             }
-            const selects = document.querySelectorAll("#teil3 select");
-            selects.forEach((sel) => {
-              sel.selectedIndex = 0;
-              sel.dispatchEvent(new Event("change", { bubbles: true }));
-            });
-            if (typeof window.updateTeil3SelectOptions === "function") window.updateTeil3SelectOptions();
-            if (typeof window.updateTeil3RightSideColors === "function") window.updateTeil3RightSideColors();
-            updateUI2(dom);
-            console.log("\u{1F504} \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u0627\u0644\u0625\u062C\u0627\u0628\u0627\u062A.");
-          };
-          btnContainer.appendChild(checkBtn);
-          btnContainer.appendChild(resetBtn);
-          const answerArea = dom.root.querySelector(".zl3-answer-area");
-          if (answerArea) {
-            answerArea.parentNode.insertBefore(btnContainer, answerArea.nextSibling);
-          } else {
-            dom.root.appendChild(btnContainer);
+            updateUI2();
+            console.log(
+              "\u{1F504} \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u0625\u062C\u0627\u0628\u0627\u062A Lesen Teil 3."
+            );
           }
-        }
-        function syncFromOriginalState(dom) {
-          if (typeof window.teil3UserAnswers !== "undefined") {
-            state.matches.clear();
-            state.titleToItem.clear();
-            for (let idx in window.teil3UserAnswers) {
-              const answer = window.teil3UserAnswers[idx];
-              if (answer !== void 0 && answer !== null && answer !== "" && answer !== "none") {
-                const itemId = "item-" + (parseInt(idx) + 1);
-                const titleId = "title-" + (parseInt(answer) + 1);
-                const titleObj = state.titles.find((t) => t.id === titleId);
-                if (titleObj) {
-                  state.matches.set(itemId, titleId);
-                  state.titleToItem.set(titleId, itemId);
-                }
-              }
-            }
-            updateUI2(dom);
-          }
-        }
-        function buildStyles() {
-          const css = [];
-          css.push(
-            "#" + ROOT_ID + "{width:100%;max-width:100%;box-sizing:border-box;margin:16px 0;padding:clamp(9px,1vw,14px);background:#ffffff;border:1px solid rgba(100,120,140,.16);border-radius:16px;box-shadow:0 7px 25px rgba(20,35,50,.06);color:#17212b;font-family:inherit;display:flex;flex-direction:column;height:min(760px,calc(100vh - 70px));min-height:520px;overflow:hidden;position:relative;z-index:10;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-header{flex:0 0 38px;min-height:38px;display:flex;align-items:center;justify-content:space-between;gap:10px;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-main-title{font-size:clamp(16px,1.35vw,21px);font-weight:800;letter-spacing:-.02em;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-progress{display:flex;align-items:center;gap:7px;padding:5px 9px;border-radius:999px;border:1px solid rgba(90,120,145,.16);background:#f5f7fa;color:#536170;font-size:11px;font-weight:750;white-space:nowrap;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-progress-bar{width:58px;height:5px;background:#e5ebf1;border-radius:99px;overflow:hidden;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-progress-fill{width:0%;height:100%;background:#67afea;border-radius:inherit;transition:width .22s ease;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-text-area{flex:1 1 0;min-height:0;width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;overscroll-behavior-x:contain;overscroll-behavior-y:none;touch-action:pan-x;display:flex;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-text-grid{display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:auto auto;gap:clamp(7px,.8vw,11px);width:100%;height:100%;align-items:stretch;align-content:start;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-text-card{display:flex;flex-direction:column;border-radius:12px;border:1px solid rgba(100,120,140,.18);background:#ffffff;overflow:hidden;cursor:pointer;transition:border-color .18s ease,box-shadow .18s ease,background .18s ease;min-height:0;height:100%;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-text-card:hover{box-shadow:0 5px 16px rgba(30,50,70,.06);}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-text-card.zl3-selected,#" + ROOT_ID + " .zl3-text-card.zl3-linked{border-color:#70b4eb;background:#f7fbff;box-shadow:0 0 0 2px rgba(112,180,235,.10);}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-text-head{flex:0 0 35px;min-height:35px;display:flex;align-items:center;justify-content:space-between;gap:6px;padding:5px 8px;box-sizing:border-box;background:#f7f9fb;border-bottom:1px solid rgba(100,120,140,.14);cursor:pointer;user-select:none;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-text-label{font-size:10px;font-weight:850;letter-spacing:.03em;white-space:nowrap;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-text-badge{min-width:21px;height:21px;padding:0 5px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#67afea;color:#ffffff;font-size:10px;font-weight:850;opacity:0;transform:scale(.92);transition:.18s ease;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-linked .zl3-text-badge{opacity:1;transform:scale(1);}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-text-body{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;padding:clamp(9px,.9vw,13px);box-sizing:border-box;font-size:clamp(11px,.82vw,13.5px);line-height:1.62;font-weight:500;color:#273440;word-break:normal;overflow-wrap:break-word;white-space:normal;scrollbar-width:thin;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-text-body::-webkit-scrollbar{width:5px;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-text-body::-webkit-scrollbar-thumb{background:rgba(90,115,140,.27);border-radius:99px;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-answer-area{flex:0 1 auto;min-height:0;max-height:55%;box-sizing:border-box;display:flex;flex-direction:column;border-radius:13px;border:1px solid rgba(100,120,140,.16);background:#f6f8fa;padding:8px;overflow:hidden;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-answer-header{flex:0 0 30px;min-height:30px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 2px;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-answer-title{font-size:11px;font-weight:850;letter-spacing:.02em;white-space:nowrap;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-title-area{flex:1 1 auto;min-height:0;width:100%;overflow-x:hidden;overflow-y:auto;padding:2px 0;scrollbar-width:thin;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-title-area::-webkit-scrollbar{width:5px;height:5px;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-title-area::-webkit-scrollbar-thumb{background:rgba(90,115,140,.22);border-radius:99px;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-title-grid{width:100%;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));grid-auto-rows:1fr;gap:8px 12px;box-sizing:border-box;align-content:start;}"
-          );
-          css.push(
-            "@media (min-width:1041px){#" + ROOT_ID + " .zl3-title-grid{grid-template-columns:repeat(auto-fit,minmax(170px,1fr));}}"
-          );
-          css.push(
-            "@media (max-width:1040px) and (min-width:641px){#" + ROOT_ID + " .zl3-title-grid{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));}}"
-          );
-          css.push(
-            "@media (max-width:640px) and (min-width:561px){#" + ROOT_ID + " .zl3-title-grid{grid-template-columns:repeat(2,1fr);width:100%;}#" + ROOT_ID + " .zl3-title-area{overflow-x:hidden;overflow-y:auto;}}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-title-card{width:100%;min-width:0;min-height:40px;box-sizing:border-box;padding:8px 12px;border-radius:9px;border:1px solid rgba(100,120,140,.17);background:#ffffff;cursor:pointer;user-select:none;display:grid;grid-template-columns:26px minmax(0,1fr);align-items:center;gap:8px;overflow:hidden;transition:border-color .18s ease,background .18s ease,box-shadow .18s ease,transform .18s ease;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-title-card:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(30,50,70,.05);}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-title-card.zl3-selected,#" + ROOT_ID + " .zl3-title-card.zl3-linked{border-color:#70b4eb;background:#f2f9ff;box-shadow:0 0 0 2px rgba(112,180,235,.08);}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-title-card.zl3-dragover{border-color:#38bdf8;background:#e8f4fd;box-shadow:0 0 0 2px rgba(56,189,248,0.2);}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-title-letter{width:26px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:7px;background:#edf2f6;color:#526170;font-size:11px;font-weight:850;flex-shrink:0;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-title-card.zl3-selected .zl3-title-letter,#" + ROOT_ID + " .zl3-title-card.zl3-linked .zl3-title-letter{background:#67afea;color:#ffffff;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-title-content{min-width:0;width:100%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;overflow:hidden;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-title-text{display:block;width:100%;max-width:100%;box-sizing:border-box;font-size:clamp(9px,.8vw,12px);line-height:1.3;font-weight:650;color:#273440;white-space:normal;overflow-wrap:anywhere;word-break:normal;overflow:hidden;text-overflow:clip;text-align:left;}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-title-match{margin-top:2px;min-height:0;max-width:100%;font-size:8px;color:#6c7885;font-weight:750;line-height:1.1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}"
-          );
-          css.push(
-            "@media (max-width:1000px){#" + ROOT_ID + " .zl3-text-area{overflow-x:auto;overflow-y:hidden;touch-action:pan-x;overscroll-behavior-x:contain;overscroll-behavior-y:none;}#" + ROOT_ID + " .zl3-text-grid{width:max-content;min-width:max-content;max-width:none;flex-wrap:nowrap;display:flex;gap:8px;}#" + ROOT_ID + " .zl3-text-card{flex:0 0 var(--zl3-fixed-text-width,200px);width:var(--zl3-fixed-text-width,200px);min-width:var(--zl3-fixed-text-width,200px);max-width:var(--zl3-fixed-text-width,200px);height:100%;flex-shrink:0;}#" + ROOT_ID + " .zl3-text-area::-webkit-scrollbar{width:0;height:5px;}}"
-          );
-          css.push(
-            "@media (max-width:650px){#" + ROOT_ID + "{margin:8px 0;padding:8px;border-radius:13px;height:calc(100vh - 20px);min-height:480px;}#" + ROOT_ID + " .zl3-header{flex-basis:32px;min-height:32px;}#" + ROOT_ID + " .zl3-main-title{font-size:14px;}#" + ROOT_ID + " .zl3-progress{font-size:9px;padding:4px 7px;}#" + ROOT_ID + " .zl3-progress-bar{width:38px;height:4px;}#" + ROOT_ID + " .zl3-text-body{font-size:12px;line-height:1.58;padding:10px;}#" + ROOT_ID + " .zl3-answer-header{flex-basis:27px;min-height:27px;}#" + ROOT_ID + " .zl3-answer-title{font-size:10px;}}"
-          );
-          css.push(
-            "@media (max-width:560px){#" + ROOT_ID + " .zl3-title-area{width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;overscroll-behavior-x:contain;overscroll-behavior-y:none;touch-action:pan-x;}#" + ROOT_ID + " .zl3-title-grid{display:grid;grid-template-columns:repeat(2,var(--zl3-fixed-title-width,270px));grid-template-rows:repeat(6,var(--zl3-fixed-title-height,40px));grid-auto-flow:row;grid-auto-rows:unset;gap:8px 12px;width:max-content;min-width:max-content;max-width:none;align-content:start;align-items:stretch;justify-content:start;}#" + ROOT_ID + " .zl3-title-card{width:var(--zl3-fixed-title-width,270px);min-width:var(--zl3-fixed-title-width,270px);max-width:var(--zl3-fixed-title-width,270px);height:var(--zl3-fixed-title-height,40px);min-height:var(--zl3-fixed-title-height,40px);max-height:var(--zl3-fixed-title-height,40px);flex-shrink:0;}#" + ROOT_ID + " .zl3-title-area::-webkit-scrollbar{width:0;height:5px;}}"
-          );
-          css.push(
-            "@media (min-width:851px){#" + ROOT_ID + " .zl3-title-grid{align-items:stretch;align-content:stretch;grid-auto-rows:1fr;}#" + ROOT_ID + " .zl3-title-card{width:100%;height:100%;min-height:40px;box-sizing:border-box;}}"
-          );
-          css.push(
-            "#" + ROOT_ID + " .zl3-actions-buttons{flex:0 0 auto;}"
-          );
-          return css.join("\n");
-        }
-        window.mountL3Prototype = function() {
-          if (_mounted) {
-            console.warn("Prototype already mounted.");
-            return;
-          }
-          const container = document.getElementById("teil3");
-          if (!container) {
-            console.warn("\u26A0\uFE0F \u0627\u0644\u062D\u0627\u0648\u064A\u0629 #teil3 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629.");
-            return;
-          }
-          if (!buildData()) {
-            return;
-          }
-          _originalHTML = container.innerHTML;
-          const dom = buildDOM();
-          _container = dom.root;
-          container.innerHTML = "";
-          container.appendChild(dom.root);
-          createPrototype(container, dom);
-          requestAnimationFrame(function() {
-            const firstTitle = dom.titleGrid.querySelector(".zl3-title-card");
-            if (firstTitle) {
-              const rect = firstTitle.getBoundingClientRect();
-              if (rect.width > 0 && rect.height > 0) {
-                dom.root.style.setProperty("--zl3-fixed-title-width", rect.width + "px");
-                dom.root.style.setProperty("--zl3-fixed-title-height", rect.height + "px");
-              }
-            }
-            updateUI2(dom);
-          });
-          _mounted = true;
-          window.__zertivaL3PrototypeActive = true;
-          console.log("\u2705 Lesen Teil 3 Prototype mounted.");
-        };
-        window.destroyL3Prototype = function() {
-          if (!_mounted) {
-            console.warn("Prototype not mounted.");
-            return;
-          }
-          const container = document.getElementById("teil3");
-          if (container && _container && container.contains(_container)) {
-            if (_originalHTML) {
-              container.innerHTML = _originalHTML;
-            } else {
-              if (typeof window.loadTeil3Exam === "function" && window.currentTeil3Data) {
-                window.loadTeil3Exam(window.currentTeil3Data);
-              } else {
-                container.innerHTML = "";
-              }
-            }
-          }
-          const styleEl = document.getElementById(STYLE_ID);
-          if (styleEl) styleEl.remove();
-          document.querySelectorAll("#zertiva-l3-prototype-root").forEach((el) => el.remove());
-          state.matches.clear();
-          state.titleToItem.clear();
-          state.selectedItem = null;
-          state.selectedTitle = null;
-          _mounted = false;
+        );
+        const container = document.getElementById(
+          "teil3"
+        );
+        if (!container) {
           window.__zertivaL3PrototypeActive = false;
-          console.log("\u2705 Lesen Teil 3 Prototype destroyed.");
-        };
+          style.remove();
+          console.warn(
+            "\u26A0\uFE0F \u0627\u0644\u062D\u0627\u0648\u064A\u0629 #teil3 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629."
+          );
+          return;
+        }
+        const originalHTML = container.innerHTML;
+        state.container = root;
+        container.innerHTML = "";
+        container.appendChild(
+          root
+        );
+        function captureTitleSize() {
+          const firstEntry = titleElements.size ? titleElements.values().next().value : null;
+          if (!firstEntry) {
+            return;
+          }
+          const rect = firstEntry.card.getBoundingClientRect();
+          if (rect.width > 0 && rect.height > 0) {
+            root.style.setProperty(
+              "--zl3-fixed-title-width",
+              rect.width + "px"
+            );
+            root.style.setProperty(
+              "--zl3-fixed-title-height",
+              rect.height + "px"
+            );
+          }
+        }
+        function handleResize() {
+          if (window.innerWidth > 560) {
+            requestAnimationFrame(
+              captureTitleSize
+            );
+          }
+        }
+        requestAnimationFrame(
+          function() {
+            if (window.innerWidth > 560) {
+              captureTitleSize();
+            }
+            updateUI2();
+          }
+        );
+        window.addEventListener(
+          "resize",
+          handleResize
+        );
+        function destroyPrototype() {
+          if (!state.mounted) {
+            console.warn(
+              "Prototype not active."
+            );
+            return;
+          }
+          const target = document.getElementById(
+            "teil3"
+          );
+          if (target) {
+            target.innerHTML = originalHTML;
+          }
+          const styleEl = document.getElementById(
+            STYLE_ID
+          );
+          if (styleEl) {
+            styleEl.remove();
+          }
+          window.removeEventListener(
+            "resize",
+            handleResize
+          );
+          state.mounted = false;
+          window.__zertivaL3PrototypeActive = false;
+          delete window.disableLesen3Prototype;
+          console.log(
+            "\u2705 Lesen Teil 3 Prototype disabled."
+          );
+        }
+        state.mounted = true;
+        window.disableLesen3Prototype = destroyPrototype;
+        updateUI2();
+        console.log(
+          "%cZERTIVA B2 \u2014 LESEN TEIL 3",
+          "font-size:15px;font-weight:800;"
+        );
+        console.log(
+          "\u2705 12 Paragraphs = 6 + 6."
+        );
+        console.log(
+          "\u2705 Paragraph cards have equal dimensions."
+        );
+        console.log(
+          "\u2705 Paragraph area is larger and uses the Lesen Teil 1 card system."
+        );
+        console.log(
+          "\u2705 Titles use the same system as Lesen Teil 1."
+        );
+        console.log(
+          "\u2705 Above 850px: title cards equal size."
+        );
+        console.log(
+          "\u2705 Under 560px: titles remain 2 \xD7 5 with fixed size and horizontal scroll only."
+        );
+        console.log(
+          "\u2705 Paragraph \u2194 Title click-to-connect."
+        );
+        console.log(
+          "\u2705 Paragraph \u2192 Title drag & drop."
+        );
+        console.log(
+          "\u2705 Paragraph \u2192 Paragraph drag & drop disabled."
+        );
+        console.log(
+          "\u2705 Existing check/reset buttons preserved."
+        );
+        console.log(
+          "\u2705 \u0644\u0644\u0625\u0644\u063A\u0627\u0621: disableLesen3Prototype()"
+        );
       })();
       window.addEventListener("beforeunload", function() {
         if (window.Lesen1Matching && typeof window.Lesen1Matching.destroy === "function") {
