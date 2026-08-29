@@ -23613,6 +23613,9 @@ var MyApp = (() => {
             "#" + ROOT_ID + " .zl1m-title-card.zl1m-selected,#" + ROOT_ID + " .zl1m-title-card.zl1m-linked{border-color:#70b4eb;background:#f2f9ff;box-shadow:0 0 0 2px rgba(112,180,235,.08);}"
           );
           css.push(
+            "#" + ROOT_ID + " .zl1m-title-card.zl1m-dragover{border-color:#38bdf8;background:#e8f4fd;box-shadow:0 0 0 2px rgba(56,189,248,0.2);}"
+          );
+          css.push(
             "#" + ROOT_ID + " .zl1m-title-letter{width:26px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:7px;background:#edf2f6;color:#526170;font-size:11px;font-weight:850;flex-shrink:0;}"
           );
           css.push(
@@ -23897,6 +23900,7 @@ var MyApp = (() => {
             const card = document.createElement("div");
             card.className = "zl1m-text-card";
             card.dataset.textId = textItem.id;
+            card.draggable = true;
             const head = document.createElement("div");
             head.className = "zl1m-text-head";
             const label = document.createElement("span");
@@ -23910,6 +23914,40 @@ var MyApp = (() => {
             body.textContent = textItem.content;
             card.append(head, body);
             dom.textGrid.appendChild(card);
+            card.addEventListener("dragstart", function(e) {
+              const ghost = document.createElement("div");
+              ghost.textContent = textItem.content.substring(0, 30) + (textItem.content.length > 30 ? "\u2026" : "");
+              ghost.style.cssText = `
+                    position: fixed;
+                    top: -1000px;
+                    left: -1000px;
+                    padding: 8px 12px;
+                    background: white;
+                    border: 1px solid #ccc;
+                    border-radius: 6px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    font-size: 14px;
+                    max-width: 200px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    pointer-events: none;
+                    z-index: 9999;
+                    font-family: inherit;
+                `;
+              document.body.appendChild(ghost);
+              e.dataTransfer.setDragImage(ghost, 0, 0);
+              e.dataTransfer.effectAllowed = "move";
+              e.dataTransfer.setData("text/plain", textItem.id);
+              card._ghost = ghost;
+            });
+            card.addEventListener("dragend", function(e) {
+              if (this._ghost && this._ghost.parentNode) {
+                this._ghost.parentNode.removeChild(this._ghost);
+                this._ghost = null;
+              }
+              document.querySelectorAll(".zl1m-title-card.zl1m-dragover").forEach((el) => el.classList.remove("zl1m-dragover"));
+            });
             card.addEventListener("click", function() {
               if (state.matches.has(textItem.id)) {
                 disconnectText(textItem.id, dom);
@@ -26521,7 +26559,7 @@ var MyApp = (() => {
               window.Lesen1Matching.destroy();
               const wrapper = document.getElementById("zl1m-matching-wrapper");
               if (wrapper) wrapper.remove();
-              container.style.display = "";
+              container.style.display = "block";
               matchingBtn.classList.remove("active");
               matchingBtn.title = "\u0648\u0636\u0639 \u0627\u0644\u0645\u0637\u0627\u0628\u0642\u0629 (Matching)";
               try {
