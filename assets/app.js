@@ -20070,15 +20070,32 @@ var MyApp = (() => {
       if (!card) continue;
       const selectElem = card.querySelector("select");
       let userAnswer = null;
-      if (selectElem) {
-        userAnswer = selectElem.value || null;
-      }
-      if (userAnswer === null || userAnswer === "") {
-        userAnswer = matchingSelectedAnswers2[i] || null;
+      let selectedIndex = -1;
+      const matchingInstance = window.matchingLesen1;
+      const isMatchingActive = matchingInstance && matchingInstance.isActive && matchingInstance._matches;
+      if (isMatchingActive) {
+        const textId = `text-${i + 1}`;
+        const titleId = matchingInstance._matches.get(textId);
+        if (titleId) {
+          const match = titleId.match(/^title-(\d+)$/);
+          if (match) {
+            selectedIndex = parseInt(match[1], 10) - 1;
+          }
+        }
+      } else {
+        if (selectElem) {
+          userAnswer = selectElem.value || null;
+        }
+        if (userAnswer === null || userAnswer === "") {
+          userAnswer = matchingSelectedAnswers2[i] || null;
+        }
+        if (userAnswer) {
+          selectedIndex = currentMatchingExamData2.sharedOptions.indexOf(userAnswer);
+        }
       }
       const correctIndex = questions[i].correct;
       const correctAnswer = currentMatchingExamData2.sharedOptions[correctIndex];
-      const isCorrect = userAnswer === correctAnswer;
+      const isCorrect = selectedIndex === correctIndex;
       card.classList.remove("correct-answer-card", "wrong-answer-card");
       const oldMsg = card.querySelector(".correct-message");
       if (oldMsg) oldMsg.remove();
