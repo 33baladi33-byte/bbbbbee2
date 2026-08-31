@@ -28768,34 +28768,21 @@ var MyApp = (() => {
         card.classList.add("z-preview-wrong");
       }
       const correctTitle = correctIndex !== void 0 && correctIndex !== null ? sharedOptions[correctIndex] : null;
-      const oldTextIndicator = card.querySelector(".z-text-correct-answer");
-      if (oldTextIndicator) oldTextIndicator.remove();
-      const head = card.querySelector(".zertiva-matching-text-head");
-      if (!head) return;
+      const oldIndicator = card.querySelector(".z-text-correct-answer");
+      if (oldIndicator) oldIndicator.remove();
+      const body = card.querySelector(".zertiva-matching-text-body");
+      if (!body) return;
       if (correctTitle !== null) {
-        const badge = document.createElement("span");
-        badge.className = "z-text-correct-answer";
-        badge.style.cssText = `
-        display: inline-block;
-        font-size: 8px;
-        font-weight: 700;
-        color: #16a34a;
-        background: rgba(22, 163, 74, 0.12);
-        padding: 1px 6px;
-        border-radius: 12px;
-        margin-right: 4px;
-        line-height: 1.4;
-        border: 1px solid rgba(22, 163, 74, 0.2);
-        direction: rtl;
-        text-align: center;
-      `;
-        badge.textContent = isCorrect ? `\u2713 ${correctTitle}` : `\u2713 \u0627\u0644\u0625\u062C\u0627\u0628\u0629: ${correctTitle}`;
-        const existingBadge = head.querySelector(".zertiva-matching-text-badge");
-        if (existingBadge) {
-          head.insertBefore(badge, existingBadge.nextSibling);
-        } else {
-          head.appendChild(badge);
+        const originalContent = body.textContent || "";
+        let cleanContent = originalContent;
+        const indicatorRegex = /^✓\s*([^\s]+)\s*/;
+        const match = cleanContent.match(indicatorRegex);
+        if (match) {
+          cleanContent = cleanContent.replace(indicatorRegex, "");
         }
+        const newContent = `\u2713 ${correctTitle} ${cleanContent.trim()}`;
+        body.textContent = newContent;
+        body.classList.add("z-text-correct-answer");
       }
     });
     const correctTitleIndices = /* @__PURE__ */ new Map();
@@ -30051,6 +30038,89 @@ var MyApp = (() => {
           this._buildTextCards(textGrid);
           this._buildTitleCards(titleGrid);
           this._updateUI();
+          if (this.modeName === "lesen3") {
+            const style = document.createElement("style");
+            style.id = `zertiva-l3-prototype-style-fix`;
+            style.textContent = `
+        /* \u0627\u0644\u062A\u0639\u062F\u064A\u0644 2: \u062A\u062D\u062A 560px - Vertical Scroll \u0644\u0644\u0639\u0646\u0627\u0648\u064A\u0646 */
+        @media (max-width: 560px) {
+          #zertiva-matching-root-${this.modeName} .zertiva-matching-title-area {
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+            max-height: 200px !important;
+            min-height: 120px !important;
+            height: auto !important;
+          }
+          #zertiva-matching-root-${this.modeName} .zertiva-matching-title-grid {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            grid-auto-rows: auto !important;
+            gap: 6px 10px !important;
+            width: 100% !important;
+            min-width: unset !important;
+            max-width: 100% !important;
+            align-content: start !important;
+            align-items: stretch !important;
+            padding: 0 2px !important;
+          }
+          #zertiva-matching-root-${this.modeName} .zertiva-matching-title-card {
+            width: 100% !important;
+            min-width: unset !important;
+            max-width: 100% !important;
+            height: auto !important;
+            min-height: auto !important;
+            max-height: none !important;
+            flex-shrink: 0 !important;
+            padding: 6px 10px !important;
+            border-radius: 7px !important;
+          }
+          #zertiva-matching-root-${this.modeName} .zertiva-matching-title-card .zertiva-matching-title-text {
+            font-size: clamp(9px, 2vw, 11px) !important;
+            line-height: 1.4 !important;
+            white-space: normal !important;
+            overflow-wrap: break-word !important;
+            word-break: break-word !important;
+            text-overflow: clip !important;
+            display: block !important;
+            max-height: none !important;
+          }
+          #zertiva-matching-root-${this.modeName} .zertiva-matching-title-card .zertiva-matching-title-letter {
+            width: 20px !important;
+            height: 20px !important;
+            font-size: 9px !important;
+            flex-shrink: 0 !important;
+          }
+          #zertiva-matching-root-${this.modeName} .zertiva-matching-title-area::-webkit-scrollbar {
+            width: 4px !important;
+            height: 0 !important;
+          }
+          #zertiva-matching-root-${this.modeName} .zertiva-matching-title-area::-webkit-scrollbar-thumb {
+            background: rgba(90,115,140,.22) !important;
+            border-radius: 99px !important;
+          }
+        }
+
+        /* \u0627\u0644\u062A\u0639\u062F\u064A\u0644 3: \u0636\u0645\u0627\u0646 \u0638\u0647\u0648\u0631 \u0627\u0644\u0646\u0635 \u0643\u0627\u0645\u0644\u0627\u064B \u0641\u064A \u0627\u0644\u0639\u0646\u0627\u0648\u064A\u0646 (\u0644\u062C\u0645\u064A\u0639 \u0627\u0644\u0623\u062D\u062C\u0627\u0645) */
+        #zertiva-matching-root-${this.modeName} .zertiva-matching-title-text {
+          display: block !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          box-sizing: border-box !important;
+          font-size: clamp(9px, .8vw, 12px) !important;
+          line-height: 1.4 !important;
+          font-weight: 650 !important;
+          color: #273440 !important;
+          white-space: normal !important;
+          overflow-wrap: break-word !important;
+          word-break: break-word !important;
+          overflow: visible !important;
+          text-overflow: clip !important;
+          text-align: left !important;
+          max-height: none !important;
+        }
+      `;
+            document.head.appendChild(style);
+          }
           this._resizeHandler = () => this._handleResize();
           window.addEventListener("resize", this._resizeHandler);
           this._captureTimeout = setTimeout(() => {
