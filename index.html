@@ -607,7 +607,6 @@
     .home .tips-trigger-btn {
         display: none;
     }
-
     /* ===== تنسيق أزرار الأجزاء (Teile) في الهاتف ===== */
     @media (max-width: 768px) {
         .teile-row {
@@ -637,6 +636,46 @@
             font-size: 0.5rem !important;
             padding: 8px 2px !important;
             min-height: 40px !important;
+        }
+    }
+
+    /* ===== تنسيق أزرار التصحيح وإعادة التعيين في Lesen 1 و Lesen 3 للشاشات الصغيرة (داخل media query) ===== */
+    @media (max-width: 770px) {
+        #teil1 .teil1-controls,
+        #teil3 .teil3-controls {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 8px !important;
+            flex-wrap: nowrap !important;
+            margin-top: 12px !important;
+        }
+
+        #teil1 .teil1-controls .check-btn,
+        #teil3 .teil3-controls .check-btn,
+        #teil1 .teil1-controls .reset-btn,
+        #teil3 .teil3-controls .reset-btn {
+            padding: 6px 14px !important;
+            font-size: 13px !important;
+            min-height: 34px !important;
+            height: auto !important;
+            border-radius: 20px !important;
+            white-space: nowrap !important;
+            flex: 0 1 auto !important;
+            min-width: unset !important;
+            width: auto !important;
+        }
+
+        #teil1 .teil1-controls .check-btn,
+        #teil3 .teil3-controls .check-btn {
+            background: #2c3e66 !important;
+            color: white !important;
+        }
+        #teil1 .teil1-controls .reset-btn,
+        #teil3 .teil3-controls .reset-btn {
+            background: #6c757d !important;
+            color: white !important;
         }
     }
 
