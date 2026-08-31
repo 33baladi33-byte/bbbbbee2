@@ -22727,21 +22727,24 @@ var MyApp = (() => {
       card.classList.remove("z-preview-correct", "z-preview-wrong");
       if (isCorrect) {
         card.classList.add("z-preview-correct");
-      } else if (userIndex !== void 0) {
+      } else {
         card.classList.add("z-preview-wrong");
       }
       const body = card.querySelector(".zertiva-matching-text-body");
       if (body) {
         const old = body.querySelector(".z-preview-correct-answer");
         if (old) old.remove();
-        const correctAnswer = sharedOptions[correctIndex];
-        if (correctAnswer) {
-          const answerDiv = document.createElement("div");
-          answerDiv.className = "z-preview-correct-answer";
-          answerDiv.style.color = "#2b8c4a";
-          answerDiv.innerHTML = `<strong style="color:#2b8c4a;">\u2713</strong> ${correctAnswer}`;
-          body.insertBefore(answerDiv, body.firstChild);
+        let correctAnswer = "";
+        if (correctIndex !== void 0 && correctIndex !== null && sharedOptions[correctIndex]) {
+          correctAnswer = sharedOptions[correctIndex];
+        } else {
+          correctAnswer = "\u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646";
         }
+        const answerDiv = document.createElement("div");
+        answerDiv.className = "z-preview-correct-answer";
+        answerDiv.style.color = "#2b8c4a";
+        answerDiv.innerHTML = `<strong style="color:#2b8c4a;">\u2713</strong> ${correctAnswer}`;
+        body.insertBefore(answerDiv, body.firstChild);
       }
     });
     titleCards.forEach((titleCard) => {
