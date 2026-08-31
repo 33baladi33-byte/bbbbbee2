@@ -22705,7 +22705,7 @@ var MyApp = (() => {
     root.querySelectorAll(".z-preview-correct, .z-preview-wrong, .z-title-correct, .z-title-wrong").forEach((el) => {
       el.classList.remove("z-preview-correct", "z-preview-wrong", "z-title-correct", "z-title-wrong");
     });
-    root.querySelectorAll(".z-preview-correct-answer").forEach((el) => el.remove());
+    root.querySelectorAll(".z-title-indicator").forEach((el) => el.remove());
     const answerMap = /* @__PURE__ */ new Map();
     for (let i = 0; i < questions.length; i++) {
       const textId = `text-${i + 1}`;
@@ -22730,23 +22730,16 @@ var MyApp = (() => {
       } else {
         card.classList.add("z-preview-wrong");
       }
-      const body = card.querySelector(".zertiva-matching-text-body");
-      if (body) {
-        const old = body.querySelector(".z-preview-correct-answer");
-        if (old) old.remove();
-        let correctAnswer = "";
-        if (correctIndex !== void 0 && correctIndex !== null && sharedOptions[correctIndex]) {
-          correctAnswer = sharedOptions[correctIndex];
-        } else {
-          correctAnswer = "\u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646";
-        }
-        const answerDiv = document.createElement("div");
-        answerDiv.className = "z-preview-correct-answer";
-        answerDiv.style.color = "#2b8c4a";
-        answerDiv.innerHTML = `<strong style="color:#2b8c4a;">\u2713</strong> ${correctAnswer}`;
-        body.insertBefore(answerDiv, body.firstChild);
-      }
     });
+    const correctTitleIndices = /* @__PURE__ */ new Map();
+    for (let qIndex = 0; qIndex < questions.length; qIndex++) {
+      const correctIndex = questions[qIndex]?.correct;
+      if (correctIndex !== void 0 && correctIndex !== null) {
+        if (!correctTitleIndices.has(correctIndex)) {
+          correctTitleIndices.set(correctIndex, qIndex);
+        }
+      }
+    }
     titleCards.forEach((titleCard) => {
       const textEl = titleCard.querySelector(".zertiva-matching-title-text");
       if (!textEl) return;
@@ -22762,18 +22755,36 @@ var MyApp = (() => {
         titleCard.classList.remove("z-title-correct", "z-title-wrong");
         return;
       }
-      let isTitleCorrect = false;
+      let selectedByUser = false;
+      let selectedForQuestion = -1;
       for (let [qIndex, selectedIdx] of answerMap) {
-        if (selectedIdx === titleIndex && selectedIdx === questions[qIndex]?.correct) {
-          isTitleCorrect = true;
+        if (selectedIdx === titleIndex) {
+          selectedByUser = true;
+          selectedForQuestion = qIndex;
           break;
         }
       }
-      const isUsed = Array.from(answerMap.values()).includes(titleIndex);
+      const isCorrectForQuestion = correctTitleIndices.get(titleIndex);
+      const isCorrect = isCorrectForQuestion !== void 0;
       titleCard.classList.remove("z-title-correct", "z-title-wrong");
-      if (isTitleCorrect) {
+      const oldIndicator = titleCard.querySelector(".z-title-indicator");
+      if (oldIndicator) oldIndicator.remove();
+      if (isCorrect) {
         titleCard.classList.add("z-title-correct");
-      } else if (isUsed) {
+        const indicator = document.createElement("span");
+        indicator.className = "z-title-indicator";
+        indicator.textContent = ` \u2713${isCorrectForQuestion + 1}`;
+        indicator.style.cssText = `
+        font-size: 9px;
+        font-weight: 700;
+        color: #1a7a3a;
+        margin-left: 4px;
+        display: inline-block;
+        line-height: 1.2;
+        vertical-align: middle;
+      `;
+        textEl.appendChild(indicator);
+      } else if (selectedByUser) {
         titleCard.classList.add("z-title-wrong");
       }
     });
@@ -22792,23 +22803,6 @@ var MyApp = (() => {
         background: #fff6ec !important;
         box-shadow: 0 0 0 2px rgba(241,177,111,.10) !important;
       }
-      .z-preview-correct-answer {
-        display: block;
-        width: 100%;
-        box-sizing: border-box;
-        margin: 0 0 7px 0;
-        padding: 0;
-        font-size: 10px;
-        line-height: 1.25;
-        font-weight: 750;
-        white-space: normal;
-        color: #2b8c4a;
-      }
-      .z-preview-correct-answer strong {
-        font-weight: 850;
-        margin-right: 3px;
-        color: #2b8c4a;
-      }
       .z-title-correct {
         border-color: #86d7a1 !important;
         background: #f0faf4 !important;
@@ -22818,6 +22812,22 @@ var MyApp = (() => {
         border-color: #f1b16f !important;
         background: #fdf6ed !important;
         box-shadow: 0 0 0 2px rgba(241,177,111,.08) !important;
+      }
+      .z-title-indicator {
+        font-size: 9px;
+        font-weight: 700;
+        color: #1a7a3a;
+        margin-left: 4px;
+        display: inline-block;
+        line-height: 1.2;
+        vertical-align: middle;
+      }
+      /* \u0636\u0645\u0627\u0646 \u0639\u062F\u0645 \u0632\u064A\u0627\u062F\u0629 \u0627\u0631\u062A\u0641\u0627\u0639 \u0627\u0644\u0628\u0637\u0627\u0642\u0629 */
+      .zertiva-matching-title-card .zertiva-matching-title-text {
+        display: inline-flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2px;
       }
     `;
       document.head.appendChild(style);
@@ -22830,6 +22840,7 @@ var MyApp = (() => {
       el.classList.remove("z-preview-correct", "z-preview-wrong", "z-title-correct", "z-title-wrong");
     });
     root.querySelectorAll(".z-preview-correct-answer").forEach((el) => el.remove());
+    root.querySelectorAll(".z-title-indicator").forEach((el) => el.remove());
     if (root) {
       root.querySelectorAll(".zertiva-matching-text-card").forEach((card) => {
         card.style.backgroundColor = "";
@@ -23833,7 +23844,6 @@ var MyApp = (() => {
           });
           return true;
         }
-        // ---- بناء واجهة Matching (مرة واحدة فقط) ----
         _buildUI() {
           if (this._isBuilding) return;
           this._isBuilding = true;
@@ -23852,9 +23862,9 @@ var MyApp = (() => {
           root.style.display = "none";
           const header = document.createElement("div");
           header.className = "zertiva-matching-header";
-          const title = document.createElement("div");
-          title.className = "zertiva-matching-main-title";
-          title.textContent = this.modeName === "lesen1" ? "Lesen Teil 1" : "Lesen Teil 3";
+          const mainTitle = document.createElement("div");
+          mainTitle.className = "zertiva-matching-main-title";
+          mainTitle.textContent = this.modeName === "lesen1" ? "Lesen Teil 1" : "Lesen Teil 3";
           const progress = document.createElement("div");
           progress.className = "zertiva-matching-progress";
           const progressText = document.createElement("span");
@@ -23866,12 +23876,33 @@ var MyApp = (() => {
           this._progressFill = progressFill;
           progressBar.appendChild(progressFill);
           progress.append(progressText, progressBar);
-          header.append(title, progress);
+          header.append(mainTitle, progress);
+          root.appendChild(header);
           const textArea = document.createElement("div");
           textArea.className = "zertiva-matching-text-area";
           const textGrid = document.createElement("div");
           textGrid.className = "zertiva-matching-text-grid";
+          if (this.modeName === "lesen1") {
+            textGrid.style.display = "flex";
+            textGrid.style.flexWrap = "nowrap";
+            textGrid.style.gap = "clamp(7px, .8vw, 11px)";
+            textGrid.style.minWidth = "100%";
+            textGrid.style.height = "100%";
+            textGrid.style.alignItems = "stretch";
+          } else {
+            textGrid.style.display = "grid";
+            textGrid.style.gridTemplateColumns = "repeat(6, minmax(0, 1fr))";
+            textGrid.style.gridTemplateRows = "repeat(2, minmax(0, 1fr))";
+            textGrid.style.gap = "clamp(7px, .8vw, 11px)";
+            textGrid.style.width = "100%";
+            textGrid.style.height = "100%";
+            textGrid.style.minHeight = "0";
+            textGrid.style.alignItems = "stretch";
+            textGrid.style.alignContent = "stretch";
+            textGrid.style.boxSizing = "border-box";
+          }
           textArea.appendChild(textGrid);
+          root.appendChild(textArea);
           const answerArea = document.createElement("div");
           answerArea.className = "zertiva-matching-answer-area";
           const answerHeader = document.createElement("div");
@@ -23880,26 +23911,24 @@ var MyApp = (() => {
           answerTitle.className = "zertiva-matching-answer-title";
           answerTitle.textContent = "TITEL ZUORDNEN";
           answerHeader.appendChild(answerTitle);
+          answerArea.appendChild(answerHeader);
           const titleArea = document.createElement("div");
           titleArea.className = "zertiva-matching-title-area";
           const titleGrid = document.createElement("div");
           titleGrid.className = "zertiva-matching-title-grid";
           titleArea.appendChild(titleGrid);
-          answerArea.append(answerHeader, titleArea);
-          root.append(header, textArea, answerArea);
+          answerArea.appendChild(titleArea);
+          root.appendChild(answerArea);
           const actions = document.createElement("div");
           actions.className = "zertiva-actions-buttons";
-          actions.style.cssText = "display:flex; justify-content:center; gap:12px; padding:12px 0 0 0; flex-wrap:wrap;";
           const checkBtn = document.createElement("button");
           checkBtn.type = "button";
           checkBtn.className = "check-btn";
           checkBtn.textContent = "\u2705 \u062A\u0635\u062D\u064A\u062D";
-          checkBtn.style.cssText = "padding:8px 20px; border:none; border-radius:8px; background:#2c3e66; color:white; font-size:14px; font-weight:600; cursor:pointer;";
           const resetBtn = document.createElement("button");
           resetBtn.type = "button";
           resetBtn.className = "reset-btn";
           resetBtn.textContent = "\u21BA";
-          resetBtn.style.cssText = "padding:8px 12px; border:none; border-radius:8px; background:#6c757d; color:white; font-size:14px; font-weight:600; cursor:pointer;";
           actions.append(checkBtn, resetBtn);
           root.appendChild(actions);
           if (this.modeName === "lesen1") {
@@ -23923,7 +23952,7 @@ var MyApp = (() => {
               }
               this._updateUI();
             });
-          } else if (this.modeName === "lesen3") {
+          } else {
             checkBtn.addEventListener("click", () => {
               if (typeof window.checkTeil3Exam === "function") {
                 window.checkTeil3Exam();
@@ -24183,7 +24212,6 @@ var MyApp = (() => {
           if (this._captureTimeout) clearTimeout(this._captureTimeout);
           this._captureTimeout = setTimeout(() => this._captureSizes(), 50);
         }
-        // ---- تفعيل Matching ----
         activate() {
           if (this.isActive || this._isDestroyed) return;
           if (!this._extractData()) {
@@ -24207,12 +24235,17 @@ var MyApp = (() => {
             this.root.style.display = "flex";
             container.classList.add("zertiva-matching-active");
           }
+          const controlsSelector = this.modeName === "lesen1" ? "#teil1-exam-controls" : "#teil3-exam-controls";
+          const controls = document.querySelector(controlsSelector);
+          if (controls) {
+            controls.style.display = "none";
+            this._originalControls = controls;
+          }
           this.isActive = true;
           this._saveState(true);
           console.log(`\u2705 Matching mode activated for ${this.modeName}`);
           this._updateMatchingButton(true);
         }
-        // ---- إلغاء Matching ----
         deactivate() {
           if (!this.isActive || this._isDestroyed) return;
           const container = document.getElementById(this.containerId);
@@ -24226,6 +24259,16 @@ var MyApp = (() => {
               this.root.style.display = "none";
             }
             container.classList.remove("zertiva-matching-active");
+          }
+          if (this._originalControls) {
+            this._originalControls.style.display = "";
+            this._originalControls = null;
+          } else {
+            const controlsSelector = this.modeName === "lesen1" ? "#teil1-exam-controls" : "#teil3-exam-controls";
+            const controls = document.querySelector(controlsSelector);
+            if (controls) {
+              controls.style.display = "";
+            }
           }
           this.isActive = false;
           this._saveState(false);
