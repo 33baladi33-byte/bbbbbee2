@@ -1211,141 +1211,118 @@ var MyApp = (() => {
     const card = document.createElement("div");
     card.style.cssText = `
         background: #ffffff;
-        border-radius: 16px;
-        padding: 20px;
-        margin-bottom: 18px;
-        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        border-radius: 12px;
+        padding: clamp(12px, 2vw, 20px);
+        margin-bottom: 16px;
         border: 1px solid #e8edf4;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         direction: rtl;
         text-align: right;
+        max-width: 100%;
+        box-sizing: border-box;
+        width: 100%;
     `;
+    function addSection(title, content, isKeywordList = false) {
+      const wrapper = document.createElement("div");
+      wrapper.style.cssText = `
+            margin-bottom: clamp(10px, 1.5vw, 16px);
+        `;
+      if (title) {
+        const titleEl = document.createElement("div");
+        titleEl.style.cssText = `
+                font-weight: 600;
+                color: #1e293b;
+                font-size: clamp(13px, 1.1vw, 15px);
+                margin-bottom: 3px;
+            `;
+        titleEl.textContent = title;
+        wrapper.appendChild(titleEl);
+      }
+      if (isKeywordList) {
+        const container = document.createElement("div");
+        container.style.cssText = `
+                display: flex;
+                flex-wrap: wrap;
+                gap: 4px 8px;
+                margin-top: 2px;
+            `;
+        content.forEach((item) => {
+          const span = document.createElement("span");
+          span.style.cssText = `
+                    background: #f1f5f9;
+                    padding: 2px 10px;
+                    border-radius: 14px;
+                    font-size: clamp(11px, 0.8vw, 13px);
+                    color: #1e293b;
+                    white-space: nowrap;
+                `;
+          span.textContent = item;
+          container.appendChild(span);
+        });
+        wrapper.appendChild(container);
+      } else {
+        const contentEl = document.createElement("div");
+        contentEl.style.cssText = `
+                font-size: clamp(13px, 1vw, 15px);
+                color: #0f172a;
+                line-height: 1.7;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            `;
+        contentEl.textContent = content;
+        wrapper.appendChild(contentEl);
+      }
+      return wrapper;
+    }
     const header = document.createElement("div");
     header.style.cssText = `
-        font-size: 18px;
+        font-size: clamp(16px, 1.5vw, 20px);
         font-weight: 700;
-        color: #1e293b;
-        margin-bottom: 16px;
-        padding-bottom: 10px;
+        color: #0f172a;
+        margin-bottom: clamp(12px, 1.8vw, 18px);
+        padding-bottom: 8px;
         border-bottom: 2px solid #eef2f6;
-        display: flex;
-        align-items: center;
-        gap: 8px;
     `;
-    header.innerHTML = `\u{1F9E0} \u0645\u0633\u0627\u0639\u062F\u0629 \u0644\u0644\u0641\u0647\u0645`;
+    header.textContent = "\u{1F9E0} \u0645\u0633\u0627\u0639\u062F\u0629 \u0644\u0644\u0641\u0647\u0645";
     card.appendChild(header);
-    const row = document.createElement("div");
-    row.style.cssText = `
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        margin-bottom: 16px;
-    `;
-    const col1 = document.createElement("div");
-    col1.style.cssText = `
-        background: #f8fafc;
-        border-radius: 12px;
-        padding: 14px 16px;
-        border-right: 3px solid #2563eb;
-    `;
-    col1.innerHTML = `
-        <div style="font-weight:600; color:#1e293b; margin-bottom:6px;">\u{1F4D6} \u0628\u062F\u0627\u064A\u0629 \u0627\u0644\u0641\u0642\u0631\u0629</div>
-        <div style="font-size:15px; line-height:1.7; color:#0f172a;">${data.paragraphStart || ""}</div>
-        <div style="font-size:14px; color:#475569; margin-top:8px; border-top:1px dashed #dce2ec; padding-top:8px;">
-            <span style="font-weight:500;">\u0627\u0644\u062A\u0631\u062C\u0645\u0629:</span> ${data.paragraphTranslation || ""}
-        </div>
-        ${data.paragraphKeywords && data.paragraphKeywords.length ? `
-            <div style="margin-top:10px; display:flex; flex-wrap:wrap; gap:6px;">
-                ${data.paragraphKeywords.map((kw) => `<span style="background:#e6f0fa; padding:4px 10px; border-radius:16px; font-size:12px; color:#1e3a5f;">${kw}</span>`).join("")}
-            </div>
-        ` : ""}
-    `;
-    row.appendChild(col1);
-    const col2 = document.createElement("div");
-    col2.style.cssText = `
-        background: #f8fafc;
-        border-radius: 12px;
-        padding: 14px 16px;
-        border-right: 3px solid #7c3aed;
-    `;
-    col2.innerHTML = `
-        <div style="font-weight:600; color:#1e293b; margin-bottom:6px;">\u2194\uFE0F \u0627\u0644\u0639\u0646\u0648\u0627\u0646</div>
-        <div style="font-size:15px; line-height:1.7; color:#0f172a;">${data.titleStart || ""}</div>
-        <div style="font-size:14px; color:#475569; margin-top:8px; border-top:1px dashed #dce2ec; padding-top:8px;">
-            <span style="font-weight:500;">\u0627\u0644\u062A\u0631\u062C\u0645\u0629:</span> ${data.titleTranslation || ""}
-        </div>
-        ${data.titleKeywords && data.titleKeywords.length ? `
-            <div style="margin-top:10px; display:flex; flex-wrap:wrap; gap:6px;">
-                ${data.titleKeywords.map((kw) => `<span style="background:#ede9fe; padding:4px 10px; border-radius:16px; font-size:12px; color:#3b1f6e;">${kw}</span>`).join("")}
-            </div>
-        ` : ""}
-    `;
-    row.appendChild(col2);
-    card.appendChild(row);
-    const bottomSection = document.createElement("div");
-    bottomSection.style.cssText = `
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-        margin-top: 6px;
-    `;
+    if (data.paragraphStart) {
+      card.appendChild(addSection("\u{1F4D6} \u0628\u062F\u0627\u064A\u0629 \u0627\u0644\u0641\u0642\u0631\u0629", data.paragraphStart));
+    }
+    if (data.paragraphTranslation) {
+      card.appendChild(addSection("\u0627\u0644\u062A\u0631\u062C\u0645\u0629", data.paragraphTranslation));
+    }
+    if (data.paragraphKeywords && data.paragraphKeywords.length) {
+      card.appendChild(addSection("\u{1F4CC} \u0643\u0644\u0645\u0627\u062A \u0627\u0644\u0641\u0642\u0631\u0629", data.paragraphKeywords, true));
+    }
+    if (data.titleStart) {
+      card.appendChild(addSection("\u2194\uFE0F \u0627\u0644\u0639\u0646\u0648\u0627\u0646", data.titleStart));
+    }
+    if (data.titleTranslation) {
+      card.appendChild(addSection("\u0627\u0644\u062A\u0631\u062C\u0645\u0629", data.titleTranslation));
+    }
+    if (data.titleKeywords && data.titleKeywords.length) {
+      card.appendChild(addSection("\u{1F4CC} \u0643\u0644\u0645\u0627\u062A \u0627\u0644\u0639\u0646\u0648\u0627\u0646", data.titleKeywords, true));
+    }
     if (data.mentalLink) {
-      const mentalDiv = document.createElement("div");
-      mentalDiv.style.cssText = `
-            background: #f1f5f9;
-            border-radius: 10px;
-            padding: 12px 14px;
-            border-right: 3px solid #f59e0b;
-        `;
-      mentalDiv.innerHTML = `
-            <div style="font-weight:600; color:#1e293b; margin-bottom:4px;">\u{1F517} \u0627\u0644\u0631\u0627\u0628\u0637 \u0627\u0644\u0630\u0647\u0646\u064A</div>
-            <div style="font-size:14px; color:#0f172a;">${data.mentalLink}</div>
-        `;
-      bottomSection.appendChild(mentalDiv);
+      card.appendChild(addSection("\u{1F517} \u0627\u0644\u0631\u0627\u0628\u0637 \u0627\u0644\u0630\u0647\u0646\u064A", data.mentalLink));
     }
     if (data.whyMatch) {
-      const whyDiv = document.createElement("div");
-      whyDiv.style.cssText = `
-            background: #f1f5f9;
-            border-radius: 10px;
-            padding: 12px 14px;
-            border-right: 3px solid #10b981;
-        `;
-      whyDiv.innerHTML = `
-            <div style="font-weight:600; color:#1e293b; margin-bottom:4px;">\u{1F4A1} \u0644\u0645\u0627\u0630\u0627 \u064A\u0644\u062A\u0642\u064A\u0627\u0646\u061F</div>
-            <div style="font-size:14px; color:#0f172a;">${data.whyMatch}</div>
-        `;
-      bottomSection.appendChild(whyDiv);
+      card.appendChild(addSection("\u{1F4A1} \u0644\u0645\u0627\u0630\u0627 \u064A\u0644\u062A\u0642\u064A\u0627\u0646\u061F", data.whyMatch));
     }
     if (data.memoryKey) {
-      const memoryDiv = document.createElement("div");
-      memoryDiv.style.cssText = `
-            background: #eef2ff;
-            border-radius: 10px;
-            padding: 12px 14px;
-            border-right: 3px solid #4f46e5;
-            grid-column: 1 / -1;
-        `;
-      memoryDiv.innerHTML = `
-            <div style="font-weight:600; color:#1e293b; margin-bottom:4px;">\u{1F9E0} \u0645\u0641\u062A\u0627\u062D \u0627\u0644\u062D\u0641\u0638</div>
-            <div style="font-size:14px; color:#0f172a;">${data.memoryKey}</div>
-        `;
-      bottomSection.appendChild(memoryDiv);
+      card.appendChild(addSection("\u{1F9E0} \u0645\u0641\u062A\u0627\u062D \u0627\u0644\u062D\u0641\u0638", data.memoryKey));
     }
-    if (!data.mentalLink && !data.whyMatch && !data.memoryKey) {
-      bottomSection.style.display = "none";
-    }
-    card.appendChild(bottomSection);
-    const qBadge = document.createElement("div");
-    qBadge.style.cssText = `
-        font-size: 12px;
+    const footer = document.createElement("div");
+    footer.style.cssText = `
+        font-size: clamp(10px, 0.7vw, 12px);
         color: #94a3b8;
-        text-align: left;
-        margin-top: 12px;
+        margin-top: clamp(10px, 1.5vw, 14px);
+        padding-top: 8px;
         border-top: 1px solid #eef2f6;
-        padding-top: 10px;
+        text-align: left;
     `;
-    qBadge.textContent = `\u0627\u0644\u0633\u0624\u0627\u0644 ${questionNumber}`;
-    card.appendChild(qBadge);
+    footer.textContent = `\u0627\u0644\u0633\u0624\u0627\u0644 ${questionNumber}`;
+    card.appendChild(footer);
     return card;
   }
   function createHelpCard(questionNumber) {
@@ -5284,14 +5261,6 @@ var MyApp = (() => {
         simplified: "\u0641\u0646\u0627\u0646\u064A\u0646 \u0639\u0627\u0644\u0645\u064A\u064A\u0646 \u064A\u0642\u062F\u0645\u0648 \u0639\u0631\u0648\u0636\u0647\u0645 \u0641\u064A \u0628\u0644\u0627\u064A\u0635 \u0645\u062E\u062A\u0644\u0641\u0629 \u0628\u0625\u0633\u064A\u0646\u0633",
         imagine: "\u{1F3A4}\u{1F30D} \u0641\u0646\u0627\u0646\u064A\u0646 \u0639\u0644\u0649 \u0645\u0633\u0627\u0631\u062D \u0641\u064A \u0645\u062F\u064A\u0646\u0629 \u0625\u0633\u064A\u0646\u0633",
         correct: true
-      };
-      HELP_DATA2["lesen1_exam1_q1"] = {
-        text: "Die Zahlen wirken auf dem ersten Blick dramatisch - Wenn aus Erdbeeren Tomaten werden",
-        meaning: "\u0627\u0644\u0623\u0637\u0641\u0627\u0644 \u0644\u0627 \u064A\u0639\u0631\u0641\u0648\u0646 \u0627\u0644\u0637\u0628\u062E \u0648\u064A\u062E\u0644\u0637\u0648\u0646 \u0628\u064A\u0646 \u0627\u0644\u0641\u0631\u0627\u0648\u0644\u0629 \u0648\u0627\u0644\u0637\u0645\u0627\u0637\u0645",
-        keywords: ["kochen = \u0637\u0628\u062E", "Erdbeeren = \u0641\u0631\u0627\u0648\u0644\u0629", "Tomaten = \u0637\u0645\u0627\u0637\u0645"],
-        simplified: "\u0623\u0637\u0641\u0627\u0644 \u064A\u062E\u0644\u0637\u0648\u0646 \u0628\u064A\u0646 \u0627\u0644\u0641\u0631\u0627\u0648\u0644\u0629 \u0648\u0627\u0644\u0637\u0645\u0627\u0637\u0645",
-        imagine: "\u0637\u0641\u0644 \u064A\u0623\u0643\u0644 \u0641\u0631\u0627\u0648\u0644\u0629 \u0648\u064A\u0642\u0648\u0644 \u0647\u0630\u0647 \u0637\u0645\u0627\u0637\u0645",
-        correct: "j"
       };
       HELP_DATA2["lesen1_exam1b_q1"] = {
         paragraphStart: "Die Zahlen wirken auf dem ersten Blick dramatisch.",
