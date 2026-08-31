@@ -7684,8 +7684,7 @@ body:has(#list.active) #backHomeBtn {
         font-size: 0.8rem !important;
         word-break: break-word !important;
     }
-}
-/* ========================================
+}/* ========================================
    New Hero Section Content & Cards
    ======================================== */
 
@@ -7732,6 +7731,83 @@ body:has(#list.active) #backHomeBtn {
         font-size: 14px !important;
         line-height: 1.85 !important;
     }
+}
+
+/* ========================================
+   تنسيق Help: اتجاه النصوص حسب المحتوى
+   ======================================== */
+
+/* حاوية المساعدة */
+#help-container, .help-container, .help-content {
+    direction: rtl;
+    text-align: right;
+}
+
+/* النص الألماني - LTR */
+.help-german-text, .help-german, .german-text {
+    direction: ltr !important;
+    text-align: left !important;
+    unicode-bidi: embed;
+}
+
+/* النص العربي - RTL */
+.help-arabic-text, .help-arabic, .arabic-text {
+    direction: rtl !important;
+    text-align: right !important;
+    unicode-bidi: embed;
+}
+
+/* عناوين الأقسام (مثل "الترجمة"، "لماذا يلتقيان؟") */
+.help-section-title, .help-label {
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+/* تنسيق بطاقات المساعدة بشكل عام */
+.help-card .help-paragraph,
+.help-card .help-title {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.help-card .help-paragraph .german-text,
+.help-card .help-title .german-text {
+    display: block;
+    direction: ltr;
+    text-align: left;
+}
+
+.help-card .help-paragraph .arabic-text,
+.help-card .help-title .arabic-text {
+    display: block;
+    direction: rtl;
+    text-align: right;
+}
+
+/* 🔗 الرابط الذهني - عادةً يحتوي على كلمات ألمانية وأسهم، نتركه LTR */
+.help-golden-link {
+    direction: ltr !important;
+    text-align: left !important;
+    unicode-bidi: embed;
+}
+
+/* 💡 لماذا يلتقيان؟ - عربي RTL */
+.help-why-meet {
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+/* 🧠 مفتاح الحفظ - قد يحتوي على كلمات ألمانية، نتركه LTR مع إمكانية خلط */
+.help-memory-key {
+    direction: ltr !important;
+    text-align: left !important;
+    unicode-bidi: embed;
+}
+
+/* تطبيق على جميع العناصر داخل البطاقات */
+.help-card * {
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 /* ============================================================
