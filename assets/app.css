@@ -571,7 +571,7 @@ body {
     }
 }
 
-/* ========================================
+    /* ========================================
    إخفاء العناصر القديمة التي طلبت حذفها
    ======================================== */
 #reviewsWidget, .reviews-widget {
@@ -585,6 +585,46 @@ body {
 }
 .info-glass-card {
     display: none !important;
+}
+
+/* ===== تنسيق أزرار التصحيح وإعادة التعيين في Lesen 1 و Lesen 3 للشاشات الصغيرة (نسخة مستقلة) ===== */
+@media (max-width: 770px) {
+    #teil1 .teil1-controls,
+    #teil3 .teil3-controls {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 8px !important;
+        flex-wrap: nowrap !important;
+        margin-top: 12px !important;
+    }
+
+    #teil1 .teil1-controls .check-btn,
+    #teil3 .teil3-controls .check-btn,
+    #teil1 .teil1-controls .reset-btn,
+    #teil3 .teil3-controls .reset-btn {
+        padding: 6px 14px !important;
+        font-size: 13px !important;
+        min-height: 34px !important;
+        height: auto !important;
+        border-radius: 20px !important;
+        white-space: nowrap !important;
+        flex: 0 1 auto !important;
+        min-width: unset !important;
+        width: auto !important;
+    }
+
+    #teil1 .teil1-controls .check-btn,
+    #teil3 .teil3-controls .check-btn {
+        background: #2c3e66 !important;
+        color: white !important;
+    }
+    #teil1 .teil1-controls .reset-btn,
+    #teil3 .teil3-controls .reset-btn {
+        background: #6c757d !important;
+        color: white !important;
+    }
 }
 
 .top-bar {
@@ -3877,9 +3917,9 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 5 !important; }
     font-weight: 500 !important;
 }
 
-/* ========================================
+/* ============================================
    تنسيق أزرار الأجزاء (Teile) - التصميم الجديد
-   ======================================== */
+   ============================================ */
 
 .teil-item {
     display: inline-flex !important;
@@ -3919,6 +3959,46 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 5 !important; }
     border-color: #095BBB !important;
     color: #FFFFFF !important;
     transform: none !important;
+}
+
+/* ===== تنسيق أزرار التصحيح وإعادة التعيين في Lesen 1 و Lesen 3 للشاشات الصغيرة ===== */
+@media (max-width: 770px) {
+    #teil1 .teil1-controls,
+    #teil3 .teil3-controls {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 8px !important;
+        flex-wrap: nowrap !important;
+        margin-top: 12px !important;
+    }
+
+    #teil1 .teil1-controls .check-btn,
+    #teil3 .teil3-controls .check-btn,
+    #teil1 .teil1-controls .reset-btn,
+    #teil3 .teil3-controls .reset-btn {
+        padding: 6px 14px !important;
+        font-size: 13px !important;
+        min-height: 34px !important;
+        height: auto !important;
+        border-radius: 20px !important;
+        white-space: nowrap !important;
+        flex: 0 1 auto !important;
+        min-width: unset !important;
+        width: auto !important;
+    }
+
+    #teil1 .teil1-controls .check-btn,
+    #teil3 .teil3-controls .check-btn {
+        background: #2c3e66 !important;
+        color: white !important;
+    }
+    #teil1 .teil1-controls .reset-btn,
+    #teil3 .teil3-controls .reset-btn {
+        background: #6c757d !important;
+        color: white !important;
+    }
 }
 
 
@@ -7655,11 +7735,10 @@ body:has(#list.active) #backHomeBtn {
 }
 
 /* ============================================================
-   ZERTIVA MATCHING MODE – LESEN 1 & LESEN 3
-   مستوحاة من prototypes مع تكامل كامل مع النظام الأصلي
+   ZERTIVA MATCHING MODE – LESEN 1 & LESEN 3 (الإصدار المُصحَّح)
    ============================================================ */
 
-/* ---- جذور Matching (يتم إضافتها داخل #teil1 و #teil3) ---- */
+/* ---- جذور Matching ---- */
 .zertiva-matching-root {
   width: 100%;
   max-width: 100%;
@@ -7681,7 +7760,7 @@ body:has(#list.active) #backHomeBtn {
   z-index: 10;
 }
 
-/* ---- الهيدر (العنوان + التقدم) ---- */
+/* ---- الهيدر ---- */
 .zertiva-matching-header {
   flex: 0 0 38px;
   min-height: 38px;
@@ -7752,7 +7831,7 @@ body:has(#list.active) #backHomeBtn {
 
 /* ---- بطاقات النصوص (تطبق على Lesen1 و Lesen3) ---- */
 .zertiva-matching-text-card {
-  flex: 0 0 calc(20% - 10px);  /* 5 بطاقات في الصف */
+  flex: 0 0 calc(20% - 10px);
   min-width: 0;
   min-height: 0;
   height: 100%;
@@ -7887,10 +7966,8 @@ body:has(#list.active) #backHomeBtn {
   border-radius: 99px;
 }
 
-
-
 /* ============================================================
-   نظام العناوين الجديد – فقط فوق 639px
+   نظام العناوين الجديد – فوق 639px فقط
    جميع الخانات متساوية الحجم، بدون إخفاء للنص
    ============================================================ */
 
@@ -7986,10 +8063,6 @@ body:has(#list.active) #backHomeBtn {
   }
 }
 
-/* ============================================================
-   القواعد الخاصة بأقل من 641px تبقى كما هي (لا نلمسها)
-   ============================================================ */
-
 /* ---- التعديلات الخاصة بالهواتف الصغيرة (650px) ---- */
 @media (max-width: 650px) {
   .zertiva-matching-root {
@@ -8032,7 +8105,6 @@ body:has(#list.active) #backHomeBtn {
 .zertiva-matching-active .original-exam-controls {
   display: none !important;
 }
-
 /* ============================================
    نافذة تعديل المعلومات
    ============================================ */
