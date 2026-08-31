@@ -1181,7 +1181,7 @@ var MyApp = (() => {
   function isNewHelpData(data) {
     return data && (data.paragraphStart !== void 0 || data.titleStart !== void 0);
   }
-  function createNewHelpCardContent(data) {
+  function createNewHelpCardContent(data, questionNumber) {
     const card = document.createElement("div");
     card.style.cssText = `
         background: #ffffff;
@@ -1189,16 +1189,39 @@ var MyApp = (() => {
         padding: clamp(12px, 2vw, 20px);
         border: 1px solid #e8edf4;
         box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        direction: rtl;
-        text-align: right;
         max-width: 100%;
         box-sizing: border-box;
         width: 100%;
     `;
+    const badgeWrapper = document.createElement("div");
+    badgeWrapper.style.cssText = `
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 12px;
+        direction: ltr;
+    `;
+    const badge = document.createElement("span");
+    badge.style.cssText = `
+        background: #eef2f6;
+        color: #1e293b;
+        font-size: clamp(12px, 1vw, 14px);
+        font-weight: 700;
+        padding: 2px 12px;
+        border-radius: 20px;
+        display: inline-block;
+        line-height: 1.8;
+        border: 1px solid #dce2ec;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    `;
+    badge.textContent = questionNumber;
+    badgeWrapper.appendChild(badge);
+    card.appendChild(badgeWrapper);
     function addSection(title, content, isKeywordList = false) {
       const wrapper = document.createElement("div");
       wrapper.style.cssText = `
             margin-bottom: clamp(10px, 1.5vw, 16px);
+            direction: ltr;
+            text-align: left;
         `;
       if (title) {
         const titleEl = document.createElement("div");
@@ -1207,6 +1230,8 @@ var MyApp = (() => {
                 color: #1e293b;
                 font-size: clamp(13px, 1.1vw, 15px);
                 margin-bottom: 3px;
+                direction: ltr;
+                text-align: left;
             `;
         titleEl.textContent = title;
         wrapper.appendChild(titleEl);
@@ -1218,6 +1243,8 @@ var MyApp = (() => {
                 flex-wrap: wrap;
                 gap: 4px 8px;
                 margin-top: 2px;
+                direction: ltr;
+                justify-content: flex-start;
             `;
         content.forEach((item) => {
           const span = document.createElement("span");
@@ -1228,6 +1255,7 @@ var MyApp = (() => {
                     font-size: clamp(11px, 0.8vw, 13px);
                     color: #1e293b;
                     white-space: nowrap;
+                    direction: ltr;
                 `;
           span.textContent = item;
           container.appendChild(span);
@@ -1241,17 +1269,53 @@ var MyApp = (() => {
                 line-height: 1.7;
                 word-wrap: break-word;
                 overflow-wrap: break-word;
+                direction: ltr;
+                text-align: left;
             `;
         contentEl.textContent = content;
         wrapper.appendChild(contentEl);
       }
       return wrapper;
     }
+    function addArabicSection(title, content) {
+      const wrapper = document.createElement("div");
+      wrapper.style.cssText = `
+            margin-bottom: clamp(10px, 1.5vw, 16px);
+            direction: rtl;
+            text-align: right;
+        `;
+      if (title) {
+        const titleEl = document.createElement("div");
+        titleEl.style.cssText = `
+                font-weight: 600;
+                color: #1e293b;
+                font-size: clamp(13px, 1.1vw, 15px);
+                margin-bottom: 3px;
+                direction: rtl;
+                text-align: right;
+            `;
+        titleEl.textContent = title;
+        wrapper.appendChild(titleEl);
+      }
+      const contentEl = document.createElement("div");
+      contentEl.style.cssText = `
+            font-size: clamp(13px, 1vw, 15px);
+            color: #0f172a;
+            line-height: 1.7;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            direction: rtl;
+            text-align: right;
+        `;
+      contentEl.textContent = content;
+      wrapper.appendChild(contentEl);
+      return wrapper;
+    }
     if (data.paragraphStart) {
       card.appendChild(addSection("\u{1F4D6} \u0628\u062F\u0627\u064A\u0629 \u0627\u0644\u0641\u0642\u0631\u0629", data.paragraphStart));
     }
     if (data.paragraphTranslation) {
-      card.appendChild(addSection("\u0627\u0644\u062A\u0631\u062C\u0645\u0629", data.paragraphTranslation));
+      card.appendChild(addArabicSection("\u0627\u0644\u062A\u0631\u062C\u0645\u0629", data.paragraphTranslation));
     }
     if (data.paragraphKeywords && data.paragraphKeywords.length) {
       card.appendChild(addSection("\u{1F4CC} \u0643\u0644\u0645\u0627\u062A \u0627\u0644\u0641\u0642\u0631\u0629", data.paragraphKeywords, true));
@@ -1260,7 +1324,7 @@ var MyApp = (() => {
       card.appendChild(addSection("\u2194\uFE0F \u0627\u0644\u0639\u0646\u0648\u0627\u0646", data.titleStart));
     }
     if (data.titleTranslation) {
-      card.appendChild(addSection("\u0627\u0644\u062A\u0631\u062C\u0645\u0629", data.titleTranslation));
+      card.appendChild(addArabicSection("\u0627\u0644\u062A\u0631\u062C\u0645\u0629", data.titleTranslation));
     }
     if (data.titleKeywords && data.titleKeywords.length) {
       card.appendChild(addSection("\u{1F4CC} \u0643\u0644\u0645\u0627\u062A \u0627\u0644\u0639\u0646\u0648\u0627\u0646", data.titleKeywords, true));
@@ -1269,16 +1333,39 @@ var MyApp = (() => {
       card.appendChild(addSection("\u{1F517} \u0627\u0644\u0631\u0627\u0628\u0637 \u0627\u0644\u0630\u0647\u0646\u064A", data.mentalLink));
     }
     if (data.whyMatch) {
-      card.appendChild(addSection("\u{1F4A1} \u0644\u0645\u0627\u0630\u0627 \u064A\u0644\u062A\u0642\u064A\u0627\u0646\u061F", data.whyMatch));
+      card.appendChild(addArabicSection("\u{1F4A1} \u0644\u0645\u0627\u0630\u0627 \u064A\u0644\u062A\u0642\u064A\u0627\u0646\u061F", data.whyMatch));
     }
     if (data.memoryKey) {
       card.appendChild(addSection("\u{1F9E0} \u0645\u0641\u062A\u0627\u062D \u0627\u0644\u062D\u0641\u0638", data.memoryKey));
     }
     return card;
   }
-  function createOldHelpCardWithoutHeader(data) {
+  function createOldHelpCardWithoutHeader(data, questionNumber) {
     const card = document.createElement("div");
     card.style.cssText = "background:white;border-radius:12px;padding:20px;margin-bottom:15px;box-shadow:0 2px 8px rgba(0,0,0,0.08);border:1px solid #e0e0e0";
+    const badgeWrapper = document.createElement("div");
+    badgeWrapper.style.cssText = `
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 12px;
+        direction: ltr;
+    `;
+    const badge = document.createElement("span");
+    badge.style.cssText = `
+        background: #eef2f6;
+        color: #1e293b;
+        font-size: clamp(12px, 1vw, 14px);
+        font-weight: 700;
+        padding: 2px 12px;
+        border-radius: 20px;
+        display: inline-block;
+        line-height: 1.8;
+        border: 1px solid #dce2ec;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    `;
+    badge.textContent = questionNumber;
+    badgeWrapper.appendChild(badge);
+    card.appendChild(badgeWrapper);
     if (data) {
       let keywordsHtml = "";
       if (data.keywords && data.keywords.length) {
@@ -1288,17 +1375,17 @@ var MyApp = (() => {
         });
         keywordsHtml += "</div>";
       }
-      card.innerHTML = `
-            <div style="font-weight:bold;color:#2c3e66;border-right:4px solid #007bff;padding-right:12px;margin-bottom:15px;font-size:17px">
+      card.innerHTML += `
+            <div style="font-weight:bold;color:#2c3e66;border-right:4px solid #007bff;padding-right:12px;margin-bottom:15px;font-size:17px;direction:ltr;text-align:left;">
                 ${data.text || ""}
             </div>
-            <div style="margin-bottom:10px"><span style="color:#0056b3;font-weight:bold">\u{1F4D6} \u0627\u0644\u0645\u0639\u0646\u0649 :</span> <span style="color:#333">${data.meaning || "\u0644\u0627 \u064A\u0648\u062C\u062F"}</span></div>
+            <div style="margin-bottom:10px;direction:rtl;text-align:right;"><span style="color:#0056b3;font-weight:bold">\u{1F4D6} \u0627\u0644\u0645\u0639\u0646\u0649 :</span> <span style="color:#333">${data.meaning || "\u0644\u0627 \u064A\u0648\u062C\u062F"}</span></div>
             ${keywordsHtml}
-            <div style="margin-bottom:10px"><span style="color:#0056b3;font-weight:bold">\u2728 \u062A\u0628\u0633\u064A\u0637 :</span> <span style="color:#333">${data.simplified || data.meaning || "\u0644\u0627 \u064A\u0648\u062C\u062F"}</span></div>
-            <div><span style="color:#0056b3;font-weight:bold">\u{1F3AD} \u062A\u062E\u064A\u0644 :</span> <span style="color:#333">${data.imagine || "\u062A\u062E\u064A\u0644 \u0627\u0644\u062C\u0645\u0644\u0629 \u0641\u064A \u0633\u064A\u0627\u0642\u0647\u0627"}</span></div>
+            <div style="margin-bottom:10px;direction:rtl;text-align:right;"><span style="color:#0056b3;font-weight:bold">\u2728 \u062A\u0628\u0633\u064A\u0637 :</span> <span style="color:#333">${data.simplified || data.meaning || "\u0644\u0627 \u064A\u0648\u062C\u062F"}</span></div>
+            <div style="direction:rtl;text-align:right;"><span style="color:#0056b3;font-weight:bold">\u{1F3AD} \u062A\u062E\u064A\u0644 :</span> <span style="color:#333">${data.imagine || "\u062A\u062E\u064A\u0644 \u0627\u0644\u062C\u0645\u0644\u0629 \u0641\u064A \u0633\u064A\u0627\u0642\u0647\u0627"}</span></div>
         `;
     } else {
-      card.innerHTML = `<div style="text-align:center;padding:20px;color:#999">\u2753 \u0644\u0627 \u064A\u0648\u062C\u062F \u0634\u0631\u062D \u0644\u0647\u0630\u0627 \u0627\u0644\u0633\u0624\u0627\u0644</div>`;
+      card.innerHTML += `<div style="text-align:center;padding:20px;color:#999;direction:rtl;">\u2753 \u0644\u0627 \u064A\u0648\u062C\u062F \u0634\u0631\u062D \u0644\u0647\u0630\u0627 \u0627\u0644\u0633\u0624\u0627\u0644</div>`;
     }
     return card;
   }
@@ -1307,9 +1394,9 @@ var MyApp = (() => {
     const skill = getCurrentSkill2();
     const data = findHelpData(skill, examId, questionNumber);
     if (isNewHelpData(data)) {
-      return createNewHelpCardContent(data);
+      return createNewHelpCardContent(data, questionNumber);
     } else {
-      return createOldHelpCardWithoutHeader(data);
+      return createOldHelpCardWithoutHeader(data, questionNumber);
     }
   }
   function createHelpLayer() {
@@ -1320,8 +1407,6 @@ var MyApp = (() => {
     border-radius: 16px;
     padding: 20px 24px;
     margin: 20px 0;
-    direction: rtl;
-    text-align: right;
     max-width: 100%;
     box-sizing: border-box;
     box-shadow: 0 2px 12px rgba(0,0,0,0.04);
@@ -1349,26 +1434,8 @@ var MyApp = (() => {
     container.appendChild(mainTitle);
     for (let i = 0; i < correctQuestions.length; i++) {
       const qNumber = correctQuestions[i];
-      const numberDiv = document.createElement("div");
-      numberDiv.style.cssText = `
-      font-size: clamp(18px, 1.8vw, 24px);
-      font-weight: 700;
-      color: #1e293b;
-      margin: 20px 0 8px 0;
-      padding-right: 4px;
-    `;
-      numberDiv.textContent = `${qNumber}`;
-      container.appendChild(numberDiv);
-      const divider = document.createElement("hr");
-      divider.style.cssText = `
-      border: none;
-      border-top: 1px solid #e2e8f0;
-      margin: 4px 0 16px 0;
-      opacity: 0.6;
-    `;
-      container.appendChild(divider);
       const card = createHelpCardWithoutHeader(qNumber);
-      card.style.marginBottom = "0";
+      card.style.marginBottom = "16px";
       container.appendChild(card);
     }
     return container;
@@ -26501,6 +26568,10 @@ var MyApp = (() => {
         updateTeil3RightSideColors();
         teil3SelectedSitForLink = null;
         clearTeil3SituationSelection();
+        const matchingInstance2 = window.matchingLesen3;
+        if (matchingInstance2 && matchingInstance2.isActive) {
+          matchingInstance2._disconnectText(`text-${itemIdx + 1}`);
+        }
         return;
       }
       pushTeil3LinkToHistory(itemIdx, sitIdx, "add", teil3UserAnswers[itemIdx]);
@@ -26512,6 +26583,11 @@ var MyApp = (() => {
       updateTeil3CardStyle(itemIdx);
       teil3SelectedSitForLink = null;
       clearTeil3SituationSelection();
+      const matchingInstance = window.matchingLesen3;
+      if (matchingInstance && matchingInstance.isActive) {
+        matchingInstance._disconnectText(`text-${itemIdx + 1}`);
+        matchingInstance._connect(`text-${itemIdx + 1}`, `title-${sitIdx + 1}`);
+      }
       return;
     }
     if (currentAnswer !== void 0 && currentAnswer !== null && currentAnswer !== "") {
@@ -26522,6 +26598,10 @@ var MyApp = (() => {
       updateTeil3CardStyle(itemIdx);
       updateTeil3SelectOptions();
       updateTeil3RightSideColors();
+      const matchingInstance = window.matchingLesen3;
+      if (matchingInstance && matchingInstance.isActive) {
+        matchingInstance._disconnectText(`text-${itemIdx + 1}`);
+      }
       return;
     }
     if (teil3SelectedItemForLink !== null) {
@@ -26555,6 +26635,10 @@ var MyApp = (() => {
         updateTeil3CardStyle(linkedItemIdx);
         updateTeil3SelectOptions();
         updateTeil3RightSideColors();
+        const matchingInstance = window.matchingLesen3;
+        if (matchingInstance && matchingInstance.isActive) {
+          matchingInstance._disconnectText(`text-${linkedItemIdx + 1}`);
+        }
       }
       teil3SelectedSitForLink = null;
       clearTeil3SituationSelection();
@@ -26572,6 +26656,10 @@ var MyApp = (() => {
         updateTeil3SelectOptions();
         updateTeil3RightSideColors();
         teil3SelectedItemForLink = null;
+        const matchingInstance2 = window.matchingLesen3;
+        if (matchingInstance2 && matchingInstance2.isActive) {
+          matchingInstance2._disconnectText(`text-${itemIdx + 1}`);
+        }
         return;
       }
       pushTeil3LinkToHistory(itemIdx, sitIdx, "add", teil3UserAnswers[itemIdx]);
@@ -26582,6 +26670,11 @@ var MyApp = (() => {
       updateTeil3RightSideColors();
       updateTeil3CardStyle(itemIdx);
       teil3SelectedItemForLink = null;
+      const matchingInstance = window.matchingLesen3;
+      if (matchingInstance && matchingInstance.isActive) {
+        matchingInstance._disconnectText(`text-${itemIdx + 1}`);
+        matchingInstance._connect(`text-${itemIdx + 1}`, `title-${sitIdx + 1}`);
+      }
       return;
     }
     if (linkedItemIdx !== null) {
@@ -26593,6 +26686,10 @@ var MyApp = (() => {
       updateTeil3CardStyle(linkedItemIdx);
       updateTeil3SelectOptions();
       updateTeil3RightSideColors();
+      const matchingInstance = window.matchingLesen3;
+      if (matchingInstance && matchingInstance.isActive) {
+        matchingInstance._disconnectText(`text-${linkedItemIdx + 1}`);
+      }
       return;
     }
     if (teil3SelectedSitForLink !== null) {
@@ -28662,6 +28759,7 @@ var MyApp = (() => {
       el.classList.remove("z-preview-correct", "z-preview-wrong", "z-title-correct", "z-title-wrong");
     });
     root.querySelectorAll(".z-title-indicator").forEach((el) => el.remove());
+    root.querySelectorAll(".z-text-correct-answer").forEach((el) => el.remove());
     const answerMap = /* @__PURE__ */ new Map();
     for (let i = 0; i < questions.length; i++) {
       const textId = `text-${i + 1}`;
@@ -28685,6 +28783,29 @@ var MyApp = (() => {
         card.classList.add("z-preview-correct");
       } else {
         card.classList.add("z-preview-wrong");
+      }
+      const correctTitle = correctIndex !== void 0 && correctIndex !== null ? sharedOptions[correctIndex] : null;
+      const oldTextIndicator = card.querySelector(".z-text-correct-answer");
+      if (oldTextIndicator) oldTextIndicator.remove();
+      if (correctTitle !== null) {
+        const indicator = document.createElement("div");
+        indicator.className = "z-text-correct-answer";
+        indicator.style.cssText = `
+        margin-top: 8px;
+        font-size: 12px;
+        color: #16a34a;
+        font-weight: 600;
+        border-top: 1px dashed #e2e8f0;
+        padding-top: 6px;
+        direction: rtl;
+        text-align: right;
+      `;
+        if (isCorrect) {
+          indicator.textContent = `\u2705 ${correctTitle}`;
+        } else {
+          indicator.textContent = `\u2705 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629: ${correctTitle}`;
+        }
+        card.appendChild(indicator);
       }
     });
     const correctTitleIndices = /* @__PURE__ */ new Map();
@@ -28797,6 +28918,7 @@ var MyApp = (() => {
     });
     root.querySelectorAll(".z-preview-correct-answer").forEach((el) => el.remove());
     root.querySelectorAll(".z-title-indicator").forEach((el) => el.remove());
+    root.querySelectorAll(".z-text-correct-answer").forEach((el) => el.remove());
     if (root) {
       root.querySelectorAll(".zertiva-matching-text-card").forEach((card) => {
         card.style.backgroundColor = "";
