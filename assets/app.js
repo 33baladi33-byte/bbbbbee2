@@ -26531,10 +26531,6 @@ var MyApp = (() => {
         updateTeil3RightSideColors();
         teil3SelectedSitForLink = null;
         clearTeil3SituationSelection();
-        const matchingInstance2 = window.matchingLesen3;
-        if (matchingInstance2 && matchingInstance2.isActive) {
-          matchingInstance2._disconnectText(`text-${itemIdx + 1}`);
-        }
         return;
       }
       pushTeil3LinkToHistory(itemIdx, sitIdx, "add", teil3UserAnswers[itemIdx]);
@@ -26546,11 +26542,6 @@ var MyApp = (() => {
       updateTeil3CardStyle(itemIdx);
       teil3SelectedSitForLink = null;
       clearTeil3SituationSelection();
-      const matchingInstance = window.matchingLesen3;
-      if (matchingInstance && matchingInstance.isActive) {
-        matchingInstance._disconnectText(`text-${itemIdx + 1}`);
-        matchingInstance._connect(`text-${itemIdx + 1}`, `title-${sitIdx + 1}`);
-      }
       return;
     }
     if (currentAnswer !== void 0 && currentAnswer !== null && currentAnswer !== "") {
@@ -26561,10 +26552,6 @@ var MyApp = (() => {
       updateTeil3CardStyle(itemIdx);
       updateTeil3SelectOptions();
       updateTeil3RightSideColors();
-      const matchingInstance = window.matchingLesen3;
-      if (matchingInstance && matchingInstance.isActive) {
-        matchingInstance._disconnectText(`text-${itemIdx + 1}`);
-      }
       return;
     }
     if (teil3SelectedItemForLink !== null) {
@@ -26598,10 +26585,6 @@ var MyApp = (() => {
         updateTeil3CardStyle(linkedItemIdx);
         updateTeil3SelectOptions();
         updateTeil3RightSideColors();
-        const matchingInstance = window.matchingLesen3;
-        if (matchingInstance && matchingInstance.isActive) {
-          matchingInstance._disconnectText(`text-${linkedItemIdx + 1}`);
-        }
       }
       teil3SelectedSitForLink = null;
       clearTeil3SituationSelection();
@@ -26619,10 +26602,6 @@ var MyApp = (() => {
         updateTeil3SelectOptions();
         updateTeil3RightSideColors();
         teil3SelectedItemForLink = null;
-        const matchingInstance2 = window.matchingLesen3;
-        if (matchingInstance2 && matchingInstance2.isActive) {
-          matchingInstance2._disconnectText(`text-${itemIdx + 1}`);
-        }
         return;
       }
       pushTeil3LinkToHistory(itemIdx, sitIdx, "add", teil3UserAnswers[itemIdx]);
@@ -26633,11 +26612,6 @@ var MyApp = (() => {
       updateTeil3RightSideColors();
       updateTeil3CardStyle(itemIdx);
       teil3SelectedItemForLink = null;
-      const matchingInstance = window.matchingLesen3;
-      if (matchingInstance && matchingInstance.isActive) {
-        matchingInstance._disconnectText(`text-${itemIdx + 1}`);
-        matchingInstance._connect(`text-${itemIdx + 1}`, `title-${sitIdx + 1}`);
-      }
       return;
     }
     if (linkedItemIdx !== null) {
@@ -26649,10 +26623,6 @@ var MyApp = (() => {
       updateTeil3CardStyle(linkedItemIdx);
       updateTeil3SelectOptions();
       updateTeil3RightSideColors();
-      const matchingInstance = window.matchingLesen3;
-      if (matchingInstance && matchingInstance.isActive) {
-        matchingInstance._disconnectText(`text-${linkedItemIdx + 1}`);
-      }
       return;
     }
     if (teil3SelectedSitForLink !== null) {
@@ -26902,62 +26872,13 @@ var MyApp = (() => {
     updateTeil3RightSideColors();
   }
   function checkTeil3Exam() {
-    const matchingInstance = window.matchingLesen3;
-    const isMatchingActive = matchingInstance && matchingInstance.isActive && matchingInstance._matches;
     const items = currentTeil3Data.items;
     let score = 0;
     let total = items.length;
     document.querySelectorAll("#teil3 .correct-message").forEach((msg) => msg.remove());
-    if (matchingInstance && matchingInstance._matches) {
-      if (typeof matchingInstance.syncMatchesFromUserAnswers === "function") {
-        matchingInstance.syncMatchesFromUserAnswers(teil3UserAnswers, items.length);
-      } else {
-        for (let i = 0; i < items.length; i++) {
-          const userAnswer = teil3UserAnswers[i];
-          const textId = `text-${i + 1}`;
-          if (userAnswer !== void 0 && userAnswer !== null && userAnswer !== "" && userAnswer !== "none") {
-            const titleId = `title-${userAnswer + 1}`;
-            const currentMatch = matchingInstance._matches.get(textId);
-            if (currentMatch !== titleId) {
-              if (currentMatch) {
-                matchingInstance._titleToText.delete(currentMatch);
-                matchingInstance._matches.delete(textId);
-              }
-              const titleExists = matchingInstance._titles.some((t) => t.id === titleId);
-              if (titleExists) {
-                matchingInstance._matches.set(textId, titleId);
-                matchingInstance._titleToText.set(titleId, textId);
-              }
-            }
-          } else {
-            if (matchingInstance._matches.has(textId)) {
-              const oldTitleId = matchingInstance._matches.get(textId);
-              matchingInstance._titleToText.delete(oldTitleId);
-              matchingInstance._matches.delete(textId);
-            }
-          }
-        }
-      }
-      if (isMatchingActive) {
-        matchingInstance._updateUI();
-      }
-    }
     for (let i = 0; i < total; i++) {
       const card = document.getElementById(`teil3_card_${i}`);
-      let userAnswer = teil3UserAnswers[i];
-      if (isMatchingActive && matchingInstance) {
-        const textId = `text-${i + 1}`;
-        const titleId = matchingInstance._matches.get(textId);
-        if (titleId) {
-          const match = titleId.match(/^title-(\d+)$/);
-          if (match) {
-            const titleIndex = parseInt(match[1], 10) - 1;
-            userAnswer = titleIndex;
-          }
-        } else {
-          userAnswer = void 0;
-        }
-      }
+      const userAnswer = teil3UserAnswers[i];
       const correctIndex = items[i].correct;
       let isCorrect = false;
       let correctText = "";
@@ -27065,9 +26986,7 @@ var MyApp = (() => {
       }
     }
     if (typeof window.applyMatchingCorrection === "function") {
-      requestAnimationFrame(() => {
-        window.applyMatchingCorrection();
-      });
+      setTimeout(window.applyMatchingCorrection, 50);
     }
   }
   function applyMobileStylesToEngine() {
@@ -28709,25 +28628,6 @@ var MyApp = (() => {
       }
     });
   }
-  function clearMatchingAnswers(skill) {
-    if (skill === "lesen1" && window.matchingLesen1) {
-      window.matchingLesen1._matches.clear();
-      window.matchingLesen1._titleToText.clear();
-      window.matchingLesen1._selectedText = null;
-      window.matchingLesen1._selectedTitle = null;
-      if (window.matchingLesen1.isActive) {
-        window.matchingLesen1._updateUI();
-      }
-    } else if (skill === "lesen3" && window.matchingLesen3) {
-      window.matchingLesen3._matches.clear();
-      window.matchingLesen3._titleToText.clear();
-      window.matchingLesen3._selectedText = null;
-      window.matchingLesen3._selectedTitle = null;
-      if (window.matchingLesen3.isActive) {
-        window.matchingLesen3._updateUI();
-      }
-    }
-  }
   function applyMatchingCorrection() {
     const skill = window.currentSkill;
     if (!skill || skill !== "lesen1" && skill !== "lesen3") {
@@ -28757,8 +28657,7 @@ var MyApp = (() => {
     root.querySelectorAll(".z-preview-correct, .z-preview-wrong, .z-title-correct, .z-title-wrong").forEach((el) => {
       el.classList.remove("z-preview-correct", "z-preview-wrong", "z-title-correct", "z-title-wrong");
     });
-    root.querySelectorAll(".z-title-indicator").forEach((el) => el.remove());
-    root.querySelectorAll(".z-text-correct-answer").forEach((el) => el.remove());
+    root.querySelectorAll(".z-preview-correct-answer").forEach((el) => el.remove());
     const answerMap = /* @__PURE__ */ new Map();
     for (let i = 0; i < questions.length; i++) {
       const textId = `text-${i + 1}`;
@@ -28780,49 +28679,23 @@ var MyApp = (() => {
       card.classList.remove("z-preview-correct", "z-preview-wrong");
       if (isCorrect) {
         card.classList.add("z-preview-correct");
-      } else {
+      } else if (userIndex !== void 0) {
         card.classList.add("z-preview-wrong");
       }
-      const correctTitle = correctIndex !== void 0 && correctIndex !== null ? sharedOptions[correctIndex] : null;
-      const oldTextIndicator = card.querySelector(".z-text-correct-answer");
-      if (oldTextIndicator) oldTextIndicator.remove();
-      const head = card.querySelector(".zertiva-matching-text-head");
-      if (!head) return;
-      if (correctTitle !== null) {
-        const badge = document.createElement("span");
-        badge.className = "z-text-correct-answer";
-        badge.style.cssText = `
-        display: inline-block;
-        font-size: 8px;
-        font-weight: 700;
-        color: #16a34a;
-        background: rgba(22, 163, 74, 0.12);
-        padding: 1px 6px;
-        border-radius: 12px;
-        margin-right: 4px;
-        line-height: 1.4;
-        border: 1px solid rgba(22, 163, 74, 0.2);
-        direction: rtl;
-        text-align: center;
-      `;
-        badge.textContent = isCorrect ? `\u2713 ${correctTitle}` : `\u2713 \u0627\u0644\u0625\u062C\u0627\u0628\u0629: ${correctTitle}`;
-        const existingBadge = head.querySelector(".zertiva-matching-text-badge");
-        if (existingBadge) {
-          head.insertBefore(badge, existingBadge.nextSibling);
-        } else {
-          head.appendChild(badge);
+      const body = card.querySelector(".zertiva-matching-text-body");
+      if (body) {
+        const old = body.querySelector(".z-preview-correct-answer");
+        if (old) old.remove();
+        const correctAnswer = sharedOptions[correctIndex];
+        if (correctAnswer) {
+          const answerDiv = document.createElement("div");
+          answerDiv.className = "z-preview-correct-answer";
+          answerDiv.style.color = "#2b8c4a";
+          answerDiv.innerHTML = `<strong style="color:#2b8c4a;">\u2713</strong> ${correctAnswer}`;
+          body.insertBefore(answerDiv, body.firstChild);
         }
       }
     });
-    const correctTitleIndices = /* @__PURE__ */ new Map();
-    for (let qIndex = 0; qIndex < questions.length; qIndex++) {
-      const correctIndex = questions[qIndex]?.correct;
-      if (correctIndex !== void 0 && correctIndex !== null) {
-        if (!correctTitleIndices.has(correctIndex)) {
-          correctTitleIndices.set(correctIndex, qIndex);
-        }
-      }
-    }
     titleCards.forEach((titleCard) => {
       const textEl = titleCard.querySelector(".zertiva-matching-title-text");
       if (!textEl) return;
@@ -28838,36 +28711,18 @@ var MyApp = (() => {
         titleCard.classList.remove("z-title-correct", "z-title-wrong");
         return;
       }
-      let selectedByUser = false;
-      let selectedForQuestion = -1;
+      let isTitleCorrect = false;
       for (let [qIndex, selectedIdx] of answerMap) {
-        if (selectedIdx === titleIndex) {
-          selectedByUser = true;
-          selectedForQuestion = qIndex;
+        if (selectedIdx === titleIndex && selectedIdx === questions[qIndex]?.correct) {
+          isTitleCorrect = true;
           break;
         }
       }
-      const isCorrectForQuestion = correctTitleIndices.get(titleIndex);
-      const isCorrect = isCorrectForQuestion !== void 0;
+      const isUsed = Array.from(answerMap.values()).includes(titleIndex);
       titleCard.classList.remove("z-title-correct", "z-title-wrong");
-      const oldIndicator = titleCard.querySelector(".z-title-indicator");
-      if (oldIndicator) oldIndicator.remove();
-      if (isCorrect) {
+      if (isTitleCorrect) {
         titleCard.classList.add("z-title-correct");
-        const indicator = document.createElement("span");
-        indicator.className = "z-title-indicator";
-        indicator.textContent = ` \u2713${isCorrectForQuestion + 1}`;
-        indicator.style.cssText = `
-        font-size: 9px;
-        font-weight: 700;
-        color: #1a7a3a;
-        margin-left: 4px;
-        display: inline-block;
-        line-height: 1.2;
-        vertical-align: middle;
-      `;
-        textEl.appendChild(indicator);
-      } else if (selectedByUser) {
+      } else if (isUsed) {
         titleCard.classList.add("z-title-wrong");
       }
     });
@@ -28886,6 +28741,23 @@ var MyApp = (() => {
         background: #fff6ec !important;
         box-shadow: 0 0 0 2px rgba(241,177,111,.10) !important;
       }
+      .z-preview-correct-answer {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0 0 7px 0;
+        padding: 0;
+        font-size: 10px;
+        line-height: 1.25;
+        font-weight: 750;
+        white-space: normal;
+        color: #2b8c4a;
+      }
+      .z-preview-correct-answer strong {
+        font-weight: 850;
+        margin-right: 3px;
+        color: #2b8c4a;
+      }
       .z-title-correct {
         border-color: #86d7a1 !important;
         background: #f0faf4 !important;
@@ -28895,22 +28767,6 @@ var MyApp = (() => {
         border-color: #f1b16f !important;
         background: #fdf6ed !important;
         box-shadow: 0 0 0 2px rgba(241,177,111,.08) !important;
-      }
-      .z-title-indicator {
-        font-size: 9px;
-        font-weight: 700;
-        color: #1a7a3a;
-        margin-left: 4px;
-        display: inline-block;
-        line-height: 1.2;
-        vertical-align: middle;
-      }
-      /* \u0636\u0645\u0627\u0646 \u0639\u062F\u0645 \u0632\u064A\u0627\u062F\u0629 \u0627\u0631\u062A\u0641\u0627\u0639 \u0627\u0644\u0628\u0637\u0627\u0642\u0629 */
-      .zertiva-matching-title-card .zertiva-matching-title-text {
-        display: inline-flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 2px;
       }
     `;
       document.head.appendChild(style);
@@ -28923,8 +28779,6 @@ var MyApp = (() => {
       el.classList.remove("z-preview-correct", "z-preview-wrong", "z-title-correct", "z-title-wrong");
     });
     root.querySelectorAll(".z-preview-correct-answer").forEach((el) => el.remove());
-    root.querySelectorAll(".z-title-indicator").forEach((el) => el.remove());
-    root.querySelectorAll(".z-text-correct-answer").forEach((el) => el.remove());
     if (root) {
       root.querySelectorAll(".zertiva-matching-text-card").forEach((card) => {
         card.style.backgroundColor = "";
@@ -29382,9 +29236,6 @@ var MyApp = (() => {
         matchingSelectedAnswers2 = {};
         matchingAvailableOptions2 = [...examData.sharedOptions];
         renderMatchingQuestions2();
-        if (window.matchingLesen1) {
-          window.resetMatchingState("lesen1");
-        }
       };
       currentTeil2Data = null;
       teil2UserAnswers = {};
@@ -29411,9 +29262,6 @@ var MyApp = (() => {
         teil3SelectedSit = null;
         teil3SelectedItemForLink = null;
         teil3SelectedSitForLink = null;
-        if (window.matchingLesen3) {
-          window.resetMatchingState("lesen3");
-        }
         renderTeil3Exam();
       };
       document.addEventListener("DOMContentLoaded", function() {
@@ -29836,6 +29684,23 @@ var MyApp = (() => {
           this._resizeHandler = null;
           this._captureTimeout = null;
           this._isBuilding = false;
+          this._stateKey = `matching_state_${modeName}`;
+        }
+        // ---- حفظ الحالة ----
+        _saveState(active) {
+          try {
+            localStorage.setItem(this._stateKey, active ? "true" : "false");
+          } catch (e) {
+          }
+        }
+        // ---- استعادة الحالة ----
+        _loadState() {
+          try {
+            const val = localStorage.getItem(this._stateKey);
+            return val === "true";
+          } catch (e) {
+            return false;
+          }
         }
         // ---- استخراج النصوص والعناوين من الـ selects الحقيقية ----
         _extractData() {
@@ -29936,9 +29801,9 @@ var MyApp = (() => {
           root.style.display = "none";
           const header = document.createElement("div");
           header.className = "zertiva-matching-header";
-          const mainTitle = document.createElement("div");
-          mainTitle.className = "zertiva-matching-main-title";
-          mainTitle.textContent = this.modeName === "lesen1" ? "Lesen Teil 1" : "Lesen Teil 3";
+          const title = document.createElement("div");
+          title.className = "zertiva-matching-main-title";
+          title.textContent = this.modeName === "lesen1" ? "Lesen Teil 1" : "Lesen Teil 3";
           const progress = document.createElement("div");
           progress.className = "zertiva-matching-progress";
           const progressText = document.createElement("span");
@@ -29950,33 +29815,12 @@ var MyApp = (() => {
           this._progressFill = progressFill;
           progressBar.appendChild(progressFill);
           progress.append(progressText, progressBar);
-          header.append(mainTitle, progress);
-          root.appendChild(header);
+          header.append(title, progress);
           const textArea = document.createElement("div");
           textArea.className = "zertiva-matching-text-area";
           const textGrid = document.createElement("div");
           textGrid.className = "zertiva-matching-text-grid";
-          if (this.modeName === "lesen1") {
-            textGrid.style.display = "flex";
-            textGrid.style.flexWrap = "nowrap";
-            textGrid.style.gap = "clamp(7px, .8vw, 11px)";
-            textGrid.style.minWidth = "100%";
-            textGrid.style.height = "100%";
-            textGrid.style.alignItems = "stretch";
-          } else {
-            textGrid.style.display = "grid";
-            textGrid.style.gridTemplateColumns = "repeat(6, minmax(0, 1fr))";
-            textGrid.style.gridTemplateRows = "repeat(2, minmax(0, 1fr))";
-            textGrid.style.gap = "clamp(7px, .8vw, 11px)";
-            textGrid.style.width = "100%";
-            textGrid.style.height = "100%";
-            textGrid.style.minHeight = "0";
-            textGrid.style.alignItems = "stretch";
-            textGrid.style.alignContent = "stretch";
-            textGrid.style.boxSizing = "border-box";
-          }
           textArea.appendChild(textGrid);
-          root.appendChild(textArea);
           const answerArea = document.createElement("div");
           answerArea.className = "zertiva-matching-answer-area";
           const answerHeader = document.createElement("div");
@@ -29985,24 +29829,26 @@ var MyApp = (() => {
           answerTitle.className = "zertiva-matching-answer-title";
           answerTitle.textContent = "TITEL ZUORDNEN";
           answerHeader.appendChild(answerTitle);
-          answerArea.appendChild(answerHeader);
           const titleArea = document.createElement("div");
           titleArea.className = "zertiva-matching-title-area";
           const titleGrid = document.createElement("div");
           titleGrid.className = "zertiva-matching-title-grid";
           titleArea.appendChild(titleGrid);
-          answerArea.appendChild(titleArea);
-          root.appendChild(answerArea);
+          answerArea.append(answerHeader, titleArea);
+          root.append(header, textArea, answerArea);
           const actions = document.createElement("div");
           actions.className = "zertiva-actions-buttons";
+          actions.style.cssText = "display:flex; justify-content:center; gap:12px; padding:12px 0 0 0; flex-wrap:wrap;";
           const checkBtn = document.createElement("button");
           checkBtn.type = "button";
           checkBtn.className = "check-btn";
           checkBtn.textContent = "\u2705 \u062A\u0635\u062D\u064A\u062D";
+          checkBtn.style.cssText = "padding:8px 20px; border:none; border-radius:8px; background:#2c3e66; color:white; font-size:14px; font-weight:600; cursor:pointer;";
           const resetBtn = document.createElement("button");
           resetBtn.type = "button";
           resetBtn.className = "reset-btn";
           resetBtn.textContent = "\u21BA";
+          resetBtn.style.cssText = "padding:8px 12px; border:none; border-radius:8px; background:#6c757d; color:white; font-size:14px; font-weight:600; cursor:pointer;";
           actions.append(checkBtn, resetBtn);
           root.appendChild(actions);
           if (this.modeName === "lesen1") {
@@ -30026,7 +29872,7 @@ var MyApp = (() => {
               }
               this._updateUI();
             });
-          } else {
+          } else if (this.modeName === "lesen3") {
             checkBtn.addEventListener("click", () => {
               if (typeof window.checkTeil3Exam === "function") {
                 window.checkTeil3Exam();
@@ -30286,30 +30132,11 @@ var MyApp = (() => {
           if (this._captureTimeout) clearTimeout(this._captureTimeout);
           this._captureTimeout = setTimeout(() => this._captureSizes(), 50);
         }
+        // ---- تفعيل Matching ----
         activate() {
           if (this.isActive || this._isDestroyed) return;
           if (!this._extractData()) {
             console.warn(`\u26A0\uFE0F \u0644\u0627 \u064A\u0645\u0643\u0646 \u062A\u0641\u0639\u064A\u0644 Matching \u0644\u0640 ${this.modeName}: \u0627\u0644\u0628\u064A\u0627\u0646\u0627\u062A \u063A\u064A\u0631 \u0645\u0643\u062A\u0645\u0644\u0629.`);
-            return;
-          }
-          if (this.root && this.root.parentNode) {
-            const container2 = document.getElementById(this.containerId);
-            if (container2) {
-              Array.from(container2.children).forEach((child) => {
-                if (child !== this.root) child.style.display = "none";
-              });
-              this.root.style.display = "flex";
-              container2.classList.add("zertiva-matching-active");
-            }
-            const controlsSelector2 = this.modeName === "lesen1" ? "#teil1-exam-controls" : "#teil3-exam-controls";
-            const controls2 = document.querySelector(controlsSelector2);
-            if (controls2) {
-              controls2.style.display = "none";
-              this._originalControls = controls2;
-            }
-            this.isActive = true;
-            this._updateUI();
-            this._updateMatchingButton(true);
             return;
           }
           if (!this.root || !this.root.parentNode) {
@@ -30329,16 +30156,12 @@ var MyApp = (() => {
             this.root.style.display = "flex";
             container.classList.add("zertiva-matching-active");
           }
-          const controlsSelector = this.modeName === "lesen1" ? "#teil1-exam-controls" : "#teil3-exam-controls";
-          const controls = document.querySelector(controlsSelector);
-          if (controls) {
-            controls.style.display = "none";
-            this._originalControls = controls;
-          }
           this.isActive = true;
+          this._saveState(true);
           console.log(`\u2705 Matching mode activated for ${this.modeName}`);
           this._updateMatchingButton(true);
         }
+        // ---- إلغاء Matching ----
         deactivate() {
           if (!this.isActive || this._isDestroyed) return;
           const container = document.getElementById(this.containerId);
@@ -30353,26 +30176,10 @@ var MyApp = (() => {
             }
             container.classList.remove("zertiva-matching-active");
           }
-          if (this._originalControls) {
-            this._originalControls.style.display = "";
-            this._originalControls = null;
-          } else {
-            const controlsSelector = this.modeName === "lesen1" ? "#teil1-exam-controls" : "#teil3-exam-controls";
-            const controls = document.querySelector(controlsSelector);
-            if (controls) {
-              controls.style.display = "";
-            }
-          }
-          this._matches.clear();
-          this._titleToText.clear();
-          this._selectedText = null;
-          this._selectedTitle = null;
           this.isActive = false;
+          this._saveState(false);
           console.log(`\u2705 Matching mode deactivated for ${this.modeName}`);
           this._updateMatchingButton(false);
-          if (typeof window.clearMatchingCorrection === "function") {
-            window.clearMatchingCorrection();
-          }
         }
         // ---- تحديث زر Matching في الشريط ----
         _updateMatchingButton(active) {
@@ -30416,47 +30223,24 @@ var MyApp = (() => {
       window.toggleMatchingLesen3 = function() {
         matchingLesen3.toggle();
       };
-      window.clearMatchingAnswers = clearMatchingAnswers;
-      window.resetMatchingState = function(skill) {
-        if (skill === "lesen1" && window.matchingLesen1) {
-          if (window.matchingLesen1.isActive) {
-            window.matchingLesen1.deactivate();
-          }
-          window.matchingLesen1._matches.clear();
-          window.matchingLesen1._titleToText.clear();
-          window.matchingLesen1._selectedText = null;
-          window.matchingLesen1._selectedTitle = null;
-        } else if (skill === "lesen3" && window.matchingLesen3) {
-          if (window.matchingLesen3.isActive) {
-            window.matchingLesen3.deactivate();
-          }
-          window.matchingLesen3._matches.clear();
-          window.matchingLesen3._titleToText.clear();
-          window.matchingLesen3._selectedText = null;
-          window.matchingLesen3._selectedTitle = null;
-        }
-      };
-      window.resetMatchingState = resetMatchingState;
       window.restoreMatchingState = function(skill) {
-        if (skill === "lesen1" && window.matchingLesen1) {
-          if (window.matchingLesen1.isActive) {
-            window.matchingLesen1.deactivate();
+        if (skill === "lesen1" && matchingLesen1) {
+          const saved = matchingLesen1._loadState();
+          if (saved && !matchingLesen1.isActive) {
+            matchingLesen1.activate();
+          } else if (!saved && matchingLesen1.isActive) {
+            matchingLesen1.deactivate();
           }
-          window.matchingLesen1._matches.clear();
-          window.matchingLesen1._titleToText.clear();
-          window.matchingLesen1._selectedText = null;
-          window.matchingLesen1._selectedTitle = null;
-        } else if (skill === "lesen3" && window.matchingLesen3) {
-          if (window.matchingLesen3.isActive) {
-            window.matchingLesen3.deactivate();
+        } else if (skill === "lesen3" && matchingLesen3) {
+          const saved = matchingLesen3._loadState();
+          if (saved && !matchingLesen3.isActive) {
+            matchingLesen3.activate();
+          } else if (!saved && matchingLesen3.isActive) {
+            matchingLesen3.deactivate();
           }
-          window.matchingLesen3._matches.clear();
-          window.matchingLesen3._titleToText.clear();
-          window.matchingLesen3._selectedText = null;
-          window.matchingLesen3._selectedTitle = null;
         }
       };
-      console.log("\u2705 Matching Mode (Lesen 1 & Lesen 3) ready (\u0628\u062F\u0648\u0646 \u062D\u0641\u0638 \u062D\u0627\u0644\u0629).");
+      console.log("\u2705 Matching Mode (Lesen 1 & Lesen 3) ready.");
       window.applyMatchingCorrection = applyMatchingCorrection;
       window.clearMatchingCorrection = clearMatchingCorrection;
     }
@@ -32776,22 +32560,6 @@ var MyApp = (() => {
     currentSkill2 = skill;
     window.currentSkill = skill;
     window.currentExamId = examId;
-    if (skill === "lesen1" || skill === "lesen3") {
-      if (typeof window.resetMatchingState === "function") {
-        window.resetMatchingState(skill);
-      }
-      if (skill === "lesen1" && typeof window.matchingSelectedAnswers !== "undefined") {
-        window.matchingSelectedAnswers = {};
-        window.matchingAvailableOptions = [];
-      } else if (skill === "lesen3") {
-        if (typeof window.teil3UserAnswers !== "undefined") {
-          window.teil3UserAnswers = {};
-        }
-      }
-      if (typeof window.clearMatchingCorrection === "function") {
-        window.clearMatchingCorrection();
-      }
-    }
     const interleavingRow = document.getElementById("interleavingRow");
     if (interleavingRow) {
       const forbiddenSkills = ["schreiben", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3"];
@@ -32822,7 +32590,7 @@ var MyApp = (() => {
               const isActive = skill === "lesen1" && window.matchingLesen1 && window.matchingLesen1.isActive || skill === "lesen3" && window.matchingLesen3 && window.matchingLesen3.isActive;
               matchingBtn.classList.toggle("active", isActive);
               matchingBtn.dataset.skill = skill;
-              matchingBtn.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
+              matchingBtn.textContent = isActive ? "compare_arrows" : "swap_horiz";
               matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
             } else {
               matchingBtn.style.display = "none";
@@ -32974,7 +32742,7 @@ var MyApp = (() => {
         window.rebuildLesen3();
       }
       if (skill === "lesen1" || skill === "lesen3") {
-        requestAnimationFrame(() => {
+        setTimeout(() => {
           if (typeof window.restoreMatchingState === "function") {
             window.restoreMatchingState(skill);
           }
@@ -32984,9 +32752,8 @@ var MyApp = (() => {
             matchingBtn.classList.toggle("active", isActive);
             matchingBtn.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
             matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
-            matchingBtn.dataset.skill = skill;
           }
-        });
+        }, 100);
       }
     } catch (e) {
       console.error("\u274C \u062E\u0637\u0623:", e);
@@ -33404,21 +33171,6 @@ var MyApp = (() => {
     });
   }
   function goBackToExamsList() {
-    const skill = currentSkill2;
-    if (skill && (skill === "lesen1" || skill === "lesen3")) {
-      if (typeof window.resetMatchingState === "function") {
-        window.resetMatchingState(skill);
-      }
-      if (typeof window.clearMatchingCorrection === "function") {
-        window.clearMatchingCorrection();
-      }
-      if (skill === "lesen1" && typeof window.matchingSelectedAnswers !== "undefined") {
-        window.matchingSelectedAnswers = {};
-        window.matchingAvailableOptions = [];
-      } else if (skill === "lesen3" && typeof window.teil3UserAnswers !== "undefined") {
-        window.teil3UserAnswers = {};
-      }
-    }
     if (currentSkill2) {
       if (currentSkill2 === "m\xFCndlich1") {
         document.getElementById("home").classList.remove("active");
@@ -34469,7 +34221,7 @@ var MyApp = (() => {
     matchingBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
     matchingBtn.innerHTML = `<span class="material-symbols-outlined">swap_horiz</span>`;
     matchingBtn.style.display = "none";
-    matchingBtn.onclick = function(e) {
+    matchingBtn.addEventListener("click", function(e) {
       e.stopPropagation();
       const skill = this.dataset.skill || window.currentSkill;
       if (skill === "lesen1" && window.matchingLesen1) {
@@ -34478,18 +34230,26 @@ var MyApp = (() => {
         this.classList.toggle("active", isActive);
         this.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
         this.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
+        this.style.animation = "none";
+        setTimeout(() => {
+          this.style.animation = "matchingPulse 0.3s ease";
+        }, 10);
       } else if (skill === "lesen3" && window.matchingLesen3) {
         window.matchingLesen3.toggle();
         const isActive = window.matchingLesen3.isActive;
         this.classList.toggle("active", isActive);
         this.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
         this.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
+        this.style.animation = "none";
+        setTimeout(() => {
+          this.style.animation = "matchingPulse 0.3s ease";
+        }, 10);
       } else {
         console.warn("\u26A0\uFE0F Matching \u063A\u064A\u0631 \u0645\u062A\u0627\u062D \u0644\u0647\u0630\u0647 \u0627\u0644\u0645\u0647\u0627\u0631\u0629");
       }
-    };
+    });
     interleavingRow.insertBefore(matchingBtn, playBtn);
-    console.log("\u2705 \u0632\u0631 Matching \u062A\u0645 \u0625\u0636\u0627\u0641\u062A\u0647 (onclick)");
+    console.log("\u2705 \u0632\u0631 Matching \u062A\u0645 \u0625\u0636\u0627\u0641\u062A\u0647 \u0641\u064A \u0634\u0631\u064A\u0637 \u0627\u0644\u0623\u0632\u0631\u0627\u0631");
   }
   var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY, originalOpenExam2;
   var init_exams = __esm({
@@ -35994,7 +35754,7 @@ var MyApp = (() => {
       if (typeof originalOpenExam2 === "function") {
         window.openExam = function(examId, examTitle, skill, fileName) {
           const result = originalOpenExam2.call(this, examId, examTitle, skill, fileName);
-          requestAnimationFrame(() => {
+          setTimeout(() => {
             const matchingBtn = document.getElementById("matchingToggleBtn");
             if (matchingBtn) {
               if (skill === "lesen1" || skill === "lesen3") {
@@ -36008,7 +35768,7 @@ var MyApp = (() => {
                 matchingBtn.style.display = "none";
               }
             }
-          });
+          }, 200);
           return result;
         };
       }
