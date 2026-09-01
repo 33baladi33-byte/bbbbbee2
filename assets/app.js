@@ -25766,14 +25766,16 @@ var MyApp = (() => {
         card.classList.add("correct-answer-card");
       } else {
         card.classList.add("wrong-answer-card");
-        const correctMsg = document.createElement("div");
-        correctMsg.className = "correct-message";
-        correctMsg.style.marginTop = "10px";
-        correctMsg.style.fontSize = "14px";
-        correctMsg.style.fontWeight = "bold";
-        correctMsg.style.color = "#28a745";
-        correctMsg.innerHTML = `\u2705 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629: ${q.correct ? "Richtig" : "Falsch"}`;
-        card.appendChild(correctMsg);
+        const textSpan2 = card.querySelector("span");
+        if (textSpan2) {
+          const oldAnswer = textSpan2.querySelector(".inline-correct-answer");
+          if (oldAnswer) oldAnswer.remove();
+          const answerSpan = document.createElement("span");
+          answerSpan.className = "inline-correct-answer";
+          answerSpan.style.cssText = "color: #2b8c4a; font-weight: 600; font-size: 0.75rem; display: block; margin-bottom: 4px;";
+          answerSpan.textContent = `\u2713 ${q.correct ? "Richtig" : "Falsch"}`;
+          textSpan2.prepend(answerSpan);
+        }
       }
       const radios = card.querySelectorAll('input[type="radio"]');
       for (let r = 0; r < radios.length; r++) {
@@ -26082,14 +26084,16 @@ var MyApp = (() => {
             }
           }
           if (!optionExists) {
-            let msg = card.querySelector(".correct-answer-message");
-            if (!msg) {
-              msg = document.createElement("div");
-              msg.className = "correct-answer-message";
-              msg.style.cssText = "margin-top: 6px; font-size: 12px; color: #28a745;";
-              card.appendChild(msg);
+            const textSpan = card.querySelector("span");
+            if (textSpan) {
+              const oldAnswer = textSpan.querySelector(".inline-correct-answer");
+              if (oldAnswer) oldAnswer.remove();
+              const answerSpan = document.createElement("span");
+              answerSpan.className = "inline-correct-answer";
+              answerSpan.style.cssText = "color: #2b8c4a; font-weight: 600; font-size: 0.75rem; display: block; margin-bottom: 4px;";
+              answerSpan.textContent = `\u2713 ${correctAnswer}`;
+              textSpan.prepend(answerSpan);
             }
-            msg.innerHTML = `\u2705 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629: ${correctAnswer}`;
           }
         }
       }
@@ -26893,50 +26897,8 @@ var MyApp = (() => {
         isCorrect = userAnswer === correctIndex;
       }
       if (card) {
-        card.classList.remove("correct-answer-card", "wrong-answer-card");
-        const selectElem = card.querySelector("select");
         if (isCorrect && userAnswer !== void 0 && userAnswer !== null && userAnswer !== "") {
           score++;
-          card.classList.add("correct-answer-card");
-          card.style.backgroundColor = "#d4edda";
-          card.style.border = "2px solid #28a745";
-          if (selectElem) {
-            selectElem.style.backgroundColor = "#d4edda";
-            selectElem.style.border = "2px solid #28a745";
-            selectElem.style.color = "#155724";
-          }
-        } else {
-          card.classList.add("wrong-answer-card");
-          card.style.backgroundColor = "#fef0e0";
-          card.style.border = "2px solid #e67e22";
-          if (selectElem) {
-            selectElem.style.backgroundColor = "#fef0e0";
-            selectElem.style.border = "2px solid #e67e22";
-            selectElem.style.color = "#155724";
-            let optionExists = false;
-            for (let j = 0; j < selectElem.options.length; j++) {
-              const optValue = selectElem.options[j].value;
-              if (optValue === correctValue || correctValue === "none" && optValue === "none" || correctValue !== null && correctValue !== void 0 && parseInt(optValue) === correctValue) {
-                optionExists = true;
-                const originalText = selectElem.options[j].textContent;
-                const cleanText = originalText.replace(/^✅\s*/, "");
-                selectElem.options[j].textContent = `\u2705 ${cleanText}`;
-                selectElem.options[j].selected = true;
-                break;
-              }
-            }
-            if (!optionExists) {
-              let msg = card.querySelector(".correct-answer-message");
-              if (!msg) {
-                msg = document.createElement("div");
-                msg.className = "correct-answer-message";
-                msg.style.cssText = "margin-top: 6px; font-size: 12px; color: #28a745;";
-                card.appendChild(msg);
-              }
-              let correctDisplay = correctText || (correctValue === "none" ? "\u2727 \u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646 \u2727" : correctValue);
-              msg.innerHTML = `\u2705 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629: ${correctDisplay}`;
-            }
-          }
         }
       }
     }
@@ -28779,16 +28741,14 @@ var MyApp = (() => {
       el.classList.remove("z-preview-correct", "z-preview-wrong", "z-title-correct", "z-title-wrong");
     });
     root.querySelectorAll(".z-preview-correct-answer").forEach((el) => el.remove());
-    if (root) {
-      root.querySelectorAll(".zertiva-matching-text-card").forEach((card) => {
-        card.style.backgroundColor = "";
-        card.style.borderColor = "";
-      });
-      root.querySelectorAll(".zertiva-matching-title-card").forEach((card) => {
-        card.style.backgroundColor = "";
-        card.style.borderColor = "";
-      });
-    }
+    root.querySelectorAll(".zertiva-matching-text-card").forEach((card) => {
+      card.style.backgroundColor = "";
+      card.style.borderColor = "";
+    });
+    root.querySelectorAll(".zertiva-matching-title-card").forEach((card) => {
+      card.style.backgroundColor = "";
+      card.style.borderColor = "";
+    });
     console.log("\u{1F9F9} \u062A\u0645 \u0625\u0632\u0627\u0644\u0629 \u0627\u0644\u062A\u0635\u062D\u064A\u062D \u0627\u0644\u0628\u0635\u0631\u064A \u0645\u0646 Matching Mode");
   }
   var _hoerenData, interleavingOrders, lesen1OriginalNodes, lesen1ShuffledNodes, lesen1OrderSaved, lesen2OriginalNodes, lesen2ShuffledNodes, lesen2OrderSaved, lesen3OriginalNodes, lesen3ShuffledNodes, lesen3OrderSaved, examTimer2, currentSchreibenData, currentSprach2Data, sprach2UserAnswers, sprach2SelectedQuestionId, sprach2SelectedWordForLinking, currentSprach1Data, sprach1UserAnswers, sprach1OpenDropdownId, currentMatchingExamData2, matchingSelectedAnswers2, matchingAvailableOptions2, currentTeil2Data, teil2UserAnswers, currentTeil3Data, teil3UserAnswers, teil3SelectedItem, teil3SelectedSit, teil3SelectedItemForLink, teil3SelectedSitForLink, originalOpenExamGlobal, MemoryHighlightEngine, memoryEngine, toggleBtn, _toggleInProgress, _interleavingInitialized, _answerHistory, _historyEnabled, originalCheckTrueFalse, MatchingMode, matchingLesen1, matchingLesen3;
