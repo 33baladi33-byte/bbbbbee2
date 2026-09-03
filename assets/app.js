@@ -29920,6 +29920,9 @@ var MyApp = (() => {
           if (container) {
             Array.from(container.children).forEach((child) => {
               if (child !== this.root) {
+                if (!child.dataset.zertivaOriginalDisplay) {
+                  child.dataset.zertivaOriginalDisplay = getComputedStyle(child).display || "";
+                }
                 child.style.display = "none";
               }
             });
@@ -29927,6 +29930,10 @@ var MyApp = (() => {
             container.classList.add("zertiva-matching-active");
           }
           this._hideOriginalControls();
+          if (container) {
+            const resultBoxes = container.querySelectorAll(".result-box");
+            resultBoxes.forEach((box) => box.style.display = "none");
+          }
           this.isActive = true;
           console.log(`\u2705 Help Mode activated for ${this.modeName}`);
           const helpBtn = document.getElementById("matchingToggleBtn");
@@ -29969,13 +29976,21 @@ var MyApp = (() => {
           if (container) {
             Array.from(container.children).forEach((child) => {
               if (child !== this.root) {
-                child.style.display = "";
+                const originalDisplay = child.dataset.zertivaOriginalDisplay;
+                if (originalDisplay !== void 0) {
+                  child.style.display = originalDisplay;
+                  delete child.dataset.zertivaOriginalDisplay;
+                } else {
+                  child.style.display = "";
+                }
               }
             });
             if (this.root) {
               this.root.style.display = "none";
             }
             container.classList.remove("zertiva-matching-active");
+            const resultBoxes = container.querySelectorAll(".result-box");
+            resultBoxes.forEach((box) => box.style.display = "none");
           }
           this._showOriginalControls();
           this.isActive = false;
@@ -32128,20 +32143,40 @@ var MyApp = (() => {
           if (oldBadge) oldBadge.remove();
           const oldLock = div.querySelector(".lock-icon-locked-exam");
           if (oldLock) oldLock.remove();
+          div.style.position = "relative";
+          div.style.overflow = "hidden";
+          div.style.background = "linear-gradient(135deg,#eef1f5,#e7ebf0)";
+          div.style.borderColor = "#d8dde5";
+          div.style.color = "#475569";
+          div.style.opacity = "0.88";
+          div.style.boxShadow = "inset 0 0 0 1px rgba(71,85,105,.04)";
+          div.style.cursor = "pointer";
           titleSpan.classList.remove("locked-title");
-          titleSpan.style.color = "";
-          div.onmouseenter = function() {
-            this.style.backgroundColor = "#f1f5f9";
-            this.style.transform = "translateX(5px)";
-            this.style.borderColor = "#2F80ED";
-            this.style.boxShadow = "0 2px 8px rgba(47, 128, 237, 0.15)";
-          };
-          div.onmouseleave = function() {
-            this.style.backgroundColor = "";
-            this.style.transform = "";
-            this.style.borderColor = "";
-            this.style.boxShadow = "";
-          };
+          titleSpan.style.color = "#475569";
+          const lock = document.createElement("span");
+          lock.className = "zertiva-pro-lock";
+          lock.textContent = "lock";
+          lock.style.cssText = `
+        position:absolute !important;
+        right:8px !important;
+        bottom:8px !important;
+        left:auto !important;
+        width:20px !important;
+        height:20px !important;
+        display:flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+        border-radius:50% !important;
+        background:rgba(15,23,42,.08) !important;
+        border:1px solid rgba(100,116,139,.15) !important;
+        color:#64748b !important;
+        font-family:'Material Symbols Outlined' !important;
+        font-size:13px !important;
+        line-height:1 !important;
+        pointer-events:none !important;
+        z-index:20 !important;
+      `;
+          div.appendChild(lock);
           div.onclick = function(e) {
             e.stopPropagation();
             showVersionsPopup(exam, targetSkill);
@@ -32154,25 +32189,46 @@ var MyApp = (() => {
           };
         }
       } else if (!isPremium && !isFreeExam) {
-        div.style.cursor = "pointer";
         const oldBadge = div.querySelector(".premium-badge");
         if (oldBadge) oldBadge.remove();
         const oldLock = div.querySelector(".lock-icon-locked-exam");
         if (oldLock) oldLock.remove();
+        div.style.position = "relative";
+        div.style.overflow = "hidden";
+        div.style.background = "linear-gradient(135deg,#eef1f5,#e7ebf0)";
+        div.style.borderColor = "#d8dde5";
+        div.style.color = "#475569";
+        div.style.opacity = "0.88";
+        div.style.boxShadow = "inset 0 0 0 1px rgba(71,85,105,.04)";
+        div.style.cursor = "pointer";
         titleSpan.classList.remove("locked-title");
-        titleSpan.style.color = "";
-        div.onmouseenter = function() {
-          this.style.backgroundColor = "#f1f5f9";
-          this.style.transform = "translateX(5px)";
-          this.style.borderColor = "#2F80ED";
-          this.style.boxShadow = "0 2px 8px rgba(47, 128, 237, 0.15)";
-        };
-        div.onmouseleave = function() {
-          this.style.backgroundColor = "";
-          this.style.transform = "";
-          this.style.borderColor = "";
-          this.style.boxShadow = "";
-        };
+        titleSpan.style.color = "#475569";
+        const lock = document.createElement("span");
+        lock.className = "zertiva-pro-lock";
+        lock.textContent = "lock";
+        lock.style.cssText = `
+        position:absolute !important;
+        right:8px !important;
+        bottom:8px !important;
+        left:auto !important;
+        width:20px !important;
+        height:20px !important;
+        display:flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+        border-radius:50% !important;
+        background:rgba(15,23,42,.08) !important;
+        border:1px solid rgba(100,116,139,.15) !important;
+        color:#64748b !important;
+        font-family:'Material Symbols Outlined' !important;
+        font-size:13px !important;
+        line-height:1 !important;
+        pointer-events:none !important;
+        z-index:20 !important;
+      `;
+        div.appendChild(lock);
+        div.onmouseenter = null;
+        div.onmouseleave = null;
         div.onclick = /* @__PURE__ */ (function(title, id) {
           return function() {
             if (typeof window.showLockedCard === "function") {
