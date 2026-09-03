@@ -25766,14 +25766,16 @@ var MyApp = (() => {
         card.classList.add("correct-answer-card");
       } else {
         card.classList.add("wrong-answer-card");
-        const correctMsg = document.createElement("div");
-        correctMsg.className = "correct-message";
-        correctMsg.style.marginTop = "10px";
-        correctMsg.style.fontSize = "14px";
-        correctMsg.style.fontWeight = "bold";
-        correctMsg.style.color = "#28a745";
-        correctMsg.innerHTML = `\u2705 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629: ${q.correct ? "Richtig" : "Falsch"}`;
-        card.appendChild(correctMsg);
+        const textSpan2 = card.querySelector("span");
+        if (textSpan2) {
+          const oldAnswer = textSpan2.querySelector(".inline-correct-answer");
+          if (oldAnswer) oldAnswer.remove();
+          const answerSpan = document.createElement("span");
+          answerSpan.className = "inline-correct-answer";
+          answerSpan.style.cssText = "color: #2b8c4a; font-weight: 600; font-size: 0.75rem; display: block; margin-bottom: 4px;";
+          answerSpan.textContent = `\u2713 ${q.correct ? "Richtig" : "Falsch"}`;
+          textSpan2.prepend(answerSpan);
+        }
       }
       const radios = card.querySelectorAll('input[type="radio"]');
       for (let r = 0; r < radios.length; r++) {
@@ -26082,14 +26084,16 @@ var MyApp = (() => {
             }
           }
           if (!optionExists) {
-            let msg = card.querySelector(".correct-answer-message");
-            if (!msg) {
-              msg = document.createElement("div");
-              msg.className = "correct-answer-message";
-              msg.style.cssText = "margin-top: 6px; font-size: 12px; color: #28a745;";
-              card.appendChild(msg);
+            const textSpan = card.querySelector("span");
+            if (textSpan) {
+              const oldAnswer = textSpan.querySelector(".inline-correct-answer");
+              if (oldAnswer) oldAnswer.remove();
+              const answerSpan = document.createElement("span");
+              answerSpan.className = "inline-correct-answer";
+              answerSpan.style.cssText = "color: #2b8c4a; font-weight: 600; font-size: 0.75rem; display: block; margin-bottom: 4px;";
+              answerSpan.textContent = `\u2713 ${correctAnswer}`;
+              textSpan.prepend(answerSpan);
             }
-            msg.innerHTML = `\u2705 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629: ${correctAnswer}`;
           }
         }
       }
@@ -26893,50 +26897,8 @@ var MyApp = (() => {
         isCorrect = userAnswer === correctIndex;
       }
       if (card) {
-        card.classList.remove("correct-answer-card", "wrong-answer-card");
-        const selectElem = card.querySelector("select");
         if (isCorrect && userAnswer !== void 0 && userAnswer !== null && userAnswer !== "") {
           score++;
-          card.classList.add("correct-answer-card");
-          card.style.backgroundColor = "#d4edda";
-          card.style.border = "2px solid #28a745";
-          if (selectElem) {
-            selectElem.style.backgroundColor = "#d4edda";
-            selectElem.style.border = "2px solid #28a745";
-            selectElem.style.color = "#155724";
-          }
-        } else {
-          card.classList.add("wrong-answer-card");
-          card.style.backgroundColor = "#fef0e0";
-          card.style.border = "2px solid #e67e22";
-          if (selectElem) {
-            selectElem.style.backgroundColor = "#fef0e0";
-            selectElem.style.border = "2px solid #e67e22";
-            selectElem.style.color = "#155724";
-            let optionExists = false;
-            for (let j = 0; j < selectElem.options.length; j++) {
-              const optValue = selectElem.options[j].value;
-              if (optValue === correctValue || correctValue === "none" && optValue === "none" || correctValue !== null && correctValue !== void 0 && parseInt(optValue) === correctValue) {
-                optionExists = true;
-                const originalText = selectElem.options[j].textContent;
-                const cleanText = originalText.replace(/^✅\s*/, "");
-                selectElem.options[j].textContent = `\u2705 ${cleanText}`;
-                selectElem.options[j].selected = true;
-                break;
-              }
-            }
-            if (!optionExists) {
-              let msg = card.querySelector(".correct-answer-message");
-              if (!msg) {
-                msg = document.createElement("div");
-                msg.className = "correct-answer-message";
-                msg.style.cssText = "margin-top: 6px; font-size: 12px; color: #28a745;";
-                card.appendChild(msg);
-              }
-              let correctDisplay = correctText || (correctValue === "none" ? "\u2727 \u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646 \u2727" : correctValue);
-              msg.innerHTML = `\u2705 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629: ${correctDisplay}`;
-            }
-          }
         }
       }
     }
@@ -28628,226 +28590,168 @@ var MyApp = (() => {
       }
     });
   }
-  function showHelpIntro(skill, callback) {
-    if (_helpIntroShown[skill]) {
-      if (typeof callback === "function") callback();
+  function applyMatchingCorrection() {
+    const skill = window.currentSkill;
+    if (!skill || skill !== "lesen1" && skill !== "lesen3") {
       return;
     }
-    const overlay = document.createElement("div");
-    overlay.id = "helpIntroOverlay";
-    overlay.style.cssText = `
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: rgba(0,0,0,0.35);
-        backdrop-filter: blur(6px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 99999;
-        animation: fadeIn 0.25s ease;
-    `;
-    const card = document.createElement("div");
-    card.style.cssText = `
-        background: #ffffff;
-        border-radius: 20px;
-        padding: 28px 30px;
-        max-width: 400px;
-        width: 90%;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.12), 0 8px 20px rgba(0,0,0,0.04);
-        border: 1px solid rgba(0,0,0,0.04);
-        color: #1e293b;
-        text-align: right;
-        direction: rtl;
-        animation: scaleIn 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    `;
-    const text = document.createElement("p");
-    text.style.cssText = `
-        font-size: 15px;
-        line-height: 1.7;
-        color: #334155;
-        margin: 0 0 20px 0;
-        font-weight: 400;
-    `;
-    text.textContent = "\u0647\u062F\u0647 \u0627\u0644\u0645\u064A\u0632\u0629 \u0648\u0627\u062C\u0628\u0647\u0627 \u0641\u0642\u0637 \u062A\u0633\u0647\u064A\u0644 \u0639\u0645\u0644\u064A\u0629 \u0627\u0644\u0627\u062C\u0627\u0628\u0629 \u0644\u0643 \u0646\u0636\u0631\u0627 \u0644\u0627\u0646 \u0644\u064A\u0632\u0646 1\u06483 \u0627\u0628\u0637\u0626 \u0641\u064A \u0645\u0644\u0626 \u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0627\u0633\u0626\u0644\u0629. \u0647\u062F\u0627 \u0627\u0644\u0648\u0636\u0639 \u0633\u064A\u0633\u0647\u0644 \u0639\u0644\u064A\u0643 \u062F\u0627\u0644\u0643 \u0643\u064A \u062A\u0631\u0627\u062C\u0639 \u0628\u0643\u0641\u0627\u0626\u0629 \u0648\u0633\u0631\u0639\u0629 \u0627\u0643\u062A\u0631";
-    const checkboxWrapper = document.createElement("div");
-    checkboxWrapper.style.cssText = `
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 24px;
-        justify-content: flex-start;
-    `;
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.id = "helpIntroCheckbox";
-    checkbox.style.cssText = `
-        width: 18px;
-        height: 18px;
-        accent-color: #38bdf8;
-        cursor: pointer;
-        flex-shrink: 0;
-        border-radius: 4px;
-    `;
-    const label = document.createElement("label");
-    label.htmlFor = "helpIntroCheckbox";
-    label.textContent = "\u0639\u062F\u0645 \u0625\u0638\u0647\u0627\u0631 \u0647\u0630\u0627 \u0645\u0631\u0629 \u0623\u062E\u0631\u0649";
-    label.style.cssText = `
-        font-size: 14px;
-        color: #64748b;
-        cursor: pointer;
-        user-select: none;
-        font-weight: 400;
-    `;
-    checkboxWrapper.appendChild(checkbox);
-    checkboxWrapper.appendChild(label);
-    const okBtn = document.createElement("button");
-    okBtn.textContent = "\u062D\u0633\u0646\u0627\u064B";
-    okBtn.style.cssText = `
-        width: 100%;
-        padding: 12px 0;
-        background: #2c3e66;
-        border: none;
-        border-radius: 12px;
-        color: #ffffff;
-        font-size: 16px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        font-family: inherit;
-        letter-spacing: 0.3px;
-    `;
-    okBtn.onmouseenter = () => {
-      okBtn.style.background = "#1a2a4a";
-    };
-    okBtn.onmouseleave = () => {
-      okBtn.style.background = "#2c3e66";
-    };
-    okBtn.onmousedown = () => {
-      okBtn.style.transform = "scale(0.97)";
-    };
-    okBtn.onmouseup = () => {
-      okBtn.style.transform = "scale(1)";
-    };
-    okBtn.onclick = function() {
-      if (checkbox.checked) {
-        localStorage.setItem(`zertiva_help_intro_${skill}`, "true");
-        _helpIntroShown[skill] = true;
+    const root = document.querySelector(".zertiva-matching-root");
+    if (!root) {
+      return;
+    }
+    const matchingInstance = skill === "lesen1" ? window.matchingLesen1 : window.matchingLesen3;
+    if (!matchingInstance || !matchingInstance.isActive || !matchingInstance._matches) {
+      clearMatchingCorrection();
+      return;
+    }
+    const examData = window.currentExamData;
+    if (!examData) {
+      return;
+    }
+    let questions, sharedOptions;
+    if (skill === "lesen1") {
+      questions = examData.questions || [];
+      sharedOptions = examData.sharedOptions || [];
+    } else {
+      questions = examData.items || [];
+      sharedOptions = examData.situations || [];
+    }
+    root.querySelectorAll(".z-preview-correct, .z-preview-wrong, .z-title-correct, .z-title-wrong").forEach((el) => {
+      el.classList.remove("z-preview-correct", "z-preview-wrong", "z-title-correct", "z-title-wrong");
+    });
+    root.querySelectorAll(".z-preview-correct-answer").forEach((el) => el.remove());
+    const answerMap = /* @__PURE__ */ new Map();
+    for (let i = 0; i < questions.length; i++) {
+      const textId = `text-${i + 1}`;
+      const titleId = matchingInstance._matches.get(textId);
+      if (titleId) {
+        const match = titleId.match(/^title-(\d+)$/);
+        if (match) {
+          const selectedIndex = parseInt(match[1], 10) - 1;
+          answerMap.set(i, selectedIndex);
+        }
       }
-      overlay.remove();
-      if (typeof callback === "function") callback();
-    };
-    card.appendChild(text);
-    card.appendChild(checkboxWrapper);
-    card.appendChild(okBtn);
-    overlay.appendChild(card);
-    document.body.appendChild(overlay);
-    overlay.addEventListener("click", function(e) {
-      if (e.target === overlay) {
+    }
+    const textCards = root.querySelectorAll(".zertiva-matching-text-card");
+    const titleCards = root.querySelectorAll(".zertiva-matching-title-card");
+    textCards.forEach((card, index) => {
+      const userIndex = answerMap.get(index);
+      const correctIndex = questions[index]?.correct;
+      const isCorrect = userIndex !== void 0 && userIndex === correctIndex;
+      card.classList.remove("z-preview-correct", "z-preview-wrong");
+      if (isCorrect) {
+        card.classList.add("z-preview-correct");
+      } else if (userIndex !== void 0) {
+        card.classList.add("z-preview-wrong");
+      }
+      const body = card.querySelector(".zertiva-matching-text-body");
+      if (body) {
+        const old = body.querySelector(".z-preview-correct-answer");
+        if (old) old.remove();
+        const correctAnswer = sharedOptions[correctIndex];
+        if (correctAnswer) {
+          const answerDiv = document.createElement("div");
+          answerDiv.className = "z-preview-correct-answer";
+          answerDiv.style.color = "#2b8c4a";
+          answerDiv.innerHTML = `<strong style="color:#2b8c4a;">\u2713</strong> ${correctAnswer}`;
+          body.insertBefore(answerDiv, body.firstChild);
+        }
       }
     });
-  }
-  function activateHelpMode(skill) {
-    if (skill !== "lesen1" && skill !== "lesen3") return;
-    if (skill === "lesen1") window._helpModeLesen1 = true;
-    else window._helpModeLesen3 = true;
-    const containerId = skill === "lesen1" ? "teil1" : "teil3";
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    const oldHelpDiv = container.querySelector(".help-mode-controls");
-    if (oldHelpDiv) oldHelpDiv.remove();
-    const helpDiv = document.createElement("div");
-    helpDiv.className = "help-mode-controls";
-    helpDiv.style.cssText = `
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        margin-top: 25px;
-        padding-top: 15px;
-        border-top: 1px solid rgba(100,120,140,0.2);
-    `;
-    const doneBtn = document.createElement("button");
-    doneBtn.textContent = "\u0627\u0646\u062A\u0647\u064A\u062A";
-    doneBtn.style.cssText = `
-        padding: 12px 30px;
-        background: #2c3e66;
-        color: white;
-        border: none;
-        border-radius: 10px;
-        font-size: 16px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        width: 100%;
-        max-width: 200px;
-    `;
-    doneBtn.onmouseenter = () => {
-      doneBtn.style.background = "#1a2a4a";
-    };
-    doneBtn.onmouseleave = () => {
-      doneBtn.style.background = "#2c3e66";
-    };
-    doneBtn.onclick = function() {
-      deactivateHelpMode(skill);
-    };
-    const backBtn = document.createElement("button");
-    backBtn.textContent = "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0642\u0627\u0626\u0645\u0629";
-    backBtn.style.cssText = `
-        padding: 10px 30px;
-        background: #6c757d;
-        color: white;
-        border: none;
-        border-radius: 10px;
-        font-size: 15px;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        width: 100%;
-        max-width: 200px;
-    `;
-    backBtn.onmouseenter = () => {
-      backBtn.style.background = "#5a6268";
-    };
-    backBtn.onmouseleave = () => {
-      backBtn.style.background = "#6c757d";
-    };
-    backBtn.onclick = function() {
-      deactivateHelpMode(skill);
-      if (typeof window.goBackToExamsList === "function") {
-        window.goBackToExamsList();
-      } else {
-        const backBtn2 = document.getElementById("backArrowFromExam");
-        if (backBtn2) backBtn2.click();
+    titleCards.forEach((titleCard) => {
+      const textEl = titleCard.querySelector(".zertiva-matching-title-text");
+      if (!textEl) return;
+      const titleText = textEl.textContent.trim();
+      let titleIndex = -1;
+      for (let i = 0; i < sharedOptions.length; i++) {
+        if (sharedOptions[i] === titleText) {
+          titleIndex = i;
+          break;
+        }
       }
-    };
-    helpDiv.appendChild(doneBtn);
-    helpDiv.appendChild(backBtn);
-    container.appendChild(helpDiv);
-    updateHelpButtonState(skill, true);
-  }
-  function deactivateHelpMode(skill) {
-    if (skill !== "lesen1" && skill !== "lesen3") return;
-    if (skill === "lesen1") window._helpModeLesen1 = false;
-    else window._helpModeLesen3 = false;
-    const containerId = skill === "lesen1" ? "teil1" : "teil3";
-    const container = document.getElementById(containerId);
-    if (container) {
-      const helpDiv = container.querySelector(".help-mode-controls");
-      if (helpDiv) helpDiv.remove();
+      if (titleIndex === -1) {
+        titleCard.classList.remove("z-title-correct", "z-title-wrong");
+        return;
+      }
+      let isTitleCorrect = false;
+      for (let [qIndex, selectedIdx] of answerMap) {
+        if (selectedIdx === titleIndex && selectedIdx === questions[qIndex]?.correct) {
+          isTitleCorrect = true;
+          break;
+        }
+      }
+      const isUsed = Array.from(answerMap.values()).includes(titleIndex);
+      titleCard.classList.remove("z-title-correct", "z-title-wrong");
+      if (isTitleCorrect) {
+        titleCard.classList.add("z-title-correct");
+      } else if (isUsed) {
+        titleCard.classList.add("z-title-wrong");
+      }
+    });
+    const styleId = "zertiva-correction-preview-style-v2";
+    if (!document.getElementById(styleId)) {
+      const style = document.createElement("style");
+      style.id = styleId;
+      style.textContent = `
+      .z-preview-correct {
+        border-color: #86d7a1 !important;
+        background: #effbf2 !important;
+        box-shadow: 0 0 0 2px rgba(83,190,112,.10) !important;
+      }
+      .z-preview-wrong {
+        border-color: #f1b16f !important;
+        background: #fff6ec !important;
+        box-shadow: 0 0 0 2px rgba(241,177,111,.10) !important;
+      }
+      .z-preview-correct-answer {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0 0 7px 0;
+        padding: 0;
+        font-size: 10px;
+        line-height: 1.25;
+        font-weight: 750;
+        white-space: normal;
+        color: #2b8c4a;
+      }
+      .z-preview-correct-answer strong {
+        font-weight: 850;
+        margin-right: 3px;
+        color: #2b8c4a;
+      }
+      .z-title-correct {
+        border-color: #86d7a1 !important;
+        background: #f0faf4 !important;
+        box-shadow: 0 0 0 2px rgba(83,190,112,.08) !important;
+      }
+      .z-title-wrong {
+        border-color: #f1b16f !important;
+        background: #fdf6ed !important;
+        box-shadow: 0 0 0 2px rgba(241,177,111,.08) !important;
+      }
+    `;
+      document.head.appendChild(style);
     }
-    updateHelpButtonState(skill, false);
   }
-  function updateHelpButtonState(skill, isActive) {
-    const btn = document.getElementById("matchingToggleBtn");
-    if (!btn) return;
-    if (btn.dataset.skill !== skill) return;
-    btn.classList.toggle("active", isActive);
-    btn.innerHTML = `<span class="material-symbols-outlined">${isActive ? "assistant" : "help"}</span>`;
-    btn.title = isActive ? "\u0625\u0644\u063A\u0627\u0621 \u0648\u0636\u0639 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+  function clearMatchingCorrection() {
+    const root = document.querySelector(".zertiva-matching-root");
+    if (!root) return;
+    root.querySelectorAll(".z-preview-correct, .z-preview-wrong, .z-title-correct, .z-title-wrong").forEach((el) => {
+      el.classList.remove("z-preview-correct", "z-preview-wrong", "z-title-correct", "z-title-wrong");
+    });
+    root.querySelectorAll(".z-preview-correct-answer").forEach((el) => el.remove());
+    root.querySelectorAll(".zertiva-matching-text-card").forEach((card) => {
+      card.style.backgroundColor = "";
+      card.style.borderColor = "";
+    });
+    root.querySelectorAll(".zertiva-matching-title-card").forEach((card) => {
+      card.style.backgroundColor = "";
+      card.style.borderColor = "";
+    });
+    console.log("\u{1F9F9} \u062A\u0645 \u0625\u0632\u0627\u0644\u0629 \u0627\u0644\u062A\u0635\u062D\u064A\u062D \u0627\u0644\u0628\u0635\u0631\u064A \u0645\u0646 Matching Mode");
   }
-  var _hoerenData, interleavingOrders, lesen1OriginalNodes, lesen1ShuffledNodes, lesen1OrderSaved, lesen2OriginalNodes, lesen2ShuffledNodes, lesen2OrderSaved, lesen3OriginalNodes, lesen3ShuffledNodes, lesen3OrderSaved, examTimer2, currentSchreibenData, currentSprach2Data, sprach2UserAnswers, sprach2SelectedQuestionId, sprach2SelectedWordForLinking, currentSprach1Data, sprach1UserAnswers, sprach1OpenDropdownId, currentMatchingExamData2, matchingSelectedAnswers2, matchingAvailableOptions2, currentTeil2Data, teil2UserAnswers, currentTeil3Data, teil3UserAnswers, teil3SelectedItem, teil3SelectedSit, teil3SelectedItemForLink, teil3SelectedSitForLink, originalOpenExamGlobal, MemoryHighlightEngine, memoryEngine, toggleBtn, _toggleInProgress, _interleavingInitialized, _answerHistory, _historyEnabled, originalCheckTrueFalse, _helpIntroShown;
+  var _hoerenData, interleavingOrders, lesen1OriginalNodes, lesen1ShuffledNodes, lesen1OrderSaved, lesen2OriginalNodes, lesen2ShuffledNodes, lesen2OrderSaved, lesen3OriginalNodes, lesen3ShuffledNodes, lesen3OrderSaved, examTimer2, currentSchreibenData, currentSprach2Data, sprach2UserAnswers, sprach2SelectedQuestionId, sprach2SelectedWordForLinking, currentSprach1Data, sprach1UserAnswers, sprach1OpenDropdownId, currentMatchingExamData2, matchingSelectedAnswers2, matchingAvailableOptions2, currentTeil2Data, teil2UserAnswers, currentTeil3Data, teil3UserAnswers, teil3SelectedItem, teil3SelectedSit, teil3SelectedItemForLink, teil3SelectedSitForLink, originalOpenExamGlobal, MemoryHighlightEngine, memoryEngine, toggleBtn, _toggleInProgress, _interleavingInitialized, _answerHistory, _historyEnabled, originalCheckTrueFalse, MatchingMode, matchingLesen1, matchingLesen3;
   var init_engine = __esm({
     "engine.js"() {
       console.log("\u2705 engine.js \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647");
@@ -29714,36 +29618,591 @@ var MyApp = (() => {
         }, 150);
       };
       console.log("\u2705 \u062A\u0645 \u0631\u0628\u0637 SentenceReorder \u0645\u0639 engine.js (\u0645\u0639 \u062F\u0639\u0645 Reset)");
-      window._helpModeLesen1 = false;
-      window._helpModeLesen3 = false;
-      _helpIntroShown = {
-        lesen1: localStorage.getItem("zertiva_help_intro_lesen1") === "true",
-        lesen3: localStorage.getItem("zertiva_help_intro_lesen3") === "true"
-      };
-      window.toggleHelpMode = function(skill) {
-        if (skill !== "lesen1" && skill !== "lesen3") return;
-        const isActive = skill === "lesen1" ? window._helpModeLesen1 : window._helpModeLesen3;
-        const containerId = skill === "lesen1" ? "teil1" : "teil3";
-        const container = document.getElementById(containerId);
-        if (!container) return;
-        if (isActive) {
-          deactivateHelpMode(skill);
-        } else {
-          showHelpIntro(skill, function() {
-            activateHelpMode(skill);
+      MatchingMode = class {
+        /**
+         * @param {string} containerId – 'teil1' أو 'teil3'
+         * @param {string} modeName – 'lesen1' أو 'lesen3'
+         */
+        constructor(containerId, modeName) {
+          this.containerId = containerId;
+          this.modeName = modeName;
+          this.isActive = false;
+          this.root = null;
+          this.styleId = `zertiva-matching-style-${modeName}`;
+          this._selects = [];
+          this._texts = [];
+          this._titles = [];
+          this._matches = /* @__PURE__ */ new Map();
+          this._titleToText = /* @__PURE__ */ new Map();
+          this._selectedText = null;
+          this._selectedTitle = null;
+          this._textElements = /* @__PURE__ */ new Map();
+          this._titleElements = /* @__PURE__ */ new Map();
+          this._progressText = null;
+          this._progressFill = null;
+          this._isDestroyed = false;
+          this._resizeHandler = null;
+          this._captureTimeout = null;
+          this._isBuilding = false;
+          this._stateKey = `matching_state_${modeName}`;
+        }
+        // ---- حفظ الحالة ----
+        _saveState(active) {
+          try {
+            localStorage.setItem(this._stateKey, active ? "true" : "false");
+          } catch (e) {
+          }
+        }
+        // ---- استعادة الحالة ----
+        _loadState() {
+          try {
+            const val = localStorage.getItem(this._stateKey);
+            return val === "true";
+          } catch (e) {
+            return false;
+          }
+        }
+        // ---- استخراج النصوص والعناوين من الـ selects الحقيقية ----
+        _extractData() {
+          const container = document.getElementById(this.containerId);
+          if (!container) return false;
+          const selects = Array.from(container.querySelectorAll("select")).filter((sel) => {
+            const rect = sel.getBoundingClientRect();
+            return rect.width > 0 && rect.height > 0 && getComputedStyle(sel).display !== "none";
+          });
+          if (selects.length === 0) return false;
+          let maxSelects = this.modeName === "lesen1" ? 5 : 12;
+          this._selects = selects.slice(0, maxSelects);
+          if (this._selects.length < 5) return false;
+          this._texts = this._selects.map((select, index) => {
+            let text = "\u0646\u0635 \u063A\u064A\u0631 \u0645\u0639\u0631\u0648\u0641";
+            let parent = select.parentElement;
+            if (parent) {
+              const children = Array.from(parent.children);
+              const idx = children.indexOf(select);
+              if (idx > 0) {
+                const prev = children[idx - 1];
+                if (prev && !prev.querySelector("select")) {
+                  const raw = prev.textContent.trim();
+                  if (raw.length > 20) text = raw;
+                }
+              }
+            }
+            if (text === "\u0646\u0635 \u063A\u064A\u0631 \u0645\u0639\u0631\u0648\u0641") {
+              const container2 = select.closest(".question-card, .item, div");
+              if (container2) {
+                const clone = container2.cloneNode(true);
+                clone.querySelectorAll("select, button, input, textarea").forEach((el) => el.remove());
+                const raw = clone.textContent.trim();
+                if (raw.length > 20) text = raw;
+              }
+            }
+            return {
+              id: `text-${index + 1}`,
+              number: index + 1,
+              content: text,
+              select
+            };
+          });
+          const firstSelect = this._selects[0];
+          if (!firstSelect) return false;
+          const options = Array.from(firstSelect.options).map((opt) => ({ value: opt.value, text: opt.textContent.trim() })).filter((opt) => {
+            if (!opt.text) return false;
+            const lowerText = opt.text.toLowerCase();
+            if (lowerText.includes("\u0627\u062E\u062A\u0631 \u0627\u0644\u0625\u062C\u0627\u0628\u0629") || lowerText.includes("\u0627\u062E\u062A\u0631 \u0627\u0644\u0639\u0646\u0648\u0627\u0646") || lowerText.includes("ausw\xE4hlen") || lowerText.includes("w\xE4hlen") || lowerText.includes("\u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646")) {
+              return false;
+            }
+            return true;
+          });
+          this._titles = options.map((opt, idx) => ({
+            id: `title-${idx + 1}`,
+            value: opt.value,
+            text: opt.text,
+            letter: String.fromCharCode(65 + idx)
+          }));
+          if (this.modeName === "lesen3") {
+            this._titles.unshift({
+              id: "title-none",
+              value: "",
+              text: "\u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646",
+              letter: ""
+              // لا حرف
+            });
+          }
+          if (this._titles.length === 0) return false;
+          this._texts.forEach((text) => {
+            const val = text.select.value;
+            if (val) {
+              const title = this._titles.find((t) => t.value === val);
+              if (title) {
+                this._matches.set(text.id, title.id);
+                this._titleToText.set(title.id, text.id);
+              }
+            }
+          });
+          return true;
+        }
+        // ---- بناء واجهة Matching (مرة واحدة فقط) ----
+        _buildUI() {
+          if (this._isBuilding) return;
+          this._isBuilding = true;
+          const container = document.getElementById(this.containerId);
+          if (!container) {
+            this._isBuilding = false;
+            return;
+          }
+          if (this.root && this.root.parentNode) {
+            this._isBuilding = false;
+            return;
+          }
+          const root = document.createElement("section");
+          root.className = "zertiva-matching-root";
+          root.id = `zertiva-matching-root-${this.modeName}`;
+          root.style.display = "none";
+          const header = document.createElement("div");
+          header.className = "zertiva-matching-header";
+          const title = document.createElement("div");
+          title.className = "zertiva-matching-main-title";
+          title.textContent = this.modeName === "lesen1" ? "Lesen Teil 1" : "Lesen Teil 3";
+          const progress = document.createElement("div");
+          progress.className = "zertiva-matching-progress";
+          const progressText = document.createElement("span");
+          this._progressText = progressText;
+          const progressBar = document.createElement("span");
+          progressBar.className = "zertiva-matching-progress-bar";
+          const progressFill = document.createElement("span");
+          progressFill.className = "zertiva-matching-progress-fill";
+          this._progressFill = progressFill;
+          progressBar.appendChild(progressFill);
+          progress.append(progressText, progressBar);
+          header.append(title, progress);
+          const textArea = document.createElement("div");
+          textArea.className = "zertiva-matching-text-area";
+          const textGrid = document.createElement("div");
+          textGrid.className = "zertiva-matching-text-grid";
+          textArea.appendChild(textGrid);
+          const answerArea = document.createElement("div");
+          answerArea.className = "zertiva-matching-answer-area";
+          const answerHeader = document.createElement("div");
+          answerHeader.className = "zertiva-matching-answer-header";
+          const answerTitle = document.createElement("div");
+          answerTitle.className = "zertiva-matching-answer-title";
+          answerTitle.textContent = "TITEL ZUORDNEN";
+          answerHeader.appendChild(answerTitle);
+          const titleArea = document.createElement("div");
+          titleArea.className = "zertiva-matching-title-area";
+          const titleGrid = document.createElement("div");
+          titleGrid.className = "zertiva-matching-title-grid";
+          titleArea.appendChild(titleGrid);
+          answerArea.append(answerHeader, titleArea);
+          root.append(header, textArea, answerArea);
+          const actions = document.createElement("div");
+          actions.className = "zertiva-actions-buttons";
+          actions.style.cssText = "display:flex; justify-content:center; gap:12px; padding:12px 0 0 0; flex-wrap:wrap;";
+          const checkBtn = document.createElement("button");
+          checkBtn.type = "button";
+          checkBtn.className = "check-btn";
+          checkBtn.textContent = "\u2705 \u062A\u0635\u062D\u064A\u062D";
+          checkBtn.style.cssText = "padding:8px 20px; border:none; border-radius:8px; background:#2c3e66; color:white; font-size:14px; font-weight:600; cursor:pointer;";
+          const resetBtn = document.createElement("button");
+          resetBtn.type = "button";
+          resetBtn.className = "reset-btn";
+          resetBtn.textContent = "\u21BA";
+          resetBtn.style.cssText = "padding:8px 12px; border:none; border-radius:8px; background:#6c757d; color:white; font-size:14px; font-weight:600; cursor:pointer;";
+          actions.append(checkBtn, resetBtn);
+          root.appendChild(actions);
+          if (this.modeName === "lesen1") {
+            checkBtn.addEventListener("click", () => {
+              if (typeof window.checkMatchingExam === "function") {
+                window.checkMatchingExam();
+              } else {
+                console.warn("\u26A0\uFE0F checkMatchingExam \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629");
+              }
+            });
+            resetBtn.addEventListener("click", () => {
+              this.reset();
+              this._texts.forEach((text) => {
+                if (text.select) {
+                  text.select.selectedIndex = 0;
+                  text.select.dispatchEvent(new Event("change", { bubbles: true }));
+                }
+              });
+              if (typeof window.renderMatchingQuestions === "function") {
+                window.renderMatchingQuestions();
+              }
+              this._updateUI();
+            });
+          } else if (this.modeName === "lesen3") {
+            checkBtn.addEventListener("click", () => {
+              if (typeof window.checkTeil3Exam === "function") {
+                window.checkTeil3Exam();
+              } else {
+                console.warn("\u26A0\uFE0F checkTeil3Exam \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629");
+              }
+            });
+            resetBtn.addEventListener("click", () => {
+              this.reset();
+              this._texts.forEach((text) => {
+                if (text.select) {
+                  text.select.selectedIndex = 0;
+                  text.select.dispatchEvent(new Event("change", { bubbles: true }));
+                }
+              });
+              if (typeof window.updateTeil3SelectOptions === "function") {
+                window.updateTeil3SelectOptions();
+              }
+              if (typeof window.updateTeil3RightSideColors === "function") {
+                window.updateTeil3RightSideColors();
+              }
+              this._updateUI();
+            });
+          }
+          container.appendChild(root);
+          this.root = root;
+          this._buildTextCards(textGrid);
+          this._buildTitleCards(titleGrid);
+          this._updateUI();
+          this._resizeHandler = () => this._handleResize();
+          window.addEventListener("resize", this._resizeHandler);
+          this._captureTimeout = setTimeout(() => {
+            this._captureSizes();
+          }, 100);
+          this._isBuilding = false;
+        }
+        _buildTextCards(grid) {
+          this._textElements.clear();
+          this._texts.forEach((text, index) => {
+            const card = document.createElement("div");
+            card.className = "zertiva-matching-text-card";
+            card.dataset.textId = text.id;
+            const head = document.createElement("div");
+            head.className = "zertiva-matching-text-head";
+            const label = document.createElement("span");
+            label.className = "zertiva-matching-text-label";
+            label.textContent = `TEXT ${text.number}`;
+            const badge = document.createElement("span");
+            badge.className = "zertiva-matching-text-badge";
+            head.append(label, badge);
+            const body = document.createElement("div");
+            body.className = "zertiva-matching-text-body";
+            body.textContent = text.content;
+            card.append(head, body);
+            grid.appendChild(card);
+            this._textElements.set(text.id, { card, badge });
+            card.addEventListener("click", () => {
+              if (this._isDestroyed) return;
+              if (this._matches.has(text.id)) {
+                this._disconnectText(text.id);
+                this._selectedText = null;
+                this._selectedTitle = null;
+                this._updateUI();
+                return;
+              }
+              if (this._selectedTitle) {
+                this._connect(text.id, this._selectedTitle);
+                this._selectedText = null;
+                this._selectedTitle = null;
+                this._updateUI();
+                return;
+              }
+              this._selectedText = this._selectedText === text.id ? null : text.id;
+              this._selectedTitle = null;
+              this._updateUI();
+            });
+            card.addEventListener("dragover", (e) => {
+              e.preventDefault();
+              e.dataTransfer.dropEffect = "move";
+              card.classList.add("zertiva-selected");
+            });
+            card.addEventListener("dragleave", () => {
+              if (!this._matches.has(text.id)) {
+                card.classList.remove("zertiva-selected");
+              }
+            });
+            card.addEventListener("drop", (e) => {
+              e.preventDefault();
+              card.classList.remove("zertiva-selected");
+              const titleId = e.dataTransfer.getData("text/plain");
+              if (titleId && titleId.startsWith("title-")) {
+                this._connect(text.id, titleId);
+                this._selectedText = null;
+                this._selectedTitle = null;
+                this._updateUI();
+              }
+            });
           });
         }
+        _buildTitleCards(grid) {
+          this._titleElements.clear();
+          this._titles.forEach((title, index) => {
+            const card = document.createElement("div");
+            card.className = "zertiva-matching-title-card";
+            card.dataset.titleId = title.id;
+            card.draggable = true;
+            const letter = document.createElement("span");
+            letter.className = "zertiva-matching-title-letter";
+            letter.textContent = title.letter || "";
+            const content = document.createElement("div");
+            content.className = "zertiva-matching-title-content";
+            const textSpan = document.createElement("span");
+            textSpan.className = "zertiva-matching-title-text";
+            textSpan.textContent = title.text;
+            const match = document.createElement("div");
+            match.className = "zertiva-matching-title-match";
+            content.append(textSpan, match);
+            card.append(letter, content);
+            grid.appendChild(card);
+            this._titleElements.set(title.id, { card, match });
+            card.addEventListener("click", () => {
+              if (this._isDestroyed) return;
+              if (this._titleToText.has(title.id)) {
+                this._disconnectTitle(title.id);
+                this._selectedTitle = null;
+                this._selectedText = null;
+                this._updateUI();
+                return;
+              }
+              if (this._selectedText) {
+                this._connect(this._selectedText, title.id);
+                this._selectedText = null;
+                this._selectedTitle = null;
+                this._updateUI();
+                return;
+              }
+              this._selectedTitle = this._selectedTitle === title.id ? null : title.id;
+              this._selectedText = null;
+              this._updateUI();
+            });
+            card.addEventListener("dragstart", (e) => {
+              e.dataTransfer.setData("text/plain", title.id);
+              e.dataTransfer.effectAllowed = "move";
+              card.classList.add("zertiva-selected");
+            });
+            card.addEventListener("dragend", () => {
+              card.classList.remove("zertiva-selected");
+            });
+          });
+        }
+        // ---- ربط النص بالعنوان ----
+        _connect(textId, titleId) {
+          if (this._matches.get(textId) === titleId) {
+            this._disconnectText(textId);
+            return;
+          }
+          if (titleId !== "title-none") {
+            const oldText = this._titleToText.get(titleId);
+            if (oldText && oldText !== textId) {
+              this._matches.delete(oldText);
+            }
+          }
+          const oldTitle = this._matches.get(textId);
+          if (oldTitle) {
+            this._titleToText.delete(oldTitle);
+          }
+          this._matches.set(textId, titleId);
+          this._titleToText.set(titleId, textId);
+          const textObj = this._texts.find((t) => t.id === textId);
+          const titleObj = this._titles.find((t) => t.id === titleId);
+          if (textObj && textObj.select && titleObj) {
+            try {
+              textObj.select.value = titleObj.value || "";
+              textObj.select.dispatchEvent(new Event("change", { bubbles: true }));
+            } catch (_) {
+            }
+          }
+        }
+        _disconnectText(textId) {
+          const titleId = this._matches.get(textId);
+          if (!titleId) return;
+          this._titleToText.delete(titleId);
+          this._matches.delete(textId);
+          const textObj = this._texts.find((t) => t.id === textId);
+          if (textObj && textObj.select) {
+            try {
+              textObj.select.selectedIndex = 0;
+              textObj.select.dispatchEvent(new Event("change", { bubbles: true }));
+            } catch (_) {
+            }
+          }
+        }
+        _disconnectTitle(titleId) {
+          const textId = this._titleToText.get(titleId);
+          if (textId) this._disconnectText(textId);
+        }
+        // ---- تحديث واجهة المستخدم ----
+        _updateUI() {
+          const total = this._texts.length;
+          const count = this._matches.size;
+          const percent = total ? count / total * 100 : 0;
+          if (this._progressText) {
+            this._progressText.textContent = `${count} / ${total} zugeordnet`;
+          }
+          if (this._progressFill) {
+            this._progressFill.style.width = percent + "%";
+          }
+          this._textElements.forEach((el, textId) => {
+            const linked = this._matches.get(textId);
+            el.card.classList.toggle("zertiva-selected", this._selectedText === textId);
+            el.card.classList.toggle("zertiva-linked", Boolean(linked));
+            el.badge.textContent = "";
+            if (linked) {
+              const title = this._titles.find((t) => t.id === linked);
+              if (title && title.letter) {
+                el.badge.textContent = title.letter;
+              }
+            }
+          });
+          this._titleElements.forEach((el, titleId) => {
+            const linked = this._titleToText.get(titleId);
+            el.card.classList.toggle("zertiva-selected", this._selectedTitle === titleId);
+            el.card.classList.toggle("zertiva-linked", Boolean(linked));
+            el.match.textContent = "";
+            if (linked) {
+              const text = this._texts.find((t) => t.id === linked);
+              if (text) {
+                const title = this._titles.find((t) => t.id === titleId);
+                if (title && title.letter) {
+                  el.match.textContent = `TEXT ${text.number}`;
+                }
+              }
+            }
+          });
+        }
+        // ---- التقاط الأحجام الثابتة للـ responsive ----
+        _captureSizes() {
+          const root = this.root;
+          if (!root) return;
+          const firstText = this._textElements.values().next().value;
+          if (firstText) {
+            const rect = firstText.card.getBoundingClientRect();
+            if (rect.width > 0) {
+              root.style.setProperty("--zertiva-fixed-text-width", rect.width + "px");
+            }
+          }
+          const firstTitle = this._titleElements.values().next().value;
+          if (firstTitle) {
+            const rect = firstTitle.card.getBoundingClientRect();
+            if (rect.width > 0 && rect.height > 0) {
+              root.style.setProperty("--zertiva-fixed-title-width", rect.width + "px");
+              root.style.setProperty("--zertiva-fixed-title-height", rect.height + "px");
+            }
+          }
+        }
+        _handleResize() {
+          if (this._captureTimeout) clearTimeout(this._captureTimeout);
+          this._captureTimeout = setTimeout(() => this._captureSizes(), 50);
+        }
+        // ---- تفعيل Matching ----
+        activate() {
+          if (this.isActive || this._isDestroyed) return;
+          if (!this._extractData()) {
+            console.warn(`\u26A0\uFE0F \u0644\u0627 \u064A\u0645\u0643\u0646 \u062A\u0641\u0639\u064A\u0644 Matching \u0644\u0640 ${this.modeName}: \u0627\u0644\u0628\u064A\u0627\u0646\u0627\u062A \u063A\u064A\u0631 \u0645\u0643\u062A\u0645\u0644\u0629.`);
+            return;
+          }
+          if (!this.root || !this.root.parentNode) {
+            this._buildUI();
+          }
+          if (!this.root) {
+            console.warn(`\u26A0\uFE0F \u0641\u0634\u0644 \u0628\u0646\u0627\u0621 Matching \u0644\u0640 ${this.modeName}`);
+            return;
+          }
+          const container = document.getElementById(this.containerId);
+          if (container) {
+            Array.from(container.children).forEach((child) => {
+              if (child !== this.root) {
+                child.style.display = "none";
+              }
+            });
+            this.root.style.display = "flex";
+            container.classList.add("zertiva-matching-active");
+          }
+          this.isActive = true;
+          this._saveState(true);
+          console.log(`\u2705 Matching mode activated for ${this.modeName}`);
+          this._updateMatchingButton(true);
+        }
+        // ---- إلغاء Matching ----
+        deactivate() {
+          if (!this.isActive || this._isDestroyed) return;
+          const container = document.getElementById(this.containerId);
+          if (container) {
+            Array.from(container.children).forEach((child) => {
+              if (child !== this.root) {
+                child.style.display = "";
+              }
+            });
+            if (this.root) {
+              this.root.style.display = "none";
+            }
+            container.classList.remove("zertiva-matching-active");
+          }
+          this.isActive = false;
+          this._saveState(false);
+          console.log(`\u2705 Matching mode deactivated for ${this.modeName}`);
+          this._updateMatchingButton(false);
+        }
+        // ---- تحديث زر Matching في الشريط ----
+        _updateMatchingButton(active) {
+          const btn = document.getElementById("matchingToggleBtn");
+          if (!btn) return;
+          const skill = btn.dataset.skill || this.modeName;
+          if (skill === this.modeName) {
+            btn.classList.toggle("active", active);
+            btn.innerHTML = `<span class="material-symbols-outlined">${active ? "compare_arrows" : "swap_horiz"}</span>`;
+            btn.title = active ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
+          }
+        }
+        // ---- تبديل الحالة ----
+        toggle() {
+          if (this.isActive) {
+            this.deactivate();
+          } else {
+            this.activate();
+          }
+        }
+        // ---- إعادة ضبط الإجابات (يُستدعى من زر reset) ----
+        reset() {
+          if (!this.isActive) return;
+          const textIds = Array.from(this._matches.keys());
+          textIds.forEach((id) => this._disconnectText(id));
+          this._selectedText = null;
+          this._selectedTitle = null;
+          this._updateUI();
+          if (typeof window.clearMatchingCorrection === "function") {
+            window.clearMatchingCorrection();
+          }
+        }
       };
-      window.updateHelpButtonOnLoad = function(skill) {
-        const isActive = skill === "lesen1" ? window._helpModeLesen1 : window._helpModeLesen3;
-        updateHelpButtonState(skill, isActive);
+      matchingLesen1 = new MatchingMode("teil1", "lesen1");
+      matchingLesen3 = new MatchingMode("teil3", "lesen3");
+      window.matchingLesen1 = matchingLesen1;
+      window.matchingLesen3 = matchingLesen3;
+      window.toggleMatchingLesen1 = function() {
+        matchingLesen1.toggle();
       };
-      window.isHelpModeActive = function(skill) {
-        if (skill === "lesen1") return window._helpModeLesen1;
-        if (skill === "lesen3") return window._helpModeLesen3;
-        return false;
+      window.toggleMatchingLesen3 = function() {
+        matchingLesen3.toggle();
       };
-      console.log("\u2705 \u0646\u0638\u0627\u0645 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u0644\u0640 Lesen 1 \u0648 Lesen 3 \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647");
+      window.restoreMatchingState = function(skill) {
+        if (skill === "lesen1" && matchingLesen1) {
+          const saved = matchingLesen1._loadState();
+          if (saved && !matchingLesen1.isActive) {
+            matchingLesen1.activate();
+          } else if (!saved && matchingLesen1.isActive) {
+            matchingLesen1.deactivate();
+          }
+        } else if (skill === "lesen3" && matchingLesen3) {
+          const saved = matchingLesen3._loadState();
+          if (saved && !matchingLesen3.isActive) {
+            matchingLesen3.activate();
+          } else if (!saved && matchingLesen3.isActive) {
+            matchingLesen3.deactivate();
+          }
+        }
+      };
+      console.log("\u2705 Matching Mode (Lesen 1 & Lesen 3) ready.");
+      window.applyMatchingCorrection = applyMatchingCorrection;
+      window.clearMatchingCorrection = clearMatchingCorrection;
     }
   });
 
@@ -31776,46 +32235,33 @@ var MyApp = (() => {
           }
         }
         if (allVersionsLocked) {
-          div.style.position = "relative";
-          div.style.overflow = "hidden";
-          div.style.background = "linear-gradient(135deg, #eef1f5, #e7ebf0)";
-          div.style.borderColor = "#d8dde5";
-          div.style.color = "#475569";
-          div.style.opacity = "0.88";
-          div.style.boxShadow = "inset 0 0 0 1px rgba(71,85,105,.04)";
+          div.style.backgroundColor = "rgba(255,255,255,0.75)";
+          div.style.border = "1px solid #e2e8f0";
+          div.style.opacity = "1";
           div.style.transition = "all 0.25s ease";
           div.style.cursor = "pointer";
-          const oldBadge = div.querySelector(".premium-badge");
-          if (oldBadge) oldBadge.remove();
-          const rightSide = div.querySelector(".exam-right-icons");
-          if (rightSide) rightSide.remove();
-          const lock = document.createElement("span");
-          lock.className = "zertiva-pro-lock";
-          lock.textContent = "lock";
-          lock.style.cssText = `
-        position: absolute !important;
-        right: 8px !important;
-        bottom: 8px !important;
-        left: auto !important;
-        width: 20px !important;
-        height: 20px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        border-radius: 50% !important;
-        background: rgba(15,23,42,.08) !important;
-        border: 1px solid rgba(100,116,139,.15) !important;
-        color: #64748b !important;
-        font-family: 'Material Symbols Outlined' !important;
-        font-size: 13px !important;
-        line-height: 1 !important;
-        pointer-events: none !important;
-        z-index: 20 !important;
-      `;
-          div.appendChild(lock);
+          const rightSide = document.createElement("span");
+          rightSide.className = "exam-right-icons";
+          const premiumSpan = document.createElement("span");
+          premiumSpan.className = "premium-badge";
+          premiumSpan.innerHTML = "Premium";
+          rightSide.appendChild(premiumSpan);
+          div.appendChild(rightSide);
           titleSpan.style.color = "#4b5563";
           titleSpan.style.transition = "none";
           titleSpan.classList.add("locked-title");
+          div.onmouseenter = function() {
+            this.style.backgroundColor = "rgba(255,255,255,0.95)";
+            this.style.transform = "translateX(5px)";
+            this.style.borderColor = "#60a5fa";
+            if (premiumSpan) premiumSpan.style.transform = "scale(1.02)";
+          };
+          div.onmouseleave = function() {
+            this.style.backgroundColor = "rgba(255,255,255,0.75)";
+            this.style.transform = "translateX(0)";
+            this.style.borderColor = "#e2e8f0";
+            if (premiumSpan) premiumSpan.style.transform = "scale(1)";
+          };
           div.onclick = function(e) {
             e.stopPropagation();
             showVersionsPopup(exam, targetSkill);
@@ -31828,46 +32274,33 @@ var MyApp = (() => {
           };
         }
       } else if (!isPremium && !isFreeExam) {
-        div.style.position = "relative";
-        div.style.overflow = "hidden";
-        div.style.background = "linear-gradient(135deg, #eef1f5, #e7ebf0)";
-        div.style.borderColor = "#d8dde5";
-        div.style.color = "#475569";
-        div.style.opacity = "0.88";
-        div.style.boxShadow = "inset 0 0 0 1px rgba(71,85,105,.04)";
+        div.style.backgroundColor = "rgba(255,255,255,0.75)";
+        div.style.border = "1px solid #e2e8f0";
+        div.style.opacity = "1";
         div.style.transition = "all 0.25s ease";
         div.style.cursor = "pointer";
-        const oldBadge = div.querySelector(".premium-badge");
-        if (oldBadge) oldBadge.remove();
-        const rightSide = div.querySelector(".exam-right-icons");
-        if (rightSide) rightSide.remove();
-        const lock = document.createElement("span");
-        lock.className = "zertiva-pro-lock";
-        lock.textContent = "lock";
-        lock.style.cssText = `
-        position: absolute !important;
-        right: 8px !important;
-        bottom: 8px !important;
-        left: auto !important;
-        width: 20px !important;
-        height: 20px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        border-radius: 50% !important;
-        background: rgba(15,23,42,.08) !important;
-        border: 1px solid rgba(100,116,139,.15) !important;
-        color: #64748b !important;
-        font-family: 'Material Symbols Outlined' !important;
-        font-size: 13px !important;
-        line-height: 1 !important;
-        pointer-events: none !important;
-        z-index: 20 !important;
-      `;
-        div.appendChild(lock);
+        const rightSide = document.createElement("span");
+        rightSide.className = "exam-right-icons";
+        const premiumSpan = document.createElement("span");
+        premiumSpan.className = "premium-badge";
+        premiumSpan.innerHTML = "Premium";
+        rightSide.appendChild(premiumSpan);
+        div.appendChild(rightSide);
         titleSpan.style.color = "#4b5563";
         titleSpan.style.transition = "none";
         titleSpan.classList.add("locked-title");
+        div.onmouseenter = function() {
+          this.style.backgroundColor = "rgba(255,255,255,0.95)";
+          this.style.transform = "translateX(5px)";
+          this.style.borderColor = "#60a5fa";
+          if (premiumSpan) premiumSpan.style.transform = "scale(1.02)";
+        };
+        div.onmouseleave = function() {
+          this.style.backgroundColor = "rgba(255,255,255,0.75)";
+          this.style.transform = "translateX(0)";
+          this.style.borderColor = "#e2e8f0";
+          if (premiumSpan) premiumSpan.style.transform = "scale(1)";
+        };
         div.onclick = /* @__PURE__ */ (function(title, id) {
           return function() {
             if (typeof window.showLockedCard === "function") {
@@ -32114,11 +32547,11 @@ var MyApp = (() => {
           if (matchingBtn) {
             if (skill === "lesen1" || skill === "lesen3") {
               matchingBtn.style.display = "inline-flex";
+              const isActive = skill === "lesen1" && window.matchingLesen1 && window.matchingLesen1.isActive || skill === "lesen3" && window.matchingLesen3 && window.matchingLesen3.isActive;
+              matchingBtn.classList.toggle("active", isActive);
               matchingBtn.dataset.skill = skill;
-              const isHelpActive = skill === "lesen1" && window._helpModeLesen1 || skill === "lesen3" && window._helpModeLesen3;
-              matchingBtn.classList.toggle("active", isHelpActive);
-              matchingBtn.innerHTML = `<span class="material-symbols-outlined">${isHelpActive ? "assistant" : "help"}</span>`;
-              matchingBtn.title = isHelpActive ? "\u0625\u0644\u063A\u0627\u0621 \u0648\u0636\u0639 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+              matchingBtn.textContent = isActive ? "compare_arrows" : "swap_horiz";
+              matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
             } else {
               matchingBtn.style.display = "none";
             }
@@ -32270,15 +32703,15 @@ var MyApp = (() => {
       }
       if (skill === "lesen1" || skill === "lesen3") {
         setTimeout(() => {
-          if (typeof window.updateHelpButtonOnLoad === "function") {
-            window.updateHelpButtonOnLoad(skill);
+          if (typeof window.restoreMatchingState === "function") {
+            window.restoreMatchingState(skill);
           }
-          const helpBtn = document.getElementById("matchingToggleBtn");
-          if (helpBtn) {
-            const isHelpActive = skill === "lesen1" && window._helpModeLesen1 || skill === "lesen3" && window._helpModeLesen3;
-            helpBtn.classList.toggle("active", isHelpActive);
-            helpBtn.innerHTML = `<span class="material-symbols-outlined">${isHelpActive ? "assistant" : "help"}</span>`;
-            helpBtn.title = isHelpActive ? "\u0625\u0644\u063A\u0627\u0621 \u0648\u0636\u0639 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+          const matchingBtn = document.getElementById("matchingToggleBtn");
+          if (matchingBtn) {
+            const isActive = skill === "lesen1" && window.matchingLesen1 && window.matchingLesen1.isActive || skill === "lesen3" && window.matchingLesen3 && window.matchingLesen3.isActive;
+            matchingBtn.classList.toggle("active", isActive);
+            matchingBtn.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
+            matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
           }
         }, 100);
       }
@@ -33742,27 +34175,41 @@ var MyApp = (() => {
       setTimeout(createMatchingButton, 200);
       return;
     }
-    const helpBtn = document.createElement("button");
-    helpBtn.id = "matchingToggleBtn";
-    helpBtn.className = "interleaving-icon-btn";
-    helpBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
-    helpBtn.innerHTML = `<span class="material-symbols-outlined">help</span>`;
-    helpBtn.style.display = "none";
-    helpBtn.addEventListener("click", function(e) {
+    const matchingBtn = document.createElement("button");
+    matchingBtn.id = "matchingToggleBtn";
+    matchingBtn.className = "interleaving-icon-btn";
+    matchingBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
+    matchingBtn.innerHTML = `<span class="material-symbols-outlined">swap_horiz</span>`;
+    matchingBtn.style.display = "none";
+    matchingBtn.addEventListener("click", function(e) {
       e.stopPropagation();
       const skill = this.dataset.skill || window.currentSkill;
-      if (skill === "lesen1" || skill === "lesen3") {
-        if (typeof window.toggleHelpMode === "function") {
-          window.toggleHelpMode(skill);
-        } else {
-          console.warn("\u26A0\uFE0F \u062F\u0627\u0644\u0629 toggleHelpMode \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629");
-        }
+      if (skill === "lesen1" && window.matchingLesen1) {
+        window.matchingLesen1.toggle();
+        const isActive = window.matchingLesen1.isActive;
+        this.classList.toggle("active", isActive);
+        this.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
+        this.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
+        this.style.animation = "none";
+        setTimeout(() => {
+          this.style.animation = "matchingPulse 0.3s ease";
+        }, 10);
+      } else if (skill === "lesen3" && window.matchingLesen3) {
+        window.matchingLesen3.toggle();
+        const isActive = window.matchingLesen3.isActive;
+        this.classList.toggle("active", isActive);
+        this.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
+        this.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
+        this.style.animation = "none";
+        setTimeout(() => {
+          this.style.animation = "matchingPulse 0.3s ease";
+        }, 10);
       } else {
-        console.warn("\u26A0\uFE0F \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u063A\u064A\u0631 \u0645\u062A\u0627\u062D\u0629 \u0644\u0647\u0630\u0647 \u0627\u0644\u0645\u0647\u0627\u0631\u0629");
+        console.warn("\u26A0\uFE0F Matching \u063A\u064A\u0631 \u0645\u062A\u0627\u062D \u0644\u0647\u0630\u0647 \u0627\u0644\u0645\u0647\u0627\u0631\u0629");
       }
     });
-    interleavingRow.insertBefore(helpBtn, playBtn);
-    console.log("\u2705 \u0632\u0631 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u062A\u0645 \u0625\u0636\u0627\u0641\u062A\u0647 \u0641\u064A \u0634\u0631\u064A\u0637 \u0627\u0644\u0623\u0632\u0631\u0627\u0631");
+    interleavingRow.insertBefore(matchingBtn, playBtn);
+    console.log("\u2705 \u0632\u0631 Matching \u062A\u0645 \u0625\u0636\u0627\u0641\u062A\u0647 \u0641\u064A \u0634\u0631\u064A\u0637 \u0627\u0644\u0623\u0632\u0631\u0627\u0631");
   }
   var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY, originalOpenExam2;
   var init_exams = __esm({
@@ -35268,23 +35715,39 @@ var MyApp = (() => {
         window.openExam = function(examId, examTitle, skill, fileName) {
           const result = originalOpenExam2.call(this, examId, examTitle, skill, fileName);
           setTimeout(() => {
-            const helpBtn = document.getElementById("matchingToggleBtn");
-            if (helpBtn) {
+            const matchingBtn = document.getElementById("matchingToggleBtn");
+            if (matchingBtn) {
               if (skill === "lesen1" || skill === "lesen3") {
-                helpBtn.style.display = "inline-flex";
-                helpBtn.dataset.skill = skill;
-                const isHelpActive = skill === "lesen1" && window._helpModeLesen1 || skill === "lesen3" && window._helpModeLesen3;
-                helpBtn.classList.toggle("active", isHelpActive);
-                helpBtn.innerHTML = `<span class="material-symbols-outlined">${isHelpActive ? "assistant" : "help"}</span>`;
-                helpBtn.title = isHelpActive ? "\u0625\u0644\u063A\u0627\u0621 \u0648\u0636\u0639 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+                matchingBtn.style.display = "inline-flex";
+                matchingBtn.dataset.skill = skill;
+                const isActive = skill === "lesen1" && window.matchingLesen1 && window.matchingLesen1.isActive || skill === "lesen3" && window.matchingLesen3 && window.matchingLesen3.isActive;
+                matchingBtn.classList.toggle("active", isActive);
+                matchingBtn.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
+                matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
               } else {
-                helpBtn.style.display = "none";
+                matchingBtn.style.display = "none";
               }
             }
           }, 200);
           return result;
         };
       }
+      window.updateMatchingButtonState = function() {
+        const matchingBtn = document.getElementById("matchingToggleBtn");
+        if (!matchingBtn) return;
+        const skill = matchingBtn.dataset.skill || window.currentSkill;
+        if (skill === "lesen1" && window.matchingLesen1) {
+          const isActive = window.matchingLesen1.isActive;
+          matchingBtn.classList.toggle("active", isActive);
+          matchingBtn.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
+          matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
+        } else if (skill === "lesen3" && window.matchingLesen3) {
+          const isActive = window.matchingLesen3.isActive;
+          matchingBtn.classList.toggle("active", isActive);
+          matchingBtn.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
+          matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
+        }
+      };
       (function() {
         const btn = document.getElementById("checkCircleBtn");
         const tooltip = document.getElementById("checkCircleTooltip");
