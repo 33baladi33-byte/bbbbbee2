@@ -6070,6 +6070,7 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 5 !important; }
         font-size: 12px;
     }
 }
+
 /* ============================================
    Custom Badge - مع أيقونة layers (نسخة جديدة)
    ============================================ */
@@ -6110,6 +6111,13 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 5 !important; }
     border: none !important;
     box-shadow: none !important;
     border-radius: 4px !important;
+}
+
+/* ============================================
+   أنماط البطاقات المقفلة (قائمة الامتحانات)
+   ============================================ */
+.lock-icon-locked-exam {
+    /* الأنماط مضمنة في JavaScript، لكن نضيف هنا أي أنماط إضافية إن لزم */
 }
 
 /* ============================================

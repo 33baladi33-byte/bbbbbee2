@@ -26143,9 +26143,6 @@ var MyApp = (() => {
         }
       }
     }
-    if (typeof window.applyMatchingCorrection === "function") {
-      setTimeout(window.applyMatchingCorrection, 50);
-    }
   }
   function renderTeil2Exam() {
     const container = document.getElementById("teil2");
@@ -26946,9 +26943,6 @@ var MyApp = (() => {
           saveExamTime(skill, examId, elapsed);
         }
       }
-    }
-    if (typeof window.applyMatchingCorrection === "function") {
-      setTimeout(window.applyMatchingCorrection, 50);
     }
   }
   function applyMobileStylesToEngine() {
@@ -28590,167 +28584,6 @@ var MyApp = (() => {
       }
     });
   }
-  function applyMatchingCorrection() {
-    const skill = window.currentSkill;
-    if (!skill || skill !== "lesen1" && skill !== "lesen3") {
-      return;
-    }
-    const root = document.querySelector(".zertiva-matching-root");
-    if (!root) {
-      return;
-    }
-    const matchingInstance = skill === "lesen1" ? window.matchingLesen1 : window.matchingLesen3;
-    if (!matchingInstance || !matchingInstance.isActive || !matchingInstance._matches) {
-      clearMatchingCorrection();
-      return;
-    }
-    const examData = window.currentExamData;
-    if (!examData) {
-      return;
-    }
-    let questions, sharedOptions;
-    if (skill === "lesen1") {
-      questions = examData.questions || [];
-      sharedOptions = examData.sharedOptions || [];
-    } else {
-      questions = examData.items || [];
-      sharedOptions = examData.situations || [];
-    }
-    root.querySelectorAll(".z-preview-correct, .z-preview-wrong, .z-title-correct, .z-title-wrong").forEach((el) => {
-      el.classList.remove("z-preview-correct", "z-preview-wrong", "z-title-correct", "z-title-wrong");
-    });
-    root.querySelectorAll(".z-preview-correct-answer").forEach((el) => el.remove());
-    const answerMap = /* @__PURE__ */ new Map();
-    for (let i = 0; i < questions.length; i++) {
-      const textId = `text-${i + 1}`;
-      const titleId = matchingInstance._matches.get(textId);
-      if (titleId) {
-        const match = titleId.match(/^title-(\d+)$/);
-        if (match) {
-          const selectedIndex = parseInt(match[1], 10) - 1;
-          answerMap.set(i, selectedIndex);
-        }
-      }
-    }
-    const textCards = root.querySelectorAll(".zertiva-matching-text-card");
-    const titleCards = root.querySelectorAll(".zertiva-matching-title-card");
-    textCards.forEach((card, index) => {
-      const userIndex = answerMap.get(index);
-      const correctIndex = questions[index]?.correct;
-      const isCorrect = userIndex !== void 0 && userIndex === correctIndex;
-      card.classList.remove("z-preview-correct", "z-preview-wrong");
-      if (isCorrect) {
-        card.classList.add("z-preview-correct");
-      } else if (userIndex !== void 0) {
-        card.classList.add("z-preview-wrong");
-      }
-      const body = card.querySelector(".zertiva-matching-text-body");
-      if (body) {
-        const old = body.querySelector(".z-preview-correct-answer");
-        if (old) old.remove();
-        const correctAnswer = sharedOptions[correctIndex];
-        if (correctAnswer) {
-          const answerDiv = document.createElement("div");
-          answerDiv.className = "z-preview-correct-answer";
-          answerDiv.style.color = "#2b8c4a";
-          answerDiv.innerHTML = `<strong style="color:#2b8c4a;">\u2713</strong> ${correctAnswer}`;
-          body.insertBefore(answerDiv, body.firstChild);
-        }
-      }
-    });
-    titleCards.forEach((titleCard) => {
-      const textEl = titleCard.querySelector(".zertiva-matching-title-text");
-      if (!textEl) return;
-      const titleText = textEl.textContent.trim();
-      let titleIndex = -1;
-      for (let i = 0; i < sharedOptions.length; i++) {
-        if (sharedOptions[i] === titleText) {
-          titleIndex = i;
-          break;
-        }
-      }
-      if (titleIndex === -1) {
-        titleCard.classList.remove("z-title-correct", "z-title-wrong");
-        return;
-      }
-      let isTitleCorrect = false;
-      for (let [qIndex, selectedIdx] of answerMap) {
-        if (selectedIdx === titleIndex && selectedIdx === questions[qIndex]?.correct) {
-          isTitleCorrect = true;
-          break;
-        }
-      }
-      const isUsed = Array.from(answerMap.values()).includes(titleIndex);
-      titleCard.classList.remove("z-title-correct", "z-title-wrong");
-      if (isTitleCorrect) {
-        titleCard.classList.add("z-title-correct");
-      } else if (isUsed) {
-        titleCard.classList.add("z-title-wrong");
-      }
-    });
-    const styleId = "zertiva-correction-preview-style-v2";
-    if (!document.getElementById(styleId)) {
-      const style = document.createElement("style");
-      style.id = styleId;
-      style.textContent = `
-      .z-preview-correct {
-        border-color: #86d7a1 !important;
-        background: #effbf2 !important;
-        box-shadow: 0 0 0 2px rgba(83,190,112,.10) !important;
-      }
-      .z-preview-wrong {
-        border-color: #f1b16f !important;
-        background: #fff6ec !important;
-        box-shadow: 0 0 0 2px rgba(241,177,111,.10) !important;
-      }
-      .z-preview-correct-answer {
-        display: block;
-        width: 100%;
-        box-sizing: border-box;
-        margin: 0 0 7px 0;
-        padding: 0;
-        font-size: 10px;
-        line-height: 1.25;
-        font-weight: 750;
-        white-space: normal;
-        color: #2b8c4a;
-      }
-      .z-preview-correct-answer strong {
-        font-weight: 850;
-        margin-right: 3px;
-        color: #2b8c4a;
-      }
-      .z-title-correct {
-        border-color: #86d7a1 !important;
-        background: #f0faf4 !important;
-        box-shadow: 0 0 0 2px rgba(83,190,112,.08) !important;
-      }
-      .z-title-wrong {
-        border-color: #f1b16f !important;
-        background: #fdf6ed !important;
-        box-shadow: 0 0 0 2px rgba(241,177,111,.08) !important;
-      }
-    `;
-      document.head.appendChild(style);
-    }
-  }
-  function clearMatchingCorrection() {
-    const root = document.querySelector(".zertiva-matching-root");
-    if (!root) return;
-    root.querySelectorAll(".z-preview-correct, .z-preview-wrong, .z-title-correct, .z-title-wrong").forEach((el) => {
-      el.classList.remove("z-preview-correct", "z-preview-wrong", "z-title-correct", "z-title-wrong");
-    });
-    root.querySelectorAll(".z-preview-correct-answer").forEach((el) => el.remove());
-    root.querySelectorAll(".zertiva-matching-text-card").forEach((card) => {
-      card.style.backgroundColor = "";
-      card.style.borderColor = "";
-    });
-    root.querySelectorAll(".zertiva-matching-title-card").forEach((card) => {
-      card.style.backgroundColor = "";
-      card.style.borderColor = "";
-    });
-    console.log("\u{1F9F9} \u062A\u0645 \u0625\u0632\u0627\u0644\u0629 \u0627\u0644\u062A\u0635\u062D\u064A\u062D \u0627\u0644\u0628\u0635\u0631\u064A \u0645\u0646 Matching Mode");
-  }
   var _hoerenData, interleavingOrders, lesen1OriginalNodes, lesen1ShuffledNodes, lesen1OrderSaved, lesen2OriginalNodes, lesen2ShuffledNodes, lesen2OrderSaved, lesen3OriginalNodes, lesen3ShuffledNodes, lesen3OrderSaved, examTimer2, currentSchreibenData, currentSprach2Data, sprach2UserAnswers, sprach2SelectedQuestionId, sprach2SelectedWordForLinking, currentSprach1Data, sprach1UserAnswers, sprach1OpenDropdownId, currentMatchingExamData2, matchingSelectedAnswers2, matchingAvailableOptions2, currentTeil2Data, teil2UserAnswers, currentTeil3Data, teil3UserAnswers, teil3SelectedItem, teil3SelectedSit, teil3SelectedItemForLink, teil3SelectedSitForLink, originalOpenExamGlobal, MemoryHighlightEngine, memoryEngine, toggleBtn, _toggleInProgress, _interleavingInitialized, _answerHistory, _historyEnabled, originalCheckTrueFalse, MatchingMode, matchingLesen1, matchingLesen3;
   var init_engine = __esm({
     "engine.js"() {
@@ -29646,21 +29479,11 @@ var MyApp = (() => {
           this._isBuilding = false;
           this._stateKey = `matching_state_${modeName}`;
         }
-        // ---- حفظ الحالة ----
         _saveState(active) {
-          try {
-            localStorage.setItem(this._stateKey, active ? "true" : "false");
-          } catch (e) {
-          }
+          return;
         }
-        // ---- استعادة الحالة ----
         _loadState() {
-          try {
-            const val = localStorage.getItem(this._stateKey);
-            return val === "true";
-          } catch (e) {
-            return false;
-          }
+          return false;
         }
         // ---- استخراج النصوص والعناوين من الـ selects الحقيقية ----
         _extractData() {
@@ -29742,7 +29565,6 @@ var MyApp = (() => {
           });
           return true;
         }
-        // ---- بناء واجهة Matching (مرة واحدة فقط) ----
         _buildUI() {
           if (this._isBuilding) return;
           this._isBuilding = true;
@@ -29799,64 +29621,44 @@ var MyApp = (() => {
           const actions = document.createElement("div");
           actions.className = "zertiva-actions-buttons";
           actions.style.cssText = "display:flex; justify-content:center; gap:12px; padding:12px 0 0 0; flex-wrap:wrap;";
-          const checkBtn = document.createElement("button");
-          checkBtn.type = "button";
-          checkBtn.className = "check-btn";
-          checkBtn.textContent = "\u2705 \u062A\u0635\u062D\u064A\u062D";
-          checkBtn.style.cssText = "padding:8px 20px; border:none; border-radius:8px; background:#2c3e66; color:white; font-size:14px; font-weight:600; cursor:pointer;";
-          const resetBtn = document.createElement("button");
-          resetBtn.type = "button";
-          resetBtn.className = "reset-btn";
-          resetBtn.textContent = "\u21BA";
-          resetBtn.style.cssText = "padding:8px 12px; border:none; border-radius:8px; background:#6c757d; color:white; font-size:14px; font-weight:600; cursor:pointer;";
-          actions.append(checkBtn, resetBtn);
+          const doneBtn = document.createElement("button");
+          doneBtn.type = "button";
+          doneBtn.textContent = "\u0627\u0646\u062A\u0647\u064A\u062A";
+          doneBtn.style.cssText = "padding:8px 20px; border:none; border-radius:8px; background:#2c3e66; color:white; font-size:14px; font-weight:600; cursor:pointer;";
+          doneBtn.addEventListener("click", () => {
+            if (this.isActive) {
+              this.deactivate();
+              const helpBtn = document.getElementById("matchingToggleBtn");
+              if (helpBtn) {
+                helpBtn.innerHTML = `<span class="material-symbols-outlined">help</span>`;
+                helpBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+                helpBtn.classList.remove("active");
+              }
+            }
+          });
+          actions.appendChild(doneBtn);
+          const backBtn = document.createElement("button");
+          backBtn.type = "button";
+          backBtn.textContent = "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0642\u0627\u0626\u0645\u0629";
+          backBtn.style.cssText = "padding:8px 20px; border:none; border-radius:8px; background:#6c757d; color:white; font-size:14px; font-weight:600; cursor:pointer;";
+          backBtn.addEventListener("click", () => {
+            if (this.isActive) {
+              this.deactivate();
+              const helpBtn = document.getElementById("matchingToggleBtn");
+              if (helpBtn) {
+                helpBtn.innerHTML = `<span class="material-symbols-outlined">help</span>`;
+                helpBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+                helpBtn.classList.remove("active");
+              }
+            }
+            if (typeof window.goBackToExamsList === "function") {
+              window.goBackToExamsList();
+            } else {
+              window.location.href = "#list";
+            }
+          });
+          actions.appendChild(backBtn);
           root.appendChild(actions);
-          if (this.modeName === "lesen1") {
-            checkBtn.addEventListener("click", () => {
-              if (typeof window.checkMatchingExam === "function") {
-                window.checkMatchingExam();
-              } else {
-                console.warn("\u26A0\uFE0F checkMatchingExam \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629");
-              }
-            });
-            resetBtn.addEventListener("click", () => {
-              this.reset();
-              this._texts.forEach((text) => {
-                if (text.select) {
-                  text.select.selectedIndex = 0;
-                  text.select.dispatchEvent(new Event("change", { bubbles: true }));
-                }
-              });
-              if (typeof window.renderMatchingQuestions === "function") {
-                window.renderMatchingQuestions();
-              }
-              this._updateUI();
-            });
-          } else if (this.modeName === "lesen3") {
-            checkBtn.addEventListener("click", () => {
-              if (typeof window.checkTeil3Exam === "function") {
-                window.checkTeil3Exam();
-              } else {
-                console.warn("\u26A0\uFE0F checkTeil3Exam \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629");
-              }
-            });
-            resetBtn.addEventListener("click", () => {
-              this.reset();
-              this._texts.forEach((text) => {
-                if (text.select) {
-                  text.select.selectedIndex = 0;
-                  text.select.dispatchEvent(new Event("change", { bubbles: true }));
-                }
-              });
-              if (typeof window.updateTeil3SelectOptions === "function") {
-                window.updateTeil3SelectOptions();
-              }
-              if (typeof window.updateTeil3RightSideColors === "function") {
-                window.updateTeil3RightSideColors();
-              }
-              this._updateUI();
-            });
-          }
           container.appendChild(root);
           this.root = root;
           this._buildTextCards(textGrid);
@@ -30092,20 +29894,29 @@ var MyApp = (() => {
           if (this._captureTimeout) clearTimeout(this._captureTimeout);
           this._captureTimeout = setTimeout(() => this._captureSizes(), 50);
         }
-        // ---- تفعيل Matching ----
         activate() {
           if (this.isActive || this._isDestroyed) return;
           if (!this._extractData()) {
-            console.warn(`\u26A0\uFE0F \u0644\u0627 \u064A\u0645\u0643\u0646 \u062A\u0641\u0639\u064A\u0644 Matching \u0644\u0640 ${this.modeName}: \u0627\u0644\u0628\u064A\u0627\u0646\u0627\u062A \u063A\u064A\u0631 \u0645\u0643\u062A\u0645\u0644\u0629.`);
+            console.warn(`\u26A0\uFE0F \u0644\u0627 \u064A\u0645\u0643\u0646 \u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u0644\u0640 ${this.modeName}: \u0627\u0644\u0628\u064A\u0627\u0646\u0627\u062A \u063A\u064A\u0631 \u0645\u0643\u062A\u0645\u0644\u0629.`);
             return;
           }
           if (!this.root || !this.root.parentNode) {
             this._buildUI();
           }
           if (!this.root) {
-            console.warn(`\u26A0\uFE0F \u0641\u0634\u0644 \u0628\u0646\u0627\u0621 Matching \u0644\u0640 ${this.modeName}`);
+            console.warn(`\u26A0\uFE0F \u0641\u0634\u0644 \u0628\u0646\u0627\u0621 \u0648\u0627\u062C\u0647\u0629 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u0644\u0640 ${this.modeName}`);
             return;
           }
+          const introKey = "help_intro_shown";
+          if (!localStorage.getItem(introKey)) {
+            this._showIntroModal(() => {
+              this._applyActivation();
+            });
+            return;
+          }
+          this._applyActivation();
+        }
+        _applyActivation() {
           const container = document.getElementById(this.containerId);
           if (container) {
             Array.from(container.children).forEach((child) => {
@@ -30117,11 +29928,53 @@ var MyApp = (() => {
             container.classList.add("zertiva-matching-active");
           }
           this.isActive = true;
-          this._saveState(true);
-          console.log(`\u2705 Matching mode activated for ${this.modeName}`);
-          this._updateMatchingButton(true);
+          console.log(`\u2705 Help Mode activated for ${this.modeName}`);
+          const helpBtn = document.getElementById("matchingToggleBtn");
+          if (helpBtn) {
+            helpBtn.innerHTML = `<span class="material-symbols-outlined">auto_awesome</span>`;
+            helpBtn.title = "\u0625\u064A\u0642\u0627\u0641 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+            helpBtn.classList.add("active");
+          }
         }
-        // ---- إلغاء Matching ----
+        _showIntroModal(callback) {
+          const overlay = document.createElement("div");
+          overlay.style.cssText = `
+      position: fixed; top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.3); backdrop-filter: blur(4px);
+      display: flex; justify-content: center; align-items: center;
+      z-index: 999999;
+    `;
+          const modal = document.createElement("div");
+          modal.style.cssText = `
+      background: #ffffff; border-radius: 20px; padding: 28px 30px;
+      max-width: 400px; width: 90%; box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      border: 1px solid rgba(200,200,200,0.2);
+      font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+      text-align: right; direction: rtl;
+    `;
+          modal.innerHTML = `
+      <h3 style="margin:0 0 12px 0; font-size:1.3rem; font-weight:600; color:#1e293b;">\u0645\u064A\u0632\u0629 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629</h3>
+      <p style="margin:0 0 16px 0; font-size:0.95rem; line-height:1.7; color:#475569;">
+        \u0647\u062F\u0647 \u0627\u0644\u0645\u064A\u0632\u0629 \u0648\u0627\u062C\u0628\u0647\u0627 \u0641\u0642\u0637 \u062A\u0633\u0647\u064A\u0644 \u0639\u0645\u0644\u064A\u0629 \u0627\u0644\u0627\u062C\u0627\u0628\u0629 \u0644\u0643 \u0646\u0636\u0631\u0627 \u0644\u0627\u0646 \u0644\u064A\u0632\u0646 1\u06483 \u0627\u0628\u0637\u0626 \u0641\u064A \u0645\u0644\u0626 \u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0627\u0633\u0626\u0644\u0629. \u0647\u062F\u0627 \u0627\u0644\u0648\u0636\u0639 \u0633\u064A\u0633\u0647\u0644 \u0639\u0644\u064A\u0643 \u062F\u0627\u0644\u0643 \u0643\u064A \u062A\u0631\u0627\u062C\u0639 \u0628\u0643\u0641\u0627\u0626\u0629 \u0648\u0633\u0631\u0639\u0629 \u0627\u0643\u062A\u0631
+      </p>
+      <label style="display:flex; align-items:center; gap:8px; font-size:0.9rem; color:#334155; margin-bottom:18px; cursor:pointer;">
+        <input type="checkbox" id="dontShowAgain" style="width:18px; height:18px; accent-color:#2c3e66;">
+        <span>\u0639\u062F\u0645 \u0625\u0638\u0647\u0627\u0631 \u0647\u0630\u0627 \u0645\u0631\u0629 \u0623\u062E\u0631\u0649</span>
+      </label>
+      <button id="introOkBtn" style="width:100%; padding:12px; border:none; border-radius:12px; background:#2c3e66; color:white; font-size:1rem; font-weight:600; cursor:pointer; transition:background 0.2s;">
+        \u062D\u0633\u0646\u0627\u064B
+      </button>
+    `;
+          overlay.appendChild(modal);
+          document.body.appendChild(overlay);
+          document.getElementById("introOkBtn").onclick = () => {
+            if (document.getElementById("dontShowAgain").checked) {
+              localStorage.setItem("help_intro_shown", "true");
+            }
+            overlay.remove();
+            if (typeof callback === "function") callback();
+          };
+        }
         deactivate() {
           if (!this.isActive || this._isDestroyed) return;
           const container = document.getElementById(this.containerId);
@@ -30137,9 +29990,13 @@ var MyApp = (() => {
             container.classList.remove("zertiva-matching-active");
           }
           this.isActive = false;
-          this._saveState(false);
-          console.log(`\u2705 Matching mode deactivated for ${this.modeName}`);
-          this._updateMatchingButton(false);
+          console.log(`\u2705 Help Mode deactivated for ${this.modeName}`);
+          const helpBtn = document.getElementById("matchingToggleBtn");
+          if (helpBtn) {
+            helpBtn.innerHTML = `<span class="material-symbols-outlined">help</span>`;
+            helpBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+            helpBtn.classList.remove("active");
+          }
         }
         // ---- تحديث زر Matching في الشريط ----
         _updateMatchingButton(active) {
@@ -30183,26 +30040,7 @@ var MyApp = (() => {
       window.toggleMatchingLesen3 = function() {
         matchingLesen3.toggle();
       };
-      window.restoreMatchingState = function(skill) {
-        if (skill === "lesen1" && matchingLesen1) {
-          const saved = matchingLesen1._loadState();
-          if (saved && !matchingLesen1.isActive) {
-            matchingLesen1.activate();
-          } else if (!saved && matchingLesen1.isActive) {
-            matchingLesen1.deactivate();
-          }
-        } else if (skill === "lesen3" && matchingLesen3) {
-          const saved = matchingLesen3._loadState();
-          if (saved && !matchingLesen3.isActive) {
-            matchingLesen3.activate();
-          } else if (!saved && matchingLesen3.isActive) {
-            matchingLesen3.deactivate();
-          }
-        }
-      };
       console.log("\u2705 Matching Mode (Lesen 1 & Lesen 3) ready.");
-      window.applyMatchingCorrection = applyMatchingCorrection;
-      window.clearMatchingCorrection = clearMatchingCorrection;
     }
   });
 
@@ -32235,33 +32073,48 @@ var MyApp = (() => {
           }
         }
         if (allVersionsLocked) {
-          div.style.backgroundColor = "rgba(255,255,255,0.75)";
-          div.style.border = "1px solid #e2e8f0";
-          div.style.opacity = "1";
-          div.style.transition = "all 0.25s ease";
+          div.style.position = "relative";
+          div.style.overflow = "hidden";
+          div.style.background = "linear-gradient(135deg,#eef1f5,#e7ebf0)";
+          div.style.borderColor = "#d8dde5";
+          div.style.color = "#475569";
+          div.style.opacity = "0.88";
+          div.style.boxShadow = "inset 0 0 0 1px rgba(71,85,105,.04)";
           div.style.cursor = "pointer";
-          const rightSide = document.createElement("span");
-          rightSide.className = "exam-right-icons";
-          const premiumSpan = document.createElement("span");
-          premiumSpan.className = "premium-badge";
-          premiumSpan.innerHTML = "Premium";
-          rightSide.appendChild(premiumSpan);
-          div.appendChild(rightSide);
-          titleSpan.style.color = "#4b5563";
-          titleSpan.style.transition = "none";
-          titleSpan.classList.add("locked-title");
+          const oldBadge = div.querySelector(".premium-badge");
+          if (oldBadge) oldBadge.remove();
+          const lock = document.createElement("span");
+          lock.className = "lock-icon-locked-exam";
+          lock.textContent = "lock";
+          lock.style.cssText = `
+        position: absolute !important;
+        right: 8px !important;
+        bottom: 8px !important;
+        left: auto !important;
+        width: 20px !important;
+        height: 20px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 50% !important;
+        background: rgba(15,23,42,.08) !important;
+        border: 1px solid rgba(100,116,139,.15) !important;
+        color: #64748b !important;
+        font-family: 'Material Symbols Outlined' !important;
+        font-size: 13px !important;
+        line-height: 1 !important;
+        pointer-events: none !important;
+        z-index: 20 !important;
+      `;
+          div.appendChild(lock);
           div.onmouseenter = function() {
-            this.style.backgroundColor = "rgba(255,255,255,0.95)";
-            this.style.transform = "translateX(5px)";
-            this.style.borderColor = "#60a5fa";
-            if (premiumSpan) premiumSpan.style.transform = "scale(1.02)";
+            this.style.boxShadow = "inset 0 0 0 1px rgba(71,85,105,.08), 0 2px 8px rgba(0,0,0,.04)";
           };
           div.onmouseleave = function() {
-            this.style.backgroundColor = "rgba(255,255,255,0.75)";
-            this.style.transform = "translateX(0)";
-            this.style.borderColor = "#e2e8f0";
-            if (premiumSpan) premiumSpan.style.transform = "scale(1)";
+            this.style.boxShadow = "inset 0 0 0 1px rgba(71,85,105,.04)";
           };
+          titleSpan.style.color = "#475569";
+          titleSpan.classList.add("locked-title");
           div.onclick = function(e) {
             e.stopPropagation();
             showVersionsPopup(exam, targetSkill);
@@ -32274,33 +32127,48 @@ var MyApp = (() => {
           };
         }
       } else if (!isPremium && !isFreeExam) {
-        div.style.backgroundColor = "rgba(255,255,255,0.75)";
-        div.style.border = "1px solid #e2e8f0";
-        div.style.opacity = "1";
-        div.style.transition = "all 0.25s ease";
+        div.style.position = "relative";
+        div.style.overflow = "hidden";
+        div.style.background = "linear-gradient(135deg,#eef1f5,#e7ebf0)";
+        div.style.borderColor = "#d8dde5";
+        div.style.color = "#475569";
+        div.style.opacity = "0.88";
+        div.style.boxShadow = "inset 0 0 0 1px rgba(71,85,105,.04)";
         div.style.cursor = "pointer";
-        const rightSide = document.createElement("span");
-        rightSide.className = "exam-right-icons";
-        const premiumSpan = document.createElement("span");
-        premiumSpan.className = "premium-badge";
-        premiumSpan.innerHTML = "Premium";
-        rightSide.appendChild(premiumSpan);
-        div.appendChild(rightSide);
-        titleSpan.style.color = "#4b5563";
-        titleSpan.style.transition = "none";
-        titleSpan.classList.add("locked-title");
+        const oldBadge = div.querySelector(".premium-badge");
+        if (oldBadge) oldBadge.remove();
+        const lock = document.createElement("span");
+        lock.className = "lock-icon-locked-exam";
+        lock.textContent = "lock";
+        lock.style.cssText = `
+        position: absolute !important;
+        right: 8px !important;
+        bottom: 8px !important;
+        left: auto !important;
+        width: 20px !important;
+        height: 20px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 50% !important;
+        background: rgba(15,23,42,.08) !important;
+        border: 1px solid rgba(100,116,139,.15) !important;
+        color: #64748b !important;
+        font-family: 'Material Symbols Outlined' !important;
+        font-size: 13px !important;
+        line-height: 1 !important;
+        pointer-events: none !important;
+        z-index: 20 !important;
+      `;
+        div.appendChild(lock);
         div.onmouseenter = function() {
-          this.style.backgroundColor = "rgba(255,255,255,0.95)";
-          this.style.transform = "translateX(5px)";
-          this.style.borderColor = "#60a5fa";
-          if (premiumSpan) premiumSpan.style.transform = "scale(1.02)";
+          this.style.boxShadow = "inset 0 0 0 1px rgba(71,85,105,.08), 0 2px 8px rgba(0,0,0,.04)";
         };
         div.onmouseleave = function() {
-          this.style.backgroundColor = "rgba(255,255,255,0.75)";
-          this.style.transform = "translateX(0)";
-          this.style.borderColor = "#e2e8f0";
-          if (premiumSpan) premiumSpan.style.transform = "scale(1)";
+          this.style.boxShadow = "inset 0 0 0 1px rgba(71,85,105,.04)";
         };
+        titleSpan.style.color = "#475569";
+        titleSpan.classList.add("locked-title");
         div.onclick = /* @__PURE__ */ (function(title, id) {
           return function() {
             if (typeof window.showLockedCard === "function") {
@@ -32595,6 +32463,24 @@ var MyApp = (() => {
       document.getElementById("list").classList.remove("active");
       document.getElementById("exam").classList.add("active");
       document.getElementById("examTitle").innerHTML = currentExamData.title;
+      if (skill === "lesen1" && window.matchingLesen1 && window.matchingLesen1.isActive) {
+        window.matchingLesen1.deactivate();
+        const helpBtn = document.getElementById("matchingToggleBtn");
+        if (helpBtn) {
+          helpBtn.innerHTML = `<span class="material-symbols-outlined">help</span>`;
+          helpBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+          helpBtn.classList.remove("active");
+        }
+      }
+      if (skill === "lesen3" && window.matchingLesen3 && window.matchingLesen3.isActive) {
+        window.matchingLesen3.deactivate();
+        const helpBtn = document.getElementById("matchingToggleBtn");
+        if (helpBtn) {
+          helpBtn.innerHTML = `<span class="material-symbols-outlined">help</span>`;
+          helpBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+          helpBtn.classList.remove("active");
+        }
+      }
       const forbiddenSkills = ["schreiben", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3"];
       if (!forbiddenSkills.includes(skill) && typeof addRetryCounterToExam === "function") {
         addRetryCounterToExam();
@@ -34175,41 +34061,25 @@ var MyApp = (() => {
       setTimeout(createMatchingButton, 200);
       return;
     }
-    const matchingBtn = document.createElement("button");
-    matchingBtn.id = "matchingToggleBtn";
-    matchingBtn.className = "interleaving-icon-btn";
-    matchingBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
-    matchingBtn.innerHTML = `<span class="material-symbols-outlined">swap_horiz</span>`;
-    matchingBtn.style.display = "none";
-    matchingBtn.addEventListener("click", function(e) {
+    const helpBtn = document.createElement("button");
+    helpBtn.id = "matchingToggleBtn";
+    helpBtn.className = "interleaving-icon-btn";
+    helpBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+    helpBtn.innerHTML = `<span class="material-symbols-outlined">help</span>`;
+    helpBtn.style.display = "none";
+    helpBtn.addEventListener("click", function(e) {
       e.stopPropagation();
       const skill = this.dataset.skill || window.currentSkill;
       if (skill === "lesen1" && window.matchingLesen1) {
         window.matchingLesen1.toggle();
-        const isActive = window.matchingLesen1.isActive;
-        this.classList.toggle("active", isActive);
-        this.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
-        this.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
-        this.style.animation = "none";
-        setTimeout(() => {
-          this.style.animation = "matchingPulse 0.3s ease";
-        }, 10);
       } else if (skill === "lesen3" && window.matchingLesen3) {
         window.matchingLesen3.toggle();
-        const isActive = window.matchingLesen3.isActive;
-        this.classList.toggle("active", isActive);
-        this.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
-        this.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
-        this.style.animation = "none";
-        setTimeout(() => {
-          this.style.animation = "matchingPulse 0.3s ease";
-        }, 10);
       } else {
-        console.warn("\u26A0\uFE0F Matching \u063A\u064A\u0631 \u0645\u062A\u0627\u062D \u0644\u0647\u0630\u0647 \u0627\u0644\u0645\u0647\u0627\u0631\u0629");
+        console.warn("\u26A0\uFE0F \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u063A\u064A\u0631 \u0645\u062A\u0627\u062D\u0629 \u0644\u0647\u0630\u0647 \u0627\u0644\u0645\u0647\u0627\u0631\u0629");
       }
     });
-    interleavingRow.insertBefore(matchingBtn, playBtn);
-    console.log("\u2705 \u0632\u0631 Matching \u062A\u0645 \u0625\u0636\u0627\u0641\u062A\u0647 \u0641\u064A \u0634\u0631\u064A\u0637 \u0627\u0644\u0623\u0632\u0631\u0627\u0631");
+    interleavingRow.insertBefore(helpBtn, playBtn);
+    console.log("\u2705 \u0632\u0631 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u062A\u0645 \u0625\u0636\u0627\u0641\u062A\u0647 \u0641\u064A \u0634\u0631\u064A\u0637 \u0627\u0644\u0623\u0632\u0631\u0627\u0631");
   }
   var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY, originalOpenExam2;
   var init_exams = __esm({
