@@ -28751,7 +28751,214 @@ var MyApp = (() => {
     });
     console.log("\u{1F9F9} \u062A\u0645 \u0625\u0632\u0627\u0644\u0629 \u0627\u0644\u062A\u0635\u062D\u064A\u062D \u0627\u0644\u0628\u0635\u0631\u064A \u0645\u0646 Matching Mode");
   }
-  var _hoerenData, interleavingOrders, lesen1OriginalNodes, lesen1ShuffledNodes, lesen1OrderSaved, lesen2OriginalNodes, lesen2ShuffledNodes, lesen2OrderSaved, lesen3OriginalNodes, lesen3ShuffledNodes, lesen3OrderSaved, examTimer2, currentSchreibenData, currentSprach2Data, sprach2UserAnswers, sprach2SelectedQuestionId, sprach2SelectedWordForLinking, currentSprach1Data, sprach1UserAnswers, sprach1OpenDropdownId, currentMatchingExamData2, matchingSelectedAnswers2, matchingAvailableOptions2, currentTeil2Data, teil2UserAnswers, currentTeil3Data, teil3UserAnswers, teil3SelectedItem, teil3SelectedSit, teil3SelectedItemForLink, teil3SelectedSitForLink, originalOpenExamGlobal, MemoryHighlightEngine, memoryEngine, toggleBtn, _toggleInProgress, _interleavingInitialized, _answerHistory, _historyEnabled, originalCheckTrueFalse, MatchingMode, matchingLesen1, matchingLesen3;
+  function showHelpIntro(skill, callback) {
+    if (_helpIntroShown[skill]) {
+      if (typeof callback === "function") callback();
+      return;
+    }
+    const overlay = document.createElement("div");
+    overlay.id = "helpIntroOverlay";
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.4);
+        backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 99999;
+        animation: fadeIn 0.2s ease;
+    `;
+    const card = document.createElement("div");
+    card.style.cssText = `
+        background: #1a1f2e;
+        border-radius: 16px;
+        padding: 24px 28px;
+        max-width: 420px;
+        width: 90%;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        border: 1px solid #2a3042;
+        color: #e2e8f0;
+        text-align: right;
+        direction: rtl;
+        animation: scaleIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    `;
+    const text = document.createElement("p");
+    text.style.cssText = `
+        font-size: 14px;
+        line-height: 1.7;
+        color: #cbd5e1;
+        margin: 0 0 16px 0;
+    `;
+    text.textContent = "\u0647\u062F\u0647 \u0627\u0644\u0645\u064A\u0632\u0629 \u0648\u0627\u062C\u0628\u0647\u0627 \u0641\u0642\u0637 \u062A\u0633\u0647\u064A\u0644 \u0639\u0645\u0644\u064A\u0629 \u0627\u0644\u0627\u062C\u0627\u0628\u0629 \u0644\u0643 \u0646\u0636\u0631\u0627 \u0644\u0627\u0646 \u0644\u064A\u0632\u0646 1\u06483 \u0627\u0628\u0637\u0626 \u0641\u064A \u0645\u0644\u0626 \u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0627\u0633\u0626\u0644\u0629. \u0647\u062F\u0627 \u0627\u0644\u0648\u0636\u0639 \u0633\u064A\u0633\u0647\u0644 \u0639\u0644\u064A\u0643 \u062F\u0627\u0644\u0643 \u0643\u064A \u062A\u0631\u0627\u062C\u0639 \u0628\u0643\u0641\u0627\u0626\u0629 \u0648\u0633\u0631\u0639\u0629 \u0627\u0643\u062A\u0631";
+    const checkboxWrapper = document.createElement("div");
+    checkboxWrapper.style.cssText = `
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+        justify-content: flex-start;
+    `;
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.id = "helpIntroCheckbox";
+    checkbox.style.cssText = `
+        width: 18px;
+        height: 18px;
+        accent-color: #38bdf8;
+        cursor: pointer;
+        flex-shrink: 0;
+    `;
+    const label = document.createElement("label");
+    label.htmlFor = "helpIntroCheckbox";
+    label.textContent = "\u0639\u062F\u0645 \u0625\u0638\u0647\u0627\u0631 \u0647\u0630\u0627 \u0645\u0631\u0629 \u0623\u062E\u0631\u0649";
+    label.style.cssText = `
+        font-size: 13px;
+        color: #94a3b8;
+        cursor: pointer;
+        user-select: none;
+    `;
+    checkboxWrapper.appendChild(checkbox);
+    checkboxWrapper.appendChild(label);
+    const okBtn = document.createElement("button");
+    okBtn.textContent = "\u062D\u0633\u0646\u0627\u064B";
+    okBtn.style.cssText = `
+        width: 100%;
+        padding: 10px 0;
+        background: #38bdf8;
+        border: none;
+        border-radius: 10px;
+        color: #0a0e1a;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    `;
+    okBtn.onmouseenter = () => {
+      okBtn.style.background = "#0ea5e9";
+    };
+    okBtn.onmouseleave = () => {
+      okBtn.style.background = "#38bdf8";
+    };
+    okBtn.onclick = function() {
+      if (checkbox.checked) {
+        localStorage.setItem(`zertiva_help_intro_${skill}`, "true");
+        _helpIntroShown[skill] = true;
+      }
+      overlay.remove();
+      if (typeof callback === "function") callback();
+    };
+    card.appendChild(text);
+    card.appendChild(checkboxWrapper);
+    card.appendChild(okBtn);
+    overlay.appendChild(card);
+    document.body.appendChild(overlay);
+    overlay.addEventListener("click", function(e) {
+      if (e.target === overlay) {
+      }
+    });
+  }
+  function activateHelpMode(skill) {
+    if (skill !== "lesen1" && skill !== "lesen3") return;
+    if (skill === "lesen1") window._helpModeLesen1 = true;
+    else window._helpModeLesen3 = true;
+    const containerId = skill === "lesen1" ? "teil1" : "teil3";
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const oldHelpDiv = container.querySelector(".help-mode-controls");
+    if (oldHelpDiv) oldHelpDiv.remove();
+    const helpDiv = document.createElement("div");
+    helpDiv.className = "help-mode-controls";
+    helpDiv.style.cssText = `
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-top: 25px;
+        padding-top: 15px;
+        border-top: 1px solid rgba(100,120,140,0.2);
+    `;
+    const doneBtn = document.createElement("button");
+    doneBtn.textContent = "\u0627\u0646\u062A\u0647\u064A\u062A";
+    doneBtn.style.cssText = `
+        padding: 12px 30px;
+        background: #2c3e66;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        width: 100%;
+        max-width: 200px;
+    `;
+    doneBtn.onmouseenter = () => {
+      doneBtn.style.background = "#1a2a4a";
+    };
+    doneBtn.onmouseleave = () => {
+      doneBtn.style.background = "#2c3e66";
+    };
+    doneBtn.onclick = function() {
+      deactivateHelpMode(skill);
+    };
+    const backBtn = document.createElement("button");
+    backBtn.textContent = "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0642\u0627\u0626\u0645\u0629";
+    backBtn.style.cssText = `
+        padding: 10px 30px;
+        background: #6c757d;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        width: 100%;
+        max-width: 200px;
+    `;
+    backBtn.onmouseenter = () => {
+      backBtn.style.background = "#5a6268";
+    };
+    backBtn.onmouseleave = () => {
+      backBtn.style.background = "#6c757d";
+    };
+    backBtn.onclick = function() {
+      deactivateHelpMode(skill);
+      if (typeof window.goBackToExamsList === "function") {
+        window.goBackToExamsList();
+      } else {
+        const backBtn2 = document.getElementById("backArrowFromExam");
+        if (backBtn2) backBtn2.click();
+      }
+    };
+    helpDiv.appendChild(doneBtn);
+    helpDiv.appendChild(backBtn);
+    container.appendChild(helpDiv);
+    updateHelpButtonState(skill, true);
+  }
+  function deactivateHelpMode(skill) {
+    if (skill !== "lesen1" && skill !== "lesen3") return;
+    if (skill === "lesen1") window._helpModeLesen1 = false;
+    else window._helpModeLesen3 = false;
+    const containerId = skill === "lesen1" ? "teil1" : "teil3";
+    const container = document.getElementById(containerId);
+    if (container) {
+      const helpDiv = container.querySelector(".help-mode-controls");
+      if (helpDiv) helpDiv.remove();
+    }
+    updateHelpButtonState(skill, false);
+  }
+  function updateHelpButtonState(skill, isActive) {
+    const btn = document.getElementById("matchingToggleBtn");
+    if (!btn) return;
+    if (btn.dataset.skill !== skill) return;
+    btn.classList.toggle("active", isActive);
+    btn.innerHTML = `<span class="material-symbols-outlined">${isActive ? "assistant" : "help"}</span>`;
+    btn.title = isActive ? "\u0625\u0644\u063A\u0627\u0621 \u0648\u0636\u0639 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+  }
+  var _hoerenData, interleavingOrders, lesen1OriginalNodes, lesen1ShuffledNodes, lesen1OrderSaved, lesen2OriginalNodes, lesen2ShuffledNodes, lesen2OrderSaved, lesen3OriginalNodes, lesen3ShuffledNodes, lesen3OrderSaved, examTimer2, currentSchreibenData, currentSprach2Data, sprach2UserAnswers, sprach2SelectedQuestionId, sprach2SelectedWordForLinking, currentSprach1Data, sprach1UserAnswers, sprach1OpenDropdownId, currentMatchingExamData2, matchingSelectedAnswers2, matchingAvailableOptions2, currentTeil2Data, teil2UserAnswers, currentTeil3Data, teil3UserAnswers, teil3SelectedItem, teil3SelectedSit, teil3SelectedItemForLink, teil3SelectedSitForLink, originalOpenExamGlobal, MemoryHighlightEngine, memoryEngine, toggleBtn, _toggleInProgress, _interleavingInitialized, _answerHistory, _historyEnabled, originalCheckTrueFalse, MatchingMode, matchingLesen1, matchingLesen3, _helpIntroShown;
   var init_engine = __esm({
     "engine.js"() {
       console.log("\u2705 engine.js \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647");
@@ -30203,6 +30410,36 @@ var MyApp = (() => {
       console.log("\u2705 Matching Mode (Lesen 1 & Lesen 3) ready.");
       window.applyMatchingCorrection = applyMatchingCorrection;
       window.clearMatchingCorrection = clearMatchingCorrection;
+      window._helpModeLesen1 = false;
+      window._helpModeLesen3 = false;
+      _helpIntroShown = {
+        lesen1: localStorage.getItem("zertiva_help_intro_lesen1") === "true",
+        lesen3: localStorage.getItem("zertiva_help_intro_lesen3") === "true"
+      };
+      window.toggleHelpMode = function(skill) {
+        if (skill !== "lesen1" && skill !== "lesen3") return;
+        const isActive = skill === "lesen1" ? window._helpModeLesen1 : window._helpModeLesen3;
+        const containerId = skill === "lesen1" ? "teil1" : "teil3";
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        if (isActive) {
+          deactivateHelpMode(skill);
+        } else {
+          showHelpIntro(skill, function() {
+            activateHelpMode(skill);
+          });
+        }
+      };
+      window.updateHelpButtonOnLoad = function(skill) {
+        const isActive = skill === "lesen1" ? window._helpModeLesen1 : window._helpModeLesen3;
+        updateHelpButtonState(skill, isActive);
+      };
+      window.isHelpModeActive = function(skill) {
+        if (skill === "lesen1") return window._helpModeLesen1;
+        if (skill === "lesen3") return window._helpModeLesen3;
+        return false;
+      };
+      console.log("\u2705 \u0646\u0638\u0627\u0645 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u0644\u0640 Lesen 1 \u0648 Lesen 3 \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647");
     }
   });
 
@@ -32235,32 +32472,67 @@ var MyApp = (() => {
           }
         }
         if (allVersionsLocked) {
-          div.style.backgroundColor = "rgba(255,255,255,0.75)";
-          div.style.border = "1px solid #e2e8f0";
-          div.style.opacity = "1";
+          div.style.position = "relative";
+          div.style.overflow = "hidden";
+          div.style.background = "linear-gradient(135deg, #eef1f5, #e7ebf0)";
+          div.style.borderColor = "#d8dde5";
+          div.style.color = "#475569";
+          div.style.opacity = "0.88";
+          div.style.boxShadow = "inset 0 0 0 1px rgba(71,85,105,.04)";
           div.style.transition = "all 0.25s ease";
           div.style.cursor = "pointer";
-          const rightSide = document.createElement("span");
-          rightSide.className = "exam-right-icons";
-          const premiumSpan = document.createElement("span");
-          premiumSpan.className = "premium-badge";
-          premiumSpan.innerHTML = "Premium";
-          rightSide.appendChild(premiumSpan);
-          div.appendChild(rightSide);
+          const oldBadge = div.querySelector(".premium-badge");
+          if (oldBadge) oldBadge.remove();
+          const rightSide = div.querySelector(".exam-right-icons");
+          if (rightSide) rightSide.remove();
+          const lock = document.createElement("span");
+          lock.className = "zertiva-pro-lock";
+          lock.textContent = "lock";
+          lock.style.cssText = `
+        position: absolute !important;
+        right: 8px !important;
+        bottom: 8px !important;
+        left: auto !important;
+        width: 20px !important;
+        height: 20px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 50% !important;
+        background: rgba(15,23,42,.08) !important;
+        border: 1px solid rgba(100,116,139,.15) !important;
+        color: #64748b !important;
+        font-family: 'Material Symbols Outlined' !important;
+        font-size: 13px !important;
+        line-height: 1 !important;
+        pointer-events: none !important;
+        z-index: 20 !important;
+      `;
+          div.appendChild(lock);
           titleSpan.style.color = "#4b5563";
           titleSpan.style.transition = "none";
           titleSpan.classList.add("locked-title");
           div.onmouseenter = function() {
-            this.style.backgroundColor = "rgba(255,255,255,0.95)";
+            this.style.background = "linear-gradient(135deg, #f1f4f8, #eaeef3)";
             this.style.transform = "translateX(5px)";
-            this.style.borderColor = "#60a5fa";
-            if (premiumSpan) premiumSpan.style.transform = "scale(1.02)";
+            this.style.borderColor = "#b0b8c4";
+            const lockIcon = this.querySelector(".zertiva-pro-lock");
+            if (lockIcon) {
+              lockIcon.style.background = "rgba(15,23,42,.12)";
+              lockIcon.style.borderColor = "rgba(100,116,139,.25)";
+              lockIcon.style.color = "#475569";
+            }
           };
           div.onmouseleave = function() {
-            this.style.backgroundColor = "rgba(255,255,255,0.75)";
+            this.style.background = "linear-gradient(135deg, #eef1f5, #e7ebf0)";
             this.style.transform = "translateX(0)";
-            this.style.borderColor = "#e2e8f0";
-            if (premiumSpan) premiumSpan.style.transform = "scale(1)";
+            this.style.borderColor = "#d8dde5";
+            const lockIcon = this.querySelector(".zertiva-pro-lock");
+            if (lockIcon) {
+              lockIcon.style.background = "rgba(15,23,42,.08)";
+              lockIcon.style.borderColor = "rgba(100,116,139,.15)";
+              lockIcon.style.color = "#64748b";
+            }
           };
           div.onclick = function(e) {
             e.stopPropagation();
@@ -32274,32 +32546,67 @@ var MyApp = (() => {
           };
         }
       } else if (!isPremium && !isFreeExam) {
-        div.style.backgroundColor = "rgba(255,255,255,0.75)";
-        div.style.border = "1px solid #e2e8f0";
-        div.style.opacity = "1";
+        div.style.position = "relative";
+        div.style.overflow = "hidden";
+        div.style.background = "linear-gradient(135deg, #eef1f5, #e7ebf0)";
+        div.style.borderColor = "#d8dde5";
+        div.style.color = "#475569";
+        div.style.opacity = "0.88";
+        div.style.boxShadow = "inset 0 0 0 1px rgba(71,85,105,.04)";
         div.style.transition = "all 0.25s ease";
         div.style.cursor = "pointer";
-        const rightSide = document.createElement("span");
-        rightSide.className = "exam-right-icons";
-        const premiumSpan = document.createElement("span");
-        premiumSpan.className = "premium-badge";
-        premiumSpan.innerHTML = "Premium";
-        rightSide.appendChild(premiumSpan);
-        div.appendChild(rightSide);
+        const oldBadge = div.querySelector(".premium-badge");
+        if (oldBadge) oldBadge.remove();
+        const rightSide = div.querySelector(".exam-right-icons");
+        if (rightSide) rightSide.remove();
+        const lock = document.createElement("span");
+        lock.className = "zertiva-pro-lock";
+        lock.textContent = "lock";
+        lock.style.cssText = `
+        position: absolute !important;
+        right: 8px !important;
+        bottom: 8px !important;
+        left: auto !important;
+        width: 20px !important;
+        height: 20px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 50% !important;
+        background: rgba(15,23,42,.08) !important;
+        border: 1px solid rgba(100,116,139,.15) !important;
+        color: #64748b !important;
+        font-family: 'Material Symbols Outlined' !important;
+        font-size: 13px !important;
+        line-height: 1 !important;
+        pointer-events: none !important;
+        z-index: 20 !important;
+      `;
+        div.appendChild(lock);
         titleSpan.style.color = "#4b5563";
         titleSpan.style.transition = "none";
         titleSpan.classList.add("locked-title");
         div.onmouseenter = function() {
-          this.style.backgroundColor = "rgba(255,255,255,0.95)";
+          this.style.background = "linear-gradient(135deg, #f1f4f8, #eaeef3)";
           this.style.transform = "translateX(5px)";
-          this.style.borderColor = "#60a5fa";
-          if (premiumSpan) premiumSpan.style.transform = "scale(1.02)";
+          this.style.borderColor = "#b0b8c4";
+          const lockIcon = this.querySelector(".zertiva-pro-lock");
+          if (lockIcon) {
+            lockIcon.style.background = "rgba(15,23,42,.12)";
+            lockIcon.style.borderColor = "rgba(100,116,139,.25)";
+            lockIcon.style.color = "#475569";
+          }
         };
         div.onmouseleave = function() {
-          this.style.backgroundColor = "rgba(255,255,255,0.75)";
+          this.style.background = "linear-gradient(135deg, #eef1f5, #e7ebf0)";
           this.style.transform = "translateX(0)";
-          this.style.borderColor = "#e2e8f0";
-          if (premiumSpan) premiumSpan.style.transform = "scale(1)";
+          this.style.borderColor = "#d8dde5";
+          const lockIcon = this.querySelector(".zertiva-pro-lock");
+          if (lockIcon) {
+            lockIcon.style.background = "rgba(15,23,42,.08)";
+            lockIcon.style.borderColor = "rgba(100,116,139,.15)";
+            lockIcon.style.color = "#64748b";
+          }
         };
         div.onclick = /* @__PURE__ */ (function(title, id) {
           return function() {
@@ -34175,41 +34482,27 @@ var MyApp = (() => {
       setTimeout(createMatchingButton, 200);
       return;
     }
-    const matchingBtn = document.createElement("button");
-    matchingBtn.id = "matchingToggleBtn";
-    matchingBtn.className = "interleaving-icon-btn";
-    matchingBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
-    matchingBtn.innerHTML = `<span class="material-symbols-outlined">swap_horiz</span>`;
-    matchingBtn.style.display = "none";
-    matchingBtn.addEventListener("click", function(e) {
+    const helpBtn = document.createElement("button");
+    helpBtn.id = "matchingToggleBtn";
+    helpBtn.className = "interleaving-icon-btn";
+    helpBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+    helpBtn.innerHTML = `<span class="material-symbols-outlined">help</span>`;
+    helpBtn.style.display = "none";
+    helpBtn.addEventListener("click", function(e) {
       e.stopPropagation();
       const skill = this.dataset.skill || window.currentSkill;
-      if (skill === "lesen1" && window.matchingLesen1) {
-        window.matchingLesen1.toggle();
-        const isActive = window.matchingLesen1.isActive;
-        this.classList.toggle("active", isActive);
-        this.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
-        this.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
-        this.style.animation = "none";
-        setTimeout(() => {
-          this.style.animation = "matchingPulse 0.3s ease";
-        }, 10);
-      } else if (skill === "lesen3" && window.matchingLesen3) {
-        window.matchingLesen3.toggle();
-        const isActive = window.matchingLesen3.isActive;
-        this.classList.toggle("active", isActive);
-        this.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
-        this.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
-        this.style.animation = "none";
-        setTimeout(() => {
-          this.style.animation = "matchingPulse 0.3s ease";
-        }, 10);
+      if (skill === "lesen1" || skill === "lesen3") {
+        if (typeof window.toggleHelpMode === "function") {
+          window.toggleHelpMode(skill);
+        } else {
+          console.warn("\u26A0\uFE0F \u062F\u0627\u0644\u0629 toggleHelpMode \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629");
+        }
       } else {
-        console.warn("\u26A0\uFE0F Matching \u063A\u064A\u0631 \u0645\u062A\u0627\u062D \u0644\u0647\u0630\u0647 \u0627\u0644\u0645\u0647\u0627\u0631\u0629");
+        console.warn("\u26A0\uFE0F \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u063A\u064A\u0631 \u0645\u062A\u0627\u062D\u0629 \u0644\u0647\u0630\u0647 \u0627\u0644\u0645\u0647\u0627\u0631\u0629");
       }
     });
-    interleavingRow.insertBefore(matchingBtn, playBtn);
-    console.log("\u2705 \u0632\u0631 Matching \u062A\u0645 \u0625\u0636\u0627\u0641\u062A\u0647 \u0641\u064A \u0634\u0631\u064A\u0637 \u0627\u0644\u0623\u0632\u0631\u0627\u0631");
+    interleavingRow.insertBefore(helpBtn, playBtn);
+    console.log("\u2705 \u0632\u0631 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u062A\u0645 \u0625\u0636\u0627\u0641\u062A\u0647 \u0641\u064A \u0634\u0631\u064A\u0637 \u0627\u0644\u0623\u0632\u0631\u0627\u0631");
   }
   var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY, originalOpenExam2;
   var init_exams = __esm({
@@ -35715,17 +36008,17 @@ var MyApp = (() => {
         window.openExam = function(examId, examTitle, skill, fileName) {
           const result = originalOpenExam2.call(this, examId, examTitle, skill, fileName);
           setTimeout(() => {
-            const matchingBtn = document.getElementById("matchingToggleBtn");
-            if (matchingBtn) {
+            const helpBtn = document.getElementById("matchingToggleBtn");
+            if (helpBtn) {
               if (skill === "lesen1" || skill === "lesen3") {
-                matchingBtn.style.display = "inline-flex";
-                matchingBtn.dataset.skill = skill;
-                const isActive = skill === "lesen1" && window.matchingLesen1 && window.matchingLesen1.isActive || skill === "lesen3" && window.matchingLesen3 && window.matchingLesen3.isActive;
-                matchingBtn.classList.toggle("active", isActive);
-                matchingBtn.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
-                matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
+                helpBtn.style.display = "inline-flex";
+                helpBtn.dataset.skill = skill;
+                const isHelpActive = skill === "lesen1" && window._helpModeLesen1 || skill === "lesen3" && window._helpModeLesen3;
+                helpBtn.classList.toggle("active", isHelpActive);
+                helpBtn.innerHTML = `<span class="material-symbols-outlined">${isHelpActive ? "assistant" : "help"}</span>`;
+                helpBtn.title = isHelpActive ? "\u0625\u0644\u063A\u0627\u0621 \u0648\u0636\u0639 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
               } else {
-                matchingBtn.style.display = "none";
+                helpBtn.style.display = "none";
               }
             }
           }, 200);
