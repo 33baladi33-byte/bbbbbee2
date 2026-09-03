@@ -29624,7 +29624,27 @@ var MyApp = (() => {
           const doneBtn = document.createElement("button");
           doneBtn.type = "button";
           doneBtn.textContent = "\u0627\u0646\u062A\u0647\u064A\u062A";
-          doneBtn.style.cssText = "padding:8px 20px; border:none; border-radius:8px; background:#2c3e66; color:white; font-size:14px; font-weight:600; cursor:pointer;";
+          doneBtn.style.cssText = `
+        padding: 10px 28px;
+        border: none;
+        border-radius: 10px;
+        background: #2c3e66;
+        color: white;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 8px rgba(44,62,102,0.2);
+        font-family: inherit;
+    `;
+          doneBtn.addEventListener("mouseenter", function() {
+            this.style.background = "#1a2a4a";
+            this.style.transform = "scale(1.02)";
+          });
+          doneBtn.addEventListener("mouseleave", function() {
+            this.style.background = "#2c3e66";
+            this.style.transform = "scale(1)";
+          });
           doneBtn.addEventListener("click", () => {
             if (this.isActive) {
               this.deactivate();
@@ -29637,27 +29657,6 @@ var MyApp = (() => {
             }
           });
           actions.appendChild(doneBtn);
-          const backBtn = document.createElement("button");
-          backBtn.type = "button";
-          backBtn.textContent = "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0642\u0627\u0626\u0645\u0629";
-          backBtn.style.cssText = "padding:8px 20px; border:none; border-radius:8px; background:#6c757d; color:white; font-size:14px; font-weight:600; cursor:pointer;";
-          backBtn.addEventListener("click", () => {
-            if (this.isActive) {
-              this.deactivate();
-              const helpBtn = document.getElementById("matchingToggleBtn");
-              if (helpBtn) {
-                helpBtn.innerHTML = `<span class="material-symbols-outlined">help</span>`;
-                helpBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
-                helpBtn.classList.remove("active");
-              }
-            }
-            if (typeof window.goBackToExamsList === "function") {
-              window.goBackToExamsList();
-            } else {
-              window.location.href = "#list";
-            }
-          });
-          actions.appendChild(backBtn);
           root.appendChild(actions);
           container.appendChild(root);
           this.root = root;
@@ -29927,6 +29926,7 @@ var MyApp = (() => {
             this.root.style.display = "flex";
             container.classList.add("zertiva-matching-active");
           }
+          this._hideOriginalControls();
           this.isActive = true;
           console.log(`\u2705 Help Mode activated for ${this.modeName}`);
           const helpBtn = document.getElementById("matchingToggleBtn");
@@ -29934,6 +29934,57 @@ var MyApp = (() => {
             helpBtn.innerHTML = `<span class="material-symbols-outlined">auto_awesome</span>`;
             helpBtn.title = "\u0625\u064A\u0642\u0627\u0641 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
             helpBtn.classList.add("active");
+          }
+        }
+        _hideOriginalControls() {
+          const selector = this.modeName === "lesen1" ? ".teil1-controls" : this.modeName === "lesen3" ? ".teil3-controls" : null;
+          if (!selector) return;
+          document.querySelectorAll(selector).forEach((el) => {
+            if (!el.dataset.zertivaHelpOldDisplay) {
+              el.dataset.zertivaHelpOldDisplay = el.style.getPropertyValue("display") || "";
+            }
+            el.style.setProperty("display", "none", "important");
+          });
+        }
+        _showOriginalControls() {
+          const selector = this.modeName === "lesen1" ? ".teil1-controls" : this.modeName === "lesen3" ? ".teil3-controls" : null;
+          if (!selector) return;
+          document.querySelectorAll(selector).forEach((el) => {
+            const oldDisplay = el.dataset.zertivaHelpOldDisplay;
+            if (oldDisplay !== void 0) {
+              if (oldDisplay) {
+                el.style.setProperty("display", oldDisplay);
+              } else {
+                el.style.removeProperty("display");
+              }
+              delete el.dataset.zertivaHelpOldDisplay;
+            } else {
+              el.style.removeProperty("display");
+            }
+          });
+        }
+        deactivate() {
+          if (!this.isActive || this._isDestroyed) return;
+          const container = document.getElementById(this.containerId);
+          if (container) {
+            Array.from(container.children).forEach((child) => {
+              if (child !== this.root) {
+                child.style.display = "";
+              }
+            });
+            if (this.root) {
+              this.root.style.display = "none";
+            }
+            container.classList.remove("zertiva-matching-active");
+          }
+          this._showOriginalControls();
+          this.isActive = false;
+          console.log(`\u2705 Help Mode deactivated for ${this.modeName}`);
+          const helpBtn = document.getElementById("matchingToggleBtn");
+          if (helpBtn) {
+            helpBtn.innerHTML = `<span class="material-symbols-outlined">help</span>`;
+            helpBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+            helpBtn.classList.remove("active");
           }
         }
         _showIntroModal(callback) {
@@ -32073,48 +32124,24 @@ var MyApp = (() => {
           }
         }
         if (allVersionsLocked) {
-          div.style.position = "relative";
-          div.style.overflow = "hidden";
-          div.style.background = "linear-gradient(135deg,#eef1f5,#e7ebf0)";
-          div.style.borderColor = "#d8dde5";
-          div.style.color = "#475569";
-          div.style.opacity = "0.88";
-          div.style.boxShadow = "inset 0 0 0 1px rgba(71,85,105,.04)";
-          div.style.cursor = "pointer";
           const oldBadge = div.querySelector(".premium-badge");
           if (oldBadge) oldBadge.remove();
-          const lock = document.createElement("span");
-          lock.className = "lock-icon-locked-exam";
-          lock.textContent = "lock";
-          lock.style.cssText = `
-        position: absolute !important;
-        right: 8px !important;
-        bottom: 8px !important;
-        left: auto !important;
-        width: 20px !important;
-        height: 20px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        border-radius: 50% !important;
-        background: rgba(15,23,42,.08) !important;
-        border: 1px solid rgba(100,116,139,.15) !important;
-        color: #64748b !important;
-        font-family: 'Material Symbols Outlined' !important;
-        font-size: 13px !important;
-        line-height: 1 !important;
-        pointer-events: none !important;
-        z-index: 20 !important;
-      `;
-          div.appendChild(lock);
+          const oldLock = div.querySelector(".lock-icon-locked-exam");
+          if (oldLock) oldLock.remove();
+          titleSpan.classList.remove("locked-title");
+          titleSpan.style.color = "";
           div.onmouseenter = function() {
-            this.style.boxShadow = "inset 0 0 0 1px rgba(71,85,105,.08), 0 2px 8px rgba(0,0,0,.04)";
+            this.style.backgroundColor = "#f1f5f9";
+            this.style.transform = "translateX(5px)";
+            this.style.borderColor = "#2F80ED";
+            this.style.boxShadow = "0 2px 8px rgba(47, 128, 237, 0.15)";
           };
           div.onmouseleave = function() {
-            this.style.boxShadow = "inset 0 0 0 1px rgba(71,85,105,.04)";
+            this.style.backgroundColor = "";
+            this.style.transform = "";
+            this.style.borderColor = "";
+            this.style.boxShadow = "";
           };
-          titleSpan.style.color = "#475569";
-          titleSpan.classList.add("locked-title");
           div.onclick = function(e) {
             e.stopPropagation();
             showVersionsPopup(exam, targetSkill);
@@ -32127,48 +32154,25 @@ var MyApp = (() => {
           };
         }
       } else if (!isPremium && !isFreeExam) {
-        div.style.position = "relative";
-        div.style.overflow = "hidden";
-        div.style.background = "linear-gradient(135deg,#eef1f5,#e7ebf0)";
-        div.style.borderColor = "#d8dde5";
-        div.style.color = "#475569";
-        div.style.opacity = "0.88";
-        div.style.boxShadow = "inset 0 0 0 1px rgba(71,85,105,.04)";
         div.style.cursor = "pointer";
         const oldBadge = div.querySelector(".premium-badge");
         if (oldBadge) oldBadge.remove();
-        const lock = document.createElement("span");
-        lock.className = "lock-icon-locked-exam";
-        lock.textContent = "lock";
-        lock.style.cssText = `
-        position: absolute !important;
-        right: 8px !important;
-        bottom: 8px !important;
-        left: auto !important;
-        width: 20px !important;
-        height: 20px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        border-radius: 50% !important;
-        background: rgba(15,23,42,.08) !important;
-        border: 1px solid rgba(100,116,139,.15) !important;
-        color: #64748b !important;
-        font-family: 'Material Symbols Outlined' !important;
-        font-size: 13px !important;
-        line-height: 1 !important;
-        pointer-events: none !important;
-        z-index: 20 !important;
-      `;
-        div.appendChild(lock);
+        const oldLock = div.querySelector(".lock-icon-locked-exam");
+        if (oldLock) oldLock.remove();
+        titleSpan.classList.remove("locked-title");
+        titleSpan.style.color = "";
         div.onmouseenter = function() {
-          this.style.boxShadow = "inset 0 0 0 1px rgba(71,85,105,.08), 0 2px 8px rgba(0,0,0,.04)";
+          this.style.backgroundColor = "#f1f5f9";
+          this.style.transform = "translateX(5px)";
+          this.style.borderColor = "#2F80ED";
+          this.style.boxShadow = "0 2px 8px rgba(47, 128, 237, 0.15)";
         };
         div.onmouseleave = function() {
-          this.style.boxShadow = "inset 0 0 0 1px rgba(71,85,105,.04)";
+          this.style.backgroundColor = "";
+          this.style.transform = "";
+          this.style.borderColor = "";
+          this.style.boxShadow = "";
         };
-        titleSpan.style.color = "#475569";
-        titleSpan.classList.add("locked-title");
         div.onclick = /* @__PURE__ */ (function(title, id) {
           return function() {
             if (typeof window.showLockedCard === "function") {
@@ -32589,9 +32593,6 @@ var MyApp = (() => {
       }
       if (skill === "lesen1" || skill === "lesen3") {
         setTimeout(() => {
-          if (typeof window.restoreMatchingState === "function") {
-            window.restoreMatchingState(skill);
-          }
           const matchingBtn = document.getElementById("matchingToggleBtn");
           if (matchingBtn) {
             const isActive = skill === "lesen1" && window.matchingLesen1 && window.matchingLesen1.isActive || skill === "lesen3" && window.matchingLesen3 && window.matchingLesen3.isActive;
