@@ -25957,82 +25957,50 @@ var MyApp = (() => {
       card.appendChild(select);
       container.appendChild(card);
     }
-    container.querySelectorAll(".check-btn, .reset-btn, .teil1-controls, .teil3-controls").forEach((el) => {
-      if (el.tagName === "BUTTON" || el.classList.contains("check-btn") || el.classList.contains("reset-btn")) {
-        el.remove();
-      }
-      if (el.classList.contains("teil1-controls") || el.classList.contains("teil3-controls")) {
-        el.style.display = "none";
-      }
-    });
-    const topRow = document.createElement("div");
-    topRow.className = "teil-controls-row";
-    topRow.style.cssText = `
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: 20px;
-    width: 100%;
-  `;
-    const checkBtn = document.createElement("button");
-    checkBtn.innerText = "\u{1F4DD} Pr\xFCfen";
-    checkBtn.className = "check-btn";
-    checkBtn.style.cssText = `
-    height: clamp(38px, 4.5vw, 48px);
-    padding: 0 clamp(12px, 2vw, 24px);
-    font-size: clamp(12px, 1.2vw, 16px);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #2c3e66;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    white-space: nowrap;
-  `;
-    checkBtn.onmouseenter = () => checkBtn.style.backgroundColor = "#1a2a4a";
-    checkBtn.onmouseleave = () => checkBtn.style.backgroundColor = "#2c3e66";
-    checkBtn.onclick = () => checkMatchingExam();
-    const resetBtn = document.createElement("button");
-    resetBtn.innerText = "\u21BA";
-    resetBtn.className = "reset-btn";
-    resetBtn.style.cssText = `
-    height: clamp(38px, 4.5vw, 48px);
-    padding: 0 clamp(12px, 2vw, 24px);
-    font-size: clamp(12px, 1.2vw, 16px);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #6c757d;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    white-space: nowrap;
-  `;
-    resetBtn.onmouseenter = () => resetBtn.style.backgroundColor = "#5a6268";
-    resetBtn.onmouseleave = () => resetBtn.style.backgroundColor = "#6c757d";
-    resetBtn.onclick = () => {
-      matchingSelectedAnswers2 = {};
-      matchingAvailableOptions2 = [...currentMatchingExamData2.sharedOptions];
-      renderMatchingQuestions2();
+    let row = container.querySelector(".teil-controls-row");
+    if (!row) {
+      row = document.createElement("div");
+      row.className = "teil-controls-row";
+      container.appendChild(row);
+    }
+    let checkBtn = row.querySelector(".check-btn");
+    if (!checkBtn) {
+      checkBtn = document.createElement("button");
+      checkBtn.className = "check-btn";
+      checkBtn.textContent = "\u{1F4DD} Pr\xFCfen";
+      row.appendChild(checkBtn);
+    }
+    checkBtn.onclick = () => {
+      if (typeof checkMatchingExam === "function") checkMatchingExam();
     };
-    topRow.appendChild(checkBtn);
-    topRow.appendChild(resetBtn);
-    container.appendChild(topRow);
+    let resetBtn = row.querySelector(".lesen-reset-btn");
+    if (!resetBtn) {
+      resetBtn = document.createElement("button");
+      resetBtn.className = "lesen-reset-btn";
+      resetBtn.textContent = "\u21BA";
+      row.appendChild(resetBtn);
+    }
+    resetBtn.onclick = function() {
+      try {
+        if (typeof matchingSelectedAnswers2 !== "undefined") matchingSelectedAnswers2 = {};
+        if (typeof currentMatchingExamData2 !== "undefined" && currentMatchingExamData2?.sharedOptions) {
+          matchingAvailableOptions2 = [...currentMatchingExamData2.sharedOptions];
+        }
+        container.querySelectorAll(".correct-message").forEach((el) => el.remove());
+        container.querySelectorAll(".result-box").forEach((el) => {
+          if (!el.id) el.remove();
+        });
+        if (typeof renderMatchingQuestions2 === "function") renderMatchingQuestions2();
+      } catch (e) {
+        console.error("\u274C Reset Lesen 1:", e);
+      }
+    };
     const examBox = document.querySelector(".exam-box");
     if (examBox) {
-      examBox.querySelectorAll(".check-btn, .reset-btn, .teil1-controls, .teil3-controls").forEach((el) => {
-        if (el.tagName === "BUTTON" || el.classList.contains("check-btn") || el.classList.contains("reset-btn")) {
+      examBox.querySelectorAll(".check-btn, .reset-btn, .lesen-reset-btn").forEach((el) => {
+        const txt = el.textContent.trim();
+        if (txt.includes("Pr\xFCfen") || txt.includes("\u062A\u0635\u062D\u064A\u062D") || txt === "\u21BA") {
           el.remove();
-        }
-        if (el.classList.contains("teil1-controls") || el.classList.contains("teil3-controls")) {
-          el.style.display = "none";
         }
       });
     }
@@ -26826,97 +26794,60 @@ var MyApp = (() => {
     twoColumns.appendChild(leftColumn);
     twoColumns.appendChild(rightColumn);
     container.appendChild(twoColumns);
-    container.querySelectorAll(".check-btn, .reset-btn, .teil1-controls, .teil3-controls").forEach((el) => {
-      if (el.tagName === "BUTTON" || el.classList.contains("check-btn") || el.classList.contains("reset-btn")) {
-        el.remove();
-      }
-      if (el.classList.contains("teil1-controls") || el.classList.contains("teil3-controls")) {
-        el.style.display = "none";
-      }
-    });
-    const topRow = document.createElement("div");
-    topRow.className = "teil-controls-row";
-    topRow.style.cssText = `
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: 20px;
-    width: 100%;
-  `;
-    const checkBtn = document.createElement("button");
-    checkBtn.innerText = "\u{1F4DD} Pr\xFCfen";
-    checkBtn.className = "check-btn";
-    checkBtn.style.cssText = `
-    height: clamp(38px, 4.5vw, 48px);
-    padding: 0 clamp(12px, 2vw, 24px);
-    font-size: clamp(12px, 1.2vw, 16px);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #2c3e66;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    white-space: nowrap;
-  `;
-    checkBtn.onmouseenter = () => checkBtn.style.backgroundColor = "#1a2a4a";
-    checkBtn.onmouseleave = () => checkBtn.style.backgroundColor = "#2c3e66";
-    checkBtn.onclick = checkTeil3Exam;
-    const resetBtn = document.createElement("button");
-    resetBtn.innerText = "\u21BA";
-    resetBtn.className = "reset-btn";
-    resetBtn.style.cssText = `
-    height: clamp(38px, 4.5vw, 48px);
-    padding: 0 clamp(12px, 2vw, 24px);
-    font-size: clamp(12px, 1.2vw, 16px);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #6c757d;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    white-space: nowrap;
-  `;
-    resetBtn.onmouseenter = () => resetBtn.style.backgroundColor = "#5a6268";
-    resetBtn.onmouseleave = () => resetBtn.style.backgroundColor = "#6c757d";
+    let row = container.querySelector(".teil-controls-row");
+    if (!row) {
+      row = document.createElement("div");
+      row.className = "teil-controls-row";
+      container.appendChild(row);
+    }
+    let checkBtn = row.querySelector(".check-btn");
+    if (!checkBtn) {
+      checkBtn = document.createElement("button");
+      checkBtn.className = "check-btn";
+      checkBtn.textContent = "\u{1F4DD} Pr\xFCfen";
+      row.appendChild(checkBtn);
+    }
+    checkBtn.onclick = () => {
+      if (typeof checkTeil3Exam === "function") checkTeil3Exam();
+    };
+    let resetBtn = row.querySelector(".lesen-reset-btn");
+    if (!resetBtn) {
+      resetBtn = document.createElement("button");
+      resetBtn.className = "lesen-reset-btn";
+      resetBtn.textContent = "\u21BA";
+      row.appendChild(resetBtn);
+    }
     resetBtn.onclick = function() {
-      teil3UserAnswers = {};
-      teil3SelectedItem = null;
-      teil3SelectedSit = null;
-      teil3SelectedItemForLink = null;
-      teil3SelectedSitForLink = null;
-      for (let i = 0; i < items.length; i++) {
-        const select = document.getElementById(`teil3_select_${i}`);
-        if (select) select.selectedIndex = 0;
-        updateTeil3CardStyle(i);
-      }
-      updateTeil3SelectOptions();
-      updateTeil3RightSideColors();
-      document.querySelectorAll("#teil3 .correct-message").forEach((msg) => msg.remove());
-      const resultDiv2 = document.getElementById("teil3Result");
-      if (resultDiv2) {
-        resultDiv2.style.display = "none";
-        resultDiv2.innerHTML = "";
+      try {
+        if (typeof teil3UserAnswers !== "undefined") teil3UserAnswers = {};
+        if (typeof teil3SelectedItem !== "undefined") teil3SelectedItem = null;
+        if (typeof teil3SelectedSit !== "undefined") teil3SelectedSit = null;
+        if (typeof teil3SelectedItemForLink !== "undefined") teil3SelectedItemForLink = null;
+        if (typeof teil3SelectedSitForLink !== "undefined") teil3SelectedSitForLink = null;
+        container.querySelectorAll("select").forEach((select) => {
+          select.selectedIndex = 0;
+        });
+        container.querySelectorAll(".correct-message").forEach((el) => el.remove());
+        const resultDiv2 = document.getElementById("teil3Result");
+        if (resultDiv2) {
+          resultDiv2.style.display = "none";
+          resultDiv2.innerHTML = "";
+        }
+        if (typeof updateTeil3SelectOptions === "function") updateTeil3SelectOptions();
+        if (typeof updateTeil3RightSideColors === "function") updateTeil3RightSideColors();
+        if (typeof currentTeil3Data !== "undefined" && currentTeil3Data?.items && typeof updateTeil3CardStyle === "function") {
+          currentTeil3Data.items.forEach((_, i) => updateTeil3CardStyle(i));
+        }
+      } catch (e) {
+        console.error("\u274C Reset Lesen 3:", e);
       }
     };
-    topRow.appendChild(checkBtn);
-    topRow.appendChild(resetBtn);
-    container.appendChild(topRow);
     const examBox = document.querySelector(".exam-box");
     if (examBox) {
-      examBox.querySelectorAll(".check-btn, .reset-btn, .teil1-controls, .teil3-controls").forEach((el) => {
-        if (el.tagName === "BUTTON" || el.classList.contains("check-btn") || el.classList.contains("reset-btn")) {
+      examBox.querySelectorAll(".check-btn, .reset-btn, .lesen-reset-btn").forEach((el) => {
+        const txt = el.textContent.trim();
+        if (txt.includes("Pr\xFCfen") || txt.includes("\u062A\u0635\u062D\u064A\u062D") || txt === "\u21BA") {
           el.remove();
-        }
-        if (el.classList.contains("teil1-controls") || el.classList.contains("teil3-controls")) {
-          el.style.display = "none";
         }
       });
     }
