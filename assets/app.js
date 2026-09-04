@@ -25957,58 +25957,12 @@ var MyApp = (() => {
       card.appendChild(select);
       container.appendChild(card);
     }
-    let row = container.querySelector(".teil-controls-row");
-    if (!row) {
-      row = document.createElement("div");
-      row.className = "teil-controls-row";
-      container.appendChild(row);
-    }
-    let checkBtn = row.querySelector(".check-btn");
-    if (!checkBtn) {
-      checkBtn = document.createElement("button");
-      checkBtn.className = "check-btn";
-      checkBtn.textContent = "\u{1F4DD} Pr\xFCfen";
-      row.appendChild(checkBtn);
-    }
-    checkBtn.onclick = () => {
-      if (typeof checkMatchingExam === "function") checkMatchingExam();
-    };
-    let resetBtn = row.querySelector(".lesen-reset-btn");
-    if (!resetBtn) {
-      resetBtn = document.createElement("button");
-      resetBtn.className = "lesen-reset-btn";
-      resetBtn.textContent = "\u21BA";
-      row.appendChild(resetBtn);
-    }
-    resetBtn.onclick = function() {
-      try {
-        if (typeof matchingSelectedAnswers2 !== "undefined") matchingSelectedAnswers2 = {};
-        if (typeof currentMatchingExamData2 !== "undefined" && currentMatchingExamData2?.sharedOptions) {
-          matchingAvailableOptions2 = [...currentMatchingExamData2.sharedOptions];
-        }
-        container.querySelectorAll(".correct-message").forEach((el) => el.remove());
-        container.querySelectorAll(".result-box").forEach((el) => {
-          if (!el.id) el.remove();
-        });
-        if (typeof renderMatchingQuestions2 === "function") renderMatchingQuestions2();
-      } catch (e) {
-        console.error("\u274C Reset Lesen 1:", e);
-      }
-    };
-    const examBox = document.querySelector(".exam-box");
-    if (examBox) {
-      examBox.querySelectorAll(".check-btn, .reset-btn, .lesen-reset-btn").forEach((el) => {
-        const txt = el.textContent.trim();
-        if (txt.includes("Pr\xFCfen") || txt.includes("\u062A\u0635\u062D\u064A\u062D") || txt === "\u21BA") {
-          el.remove();
-        }
-      });
-    }
     const resultDiv = document.createElement("div");
     resultDiv.id = "matchingResult";
     resultDiv.className = "result-box";
     resultDiv.style.display = "none";
     container.appendChild(resultDiv);
+    setupTeilControls("teil1", "teil1");
   }
   function checkMatchingExam() {
     const questions = currentMatchingExamData2.questions;
@@ -26794,63 +26748,6 @@ var MyApp = (() => {
     twoColumns.appendChild(leftColumn);
     twoColumns.appendChild(rightColumn);
     container.appendChild(twoColumns);
-    let row = container.querySelector(".teil-controls-row");
-    if (!row) {
-      row = document.createElement("div");
-      row.className = "teil-controls-row";
-      container.appendChild(row);
-    }
-    let checkBtn = row.querySelector(".check-btn");
-    if (!checkBtn) {
-      checkBtn = document.createElement("button");
-      checkBtn.className = "check-btn";
-      checkBtn.textContent = "\u{1F4DD} Pr\xFCfen";
-      row.appendChild(checkBtn);
-    }
-    checkBtn.onclick = () => {
-      if (typeof checkTeil3Exam === "function") checkTeil3Exam();
-    };
-    let resetBtn = row.querySelector(".lesen-reset-btn");
-    if (!resetBtn) {
-      resetBtn = document.createElement("button");
-      resetBtn.className = "lesen-reset-btn";
-      resetBtn.textContent = "\u21BA";
-      row.appendChild(resetBtn);
-    }
-    resetBtn.onclick = function() {
-      try {
-        if (typeof teil3UserAnswers !== "undefined") teil3UserAnswers = {};
-        if (typeof teil3SelectedItem !== "undefined") teil3SelectedItem = null;
-        if (typeof teil3SelectedSit !== "undefined") teil3SelectedSit = null;
-        if (typeof teil3SelectedItemForLink !== "undefined") teil3SelectedItemForLink = null;
-        if (typeof teil3SelectedSitForLink !== "undefined") teil3SelectedSitForLink = null;
-        container.querySelectorAll("select").forEach((select) => {
-          select.selectedIndex = 0;
-        });
-        container.querySelectorAll(".correct-message").forEach((el) => el.remove());
-        const resultDiv2 = document.getElementById("teil3Result");
-        if (resultDiv2) {
-          resultDiv2.style.display = "none";
-          resultDiv2.innerHTML = "";
-        }
-        if (typeof updateTeil3SelectOptions === "function") updateTeil3SelectOptions();
-        if (typeof updateTeil3RightSideColors === "function") updateTeil3RightSideColors();
-        if (typeof currentTeil3Data !== "undefined" && currentTeil3Data?.items && typeof updateTeil3CardStyle === "function") {
-          currentTeil3Data.items.forEach((_, i) => updateTeil3CardStyle(i));
-        }
-      } catch (e) {
-        console.error("\u274C Reset Lesen 3:", e);
-      }
-    };
-    const examBox = document.querySelector(".exam-box");
-    if (examBox) {
-      examBox.querySelectorAll(".check-btn, .reset-btn, .lesen-reset-btn").forEach((el) => {
-        const txt = el.textContent.trim();
-        if (txt.includes("Pr\xFCfen") || txt.includes("\u062A\u0635\u062D\u064A\u062D") || txt === "\u21BA") {
-          el.remove();
-        }
-      });
-    }
     const resultDiv = document.createElement("div");
     resultDiv.id = "teil3Result";
     resultDiv.className = "result-box";
@@ -26858,6 +26755,7 @@ var MyApp = (() => {
     container.appendChild(resultDiv);
     updateTeil3SelectOptions();
     updateTeil3RightSideColors();
+    setupTeilControls("teil3", "teil3");
   }
   function checkTeil3Exam() {
     const items = currentTeil3Data.items;
@@ -28075,6 +27973,138 @@ var MyApp = (() => {
     }
     _interleavingInitialized = false;
     console.log("\u2705 \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u062D\u0627\u0644\u0629 Interleaving");
+  }
+  function setupTeilControls(containerId, type) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    if (!document.getElementById("lesen-final-controls-style")) {
+      const style = document.createElement("style");
+      style.id = "lesen-final-controls-style";
+      style.textContent = `
+            #teil1 .teil-controls-row,
+            #teil3 .teil-controls-row {
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                justify-content: center !important;
+                align-items: center !important;
+                gap: 15px !important;
+                width: 100% !important;
+                margin-top: 20px !important;
+            }
+            #teil1 .teil-controls-row .check-btn,
+            #teil3 .teil-controls-row .check-btn,
+            #teil1 .teil-controls-row .lesen-reset-btn,
+            #teil3 .teil-controls-row .lesen-reset-btn {
+                display: inline-flex !important;
+                flex: 0 0 auto !important;
+                width: auto !important;
+                min-width: 0 !important;
+                max-width: none !important;
+                height: 38px !important;
+                box-sizing: border-box !important;
+                margin: 0 !important;
+                padding: 8px 12px !important;
+                align-items: center !important;
+                justify-content: center !important;
+                border-radius: 6px !important;
+                white-space: nowrap !important;
+            }
+            #teil1 .teil-controls-row .check-btn,
+            #teil3 .teil-controls-row .check-btn {
+                background-color: #2c3e66 !important;
+                color: #fff !important;
+                border: none !important;
+                font-size: 14px !important;
+                font-weight: bold !important;
+            }
+            #teil1 .teil-controls-row .lesen-reset-btn,
+            #teil3 .teil-controls-row .lesen-reset-btn {
+                background-color: #6c757d !important;
+                color: #fff !important;
+                border: none !important;
+                font-size: 16px !important;
+                font-weight: bold !important;
+                cursor: pointer !important;
+            }
+            @media (max-width: 770px) {
+                #teil1 .teil-controls-row,
+                #teil3 .teil-controls-row {
+                    gap: 10px !important;
+                }
+            }
+            @media (max-width: 420px) {
+                #teil1 .teil-controls-row .check-btn,
+                #teil3 .teil-controls-row .check-btn {
+                    padding: 7px 10px !important;
+                    font-size: 13px !important;
+                }
+                #teil1 .teil-controls-row .lesen-reset-btn,
+                #teil3 .teil-controls-row .lesen-reset-btn {
+                    padding: 7px 10px !important;
+                    font-size: 15px !important;
+                }
+            }
+        `;
+      document.head.appendChild(style);
+    }
+    let row = container.querySelector(".teil-controls-row");
+    if (!row) {
+      row = document.createElement("div");
+      row.className = "teil-controls-row";
+      const backBtn = container.querySelector("#backToListBtn");
+      if (backBtn?.parentElement) {
+        backBtn.parentElement.insertAdjacentElement("beforebegin", row);
+      } else {
+        container.appendChild(row);
+      }
+    }
+    let checkBtn = row.querySelector(".check-btn");
+    if (!checkBtn) {
+      checkBtn = document.createElement("button");
+      checkBtn.className = "check-btn";
+      checkBtn.textContent = "\u{1F4DD} Pr\xFCfen";
+      row.appendChild(checkBtn);
+    }
+    if (type === "teil1" && typeof checkMatchingExam === "function") {
+      checkBtn.onclick = checkMatchingExam;
+    } else if (type === "teil3" && typeof checkTeil3Exam === "function") {
+      checkBtn.onclick = checkTeil3Exam;
+    }
+    let resetBtn = row.querySelector(".lesen-reset-btn");
+    if (!resetBtn) {
+      resetBtn = document.createElement("button");
+      resetBtn.className = "lesen-reset-btn";
+      resetBtn.textContent = "\u21BA";
+      row.appendChild(resetBtn);
+    }
+    resetBtn.onclick = function() {
+      if (type === "teil1") {
+        if (typeof matchingSelectedAnswers2 !== "undefined") matchingSelectedAnswers2 = {};
+        if (typeof currentMatchingExamData2 !== "undefined" && currentMatchingExamData2?.sharedOptions) {
+          matchingAvailableOptions2 = [...currentMatchingExamData2.sharedOptions];
+        }
+        if (typeof renderMatchingQuestions2 === "function") renderMatchingQuestions2();
+      } else if (type === "teil3") {
+        if (typeof teil3UserAnswers !== "undefined") teil3UserAnswers = {};
+        if (typeof teil3SelectedItem !== "undefined") teil3SelectedItem = null;
+        if (typeof teil3SelectedSit !== "undefined") teil3SelectedSit = null;
+        if (typeof teil3SelectedItemForLink !== "undefined") teil3SelectedItemForLink = null;
+        if (typeof teil3SelectedSitForLink !== "undefined") teil3SelectedSitForLink = null;
+        container.querySelectorAll("select").forEach((select) => select.selectedIndex = 0);
+        container.querySelectorAll(".correct-message").forEach((el) => el.remove());
+        const resultDiv = document.getElementById("teil3Result");
+        if (resultDiv) {
+          resultDiv.style.display = "none";
+          resultDiv.innerHTML = "";
+        }
+        if (typeof updateTeil3SelectOptions === "function") updateTeil3SelectOptions();
+        if (typeof updateTeil3RightSideColors === "function") updateTeil3RightSideColors();
+        if (typeof currentTeil3Data !== "undefined" && currentTeil3Data?.items && typeof updateTeil3CardStyle === "function") {
+          currentTeil3Data.items.forEach((_, i) => updateTeil3CardStyle(i));
+        }
+      }
+    };
   }
   function pushAnswerToHistory(action) {
     if (!_historyEnabled) return;
