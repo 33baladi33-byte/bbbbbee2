@@ -25959,21 +25959,18 @@ var MyApp = (() => {
     }
     const examBox = document.querySelector(".exam-box");
     if (examBox) {
-      const oldContainers = examBox.querySelectorAll(".teil1-controls, .teil3-controls, .matching-exam-controls");
-      oldContainers.forEach((el) => el.remove());
-      const orphanBtns = examBox.querySelectorAll("button");
-      orphanBtns.forEach((btn) => {
-        if (!btn.closest(".interleaving-icon-btn") && !btn.closest("#matchingToggleBtn") && !btn.closest("#prevExamBtn") && !btn.closest("#nextExamBtn")) {
-          const text = btn.textContent.trim();
-          if (text.includes("\u062A\u0635\u062D\u064A\u062D") || text.includes("\u21BA") || text.includes("\u0625\u0639\u0627\u062F\u0629") || text.includes("Reset") || text.includes("reset")) {
-            btn.remove();
-          }
+      examBox.querySelectorAll(".check-btn, .reset-btn, .teil1-controls, .teil3-controls").forEach((el) => {
+        if (el.tagName === "BUTTON" || el.classList.contains("check-btn") || el.classList.contains("reset-btn")) {
+          el.remove();
+        }
+        if (el.classList.contains("teil1-controls") || el.classList.contains("teil3-controls")) {
+          el.style.display = "none";
         }
       });
-    }
-    if (examBox) {
-      examBox.querySelectorAll(".check-btn, .reset-btn").forEach((el) => el.remove());
-      examBox.querySelectorAll(".teil1-controls, .teil3-controls").forEach((el) => el.style.display = "none");
+      let backBtn = document.getElementById("backToListBtn") || document.querySelector(".back-list-btn") || document.querySelector('[data-action="back"]');
+      if (backBtn && !document.body.contains(backBtn)) {
+        backBtn = null;
+      }
       const topRow = document.createElement("div");
       topRow.className = "teil-controls-row";
       topRow.style.cssText = `
@@ -26033,25 +26030,19 @@ var MyApp = (() => {
       };
       topRow.appendChild(checkBtn);
       topRow.appendChild(resetBtn);
-      let backBtn = examBox.querySelector('#backToListBtn, .back-list-btn, [data-action="back"]');
-      if (!backBtn) {
-        backBtn = document.getElementById("backToListBtn") || document.querySelector(".back-list-btn") || document.querySelector('[data-action="back"]');
-      }
+      let inserted = false;
       if (backBtn && examBox.contains(backBtn)) {
         try {
           examBox.insertBefore(topRow, backBtn);
+          inserted = true;
         } catch (e) {
-          examBox.appendChild(topRow);
-          if (backBtn.parentNode === examBox) {
-            examBox.insertBefore(backBtn, null);
-          }
+          console.warn("\u26A0\uFE0F \u0641\u0634\u0644 \u0625\u062F\u0631\u0627\u062C \u0627\u0644\u0623\u0632\u0631\u0627\u0631 \u0642\u0628\u0644 \u0632\u0631 \u0627\u0644\u0639\u0648\u062F\u0629 \u0641\u064A Lesen1", e);
         }
-      } else if (backBtn) {
-        examBox.appendChild(topRow);
-      } else {
+      }
+      if (!inserted) {
         examBox.appendChild(topRow);
       }
-      if (backBtn) {
+      if (backBtn && document.body.contains(backBtn)) {
         backBtn.style.display = "";
       }
     }
@@ -29601,7 +29592,6 @@ var MyApp = (() => {
         _loadState() {
           return false;
         }
-        // ---- استخراج النصوص والعناوين من الـ selects الحقيقية ----
         _extractData() {
           const container = document.getElementById(this.containerId);
           if (!container) return false;
@@ -29665,7 +29655,6 @@ var MyApp = (() => {
               value: "",
               text: "\u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646",
               letter: ""
-              // لا حرف
             });
           }
           if (this._titles.length === 0) return false;
@@ -29900,7 +29889,6 @@ var MyApp = (() => {
             });
           });
         }
-        // ---- ربط النص بالعنوان ----
         _connect(textId, titleId) {
           if (this._matches.get(textId) === titleId) {
             this._disconnectText(textId);
@@ -29946,7 +29934,6 @@ var MyApp = (() => {
           const textId = this._titleToText.get(titleId);
           if (textId) this._disconnectText(textId);
         }
-        // ---- تحديث واجهة المستخدم ----
         _updateUI() {
           const total = this._texts.length;
           const count = this._matches.size;
@@ -29985,7 +29972,6 @@ var MyApp = (() => {
             }
           });
         }
-        // ---- التقاط الأحجام الثابتة للـ responsive ----
         _captureSizes() {
           const root = this.root;
           if (!root) return;
@@ -30009,6 +29995,39 @@ var MyApp = (() => {
           if (this._captureTimeout) clearTimeout(this._captureTimeout);
           this._captureTimeout = setTimeout(() => this._captureSizes(), 50);
         }
+        // ---- دالة مسح أنماط التصحيح ----
+        _clearCorrectionStyles() {
+          const container = document.getElementById(this.containerId);
+          if (!container) return;
+          container.querySelectorAll(".question-card").forEach((card) => {
+            card.style.removeProperty("background-color");
+            card.style.removeProperty("border");
+            card.style.removeProperty("box-shadow");
+            card.classList.remove("correct-answer-card", "wrong-answer-card");
+          });
+          container.querySelectorAll("select").forEach((select) => {
+            select.style.removeProperty("background-color");
+            select.style.removeProperty("border");
+            select.style.removeProperty("color");
+            select.style.removeProperty("box-shadow");
+          });
+          container.querySelectorAll("select option").forEach((option) => {
+            option.style.removeProperty("background-color");
+            option.style.removeProperty("color");
+            option.style.removeProperty("font-weight");
+            option.style.removeProperty("padding");
+            option.style.removeProperty("border-radius");
+          });
+          container.querySelectorAll(".correct-message, .inline-correct-answer, .correct-answer-message").forEach((msg) => {
+            msg.remove();
+          });
+          container.querySelectorAll(".result-box").forEach((box) => {
+            box.style.removeProperty("background-color");
+            box.style.removeProperty("color");
+            box.style.display = "";
+          });
+        }
+        // ---- تشغيل Help Mode ----
         activate() {
           if (this.isActive || this._isDestroyed) return;
           if (!this._extractData()) {
@@ -30034,6 +30053,7 @@ var MyApp = (() => {
         _applyActivation() {
           const container = document.getElementById(this.containerId);
           if (container) {
+            this._clearCorrectionStyles();
             Array.from(container.children).forEach((child) => {
               if (child !== this.root) {
                 if (!child.dataset.zertivaOriginalDisplay) {
@@ -30086,10 +30106,12 @@ var MyApp = (() => {
             }
           });
         }
+        // ---- إيقاف Help Mode ----
         deactivate() {
           if (!this.isActive || this._isDestroyed) return;
           const container = document.getElementById(this.containerId);
           if (container) {
+            this._clearCorrectionStyles();
             Array.from(container.children).forEach((child) => {
               if (child !== this.root) {
                 const originalDisplay = child.dataset.zertivaOriginalDisplay;
@@ -30164,9 +30186,6 @@ var MyApp = (() => {
             if (typeof callback === "function") callback();
           };
         }
-        // تم حذف التعريف المكرر للدالة deactivate.
-        // يتم استخدام التعريف الأول الموجود أعلاه والذي يحتفظ بمنطق استعادة display الصحيح.
-        // ---- تحديث زر Matching في الشريط ----
         _updateMatchingButton(active) {
           const btn = document.getElementById("matchingToggleBtn");
           if (!btn) return;
@@ -30177,7 +30196,6 @@ var MyApp = (() => {
             btn.title = active ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
           }
         }
-        // ---- تبديل الحالة ----
         toggle() {
           if (this.isActive) {
             this.deactivate();
@@ -30185,7 +30203,6 @@ var MyApp = (() => {
             this.activate();
           }
         }
-        // ---- إعادة ضبط الإجابات (يُستدعى من زر reset) ----
         reset() {
           if (!this.isActive) return;
           const textIds = Array.from(this._matches.keys());
