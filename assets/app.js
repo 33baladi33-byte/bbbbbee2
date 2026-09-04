@@ -32068,6 +32068,48 @@ var MyApp = (() => {
     });
     const mainExams = targetExams.filter((exam) => !versionIds.has(exam.id));
     for (let i = 0; i < mainExams.length; i++) {
+      let applyLockedStyle = function(div2, titleSpan2) {
+        const oldBadge = div2.querySelector(".premium-badge");
+        if (oldBadge) oldBadge.remove();
+        const oldLock = div2.querySelector(".lock-icon-locked-exam, .zertiva-pro-lock");
+        if (oldLock) oldLock.remove();
+        div2.style.position = "relative";
+        div2.style.overflow = "hidden";
+        div2.style.background = "linear-gradient(135deg,#eef1f5,#e7ebf0)";
+        div2.style.borderColor = "#d8dde5";
+        div2.style.color = "#475569";
+        div2.style.opacity = "0.88";
+        div2.style.boxShadow = "inset 0 0 0 1px rgba(71,85,105,.04)";
+        div2.style.cursor = "pointer";
+        titleSpan2.classList.remove("locked-title");
+        titleSpan2.style.color = "#475569";
+        const lock = document.createElement("span");
+        lock.className = "zertiva-pro-lock";
+        lock.textContent = "lock";
+        lock.style.cssText = `
+        position:absolute !important;
+        right:8px !important;
+        bottom:8px !important;
+        left:auto !important;
+        width:20px !important;
+        height:20px !important;
+        display:flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+        border-radius:50% !important;
+        background:rgba(15,23,42,.08) !important;
+        border:1px solid rgba(100,116,139,.15) !important;
+        color:#64748b !important;
+        font-family:'Material Symbols Outlined' !important;
+        font-size:13px !important;
+        line-height:1 !important;
+        pointer-events:none !important;
+        z-index:20 !important;
+    `;
+        div2.appendChild(lock);
+        div2.onmouseenter = null;
+        div2.onmouseleave = null;
+      };
       const exam = mainExams[i];
       const examNumber = exam.id;
       const isFreeExam = isExamFree(skill, examNumber);
@@ -32160,46 +32202,7 @@ var MyApp = (() => {
           }
         }
         if (allVersionsLocked) {
-          const oldBadge = div.querySelector(".premium-badge");
-          if (oldBadge) oldBadge.remove();
-          const oldLock = div.querySelector(".lock-icon-locked-exam");
-          if (oldLock) oldLock.remove();
-          div.style.position = "relative";
-          div.style.overflow = "hidden";
-          div.style.background = "linear-gradient(135deg,#eef1f5,#e7ebf0)";
-          div.style.borderColor = "#d8dde5";
-          div.style.color = "#475569";
-          div.style.opacity = "0.88";
-          div.style.boxShadow = "inset 0 0 0 1px rgba(71,85,105,.04)";
-          div.style.cursor = "pointer";
-          titleSpan.classList.remove("locked-title");
-          titleSpan.style.color = "#475569";
-          const lock = document.createElement("span");
-          lock.className = "zertiva-pro-lock";
-          lock.textContent = "lock";
-          lock.style.cssText = `
-        position:absolute !important;
-        right:8px !important;
-        bottom:8px !important;
-        left:auto !important;
-        width:20px !important;
-        height:20px !important;
-        display:flex !important;
-        align-items:center !important;
-        justify-content:center !important;
-        border-radius:50% !important;
-        background:rgba(15,23,42,.08) !important;
-        border:1px solid rgba(100,116,139,.15) !important;
-        color:#64748b !important;
-        font-family:'Material Symbols Outlined' !important;
-        font-size:13px !important;
-        line-height:1 !important;
-        pointer-events:none !important;
-        z-index:20 !important;
-      `;
-          div.appendChild(lock);
-          div.onmouseenter = null;
-          div.onmouseleave = null;
+          applyLockedStyle(div, titleSpan);
           div.onclick = function(e) {
             e.stopPropagation();
             showVersionsPopup(exam, targetSkill);
@@ -32212,46 +32215,7 @@ var MyApp = (() => {
           };
         }
       } else if (!isPremium && !isFreeExam) {
-        const oldBadge = div.querySelector(".premium-badge");
-        if (oldBadge) oldBadge.remove();
-        const oldLock = div.querySelector(".lock-icon-locked-exam");
-        if (oldLock) oldLock.remove();
-        div.style.position = "relative";
-        div.style.overflow = "hidden";
-        div.style.background = "linear-gradient(135deg,#eef1f5,#e7ebf0)";
-        div.style.borderColor = "#d8dde5";
-        div.style.color = "#475569";
-        div.style.opacity = "0.88";
-        div.style.boxShadow = "inset 0 0 0 1px rgba(71,85,105,.04)";
-        div.style.cursor = "pointer";
-        titleSpan.classList.remove("locked-title");
-        titleSpan.style.color = "#475569";
-        const lock = document.createElement("span");
-        lock.className = "zertiva-pro-lock";
-        lock.textContent = "lock";
-        lock.style.cssText = `
-        position:absolute !important;
-        right:8px !important;
-        bottom:8px !important;
-        left:auto !important;
-        width:20px !important;
-        height:20px !important;
-        display:flex !important;
-        align-items:center !important;
-        justify-content:center !important;
-        border-radius:50% !important;
-        background:rgba(15,23,42,.08) !important;
-        border:1px solid rgba(100,116,139,.15) !important;
-        color:#64748b !important;
-        font-family:'Material Symbols Outlined' !important;
-        font-size:13px !important;
-        line-height:1 !important;
-        pointer-events:none !important;
-        z-index:20 !important;
-      `;
-        div.appendChild(lock);
-        div.onmouseenter = null;
-        div.onmouseleave = null;
+        applyLockedStyle(div, titleSpan);
         div.onclick = /* @__PURE__ */ (function(title, id) {
           return function() {
             if (typeof window.showLockedCard === "function") {
