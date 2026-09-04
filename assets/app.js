@@ -25957,6 +25957,74 @@ var MyApp = (() => {
       card.appendChild(select);
       container.appendChild(card);
     }
+    container.querySelectorAll(".check-btn, .reset-btn, .teil1-controls, .teil3-controls").forEach((el) => {
+      if (el.tagName === "BUTTON" || el.classList.contains("check-btn") || el.classList.contains("reset-btn")) {
+        el.remove();
+      }
+      if (el.classList.contains("teil1-controls") || el.classList.contains("teil3-controls")) {
+        el.style.display = "none";
+      }
+    });
+    const topRow = document.createElement("div");
+    topRow.className = "teil-controls-row";
+    topRow.style.cssText = `
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    width: 100%;
+  `;
+    const checkBtn = document.createElement("button");
+    checkBtn.innerText = "\u{1F4DD} Pr\xFCfen";
+    checkBtn.className = "check-btn";
+    checkBtn.style.cssText = `
+    height: clamp(38px, 4.5vw, 48px);
+    padding: 0 clamp(12px, 2vw, 24px);
+    font-size: clamp(12px, 1.2vw, 16px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2c3e66;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+  `;
+    checkBtn.onmouseenter = () => checkBtn.style.backgroundColor = "#1a2a4a";
+    checkBtn.onmouseleave = () => checkBtn.style.backgroundColor = "#2c3e66";
+    checkBtn.onclick = () => checkMatchingExam();
+    const resetBtn = document.createElement("button");
+    resetBtn.innerText = "\u21BA";
+    resetBtn.className = "reset-btn";
+    resetBtn.style.cssText = `
+    height: clamp(38px, 4.5vw, 48px);
+    padding: 0 clamp(12px, 2vw, 24px);
+    font-size: clamp(12px, 1.2vw, 16px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+  `;
+    resetBtn.onmouseenter = () => resetBtn.style.backgroundColor = "#5a6268";
+    resetBtn.onmouseleave = () => resetBtn.style.backgroundColor = "#6c757d";
+    resetBtn.onclick = () => {
+      matchingSelectedAnswers2 = {};
+      matchingAvailableOptions2 = [...currentMatchingExamData2.sharedOptions];
+      renderMatchingQuestions2();
+    };
+    topRow.appendChild(checkBtn);
+    topRow.appendChild(resetBtn);
+    container.appendChild(topRow);
     const examBox = document.querySelector(".exam-box");
     if (examBox) {
       examBox.querySelectorAll(".check-btn, .reset-btn, .teil1-controls, .teil3-controls").forEach((el) => {
@@ -25967,84 +26035,6 @@ var MyApp = (() => {
           el.style.display = "none";
         }
       });
-      let backBtn = document.getElementById("backToListBtn") || document.querySelector(".back-list-btn") || document.querySelector('[data-action="back"]');
-      if (backBtn && !document.body.contains(backBtn)) {
-        backBtn = null;
-      }
-      const topRow = document.createElement("div");
-      topRow.className = "teil-controls-row";
-      topRow.style.cssText = `
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-bottom: 12px;
-      width: 100%;
-    `;
-      const checkBtn = document.createElement("button");
-      checkBtn.innerText = "\u2705 \u062A\u0635\u062D\u064A\u062D";
-      checkBtn.className = "check-btn";
-      checkBtn.style.cssText = `
-      height: clamp(38px, 4.5vw, 48px);
-      padding: 0 clamp(12px, 2vw, 24px);
-      font-size: clamp(12px, 1.2vw, 16px);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #2c3e66;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.2s;
-      white-space: nowrap;
-    `;
-      checkBtn.onmouseenter = () => checkBtn.style.backgroundColor = "#1a2a4a";
-      checkBtn.onmouseleave = () => checkBtn.style.backgroundColor = "#2c3e66";
-      checkBtn.onclick = () => checkMatchingExam();
-      const resetBtn = document.createElement("button");
-      resetBtn.innerText = "\u21BA";
-      resetBtn.className = "reset-btn";
-      resetBtn.style.cssText = `
-      height: clamp(38px, 4.5vw, 48px);
-      padding: 0 clamp(12px, 2vw, 24px);
-      font-size: clamp(12px, 1.2vw, 16px);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #6c757d;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.2s;
-      white-space: nowrap;
-    `;
-      resetBtn.onmouseenter = () => resetBtn.style.backgroundColor = "#5a6268";
-      resetBtn.onmouseleave = () => resetBtn.style.backgroundColor = "#6c757d";
-      resetBtn.onclick = () => {
-        matchingSelectedAnswers2 = {};
-        matchingAvailableOptions2 = [...currentMatchingExamData2.sharedOptions];
-        renderMatchingQuestions2();
-      };
-      topRow.appendChild(checkBtn);
-      topRow.appendChild(resetBtn);
-      let inserted = false;
-      if (backBtn && examBox.contains(backBtn)) {
-        try {
-          examBox.insertBefore(topRow, backBtn);
-          inserted = true;
-        } catch (e) {
-          console.warn("\u26A0\uFE0F \u0641\u0634\u0644 \u0625\u062F\u0631\u0627\u062C \u0627\u0644\u0623\u0632\u0631\u0627\u0631 \u0642\u0628\u0644 \u0632\u0631 \u0627\u0644\u0639\u0648\u062F\u0629 \u0641\u064A Lesen1", e);
-        }
-      }
-      if (!inserted) {
-        examBox.appendChild(topRow);
-      }
-      if (backBtn && document.body.contains(backBtn)) {
-        backBtn.style.display = "";
-      }
     }
     const resultDiv = document.createElement("div");
     resultDiv.id = "matchingResult";
@@ -26836,118 +26826,99 @@ var MyApp = (() => {
     twoColumns.appendChild(leftColumn);
     twoColumns.appendChild(rightColumn);
     container.appendChild(twoColumns);
+    container.querySelectorAll(".check-btn, .reset-btn, .teil1-controls, .teil3-controls").forEach((el) => {
+      if (el.tagName === "BUTTON" || el.classList.contains("check-btn") || el.classList.contains("reset-btn")) {
+        el.remove();
+      }
+      if (el.classList.contains("teil1-controls") || el.classList.contains("teil3-controls")) {
+        el.style.display = "none";
+      }
+    });
+    const topRow = document.createElement("div");
+    topRow.className = "teil-controls-row";
+    topRow.style.cssText = `
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    width: 100%;
+  `;
+    const checkBtn = document.createElement("button");
+    checkBtn.innerText = "\u{1F4DD} Pr\xFCfen";
+    checkBtn.className = "check-btn";
+    checkBtn.style.cssText = `
+    height: clamp(38px, 4.5vw, 48px);
+    padding: 0 clamp(12px, 2vw, 24px);
+    font-size: clamp(12px, 1.2vw, 16px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2c3e66;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+  `;
+    checkBtn.onmouseenter = () => checkBtn.style.backgroundColor = "#1a2a4a";
+    checkBtn.onmouseleave = () => checkBtn.style.backgroundColor = "#2c3e66";
+    checkBtn.onclick = checkTeil3Exam;
+    const resetBtn = document.createElement("button");
+    resetBtn.innerText = "\u21BA";
+    resetBtn.className = "reset-btn";
+    resetBtn.style.cssText = `
+    height: clamp(38px, 4.5vw, 48px);
+    padding: 0 clamp(12px, 2vw, 24px);
+    font-size: clamp(12px, 1.2vw, 16px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+  `;
+    resetBtn.onmouseenter = () => resetBtn.style.backgroundColor = "#5a6268";
+    resetBtn.onmouseleave = () => resetBtn.style.backgroundColor = "#6c757d";
+    resetBtn.onclick = function() {
+      teil3UserAnswers = {};
+      teil3SelectedItem = null;
+      teil3SelectedSit = null;
+      teil3SelectedItemForLink = null;
+      teil3SelectedSitForLink = null;
+      for (let i = 0; i < items.length; i++) {
+        const select = document.getElementById(`teil3_select_${i}`);
+        if (select) select.selectedIndex = 0;
+        updateTeil3CardStyle(i);
+      }
+      updateTeil3SelectOptions();
+      updateTeil3RightSideColors();
+      document.querySelectorAll("#teil3 .correct-message").forEach((msg) => msg.remove());
+      const resultDiv2 = document.getElementById("teil3Result");
+      if (resultDiv2) {
+        resultDiv2.style.display = "none";
+        resultDiv2.innerHTML = "";
+      }
+    };
+    topRow.appendChild(checkBtn);
+    topRow.appendChild(resetBtn);
+    container.appendChild(topRow);
     const examBox = document.querySelector(".exam-box");
     if (examBox) {
-      const oldContainers = examBox.querySelectorAll(".teil1-controls, .teil3-controls, .matching-exam-controls");
-      oldContainers.forEach((el) => el.remove());
-      const orphanBtns = examBox.querySelectorAll("button");
-      orphanBtns.forEach((btn) => {
-        if (!btn.closest(".interleaving-icon-btn") && !btn.closest("#matchingToggleBtn") && !btn.closest("#prevExamBtn") && !btn.closest("#nextExamBtn")) {
-          const text = btn.textContent.trim();
-          if (text.includes("\u062A\u0635\u062D\u064A\u062D") || text.includes("\u21BA") || text.includes("\u0625\u0639\u0627\u062F\u0629") || text.includes("Reset") || text.includes("reset")) {
-            btn.remove();
-          }
+      examBox.querySelectorAll(".check-btn, .reset-btn, .teil1-controls, .teil3-controls").forEach((el) => {
+        if (el.tagName === "BUTTON" || el.classList.contains("check-btn") || el.classList.contains("reset-btn")) {
+          el.remove();
+        }
+        if (el.classList.contains("teil1-controls") || el.classList.contains("teil3-controls")) {
+          el.style.display = "none";
         }
       });
-    }
-    if (examBox) {
-      examBox.querySelectorAll(".check-btn, .reset-btn").forEach((el) => el.remove());
-      examBox.querySelectorAll(".teil1-controls, .teil3-controls").forEach((el) => el.style.display = "none");
-      const topRow = document.createElement("div");
-      topRow.className = "teil-controls-row";
-      topRow.style.cssText = `
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-bottom: 12px;
-      width: 100%;
-    `;
-      const checkBtn = document.createElement("button");
-      checkBtn.innerText = "\u2705 \u062A\u0635\u062D\u064A\u062D";
-      checkBtn.className = "check-btn";
-      checkBtn.style.cssText = `
-      height: clamp(38px, 4.5vw, 48px);
-      padding: 0 clamp(12px, 2vw, 24px);
-      font-size: clamp(12px, 1.2vw, 16px);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #2c3e66;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.2s;
-      white-space: nowrap;
-    `;
-      checkBtn.onmouseenter = () => checkBtn.style.backgroundColor = "#1a2a4a";
-      checkBtn.onmouseleave = () => checkBtn.style.backgroundColor = "#2c3e66";
-      checkBtn.onclick = checkTeil3Exam;
-      const resetBtn = document.createElement("button");
-      resetBtn.innerText = "\u21BA";
-      resetBtn.className = "reset-btn";
-      resetBtn.style.cssText = `
-      height: clamp(38px, 4.5vw, 48px);
-      padding: 0 clamp(12px, 2vw, 24px);
-      font-size: clamp(12px, 1.2vw, 16px);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #6c757d;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.2s;
-      white-space: nowrap;
-    `;
-      resetBtn.onmouseenter = () => resetBtn.style.backgroundColor = "#5a6268";
-      resetBtn.onmouseleave = () => resetBtn.style.backgroundColor = "#6c757d";
-      resetBtn.onclick = function() {
-        teil3UserAnswers = {};
-        teil3SelectedItem = null;
-        teil3SelectedSit = null;
-        teil3SelectedItemForLink = null;
-        teil3SelectedSitForLink = null;
-        for (let i = 0; i < items.length; i++) {
-          const select = document.getElementById(`teil3_select_${i}`);
-          if (select) select.selectedIndex = 0;
-          updateTeil3CardStyle(i);
-        }
-        updateTeil3SelectOptions();
-        updateTeil3RightSideColors();
-        document.querySelectorAll("#teil3 .correct-message").forEach((msg) => msg.remove());
-        const resultDiv2 = document.getElementById("teil3Result");
-        if (resultDiv2) {
-          resultDiv2.style.display = "none";
-          resultDiv2.innerHTML = "";
-        }
-      };
-      topRow.appendChild(checkBtn);
-      topRow.appendChild(resetBtn);
-      let backBtn = examBox.querySelector('#backToListBtn, .back-list-btn, [data-action="back"]');
-      if (!backBtn) {
-        backBtn = document.getElementById("backToListBtn") || document.querySelector(".back-list-btn") || document.querySelector('[data-action="back"]');
-      }
-      if (backBtn && examBox.contains(backBtn)) {
-        try {
-          examBox.insertBefore(topRow, backBtn);
-        } catch (e) {
-          examBox.appendChild(topRow);
-          if (backBtn.parentNode === examBox) {
-            examBox.insertBefore(backBtn, null);
-          }
-        }
-      } else if (backBtn) {
-        examBox.appendChild(topRow);
-      } else {
-        examBox.appendChild(topRow);
-      }
-      if (backBtn) {
-        backBtn.style.display = "";
-      }
     }
     const resultDiv = document.createElement("div");
     resultDiv.id = "teil3Result";
