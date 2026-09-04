@@ -25764,8 +25764,14 @@ var MyApp = (() => {
       if (isCorrect && userAnswer !== void 0) {
         score++;
         card.classList.add("correct-answer-card");
+        card.style.backgroundColor = "#d4edda";
+        card.style.border = "3px solid #28a745";
+        card.style.boxShadow = "0 0 0 4px rgba(40,167,69,0.25)";
       } else {
         card.classList.add("wrong-answer-card");
+        card.style.backgroundColor = "#fef0e0";
+        card.style.border = "3px solid #e67e22";
+        card.style.boxShadow = "0 0 0 4px rgba(230,126,34,0.25)";
         const textSpan2 = card.querySelector("span");
         if (textSpan2) {
           const oldAnswer = textSpan2.querySelector(".inline-correct-answer");
@@ -26059,20 +26065,24 @@ var MyApp = (() => {
         score++;
         card.classList.add("correct-answer-card");
         card.style.backgroundColor = "#d4edda";
-        card.style.border = "2px solid #28a745";
+        card.style.border = "3px solid #28a745";
+        card.style.boxShadow = "0 0 0 4px rgba(40,167,69,0.25)";
         if (selectElem) {
           selectElem.style.backgroundColor = "#d4edda";
           selectElem.style.border = "2px solid #28a745";
           selectElem.style.color = "#155724";
+          selectElem.style.boxShadow = "0 0 0 3px rgba(40,167,69,0.2)";
         }
       } else {
         card.classList.add("wrong-answer-card");
         card.style.backgroundColor = "#fef0e0";
-        card.style.border = "2px solid #e67e22";
+        card.style.border = "3px solid #e67e22";
+        card.style.boxShadow = "0 0 0 4px rgba(230,126,34,0.25)";
         if (selectElem) {
           selectElem.style.backgroundColor = "#fef0e0";
           selectElem.style.border = "2px solid #e67e22";
           selectElem.style.color = "#155724";
+          selectElem.style.boxShadow = "0 0 0 3px rgba(230,126,34,0.2)";
           let optionExists = false;
           for (let j = 0; j < selectElem.options.length; j++) {
             if (selectElem.options[j].value === correctAnswer) {
@@ -26896,6 +26906,28 @@ var MyApp = (() => {
       if (card) {
         if (isCorrect && userAnswer !== void 0 && userAnswer !== null && userAnswer !== "") {
           score++;
+          card.style.backgroundColor = "#d4edda";
+          card.style.border = "3px solid #28a745";
+          card.style.boxShadow = "0 0 0 4px rgba(40,167,69,0.25)";
+          card.classList.remove("wrong-answer-card");
+          card.classList.add("correct-answer-card");
+        } else {
+          card.style.backgroundColor = "#fef0e0";
+          card.style.border = "3px solid #e67e22";
+          card.style.boxShadow = "0 0 0 4px rgba(230,126,34,0.25)";
+          card.classList.remove("correct-answer-card");
+          card.classList.add("wrong-answer-card");
+          const oldMsg = card.querySelector(".correct-message");
+          if (!oldMsg) {
+            const msg = document.createElement("div");
+            msg.className = "correct-message";
+            msg.style.color = "#28a745";
+            msg.style.marginTop = "10px";
+            msg.style.fontSize = "13px";
+            const correctText2 = correctIndex !== null && correctIndex !== void 0 ? `${String.fromCharCode(97 + correctIndex)}. ${currentTeil3Data.situations[correctIndex]}` : "\u2727 \u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646 \u2727";
+            msg.innerHTML = `\u2705 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629: ${correctText2}`;
+            card.appendChild(msg);
+          }
         }
       }
     }
@@ -29931,8 +29963,7 @@ var MyApp = (() => {
           }
           this._hideOriginalControls();
           if (container) {
-            const resultBoxes = container.querySelectorAll(".result-box");
-            resultBoxes.forEach((box) => box.style.display = "none");
+            container.querySelectorAll(".result-box").forEach((box) => box.style.display = "none");
           }
           this.isActive = true;
           console.log(`\u2705 Help Mode activated for ${this.modeName}`);
@@ -29989,8 +30020,7 @@ var MyApp = (() => {
               this.root.style.display = "none";
             }
             container.classList.remove("zertiva-matching-active");
-            const resultBoxes = container.querySelectorAll(".result-box");
-            resultBoxes.forEach((box) => box.style.display = "none");
+            container.querySelectorAll(".result-box").forEach((box) => box.style.display = "none");
           }
           this._showOriginalControls();
           this.isActive = false;
@@ -32177,6 +32207,8 @@ var MyApp = (() => {
         z-index:20 !important;
       `;
           div.appendChild(lock);
+          div.onmouseenter = null;
+          div.onmouseleave = null;
           div.onclick = function(e) {
             e.stopPropagation();
             showVersionsPopup(exam, targetSkill);
