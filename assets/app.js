@@ -25972,15 +25972,8 @@ var MyApp = (() => {
       });
     }
     if (examBox) {
-      const backBtn = document.getElementById("backToListBtn") || document.querySelector(".back-list-btn") || document.querySelector('[data-action="back"]');
-      examBox.querySelectorAll(".check-btn, .reset-btn, .teil1-controls, .teil3-controls").forEach((el) => {
-        if (el.tagName === "BUTTON" || el.classList.contains("check-btn") || el.classList.contains("reset-btn")) {
-          el.remove();
-        }
-        if (el.classList.contains("teil1-controls") || el.classList.contains("teil3-controls")) {
-          el.style.display = "none";
-        }
-      });
+      examBox.querySelectorAll(".check-btn, .reset-btn").forEach((el) => el.remove());
+      examBox.querySelectorAll(".teil1-controls, .teil3-controls").forEach((el) => el.style.display = "none");
       const topRow = document.createElement("div");
       topRow.className = "teil-controls-row";
       topRow.style.cssText = `
@@ -26040,8 +26033,19 @@ var MyApp = (() => {
       };
       topRow.appendChild(checkBtn);
       topRow.appendChild(resetBtn);
+      let backBtn = examBox.querySelector('#backToListBtn, .back-list-btn, [data-action="back"]');
+      if (!backBtn) {
+        backBtn = document.getElementById("backToListBtn") || document.querySelector(".back-list-btn") || document.querySelector('[data-action="back"]');
+      }
       if (backBtn && examBox.contains(backBtn)) {
-        examBox.insertBefore(topRow, backBtn);
+        try {
+          examBox.insertBefore(topRow, backBtn);
+        } catch (e) {
+          examBox.appendChild(topRow);
+          if (backBtn.parentNode === examBox) {
+            examBox.insertBefore(backBtn, null);
+          }
+        }
       } else if (backBtn) {
         examBox.appendChild(topRow);
       } else {
@@ -26856,15 +26860,8 @@ var MyApp = (() => {
       });
     }
     if (examBox) {
-      const backBtn = document.getElementById("backToListBtn") || document.querySelector(".back-list-btn") || document.querySelector('[data-action="back"]');
-      examBox.querySelectorAll(".check-btn, .reset-btn, .teil1-controls, .teil3-controls").forEach((el) => {
-        if (el.tagName === "BUTTON" || el.classList.contains("check-btn") || el.classList.contains("reset-btn")) {
-          el.remove();
-        }
-        if (el.classList.contains("teil1-controls") || el.classList.contains("teil3-controls")) {
-          el.style.display = "none";
-        }
-      });
+      examBox.querySelectorAll(".check-btn, .reset-btn").forEach((el) => el.remove());
+      examBox.querySelectorAll(".teil1-controls, .teil3-controls").forEach((el) => el.style.display = "none");
       const topRow = document.createElement("div");
       topRow.className = "teil-controls-row";
       topRow.style.cssText = `
@@ -26939,8 +26936,19 @@ var MyApp = (() => {
       };
       topRow.appendChild(checkBtn);
       topRow.appendChild(resetBtn);
+      let backBtn = examBox.querySelector('#backToListBtn, .back-list-btn, [data-action="back"]');
+      if (!backBtn) {
+        backBtn = document.getElementById("backToListBtn") || document.querySelector(".back-list-btn") || document.querySelector('[data-action="back"]');
+      }
       if (backBtn && examBox.contains(backBtn)) {
-        examBox.insertBefore(topRow, backBtn);
+        try {
+          examBox.insertBefore(topRow, backBtn);
+        } catch (e) {
+          examBox.appendChild(topRow);
+          if (backBtn.parentNode === examBox) {
+            examBox.insertBefore(backBtn, null);
+          }
+        }
       } else if (backBtn) {
         examBox.appendChild(topRow);
       } else {
