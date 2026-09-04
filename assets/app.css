@@ -1838,19 +1838,7 @@ body:has(#exam.active) .top-bar {
     font-weight: 600 !important;
 }
 
-.premium-badge {
-    display: inline-flex !important;
-    align-items: center !important;
-    background: rgba(0, 0, 0, 0.65);
-    color: #f5e6a0;
-    font-size: 8px !important;
-    font-weight: 600;
-    padding: 2px 6px !important;
-    border-radius: 20px;
-    margin-right: 5px;
-    line-height: 1;
-    white-space: nowrap;
-}
+/* .premium-badge تم إلغاؤه لأننا نستخدم القفل والتصميم الثابت بدلاً منه */
 
 .lock-icon-mini {
     font-size: 8px;
