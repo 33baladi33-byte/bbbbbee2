@@ -26037,17 +26037,13 @@ var MyApp = (() => {
               break;
             }
           }
-          if (!optionExists) {
-            const textSpan = card.querySelector("span");
-            if (textSpan) {
-              const oldAnswer = textSpan.querySelector(".inline-correct-answer");
-              if (oldAnswer) oldAnswer.remove();
-              const answerSpan = document.createElement("span");
-              answerSpan.className = "inline-correct-answer";
-              answerSpan.style.cssText = "color: #2b8c4a; font-weight: 600; font-size: 0.75rem; display: block; margin-bottom: 4px;";
-              answerSpan.textContent = `\u2713 ${correctAnswer}`;
-              textSpan.prepend(answerSpan);
-            }
+          const existingMsg = card.querySelector(".correct-answer-message");
+          if (!existingMsg) {
+            const msg = document.createElement("div");
+            msg.className = "correct-answer-message";
+            msg.style.cssText = "color: #28a745; font-weight: bold; margin-top: 6px; font-size: 12px;";
+            msg.textContent = `\u2705 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629: ${correctAnswer}`;
+            card.appendChild(msg);
           }
         }
       }
@@ -28623,6 +28619,13 @@ var MyApp = (() => {
       }
     });
   }
+  function setMatchingControlsVisibility(teilId, isMatching) {
+    const teil = document.querySelector(`#${teilId}`);
+    if (!teil) return;
+    const row = teil.querySelector(":scope > .teil-controls-row");
+    if (!row) return;
+    row.style.display = isMatching ? "none" : "";
+  }
   var _hoerenData, interleavingOrders, lesen1OriginalNodes, lesen1ShuffledNodes, lesen1OrderSaved, lesen2OriginalNodes, lesen2ShuffledNodes, lesen2OrderSaved, lesen3OriginalNodes, lesen3ShuffledNodes, lesen3OrderSaved, examTimer2, currentSchreibenData, currentSprach2Data, sprach2UserAnswers, sprach2SelectedQuestionId, sprach2SelectedWordForLinking, currentSprach1Data, sprach1UserAnswers, sprach1OpenDropdownId, currentMatchingExamData2, matchingSelectedAnswers2, matchingAvailableOptions2, currentTeil2Data, teil2UserAnswers, currentTeil3Data, teil3UserAnswers, teil3SelectedItem, teil3SelectedSit, teil3SelectedItemForLink, teil3SelectedSitForLink, originalOpenExamGlobal, MemoryHighlightEngine, memoryEngine, toggleBtn, _toggleInProgress, _interleavingInitialized, _answerHistory, _historyEnabled, originalCheckTrueFalse, MatchingMode, matchingLesen1, matchingLesen3;
   var init_engine = __esm({
     "engine.js"() {
@@ -29747,6 +29750,15 @@ var MyApp = (() => {
               this._selectedTitle = null;
               this._updateUI();
             });
+            card.draggable = true;
+            card.addEventListener("dragstart", (e) => {
+              e.dataTransfer.setData("text/plain", text.id);
+              e.dataTransfer.effectAllowed = "move";
+              card.classList.add("zertiva-selected");
+            });
+            card.addEventListener("dragend", () => {
+              card.classList.remove("zertiva-selected");
+            });
             card.addEventListener("dragover", (e) => {
               e.preventDefault();
               e.dataTransfer.dropEffect = "move";
@@ -29766,6 +29778,18 @@ var MyApp = (() => {
                 this._selectedText = null;
                 this._selectedTitle = null;
                 this._updateUI();
+              }
+              const textId = e.dataTransfer.getData("text/plain");
+              if (textId && textId.startsWith("text-") && textId !== text.id) {
+                const sourceTitleId = this._matches.get(textId);
+                if (sourceTitleId) {
+                  this._matches.delete(textId);
+                  this._titleToText.delete(sourceTitleId);
+                  this._connect(text.id, sourceTitleId);
+                  this._selectedText = null;
+                  this._selectedTitle = null;
+                  this._updateUI();
+                }
               }
             });
           });
@@ -29811,6 +29835,7 @@ var MyApp = (() => {
               this._selectedText = null;
               this._updateUI();
             });
+            card.draggable = true;
             card.addEventListener("dragstart", (e) => {
               e.dataTransfer.setData("text/plain", title.id);
               e.dataTransfer.effectAllowed = "move";
@@ -29818,6 +29843,27 @@ var MyApp = (() => {
             });
             card.addEventListener("dragend", () => {
               card.classList.remove("zertiva-selected");
+            });
+            card.addEventListener("dragover", (e) => {
+              e.preventDefault();
+              e.dataTransfer.dropEffect = "move";
+              card.classList.add("zertiva-selected");
+            });
+            card.addEventListener("dragleave", () => {
+              if (!this._titleToText.has(title.id)) {
+                card.classList.remove("zertiva-selected");
+              }
+            });
+            card.addEventListener("drop", (e) => {
+              e.preventDefault();
+              card.classList.remove("zertiva-selected");
+              const textId = e.dataTransfer.getData("text/plain");
+              if (textId && textId.startsWith("text-")) {
+                this._connect(textId, title.id);
+                this._selectedText = null;
+                this._selectedTitle = null;
+                this._updateUI();
+              }
             });
           });
         }
@@ -29959,7 +30005,6 @@ var MyApp = (() => {
             box.style.display = "";
           });
         }
-        // ---- تشغيل Help Mode ----
         activate() {
           if (this.isActive || this._isDestroyed) return;
           if (!this._extractData()) {
@@ -29972,6 +30017,16 @@ var MyApp = (() => {
           if (!this.root) {
             console.warn(`\u26A0\uFE0F \u0641\u0634\u0644 \u0628\u0646\u0627\u0621 \u0648\u0627\u062C\u0647\u0629 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u0644\u0640 ${this.modeName}`);
             return;
+          }
+          const teilId = this.containerId;
+          if (typeof window.setMatchingControlsVisibility === "function") {
+            window.setMatchingControlsVisibility(teilId, true);
+          } else {
+            const teil = document.querySelector(`#${teilId}`);
+            if (teil) {
+              const row = teil.querySelector(":scope > .teil-controls-row");
+              if (row) row.style.display = "none";
+            }
           }
           const introKey = "help_intro_shown";
           if (!localStorage.getItem(introKey)) {
@@ -29990,6 +30045,9 @@ var MyApp = (() => {
               if (child !== this.root) {
                 if (!child.dataset.zertivaOriginalDisplay) {
                   child.dataset.zertivaOriginalDisplay = child.style.display || "";
+                }
+                if (!child.dataset.zertivaOriginalInnerHtml) {
+                  child.dataset.zertivaOriginalInnerHtml = child.innerHTML;
                 }
                 child.style.display = "none";
               }
@@ -30038,7 +30096,6 @@ var MyApp = (() => {
             }
           });
         }
-        // ---- إيقاف Help Mode ----
         deactivate() {
           if (!this.isActive || this._isDestroyed) return;
           const container = document.getElementById(this.containerId);
@@ -30052,6 +30109,11 @@ var MyApp = (() => {
                   delete child.dataset.zertivaOriginalDisplay;
                 } else {
                   child.style.display = "";
+                }
+                const originalHtml = child.dataset.zertivaOriginalInnerHtml;
+                if (originalHtml !== void 0) {
+                  child.innerHTML = originalHtml;
+                  delete child.dataset.zertivaOriginalInnerHtml;
                 }
               }
             });
@@ -30068,6 +30130,16 @@ var MyApp = (() => {
                 box.style.display = "";
               }
             });
+            const teilId = this.containerId;
+            if (typeof window.setMatchingControlsVisibility === "function") {
+              window.setMatchingControlsVisibility(teilId, false);
+            } else {
+              const teil = document.querySelector(`#${teilId}`);
+              if (teil) {
+                const row = teil.querySelector(":scope > .teil-controls-row");
+                if (row) row.style.display = "";
+              }
+            }
           }
           this._showOriginalControls();
           this.isActive = false;
@@ -30158,6 +30230,7 @@ var MyApp = (() => {
         matchingLesen3.toggle();
       };
       console.log("\u2705 Matching Mode (Lesen 1 & Lesen 3) ready.");
+      window.setMatchingControlsVisibility = setMatchingControlsVisibility;
     }
   });
 
