@@ -29970,13 +29970,21 @@ var MyApp = (() => {
           }
         }
         _hideOriginalControls() {
-          const selector = this.modeName === "lesen1" ? ".teil1-controls" : this.modeName === "lesen3" ? ".teil3-controls" : null;
-          if (!selector) return;
-          document.querySelectorAll(selector).forEach((el) => {
-            if (!el.dataset.zertivaHelpOldDisplay) {
-              el.dataset.zertivaHelpOldDisplay = el.style.display || "";
-            }
-            el.style.display = "none";
+          let selectors = [];
+          if (this.modeName === "lesen1") {
+            selectors = [".teil1-controls", ".teil-controls-row"];
+          } else if (this.modeName === "lesen3") {
+            selectors = [".teil3-controls", ".teil-controls-row"];
+          } else {
+            return;
+          }
+          selectors.forEach((sel) => {
+            document.querySelectorAll(sel).forEach((el) => {
+              if (!el.dataset.zertivaHelpOldDisplay) {
+                el.dataset.zertivaHelpOldDisplay = el.style.display || "";
+              }
+              el.style.display = "none";
+            });
           });
         }
         _showOriginalControls() {
