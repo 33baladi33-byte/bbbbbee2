@@ -29937,35 +29937,19 @@ var MyApp = (() => {
         _applyActivation() {
           const container = document.getElementById(this.containerId);
           if (container) {
-            if (this.modeName === "lesen1") {
-              Array.from(container.children).forEach((child) => {
-                if (child !== this.root) {
-                  if (!child.dataset.zertivaOriginalDisplay) {
-                    child.dataset.zertivaOriginalDisplay = child.style.display || "";
-                  }
-                  if (!child.dataset.zertivaOriginalInnerHtml) {
-                    child.dataset.zertivaOriginalInnerHtml = child.innerHTML;
-                  }
-                  child.style.display = "none";
+            Array.from(container.children).forEach((child) => {
+              if (child !== this.root && !child.classList.contains("question-card")) {
+                if (!child.dataset.zertivaOriginalDisplay) {
+                  child.dataset.zertivaOriginalDisplay = child.style.display || "";
                 }
-              });
-              this.root.style.display = "flex";
-              container.classList.add("zertiva-matching-active");
-            } else {
-              Array.from(container.children).forEach((child) => {
-                if (child !== this.root && !child.classList.contains("question-card")) {
-                  if (!child.dataset.zertivaOriginalDisplay) {
-                    child.dataset.zertivaOriginalDisplay = child.style.display || "";
-                  }
-                  if (!child.dataset.zertivaOriginalInnerHtml) {
-                    child.dataset.zertivaOriginalInnerHtml = child.innerHTML;
-                  }
-                  child.style.display = "none";
+                if (!child.dataset.zertivaOriginalInnerHtml) {
+                  child.dataset.zertivaOriginalInnerHtml = child.innerHTML;
                 }
-              });
-              this.root.style.display = "flex";
-              container.classList.add("zertiva-matching-active");
-            }
+                child.style.display = "none";
+              }
+            });
+            this.root.style.display = "flex";
+            container.classList.add("zertiva-matching-active");
           }
           this._hideOriginalControls();
           if (container) {
@@ -30020,11 +30004,8 @@ var MyApp = (() => {
           if (!this.isActive || this._isDestroyed) return;
           const container = document.getElementById(this.containerId);
           if (container) {
-            if (this.modeName === "lesen1") {
-              if (this.root && this.root.parentNode) {
-                this.root.parentNode.removeChild(this.root);
-              }
-              Array.from(container.children).forEach((child) => {
+            Array.from(container.children).forEach((child) => {
+              if (child !== this.root) {
                 const originalDisplay = child.dataset.zertivaOriginalDisplay;
                 if (originalDisplay !== void 0) {
                   child.style.display = originalDisplay || "";
@@ -30035,49 +30016,21 @@ var MyApp = (() => {
                   child.innerHTML = originalHtml;
                   delete child.dataset.zertivaOriginalInnerHtml;
                 }
-              });
-              container.classList.remove("zertiva-matching-active");
-              container.querySelectorAll(".result-box").forEach((box) => {
-                const originalResultDisplay = box.dataset.zertivaResultDisplay;
-                if (originalResultDisplay !== void 0) {
-                  box.style.display = originalResultDisplay || "";
-                  delete box.dataset.zertivaResultDisplay;
-                } else {
-                  box.style.display = "";
-                }
-              });
-              if (typeof renderMatchingQuestions2 === "function") {
-                renderMatchingQuestions2();
               }
-            } else {
-              Array.from(container.children).forEach((child) => {
-                if (child !== this.root) {
-                  const originalDisplay = child.dataset.zertivaOriginalDisplay;
-                  if (originalDisplay !== void 0) {
-                    child.style.display = originalDisplay || "";
-                    delete child.dataset.zertivaOriginalDisplay;
-                  }
-                  const originalHtml = child.dataset.zertivaOriginalInnerHtml;
-                  if (originalHtml !== void 0) {
-                    child.innerHTML = originalHtml;
-                    delete child.dataset.zertivaOriginalInnerHtml;
-                  }
-                }
-              });
-              if (this.root) {
-                this.root.style.display = "none";
-              }
-              container.classList.remove("zertiva-matching-active");
-              container.querySelectorAll(".result-box").forEach((box) => {
-                const originalResultDisplay = box.dataset.zertivaResultDisplay;
-                if (originalResultDisplay !== void 0) {
-                  box.style.display = originalResultDisplay || "";
-                  delete box.dataset.zertivaResultDisplay;
-                } else {
-                  box.style.display = "";
-                }
-              });
+            });
+            if (this.root) {
+              this.root.style.display = "none";
             }
+            container.classList.remove("zertiva-matching-active");
+            container.querySelectorAll(".result-box").forEach((box) => {
+              const originalResultDisplay = box.dataset.zertivaResultDisplay;
+              if (originalResultDisplay !== void 0) {
+                box.style.display = originalResultDisplay || "";
+                delete box.dataset.zertivaResultDisplay;
+              } else {
+                box.style.display = "";
+              }
+            });
           }
           this._showOriginalControls();
           this.isActive = false;
