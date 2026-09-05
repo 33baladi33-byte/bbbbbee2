@@ -40,7 +40,7 @@ var MyApp = (() => {
   var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 
   // sentenceReorder.js
-  var _SentenceReorder, SentenceReorder;
+  var _SentenceReorder, SentenceReorder2;
   var init_sentenceReorder = __esm({
     "sentenceReorder.js"() {
       console.log("\u{1F9E9} sentenceReorder.js \u064A\u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647...");
@@ -625,14 +625,14 @@ var MyApp = (() => {
       __publicField(_SentenceReorder, "currentText", "");
       __publicField(_SentenceReorder, "isFirstTime", true);
       __publicField(_SentenceReorder, "isAnimating", false);
-      SentenceReorder = _SentenceReorder;
-      window.SentenceReorder = SentenceReorder;
+      SentenceReorder2 = _SentenceReorder;
+      window.SentenceReorder = SentenceReorder2;
       if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", () => {
-          SentenceReorder.init();
+          SentenceReorder2.init();
         });
       } else {
-        SentenceReorder.init();
+        SentenceReorder2.init();
       }
       console.log("\u2705 sentenceReorder.js \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647");
     }
@@ -1508,12 +1508,12 @@ var MyApp = (() => {
     let lastSkill = getCurrentSkill2();
     setInterval(() => {
       const currentId = getCurrentExamId2();
-      const currentSkill2 = getCurrentSkill2();
-      if (currentId !== lastExamId || currentSkill2 !== lastSkill) {
+      const currentSkill3 = getCurrentSkill2();
+      if (currentId !== lastExamId || currentSkill3 !== lastSkill) {
         lastExamId = currentId;
-        lastSkill = currentSkill2;
+        lastSkill = currentSkill3;
         if (helpLayerActive) toggleHelp();
-        console.log(`\u{1F504} \u062A\u063A\u064A\u0631 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 \u0625\u0644\u0649: ${currentSkill2}_exam${currentId}`);
+        console.log(`\u{1F504} \u062A\u063A\u064A\u0631 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 \u0625\u0644\u0649: ${currentSkill3}_exam${currentId}`);
       }
     }, 500);
   }
@@ -24644,6 +24644,5474 @@ var MyApp = (() => {
     }
   });
 
+  // engine.js
+  function resetLesen2Order() {
+    lesen2OriginalNodes = null;
+    lesen2ShuffledNodes = null;
+    lesen2OrderSaved = false;
+    console.log("\u{1F504} \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u062A\u0631\u062A\u064A\u0628 Lesen2");
+  }
+  function resetLesen3Order() {
+    lesen3OriginalNodes = null;
+    lesen3ShuffledNodes = null;
+    lesen3OrderSaved = false;
+    console.log("\u{1F504} \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u062A\u0631\u062A\u064A\u0628 Lesen3");
+  }
+  function updateTimerDisplay(text) {
+    const container = document.getElementById("retryCounterBox");
+    if (!container) return;
+    const timeBox = container.querySelectorAll("div")[2];
+    if (timeBox) {
+      timeBox.innerHTML = `\u0623\u062C\u0628\u062A \u0639\u0644\u0649 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 \u0641\u064A: <strong style="font-weight:700;">${text}</strong>`;
+    }
+  }
+  function saveExamTime(skill, examId, timeMs) {
+    if (!skill || !examId) return;
+    try {
+      const key = `exam_time_${skill}_${examId}`;
+      localStorage.setItem(key, String(timeMs));
+      if (typeof window.updateRetryCounter === "function") {
+        window.updateRetryCounter();
+      }
+      const listPage = document.getElementById("list");
+      if (listPage && listPage.classList.contains("active")) {
+        updateExamTimeInList(skill, examId, timeMs);
+      }
+    } catch (e) {
+      console.error("\u274C \u062E\u0637\u0623 \u0641\u064A \u062D\u0641\u0638 \u0648\u0642\u062A \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646:", e);
+    }
+  }
+  function getExamTime2(skill, examId) {
+    try {
+      const key = `exam_time_${skill}_${examId}`;
+      const val = localStorage.getItem(key);
+      return val ? parseInt(val, 10) : null;
+    } catch (e) {
+      console.error("\u274C \u062E\u0637\u0623 \u0641\u064A \u0627\u0633\u062A\u0631\u062C\u0627\u0639 \u0648\u0642\u062A \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646:", e);
+      return null;
+    }
+  }
+  function formatTime(ms) {
+    if (ms === null || ms === void 0) return "\u2014";
+    const seconds = Math.floor(ms / 1e3);
+    if (seconds < 60) {
+      return `${seconds} \u062B\u0627\u0646\u064A\u0629`;
+    } else {
+      const minutes = (seconds / 60).toFixed(2);
+      return `${minutes} \u062F\u0642\u064A\u0642\u0629`;
+    }
+  }
+  function getTimeColor(ms) {
+    if (ms === null || ms === void 0) return "gray";
+    const seconds = ms / 1e3;
+    if (seconds < 60) return "green";
+    if (seconds < 120) return "orange";
+    return "red";
+  }
+  function updateExamTimeInList(skill, examId, timeMs) {
+    const listContainer = document.getElementById("examsList");
+    if (!listContainer) return;
+    const cards = listContainer.querySelectorAll(".item");
+    for (let card of cards) {
+      const titleSpan = card.querySelector(".exam-title");
+      if (!titleSpan) continue;
+      const match = titleSpan.textContent.match(/^(\d+):/);
+      if (!match) continue;
+      const id = parseInt(match[1]);
+      if (id === examId) {
+        const chips = card.querySelectorAll(".exam-chip");
+        for (let chip of chips) {
+          if (chip.querySelector(".material-symbols-outlined")?.textContent === "timer") {
+            const timeStr = formatTime(timeMs);
+            const color = getTimeColor(timeMs);
+            chip.className = `exam-chip score chip-${color}`;
+            chip.innerHTML = `<span class="material-symbols-outlined">timer</span> ${timeStr}`;
+            break;
+          }
+        }
+        break;
+      }
+    }
+  }
+  function renderSchreibenExam() {
+    const container = document.getElementById("schreiben");
+    if (!container) return;
+    container.innerHTML = "";
+    const data = currentSchreibenData;
+    const twoColumns = document.createElement("div");
+    twoColumns.style.display = "flex";
+    twoColumns.style.gap = "30px";
+    twoColumns.style.flexWrap = "wrap";
+    const leftColumn = document.createElement("div");
+    leftColumn.style.flex = "1";
+    leftColumn.style.minWidth = "350px";
+    leftColumn.style.backgroundColor = "#f9f9f9";
+    leftColumn.style.padding = "20px";
+    leftColumn.style.borderRadius = "12px";
+    leftColumn.style.border = "1px solid #ddd";
+    leftColumn.style.maxHeight = "80vh";
+    leftColumn.style.overflowY = "auto";
+    const situationTitle = document.createElement("h3");
+    situationTitle.innerHTML = "\u{1F4CC} SITUATION";
+    situationTitle.style.color = "#2c3e66";
+    situationTitle.style.marginTop = "0";
+    situationTitle.style.borderBottom = "2px solid #2c3e66";
+    situationTitle.style.paddingBottom = "8px";
+    leftColumn.appendChild(situationTitle);
+    const situationDiv = document.createElement("div");
+    situationDiv.style.backgroundColor = "white";
+    situationDiv.style.padding = "15px";
+    situationDiv.style.borderRadius = "8px";
+    situationDiv.style.border = "1px solid #e0e0e0";
+    situationDiv.style.marginBottom = "20px";
+    const situationText = document.createElement("div");
+    situationText.innerHTML = `<strong style="font-size:16px; color:#007bff;">${data.situation.title}</strong><br><br>${data.situation.text.replace(/\n/g, "<br>")}`;
+    situationText.style.fontSize = "14px";
+    situationText.style.lineHeight = "1.6";
+    situationDiv.appendChild(situationText);
+    leftColumn.appendChild(situationDiv);
+    const aufgabeTitle = document.createElement("h3");
+    aufgabeTitle.innerHTML = "\u{1F4DD} AUFGABE";
+    aufgabeTitle.style.color = "#2c3e66";
+    aufgabeTitle.style.marginTop = "15px";
+    aufgabeTitle.style.borderBottom = "2px solid #2c3e66";
+    aufgabeTitle.style.paddingBottom = "8px";
+    leftColumn.appendChild(aufgabeTitle);
+    const aufgabeDiv = document.createElement("div");
+    aufgabeDiv.style.backgroundColor = "white";
+    aufgabeDiv.style.padding = "15px";
+    aufgabeDiv.style.borderRadius = "8px";
+    aufgabeDiv.style.border = "1px solid #e0e0e0";
+    const wordCount = document.createElement("div");
+    wordCount.innerHTML = `<strong>\u270F\uFE0F ${data.aufgabe.wordCount}</strong>`;
+    wordCount.style.marginBottom = "15px";
+    wordCount.style.color = "#e67e22";
+    wordCount.style.fontSize = "16px";
+    aufgabeDiv.appendChild(wordCount);
+    const description = document.createElement("div");
+    description.innerHTML = data.aufgabe.description;
+    description.style.marginBottom = "15px";
+    description.style.fontSize = "14px";
+    description.style.lineHeight = "1.6";
+    aufgabeDiv.appendChild(description);
+    const pointsTitle = document.createElement("div");
+    pointsTitle.innerHTML = "<strong>\u25B8 Bitte beachten Sie:</strong>";
+    pointsTitle.style.marginBottom = "10px";
+    pointsTitle.style.marginTop = "10px";
+    aufgabeDiv.appendChild(pointsTitle);
+    const pointsList = document.createElement("ul");
+    pointsList.style.margin = "0";
+    pointsList.style.paddingLeft = "20px";
+    for (let i = 0; i < data.aufgabe.points.length; i++) {
+      const li = document.createElement("li");
+      li.innerHTML = data.aufgabe.points[i];
+      li.style.marginBottom = "8px";
+      li.style.fontSize = "14px";
+      pointsList.appendChild(li);
+    }
+    aufgabeDiv.appendChild(pointsList);
+    leftColumn.appendChild(aufgabeDiv);
+    const rightColumn = document.createElement("div");
+    rightColumn.style.flex = "1";
+    rightColumn.style.minWidth = "350px";
+    rightColumn.style.backgroundColor = "#f0f8ff";
+    rightColumn.style.padding = "20px";
+    rightColumn.style.borderRadius = "12px";
+    rightColumn.style.border = "1px solid #d0e0ff";
+    rightColumn.style.maxHeight = "80vh";
+    rightColumn.style.overflowY = "auto";
+    if (window.innerWidth <= 768) {
+      rightColumn.style.display = "none";
+    }
+    const templateTitle = document.createElement("div");
+    let cleanTitle = data.template.title;
+    cleanTitle = cleanTitle.replace(/✦/g, "").trim();
+    templateTitle.innerHTML = `\u2726 ${cleanTitle}`;
+    templateTitle.style.backgroundColor = "#e3f2fd";
+    templateTitle.style.padding = "10px";
+    templateTitle.style.borderRadius = "8px";
+    templateTitle.style.marginBottom = "15px";
+    templateTitle.style.fontSize = "13px";
+    templateTitle.style.color = "#0d47a1";
+    templateTitle.style.fontWeight = "bold";
+    rightColumn.appendChild(templateTitle);
+    const templateBox = document.createElement("div");
+    templateBox.style.backgroundColor = "white";
+    templateBox.style.padding = "20px";
+    templateBox.style.borderRadius = "12px";
+    templateBox.style.border = "1px solid #ccc";
+    templateBox.style.fontFamily = "monospace";
+    templateBox.style.fontSize = "13px";
+    templateBox.style.lineHeight = "1.6";
+    templateBox.style.whiteSpace = "pre-wrap";
+    let templateText = data.template.text;
+    const bluePoints = data.template.colors.blue_points || [];
+    let htmlText = templateText.replace(/\n/g, "<br>");
+    for (let i = 0; i < bluePoints.length; i++) {
+      const point = bluePoints[i];
+      const regex = new RegExp(`(${point.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`, "g");
+      htmlText = htmlText.replace(regex, `<span style="color: ${data.template.colors.blue}; font-weight: bold;">$1</span>`);
+    }
+    templateBox.innerHTML = htmlText;
+    rightColumn.appendChild(templateBox);
+    twoColumns.appendChild(leftColumn);
+    twoColumns.appendChild(rightColumn);
+    container.appendChild(twoColumns);
+  }
+  function isSprach2WordUsed(word) {
+    for (let key in sprach2UserAnswers) {
+      if (sprach2UserAnswers[key] === word) {
+        return true;
+      }
+    }
+    return false;
+  }
+  function clearSprach2WordSelection() {
+    document.querySelectorAll(".sprach2-word-card").forEach((card) => {
+      if (isSprach2WordUsed(card.textContent)) {
+        card.style.backgroundColor = "#d4edda";
+        card.style.border = "2px solid #28a745";
+        card.style.opacity = "0.85";
+      } else {
+        card.style.backgroundColor = "#ffffff";
+        card.style.border = "1px solid #7c6ce6";
+        card.style.opacity = "1";
+      }
+      card.classList.remove("selected-for-link");
+    });
+  }
+  function clearSprach2ButtonSelection() {
+    document.querySelectorAll(".sprach2-gap-btn").forEach((btn) => {
+      btn.classList.remove("selected-for-link");
+      btn.style.border = "none";
+      const btnId = btn.id;
+      const match = btnId.match(/sprach2_btn_(\d+)/);
+      if (match) {
+        const qId = parseInt(match[1]);
+        if (sprach2UserAnswers[qId]) {
+          btn.style.backgroundColor = "#d4edda";
+          btn.style.border = "2px solid #28a745";
+        }
+      }
+    });
+  }
+  function renderSprach2Exam() {
+    const container = document.getElementById("sprach2");
+    if (!container) return;
+    container.innerHTML = "";
+    const text = currentSprach2Data.text;
+    const options = currentSprach2Data.options;
+    const allOptions = currentSprach2Data.allOptions;
+    const twoColumns = document.createElement("div");
+    twoColumns.style.display = "flex";
+    twoColumns.style.gap = "30px";
+    twoColumns.style.flexWrap = "wrap";
+    const leftColumn = document.createElement("div");
+    leftColumn.style.flex = "1.5";
+    leftColumn.style.minWidth = "400px";
+    leftColumn.style.backgroundColor = "#f9f9f9";
+    leftColumn.style.padding = "20px";
+    leftColumn.style.borderRadius = "12px";
+    leftColumn.style.border = "1px solid #ddd";
+    leftColumn.style.maxHeight = "600px";
+    leftColumn.style.overflowY = "auto";
+    const leftTitle = document.createElement("h3");
+    leftTitle.innerHTML = "\u{1F4DD} Text";
+    leftTitle.style.marginTop = "0";
+    leftTitle.style.color = "#2c3e66";
+    leftColumn.appendChild(leftTitle);
+    let htmlText = text;
+    for (let i = 1; i <= options.length; i++) {
+      const btnId = `sprach2_btn_${i}`;
+      const currentAnswer = sprach2UserAnswers[i];
+      const btnText = currentAnswer || `__( ${i} )__`;
+      let btnStyle = "background-color: #e0e0e0; border: none; padding: 4px 12px; border-radius: 20px; cursor: pointer; font-size: 14px; font-weight: bold; margin: 0 2px;";
+      if (currentAnswer) {
+        btnStyle = "background-color: #d4edda; border: 2px solid #28a745; padding: 4px 12px; border-radius: 20px; cursor: pointer; font-size: 14px; font-weight: bold; margin: 0 2px; color: #155724;";
+      }
+      const btnHtml = `<button id="${btnId}" class="sprach2-gap-btn" data-qid="${i}" style="${btnStyle}">${btnText}</button>`;
+      htmlText = htmlText.replace(`__( ${i} )__`, btnHtml);
+      htmlText = htmlText.replace(`......(${i})......`, btnHtml);
+      htmlText = htmlText.replace(`......(${i})`, btnHtml);
+      htmlText = htmlText.replace(`.....( ${i} ).....`, btnHtml);
+    }
+    const textDiv = document.createElement("div");
+    textDiv.innerHTML = htmlText;
+    textDiv.style.lineHeight = "1.8";
+    textDiv.style.fontSize = "14px";
+    textDiv.style.textAlign = "justify";
+    for (let i = 1; i <= options.length; i++) {
+      const btn = textDiv.querySelector(`#sprach2_btn_${i}`);
+      if (btn) {
+        btn.addEventListener("click", /* @__PURE__ */ (function(qId) {
+          return function(e) {
+            e.stopPropagation();
+            if (sprach2UserAnswers[qId]) {
+              const oldWord = sprach2UserAnswers[qId];
+              delete sprach2UserAnswers[qId];
+              pushAnswerToHistory({
+                type: "sprach2_link",
+                qId,
+                word: oldWord,
+                action: "remove"
+              });
+              const wordCard = document.getElementById(`sprach2_word_${oldWord}`);
+              if (wordCard) {
+                wordCard.style.backgroundColor = "#e0f2fe";
+                wordCard.style.border = "1px solid #7dd3fc";
+                wordCard.style.color = "#4a4a4a";
+                wordCard.style.cursor = "pointer";
+                wordCard.style.opacity = "1";
+                wordCard.classList.remove("selected-for-link");
+                const newCard = wordCard.cloneNode(true);
+                wordCard.parentNode.replaceChild(newCard, wordCard);
+                newCard.onclick = /* @__PURE__ */ (function(w) {
+                  return function() {
+                    if (sprach2SelectedQuestionId) {
+                      if (isSprach2WordUsed(w)) {
+                        alert(` \u0643\u0644\u0645\u0629 "${w}" \u062A\u0645 \u0627\u0633\u062A\u062E\u062F\u0627\u0645\u0647\u0627 \u0628\u0627\u0644\u0641\u0639\u0644!`);
+                        sprach2SelectedQuestionId = null;
+                        clearSprach2ButtonSelection();
+                        return;
+                      }
+                      sprach2UserAnswers[sprach2SelectedQuestionId] = w;
+                      const targetBtn = document.getElementById(`sprach2_btn_${sprach2SelectedQuestionId}`);
+                      if (targetBtn) {
+                        targetBtn.textContent = w;
+                        targetBtn.style.backgroundColor = "#d4edda";
+                        targetBtn.style.border = "2px solid #28a745";
+                        targetBtn.style.color = "#155724";
+                      }
+                      const cardEl = document.getElementById(`sprach2_word_${w}`);
+                      if (cardEl) {
+                        cardEl.style.backgroundColor = "#d4edda";
+                        cardEl.style.border = "2px solid #28a745";
+                        cardEl.style.color = "#155724";
+                        cardEl.style.cursor = "default";
+                        cardEl.style.opacity = "0.85";
+                      }
+                      sprach2SelectedQuestionId = null;
+                      clearSprach2ButtonSelection();
+                    } else {
+                      clearSprach2WordSelection();
+                      newCard.classList.add("selected-for-link");
+                      newCard.style.backgroundColor = "#e0f2fe";
+                      newCard.style.border = "2px solid #7dd3fc";
+                      sprach2SelectedWordForLinking = w;
+                    }
+                  };
+                })(oldWord);
+                newCard.onmouseenter = function() {
+                  if (!this.classList.contains("selected-for-link") && !isSprach2WordUsed(this.textContent)) {
+                    this.style.backgroundColor = "#f0f9ff";
+                    this.style.transform = "scale(1.02)";
+                  }
+                };
+                newCard.onmouseleave = function() {
+                  if (!this.classList.contains("selected-for-link") && !isSprach2WordUsed(this.textContent)) {
+                    this.style.backgroundColor = "#e0f2fe";
+                    this.style.transform = "scale(1)";
+                  }
+                };
+              }
+              btn.textContent = `__( ${qId} )__`;
+              btn.style.backgroundColor = "#e0e0e0";
+              btn.style.color = "#333";
+              btn.classList.remove("selected-for-link");
+              btn.style.border = "none";
+              const parentDiv = btn.parentElement;
+              const existingMsg = parentDiv.querySelector(".correct-answer-hint");
+              if (existingMsg) existingMsg.remove();
+              setTimeout(() => {
+                if (document.activeElement === btn) {
+                  btn.blur();
+                }
+                const examContainer = document.getElementById("exam");
+                if (examContainer && !document.activeElement?.closest?.("#exam")) {
+                  examContainer.setAttribute("tabindex", "-1");
+                  examContainer.focus({ preventScroll: true });
+                }
+              }, 5);
+              return;
+            }
+            if (sprach2SelectedWordForLinking) {
+              const word = sprach2SelectedWordForLinking;
+              if (isSprach2WordUsed(word)) {
+                alert(` \u0643\u0644\u0645\u0629 "${word}" \u062A\u0645 \u0627\u0633\u062A\u062E\u062F\u0627\u0645\u0647\u0627 \u0628\u0627\u0644\u0641\u0639\u0644!`);
+                sprach2SelectedWordForLinking = null;
+                clearSprach2WordSelection();
+                return;
+              }
+              sprach2UserAnswers[qId] = word;
+              btn.textContent = word;
+              btn.style.backgroundColor = "#d4edda";
+              btn.style.border = "2px solid #28a745";
+              btn.style.color = "#155724";
+              pushAnswerToHistory({
+                type: "sprach2_link",
+                qId,
+                word,
+                action: "add"
+              });
+              const wordCard = document.getElementById(`sprach2_word_${word}`);
+              if (wordCard) {
+                wordCard.style.backgroundColor = "#d4edda";
+                wordCard.style.border = "2px solid #28a745";
+                wordCard.style.color = "#155724";
+                wordCard.style.cursor = "default";
+                wordCard.style.opacity = "0.85";
+              }
+              sprach2SelectedWordForLinking = null;
+              clearSprach2WordSelection();
+              setTimeout(() => {
+                if (document.activeElement === btn) {
+                  btn.blur();
+                }
+                const examContainer = document.getElementById("exam");
+                if (examContainer && !document.activeElement?.closest?.("#exam")) {
+                  examContainer.setAttribute("tabindex", "-1");
+                  examContainer.focus({ preventScroll: true });
+                }
+              }, 5);
+            } else {
+              clearSprach2ButtonSelection();
+              btn.classList.add("selected-for-link");
+              btn.style.border = "2px solid #7dd3fc";
+              btn.style.backgroundColor = "#e0f2fe";
+              sprach2SelectedQuestionId = qId;
+            }
+          };
+        })(i));
+      }
+    }
+    leftColumn.appendChild(textDiv);
+    const rightColumn = document.createElement("div");
+    rightColumn.style.flex = "0.8";
+    rightColumn.style.minWidth = "250px";
+    rightColumn.style.backgroundColor = "#f0f8ff";
+    rightColumn.style.padding = "20px";
+    rightColumn.style.borderRadius = "12px";
+    rightColumn.style.border = "1px solid #d0e0ff";
+    rightColumn.style.maxHeight = "600px";
+    rightColumn.style.overflowY = "auto";
+    const rightTitle = document.createElement("h3");
+    rightTitle.innerHTML = "\u{1F4CB} W\xF6rter";
+    rightTitle.style.marginTop = "0";
+    rightTitle.style.color = "#2c3e66";
+    rightColumn.appendChild(rightTitle);
+    const wordsGrid = document.createElement("div");
+    wordsGrid.style.display = "grid";
+    wordsGrid.style.gridTemplateColumns = "repeat(3, 1fr)";
+    wordsGrid.style.gap = "12px";
+    const sortedOptions = [...allOptions].sort();
+    for (let i = 0; i < sortedOptions.length; i++) {
+      const word = sortedOptions[i];
+      const wordCard = document.createElement("div");
+      wordCard.className = "sprach2-word-card";
+      wordCard.id = `sprach2_word_${word}`;
+      wordCard.textContent = word;
+      wordCard.style.borderRadius = "8px";
+      wordCard.style.padding = "8px 12px";
+      wordCard.style.textAlign = "center";
+      wordCard.style.transition = "all 0.2s";
+      wordCard.style.fontWeight = "500";
+      if (isSprach2WordUsed(word)) {
+        wordCard.style.backgroundColor = "#d4edda";
+        wordCard.style.border = "2px solid #28a745";
+        wordCard.style.color = "#155724";
+        wordCard.style.cursor = "default";
+        wordCard.style.opacity = "0.85";
+      } else {
+        wordCard.style.backgroundColor = "#ffffff";
+        wordCard.style.border = "1px solid #7c6ce6";
+        wordCard.style.color = "#4a4a4a";
+        wordCard.style.cursor = "pointer";
+        wordCard.style.opacity = "1";
+        wordCard.onclick = /* @__PURE__ */ (function(w) {
+          return function() {
+            if (sprach2SelectedQuestionId) {
+              if (isSprach2WordUsed(w)) {
+                alert(`\u0643\u0644\u0645\u0629 "${w}" \u062A\u0645 \u0627\u0633\u062A\u062E\u062F\u0627\u0645\u0647\u0627 \u0628\u0627\u0644\u0641\u0639\u0644!`);
+                sprach2SelectedQuestionId = null;
+                clearSprach2ButtonSelection();
+                return;
+              }
+              sprach2UserAnswers[sprach2SelectedQuestionId] = w;
+              const targetBtn = document.getElementById(`sprach2_btn_${sprach2SelectedQuestionId}`);
+              if (targetBtn) {
+                targetBtn.textContent = w;
+                targetBtn.style.backgroundColor = "#d4edda";
+                targetBtn.style.border = "2px solid #28a745";
+                targetBtn.style.color = "#155724";
+              }
+              const cardEl = document.getElementById(`sprach2_word_${w}`);
+              if (cardEl) {
+                cardEl.style.backgroundColor = "#d4edda";
+                cardEl.style.border = "2px solid #28a745";
+                cardEl.style.color = "#155724";
+                cardEl.style.cursor = "default";
+                cardEl.style.opacity = "0.85";
+              }
+              pushAnswerToHistory({
+                type: "sprach2_link",
+                qId: sprach2SelectedQuestionId,
+                word: w,
+                action: "add"
+              });
+              sprach2SelectedQuestionId = null;
+              clearSprach2ButtonSelection();
+              setTimeout(() => {
+                if (document.activeElement === this) {
+                  this.blur();
+                }
+                const examContainer = document.getElementById("exam");
+                if (examContainer && !document.activeElement?.closest?.("#exam")) {
+                  examContainer.setAttribute("tabindex", "-1");
+                  examContainer.focus({ preventScroll: true });
+                }
+              }, 5);
+            } else {
+              clearSprach2WordSelection();
+              wordCard.classList.add("selected-for-link");
+              wordCard.style.backgroundColor = "#e0f2fe";
+              wordCard.style.border = "2px solid #7dd3fc";
+              sprach2SelectedWordForLinking = w;
+            }
+          };
+        })(word);
+        wordCard.onmouseenter = function() {
+          if (!this.classList.contains("selected-for-link") && !isSprach2WordUsed(this.textContent)) {
+            this.style.backgroundColor = "#f0f9ff";
+            this.style.transform = "scale(1.02)";
+          }
+        };
+        wordCard.onmouseleave = function() {
+          if (!this.classList.contains("selected-for-link") && !isSprach2WordUsed(this.textContent)) {
+            this.style.backgroundColor = "#ffffff";
+            this.style.transform = "scale(1)";
+          }
+        };
+      }
+      wordsGrid.appendChild(wordCard);
+    }
+    rightColumn.appendChild(wordsGrid);
+    twoColumns.appendChild(leftColumn);
+    twoColumns.appendChild(rightColumn);
+    container.appendChild(twoColumns);
+    const buttonContainer = document.createElement("div");
+    buttonContainer.style.display = "flex";
+    buttonContainer.style.gap = "15px";
+    buttonContainer.style.justifyContent = "center";
+    buttonContainer.style.marginTop = "25px";
+    const checkBtn = document.createElement("button");
+    checkBtn.innerText = "\u2705 \u062A\u0635\u062D\u064A\u062D";
+    checkBtn.className = "check-btn";
+    checkBtn.style.padding = "12px 24px";
+    checkBtn.style.backgroundColor = "#2c3e66";
+    checkBtn.style.color = "white";
+    checkBtn.style.border = "none";
+    checkBtn.style.borderRadius = "8px";
+    checkBtn.style.cursor = "pointer";
+    checkBtn.style.fontSize = "16px";
+    checkBtn.onclick = checkSprach2Exam;
+    buttonContainer.appendChild(checkBtn);
+    const resetBtn = document.createElement("button");
+    resetBtn.innerText = "\u21BA";
+    resetBtn.style.padding = "8px 12px";
+    resetBtn.style.backgroundColor = "#6c757d";
+    resetBtn.style.color = "white";
+    resetBtn.style.border = "none";
+    resetBtn.style.borderRadius = "6px";
+    resetBtn.style.cursor = "pointer";
+    resetBtn.style.fontSize = "16px";
+    resetBtn.style.fontWeight = "bold";
+    resetBtn.onclick = resetSprach2Exam;
+    buttonContainer.appendChild(resetBtn);
+    container.appendChild(buttonContainer);
+    const resultDiv = document.createElement("div");
+    resultDiv.id = "sprach2Result";
+    resultDiv.className = "result-box";
+    resultDiv.style.display = "none";
+    resultDiv.style.marginTop = "20px";
+    resultDiv.style.padding = "15px";
+    resultDiv.style.borderRadius = "8px";
+    resultDiv.style.textAlign = "center";
+    resultDiv.style.fontWeight = "bold";
+    container.appendChild(resultDiv);
+  }
+  function resetSprach2Exam() {
+    sprach2UserAnswers = {};
+    sprach2SelectedQuestionId = null;
+    sprach2SelectedWordForLinking = null;
+    for (let i = 1; i <= currentSprach2Data.options.length; i++) {
+      const btn = document.getElementById(`sprach2_btn_${i}`);
+      if (btn) {
+        btn.textContent = `__( ${i} )__`;
+        btn.style.backgroundColor = "#e0e0e0";
+        btn.style.color = "#333";
+        btn.classList.remove("selected-for-link");
+        btn.style.border = "none";
+      }
+    }
+    const allWords = document.querySelectorAll(".sprach2-word-card");
+    allWords.forEach((card) => {
+      card.style.backgroundColor = "#ffffff";
+      card.style.border = "1px solid #7c6ce6";
+      card.style.color = "#4a4a4a";
+      card.style.cursor = "pointer";
+      card.style.opacity = "1";
+      card.classList.remove("selected-for-link");
+    });
+    const resultDiv = document.getElementById("sprach2Result");
+    if (resultDiv) resultDiv.style.display = "none";
+    console.log("\u2705 \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 Sprachbausteine Teil 2");
+  }
+  function checkSprach2Exam() {
+    const options = currentSprach2Data.options;
+    let score = 0;
+    const total = options.length;
+    const pointsPerQuestion = 25 / total;
+    document.querySelectorAll(".correct-answer-hint").forEach((el) => el.remove());
+    for (let i = 0; i < options.length; i++) {
+      const opt = options[i];
+      const userAnswer = sprach2UserAnswers[opt.id];
+      const isCorrect = userAnswer === opt.correct;
+      const btn = document.getElementById(`sprach2_btn_${opt.id}`);
+      if (isCorrect) {
+        score++;
+        if (btn) {
+          btn.textContent = opt.correct;
+          btn.style.backgroundColor = "#d4edda";
+          btn.style.border = "2px solid #28a745";
+          btn.style.color = "#155724";
+          btn.style.opacity = "0.85";
+        }
+      } else {
+        if (btn) {
+          btn.style.backgroundColor = "#fee2e2";
+          btn.style.color = "#dc2626";
+          btn.style.border = "1px solid #dc2626";
+          btn.textContent = opt.correct;
+          btn.style.opacity = "0.85";
+          if (userAnswer) {
+            btn.title = `\u0625\u062C\u0627\u0628\u062A\u0643: ${userAnswer}`;
+          } else {
+            btn.title = "\u0644\u0645 \u062A\u062C\u0628 \u0639\u0644\u0649 \u0647\u0630\u0627 \u0627\u0644\u0633\u0624\u0627\u0644";
+          }
+        }
+      }
+    }
+    const usedWords = Object.values(sprach2UserAnswers);
+    document.querySelectorAll(".sprach2-word-card").forEach((card) => {
+      const word = card.textContent;
+      if (usedWords.includes(word)) {
+        card.style.backgroundColor = "#d4edda";
+        card.style.border = "2px solid #28a745";
+        card.style.color = "#155724";
+        card.style.opacity = "0.85";
+      } else {
+        card.style.backgroundColor = "#ffffff";
+        card.style.border = "1px solid #7c6ce6";
+        card.style.color = "#4a4a4a";
+        card.style.opacity = "1";
+      }
+    });
+    const finalScore = (score * pointsPerQuestion).toFixed(2);
+    const resultDiv = document.getElementById("sprach2Result");
+    if (resultDiv) {
+      resultDiv.innerHTML = `\u0627\u0644\u0646\u062A\u064A\u062C\u0629: ${finalScore} / 25`;
+      resultDiv.style.display = "block";
+    }
+    if (finalScore >= 20) {
+      resultDiv.style.backgroundColor = "#d4edda";
+      resultDiv.style.color = "#155724";
+    } else if (finalScore >= 15) {
+      resultDiv.style.backgroundColor = "#fff3cd";
+      resultDiv.style.color = "#856404";
+    } else {
+      resultDiv.style.backgroundColor = "#f8d7da";
+      resultDiv.style.color = "#721c24";
+    }
+    if (typeof window.saveExamResultGlobal === "function") {
+      const examId = currentSprach2Data.id || window.currentExamId || 1;
+      window.saveExamResultGlobal("sprach2", examId, parseFloat(finalScore));
+    }
+    const retryCount = window.incrementRetryCount(currentSkill, window.currentExamId || 1);
+    if (typeof window.updateRetryCounter === "function") {
+      window.updateRetryCounter();
+    }
+    if (typeof window.updateDailyPlanSilent === "function") {
+      window.updateDailyPlanSilent();
+    }
+    if (typeof window.removeColorFromExam === "function") {
+      const examId = window.currentExamId;
+      if (examId) {
+        window.removeColorFromExam(examId);
+      }
+    }
+    if (examTimer2.isRunning) {
+      const elapsed = examTimer2.stop();
+      if (elapsed !== null) {
+        const skill = window.currentSkill || "";
+        const examId = window.currentExamId || 1;
+        if (skill && examId) {
+          saveExamTime(skill, examId, elapsed);
+        }
+      }
+    }
+  }
+  function renderSprach1Exam() {
+    const container = document.getElementById("sprach1");
+    if (!container) return;
+    container.innerHTML = "";
+    const text = currentSprach1Data.text;
+    const options = currentSprach1Data.options;
+    const twoColumns = document.createElement("div");
+    twoColumns.style.display = "flex";
+    twoColumns.style.gap = "30px";
+    twoColumns.style.flexWrap = "wrap";
+    const leftColumn = document.createElement("div");
+    leftColumn.style.flex = "1.5";
+    leftColumn.style.minWidth = "400px";
+    leftColumn.style.backgroundColor = "#f9f9f9";
+    leftColumn.style.padding = "20px";
+    leftColumn.style.borderRadius = "12px";
+    leftColumn.style.border = "1px solid #ddd";
+    leftColumn.style.maxHeight = "600px";
+    leftColumn.style.overflowY = "auto";
+    const leftTitle = document.createElement("h3");
+    leftTitle.innerHTML = "\u{1F4DD} Text";
+    leftTitle.style.marginTop = "0";
+    leftTitle.style.color = "#2c3e66";
+    leftColumn.appendChild(leftTitle);
+    let htmlText = text;
+    for (let i = 1; i <= options.length; i++) {
+      const btnId = `sprach1_btn_${i}`;
+      const currentAnswer = sprach1UserAnswers[i];
+      const btnText = currentAnswer || `__(${i})__`;
+      const btnHtml = `<button id="${btnId}" class="sprach1-gap-btn" style="background-color: #e0e0e0; border: none; padding: 4px 12px; border-radius: 20px; cursor: pointer; font-size: 14px; font-weight: bold; margin: 0 2px;">${btnText}</button>`;
+      htmlText = htmlText.replace(`\u2304 __ (${i}) __ \u2304`, btnHtml);
+    }
+    const textDiv = document.createElement("div");
+    textDiv.innerHTML = htmlText;
+    textDiv.style.lineHeight = "1.8";
+    textDiv.style.fontSize = "14px";
+    textDiv.style.textAlign = "justify";
+    for (let i = 1; i <= options.length; i++) {
+      const btn = textDiv.querySelector(`#sprach1_btn_${i}`);
+      if (btn) {
+        btn.onclick = /* @__PURE__ */ (function(qId) {
+          return function() {
+            openSprach1Dropdown(qId);
+          };
+        })(i);
+      }
+    }
+    leftColumn.appendChild(textDiv);
+    const rightColumn = document.createElement("div");
+    rightColumn.style.flex = "0.8";
+    rightColumn.style.minWidth = "250px";
+    rightColumn.style.backgroundColor = "#f0f8ff";
+    rightColumn.style.padding = "20px";
+    rightColumn.style.borderRadius = "12px";
+    rightColumn.style.border = "1px solid #d0e0ff";
+    rightColumn.style.maxHeight = "600px";
+    rightColumn.style.overflowY = "auto";
+    const rightTitle = document.createElement("h3");
+    rightTitle.innerHTML = "\u{1F4CB} Optionen";
+    rightTitle.style.marginTop = "0";
+    rightTitle.style.color = "#2c3e66";
+    rightColumn.appendChild(rightTitle);
+    const optionsContainer = document.createElement("div");
+    optionsContainer.id = "sprach1_options_container";
+    for (let i = 0; i < options.length; i++) {
+      const opt = options[i];
+      const optDiv = document.createElement("div");
+      optDiv.className = "sprach1-option-group";
+      optDiv.id = `sprach1_opt_group_${opt.id}`;
+      optDiv.style.marginBottom = "20px";
+      optDiv.style.padding = "10px";
+      optDiv.style.backgroundColor = "white";
+      optDiv.style.borderRadius = "8px";
+      optDiv.style.border = "1px solid #ddd";
+      const optTitle = document.createElement("div");
+      optTitle.innerHTML = `<strong>${opt.id} Optionen</strong>`;
+      optTitle.style.marginBottom = "10px";
+      optTitle.style.color = "#7c6ce6";
+      optDiv.appendChild(optTitle);
+      const optList = document.createElement("div");
+      optList.style.display = "flex";
+      optList.style.flexWrap = "wrap";
+      optList.style.gap = "15px";
+      for (let j = 0; j < opt.options.length; j++) {
+        const optionLabel = document.createElement("label");
+        optionLabel.style.display = "inline-flex";
+        optionLabel.style.alignItems = "center";
+        optionLabel.style.gap = "5px";
+        optionLabel.style.cursor = "pointer";
+        optionLabel.style.padding = "5px 10px";
+        optionLabel.style.borderRadius = "5px";
+        optionLabel.style.backgroundColor = "#f8f9fa";
+        optionLabel.style.border = "1px solid #ccc";
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = `sprach1_q${opt.id}`;
+        radio.value = opt.options[j];
+        radio.id = `sprach1_opt_${opt.id}_${j}`;
+        if (sprach1UserAnswers[opt.id] === opt.options[j]) {
+          radio.checked = true;
+        }
+        radio.onchange = /* @__PURE__ */ (function(qId, selectedValue) {
+          return function() {
+            selectSprach1Option(qId, selectedValue);
+          };
+        })(opt.id, opt.options[j]);
+        const optionText = document.createElement("span");
+        optionText.textContent = opt.options[j];
+        optionText.style.fontSize = "13px";
+        optionLabel.appendChild(radio);
+        optionLabel.appendChild(optionText);
+        optList.appendChild(optionLabel);
+      }
+      optDiv.appendChild(optList);
+      optionsContainer.appendChild(optDiv);
+    }
+    rightColumn.appendChild(optionsContainer);
+    twoColumns.appendChild(leftColumn);
+    twoColumns.appendChild(rightColumn);
+    container.appendChild(twoColumns);
+    const buttonContainer = document.createElement("div");
+    buttonContainer.style.display = "flex";
+    buttonContainer.style.gap = "15px";
+    buttonContainer.style.justifyContent = "center";
+    buttonContainer.style.marginTop = "25px";
+    const checkBtn = document.createElement("button");
+    checkBtn.innerText = "\u2705 \u062A\u0635\u062D\u064A\u062D";
+    checkBtn.className = "check-btn";
+    checkBtn.style.padding = "12px 24px";
+    checkBtn.style.backgroundColor = "#2c3e66";
+    checkBtn.style.color = "white";
+    checkBtn.style.border = "none";
+    checkBtn.style.borderRadius = "8px";
+    checkBtn.style.cursor = "pointer";
+    checkBtn.style.fontSize = "16px";
+    checkBtn.onclick = checkSprach1Exam;
+    buttonContainer.appendChild(checkBtn);
+    const resetBtn = document.createElement("button");
+    resetBtn.innerText = "\u21BA";
+    resetBtn.style.padding = "8px 12px";
+    resetBtn.style.backgroundColor = "#6c757d";
+    resetBtn.style.color = "white";
+    resetBtn.style.border = "none";
+    resetBtn.style.borderRadius = "6px";
+    resetBtn.style.cursor = "pointer";
+    resetBtn.style.fontSize = "16px";
+    resetBtn.style.fontWeight = "bold";
+    resetBtn.onclick = resetSprach1Exam;
+    buttonContainer.appendChild(resetBtn);
+    container.appendChild(buttonContainer);
+    const resultDiv = document.createElement("div");
+    resultDiv.id = "sprach1Result";
+    resultDiv.className = "result-box";
+    resultDiv.style.display = "none";
+    container.appendChild(resultDiv);
+  }
+  function openSprach1Dropdown(questionId) {
+    if (sprach1OpenDropdownId) {
+      const oldList2 = document.getElementById(`sprach1_dropdown_list_${sprach1OpenDropdownId}`);
+      if (oldList2) oldList2.remove();
+    }
+    const btn = document.getElementById(`sprach1_btn_${questionId}`);
+    if (!btn) return;
+    const oldList = document.getElementById(`sprach1_dropdown_list_${questionId}`);
+    if (oldList) oldList.remove();
+    const dropdownList = document.createElement("div");
+    dropdownList.id = `sprach1_dropdown_list_${questionId}`;
+    dropdownList.style.position = "absolute";
+    dropdownList.style.backgroundColor = "white";
+    dropdownList.style.border = "1px solid #ccc";
+    dropdownList.style.borderRadius = "8px";
+    dropdownList.style.padding = "5px 0";
+    dropdownList.style.zIndex = "1000";
+    dropdownList.style.minWidth = "150px";
+    dropdownList.style.boxShadow = "0 2px 10px rgba(0,0,0,0.2)";
+    const optionItem = currentSprach1Data.options.find((opt) => opt.id === questionId);
+    if (optionItem) {
+      for (let i = 0; i < optionItem.options.length; i++) {
+        const opt = optionItem.options[i];
+        const optDiv = document.createElement("div");
+        optDiv.textContent = opt;
+        optDiv.style.padding = "8px 12px";
+        optDiv.style.cursor = "pointer";
+        optDiv.style.transition = "background 0.2s";
+        optDiv.addEventListener("mouseenter", function() {
+          this.style.backgroundColor = "#e8e4ff";
+        });
+        optDiv.addEventListener("mouseleave", function() {
+          this.style.backgroundColor = "white";
+        });
+        optDiv.addEventListener("click", /* @__PURE__ */ (function(qId, selectedValue) {
+          return function() {
+            selectSprach1Option(qId, selectedValue);
+            dropdownList.remove();
+            sprach1OpenDropdownId = null;
+          };
+        })(questionId, opt));
+        dropdownList.appendChild(optDiv);
+      }
+    }
+    const rect = btn.getBoundingClientRect();
+    dropdownList.style.position = "fixed";
+    dropdownList.style.top = `${rect.bottom + 5}px`;
+    dropdownList.style.left = `${rect.left}px`;
+    document.body.appendChild(dropdownList);
+    sprach1OpenDropdownId = questionId;
+    setTimeout(() => {
+      document.addEventListener("click", function closeDropdown(e) {
+        if (!dropdownList.contains(e.target) && e.target !== btn) {
+          dropdownList.remove();
+          document.removeEventListener("click", closeDropdown);
+          sprach1OpenDropdownId = null;
+        }
+      });
+    }, 0);
+  }
+  function selectSprach1Option(questionId, selectedValue) {
+    sprach1UserAnswers[questionId] = selectedValue;
+    const btn = document.getElementById(`sprach1_btn_${questionId}`);
+    if (btn) {
+      btn.textContent = selectedValue;
+      btn.style.backgroundColor = "#d4edda";
+      btn.style.color = "#155724";
+    }
+    for (let i = 0; i < currentSprach1Data.options.length; i++) {
+      const opt = currentSprach1Data.options[i];
+      if (opt.id === questionId) {
+        for (let j = 0; j < opt.options.length; j++) {
+          const radio = document.getElementById(`sprach1_opt_${questionId}_${j}`);
+          if (radio && radio.value === selectedValue) {
+            radio.checked = true;
+          }
+        }
+        break;
+      }
+    }
+  }
+  function resetSprach1Exam() {
+    sprach1UserAnswers = {};
+    for (let i = 1; i <= currentSprach1Data.options.length; i++) {
+      const btn = document.getElementById(`sprach1_btn_${i}`);
+      if (btn) {
+        btn.textContent = `__(${i})__`;
+        btn.style.backgroundColor = "#e0e0e0";
+        btn.style.color = "#333";
+      }
+      for (let j = 0; j < currentSprach1Data.options.length; j++) {
+        const opt = currentSprach1Data.options[j];
+        if (opt.id === i) {
+          for (let k = 0; k < opt.options.length; k++) {
+            const radio = document.getElementById(`sprach1_opt_${i}_${k}`);
+            if (radio) radio.checked = false;
+          }
+          break;
+        }
+      }
+    }
+    const resultDiv = document.getElementById("sprach1Result");
+    if (resultDiv) resultDiv.style.display = "none";
+    console.log("\u2705 \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 Sprachbausteine Teil 1");
+  }
+  function checkSprach1Exam() {
+    const options = currentSprach1Data.options;
+    let score = 0;
+    const total = options.length;
+    const pointsPerQuestion = 25 / total;
+    for (let i = 0; i < options.length; i++) {
+      const opt = options[i];
+      const userAnswer = sprach1UserAnswers[opt.id];
+      const isCorrect = userAnswer === opt.options[opt.correct];
+      if (isCorrect) {
+        score++;
+      }
+      const btn = document.getElementById(`sprach1_btn_${opt.id}`);
+      if (btn) {
+        if (isCorrect) {
+          btn.style.backgroundColor = "#28a745";
+          btn.style.color = "white";
+        } else {
+          btn.style.backgroundColor = "#fef0e0";
+          btn.style.color = "#e67e22";
+        }
+      }
+      const optGroup = document.getElementById(`sprach1_opt_group_${opt.id}`);
+      if (optGroup) {
+        if (isCorrect) {
+          optGroup.style.backgroundColor = "#d4edda";
+          optGroup.style.border = "2px solid #28a745";
+        } else {
+          optGroup.style.backgroundColor = "#fef0e0";
+          optGroup.style.border = "2px solid #e67e22";
+        }
+      }
+      const correctAnswer = opt.options[opt.correct];
+      const correctIndex = opt.options.indexOf(correctAnswer);
+      const correctRadio = document.getElementById(`sprach1_opt_${opt.id}_${correctIndex}`);
+      if (correctRadio) {
+        const parentLabel = correctRadio.parentElement;
+        if (parentLabel && !isCorrect) {
+          parentLabel.style.backgroundColor = "#d4edda";
+          parentLabel.style.border = "2px solid #28a745";
+        }
+      }
+    }
+    const finalScore = (score * pointsPerQuestion).toFixed(2);
+    const resultDiv = document.getElementById("sprach1Result");
+    if (resultDiv) {
+      resultDiv.innerHTML = `\u0627\u0644\u0646\u062A\u064A\u062C\u0629: ${finalScore} / 25`;
+      resultDiv.style.display = "block";
+    }
+    if (finalScore >= 20) {
+      resultDiv.style.backgroundColor = "#d4edda";
+      resultDiv.style.color = "#155724";
+    } else if (finalScore >= 15) {
+      resultDiv.style.backgroundColor = "#fff3cd";
+      resultDiv.style.color = "#856404";
+    } else {
+      resultDiv.style.backgroundColor = "#f8d7da";
+      resultDiv.style.color = "#721c24";
+    }
+    if (typeof window.saveExamResultGlobal === "function") {
+      const examId = currentSprach1Data.id || window.currentExamId || 1;
+      window.saveExamResultGlobal("sprach1", examId, parseFloat(finalScore));
+    }
+    const retryCount = window.incrementRetryCount(currentSkill, window.currentExamId || 1);
+    if (typeof window.updateRetryCounter === "function") {
+      window.updateRetryCounter();
+    }
+    if (typeof window.updateDailyPlanSilent === "function") {
+      window.updateDailyPlanSilent();
+    }
+    if (typeof window.removeColorFromExam === "function") {
+      const examId = window.currentExamId;
+      if (examId) {
+        window.removeColorFromExam(examId);
+      }
+    }
+    const elapsed = examTimer2.finalize();
+    if (elapsed !== null) {
+      const skill = window.currentSkill || "";
+      const examId = window.currentExamId || 1;
+      if (skill && examId) {
+        saveExamTime(skill, examId, elapsed);
+      }
+    }
+  }
+  function checkTrueFalseExam(container, questions, answers, correctNumbersContainer) {
+    let questionsToCheck = questions;
+    const skillId = container.id;
+    const data = _hoerenData[skillId];
+    if (data && data.originalQuestions && data.originalQuestions.length > 0) {
+      questionsToCheck = data.originalQuestions;
+    }
+    if (!questionsToCheck || !Array.isArray(questionsToCheck) || questionsToCheck.length === 0) {
+      console.error("\u274C \u062E\u0637\u0623: \u0644\u0627 \u062A\u0648\u062C\u062F \u0623\u0633\u0626\u0644\u0629 \u0644\u0644\u062A\u0635\u062D\u064A\u062D");
+      let resultDiv2 = container.querySelector("#truefalseResult");
+      if (!resultDiv2) {
+        resultDiv2 = document.createElement("div");
+        resultDiv2.id = "truefalseResult";
+        resultDiv2.className = "result-box";
+        container.appendChild(resultDiv2);
+      }
+      resultDiv2.innerHTML = "\u274C \u0644\u0627 \u062A\u0648\u062C\u062F \u0623\u0633\u0626\u0644\u0629 \u0641\u064A \u0647\u0630\u0627 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646";
+      resultDiv2.style.display = "block";
+      return;
+    }
+    let score = 0;
+    const total = questionsToCheck.length;
+    const pointsPerQuestion = 25 / total;
+    const cards = container.querySelectorAll(".question-card");
+    for (const card of cards) {
+      const textSpan = card.querySelector("span");
+      if (!textSpan) continue;
+      const match = textSpan.textContent.match(/^(\d+)\s+(.+)$/);
+      if (!match) continue;
+      const displayNumber = parseInt(match[1]);
+      const questionText = match[2].trim();
+      let q = null;
+      let qIndex = -1;
+      for (let i = 0; i < questionsToCheck.length; i++) {
+        if (questionsToCheck[i].displayNumber === displayNumber) {
+          q = questionsToCheck[i];
+          qIndex = i;
+          break;
+        }
+      }
+      if (!q) {
+        for (let i = 0; i < questionsToCheck.length; i++) {
+          if (questionsToCheck[i].text.trim() === questionText) {
+            q = questionsToCheck[i];
+            qIndex = i;
+            break;
+          }
+        }
+      }
+      if (!q) continue;
+      const userAnswer = answers[displayNumber];
+      const isCorrect = userAnswer === q.correct;
+      card.classList.remove("correct-answer-card", "wrong-answer-card");
+      const oldMsg = card.querySelector(".correct-message");
+      if (oldMsg) oldMsg.remove();
+      if (isCorrect && userAnswer !== void 0) {
+        score++;
+        card.classList.add("correct-answer-card");
+        card.style.backgroundColor = "#d4edda";
+        card.style.border = "3px solid #28a745";
+        card.style.boxShadow = "0 0 0 4px rgba(40,167,69,0.25)";
+      } else {
+        card.classList.add("wrong-answer-card");
+        card.style.backgroundColor = "#fef0e0";
+        card.style.border = "3px solid #e67e22";
+        card.style.boxShadow = "0 0 0 4px rgba(230,126,34,0.25)";
+        const textSpan2 = card.querySelector("span");
+        if (textSpan2) {
+          const oldAnswer = textSpan2.querySelector(".inline-correct-answer");
+          if (oldAnswer) oldAnswer.remove();
+          const answerSpan = document.createElement("span");
+          answerSpan.className = "inline-correct-answer";
+          answerSpan.style.cssText = "color: #2b8c4a; font-weight: 600; font-size: 0.75rem; display: block; margin-bottom: 4px;";
+          answerSpan.textContent = `\u2713 ${q.correct ? "Richtig" : "Falsch"}`;
+          textSpan2.prepend(answerSpan);
+        }
+      }
+      const radios = card.querySelectorAll('input[type="radio"]');
+      for (let r = 0; r < radios.length; r++) {
+        const radio = radios[r];
+        const radioValue = radio.value === "true";
+        const parentLabel = radio.parentElement;
+        if (isCorrect && userAnswer !== void 0) {
+          if (radio.checked) {
+            parentLabel.style.backgroundColor = "#d4edda";
+            parentLabel.style.border = "2px solid #28a745";
+          }
+        } else {
+          if (radio.checked) {
+            parentLabel.style.backgroundColor = "#fef0e0";
+            parentLabel.style.border = "2px solid #e67e22";
+          }
+          if (radioValue === q.correct) {
+            parentLabel.style.backgroundColor = "#d4edda";
+            parentLabel.style.border = "2px solid #28a745";
+          }
+        }
+      }
+    }
+    if (correctNumbersContainer) {
+      correctNumbersContainer.style.display = "block";
+      let correctNumbers = [];
+      for (const card of cards) {
+        const textSpan = card.querySelector("span");
+        if (!textSpan) continue;
+        const match = textSpan.textContent.match(/^(\d+)/);
+        if (!match) continue;
+        const displayNumber = parseInt(match[1]);
+        let q = null;
+        for (let i = 0; i < questionsToCheck.length; i++) {
+          if (questionsToCheck[i].displayNumber === displayNumber) {
+            q = questionsToCheck[i];
+            break;
+          }
+        }
+        if (q && q.correct === true) {
+          correctNumbers.push(displayNumber);
+        }
+      }
+      if (correctNumbers.length > 0) {
+        correctNumbersContainer.innerHTML = `\u25B8 \u0627\u0644\u0625\u062C\u0627\u0628\u0627\u062A \u0627\u0644\u0635\u062D\u064A\u062D\u0629: ${correctNumbers.join(" - ")}`;
+      } else {
+        correctNumbersContainer.innerHTML = "\u25B8 \u0644\u0627 \u062A\u0648\u062C\u062F \u0625\u062C\u0627\u0628\u0627\u062A \u0635\u062D\u064A\u062D\u0629 \u0641\u064A \u0647\u0630\u0627 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646";
+      }
+    }
+    const finalScore = (score * pointsPerQuestion).toFixed(2);
+    let resultDiv = container.querySelector("#truefalseResult");
+    if (!resultDiv) {
+      resultDiv = document.createElement("div");
+      resultDiv.id = "truefalseResult";
+      resultDiv.className = "result-box";
+      container.appendChild(resultDiv);
+    }
+    resultDiv.innerHTML = `\u0627\u0644\u0646\u062A\u064A\u062C\u0629: ${finalScore} / 25`;
+    resultDiv.style.display = "block";
+    resultDiv.style.visibility = "visible";
+    resultDiv.style.opacity = "1";
+    if (finalScore >= 20) {
+      resultDiv.style.backgroundColor = "#28a745";
+      resultDiv.style.color = "white";
+    } else if (finalScore >= 15) {
+      resultDiv.style.backgroundColor = "#ffc107";
+      resultDiv.style.color = "#333";
+    } else {
+      resultDiv.style.backgroundColor = "#dc3545";
+      resultDiv.style.color = "white";
+    }
+    if (typeof window.saveExamResultGlobal === "function") {
+      const skill = container.id || "hoeren";
+      const examId = window.currentExamId || 1;
+      window.saveExamResultGlobal(skill, examId, parseFloat(finalScore));
+    }
+    const retryCount = window.incrementRetryCount(currentSkill, window.currentExamId || 1);
+    if (typeof window.updateRetryCounter === "function") {
+      window.updateRetryCounter();
+    }
+    if (typeof window.updateDailyPlanSilent === "function") {
+      window.updateDailyPlanSilent();
+    }
+    if (typeof window.removeColorFromExam === "function") {
+      const examId = window.currentExamId;
+      if (examId) {
+        window.removeColorFromExam(examId);
+      }
+    }
+    if (examTimer2.isRunning) {
+      const elapsed = examTimer2.stop();
+      if (elapsed !== null) {
+        const skill = container.id || window.currentSkill || "";
+        const examId = window.currentExamId || 1;
+        if (skill && examId) {
+          saveExamTime(skill, examId, elapsed);
+        }
+      }
+    }
+    setTimeout(() => {
+      resultDiv.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }, 100);
+  }
+  function renderMatchingQuestions2() {
+    const container = document.getElementById("teil1");
+    if (!container) return;
+    container.innerHTML = "";
+    const questions = currentMatchingExamData2.questions;
+    for (let i = 0; i < questions.length; i++) {
+      const q = questions[i];
+      const card = document.createElement("div");
+      card.className = "question-card";
+      card.id = `matching_q_${i}`;
+      const questionText = document.createElement("div");
+      questionText.className = "question-text";
+      questionText.innerHTML = `<strong>${i + 1}. ${q.text}</strong>`;
+      card.appendChild(questionText);
+      const select = document.createElement("select");
+      select.style.width = "100%";
+      select.style.padding = "8px";
+      select.style.marginTop = "10px";
+      select.style.borderRadius = "8px";
+      select.style.border = "1px solid #ccc";
+      const defaultOption = document.createElement("option");
+      defaultOption.value = "";
+      defaultOption.textContent = "-- \u0627\u062E\u062A\u0631 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 --";
+      select.appendChild(defaultOption);
+      for (let j = 0; j < matchingAvailableOptions2.length; j++) {
+        const option = document.createElement("option");
+        option.value = matchingAvailableOptions2[j];
+        option.textContent = matchingAvailableOptions2[j];
+        select.appendChild(option);
+      }
+      select.onchange = /* @__PURE__ */ (function(idx) {
+        return function() {
+          const oldVal = matchingSelectedAnswers2[idx];
+          if (oldVal) matchingAvailableOptions2.push(oldVal);
+          const newVal = select.value;
+          if (newVal) {
+            const index = matchingAvailableOptions2.indexOf(newVal);
+            if (index !== -1) matchingAvailableOptions2.splice(index, 1);
+            matchingSelectedAnswers2[idx] = newVal;
+          } else {
+            delete matchingSelectedAnswers2[idx];
+          }
+          document.querySelectorAll("#teil1 select").forEach((sel, sidx) => {
+            const currentVal = sel.value;
+            sel.innerHTML = "";
+            const optDefault = document.createElement("option");
+            optDefault.value = "";
+            optDefault.textContent = "-- \u0627\u062E\u062A\u0631 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 --";
+            sel.appendChild(optDefault);
+            for (let k = 0; k < matchingAvailableOptions2.length; k++) {
+              const opt = document.createElement("option");
+              opt.value = matchingAvailableOptions2[k];
+              opt.textContent = matchingAvailableOptions2[k];
+              if (currentVal === matchingAvailableOptions2[k]) opt.selected = true;
+              sel.appendChild(opt);
+            }
+            if (currentVal && !matchingAvailableOptions2.includes(currentVal)) {
+              const hiddenOpt = document.createElement("option");
+              hiddenOpt.value = currentVal;
+              hiddenOpt.textContent = currentVal;
+              hiddenOpt.selected = true;
+              sel.appendChild(hiddenOpt);
+            }
+          });
+          if (window.memoryEngine && window.memoryEngine.isActive) {
+            setTimeout(colorSelectOptions, 50);
+          }
+        };
+      })(i);
+      card.appendChild(select);
+      container.appendChild(card);
+    }
+    let row = container.querySelector(".teil-controls-row");
+    if (!row) {
+      row = document.createElement("div");
+      row.className = "teil-controls-row";
+      container.appendChild(row);
+    }
+    let checkBtn = row.querySelector(".check-btn");
+    if (!checkBtn) {
+      checkBtn = document.createElement("button");
+      checkBtn.className = "check-btn";
+      checkBtn.textContent = "\u{1F4DD} Pr\xFCfen";
+      row.appendChild(checkBtn);
+    }
+    checkBtn.onclick = () => {
+      if (typeof checkMatchingExam === "function") checkMatchingExam();
+    };
+    let resetBtn = row.querySelector(".lesen-reset-btn");
+    if (!resetBtn) {
+      resetBtn = document.createElement("button");
+      resetBtn.className = "lesen-reset-btn";
+      resetBtn.textContent = "\u21BA";
+      row.appendChild(resetBtn);
+    }
+    resetBtn.onclick = function() {
+      try {
+        if (typeof matchingSelectedAnswers2 !== "undefined") matchingSelectedAnswers2 = {};
+        if (typeof currentMatchingExamData2 !== "undefined" && currentMatchingExamData2?.sharedOptions) {
+          matchingAvailableOptions2 = [...currentMatchingExamData2.sharedOptions];
+        }
+        container.querySelectorAll(".correct-message").forEach((el) => el.remove());
+        container.querySelectorAll(".result-box").forEach((el) => {
+          if (!el.id) el.remove();
+        });
+        if (typeof renderMatchingQuestions2 === "function") renderMatchingQuestions2();
+      } catch (e) {
+        console.error("\u274C Reset Lesen 1:", e);
+      }
+    };
+    const resultDiv = document.createElement("div");
+    resultDiv.id = "matchingResult";
+    resultDiv.className = "result-box";
+    resultDiv.style.display = "none";
+    container.appendChild(resultDiv);
+  }
+  function checkMatchingExam() {
+    const questions = currentMatchingExamData2.questions;
+    let score = 0;
+    const total = questions.length;
+    const pointsPerQuestion = 25 / total;
+    const matchingInstance = window.matchingLesen1;
+    const isMatchingActive = matchingInstance && matchingInstance.isActive && matchingInstance._matches;
+    for (let i = 0; i < questions.length; i++) {
+      const card = document.getElementById(`matching_q_${i}`);
+      if (!card) continue;
+      const selectElem = card.querySelector("select");
+      let selectedIndex = -1;
+      if (isMatchingActive) {
+        const textId = `text-${i + 1}`;
+        const titleId = matchingInstance._matches.get(textId);
+        if (titleId) {
+          const match = titleId.match(/^title-(\d+)$/);
+          if (match) {
+            selectedIndex = parseInt(match[1], 10) - 1;
+          }
+        }
+      } else {
+        let userAnswer = null;
+        if (selectElem) {
+          userAnswer = selectElem.value || null;
+        }
+        if (userAnswer === null || userAnswer === "") {
+          userAnswer = matchingSelectedAnswers2[i] || null;
+        }
+        if (userAnswer) {
+          selectedIndex = currentMatchingExamData2.sharedOptions.indexOf(userAnswer);
+        }
+      }
+      const correctIndex = questions[i].correct;
+      const correctAnswer = currentMatchingExamData2.sharedOptions[correctIndex];
+      const isCorrect = selectedIndex === correctIndex;
+      card.classList.remove("correct-answer-card", "wrong-answer-card");
+      const oldMsg = card.querySelector(".correct-message");
+      if (oldMsg) oldMsg.remove();
+      const oldAnswerMsg = card.querySelector(".correct-answer-message");
+      if (oldAnswerMsg) oldAnswerMsg.remove();
+      if (isCorrect && selectedIndex !== -1) {
+        score++;
+        card.classList.add("correct-answer-card");
+        card.style.backgroundColor = "#d4edda";
+        card.style.border = "3px solid #28a745";
+        card.style.boxShadow = "0 0 0 4px rgba(40,167,69,0.25)";
+        if (selectElem) {
+          selectElem.style.backgroundColor = "#d4edda";
+          selectElem.style.border = "2px solid #28a745";
+          selectElem.style.color = "#155724";
+          selectElem.style.boxShadow = "0 0 0 3px rgba(40,167,69,0.2)";
+        }
+      } else {
+        card.classList.add("wrong-answer-card");
+        card.style.backgroundColor = "#fef0e0";
+        card.style.border = "3px solid #e67e22";
+        card.style.boxShadow = "0 0 0 4px rgba(230,126,34,0.25)";
+        if (selectElem) {
+          selectElem.style.backgroundColor = "#fef0e0";
+          selectElem.style.border = "2px solid #e67e22";
+          selectElem.style.color = "#155724";
+          selectElem.style.boxShadow = "0 0 0 3px rgba(230,126,34,0.2)";
+          let optionExists = false;
+          for (let j = 0; j < selectElem.options.length; j++) {
+            if (selectElem.options[j].value === correctAnswer) {
+              optionExists = true;
+              const cleanText = selectElem.options[j].textContent.replace(/^✅\s*/, "");
+              selectElem.options[j].textContent = `\u2705 ${cleanText}`;
+              selectElem.options[j].selected = true;
+              break;
+            }
+          }
+          if (!optionExists) {
+            const textSpan = card.querySelector("span");
+            if (textSpan) {
+              const oldAnswer = textSpan.querySelector(".inline-correct-answer");
+              if (oldAnswer) oldAnswer.remove();
+              const answerSpan = document.createElement("span");
+              answerSpan.className = "inline-correct-answer";
+              answerSpan.style.cssText = "color: #2b8c4a; font-weight: 600; font-size: 0.75rem; display: block; margin-bottom: 4px;";
+              answerSpan.textContent = `\u2713 ${correctAnswer}`;
+              textSpan.prepend(answerSpan);
+            }
+          }
+        }
+      }
+    }
+    const finalScore = (score * pointsPerQuestion).toFixed(2);
+    const resultDiv = document.getElementById("matchingResult");
+    if (resultDiv) {
+      resultDiv.innerHTML = `\u0627\u0644\u0646\u062A\u064A\u062C\u0629: ${finalScore} / 25`;
+      resultDiv.style.display = "block";
+      resultDiv.style.visibility = "visible";
+      resultDiv.style.opacity = "1";
+    }
+    if (finalScore >= 20) {
+      resultDiv.style.backgroundColor = "#d4edda";
+      resultDiv.style.color = "#155724";
+    } else if (finalScore >= 15) {
+      resultDiv.style.backgroundColor = "#fff3cd";
+      resultDiv.style.color = "#856404";
+    } else {
+      resultDiv.style.backgroundColor = "#f8d7da";
+      resultDiv.style.color = "#721c24";
+    }
+    if (typeof window.saveExamResultGlobal === "function") {
+      const examId = currentMatchingExamData2.id || window.currentExamId || 1;
+      window.saveExamResultGlobal("lesen1", examId, parseFloat(finalScore));
+    }
+    const retryCount = window.incrementRetryCount(currentSkill, window.currentExamId || 1);
+    if (typeof window.updateRetryCounter === "function") {
+      window.updateRetryCounter();
+    }
+    if (typeof window.updateDailyPlanSilent === "function") {
+      window.updateDailyPlanSilent();
+    }
+    if (typeof window.removeColorFromExam === "function") {
+      const examId = window.currentExamId;
+      if (examId) {
+        window.removeColorFromExam(examId);
+      }
+    }
+    if (examTimer2.isRunning) {
+      const elapsed = examTimer2.stop();
+      if (elapsed !== null) {
+        const skill = window.currentSkill || "";
+        const examId = window.currentExamId || 1;
+        if (skill && examId) {
+          saveExamTime(skill, examId, elapsed);
+        }
+      }
+    }
+  }
+  function renderTeil2Exam() {
+    const container = document.getElementById("teil2");
+    if (!container) return;
+    container.innerHTML = "";
+    const twoColumns = document.createElement("div");
+    twoColumns.style.display = "flex";
+    twoColumns.style.gap = "30px";
+    twoColumns.style.flexWrap = "wrap";
+    const textColumn = document.createElement("div");
+    textColumn.style.flex = "1";
+    textColumn.style.minWidth = "300px";
+    textColumn.style.backgroundColor = "#f9f9f9";
+    textColumn.style.padding = "20px";
+    textColumn.style.borderRadius = "12px";
+    textColumn.style.border = "1px solid #ddd";
+    textColumn.style.maxHeight = "600px";
+    textColumn.style.overflowY = "auto";
+    const textTitle = document.createElement("h3");
+    textTitle.innerHTML = "Text";
+    textTitle.style.marginTop = "0";
+    textTitle.style.color = "#2c3e66";
+    textColumn.appendChild(textTitle);
+    const textContent = document.createElement("div");
+    textContent.innerHTML = currentTeil2Data.text;
+    textContent.style.lineHeight = "1.7";
+    textContent.style.fontSize = "14px";
+    textContent.style.textAlign = "justify";
+    textColumn.appendChild(textContent);
+    const questionsColumn = document.createElement("div");
+    questionsColumn.style.flex = "1";
+    questionsColumn.style.minWidth = "300px";
+    questionsColumn.style.backgroundColor = "#fff";
+    questionsColumn.style.padding = "20px";
+    questionsColumn.style.borderRadius = "12px";
+    questionsColumn.style.border = "1px solid #ddd";
+    const questionsTitle = document.createElement("h3");
+    questionsTitle.innerHTML = "Fragen";
+    questionsTitle.style.marginTop = "0";
+    questionsTitle.style.color = "#2c3e66";
+    questionsColumn.appendChild(questionsTitle);
+    const questionsContainer = document.createElement("div");
+    questionsContainer.id = "teil2_questions_container";
+    const questions = currentTeil2Data.questions;
+    for (let i = 0; i < questions.length; i++) {
+      const q = questions[i];
+      const card = document.createElement("div");
+      card.className = "question-card";
+      card.id = "teil2_q_" + i;
+      card.style.marginBottom = "20px";
+      card.style.padding = "15px";
+      card.style.border = "1px solid #e0e0e0";
+      card.style.borderRadius = "10px";
+      card.style.backgroundColor = "#fafafa";
+      const questionText = document.createElement("div");
+      questionText.className = "question-text";
+      questionText.innerHTML = `<strong>${i + 1}. ${q.text}</strong>`;
+      questionText.style.marginBottom = "12px";
+      card.appendChild(questionText);
+      const optionsDiv = document.createElement("div");
+      optionsDiv.className = "options-container";
+      optionsDiv.style.display = "flex";
+      optionsDiv.style.flexDirection = "column";
+      optionsDiv.style.gap = "8px";
+      for (let j = 0; j < q.options.length; j++) {
+        const label = document.createElement("label");
+        label.className = "option-label";
+        label.style.display = "flex";
+        label.style.alignItems = "center";
+        label.style.gap = "10px";
+        label.style.cursor = "pointer";
+        label.style.padding = "8px 12px";
+        label.style.borderRadius = "8px";
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = `teil2_q${i}`;
+        radio.value = j;
+        radio.style.cursor = "pointer";
+        radio.onchange = /* @__PURE__ */ (function(qIdx, ansIdx) {
+          return function() {
+            teil2UserAnswers[qIdx] = ansIdx;
+            const cardElem = document.getElementById(`teil2_q_${qIdx}`);
+            if (cardElem) cardElem.classList.remove("correct-answer-card", "wrong-answer-card");
+          };
+        })(i, j);
+        const optionText = document.createElement("span");
+        optionText.innerHTML = q.options[j];
+        label.appendChild(radio);
+        label.appendChild(optionText);
+        optionsDiv.appendChild(label);
+      }
+      card.appendChild(optionsDiv);
+      questionsContainer.appendChild(card);
+    }
+    questionsColumn.appendChild(questionsContainer);
+    const buttonContainer = document.createElement("div");
+    buttonContainer.style.display = "flex";
+    buttonContainer.style.gap = "15px";
+    buttonContainer.style.justifyContent = "center";
+    buttonContainer.style.marginTop = "20px";
+    const checkBtn = document.createElement("button");
+    checkBtn.innerText = "\u2705 \u062A\u0635\u062D\u064A\u062D";
+    checkBtn.className = "check-btn";
+    checkBtn.style.padding = "12px 24px";
+    checkBtn.style.backgroundColor = "#2c3e66";
+    checkBtn.style.color = "white";
+    checkBtn.style.border = "none";
+    checkBtn.style.borderRadius = "8px";
+    checkBtn.style.fontSize = "16px";
+    checkBtn.onclick = checkTeil2Exam;
+    buttonContainer.appendChild(checkBtn);
+    const resetBtn = document.createElement("button");
+    resetBtn.innerText = "\u21BA";
+    resetBtn.style.padding = "8px 12px";
+    resetBtn.style.backgroundColor = "#6c757d";
+    resetBtn.style.color = "white";
+    resetBtn.style.border = "none";
+    resetBtn.style.borderRadius = "6px";
+    resetBtn.style.fontSize = "16px";
+    resetBtn.style.fontWeight = "bold";
+    resetBtn.onclick = function() {
+      teil2UserAnswers = {};
+      questionsColumn.querySelectorAll('input[type="radio"]').forEach((radio) => radio.checked = false);
+      for (let i = 0; i < questions.length; i++) {
+        const card = document.getElementById(`teil2_q_${i}`);
+        if (card) {
+          card.classList.remove("correct-answer-card", "wrong-answer-card");
+          card.style.backgroundColor = "#fafafa";
+          card.style.border = "1px solid #e0e0e0";
+        }
+        const oldMsg = document.querySelector(`#teil2_q_${i} .correct-message`);
+        if (oldMsg) oldMsg.remove();
+        const optionLabels = document.querySelectorAll(`#teil2_q_${i} .option-label`);
+        optionLabels.forEach((label) => {
+          label.style.backgroundColor = "";
+          label.style.border = "";
+        });
+      }
+      const resultDiv2 = document.getElementById("teil2Result");
+      if (resultDiv2) {
+        resultDiv2.style.display = "none";
+        resultDiv2.innerHTML = "";
+      }
+    };
+    buttonContainer.appendChild(resetBtn);
+    questionsColumn.appendChild(buttonContainer);
+    const resultDiv = document.createElement("div");
+    resultDiv.id = "teil2Result";
+    resultDiv.className = "result-box";
+    resultDiv.style.display = "none";
+    questionsColumn.appendChild(resultDiv);
+    twoColumns.appendChild(textColumn);
+    twoColumns.appendChild(questionsColumn);
+    container.appendChild(twoColumns);
+  }
+  function checkTeil2Exam() {
+    const questions = currentTeil2Data.questions;
+    let score = 0;
+    const total = questions.length;
+    const pointsPerQuestion = 25 / total;
+    for (let i = 0; i < total; i++) {
+      const q = questions[i];
+      const card = document.getElementById(`teil2_q_${i}`);
+      const userAnswer = teil2UserAnswers[i];
+      const isCorrect = userAnswer === q.correct;
+      if (card) {
+        card.classList.remove("correct-answer-card", "wrong-answer-card");
+        const oldMsg = card.querySelector(".correct-message");
+        if (oldMsg) oldMsg.remove();
+        if (isCorrect && userAnswer !== void 0) {
+          score++;
+          card.classList.add("correct-answer-card");
+        } else {
+          card.classList.add("wrong-answer-card");
+          const correctMsg = document.createElement("div");
+          correctMsg.className = "correct-message";
+          correctMsg.style.color = "#28a745";
+          correctMsg.style.marginTop = "10px";
+          correctMsg.style.fontSize = "13px";
+          correctMsg.innerHTML = `\u2705 : ${q.options[q.correct]}`;
+          card.appendChild(correctMsg);
+        }
+        const radios = card.querySelectorAll(".option-label");
+        for (let r = 0; r < radios.length; r++) {
+          const radioInput = radios[r].querySelector("input");
+          if (radioInput) {
+            const radioValue = parseInt(radioInput.value);
+            if (isCorrect && userAnswer !== void 0) {
+              if (radioInput.checked) {
+                radios[r].style.backgroundColor = "#d4edda";
+                radios[r].style.border = "2px solid #28a745";
+              }
+            } else {
+              if (radioInput.checked) {
+                radios[r].style.backgroundColor = "#fef0e0";
+                radios[r].style.border = "2px solid #e67e22";
+              }
+              if (radioValue === q.correct) {
+                radios[r].style.backgroundColor = "#d4edda";
+                radios[r].style.border = "2px solid #28a745";
+              }
+            }
+          }
+        }
+      }
+    }
+    const finalScore = (score * pointsPerQuestion).toFixed(2);
+    const resultDiv = document.getElementById("teil2Result");
+    if (resultDiv) {
+      resultDiv.innerHTML = `\u0627\u0644\u0646\u062A\u064A\u062C\u0629: ${finalScore} / 25`;
+      resultDiv.style.display = "block";
+    }
+    if (finalScore >= 20) {
+      resultDiv.style.backgroundColor = "#d4edda";
+      resultDiv.style.color = "#155724";
+    } else if (finalScore >= 15) {
+      resultDiv.style.backgroundColor = "#fff3cd";
+      resultDiv.style.color = "#856404";
+    } else {
+      resultDiv.style.backgroundColor = "#f8d7da";
+      resultDiv.style.color = "#721c24";
+    }
+    if (typeof window.saveExamResultGlobal === "function") {
+      const examId = currentTeil2Data.id || window.currentExamId || 1;
+      window.saveExamResultGlobal("lesen2", examId, parseFloat(finalScore));
+    }
+    const retryCount = window.incrementRetryCount(currentSkill, window.currentExamId || 1);
+    if (typeof window.updateRetryCounter === "function") {
+      window.updateRetryCounter();
+    }
+    if (typeof window.updateDailyPlanSilent === "function") {
+      window.updateDailyPlanSilent();
+    }
+    if (typeof window.removeColorFromExam === "function") {
+      const examId = window.currentExamId;
+      if (examId) {
+        window.removeColorFromExam(examId);
+      }
+    }
+    if (examTimer2.isRunning) {
+      const elapsed = examTimer2.stop();
+      if (elapsed !== null) {
+        const skill = window.currentSkill || "";
+        const examId = window.currentExamId || 1;
+        if (skill && examId) {
+          saveExamTime(skill, examId, elapsed);
+        }
+      }
+    }
+  }
+  function updateTeil3SelectOptions() {
+    const items = currentTeil3Data.items;
+    const situations = currentTeil3Data.situations;
+    const usedSituations = /* @__PURE__ */ new Set();
+    for (let key in teil3UserAnswers) {
+      const val = teil3UserAnswers[key];
+      if (val !== void 0 && val !== null && val !== "" && val !== "none") {
+        usedSituations.add(val);
+      }
+    }
+    for (let i = 0; i < items.length; i++) {
+      const select = document.getElementById(`teil3_select_${i}`);
+      if (!select) continue;
+      const currentAnswer = teil3UserAnswers[i];
+      const isNoneAnswer = currentAnswer === "none";
+      select.innerHTML = "";
+      const defaultOption = document.createElement("option");
+      defaultOption.value = "";
+      defaultOption.textContent = "-- \u0627\u062E\u062A\u0631 \u0627\u0644\u0639\u0646\u0648\u0627\u0646 --";
+      select.appendChild(defaultOption);
+      const noTitleOption = document.createElement("option");
+      noTitleOption.value = "none";
+      noTitleOption.textContent = "\u2727 \u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646 \u2727";
+      select.appendChild(noTitleOption);
+      for (let s = 0; s < situations.length; s++) {
+        if (usedSituations.has(s) && currentAnswer !== s) {
+          continue;
+        }
+        const option = document.createElement("option");
+        option.value = s;
+        option.textContent = `${String.fromCharCode(97 + s)}. ${situations[s]}`;
+        select.appendChild(option);
+      }
+      if (isNoneAnswer) {
+        select.value = "none";
+      } else if (currentAnswer !== void 0 && currentAnswer !== null && currentAnswer !== "") {
+        if (!usedSituations.has(currentAnswer) || currentAnswer !== void 0) {
+          select.value = currentAnswer;
+        }
+      }
+    }
+    if (window.memoryEngine && window.memoryEngine.isActive) {
+      setTimeout(colorSelectOptions, 50);
+    }
+  }
+  function updateTeil3RightSideColors() {
+    const items = currentTeil3Data.items;
+    const situations = currentTeil3Data.situations;
+    for (let i = 0; i < situations.length; i++) {
+      const sitDiv = document.getElementById(`teil3_sit_${i}`);
+      if (!sitDiv) continue;
+      let isUsed = false;
+      for (let j = 0; j < items.length; j++) {
+        const answer = teil3UserAnswers[j];
+        if (answer !== void 0 && answer !== null && answer !== "" && answer !== "none" && answer === i) {
+          isUsed = true;
+          break;
+        }
+      }
+      if (isUsed) {
+        sitDiv.style.backgroundColor = "#e9ecef";
+        sitDiv.style.border = "1px solid #adb5bd";
+        sitDiv.style.color = "#212529";
+        sitDiv.classList.add("used");
+      } else {
+        if (teil3SelectedSit !== i && teil3SelectedSitForLink !== i) {
+          sitDiv.style.backgroundColor = "white";
+          sitDiv.style.border = "1px solid #ddd";
+          sitDiv.style.color = "#212529";
+          sitDiv.classList.remove("used");
+        } else if (teil3SelectedSitForLink === i) {
+          sitDiv.style.backgroundColor = "#e0f2fe";
+          sitDiv.style.border = "1px solid #7dd3fc";
+        }
+      }
+    }
+  }
+  function updateTeil3CardStyle(idx) {
+    const card = document.getElementById(`teil3_card_${idx}`);
+    const answer = teil3UserAnswers[idx];
+    if (answer !== void 0 && answer !== null && answer !== "") {
+      card.style.backgroundColor = "#e9ecef";
+      card.style.border = "1px solid #adb5bd";
+    } else if (teil3SelectedItem === idx || teil3SelectedItemForLink === idx) {
+      card.style.backgroundColor = "#e0f2fe";
+      card.style.border = "1px solid #7dd3fc";
+    } else {
+      card.style.backgroundColor = "#fafafa";
+      card.style.border = "1px solid #e0e0e0";
+    }
+  }
+  function clearTeil3ItemSelection() {
+    if (teil3SelectedItem !== null) {
+      updateTeil3CardStyle(teil3SelectedItem);
+      teil3SelectedItem = null;
+    }
+    if (teil3SelectedItemForLink !== null) {
+      updateTeil3CardStyle(teil3SelectedItemForLink);
+      teil3SelectedItemForLink = null;
+    }
+  }
+  function clearTeil3SituationSelection() {
+    if (teil3SelectedSit !== null) {
+      const sitDiv = document.getElementById(`teil3_sit_${teil3SelectedSit}`);
+      if (sitDiv && !sitDiv.classList.contains("used")) {
+        sitDiv.style.backgroundColor = "white";
+        sitDiv.style.border = "1px solid #ddd";
+      }
+      teil3SelectedSit = null;
+    }
+    if (teil3SelectedSitForLink !== null) {
+      const sitDiv = document.getElementById(`teil3_sit_${teil3SelectedSitForLink}`);
+      if (sitDiv && !sitDiv.classList.contains("used")) {
+        sitDiv.style.backgroundColor = "white";
+        sitDiv.style.border = "1px solid #ddd";
+      }
+      teil3SelectedSitForLink = null;
+    }
+  }
+  function handleTeil3ItemClick(itemIdx) {
+    const items = currentTeil3Data.items;
+    const currentAnswer = teil3UserAnswers[itemIdx];
+    if (teil3SelectedItemForLink === itemIdx) {
+      teil3SelectedItemForLink = null;
+      updateTeil3CardStyle(itemIdx);
+      return;
+    }
+    if (teil3SelectedSitForLink !== null) {
+      const sitIdx = teil3SelectedSitForLink;
+      if (currentAnswer === sitIdx) {
+        pushTeil3LinkToHistory(itemIdx, null, "remove", currentAnswer);
+        delete teil3UserAnswers[itemIdx];
+        const selectElem2 = document.getElementById(`teil3_select_${itemIdx}`);
+        if (selectElem2) selectElem2.selectedIndex = 0;
+        updateTeil3CardStyle(itemIdx);
+        updateTeil3SelectOptions();
+        updateTeil3RightSideColors();
+        teil3SelectedSitForLink = null;
+        clearTeil3SituationSelection();
+        return;
+      }
+      pushTeil3LinkToHistory(itemIdx, sitIdx, "add", teil3UserAnswers[itemIdx]);
+      teil3UserAnswers[itemIdx] = sitIdx;
+      const selectElem = document.getElementById(`teil3_select_${itemIdx}`);
+      if (selectElem) selectElem.value = sitIdx;
+      updateTeil3SelectOptions();
+      updateTeil3RightSideColors();
+      updateTeil3CardStyle(itemIdx);
+      teil3SelectedSitForLink = null;
+      clearTeil3SituationSelection();
+      return;
+    }
+    if (currentAnswer !== void 0 && currentAnswer !== null && currentAnswer !== "") {
+      pushTeil3LinkToHistory(itemIdx, null, "remove", currentAnswer);
+      delete teil3UserAnswers[itemIdx];
+      const selectElem = document.getElementById(`teil3_select_${itemIdx}`);
+      if (selectElem) selectElem.selectedIndex = 0;
+      updateTeil3CardStyle(itemIdx);
+      updateTeil3SelectOptions();
+      updateTeil3RightSideColors();
+      return;
+    }
+    if (teil3SelectedItemForLink !== null) {
+      updateTeil3CardStyle(teil3SelectedItemForLink);
+    }
+    teil3SelectedItemForLink = itemIdx;
+    updateTeil3CardStyle(itemIdx);
+    if (teil3SelectedSitForLink !== null) {
+      clearTeil3SituationSelection();
+      teil3SelectedSitForLink = null;
+    }
+  }
+  function handleTeil3SituationClick(sitIdx) {
+    const items = currentTeil3Data.items;
+    const situations = currentTeil3Data.situations;
+    let linkedItemIdx = null;
+    for (let j = 0; j < items.length; j++) {
+      const answer = teil3UserAnswers[j];
+      if (answer !== void 0 && answer !== null && answer !== "" && answer !== "none" && answer === sitIdx) {
+        linkedItemIdx = j;
+        break;
+      }
+    }
+    if (teil3SelectedSitForLink === sitIdx) {
+      if (linkedItemIdx !== null) {
+        const previousSit = teil3UserAnswers[linkedItemIdx];
+        pushTeil3LinkToHistory(linkedItemIdx, null, "remove", previousSit);
+        delete teil3UserAnswers[linkedItemIdx];
+        const selectElem = document.getElementById(`teil3_select_${linkedItemIdx}`);
+        if (selectElem) selectElem.selectedIndex = 0;
+        updateTeil3CardStyle(linkedItemIdx);
+        updateTeil3SelectOptions();
+        updateTeil3RightSideColors();
+      }
+      teil3SelectedSitForLink = null;
+      clearTeil3SituationSelection();
+      return;
+    }
+    if (teil3SelectedItemForLink !== null) {
+      const itemIdx = teil3SelectedItemForLink;
+      const currentAnswer = teil3UserAnswers[itemIdx];
+      if (currentAnswer === sitIdx) {
+        pushTeil3LinkToHistory(itemIdx, null, "remove", currentAnswer);
+        delete teil3UserAnswers[itemIdx];
+        const selectElem2 = document.getElementById(`teil3_select_${itemIdx}`);
+        if (selectElem2) selectElem2.selectedIndex = 0;
+        updateTeil3CardStyle(itemIdx);
+        updateTeil3SelectOptions();
+        updateTeil3RightSideColors();
+        teil3SelectedItemForLink = null;
+        return;
+      }
+      pushTeil3LinkToHistory(itemIdx, sitIdx, "add", teil3UserAnswers[itemIdx]);
+      teil3UserAnswers[itemIdx] = sitIdx;
+      const selectElem = document.getElementById(`teil3_select_${itemIdx}`);
+      if (selectElem) selectElem.value = sitIdx;
+      updateTeil3SelectOptions();
+      updateTeil3RightSideColors();
+      updateTeil3CardStyle(itemIdx);
+      teil3SelectedItemForLink = null;
+      return;
+    }
+    if (linkedItemIdx !== null) {
+      const previousSit = teil3UserAnswers[linkedItemIdx];
+      pushTeil3LinkToHistory(linkedItemIdx, null, "remove", previousSit);
+      delete teil3UserAnswers[linkedItemIdx];
+      const selectElem = document.getElementById(`teil3_select_${linkedItemIdx}`);
+      if (selectElem) selectElem.selectedIndex = 0;
+      updateTeil3CardStyle(linkedItemIdx);
+      updateTeil3SelectOptions();
+      updateTeil3RightSideColors();
+      return;
+    }
+    if (teil3SelectedSitForLink !== null) {
+      const prevSitDiv = document.getElementById(`teil3_sit_${teil3SelectedSitForLink}`);
+      if (prevSitDiv && !prevSitDiv.classList.contains("used")) {
+        prevSitDiv.style.backgroundColor = "white";
+        prevSitDiv.style.border = "1px solid #ddd";
+      }
+    }
+    teil3SelectedSitForLink = sitIdx;
+    const sitDiv = document.getElementById(`teil3_sit_${sitIdx}`);
+    if (sitDiv) {
+      sitDiv.style.backgroundColor = "#e0f2fe";
+      sitDiv.style.border = "1px solid #7dd3fc";
+    }
+    if (teil3SelectedItemForLink !== null) {
+      updateTeil3CardStyle(teil3SelectedItemForLink);
+      teil3SelectedItemForLink = null;
+    }
+  }
+  function renderTeil3Exam() {
+    const container = document.getElementById("teil3");
+    if (!container) return;
+    container.innerHTML = "";
+    const items = currentTeil3Data.items;
+    const situations = currentTeil3Data.situations;
+    const twoColumns = document.createElement("div");
+    twoColumns.style.display = "flex";
+    twoColumns.style.gap = "30px";
+    twoColumns.style.flexWrap = "wrap";
+    const leftColumn = document.createElement("div");
+    leftColumn.style.flex = "2";
+    leftColumn.style.minWidth = "500px";
+    const leftTitle = document.createElement("h3");
+    leftTitle.innerHTML = "Anzeigen";
+    leftTitle.style.marginTop = "0";
+    leftTitle.style.color = "#2c3e66";
+    leftTitle.style.marginBottom = "15px";
+    leftColumn.appendChild(leftTitle);
+    const itemsGrid = document.createElement("div");
+    itemsGrid.style.display = "grid";
+    itemsGrid.style.gridTemplateColumns = "1fr 1fr";
+    itemsGrid.style.gap = "20px";
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      const card = document.createElement("div");
+      card.className = "question-card";
+      card.id = `teil3_card_${i}`;
+      card.style.padding = "15px";
+      card.style.border = "1px solid #e0e0e0";
+      card.style.borderRadius = "12px";
+      card.style.backgroundColor = "#fafafa";
+      card.style.transition = "all 0.2s";
+      card.style.cursor = "pointer";
+      card.setAttribute("data-item-index", i);
+      const itemTitle = document.createElement("div");
+      itemTitle.style.fontWeight = "bold";
+      itemTitle.style.fontSize = "16px";
+      itemTitle.style.color = "#2c3e66";
+      itemTitle.style.marginBottom = "10px";
+      itemTitle.innerHTML = `Anzeige ${String.fromCharCode(65 + i)}`;
+      card.appendChild(itemTitle);
+      const itemText = document.createElement("div");
+      itemText.style.fontSize = "13px";
+      itemText.style.lineHeight = "1.5";
+      itemText.style.marginBottom = "12px";
+      itemText.style.color = "#555";
+      itemText.innerHTML = item.text;
+      card.appendChild(itemText);
+      const select = document.createElement("select");
+      select.className = "teil3-original-select";
+      select.style.width = "100%";
+      select.style.padding = "8px";
+      select.style.marginTop = "10px";
+      select.style.borderRadius = "8px";
+      select.style.border = "1px solid #ccc";
+      select.id = `teil3_select_${i}`;
+      select.innerHTML = "";
+      const noTitleOption = document.createElement("option");
+      noTitleOption.value = "none";
+      noTitleOption.textContent = "\u2727 \u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646 \u2727";
+      noTitleOption.selected = true;
+      select.appendChild(noTitleOption);
+      for (let s = 0; s < situations.length; s++) {
+        const option = document.createElement("option");
+        option.value = s;
+        option.textContent = `${String.fromCharCode(97 + s)}. ${situations[s]}`;
+        select.appendChild(option);
+      }
+      select.onchange = /* @__PURE__ */ (function(idx) {
+        return function() {
+          let val = select.value;
+          if (val === "none") {
+            teil3UserAnswers[idx] = "none";
+          } else if (val !== "") {
+            teil3UserAnswers[idx] = parseInt(val);
+          } else {
+            delete teil3UserAnswers[idx];
+          }
+          updateTeil3SelectOptions();
+          updateTeil3RightSideColors();
+          updateTeil3CardStyle(idx);
+          clearTeil3ItemSelection();
+          clearTeil3SituationSelection();
+        };
+      })(i);
+      card.appendChild(select);
+      card.addEventListener("click", /* @__PURE__ */ (function(idx) {
+        return function(e) {
+          if (e.target.tagName === "SELECT" || e.target.closest("select")) return;
+          e.stopPropagation();
+          handleTeil3ItemClick(idx);
+        };
+      })(i));
+      itemsGrid.appendChild(card);
+    }
+    leftColumn.appendChild(itemsGrid);
+    const rightColumn = document.createElement("div");
+    rightColumn.style.flex = "1";
+    rightColumn.style.minWidth = "250px";
+    rightColumn.style.backgroundColor = "#f0f8ff";
+    rightColumn.style.padding = "20px";
+    rightColumn.style.borderRadius = "12px";
+    rightColumn.style.border = "1px solid #d0e0ff";
+    rightColumn.style.maxHeight = "600px";
+    rightColumn.style.overflowY = "auto";
+    const rightTitle = document.createElement("h3");
+    rightTitle.innerHTML = "Situationen";
+    rightTitle.style.marginTop = "0";
+    rightTitle.style.color = "#2c3e66";
+    rightTitle.style.marginBottom = "15px";
+    rightColumn.appendChild(rightTitle);
+    const situationsList = document.createElement("div");
+    situationsList.id = "teil3_situations_list";
+    for (let i = 0; i < situations.length; i++) {
+      const sitDiv = document.createElement("div");
+      sitDiv.className = "teil3-situation-item";
+      sitDiv.id = `teil3_sit_${i}`;
+      sitDiv.setAttribute("data-sit-index", i);
+      sitDiv.style.padding = "10px 12px";
+      sitDiv.style.marginBottom = "8px";
+      sitDiv.style.backgroundColor = "white";
+      sitDiv.style.borderRadius = "6px";
+      sitDiv.style.border = "1px solid #ddd";
+      sitDiv.style.fontSize = "13px";
+      sitDiv.style.cursor = "pointer";
+      sitDiv.style.transition = "all 0.2s";
+      sitDiv.innerHTML = `${String.fromCharCode(97 + i)}. ${situations[i]}`;
+      sitDiv.onclick = /* @__PURE__ */ (function(sitIdx) {
+        return function(e) {
+          e.stopPropagation();
+          handleTeil3SituationClick(sitIdx);
+        };
+      })(i);
+      sitDiv.onmouseenter = function() {
+        if (!this.classList.contains("used") && this.style.backgroundColor !== "#e0f2fe") {
+          this.style.backgroundColor = "#f0f9ff";
+        }
+      };
+      sitDiv.onmouseleave = function() {
+        if (!this.classList.contains("used") && this.style.backgroundColor !== "#e0f2fe") {
+          this.style.backgroundColor = "white";
+        }
+      };
+      situationsList.appendChild(sitDiv);
+    }
+    rightColumn.appendChild(situationsList);
+    twoColumns.appendChild(leftColumn);
+    twoColumns.appendChild(rightColumn);
+    container.appendChild(twoColumns);
+    let row = container.querySelector(".teil-controls-row");
+    if (!row) {
+      row = document.createElement("div");
+      row.className = "teil-controls-row";
+      container.appendChild(row);
+    }
+    let checkBtn = row.querySelector(".check-btn");
+    if (!checkBtn) {
+      checkBtn = document.createElement("button");
+      checkBtn.className = "check-btn";
+      checkBtn.textContent = "\u{1F4DD} Pr\xFCfen";
+      row.appendChild(checkBtn);
+    }
+    checkBtn.onclick = () => {
+      if (typeof checkTeil3Exam === "function") checkTeil3Exam();
+    };
+    let resetBtn = row.querySelector(".lesen-reset-btn");
+    if (!resetBtn) {
+      resetBtn = document.createElement("button");
+      resetBtn.className = "lesen-reset-btn";
+      resetBtn.textContent = "\u21BA";
+      row.appendChild(resetBtn);
+    }
+    resetBtn.onclick = function() {
+      try {
+        if (typeof teil3UserAnswers !== "undefined") teil3UserAnswers = {};
+        if (typeof teil3SelectedItem !== "undefined") teil3SelectedItem = null;
+        if (typeof teil3SelectedSit !== "undefined") teil3SelectedSit = null;
+        if (typeof teil3SelectedItemForLink !== "undefined") teil3SelectedItemForLink = null;
+        if (typeof teil3SelectedSitForLink !== "undefined") teil3SelectedSitForLink = null;
+        container.querySelectorAll("select").forEach((select) => {
+          select.selectedIndex = 0;
+        });
+        container.querySelectorAll(".correct-message").forEach((el) => el.remove());
+        const resultDiv2 = document.getElementById("teil3Result");
+        if (resultDiv2) {
+          resultDiv2.style.display = "none";
+          resultDiv2.innerHTML = "";
+        }
+        if (typeof updateTeil3SelectOptions === "function") updateTeil3SelectOptions();
+        if (typeof updateTeil3RightSideColors === "function") updateTeil3RightSideColors();
+        if (typeof currentTeil3Data !== "undefined" && currentTeil3Data?.items && typeof updateTeil3CardStyle === "function") {
+          currentTeil3Data.items.forEach((_, i) => updateTeil3CardStyle(i));
+        }
+      } catch (e) {
+        console.error("\u274C Reset Lesen 3:", e);
+      }
+    };
+    const resultDiv = document.createElement("div");
+    resultDiv.id = "teil3Result";
+    resultDiv.className = "result-box";
+    resultDiv.style.display = "none";
+    container.appendChild(resultDiv);
+    updateTeil3SelectOptions();
+    updateTeil3RightSideColors();
+  }
+  function checkTeil3Exam() {
+    const items = currentTeil3Data.items;
+    let score = 0;
+    let total = items.length;
+    document.querySelectorAll("#teil3 .correct-message").forEach((msg) => msg.remove());
+    for (let i = 0; i < total; i++) {
+      const card = document.getElementById(`teil3_card_${i}`);
+      const userAnswer = teil3UserAnswers[i];
+      const correctIndex = items[i].correct;
+      let isCorrect = false;
+      let correctText = "";
+      let correctValue = null;
+      if (correctIndex === null || correctIndex === void 0) {
+        correctText = "\u2727 \u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646 \u2727";
+        correctValue = "none";
+        isCorrect = userAnswer === "none" || userAnswer === null || userAnswer === void 0 || userAnswer === "";
+      } else {
+        correctText = `${String.fromCharCode(97 + correctIndex)}. ${currentTeil3Data.situations[correctIndex]}`;
+        correctValue = correctIndex;
+        isCorrect = userAnswer === correctIndex;
+      }
+      if (card) {
+        if (isCorrect && userAnswer !== void 0 && userAnswer !== null && userAnswer !== "") {
+          score++;
+          card.style.backgroundColor = "#d4edda";
+          card.style.border = "3px solid #28a745";
+          card.style.boxShadow = "0 0 0 4px rgba(40,167,69,0.25)";
+          card.classList.remove("wrong-answer-card");
+          card.classList.add("correct-answer-card");
+        } else {
+          card.style.backgroundColor = "#fef0e0";
+          card.style.border = "3px solid #e67e22";
+          card.style.boxShadow = "0 0 0 4px rgba(230,126,34,0.25)";
+          card.classList.remove("correct-answer-card");
+          card.classList.add("wrong-answer-card");
+          const oldMsg = card.querySelector(".correct-message");
+          if (!oldMsg) {
+            const msg = document.createElement("div");
+            msg.className = "correct-message";
+            msg.style.color = "#28a745";
+            msg.style.marginTop = "10px";
+            msg.style.fontSize = "13px";
+            const correctText2 = correctIndex !== null && correctIndex !== void 0 ? `${String.fromCharCode(97 + correctIndex)}. ${currentTeil3Data.situations[correctIndex]}` : "\u2727 \u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646 \u2727";
+            msg.innerHTML = `\u2705 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629: ${correctText2}`;
+            card.appendChild(msg);
+          }
+        }
+      }
+    }
+    const finalScore = (score * 25 / total).toFixed(2);
+    const resultDiv = document.getElementById("teil3Result");
+    if (resultDiv) {
+      resultDiv.innerHTML = `\u0627\u0644\u0646\u062A\u064A\u062C\u0629: ${finalScore} / 25`;
+      resultDiv.style.display = "block";
+      resultDiv.style.visibility = "visible";
+      resultDiv.style.opacity = "1";
+    }
+    if (finalScore >= 20) {
+      resultDiv.style.backgroundColor = "#d4edda";
+      resultDiv.style.color = "#155724";
+    } else if (finalScore >= 15) {
+      resultDiv.style.backgroundColor = "#fff3cd";
+      resultDiv.style.color = "#856404";
+    } else {
+      resultDiv.style.backgroundColor = "#f8d7da";
+      resultDiv.style.color = "#721c24";
+    }
+    if (typeof window.saveExamResultGlobal === "function") {
+      const examId = currentTeil3Data.id || window.currentExamId || 1;
+      window.saveExamResultGlobal("lesen3", examId, parseFloat(finalScore));
+    }
+    const retryCount = window.incrementRetryCount(currentSkill, window.currentExamId || 1);
+    if (typeof window.updateRetryCounter === "function") {
+      window.updateRetryCounter();
+    }
+    if (typeof window.updateDailyPlanSilent === "function") {
+      window.updateDailyPlanSilent();
+    }
+    if (typeof window.removeColorFromExam === "function") {
+      const examId = window.currentExamId;
+      if (examId) {
+        window.removeColorFromExam(examId);
+      }
+    }
+    if (examTimer2.isRunning) {
+      const elapsed = examTimer2.stop();
+      if (elapsed !== null) {
+        const skill = window.currentSkill || "";
+        const examId = window.currentExamId || 1;
+        if (skill && examId) {
+          saveExamTime(skill, examId, elapsed);
+        }
+      }
+    }
+  }
+  function applyMobileStylesToEngine() {
+    if (window.innerWidth <= 768) {
+      const allQuestionCards = document.querySelectorAll(".question-card");
+      allQuestionCards.forEach((card) => {
+        card.style.padding = "10px";
+        card.style.marginBottom = "12px";
+        card.style.borderRadius = "10px";
+      });
+      const allQuestionTexts = document.querySelectorAll(".question-text");
+      allQuestionTexts.forEach((text) => {
+        text.style.fontSize = "0.75rem";
+        text.style.marginBottom = "8px";
+      });
+      const allOptionLabels = document.querySelectorAll(".option-label");
+      allOptionLabels.forEach((label) => {
+        label.style.padding = "6px 8px";
+        label.style.fontSize = "0.7rem";
+        label.style.marginBottom = "5px";
+      });
+      const allCheckBtns = document.querySelectorAll(".check-btn");
+      allCheckBtns.forEach((btn) => {
+        btn.style.padding = "8px 16px";
+        btn.style.fontSize = "0.75rem";
+      });
+      document.querySelectorAll("button").forEach((btn) => {
+        if (btn.textContent === "\u21BA") {
+          btn.style.padding = "6px 10px";
+          btn.style.fontSize = "14px";
+        }
+      });
+      const allResultBoxes = document.querySelectorAll(".result-box");
+      allResultBoxes.forEach((box) => {
+        box.style.padding = "6px 12px";
+        box.style.fontSize = "11px";
+        box.style.bottom = "15px";
+      });
+      const teil3Container = document.getElementById("teil3");
+      if (teil3Container) {
+        let itemsGrid = teil3Container.querySelector('[style*="grid-template-columns: 1fr 1fr"]');
+        if (!itemsGrid) {
+          itemsGrid = teil3Container.querySelector('.items-grid, [class*="grid"]');
+        }
+        if (itemsGrid) {
+          itemsGrid.style.display = "grid";
+          itemsGrid.style.gridTemplateColumns = "1fr 1fr";
+          itemsGrid.style.gap = "4px";
+          itemsGrid.style.width = "100%";
+        }
+        const cards = teil3Container.querySelectorAll(".question-card");
+        cards.forEach((card) => {
+          card.style.padding = "6px";
+          card.style.marginBottom = "0";
+          card.style.borderRadius = "8px";
+          card.style.width = "100%";
+          card.style.boxSizing = "border-box";
+          card.style.overflow = "hidden";
+          const title = card.querySelector('div[style*="font-weight: bold"]');
+          if (title) title.style.fontSize = "0.6rem";
+          const text = card.querySelector('div[style*="font-size: 13px"]');
+          if (text) text.style.fontSize = "0.55rem";
+          const select = card.querySelector("select");
+          if (select) {
+            select.style.fontSize = "0.5rem";
+            select.style.padding = "4px";
+          }
+        });
+        const situationTitle = teil3Container.querySelector("h3");
+        if (situationTitle && situationTitle.textContent.includes("Situationen")) {
+          situationTitle.style.display = "none";
+        }
+        const rightColumn = teil3Container.querySelector('div[style*="flex: 1"]:last-child, div[style*="min-width: 250px"]');
+        if (rightColumn) rightColumn.style.display = "none";
+        const leftColumn = teil3Container.querySelector('div[style*="flex: 2"]:first-child, div[style*="min-width: 500px"]');
+        if (leftColumn) {
+          leftColumn.style.width = "100%";
+          leftColumn.style.maxWidth = "100%";
+          leftColumn.style.flex = "none";
+        }
+      }
+    }
+  }
+  function applyTeil1CorrectionColors() {
+    if (window.innerWidth > 768) return;
+    const selects = document.querySelectorAll("#teil1 select");
+    selects.forEach((select) => {
+      const card = select.closest(".question-card");
+      if (!card) return;
+      const isCorrect = card.classList.contains("correct-answer-card");
+      const isWrong = card.classList.contains("wrong-answer-card");
+      if (isCorrect) {
+        select.style.setProperty("background-color", "#d4edda", "important");
+        select.style.setProperty("border", "2px solid #28a745", "important");
+        select.style.setProperty("color", "#155724", "important");
+      } else if (isWrong) {
+        select.style.setProperty("background-color", "#fef0e0", "important");
+        select.style.setProperty("border", "2px solid #e67e22", "important");
+        select.style.setProperty("color", "#155724", "important");
+      }
+    });
+  }
+  function applyTeil3CorrectionColors() {
+    if (window.innerWidth > 768) return;
+    const selects = document.querySelectorAll("#teil3 select");
+    selects.forEach((select) => {
+      const card = select.closest(".question-card");
+      if (!card) return;
+      const isCorrect = card.classList.contains("correct-answer-card");
+      const isWrong = card.classList.contains("wrong-answer-card");
+      if (isCorrect) {
+        select.style.setProperty("background-color", "#d4edda", "important");
+        select.style.setProperty("border", "2px solid #28a745", "important");
+        select.style.setProperty("color", "#155724", "important");
+      } else if (isWrong) {
+        select.style.setProperty("background-color", "#fef0e0", "important");
+        select.style.setProperty("border", "2px solid #e67e22", "important");
+        select.style.setProperty("color", "#155724", "important");
+      }
+    });
+  }
+  function getColorByIndex(index) {
+    const colors = [
+      "#D8ECFF",
+      "#DDF7E5",
+      "#FFF2CC",
+      "#F5E1FF",
+      "#FFE4D6",
+      "#E3F6F5",
+      "#FCE8F3",
+      "#E8F5D0",
+      "#FFD1DC",
+      "#E6E9FF",
+      "#FFEFD6",
+      "#E7F4E4"
+    ];
+    return colors[index % colors.length] || "#D8ECFF";
+  }
+  function getTextColorByIndex(index) {
+    const textColors = [
+      "#1565C0",
+      "#2E7D32",
+      "#F57C00",
+      "#6A1B9A",
+      "#BF360C",
+      "#00695C",
+      "#880E4F",
+      "#33691E",
+      "#C62828",
+      "#3949AB",
+      "#E65100",
+      "#5D4037"
+    ];
+    return textColors[index % textColors.length] || "#1565C0";
+  }
+  function highlightTextInContainer(container, searchText, colorIndex) {
+    if (!container || !searchText) return;
+    const walker = document.createTreeWalker(
+      container,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode: function(node) {
+          if (node.parentElement?.classList?.contains("memory-highlight")) return NodeFilter.FILTER_REJECT;
+          if (node.parentElement?.tagName === "SCRIPT") return NodeFilter.FILTER_REJECT;
+          if (node.parentElement?.tagName === "BUTTON") return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      }
+    );
+    const textNodes = [];
+    let currentNode = walker.nextNode();
+    while (currentNode) {
+      textNodes.push(currentNode);
+      currentNode = walker.nextNode();
+    }
+    textNodes.forEach((node) => {
+      const text = node.textContent;
+      const index = text.indexOf(searchText);
+      if (index !== -1) {
+        if (!window._originalTexts) window._originalTexts = /* @__PURE__ */ new Map();
+        if (!window._originalTexts.has(node)) {
+          window._originalTexts.set(node, text);
+        }
+        const before = text.substring(0, index);
+        const after = text.substring(index + searchText.length);
+        const fragment = document.createDocumentFragment();
+        if (before) fragment.appendChild(document.createTextNode(before));
+        const span = document.createElement("span");
+        span.className = `memory-highlight color${colorIndex}`;
+        const bgColor = getColorByIndex(colorIndex);
+        const txtColor = getTextColorByIndex(colorIndex);
+        span.style.backgroundColor = bgColor;
+        span.style.color = txtColor;
+        span.style.fontWeight = "bold";
+        span.style.padding = "1px 3px";
+        span.style.borderRadius = "3px";
+        span.textContent = searchText;
+        fragment.appendChild(span);
+        if (after) fragment.appendChild(document.createTextNode(after));
+        node.parentNode.replaceChild(fragment, node);
+      }
+    });
+  }
+  function highlightSelectOption(container, searchText, colorIndex) {
+    if (!container || !searchText) return;
+    const searchTrimmed = searchText.trim();
+    const txtColor = getTextColorByIndex(colorIndex);
+    const selects = container.querySelectorAll("select");
+    selects.forEach((select) => {
+      for (let i = 0; i < select.options.length; i++) {
+        const option = select.options[i];
+        if (option.textContent.trim() === searchTrimmed) {
+          option.style.color = txtColor;
+          option.style.fontWeight = "bold";
+          option.style.backgroundColor = "";
+          option.style.border = "";
+          option.style.padding = "";
+          option.style.borderRadius = "";
+          option.style.opacity = "";
+          break;
+        }
+      }
+    });
+    const labels = container.querySelectorAll("label");
+    labels.forEach((label) => {
+      const spans = label.querySelectorAll("span");
+      spans.forEach((span) => {
+        if (span.textContent.trim() === searchTrimmed) {
+          span.style.color = txtColor;
+          span.style.fontWeight = "bold";
+          span.style.backgroundColor = "";
+          span.style.border = "";
+          span.style.padding = "";
+          span.style.borderRadius = "";
+          span.style.opacity = "";
+        }
+      });
+    });
+    const wordCards = container.querySelectorAll(".sprach2-word-card");
+    wordCards.forEach((card) => {
+      const textElement = card.querySelector("span") || card;
+      if (textElement.textContent.trim() === searchTrimmed) {
+        textElement.style.color = txtColor;
+        textElement.style.fontWeight = "bold";
+      }
+    });
+    const allElements = container.querySelectorAll('.option, .option-btn, .choice, [class*="option"]');
+    allElements.forEach((el) => {
+      if (el.textContent.trim() === searchTrimmed) {
+        el.style.color = txtColor;
+        el.style.fontWeight = "bold";
+        el.style.backgroundColor = "";
+        el.style.border = "";
+        el.style.padding = "";
+        el.style.borderRadius = "";
+        el.style.opacity = "";
+      }
+    });
+  }
+  function applyAutoHighlights(examData) {
+    if (!examData) return;
+    if (examData.type === "matching" && examData.questions) {
+      const container = document.getElementById("teil1");
+      if (!container) return;
+      const questions = examData.questions || [];
+      const options = examData.sharedOptions || [];
+      questions.forEach((q, index) => {
+        const firstWords = getFirstWords(q.text, 7);
+        const color = q.highlightColor !== void 0 ? q.highlightColor : index % 12;
+        highlightTextInContainer(container, firstWords, color);
+        const correctOption = options[q.correct];
+        if (correctOption) {
+          highlightSelectOption(container, correctOption, color);
+        }
+      });
+      return;
+    }
+    if (examData.type === "teil3" && examData.items) {
+      const container = document.getElementById("teil3");
+      if (!container) return;
+      const items = examData.items || [];
+      const memoryHighlights = examData.memoryHighlights || [];
+      if (memoryHighlights.length > 0) {
+        memoryHighlights.forEach((highlight) => {
+          const color = highlight.color || 0;
+          const parts = highlight.parts || [];
+          parts.forEach((partText) => {
+            if (!partText || partText.trim() === "") return;
+            highlightTextInContainer(container, partText, color);
+          });
+        });
+      }
+      items.forEach((item, index) => {
+        if (item.correct === null || item.correct === void 0) return;
+        const color = item.highlightColor !== void 0 ? item.highlightColor : index % 12;
+        const correctIndex = item.correct;
+        const selects = container.querySelectorAll("select");
+        selects.forEach((select, idx) => {
+          if (idx === index) {
+            const optionsArray = [...select.options];
+            const firstRealOptionIndex = optionsArray.findIndex(
+              (opt) => /^[a-z]\./i.test(opt.textContent.trim())
+            );
+            const offset = firstRealOptionIndex !== -1 ? firstRealOptionIndex : 2;
+            const optionIndex = correctIndex + offset;
+            if (select.options[optionIndex]) {
+              const option = select.options[optionIndex];
+              option.style.backgroundColor = getColorByIndex(color);
+              option.style.color = getTextColorByIndex(color);
+              option.style.fontWeight = "bold";
+              option.style.padding = "2px 4px";
+              option.style.borderRadius = "3px";
+            }
+          }
+        });
+      });
+      return;
+    }
+    if ((examData.type === "sprach1" || examData.type === "sprach2") && examData.options) {
+      const containerId = examData.type === "sprach1" ? "sprach1" : "sprach2";
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const buttons = container.querySelectorAll('button.sprach1-gap-btn, button.sprach2-gap-btn, button[id*="sprach1_btn"], button[id*="sprach2_btn"]');
+      examData.options.forEach((option, index) => {
+        const highlight = option.memoryHighlight;
+        if (!highlight) return;
+        const color = highlight.color !== void 0 ? highlight.color : index % 12;
+        const bgColor = getColorByIndex(color);
+        const txtColor = getTextColorByIndex(color);
+        const btnId = containerId === "sprach1" ? `sprach1_btn_${option.id}` : `sprach2_btn_${option.id}`;
+        let btn = document.getElementById(btnId);
+        if (!btn) {
+          for (let b of buttons) {
+            if (b.textContent.includes(`(${option.id})`)) {
+              btn = b;
+              break;
+            }
+          }
+        }
+        if (btn) {
+          let prevNode = btn.previousSibling;
+          let beforeText = "";
+          while (prevNode) {
+            if (prevNode.nodeType === 3) {
+              beforeText = prevNode.textContent + beforeText;
+            } else if (prevNode.nodeType === 1) {
+              if (prevNode.tagName === "BUTTON" || prevNode.tagName === "SPAN" || prevNode.tagName === "DIV") {
+                break;
+              }
+              beforeText = prevNode.textContent + beforeText;
+            }
+            prevNode = prevNode.previousSibling;
+          }
+          beforeText = beforeText.trim();
+          let nextNode = btn.nextSibling;
+          let afterText = "";
+          while (nextNode) {
+            if (nextNode.nodeType === 3) {
+              afterText += nextNode.textContent;
+            } else if (nextNode.nodeType === 1) {
+              if (nextNode.tagName === "BUTTON" || nextNode.tagName === "SPAN" || nextNode.tagName === "DIV") {
+                break;
+              }
+              afterText += nextNode.textContent;
+            }
+            nextNode = nextNode.nextSibling;
+          }
+          afterText = afterText.trim();
+          if (highlight.before) {
+            const beforeNode = btn.previousSibling;
+            if (beforeNode && beforeNode.nodeType === 3) {
+              const text = beforeNode.textContent;
+              const trimmedBefore = highlight.before.trim();
+              const idx = text.lastIndexOf(trimmedBefore);
+              if (idx !== -1) {
+                const before = text.substring(0, idx);
+                const after = text.substring(idx + trimmedBefore.length);
+                const fragment = document.createDocumentFragment();
+                if (before) fragment.appendChild(document.createTextNode(before));
+                const span = document.createElement("span");
+                span.className = `memory-highlight color${color}`;
+                span.style.backgroundColor = bgColor;
+                span.style.color = txtColor;
+                span.style.fontWeight = "bold";
+                span.style.padding = "1px 3px";
+                span.style.borderRadius = "3px";
+                span.textContent = trimmedBefore;
+                fragment.appendChild(span);
+                if (after) fragment.appendChild(document.createTextNode(after));
+                beforeNode.parentNode.replaceChild(fragment, beforeNode);
+              }
+            }
+          }
+          if (highlight.after) {
+            const afterNode = btn.nextSibling;
+            if (afterNode && afterNode.nodeType === 3) {
+              const text = afterNode.textContent;
+              const trimmedAfter = highlight.after.trim();
+              const idx = text.indexOf(trimmedAfter);
+              if (idx !== -1) {
+                const before = text.substring(0, idx);
+                const after = text.substring(idx + trimmedAfter.length);
+                const fragment = document.createDocumentFragment();
+                if (before) fragment.appendChild(document.createTextNode(before));
+                const span = document.createElement("span");
+                span.className = `memory-highlight color${color}`;
+                span.style.backgroundColor = bgColor;
+                span.style.color = txtColor;
+                span.style.fontWeight = "bold";
+                span.style.padding = "1px 3px";
+                span.style.borderRadius = "3px";
+                span.textContent = trimmedAfter;
+                fragment.appendChild(span);
+                if (after) fragment.appendChild(document.createTextNode(after));
+                afterNode.parentNode.replaceChild(fragment, afterNode);
+              }
+            }
+          }
+          if (highlight.connector) {
+            btn.style.backgroundColor = bgColor;
+            btn.style.color = txtColor;
+            btn.style.fontWeight = "bold";
+            btn.style.border = `2px solid ${txtColor}`;
+            btn.style.borderRadius = "20px";
+            btn.style.padding = "4px 12px";
+            btn.style.opacity = "0.85";
+          }
+          if (highlight.connector) {
+            highlightSelectOption(container, highlight.connector, color);
+          }
+        }
+      });
+      return;
+    }
+  }
+  function getFirstWords(text, wordCount = 7) {
+    let cleanText = text.replace(/^Text\s*\d+:\s*/, "");
+    const words = cleanText.trim().split(/\s+/);
+    return words.slice(0, wordCount).join(" ");
+  }
+  function colorSelectOptions() {
+    if (window.memoryEngine && !window.memoryEngine.isActive) {
+      console.log("\u23ED\uFE0F colorSelectOptions: \u0627\u0644\u062A\u0644\u0648\u064A\u0646 \u0645\u0639\u0637\u0644\u060C \u062A\u062E\u0637\u064A \u062A\u0644\u0648\u064A\u0646 \u0627\u0644\u062E\u064A\u0627\u0631\u0627\u062A");
+      return;
+    }
+    const examData = window.currentExamData || (window.memoryEngine ? window.memoryEngine.currentExamData : null);
+    if (!examData) {
+      console.log("\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0628\u064A\u0627\u0646\u0627\u062A \u0627\u0645\u062A\u062D\u0627\u0646 \u0644\u0644\u062A\u0644\u0648\u064A\u0646");
+      return;
+    }
+    if (examData.type === "matching" && examData.questions) {
+      const container = document.getElementById("teil1");
+      if (!container) return;
+      const questions = examData.questions || [];
+      const options = examData.sharedOptions || [];
+      const selects = container.querySelectorAll("select");
+      selects.forEach((select, index) => {
+        const q = questions[index];
+        if (!q) return;
+        const color = q.highlightColor !== void 0 ? q.highlightColor : index % 12;
+        const correctOption = options[q.correct];
+        if (!correctOption) return;
+        for (let i = 0; i < select.options.length; i++) {
+          const option = select.options[i];
+          if (option.textContent.includes(correctOption) || correctOption.includes(option.textContent)) {
+            option.style.backgroundColor = getColorByIndex(color);
+            option.style.color = getTextColorByIndex(color);
+            option.style.fontWeight = "bold";
+            option.style.padding = "2px 4px";
+            option.style.borderRadius = "3px";
+            break;
+          }
+        }
+      });
+      return;
+    }
+    if (examData.type === "teil3" && examData.items) {
+      const container = document.getElementById("teil3");
+      if (!container) return;
+      const items = examData.items || [];
+      const selects = container.querySelectorAll("select");
+      selects.forEach((select, index) => {
+        const item = items[index];
+        if (!item || item.correct === null || item.correct === void 0) return;
+        const color = item.highlightColor !== void 0 ? item.highlightColor : index % 12;
+        const correctIndex = item.correct;
+        const optionsArray = [...select.options];
+        const firstRealOptionIndex = optionsArray.findIndex(
+          (opt) => /^[a-z]\./i.test(opt.textContent.trim())
+        );
+        const offset = firstRealOptionIndex !== -1 ? firstRealOptionIndex : 2;
+        const optionIndex = correctIndex + offset;
+        if (select.options[optionIndex]) {
+          const option = select.options[optionIndex];
+          option.style.backgroundColor = getColorByIndex(color);
+          option.style.color = getTextColorByIndex(color);
+          option.style.fontWeight = "bold";
+          option.style.padding = "2px 4px";
+          option.style.borderRadius = "3px";
+        }
+      });
+      return;
+    }
+    if ((examData.type === "sprach1" || examData.type === "sprach2") && examData.options) {
+      const containerId = examData.type === "sprach1" ? "sprach1" : "sprach2";
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      examData.options.forEach((option, index) => {
+        const highlight = option.memoryHighlight;
+        if (!highlight || !highlight.connector) return;
+        const color = highlight.color !== void 0 ? highlight.color : index % 12;
+        highlightSelectOption(container, highlight.connector, color);
+      });
+    }
+  }
+  function rebuildTrueFalseCards() {
+    console.log("========== REBUILD ==========");
+    if (typeof window.getUserStatusForExam === "function") {
+      window.getUserStatusForExam().then((status) => {
+        console.log("\u{1F4CA} \u062D\u0627\u0644\u0629 \u0627\u0644\u0645\u0633\u062A\u062E\u062F\u0645 \u0641\u064A rebuild:", status);
+      });
+    }
+    if (!window.currentSkill) {
+      console.warn("\u26A0\uFE0F window.currentSkill \u063A\u064A\u0631 \u0645\u0639\u0631\u0641\u060C \u0627\u0633\u062A\u062E\u062F\u0627\u0645 hoeren1 \u0643\u0627\u0641\u062A\u0631\u0627\u0636\u064A");
+      window.currentSkill = "hoeren1";
+    }
+    const activeSkill = window.currentSkill || "hoeren1";
+    const data = _hoerenData[activeSkill];
+    if (!data) {
+      console.warn(`\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0628\u064A\u0627\u0646\u0627\u062A \u0644\u0640 ${activeSkill}`);
+      console.log("========== END REBUILD (NO DATA) ==========");
+      return;
+    }
+    const container = document.getElementById(activeSkill);
+    if (!container) {
+      console.warn(`\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u062D\u0627\u0648\u064A\u0629 ${activeSkill}`);
+      console.log("========== END REBUILD (NO CONTAINER) ==========");
+      return;
+    }
+    container.style.display = "block";
+    data.container = container;
+    console.log(`container =`, container);
+    console.log(`questions =`, data.questions);
+    console.log(`questions length =`, data.questions ? data.questions.length : 0);
+    console.log(`interleaving =`, window.isInterleavingActive);
+    const savedAnswers = window._trueFalseUserAnswers ? { ...window._trueFalseUserAnswers } : {};
+    let questionsToUse = data.questions;
+    if (window.isInterleavingActive) {
+      const order = interleavingOrders[activeSkill];
+      if (order && order.length === data.questions.length) {
+        const ordered = [];
+        for (let idx of order) {
+          if (idx <= data.questions.length) {
+            ordered.push(data.questions[idx - 1]);
+          }
+        }
+        if (ordered.length === data.questions.length) {
+          questionsToUse = ordered;
+          console.log(`\u2705 Interleaving: \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0623\u0633\u0626\u0644\u0629 (${activeSkill})`);
+        }
+      }
+    }
+    console.log("questionsToUse:");
+    questionsToUse.forEach((q, i) => {
+      console.log(i + 1, q.text);
+    });
+    console.log("cards before delete =", container.querySelectorAll(".question-card").length);
+    const oldCards = container.querySelectorAll(".question-card");
+    oldCards.forEach((card) => card.remove());
+    window._trueFalseUserAnswers = {};
+    const result = container.querySelector("#truefalseResult");
+    if (result) {
+      result.style.display = "none";
+      result.innerHTML = "";
+    }
+    const numbers = container.querySelector("#truefalseCorrectNumbers");
+    if (numbers) {
+      numbers.style.display = "none";
+    }
+    const allMessages = container.querySelectorAll(".correct-message");
+    allMessages.forEach((msg) => msg.remove());
+    const allCards = container.querySelectorAll(".question-card");
+    allCards.forEach((card) => {
+      card.classList.remove("correct-answer-card", "wrong-answer-card");
+    });
+    const allLabels = container.querySelectorAll(".option-label");
+    allLabels.forEach((label) => {
+      label.style.backgroundColor = "white";
+      label.style.border = "1px solid #ccc";
+    });
+    let buttonsContainer = null;
+    let createNewButtons = false;
+    const allDivs = container.querySelectorAll("div");
+    for (let el of allDivs) {
+      const btns = el.querySelectorAll("button");
+      if (btns.length >= 2) {
+        const hasPr\u00FCfen = btns[0].textContent.includes("Pr\xFCfen") || btns[1].textContent.includes("Pr\xFCfen");
+        const hasReset = btns[0].textContent === "\u21BA" || btns[1].textContent === "\u21BA";
+        if (hasPr\u00FCfen && hasReset) {
+          buttonsContainer = el;
+          break;
+        }
+      }
+    }
+    if (!buttonsContainer) {
+      const checkBtn = container.querySelector(".check-btn");
+      if (checkBtn) {
+        let parent = checkBtn.parentElement;
+        while (parent && parent !== container) {
+          if (parent.querySelectorAll("button").length >= 2) {
+            buttonsContainer = parent;
+            break;
+          }
+          parent = parent.parentElement;
+        }
+      }
+    }
+    if (!buttonsContainer) {
+      container.querySelectorAll(".check-btn").forEach((btn) => {
+        const parent = btn.closest("div");
+        if (parent && parent.children.length <= 3) {
+          parent.remove();
+        } else {
+          btn.remove();
+        }
+      });
+      container.querySelectorAll("button").forEach((btn) => {
+        if (btn.textContent === "\u21BA") {
+          const parent = btn.closest("div");
+          if (parent && parent.children.length <= 2) {
+            parent.remove();
+          } else {
+            btn.remove();
+          }
+        }
+      });
+      createNewButtons = true;
+    }
+    for (let i = 0; i < questionsToUse.length; i++) {
+      const q = questionsToUse[i];
+      const questionId = q.displayNumber;
+      const div = document.createElement("div");
+      div.className = "question-card";
+      div.dataset.questionId = questionId;
+      div.style.display = "flex";
+      div.style.alignItems = "center";
+      div.style.gap = "15px";
+      div.style.marginBottom = "12px";
+      div.style.flexWrap = "wrap";
+      div.style.padding = "12px";
+      div.style.border = "1px solid #ddd";
+      div.style.borderRadius = "10px";
+      div.style.backgroundColor = "#f9f9f9";
+      div.id = `truefalse_card_${questionId}`;
+      const labelTrue = document.createElement("label");
+      labelTrue.className = "option-label";
+      labelTrue.style.display = "inline-flex";
+      labelTrue.style.alignItems = "center";
+      labelTrue.style.gap = "5px";
+      labelTrue.style.cursor = "pointer";
+      labelTrue.style.marginRight = "15px";
+      labelTrue.style.padding = "5px 10px";
+      labelTrue.style.border = "1px solid #ccc";
+      labelTrue.style.borderRadius = "5px";
+      labelTrue.style.backgroundColor = "white";
+      const radioTrue = document.createElement("input");
+      radioTrue.type = "radio";
+      radioTrue.name = `q_${questionId}`;
+      radioTrue.value = "true";
+      radioTrue.id = `q_${questionId}_true`;
+      radioTrue.onchange = /* @__PURE__ */ (function(qId) {
+        return function() {
+          window._trueFalseUserAnswers[qId] = true;
+        };
+      })(questionId);
+      labelTrue.appendChild(radioTrue);
+      labelTrue.appendChild(document.createTextNode(" Richtig"));
+      const labelFalse = document.createElement("label");
+      labelFalse.className = "option-label";
+      labelFalse.style.display = "inline-flex";
+      labelFalse.style.alignItems = "center";
+      labelFalse.style.gap = "5px";
+      labelFalse.style.cursor = "pointer";
+      labelFalse.style.padding = "5px 10px";
+      labelFalse.style.border = "1px solid #ccc";
+      labelFalse.style.borderRadius = "5px";
+      labelFalse.style.backgroundColor = "white";
+      const radioFalse = document.createElement("input");
+      radioFalse.type = "radio";
+      radioFalse.name = `q_${questionId}`;
+      radioFalse.value = "false";
+      radioFalse.id = `q_${questionId}_false`;
+      radioFalse.onchange = /* @__PURE__ */ (function(qId) {
+        return function() {
+          window._trueFalseUserAnswers[qId] = false;
+        };
+      })(questionId);
+      labelFalse.appendChild(radioFalse);
+      labelFalse.appendChild(document.createTextNode(" Falsch"));
+      const textSpan = document.createElement("span");
+      const displayNumber = q.displayNumber || i + 1;
+      textSpan.innerHTML = `<strong>${displayNumber}</strong> ${q.text}`;
+      textSpan.style.flex = "1";
+      textSpan.style.minWidth = "200px";
+      div.appendChild(labelTrue);
+      div.appendChild(labelFalse);
+      div.appendChild(textSpan);
+      if (buttonsContainer && buttonsContainer.parentNode === container) {
+        container.insertBefore(div, buttonsContainer);
+      } else {
+        container.appendChild(div);
+      }
+    }
+    console.log("cards after rebuild =", container.querySelectorAll(".question-card").length);
+    if (createNewButtons) {
+      const activeSkill2 = window.currentSkill || "hoeren1";
+      const data2 = _hoerenData[activeSkill2];
+      const finalQuestions = data2.questions;
+      const newButtonContainer = document.createElement("div");
+      newButtonContainer.style.display = "flex";
+      newButtonContainer.style.gap = "15px";
+      newButtonContainer.style.justifyContent = "space-between";
+      newButtonContainer.style.alignItems = "center";
+      newButtonContainer.style.marginTop = "25px";
+      const correctNumbersContainer = document.createElement("div");
+      correctNumbersContainer.id = "truefalseCorrectNumbers";
+      correctNumbersContainer.style.backgroundColor = "#e3f2fd";
+      correctNumbersContainer.style.color = "#0d47a1";
+      correctNumbersContainer.style.padding = "10px 15px";
+      correctNumbersContainer.style.borderRadius = "8px";
+      correctNumbersContainer.style.fontWeight = "bold";
+      correctNumbersContainer.style.fontSize = "14px";
+      correctNumbersContainer.style.border = "1px solid #90caf9";
+      correctNumbersContainer.style.display = "none";
+      correctNumbersContainer.innerHTML = "\u25B8 : ";
+      const buttonsDiv = document.createElement("div");
+      buttonsDiv.style.display = "flex";
+      buttonsDiv.style.gap = "15px";
+      const checkBtnNew = document.createElement("button");
+      checkBtnNew.innerText = "\u{1F4DD} Pr\xFCfen";
+      checkBtnNew.className = "check-btn";
+      checkBtnNew.style.padding = "12px 24px";
+      checkBtnNew.style.backgroundColor = "#2c3e66";
+      checkBtnNew.style.color = "white";
+      checkBtnNew.style.border = "none";
+      checkBtnNew.style.borderRadius = "8px";
+      checkBtnNew.style.cursor = "pointer";
+      checkBtnNew.style.fontSize = "16px";
+      checkBtnNew.onclick = () => {
+        const data3 = _hoerenData[activeSkill2];
+        const questionsToCheck = data3 && data3.originalQuestions.length > 0 ? data3.originalQuestions : finalQuestions;
+        checkTrueFalseExam(container, questionsToCheck, window._trueFalseUserAnswers, correctNumbersContainer);
+      };
+      const resetBtnNew = document.createElement("button");
+      resetBtnNew.innerText = "\u21BA";
+      resetBtnNew.style.padding = "8px 12px";
+      resetBtnNew.style.backgroundColor = "#6c757d";
+      resetBtnNew.style.color = "white";
+      resetBtnNew.style.border = "none";
+      resetBtnNew.style.borderRadius = "6px";
+      resetBtnNew.style.cursor = "pointer";
+      resetBtnNew.style.fontSize = "16px";
+      resetBtnNew.style.fontWeight = "bold";
+      resetBtnNew.onclick = function() {
+        for (let key in window._trueFalseUserAnswers) delete window._trueFalseUserAnswers[key];
+        container.querySelectorAll('input[type="radio"]').forEach((radio) => radio.checked = false);
+        container.querySelectorAll(".question-card").forEach((card) => card.classList.remove("correct-answer-card", "wrong-answer-card"));
+        container.querySelectorAll(".correct-message").forEach((msg) => msg.remove());
+        container.querySelectorAll(".option-label").forEach((label) => {
+          label.style.backgroundColor = "white";
+          label.style.border = "1px solid #ccc";
+        });
+        correctNumbersContainer.style.display = "none";
+        const resultDiv = container.querySelector("#truefalseResult");
+        if (resultDiv) {
+          resultDiv.style.display = "none";
+          resultDiv.innerHTML = "";
+        }
+      };
+      buttonsDiv.appendChild(checkBtnNew);
+      buttonsDiv.appendChild(resetBtnNew);
+      newButtonContainer.appendChild(correctNumbersContainer);
+      newButtonContainer.appendChild(buttonsDiv);
+      container.appendChild(newButtonContainer);
+      buttonsContainer = newButtonContainer;
+    }
+    if (Object.keys(savedAnswers).length > 0) {
+      const allRadios = container.querySelectorAll('input[type="radio"]');
+      allRadios.forEach((radio) => {
+        const name = radio.name;
+        const match = name.match(/q_(\d+)/);
+        if (match) {
+          const qId = parseInt(match[1]);
+          if (savedAnswers[qId] !== void 0) {
+            const expectedValue = savedAnswers[qId] ? "true" : "false";
+            if (radio.value === expectedValue) {
+              radio.checked = true;
+            }
+          }
+        }
+      });
+      window._trueFalseUserAnswers = savedAnswers;
+    }
+    console.log("===== FINAL HTML =====");
+    console.log(container.innerText.substring(0, 300));
+    console.log("===== FIRST CARD TEXT IN DOM =====");
+    const allSpans = container.querySelectorAll(".question-card span");
+    allSpans.forEach((span, idx) => {
+      console.log(`span ${idx + 1}:`, span.innerText);
+    });
+    console.log("========== END REBUILD ==========");
+  }
+  function rebuildLesen1() {
+    console.log("\u{1F504} \u0625\u0639\u0627\u062F\u0629 \u0628\u0646\u0627\u0621 Lesen 1...");
+    const container = document.getElementById("teil1");
+    if (!container) {
+      console.warn("\u26A0\uFE0F #teil1 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F");
+      return;
+    }
+    const cards = [...container.querySelectorAll(".question-card")];
+    if (cards.length === 0) {
+      console.warn("\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0628\u0637\u0627\u0642\u0627\u062A \u0641\u064A #teil1");
+      return;
+    }
+    console.log(`\u{1F4E6} \u0639\u062F\u062F \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A: ${cards.length}`);
+    if (!lesen1OrderSaved) {
+      lesen1OriginalNodes = [...cards];
+      console.log("\u{1F4BE} \u062A\u0645 \u062D\u0641\u0638 \u0627\u0644\u0639\u0642\u062F \u0627\u0644\u0623\u0635\u0644\u064A\u0629:", lesen1OriginalNodes.map((c) => c.id));
+      const order = interleavingOrders.lesen1;
+      if (order && order.length === cards.length) {
+        const orderedCards = [];
+        for (let idx of order) {
+          if (idx <= cards.length) {
+            orderedCards.push(cards[idx - 1]);
+          }
+        }
+        if (orderedCards.length === cards.length) {
+          lesen1ShuffledNodes = [...orderedCards];
+          console.log("\u{1F4BE} \u062A\u0645 \u062D\u0641\u0638 \u0627\u0644\u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0645\u062E\u062A\u0644\u0637:", lesen1ShuffledNodes.map((c) => c.id));
+        } else {
+          lesen1ShuffledNodes = [...cards];
+        }
+      } else {
+        lesen1ShuffledNodes = [...cards];
+        console.log("\u{1F4BE} \u0644\u0627 \u064A\u0648\u062C\u062F \u062A\u0631\u062A\u064A\u0628 \u0645\u062D\u062F\u062F\u060C \u0627\u0633\u062A\u062E\u062F\u0627\u0645 \u0627\u0644\u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u062D\u0627\u0644\u064A");
+      }
+      lesen1OrderSaved = true;
+    }
+    let targetNodes = window.isInterleavingActive ? lesen1ShuffledNodes : lesen1OriginalNodes;
+    console.log(`\u{1F504} \u062A\u0637\u0628\u064A\u0642 \u0627\u0644\u062A\u0631\u062A\u064A\u0628: ${window.isInterleavingActive ? "\u0645\u062E\u062A\u0644\u0637" : "\u0623\u0635\u0644\u064A"}`, targetNodes.map((c) => c.id));
+    const firstNonCard = container.querySelector(":scope > :not(.question-card)");
+    cards.forEach((card) => card.remove());
+    if (firstNonCard) {
+      for (let i = 0; i < targetNodes.length; i++) {
+        container.insertBefore(targetNodes[i], firstNonCard);
+      }
+    } else {
+      for (let node of targetNodes) {
+        container.appendChild(node);
+      }
+    }
+    console.log("\u2705 \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A \u0628\u0646\u062C\u0627\u062D");
+  }
+  function rebuildLesen2() {
+    console.log("\u{1F504} \u0625\u0639\u0627\u062F\u0629 \u0628\u0646\u0627\u0621 Lesen 2...");
+    const container = document.getElementById("teil2");
+    if (!container) {
+      console.warn("\u26A0\uFE0F #teil2 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F");
+      return;
+    }
+    let questionsContainer = null;
+    const allDivs = container.querySelectorAll("div");
+    for (const div of allDivs) {
+      const directCards = [...div.children].filter(
+        (el) => el.classList && el.classList.contains("question-card")
+      );
+      if (directCards.length > 0) {
+        questionsContainer = div;
+        console.log("\u2705 \u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u062D\u0627\u0648\u064A\u0629 \u0627\u0644\u0623\u0633\u0626\u0644\u0629 (\u0623\u0628\u0646\u0627\u0621 \u0645\u0628\u0627\u0634\u0631\u064A\u0646):", questionsContainer);
+        break;
+      }
+    }
+    if (!questionsContainer) {
+      questionsContainer = document.getElementById("teil2_questions_container");
+      if (questionsContainer) {
+        console.log("\u2705 \u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u062D\u0627\u0648\u064A\u0629 \u0627\u0644\u0623\u0633\u0626\u0644\u0629 \u0628\u0648\u0627\u0633\u0637\u0629 ID:", questionsContainer);
+      }
+    }
+    if (!questionsContainer) {
+      console.error("\u274C \u0644\u0645 \u064A\u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u062D\u0627\u0648\u064A\u0629 \u0627\u0644\u0623\u0633\u0626\u0644\u0629 \u0641\u064A #teil2");
+      return;
+    }
+    const cards = [...questionsContainer.querySelectorAll(".question-card")];
+    if (cards.length === 0) {
+      console.warn("\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0628\u0637\u0627\u0642\u0627\u062A \u0641\u064A \u062D\u0627\u0648\u064A\u0629 \u0627\u0644\u0623\u0633\u0626\u0644\u0629\u060C \u0625\u0639\u0627\u062F\u0629 \u0627\u0644\u0645\u062D\u0627\u0648\u0644\u0629 \u0628\u0639\u062F 50ms");
+      setTimeout(rebuildLesen2, 50);
+      return;
+    }
+    console.log(`\u{1F4E6} \u0639\u062F\u062F \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A: ${cards.length}`);
+    if (!lesen2OrderSaved) {
+      lesen2OriginalNodes = [...cards];
+      console.log("\u{1F4BE} \u062A\u0645 \u062D\u0641\u0638 \u0627\u0644\u0639\u0642\u062F \u0627\u0644\u0623\u0635\u0644\u064A\u0629 \u0644\u0640 Lesen2:", lesen2OriginalNodes.map((c) => c.id));
+      const order = interleavingOrders.lesen2;
+      if (order && order.length === cards.length) {
+        const orderedCards = [];
+        for (let idx of order) {
+          if (idx <= cards.length) {
+            orderedCards.push(cards[idx - 1]);
+          }
+        }
+        if (orderedCards.length === cards.length) {
+          lesen2ShuffledNodes = [...orderedCards];
+          console.log("\u{1F4BE} \u062A\u0645 \u062D\u0641\u0638 \u0627\u0644\u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0645\u062E\u062A\u0644\u0637 \u0644\u0640 Lesen2:", lesen2ShuffledNodes.map((c) => c.id));
+        } else {
+          lesen2ShuffledNodes = [...cards];
+        }
+      } else {
+        lesen2ShuffledNodes = [...cards];
+        console.log("\u{1F4BE} \u0644\u0627 \u064A\u0648\u062C\u062F \u062A\u0631\u062A\u064A\u0628 \u0645\u062D\u062F\u062F\u060C \u0627\u0633\u062A\u062E\u062F\u0627\u0645 \u0627\u0644\u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u062D\u0627\u0644\u064A");
+      }
+      lesen2OrderSaved = true;
+    }
+    let targetNodes = window.isInterleavingActive ? lesen2ShuffledNodes : lesen2OriginalNodes;
+    console.log(`\u{1F504} \u062A\u0637\u0628\u064A\u0642 \u0627\u0644\u062A\u0631\u062A\u064A\u0628: ${window.isInterleavingActive ? "\u0645\u062E\u062A\u0644\u0637" : "\u0623\u0635\u0644\u064A"}`, targetNodes.map((c) => c.id));
+    cards.forEach((card) => card.remove());
+    for (let i = 0; i < targetNodes.length; i++) {
+      questionsContainer.appendChild(targetNodes[i]);
+    }
+    console.log("\u2705 \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0631\u062A\u064A\u0628 \u0628\u0637\u0627\u0642\u0627\u062A Lesen2 \u0628\u0646\u062C\u0627\u062D \u062F\u0627\u062E\u0644 \u062D\u0627\u0648\u064A\u0629 \u0627\u0644\u0623\u0633\u0626\u0644\u0629");
+  }
+  function rebuildLesen3() {
+    console.log("\u{1F504} \u0625\u0639\u0627\u062F\u0629 \u0628\u0646\u0627\u0621 Lesen 3...");
+    const container = document.getElementById("teil3");
+    if (!container) {
+      console.warn("\u26A0\uFE0F #teil3 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F");
+      return;
+    }
+    let questionsContainer = null;
+    const allDivs = container.querySelectorAll("div");
+    for (const div of allDivs) {
+      const directCards = [...div.children].filter(
+        (el) => el.classList && el.classList.contains("question-card")
+      );
+      if (directCards.length > 0) {
+        questionsContainer = div;
+        console.log("\u2705 \u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u062D\u0627\u0648\u064A\u0629 \u0627\u0644\u0623\u0633\u0626\u0644\u0629 \u0644\u0640 Lesen3 (\u0623\u0628\u0646\u0627\u0621 \u0645\u0628\u0627\u0634\u0631\u064A\u0646):", questionsContainer);
+        break;
+      }
+    }
+    if (!questionsContainer) {
+      console.error("\u274C \u0644\u0645 \u064A\u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u062D\u0627\u0648\u064A\u0629 \u0627\u0644\u0623\u0633\u0626\u0644\u0629 \u0641\u064A #teil3");
+      return;
+    }
+    const cards = [...questionsContainer.querySelectorAll(".question-card")];
+    if (cards.length === 0) {
+      console.warn("\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0628\u0637\u0627\u0642\u0627\u062A \u0641\u064A \u062D\u0627\u0648\u064A\u0629 \u0627\u0644\u0623\u0633\u0626\u0644\u0629 \u0644\u0640 Lesen3\u060C \u0625\u0639\u0627\u062F\u0629 \u0627\u0644\u0645\u062D\u0627\u0648\u0644\u0629 \u0628\u0639\u062F 50ms");
+      setTimeout(rebuildLesen3, 50);
+      return;
+    }
+    console.log(`\u{1F4E6} \u0639\u062F\u062F \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A: ${cards.length}`);
+    if (!lesen3OrderSaved) {
+      lesen3OriginalNodes = [...cards];
+      console.log("\u{1F4BE} \u062A\u0645 \u062D\u0641\u0638 \u0627\u0644\u0639\u0642\u062F \u0627\u0644\u0623\u0635\u0644\u064A\u0629 \u0644\u0640 Lesen3:", lesen3OriginalNodes.map((c) => c.id));
+      const order = interleavingOrders.lesen3;
+      if (order && order.length === cards.length) {
+        const orderedCards = [];
+        for (let idx of order) {
+          if (idx <= cards.length) {
+            orderedCards.push(cards[idx - 1]);
+          }
+        }
+        if (orderedCards.length === cards.length) {
+          lesen3ShuffledNodes = [...orderedCards];
+          console.log("\u{1F4BE} \u062A\u0645 \u062D\u0641\u0638 \u0627\u0644\u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0645\u062E\u062A\u0644\u0637 \u0644\u0640 Lesen3:", lesen3ShuffledNodes.map((c) => c.id));
+        } else {
+          lesen3ShuffledNodes = [...cards];
+        }
+      } else {
+        lesen3ShuffledNodes = [...cards];
+        console.log("\u{1F4BE} \u0644\u0627 \u064A\u0648\u062C\u062F \u062A\u0631\u062A\u064A\u0628 \u0645\u062D\u062F\u062F\u060C \u0627\u0633\u062A\u062E\u062F\u0627\u0645 \u0627\u0644\u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u062D\u0627\u0644\u064A");
+      }
+      lesen3OrderSaved = true;
+    }
+    let targetNodes = window.isInterleavingActive ? lesen3ShuffledNodes : lesen3OriginalNodes;
+    console.log(`\u{1F504} \u062A\u0637\u0628\u064A\u0642 \u0627\u0644\u062A\u0631\u062A\u064A\u0628: ${window.isInterleavingActive ? "\u0645\u062E\u062A\u0644\u0637" : "\u0623\u0635\u0644\u064A"}`, targetNodes.map((c) => c.id));
+    cards.forEach((card) => card.remove());
+    for (let i = 0; i < targetNodes.length; i++) {
+      questionsContainer.appendChild(targetNodes[i]);
+    }
+    console.log("\u2705 \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0631\u062A\u064A\u0628 \u0628\u0637\u0627\u0642\u0627\u062A Lesen3 \u0628\u0646\u062C\u0627\u062D \u062F\u0627\u062E\u0644 \u062D\u0627\u0648\u064A\u0629 \u0627\u0644\u0623\u0633\u0626\u0644\u0629");
+  }
+  function resetLesen1Order() {
+    lesen1OriginalNodes = null;
+    lesen1ShuffledNodes = null;
+    lesen1OrderSaved = false;
+    console.log("\u{1F504} \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u062A\u0631\u062A\u064A\u0628 Lesen1");
+  }
+  function toggleInterleaving() {
+    if (_toggleInProgress) {
+      console.log("\u23ED\uFE0F \u0639\u0645\u0644\u064A\u0629 \u062A\u0628\u062F\u064A\u0644 \u0642\u064A\u062F \u0627\u0644\u062A\u0646\u0641\u064A\u0630\u060C \u062A\u062E\u0637\u064A");
+      return;
+    }
+    console.log("========== TOGGLE ==========");
+    console.log("before =", window.isInterleavingActive);
+    _toggleInProgress = true;
+    window.isInterleavingActive = !window.isInterleavingActive;
+    console.log("after =", window.isInterleavingActive);
+    console.log("currentSkill =", window.currentSkill);
+    console.log("============================");
+    const btn = document.getElementById("interleavingBtn");
+    if (btn) {
+      if (window.isInterleavingActive) {
+        btn.classList.add("active");
+        btn.title = "Interleaving: ON";
+      } else {
+        btn.classList.remove("active");
+        btn.title = "Interleaving: OFF";
+      }
+    }
+    const currentSkill3 = window.currentSkill || "hoeren1";
+    if (currentSkill3.startsWith("hoeren")) {
+      console.log(`Calling rebuildTrueFalseCards for ${currentSkill3}...`);
+      const data = _hoerenData[currentSkill3];
+      if (data && data.questions && data.questions.length > 0) {
+        if (typeof rebuildTrueFalseCards === "function") {
+          setTimeout(() => {
+            rebuildTrueFalseCards();
+            _toggleInProgress = false;
+          }, 50);
+        } else {
+          console.error("\u274C \u062F\u0627\u0644\u0629 rebuildTrueFalseCards \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629!");
+          _toggleInProgress = false;
+        }
+      } else {
+        console.warn(`\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0623\u0633\u0626\u0644\u0629 \u0644\u0640 ${currentSkill3}\u060C \u0627\u0646\u062A\u0638\u0631 \u062A\u062D\u0645\u064A\u0644 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646`);
+        _toggleInProgress = false;
+      }
+    } else if (currentSkill3 === "lesen1") {
+      console.log(`Calling rebuildLesen1...`);
+      if (typeof rebuildLesen1 === "function") {
+        setTimeout(() => {
+          rebuildLesen1();
+          _toggleInProgress = false;
+        }, 50);
+      } else {
+        console.error("\u274C \u062F\u0627\u0644\u0629 rebuildLesen1 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629!");
+        _toggleInProgress = false;
+      }
+    } else if (currentSkill3 === "lesen2") {
+      console.log(`Calling rebuildLesen2...`);
+      if (typeof rebuildLesen2 === "function") {
+        rebuildLesen2();
+        _toggleInProgress = false;
+      } else {
+        console.error("\u274C \u062F\u0627\u0644\u0629 rebuildLesen2 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629!");
+        _toggleInProgress = false;
+      }
+    } else if (currentSkill3 === "lesen3") {
+      console.log(`Calling rebuildLesen3...`);
+      if (typeof rebuildLesen3 === "function") {
+        rebuildLesen3();
+        _toggleInProgress = false;
+      } else {
+        console.error("\u274C \u062F\u0627\u0644\u0629 rebuildLesen3 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629!");
+        _toggleInProgress = false;
+      }
+    } else {
+      console.log(`\u26A0\uFE0F Interleaving \u063A\u064A\u0631 \u0645\u062F\u0639\u0648\u0645 \u0644\u0640 ${currentSkill3} \u062D\u0627\u0644\u064A\u0627\u064B`);
+      window.isInterleavingActive = !window.isInterleavingActive;
+      if (btn) {
+        btn.classList.remove("active");
+        btn.title = "Interleaving: OFF";
+      }
+      alert(`\u26A0\uFE0F Interleaving \u064A\u0639\u0645\u0644 \u0641\u0642\u0637 \u0639\u0644\u0649 H\xF6ren Teil 1,2,3 \u0648 Lesen 1 \u0648 Lesen 2 \u062D\u0627\u0644\u064A\u0627\u064B (\u0627\u0644\u0645\u0647\u0627\u0631\u0629 \u0627\u0644\u062D\u0627\u0644\u064A\u0629: ${currentSkill3})`);
+      _toggleInProgress = false;
+    }
+  }
+  function initInterleaving() {
+    console.log("\u{1F504} \u062A\u0647\u064A\u0626\u0629 \u0632\u0631 Interleaving...");
+    const btn = document.getElementById("interleavingBtn");
+    if (!btn) {
+      console.warn("\u26A0\uFE0F \u0632\u0631 Interleaving \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F \u0641\u064A \u0627\u0644\u0635\u0641\u062D\u0629!");
+      return;
+    }
+    if (_interleavingInitialized) {
+      console.log("\u23ED\uFE0F \u0632\u0631 Interleaving \u062A\u0645 \u062A\u0647\u064A\u0626\u062A\u0647 \u0645\u0633\u0628\u0642\u0627\u064B\u060C \u062A\u062E\u0637\u064A");
+      return;
+    }
+    console.log("\u2705 \u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u0632\u0631 Interleaving");
+    const newBtn = btn.cloneNode(true);
+    btn.parentNode.replaceChild(newBtn, btn);
+    const freshBtn = document.getElementById("interleavingBtn");
+    freshBtn.addEventListener("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log("\u{1F525} \u062A\u0645 \u0627\u0644\u0636\u063A\u0637 \u0639\u0644\u0649 \u0627\u0644\u0632\u0631!");
+      toggleInterleaving();
+    });
+    window.isInterleavingActive = false;
+    freshBtn.classList.remove("active");
+    freshBtn.title = "Interleaving: OFF";
+    _interleavingInitialized = true;
+    console.log("\u2705 \u0632\u0631 Interleaving \u062A\u0645 \u062A\u0647\u064A\u0626\u062A\u0647 \u0628\u0646\u062C\u0627\u062D (\u0645\u0631\u0629 \u0648\u0627\u062D\u062F\u0629)");
+  }
+  function resetInterleaving() {
+    console.log("\u{1F504} \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 Interleaving (\u062D\u0627\u0644\u0629 \u0641\u0642\u0637)");
+    window.isInterleavingActive = false;
+    const btn = document.getElementById("interleavingBtn");
+    if (btn) {
+      btn.classList.remove("active");
+      btn.title = "Interleaving: OFF";
+    }
+    if (typeof resetLesen1Order === "function") {
+      resetLesen1Order();
+    }
+    if (typeof resetLesen2Order === "function") {
+      resetLesen2Order();
+    }
+    if (typeof resetLesen3Order === "function") {
+      resetLesen3Order();
+    }
+    _interleavingInitialized = false;
+    console.log("\u2705 \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u062D\u0627\u0644\u0629 Interleaving");
+  }
+  function pushAnswerToHistory(action) {
+    if (!_historyEnabled) return;
+    _answerHistory.push(action);
+    if (_answerHistory.length > 50) _answerHistory.shift();
+  }
+  function undoLastAnswer() {
+    if (_answerHistory.length === 0) return false;
+    const lastAction = _answerHistory.pop();
+    const skill = window.currentSkill || "";
+    if (skill.startsWith("hoeren")) {
+      if (lastAction.type === "radio") {
+        const radio = document.querySelector(`input[name="${lastAction.name}"]:checked`);
+        if (radio) radio.checked = false;
+        if (window._trueFalseUserAnswers) {
+          const qId = parseInt(lastAction.name.replace("q_", ""));
+          delete window._trueFalseUserAnswers[qId];
+        }
+      }
+    } else if (skill === "lesen1" || skill === "teil1") {
+      if (lastAction.type === "select") {
+        const selectId = lastAction.id;
+        const oldVal = lastAction.oldValue || "";
+        const idx = parseInt(selectId.replace("matching_q_", ""));
+        if (typeof matchingSelectedAnswers2 !== "undefined") {
+          if (oldVal) {
+            matchingSelectedAnswers2[idx] = oldVal;
+          } else {
+            delete matchingSelectedAnswers2[idx];
+          }
+        }
+        if (typeof matchingAvailableOptions2 !== "undefined" && lastAction.newValue) {
+          const newVal = lastAction.newValue;
+          if (!matchingAvailableOptions2.includes(newVal)) {
+            matchingAvailableOptions2.push(newVal);
+          }
+        }
+        if (typeof window.renderMatchingQuestions === "function") {
+          window.renderMatchingQuestions();
+        } else if (typeof renderMatchingQuestions2 === "function") {
+          renderMatchingQuestions2();
+        }
+        const newSelect = document.getElementById(selectId);
+        if (newSelect) {
+          newSelect.value = oldVal;
+          newSelect.dataset.oldValue = oldVal;
+        }
+        console.log(`\u2705 \u062A\u0645 \u0627\u0644\u062A\u0631\u0627\u062C\u0639 \u0639\u0646 \u0627\u062E\u062A\u064A\u0627\u0631 ${selectId}`);
+        return true;
+      }
+    } else if (skill === "lesen2" || skill === "teil2") {
+      if (lastAction.type === "radio") {
+        const radio = document.querySelector(`input[name="${lastAction.name}"]:checked`);
+        if (radio) radio.checked = false;
+        if (typeof teil2UserAnswers !== "undefined") {
+          const idx = parseInt(lastAction.name.replace("teil2_q", ""));
+          delete teil2UserAnswers[idx];
+        }
+      }
+    } else if (skill === "lesen3" || skill === "teil3") {
+      if (lastAction.type === "select") {
+        const select = document.getElementById(lastAction.id);
+        if (select) {
+          select.value = "";
+          if (typeof teil3UserAnswers !== "undefined") {
+            const idx = parseInt(lastAction.id.replace("teil3_select_", ""));
+            delete teil3UserAnswers[idx];
+            if (typeof updateTeil3SelectOptions === "function") updateTeil3SelectOptions();
+            if (typeof updateTeil3RightSideColors === "function") updateTeil3RightSideColors();
+            if (typeof updateTeil3CardStyle === "function") updateTeil3CardStyle(idx);
+          }
+        }
+      } else if (lastAction.type === "teil3_link") {
+        const { itemIdx, sitIdx, action, previousSit } = lastAction;
+        if (action === "add") {
+          delete teil3UserAnswers[itemIdx];
+          const select = document.getElementById(`teil3_select_${itemIdx}`);
+          if (select) select.value = "";
+          if (typeof updateTeil3SelectOptions === "function") updateTeil3SelectOptions();
+          if (typeof updateTeil3RightSideColors === "function") updateTeil3RightSideColors();
+          if (typeof updateTeil3CardStyle === "function") updateTeil3CardStyle(itemIdx);
+        } else if (action === "remove") {
+          if (previousSit !== null && previousSit !== void 0 && previousSit !== "") {
+            teil3UserAnswers[itemIdx] = previousSit;
+            const select = document.getElementById(`teil3_select_${itemIdx}`);
+            if (select) select.value = previousSit;
+            if (typeof updateTeil3SelectOptions === "function") updateTeil3SelectOptions();
+            if (typeof updateTeil3RightSideColors === "function") updateTeil3RightSideColors();
+            if (typeof updateTeil3CardStyle === "function") updateTeil3CardStyle(itemIdx);
+          }
+        }
+      }
+    } else if (skill === "sprach1") {
+      if (lastAction.type === "sprach") {
+        const btn = document.getElementById(lastAction.id);
+        if (btn) {
+          const qId = parseInt(lastAction.id.replace("sprach1_btn_", ""));
+          if (typeof sprach1UserAnswers !== "undefined") {
+            delete sprach1UserAnswers[qId];
+            btn.textContent = `__(${qId})__`;
+            btn.style.backgroundColor = "#e0e0e0";
+            btn.style.color = "#333";
+            const radioName = `sprach1_q${qId}`;
+            document.querySelectorAll(`input[name="${radioName}"]`).forEach((r) => r.checked = false);
+          }
+        }
+      }
+    } else if (skill === "sprach2") {
+      if (lastAction.type === "sprach2_link") {
+        const { qId, word, action } = lastAction;
+        if (action === "add") {
+          delete sprach2UserAnswers[qId];
+          const btn = document.getElementById(`sprach2_btn_${qId}`);
+          if (btn) {
+            btn.textContent = `__( ${qId} )__`;
+            btn.style.backgroundColor = "#e0e0e0";
+            btn.style.color = "#333";
+            btn.classList.remove("selected-for-link");
+            btn.style.border = "none";
+          }
+          const card = document.getElementById(`sprach2_word_${word}`);
+          if (card) {
+            card.style.backgroundColor = "#ffffff";
+            card.style.border = "1px solid #7c6ce6";
+            card.style.color = "#4a4a4a";
+            card.style.cursor = "pointer";
+            card.style.opacity = "1";
+            card.classList.remove("selected-for-link");
+          }
+        } else if (action === "remove") {
+          sprach2UserAnswers[qId] = word;
+          const btn = document.getElementById(`sprach2_btn_${qId}`);
+          if (btn) {
+            btn.textContent = word;
+            btn.style.backgroundColor = "#d4edda";
+            btn.style.border = "2px solid #28a745";
+            btn.style.color = "#155724";
+          }
+          const card = document.getElementById(`sprach2_word_${word}`);
+          if (card) {
+            card.style.backgroundColor = "#d4edda";
+            card.style.border = "2px solid #28a745";
+            card.style.color = "#155724";
+            card.style.cursor = "default";
+            card.style.opacity = "0.85";
+          }
+        }
+      } else if (lastAction.type === "sprach") {
+        const btn = document.getElementById(lastAction.id);
+        if (btn) {
+          const qId = parseInt(lastAction.id.replace("sprach2_btn_", ""));
+          if (typeof sprach2UserAnswers !== "undefined") {
+            const word = sprach2UserAnswers[qId];
+            delete sprach2UserAnswers[qId];
+            btn.textContent = `__( ${qId} )__`;
+            btn.style.backgroundColor = "#e0e0e0";
+            btn.style.color = "#333";
+            if (word) {
+              const card = document.getElementById(`sprach2_word_${word}`);
+              if (card) {
+                card.style.backgroundColor = "#ffffff";
+                card.style.border = "1px solid #7c6ce6";
+                card.style.color = "#4a4a4a";
+                card.style.cursor = "pointer";
+                card.style.opacity = "1";
+              }
+            }
+          }
+        }
+      }
+    }
+    return true;
+  }
+  function pushTeil3LinkToHistory(itemIdx, sitIdx, action, previousSit) {
+    pushAnswerToHistory({
+      type: "teil3_link",
+      itemIdx,
+      sitIdx,
+      action,
+      // 'add' أو 'remove'
+      previousSit: previousSit !== void 0 ? previousSit : null
+    });
+  }
+  function hookAnswerSelection() {
+    document.addEventListener("change", function(e) {
+      if (e.target.type === "radio" && e.target.name && e.target.name.startsWith("q_")) {
+        if (e.target.checked) {
+          pushAnswerToHistory({ type: "radio", name: e.target.name, value: e.target.value });
+        }
+      }
+    });
+    document.addEventListener("change", function(e) {
+      if (e.target.tagName === "SELECT" && e.target.id && e.target.id.startsWith("matching_q_")) {
+        const oldVal = e.target.dataset.oldValue || "";
+        const newVal = e.target.value;
+        if (newVal) {
+          pushAnswerToHistory({ type: "select", id: e.target.id, oldValue: oldVal });
+          e.target.dataset.oldValue = newVal;
+        } else {
+          pushAnswerToHistory({ type: "select", id: e.target.id, oldValue: oldVal });
+          e.target.dataset.oldValue = "";
+        }
+        setTimeout(() => {
+          if (document.activeElement === e.target) {
+            e.target.blur();
+          }
+          const examContainer = document.getElementById("exam");
+          if (examContainer && !document.activeElement?.closest?.("#exam")) {
+            examContainer.setAttribute("tabindex", "-1");
+            examContainer.focus({ preventScroll: true });
+          }
+        }, 5);
+      }
+    });
+    document.addEventListener("change", function(e) {
+      if (e.target.type === "radio" && e.target.name && e.target.name.startsWith("teil2_q")) {
+        if (e.target.checked) {
+          pushAnswerToHistory({ type: "radio", name: e.target.name, value: e.target.value });
+          setTimeout(() => {
+            if (document.activeElement === e.target) {
+              e.target.blur();
+            }
+            const examContainer = document.getElementById("exam");
+            if (examContainer && !document.activeElement?.closest?.("#exam")) {
+              examContainer.setAttribute("tabindex", "-1");
+              examContainer.focus({ preventScroll: true });
+            }
+          }, 5);
+        }
+      }
+    });
+    document.addEventListener("change", function(e) {
+      if (e.target.tagName === "SELECT" && e.target.id && e.target.id.startsWith("teil3_select_")) {
+        const oldVal = e.target.dataset.oldValue || "";
+        const newVal = e.target.value;
+        if (newVal) {
+          pushAnswerToHistory({ type: "select", id: e.target.id, oldValue: oldVal });
+          e.target.dataset.oldValue = newVal;
+        } else {
+          pushAnswerToHistory({ type: "select", id: e.target.id, oldValue: oldVal });
+          e.target.dataset.oldValue = "";
+        }
+        setTimeout(() => {
+          if (document.activeElement === e.target) {
+            e.target.blur();
+          }
+          const examContainer = document.getElementById("exam");
+          if (examContainer && !document.activeElement?.closest?.("#exam")) {
+            examContainer.setAttribute("tabindex", "-1");
+            examContainer.focus({ preventScroll: true });
+          }
+        }, 5);
+      }
+    });
+    document.addEventListener("click", function(e) {
+      if (e.target.id && e.target.id.startsWith("sprach1_btn_")) {
+        const qId = parseInt(e.target.id.replace("sprach1_btn_", ""));
+        if (sprach1UserAnswers && sprach1UserAnswers[qId]) {
+          pushAnswerToHistory({ type: "sprach", id: e.target.id });
+        }
+      }
+      if (e.target.id && e.target.id.startsWith("sprach2_btn_")) {
+        const qId = parseInt(e.target.id.replace("sprach2_btn_", ""));
+        if (sprach2UserAnswers && sprach2UserAnswers[qId]) {
+          pushAnswerToHistory({ type: "sprach", id: e.target.id });
+        }
+      }
+      if (e.target.type === "radio" && e.target.name && e.target.name.startsWith("sprach1_q")) {
+        if (e.target.checked) {
+          pushAnswerToHistory({ type: "sprach", id: "sprach1_btn_" + e.target.name.replace("sprach1_q", "") });
+          setTimeout(() => {
+            if (document.activeElement === e.target) {
+              e.target.blur();
+            }
+            const examContainer = document.getElementById("exam");
+            if (examContainer && !document.activeElement?.closest?.("#exam")) {
+              examContainer.setAttribute("tabindex", "-1");
+              examContainer.focus({ preventScroll: true });
+            }
+          }, 5);
+        }
+      }
+    });
+    document.addEventListener("change", function(e) {
+      if (e.target.type === "radio" && e.target.name && e.target.name.startsWith("q_")) {
+        if (e.target.checked) {
+          setTimeout(() => {
+            if (document.activeElement === e.target) {
+              e.target.blur();
+            }
+            const examContainer = document.getElementById("exam");
+            if (examContainer && !document.activeElement?.closest?.("#exam")) {
+              examContainer.setAttribute("tabindex", "-1");
+              examContainer.focus({ preventScroll: true });
+            }
+          }, 5);
+        }
+      }
+    });
+  }
+  function fixFocusLoss() {
+    const examContainer = document.getElementById("exam");
+    if (!examContainer) return;
+    document.addEventListener("click", function(e) {
+      if (examContainer.contains(e.target)) {
+        setTimeout(() => {
+          if (document.activeElement?.tagName === "INPUT" || document.activeElement?.tagName === "TEXTAREA") {
+            return;
+          }
+          if (!document.activeElement?.closest?.("#exam")) {
+            examContainer.setAttribute("tabindex", "-1");
+            examContainer.focus({ preventScroll: true });
+          }
+        }, 10);
+      }
+    }, true);
+    document.addEventListener("change", function(e) {
+      if (e.target.closest && e.target.closest("#exam")) {
+        setTimeout(() => {
+          if (document.activeElement?.tagName === "INPUT" || document.activeElement?.tagName === "TEXTAREA") {
+            return;
+          }
+          if (!document.activeElement?.closest?.("#exam")) {
+            examContainer.setAttribute("tabindex", "-1");
+            examContainer.focus({ preventScroll: true });
+          }
+        }, 10);
+      }
+    }, true);
+  }
+  function enableHistory() {
+    _historyEnabled = true;
+    _answerHistory = [];
+  }
+  function disableHistory() {
+    _historyEnabled = false;
+    _answerHistory = [];
+  }
+  function isCorrectionVisible() {
+    const resultDiv = document.querySelector('.result-box:not([style*="display: none"])');
+    return resultDiv && resultDiv.style.display !== "none";
+  }
+  function triggerCorrection() {
+    const examContainer = document.getElementById("exam");
+    if (!examContainer) {
+      const checkBtn = document.querySelector(".check-btn");
+      if (checkBtn) {
+        checkBtn.click();
+        return true;
+      }
+      const allBtns2 = document.querySelectorAll("button");
+      for (let btn of allBtns2) {
+        const text = btn.textContent.trim();
+        if (text === "\u062A\u0635\u062D\u064A\u062D" || text === "Pr\xFCfen" || text === "\u2705 \u062A\u0635\u062D\u064A\u062D" || text === "\u{1F4DD} Pr\xFCfen") {
+          btn.click();
+          return true;
+        }
+      }
+      return false;
+    }
+    const allCheckBtns = examContainer.querySelectorAll(".check-btn");
+    for (const checkBtn of allCheckBtns) {
+      const btnStyle = window.getComputedStyle(checkBtn);
+      if (btnStyle.display === "none" || btnStyle.visibility === "hidden" || checkBtn.offsetParent === null) {
+        continue;
+      }
+      let parent = checkBtn.parentElement;
+      let hiddenParent = false;
+      while (parent && parent !== examContainer) {
+        const parentStyle = window.getComputedStyle(parent);
+        if (parentStyle.display === "none" || parentStyle.visibility === "hidden") {
+          hiddenParent = true;
+          break;
+        }
+        parent = parent.parentElement;
+      }
+      if (hiddenParent) {
+        continue;
+      }
+      console.log("\u2705 [Enter] \u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u0632\u0631 \u062A\u0635\u062D\u064A\u062D \u0645\u0631\u0626\u064A\u060C \u0633\u064A\u062A\u0645 \u0627\u0644\u0646\u0642\u0631 \u0639\u0644\u064A\u0647");
+      checkBtn.click();
+      return true;
+    }
+    const allBtns = examContainer.querySelectorAll("button");
+    for (let btn of allBtns) {
+      const text = btn.textContent.trim();
+      const btnStyle = window.getComputedStyle(btn);
+      if (btnStyle.display === "none" || btnStyle.visibility === "hidden" || btn.offsetParent === null) {
+        continue;
+      }
+      if (text === "\u062A\u0635\u062D\u064A\u062D" || text === "Pr\xFCfen" || text === "\u2705 \u062A\u0635\u062D\u064A\u062D" || text === "\u{1F4DD} Pr\xFCfen") {
+        console.log("\u2705 [Enter] \u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u0632\u0631 \u062A\u0635\u062D\u064A\u062D (\u0646\u0635) \u0645\u0631\u0626\u064A\u060C \u0633\u064A\u062A\u0645 \u0627\u0644\u0646\u0642\u0631 \u0639\u0644\u064A\u0647");
+        btn.click();
+        return true;
+      }
+    }
+    console.warn("\u274C [Enter] \u0644\u0645 \u064A\u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u0623\u064A \u0632\u0631 \u062A\u0635\u062D\u064A\u062D \u0645\u0631\u0626\u064A \u0641\u064A #exam");
+    return false;
+  }
+  function triggerNextExam() {
+    const nextBtn = document.getElementById("nextExamBtn");
+    if (nextBtn && nextBtn.style.display !== "none") {
+      nextBtn.click();
+      return true;
+    }
+    return false;
+  }
+  function triggerPrevExam() {
+    const prevBtn = document.getElementById("prevExamBtn");
+    if (prevBtn && prevBtn.style.display !== "none") {
+      prevBtn.click();
+      return true;
+    }
+    return false;
+  }
+  function triggerReset() {
+    const examContainer = document.getElementById("exam");
+    if (!examContainer) return false;
+    let resetBtn = null;
+    const allBtns = examContainer.querySelectorAll("button");
+    for (let btn of allBtns) {
+      const text = btn.textContent.trim();
+      if (text === "\u21BA" || text.includes("\u21BA")) {
+        resetBtn = btn;
+        break;
+      }
+    }
+    if (!resetBtn) {
+      for (let btn of allBtns) {
+        const text = btn.textContent.trim();
+        if (text.includes("\u0625\u0639\u0627\u062F\u0629") || text.includes("Reset") || text.includes("reset")) {
+          resetBtn = btn;
+          break;
+        }
+      }
+    }
+    if (!resetBtn) {
+      resetBtn = examContainer.querySelector('[class*="reset"], [id*="reset"], [class*="Reset"], [id*="Reset"]');
+    }
+    if (resetBtn) {
+      resetBtn.click();
+      return true;
+    }
+    console.warn("\u26A0\uFE0F \u0644\u0645 \u064A\u062A\u0645 \u0627\u0644\u0639\u062B\u0648\u0631 \u0639\u0644\u0649 \u0632\u0631 \u0625\u0639\u0627\u062F\u0629 \u0627\u0644\u0645\u062D\u0627\u0648\u0644\u0629 \u062F\u0627\u062E\u0644 \u0635\u0641\u062D\u0629 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646");
+    return false;
+  }
+  function exitExam() {
+    if (typeof window.goBackToExamsList === "function") {
+      window.goBackToExamsList();
+    } else {
+      const backBtn = document.getElementById("backArrowFromExam");
+      if (backBtn) backBtn.click();
+    }
+  }
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {
+      });
+    } else {
+      document.exitFullscreen().catch(() => {
+      });
+    }
+  }
+  function addSentencePuzzleIcons(container, questions) {
+    if (!container || !questions) return;
+    const cards = container.querySelectorAll(".question-card");
+    cards.forEach((card, index) => {
+      const textSpan = card.querySelector("span");
+      if (!textSpan) return;
+      const match = textSpan.textContent.match(/^(\d+)/);
+      if (!match) return;
+      const questionId = parseInt(match[1]);
+      let question = null;
+      for (let q of questions) {
+        if (q.displayNumber === questionId) {
+          question = q;
+          break;
+        }
+      }
+      if (!question) return;
+      if (question.correct === true) {
+        let icon = card.querySelector(".sentence-puzzle-icon");
+        if (icon) return;
+        icon = document.createElement("span");
+        icon.className = "sentence-puzzle-icon";
+        icon.textContent = "\u{1F500}";
+        icon.style.cssText = `
+                font-size: 16px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                margin-right: 10px;
+                display: inline-block;
+                color: #64748b;
+                opacity: 0.6;
+            `;
+        card.insertBefore(icon, textSpan);
+        icon.onclick = function(e) {
+          e.stopPropagation();
+          if (window.SentenceReorder) {
+            const cleanText = textSpan.textContent.replace(/^\d+\s*/, "");
+            const tempElement = document.createElement("span");
+            tempElement.textContent = cleanText;
+            SentenceReorder.open(container, tempElement, questionId, this);
+          }
+        };
+        icon.addEventListener("mouseenter", function() {
+          this.style.color = "#2c3e66";
+          this.style.opacity = "1";
+          this.style.transform = "scale(1.1)";
+        });
+        icon.addEventListener("mouseleave", function() {
+          this.style.color = "#64748b";
+          this.style.opacity = "0.6";
+          this.style.transform = "scale(1)";
+        });
+      }
+    });
+  }
+  var _hoerenData, interleavingOrders, lesen1OriginalNodes, lesen1ShuffledNodes, lesen1OrderSaved, lesen2OriginalNodes, lesen2ShuffledNodes, lesen2OrderSaved, lesen3OriginalNodes, lesen3ShuffledNodes, lesen3OrderSaved, examTimer2, currentSchreibenData, currentSprach2Data, sprach2UserAnswers, sprach2SelectedQuestionId, sprach2SelectedWordForLinking, currentSprach1Data, sprach1UserAnswers, sprach1OpenDropdownId, currentMatchingExamData2, matchingSelectedAnswers2, matchingAvailableOptions2, currentTeil2Data, teil2UserAnswers, currentTeil3Data, teil3UserAnswers, teil3SelectedItem, teil3SelectedSit, teil3SelectedItemForLink, teil3SelectedSitForLink, originalOpenExamGlobal, MemoryHighlightEngine, memoryEngine, toggleBtn, _toggleInProgress, _interleavingInitialized, _answerHistory, _historyEnabled, originalCheckTrueFalse, MatchingMode, matchingLesen1, matchingLesen3;
+  var init_engine = __esm({
+    "engine.js"() {
+      console.log("\u2705 engine.js \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647");
+      _hoerenData = {
+        hoeren1: { container: null, questions: [], note: "", originalQuestions: [] },
+        hoeren2: { container: null, questions: [], note: "", originalQuestions: [] },
+        hoeren3: { container: null, questions: [], note: "", originalQuestions: [] }
+      };
+      interleavingOrders = {
+        hoeren1: [2, 4, 1, 5, 3],
+        hoeren2: [3, 7, 1, 9, 5, 10, 2, 6, 4, 8],
+        hoeren3: [2, 4, 1, 5, 3],
+        lesen1: [3, 1, 5, 2, 4],
+        lesen2: [4, 2, 5, 1, 3],
+        lesen3: [4, 8, 1, 11, 6, 2, 10, 3, 12, 7, 5, 9]
+      };
+      lesen1OriginalNodes = null;
+      lesen1ShuffledNodes = null;
+      lesen1OrderSaved = false;
+      lesen2OriginalNodes = null;
+      lesen2ShuffledNodes = null;
+      lesen2OrderSaved = false;
+      lesen3OriginalNodes = null;
+      lesen3ShuffledNodes = null;
+      lesen3OrderSaved = false;
+      examTimer2 = {
+        startTime: null,
+        isRunning: false,
+        skill: null,
+        examId: null,
+        intervalId: null,
+        lastElapsed: 0,
+        start(skill, examId) {
+          if (this.isRunning) return;
+          this.startTime = Date.now();
+          this.isRunning = true;
+          this.skill = skill;
+          this.examId = examId;
+          this.lastElapsed = 0;
+          const btn = document.getElementById("playTimerBtn");
+          if (btn) {
+            btn.querySelector(".material-symbols-outlined").textContent = "pause";
+            btn.title = "\u0625\u064A\u0642\u0627\u0641 \u0645\u0624\u0642\u062A";
+          }
+          if (this.intervalId) clearInterval(this.intervalId);
+          this.intervalId = setInterval(() => {
+            if (this.isRunning) {
+              const elapsed = Date.now() - this.startTime + this.lastElapsed;
+              const seconds = Math.floor(elapsed / 1e3);
+              const minutes = (seconds / 60).toFixed(2);
+              updateTimerDisplay(minutes + " \u062F\u0642\u064A\u0642\u0629");
+            }
+          }, 1e3);
+          console.log(`\u23F1\uFE0F \u0628\u062F\u0623 \u0627\u0644\u062A\u0648\u0642\u064A\u062A \u0644\u0644\u0627\u0645\u062A\u062D\u0627\u0646 ${skill} - ${examId}`);
+        },
+        stop() {
+          if (!this.isRunning) return null;
+          const elapsed = Date.now() - this.startTime + this.lastElapsed;
+          this.isRunning = false;
+          this.lastElapsed = elapsed;
+          if (this.intervalId) {
+            clearInterval(this.intervalId);
+            this.intervalId = null;
+          }
+          const skill = this.skill;
+          const examId = this.examId;
+          const btn = document.getElementById("playTimerBtn");
+          if (btn) {
+            btn.querySelector(".material-symbols-outlined").textContent = "play_arrow";
+            btn.title = "\u0627\u0633\u062A\u0626\u0646\u0627\u0641 \u0627\u0644\u062A\u0648\u0642\u064A\u062A";
+          }
+          const seconds = Math.floor(elapsed / 1e3);
+          const minutes = (seconds / 60).toFixed(2);
+          updateTimerDisplay(minutes + " \u062F\u0642\u064A\u0642\u0629");
+          console.log(`\u23F1\uFE0F \u062A\u0648\u0642\u0641 \u0627\u0644\u062A\u0648\u0642\u064A\u062A \u0644\u0644\u0627\u0645\u062A\u062D\u0627\u0646 ${skill} - ${examId}\u060C \u0627\u0644\u0645\u062F\u0629: ${elapsed}ms`);
+          return elapsed;
+        },
+        resume() {
+          if (this.isRunning) return;
+          if (this.skill === null || this.examId === null) return;
+          this.startTime = Date.now();
+          this.isRunning = true;
+          const btn = document.getElementById("playTimerBtn");
+          if (btn) {
+            btn.querySelector(".material-symbols-outlined").textContent = "pause";
+            btn.title = "\u0625\u064A\u0642\u0627\u0641 \u0645\u0624\u0642\u062A";
+          }
+          if (this.intervalId) clearInterval(this.intervalId);
+          this.intervalId = setInterval(() => {
+            if (this.isRunning) {
+              const elapsed = Date.now() - this.startTime + this.lastElapsed;
+              const seconds = Math.floor(elapsed / 1e3);
+              const minutes = (seconds / 60).toFixed(2);
+              updateTimerDisplay(minutes + " \u062F\u0642\u064A\u0642\u0629");
+            }
+          }, 1e3);
+          console.log(`\u23F1\uFE0F \u0627\u0633\u062A\u0626\u0646\u0627\u0641 \u0627\u0644\u062A\u0648\u0642\u064A\u062A \u0644\u0644\u0627\u0645\u062A\u062D\u0627\u0646 ${this.skill} - ${this.examId}`);
+        },
+        finalize() {
+          if (!this.isRunning && this.lastElapsed === 0) {
+            return null;
+          }
+          let elapsed = this.lastElapsed;
+          if (this.isRunning) {
+            elapsed = Date.now() - this.startTime + this.lastElapsed;
+            this.isRunning = false;
+            if (this.intervalId) {
+              clearInterval(this.intervalId);
+              this.intervalId = null;
+            }
+          }
+          const skill = this.skill;
+          const examId = this.examId;
+          this.startTime = null;
+          this.isRunning = false;
+          this.skill = null;
+          this.examId = null;
+          this.lastElapsed = 0;
+          const btn = document.getElementById("playTimerBtn");
+          if (btn) {
+            btn.querySelector(".material-symbols-outlined").textContent = "play_arrow";
+            btn.title = "\u0628\u062F\u0621 \u062A\u0648\u0642\u064A\u062A \u0627\u0644\u062D\u0644";
+          }
+          const seconds = Math.floor(elapsed / 1e3);
+          const minutes = (seconds / 60).toFixed(2);
+          updateTimerDisplay(minutes + " \u062F\u0642\u064A\u0642\u0629");
+          console.log(`\u23F1\uFE0F \u062A\u0645 \u062D\u0641\u0638 \u0648\u0642\u062A \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 ${skill} - ${examId}\u060C \u0627\u0644\u0645\u062F\u0629: ${elapsed}ms`);
+          return elapsed;
+        },
+        reset() {
+          if (this.intervalId) {
+            clearInterval(this.intervalId);
+            this.intervalId = null;
+          }
+          this.startTime = null;
+          this.isRunning = false;
+          this.skill = null;
+          this.examId = null;
+          this.lastElapsed = 0;
+          const btn = document.getElementById("playTimerBtn");
+          if (btn) {
+            btn.querySelector(".material-symbols-outlined").textContent = "play_arrow";
+            btn.title = "\u0628\u062F\u0621 \u062A\u0648\u0642\u064A\u062A \u0627\u0644\u062D\u0644";
+          }
+          updateTimerDisplay("\u0644\u0645 \u064A\u064F\u0633\u062C\u0644");
+        }
+      };
+      window.examTimer = examTimer2;
+      window.saveExamTime = saveExamTime;
+      window.getExamTime = getExamTime2;
+      window.formatTime = formatTime;
+      window.getTimeColor = getTimeColor;
+      window.updateExamTimeInList = updateExamTimeInList;
+      document.addEventListener("beforeunload", function() {
+        if (examTimer2.isRunning) {
+          examTimer2.reset();
+        }
+      });
+      document.addEventListener("pagehide", function() {
+        if (examTimer2.isRunning) {
+          examTimer2.reset();
+        }
+      });
+      window.loadExamFromFile = async function(skill, examId) {
+        try {
+          const response = await fetch(`data/${skill}/exam${examId}.json`);
+          if (response.ok) {
+            return await response.json();
+          }
+          return null;
+        } catch (e) {
+          console.error("\u062E\u0637\u0623:", e);
+          return null;
+        }
+      };
+      currentSchreibenData = null;
+      window.loadSchreibenExam = function(examData) {
+        console.log("\u{1F7E2} loadSchreibenExam", examData.title);
+        currentSchreibenData = examData;
+        renderSchreibenExam();
+      };
+      currentSprach2Data = null;
+      sprach2UserAnswers = {};
+      sprach2SelectedQuestionId = null;
+      sprach2SelectedWordForLinking = null;
+      window.loadSprach2Exam = function(examData) {
+        console.log("\u{1F7E2} loadSprach2Exam", examData.title);
+        currentSprach2Data = examData;
+        sprach2UserAnswers = {};
+        sprach2SelectedQuestionId = null;
+        sprach2SelectedWordForLinking = null;
+        renderSprach2Exam();
+      };
+      currentSprach1Data = null;
+      sprach1UserAnswers = {};
+      window.loadSprach1Exam = function(examData) {
+        console.log("\u{1F7E2} loadSprach1Exam", examData.title);
+        currentSprach1Data = examData;
+        sprach1UserAnswers = {};
+        renderSprach1Exam();
+      };
+      sprach1OpenDropdownId = null;
+      window.buildTrueFalseExam = function(container, questions, note) {
+        if (!questions || !Array.isArray(questions) || questions.length === 0) {
+          console.error("\u274C \u062E\u0637\u0623: \u0644\u0627 \u062A\u0648\u062C\u062F \u0623\u0633\u0626\u0644\u0629 \u0641\u064A \u0647\u0630\u0627 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646");
+          if (container) {
+            container.innerHTML = '<div style="text-align:center; color:#ff6b6b; padding:30px; background:#fff; border-radius:12px;"> \u062D\u062F\u062B \u062E\u0637\u0623 \u0641\u064A \u062A\u062D\u0645\u064A\u0644 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646. \u064A\u0631\u062C\u0649 \u0627\u0644\u0645\u062D\u0627\u0648\u0644\u0629 \u0645\u0631\u0629 \u0623\u062E\u0631\u0649.</div>';
+          }
+          return;
+        }
+        container.innerHTML = "";
+        container.style.display = "block";
+        const skillId = container.id;
+        if (skillId.startsWith("hoeren")) {
+          const data = _hoerenData[skillId];
+          if (data) {
+            data.container = container;
+            data.questions = questions.map((q, index) => ({
+              ...q,
+              displayNumber: index + 1
+            }));
+            data.note = note || "";
+            data.originalQuestions = data.questions.slice();
+            console.log(`\u2705 \u062A\u0645 \u062A\u062E\u0632\u064A\u0646 \u0628\u064A\u0627\u0646\u0627\u062A ${skillId}`);
+          }
+        }
+        if (window._trueFalseUserAnswers) {
+          delete window._trueFalseUserAnswers;
+        }
+        window._trueFalseUserAnswers = {};
+        if (note) {
+          const noteDiv = document.createElement("div");
+          noteDiv.style.backgroundColor = "#fff3cd";
+          noteDiv.style.color = "#856404";
+          noteDiv.style.padding = "12px 15px";
+          noteDiv.style.borderRadius = "8px";
+          noteDiv.style.marginBottom = "20px";
+          noteDiv.style.border = "1px solid #ffeeba";
+          noteDiv.style.fontSize = "14px";
+          noteDiv.style.fontWeight = "bold";
+          noteDiv.innerHTML = `\u{1F4CC} <strong>\u0645\u0644\u0627\u062D\u0638\u0629:</strong> ${note}`;
+          container.appendChild(noteDiv);
+        }
+        let finalQuestions = questions;
+        if (skillId.startsWith("hoeren") && window.isInterleavingActive) {
+          const order = interleavingOrders[skillId];
+          if (order && order.length === questions.length) {
+            const orderedQuestions = [];
+            for (let idx of order) {
+              if (idx <= questions.length) {
+                orderedQuestions.push(questions[idx - 1]);
+              }
+            }
+            if (orderedQuestions.length === questions.length) {
+              finalQuestions = orderedQuestions;
+              console.log(`\u2705 Interleaving: \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0623\u0633\u0626\u0644\u0629 (${skillId})`);
+            }
+          }
+        }
+        for (let i = 0; i < finalQuestions.length; i++) {
+          const q = finalQuestions[i];
+          const questionId = q.displayNumber;
+          const div = document.createElement("div");
+          div.className = "question-card";
+          div.dataset.questionId = questionId;
+          div.dataset.originalIndex = i;
+          div.style.display = "flex";
+          div.style.alignItems = "center";
+          div.style.gap = "15px";
+          div.style.marginBottom = "12px";
+          div.style.flexWrap = "wrap";
+          div.style.padding = "12px";
+          div.style.border = "1px solid #ddd";
+          div.style.borderRadius = "10px";
+          div.style.backgroundColor = "#f9f9f9";
+          div.id = `truefalse_card_${questionId}`;
+          const labelTrue = document.createElement("label");
+          labelTrue.className = "option-label";
+          labelTrue.style.display = "inline-flex";
+          labelTrue.style.alignItems = "center";
+          labelTrue.style.gap = "5px";
+          labelTrue.style.cursor = "pointer";
+          labelTrue.style.marginRight = "15px";
+          labelTrue.style.padding = "5px 10px";
+          labelTrue.style.border = "1px solid #ccc";
+          labelTrue.style.borderRadius = "5px";
+          labelTrue.style.backgroundColor = "white";
+          const radioTrue = document.createElement("input");
+          radioTrue.type = "radio";
+          radioTrue.name = `q_${questionId}`;
+          radioTrue.value = "true";
+          radioTrue.id = `q_${questionId}_true`;
+          radioTrue.onchange = /* @__PURE__ */ (function(qId) {
+            return function() {
+              window._trueFalseUserAnswers[qId] = true;
+            };
+          })(questionId);
+          labelTrue.appendChild(radioTrue);
+          labelTrue.appendChild(document.createTextNode(" Richtig"));
+          const labelFalse = document.createElement("label");
+          labelFalse.className = "option-label";
+          labelFalse.style.display = "inline-flex";
+          labelFalse.style.alignItems = "center";
+          labelFalse.style.gap = "5px";
+          labelFalse.style.cursor = "pointer";
+          labelFalse.style.padding = "5px 10px";
+          labelFalse.style.border = "1px solid #ccc";
+          labelFalse.style.borderRadius = "5px";
+          labelFalse.style.backgroundColor = "white";
+          const radioFalse = document.createElement("input");
+          radioFalse.type = "radio";
+          radioFalse.name = `q_${questionId}`;
+          radioFalse.value = "false";
+          radioFalse.id = `q_${questionId}_false`;
+          radioFalse.onchange = /* @__PURE__ */ (function(qId) {
+            return function() {
+              window._trueFalseUserAnswers[qId] = false;
+            };
+          })(questionId);
+          labelFalse.appendChild(radioFalse);
+          labelFalse.appendChild(document.createTextNode(" Falsch"));
+          const textSpan = document.createElement("span");
+          const displayNumber = q.displayNumber || i + 1;
+          textSpan.innerHTML = `<strong>${displayNumber}</strong> ${q.text}`;
+          textSpan.style.flex = "1";
+          textSpan.style.minWidth = "200px";
+          div.appendChild(labelTrue);
+          div.appendChild(labelFalse);
+          div.appendChild(textSpan);
+          container.appendChild(div);
+        }
+        const buttonContainer = document.createElement("div");
+        buttonContainer.style.display = "flex";
+        buttonContainer.style.gap = "15px";
+        buttonContainer.style.justifyContent = "space-between";
+        buttonContainer.style.alignItems = "center";
+        buttonContainer.style.marginTop = "25px";
+        const correctNumbersContainer = document.createElement("div");
+        correctNumbersContainer.id = "truefalseCorrectNumbers";
+        correctNumbersContainer.style.backgroundColor = "#e3f2fd";
+        correctNumbersContainer.style.color = "#0d47a1";
+        correctNumbersContainer.style.padding = "10px 15px";
+        correctNumbersContainer.style.borderRadius = "8px";
+        correctNumbersContainer.style.fontWeight = "bold";
+        correctNumbersContainer.style.fontSize = "14px";
+        correctNumbersContainer.style.border = "1px solid #90caf9";
+        correctNumbersContainer.style.display = "none";
+        correctNumbersContainer.innerHTML = "\u25B8 : ";
+        const buttonsDiv = document.createElement("div");
+        buttonsDiv.style.display = "flex";
+        buttonsDiv.style.gap = "15px";
+        const checkBtn = document.createElement("button");
+        checkBtn.innerText = "\u{1F4DD} Pr\xFCfen";
+        checkBtn.className = "check-btn";
+        checkBtn.style.padding = "12px 24px";
+        checkBtn.style.backgroundColor = "#2c3e66";
+        checkBtn.style.color = "white";
+        checkBtn.style.border = "none";
+        checkBtn.style.borderRadius = "8px";
+        checkBtn.style.cursor = "pointer";
+        checkBtn.style.fontSize = "16px";
+        checkBtn.onclick = () => {
+          const data = _hoerenData[skillId];
+          const questionsToCheck = data && data.originalQuestions.length > 0 ? data.originalQuestions : finalQuestions;
+          checkTrueFalseExam(container, questionsToCheck, window._trueFalseUserAnswers, correctNumbersContainer);
+        };
+        const resetBtn = document.createElement("button");
+        resetBtn.innerText = "\u21BA";
+        resetBtn.style.padding = "8px 12px";
+        resetBtn.style.backgroundColor = "#6c757d";
+        resetBtn.style.color = "white";
+        resetBtn.style.border = "none";
+        resetBtn.style.borderRadius = "6px";
+        resetBtn.style.cursor = "pointer";
+        resetBtn.style.fontSize = "16px";
+        resetBtn.style.fontWeight = "bold";
+        resetBtn.onclick = function() {
+          container.querySelectorAll(".sentence-puzzle-icon").forEach((icon) => {
+            icon.remove();
+          });
+          if (window.SentenceReorder) {
+            window.SentenceReorder.isOpen = false;
+            window.SentenceReorder.isCorrect = false;
+            window.SentenceReorder.isAnimating = false;
+            window.SentenceReorder.iconElement = null;
+            window.SentenceReorder.parts = [];
+            window.SentenceReorder.shuffledParts = [];
+            window.SentenceReorder.slots = [];
+            window.SentenceReorder.currentContainer = null;
+            window.SentenceReorder.currentSentenceElement = null;
+            window.SentenceReorder.currentQuestionId = null;
+            window.SentenceReorder.currentText = "";
+          }
+          for (let key in window._trueFalseUserAnswers) {
+            delete window._trueFalseUserAnswers[key];
+          }
+          const allRadios = container.querySelectorAll('input[type="radio"]');
+          allRadios.forEach((radio) => {
+            radio.checked = false;
+          });
+          const cards = container.querySelectorAll(".question-card");
+          cards.forEach((card) => {
+            card.classList.remove("correct-answer-card", "wrong-answer-card");
+          });
+          const allMessages = container.querySelectorAll(".correct-message");
+          allMessages.forEach((msg) => msg.remove());
+          const optionLabels = container.querySelectorAll(".option-label");
+          optionLabels.forEach((label) => {
+            label.style.backgroundColor = "white";
+            label.style.border = "1px solid #ccc";
+          });
+          if (correctNumbersContainer) {
+            correctNumbersContainer.style.display = "none";
+          }
+          const resultDiv2 = container.querySelector("#truefalseResult");
+          if (resultDiv2) {
+            resultDiv2.style.display = "none";
+            resultDiv2.innerHTML = "";
+          }
+        };
+        buttonsDiv.appendChild(checkBtn);
+        buttonsDiv.appendChild(resetBtn);
+        buttonContainer.appendChild(correctNumbersContainer);
+        buttonContainer.appendChild(buttonsDiv);
+        container.appendChild(buttonContainer);
+        let resultDiv = document.getElementById("truefalseResult");
+        if (!resultDiv) {
+          resultDiv = document.createElement("div");
+          resultDiv.id = "truefalseResult";
+          resultDiv.className = "result-box";
+          resultDiv.style.display = "none";
+          container.appendChild(resultDiv);
+        }
+      };
+      currentMatchingExamData2 = null;
+      matchingSelectedAnswers2 = {};
+      matchingAvailableOptions2 = [];
+      window.loadMatchingExam = function(examData) {
+        console.log("\u{1F7E2} loadMatchingExam", examData.title);
+        resetLesen1Order();
+        currentMatchingExamData2 = examData;
+        matchingSelectedAnswers2 = {};
+        matchingAvailableOptions2 = [...examData.sharedOptions];
+        renderMatchingQuestions2();
+      };
+      currentTeil2Data = null;
+      teil2UserAnswers = {};
+      window.loadTeil2Exam = function(examData) {
+        console.log("\u{1F7E2} loadTeil2Exam", examData.title);
+        if (typeof resetLesen2Order === "function") {
+          resetLesen2Order();
+        }
+        currentTeil2Data = examData;
+        teil2UserAnswers = {};
+        renderTeil2Exam();
+      };
+      currentTeil3Data = null;
+      teil3UserAnswers = {};
+      teil3SelectedItem = null;
+      teil3SelectedSit = null;
+      teil3SelectedItemForLink = null;
+      teil3SelectedSitForLink = null;
+      window.loadTeil3Exam = function(examData) {
+        console.log("\u{1F7E2} loadTeil3Exam", examData.title);
+        currentTeil3Data = examData;
+        teil3UserAnswers = {};
+        teil3SelectedItem = null;
+        teil3SelectedSit = null;
+        teil3SelectedItemForLink = null;
+        teil3SelectedSitForLink = null;
+        renderTeil3Exam();
+      };
+      document.addEventListener("DOMContentLoaded", function() {
+        applyMobileStylesToEngine();
+      });
+      originalOpenExamGlobal = window.openExam;
+      if (originalOpenExamGlobal) {
+        window.openExam = async function(examId, examTitle, skill) {
+          await originalOpenExamGlobal(examId, examTitle, skill);
+          setTimeout(applyMobileStylesToEngine, 100);
+        };
+      }
+      window.addEventListener("resize", function() {
+        setTimeout(applyMobileStylesToEngine, 100);
+      });
+      if (typeof checkMatchingExam === "function") {
+        const originalCheckMatching = checkMatchingExam;
+        window.checkMatchingExam = function() {
+          originalCheckMatching();
+          setTimeout(function() {
+            applyTeil1CorrectionColors();
+          }, 50);
+        };
+      }
+      if (typeof checkTeil3Exam === "function") {
+        const originalCheckTeil3 = checkTeil3Exam;
+        window.checkTeil3Exam = function() {
+          originalCheckTeil3();
+          setTimeout(function() {
+            applyTeil3CorrectionColors();
+          }, 50);
+        };
+      }
+      console.log("\u2705 \u0623\u0644\u0648\u0627\u0646 \u0627\u0644\u062A\u0635\u062D\u064A\u062D \u0644\u0644\u0647\u0627\u062A\u0641 (Teil 1 & Teil 3) \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647\u0627");
+      MemoryHighlightEngine = class {
+        constructor() {
+          this.isActive = false;
+          this._lastAppliedId = null;
+          this._isApplying = false;
+          this._isToggling = false;
+          this.originalTexts = /* @__PURE__ */ new Map();
+          this.container = document.querySelector(".exam-box");
+          this.toggleBtn = document.getElementById("memoryToggleBtn");
+          this.currentExamData = null;
+          this.init();
+        }
+        init() {
+          if (this.toggleBtn) {
+            this.toggleBtn.addEventListener("click", () => this.toggle());
+          }
+          document.addEventListener("examLoaded", (e) => {
+            if (this.isActive && e.detail?.data) {
+              this.removeHighlights();
+              this.applyHighlights();
+            }
+          });
+        }
+        toggle() {
+          if (this._isToggling) return;
+          this._isToggling = true;
+          if (this.isActive) {
+            this.removeHighlights();
+            this.toggleBtn.classList.remove("active");
+            this._lastAppliedId = null;
+          } else {
+            this.applyHighlights();
+            this.toggleBtn.classList.add("active");
+          }
+          this.isActive = !this.isActive;
+          setTimeout(() => {
+            this._isToggling = false;
+          }, 500);
+        }
+        setExamData(data) {
+          this.currentExamData = data;
+          this._lastAppliedId = null;
+          if (this.isActive) {
+            this.removeHighlights();
+            this.applyHighlights();
+          }
+        }
+        applyHighlights() {
+          if (this._isApplying) return;
+          const examData = this.currentExamData || window.currentExamData || {};
+          const examId = examData.id || examData.title || "unknown";
+          if (this._lastAppliedId === examId && this.isActive) {
+            console.log("\u23ED\uFE0F \u062A\u062E\u0637\u064A \u0627\u0644\u062A\u0643\u0631\u0627\u0631 (\u0646\u0641\u0633 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646)", examId);
+            return;
+          }
+          this._isApplying = true;
+          this._lastAppliedId = examId;
+          const memoryHighlights = examData.memoryHighlights || [];
+          if (memoryHighlights.length > 0) {
+            console.log("\u{1F504} \u062A\u0637\u0628\u064A\u0642 \u0627\u0644\u062A\u0644\u0648\u064A\u0646 \u0645\u0646 memoryHighlights");
+            memoryHighlights.forEach((highlight) => {
+              const color = highlight.color || 0;
+              const parts = highlight.parts || [];
+              parts.forEach((partText) => {
+                if (!partText || partText.trim() === "") return;
+                this.highlightText(partText, color);
+              });
+            });
+            this._isApplying = false;
+            console.log(`\u2705 \u062A\u0645 \u062A\u0637\u0628\u064A\u0642 \u0627\u0644\u062A\u0644\u0648\u064A\u0646 (${memoryHighlights.length} \u0645\u062C\u0645\u0648\u0639\u0629)`);
+            return;
+          }
+          if (examData.type === "matching" || examData.type === "teil3" || examData.type === "sprach1" || examData.type === "sprach2") {
+            console.log(`\u{1F504} \u062A\u0637\u0628\u064A\u0642 \u0627\u0644\u062A\u0644\u0648\u064A\u0646 \u0627\u0644\u0622\u0644\u064A \u0644\u0640 ${examData.type}`);
+            applyAutoHighlights(examData);
+            this._isApplying = false;
+            console.log(`\u2705 \u062A\u0645 \u062A\u0637\u0628\u064A\u0642 \u0627\u0644\u062A\u0644\u0648\u064A\u0646 \u0627\u0644\u0622\u0644\u064A \u0644\u0640 ${examData.type}`);
+            setTimeout(colorSelectOptions, 100);
+            return;
+          }
+          console.log("\u{1F4CC} \u0644\u0627 \u062A\u0648\u062C\u062F \u0628\u064A\u0627\u0646\u0627\u062A \u062A\u0644\u0648\u064A\u0646 \u0644\u0647\u0630\u0627 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646");
+          this._isApplying = false;
+        }
+        highlightText(searchText, colorIndex) {
+          if (!this.container) return;
+          highlightTextInContainer(this.container, searchText, colorIndex);
+        }
+        removeHighlights() {
+          if (!this.container) return;
+          const highlights = this.container.querySelectorAll(".memory-highlight");
+          highlights.forEach((span) => {
+            const parent = span.parentNode;
+            const textNode = document.createTextNode(span.textContent);
+            parent.replaceChild(textNode, span);
+            parent.normalize();
+          });
+          const selects = this.container.querySelectorAll("select");
+          selects.forEach((select) => {
+            const options = select.querySelectorAll("option");
+            options.forEach((option) => {
+              option.style.removeProperty("backgroundColor");
+              option.style.removeProperty("color");
+              option.style.removeProperty("fontWeight");
+              option.style.removeProperty("padding");
+              option.style.removeProperty("borderRadius");
+              option.style.removeProperty("opacity");
+              option.style.removeProperty("background");
+              option.style.removeProperty("border");
+              if (option.style.length === 0) {
+                option.removeAttribute("style");
+              }
+            });
+            select.style.removeProperty("backgroundColor");
+            select.style.removeProperty("color");
+            select.style.removeProperty("fontWeight");
+            select.style.removeProperty("border");
+            select.style.removeProperty("padding");
+            select.style.removeProperty("borderRadius");
+            if (select.style.length === 0) {
+              select.removeAttribute("style");
+            }
+          });
+          const labels = this.container.querySelectorAll("label");
+          labels.forEach((label) => {
+            const spans = label.querySelectorAll("span");
+            spans.forEach((span) => {
+              span.style.color = "";
+              span.style.fontWeight = "";
+            });
+            label.style.color = "";
+            label.style.fontWeight = "";
+          });
+          const wordCards = this.container.querySelectorAll(".sprach2-word-card");
+          wordCards.forEach((card) => {
+            const textElement = card.querySelector("span") || card;
+            textElement.style.color = "";
+            textElement.style.fontWeight = "";
+          });
+          const allElements = this.container.querySelectorAll('.option, .option-btn, .choice, [class*="option"]');
+          allElements.forEach((el) => {
+            el.style.color = "";
+            el.style.fontWeight = "";
+          });
+          if (window._originalTexts) {
+            window._originalTexts.clear();
+          }
+          this.originalTexts.clear();
+        }
+      };
+      memoryEngine = new MemoryHighlightEngine();
+      window.memoryEngine = memoryEngine;
+      toggleBtn = document.getElementById("memoryToggleBtn");
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", function() {
+          memoryEngine.toggle();
+          setTimeout(colorSelectOptions, 300);
+        });
+      }
+      document.addEventListener("examLoaded", function(e) {
+        if (e.detail?.data) {
+          window.currentExamData = e.detail.data;
+          if (window.memoryEngine) {
+            window.memoryEngine.setExamData(e.detail.data);
+          }
+          setTimeout(colorSelectOptions, 300);
+        }
+      });
+      window.applyColorToOptions = function() {
+        setTimeout(colorSelectOptions, 100);
+      };
+      if (typeof checkMatchingExam === "function") {
+        const originalCheckMatching = window.checkMatchingExam;
+        window.checkMatchingExam = function() {
+          originalCheckMatching();
+          setTimeout(colorSelectOptions, 200);
+        };
+      }
+      if (typeof checkTeil3Exam === "function") {
+        const originalCheckTeil3 = window.checkTeil3Exam;
+        window.checkTeil3Exam = function() {
+          originalCheckTeil3();
+          setTimeout(colorSelectOptions, 200);
+        };
+      }
+      window.rebuildTrueFalseCards = rebuildTrueFalseCards;
+      window.rebuildLesen1 = rebuildLesen1;
+      window.rebuildLesen2 = rebuildLesen2;
+      window.rebuildLesen3 = rebuildLesen3;
+      window.resetLesen1Order = resetLesen1Order;
+      window.resetLesen2Order = resetLesen2Order;
+      window.resetLesen3Order = resetLesen3Order;
+      _toggleInProgress = false;
+      _interleavingInitialized = false;
+      window.toggleInterleaving = toggleInterleaving;
+      window.initInterleaving = initInterleaving;
+      window.resetInterleaving = resetInterleaving;
+      _answerHistory = [];
+      _historyEnabled = false;
+      document.addEventListener("keydown", function(e) {
+        if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.isContentEditable) {
+          return;
+        }
+        if (document.querySelector(".modal.active, .memory-trainer-overlay, #versionsPopupAuto, #resetConfirmModal")) {
+          if (e.key === "Escape") {
+            const popover = document.getElementById("shortcutsPopover");
+            if (popover && popover.style.display !== "none") {
+              popover.style.display = "none";
+              e.preventDefault();
+              return;
+            }
+            if (window.memoryTrainer && window.memoryTrainer.overlay) {
+              window.memoryTrainer.close();
+              e.preventDefault();
+              return;
+            }
+            const versionsPopup = document.getElementById("versionsPopupAuto");
+            if (versionsPopup) {
+              versionsPopup.remove();
+              e.preventDefault();
+              return;
+            }
+            const resetModal = document.getElementById("resetConfirmModal");
+            if (resetModal) {
+              resetModal.remove();
+              e.preventDefault();
+              return;
+            }
+          }
+          return;
+        }
+        const examPage = document.getElementById("exam");
+        if (!examPage || !examPage.classList.contains("active")) {
+          return;
+        }
+        const key = e.key;
+        if (key === "Escape") {
+          e.preventDefault();
+          exitExam();
+          return;
+        }
+        if (key === "f" || key === "F") {
+          e.preventDefault();
+          toggleFullscreen();
+          return;
+        }
+        if (key === "Enter") {
+          e.preventDefault();
+          triggerCorrection();
+          return;
+        }
+        if (key === "ArrowRight") {
+          e.preventDefault();
+          triggerNextExam();
+          return;
+        }
+        if (key === "ArrowLeft") {
+          e.preventDefault();
+          triggerPrevExam();
+          return;
+        }
+        if (key === "Backspace") {
+          e.preventDefault();
+          e.stopPropagation();
+          triggerReset();
+          return false;
+        }
+        if (key === "1") {
+          e.preventDefault();
+          const memoryToggleBtn = document.getElementById("memoryToggleBtn");
+          if (memoryToggleBtn) memoryToggleBtn.click();
+          return;
+        }
+        if (key === "2") {
+          e.preventDefault();
+          const helpBtn = document.getElementById("globalHelpButton");
+          if (helpBtn && helpBtn.style.display !== "none") {
+            helpBtn.click();
+          }
+          return;
+        }
+        if ((e.ctrlKey || e.metaKey) && key === "z") {
+          e.preventDefault();
+          if (!isCorrectionVisible()) {
+            undoLastAnswer();
+            const examContainer = document.getElementById("exam");
+            if (examContainer) {
+              examContainer.setAttribute("tabindex", "-1");
+              examContainer.focus({ preventScroll: true });
+            }
+          }
+          return;
+        }
+      }, true);
+      document.addEventListener("DOMContentLoaded", function() {
+        const toggleBtn2 = document.getElementById("shortcutsToggleBtn");
+        const popover = document.getElementById("shortcutsPopover");
+        if (toggleBtn2 && popover) {
+          toggleBtn2.addEventListener("click", function(e) {
+            e.stopPropagation();
+            const isVisible = popover.style.display !== "none";
+            popover.style.display = isVisible ? "none" : "block";
+          });
+          document.addEventListener("click", function(e) {
+            if (popover.style.display !== "none" && !popover.contains(e.target) && e.target !== toggleBtn2 && !toggleBtn2.contains(e.target)) {
+              popover.style.display = "none";
+            }
+          });
+          document.addEventListener("keydown", function(e) {
+            if (e.key === "Escape" && popover.style.display !== "none") {
+              popover.style.display = "none";
+            }
+          });
+        }
+        enableHistory();
+        hookAnswerSelection();
+        fixFocusLoss();
+        setTimeout(function() {
+          const origOpenExam = window.openExam;
+          if (typeof origOpenExam === "function") {
+            window.openExam = function(examId, examTitle, skill, fileName) {
+              enableHistory();
+              console.log("\u2705 [HISTORY] \u062A\u0645 \u062A\u0641\u0639\u064A\u0644 enableHistory \u0639\u0646\u062F \u0641\u062A\u062D \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646:", examId, skill);
+              return origOpenExam.call(this, examId, examTitle, skill, fileName);
+            };
+          } else {
+            console.warn("\u26A0\uFE0F [HISTORY] window.openExam \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u060C \u0625\u0639\u0627\u062F\u0629 \u0627\u0644\u0645\u062D\u0627\u0648\u0644\u0629 \u0628\u0639\u062F 200ms");
+            setTimeout(function() {
+              const origOpenExam2 = window.openExam;
+              if (typeof origOpenExam2 === "function") {
+                window.openExam = function(examId, examTitle, skill, fileName) {
+                  enableHistory();
+                  console.log("\u2705 [HISTORY] \u062A\u0645 \u062A\u0641\u0639\u064A\u0644 enableHistory (\u0645\u062D\u0627\u0648\u0644\u0629 \u062B\u0627\u0646\u064A\u0629)");
+                  return origOpenExam2.call(this, examId, examTitle, skill, fileName);
+                };
+              }
+            }, 200);
+          }
+        }, 100);
+      });
+      window.triggerCorrection = triggerCorrection;
+      window.triggerNextExam = triggerNextExam;
+      window.triggerPrevExam = triggerPrevExam;
+      window.triggerReset = triggerReset;
+      window.exitExam = exitExam;
+      window.toggleFullscreen = toggleFullscreen;
+      window.undoLastAnswer = undoLastAnswer;
+      window.pushAnswerToHistory = pushAnswerToHistory;
+      window.enableHistory = enableHistory;
+      window.disableHistory = disableHistory;
+      window.pushTeil3LinkToHistory = pushTeil3LinkToHistory;
+      window.hookAnswerSelection = hookAnswerSelection;
+      window._answerHistory = _answerHistory;
+      console.log("\u2705 \u0646\u0638\u0627\u0645 \u0627\u062E\u062A\u0635\u0627\u0631\u0627\u062A \u0644\u0648\u062D\u0629 \u0627\u0644\u0645\u0641\u0627\u062A\u064A\u062D \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647 \u0628\u0646\u062C\u0627\u062D");
+      console.log("\u2705 \u0646\u0638\u0627\u0645 Interleaving \u062C\u0627\u0647\u0632 - \u064A\u0639\u0645\u0644 \u0639\u0644\u0649 H\xF6ren Teil 1,2,3 \u0648 Lesen 1 \u0648 Lesen 2");
+      originalCheckTrueFalse = checkTrueFalseExam;
+      checkTrueFalseExam = function(container, questions, answers, correctNumbersContainer) {
+        originalCheckTrueFalse(container, questions, answers, correctNumbersContainer);
+        setTimeout(() => {
+          addSentencePuzzleIcons(container, questions);
+        }, 150);
+      };
+      console.log("\u2705 \u062A\u0645 \u0631\u0628\u0637 SentenceReorder \u0645\u0639 engine.js (\u0645\u0639 \u062F\u0639\u0645 Reset)");
+      MatchingMode = class {
+        /**
+         * @param {string} containerId – 'teil1' أو 'teil3'
+         * @param {string} modeName – 'lesen1' أو 'lesen3'
+         */
+        constructor(containerId, modeName) {
+          this.containerId = containerId;
+          this.modeName = modeName;
+          this.isActive = false;
+          this.root = null;
+          this.styleId = `zertiva-matching-style-${modeName}`;
+          this._selects = [];
+          this._texts = [];
+          this._titles = [];
+          this._matches = /* @__PURE__ */ new Map();
+          this._titleToText = /* @__PURE__ */ new Map();
+          this._selectedText = null;
+          this._selectedTitle = null;
+          this._textElements = /* @__PURE__ */ new Map();
+          this._titleElements = /* @__PURE__ */ new Map();
+          this._progressText = null;
+          this._progressFill = null;
+          this._isDestroyed = false;
+          this._resizeHandler = null;
+          this._captureTimeout = null;
+          this._isBuilding = false;
+          this._stateKey = `matching_state_${modeName}`;
+        }
+        _saveState(active) {
+          return;
+        }
+        _loadState() {
+          return false;
+        }
+        _extractData() {
+          const container = document.getElementById(this.containerId);
+          if (!container) return false;
+          const selects = Array.from(container.querySelectorAll("select")).filter((sel) => {
+            const rect = sel.getBoundingClientRect();
+            return rect.width > 0 && rect.height > 0 && getComputedStyle(sel).display !== "none";
+          });
+          if (selects.length === 0) return false;
+          let maxSelects = this.modeName === "lesen1" ? 5 : 12;
+          this._selects = selects.slice(0, maxSelects);
+          if (this._selects.length < 5) return false;
+          this._texts = this._selects.map((select, index) => {
+            let text = "\u0646\u0635 \u063A\u064A\u0631 \u0645\u0639\u0631\u0648\u0641";
+            let parent = select.parentElement;
+            if (parent) {
+              const children = Array.from(parent.children);
+              const idx = children.indexOf(select);
+              if (idx > 0) {
+                const prev = children[idx - 1];
+                if (prev && !prev.querySelector("select")) {
+                  const raw = prev.textContent.trim();
+                  if (raw.length > 20) text = raw;
+                }
+              }
+            }
+            if (text === "\u0646\u0635 \u063A\u064A\u0631 \u0645\u0639\u0631\u0648\u0641") {
+              const container2 = select.closest(".question-card, .item, div");
+              if (container2) {
+                const clone = container2.cloneNode(true);
+                clone.querySelectorAll("select, button, input, textarea").forEach((el) => el.remove());
+                const raw = clone.textContent.trim();
+                if (raw.length > 20) text = raw;
+              }
+            }
+            return {
+              id: `text-${index + 1}`,
+              number: index + 1,
+              content: text,
+              select
+            };
+          });
+          const firstSelect = this._selects[0];
+          if (!firstSelect) return false;
+          const options = Array.from(firstSelect.options).map((opt) => ({ value: opt.value, text: opt.textContent.trim() })).filter((opt) => {
+            if (!opt.text) return false;
+            const lowerText = opt.text.toLowerCase();
+            if (lowerText.includes("\u0627\u062E\u062A\u0631 \u0627\u0644\u0625\u062C\u0627\u0628\u0629") || lowerText.includes("\u0627\u062E\u062A\u0631 \u0627\u0644\u0639\u0646\u0648\u0627\u0646") || lowerText.includes("ausw\xE4hlen") || lowerText.includes("w\xE4hlen") || lowerText.includes("\u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646")) {
+              return false;
+            }
+            return true;
+          });
+          this._titles = options.map((opt, idx) => ({
+            id: `title-${idx + 1}`,
+            value: opt.value,
+            text: opt.text,
+            letter: String.fromCharCode(65 + idx)
+          }));
+          if (this.modeName === "lesen3") {
+            this._titles.unshift({
+              id: "title-none",
+              value: "",
+              text: "\u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646",
+              letter: ""
+            });
+          }
+          if (this._titles.length === 0) return false;
+          this._texts.forEach((text) => {
+            const val = text.select.value;
+            if (val) {
+              const title = this._titles.find((t) => t.value === val);
+              if (title) {
+                this._matches.set(text.id, title.id);
+                this._titleToText.set(title.id, text.id);
+              }
+            }
+          });
+          return true;
+        }
+        _buildUI() {
+          if (this._isBuilding) return;
+          this._isBuilding = true;
+          const container = document.getElementById(this.containerId);
+          if (!container) {
+            this._isBuilding = false;
+            return;
+          }
+          if (this.root && this.root.parentNode) {
+            this._isBuilding = false;
+            return;
+          }
+          const root = document.createElement("section");
+          root.className = "zertiva-matching-root";
+          root.id = `zertiva-matching-root-${this.modeName}`;
+          root.style.display = "none";
+          const header = document.createElement("div");
+          header.className = "zertiva-matching-header";
+          const title = document.createElement("div");
+          title.className = "zertiva-matching-main-title";
+          title.textContent = this.modeName === "lesen1" ? "Lesen Teil 1" : "Lesen Teil 3";
+          const progress = document.createElement("div");
+          progress.className = "zertiva-matching-progress";
+          const progressText = document.createElement("span");
+          this._progressText = progressText;
+          const progressBar = document.createElement("span");
+          progressBar.className = "zertiva-matching-progress-bar";
+          const progressFill = document.createElement("span");
+          progressFill.className = "zertiva-matching-progress-fill";
+          this._progressFill = progressFill;
+          progressBar.appendChild(progressFill);
+          progress.append(progressText, progressBar);
+          header.append(title, progress);
+          const textArea = document.createElement("div");
+          textArea.className = "zertiva-matching-text-area";
+          const textGrid = document.createElement("div");
+          textGrid.className = "zertiva-matching-text-grid";
+          textArea.appendChild(textGrid);
+          const answerArea = document.createElement("div");
+          answerArea.className = "zertiva-matching-answer-area";
+          const answerHeader = document.createElement("div");
+          answerHeader.className = "zertiva-matching-answer-header";
+          const answerTitle = document.createElement("div");
+          answerTitle.className = "zertiva-matching-answer-title";
+          answerTitle.textContent = "TITEL ZUORDNEN";
+          answerHeader.appendChild(answerTitle);
+          const titleArea = document.createElement("div");
+          titleArea.className = "zertiva-matching-title-area";
+          const titleGrid = document.createElement("div");
+          titleGrid.className = "zertiva-matching-title-grid";
+          titleArea.appendChild(titleGrid);
+          answerArea.append(answerHeader, titleArea);
+          root.append(header, textArea, answerArea);
+          const actions = document.createElement("div");
+          actions.className = "zertiva-actions-buttons";
+          actions.style.cssText = "display:flex; justify-content:center; gap:12px; padding:12px 0 0 0; flex-wrap:wrap;";
+          const doneBtn = document.createElement("button");
+          doneBtn.type = "button";
+          doneBtn.textContent = "\u0627\u0646\u062A\u0647\u064A\u062A";
+          doneBtn.style.cssText = `
+        padding: 10px 28px;
+        border: none;
+        border-radius: 10px;
+        background: #2c3e66;
+        color: white;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 8px rgba(44,62,102,0.2);
+        font-family: inherit;
+    `;
+          doneBtn.addEventListener("mouseenter", function() {
+            this.style.background = "#1a2a4a";
+            this.style.transform = "scale(1.02)";
+          });
+          doneBtn.addEventListener("mouseleave", function() {
+            this.style.background = "#2c3e66";
+            this.style.transform = "scale(1)";
+          });
+          doneBtn.addEventListener("click", () => {
+            if (this.isActive) {
+              this.deactivate();
+              const helpBtn = document.getElementById("matchingToggleBtn");
+              if (helpBtn) {
+                helpBtn.innerHTML = `<span class="material-symbols-outlined">help</span>`;
+                helpBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+                helpBtn.classList.remove("active");
+              }
+            }
+          });
+          actions.appendChild(doneBtn);
+          root.appendChild(actions);
+          container.appendChild(root);
+          this.root = root;
+          this._buildTextCards(textGrid);
+          this._buildTitleCards(titleGrid);
+          this._updateUI();
+          this._resizeHandler = () => this._handleResize();
+          window.addEventListener("resize", this._resizeHandler);
+          this._captureTimeout = setTimeout(() => {
+            this._captureSizes();
+          }, 100);
+          this._isBuilding = false;
+        }
+        _buildTextCards(grid) {
+          this._textElements.clear();
+          this._texts.forEach((text, index) => {
+            const card = document.createElement("div");
+            card.className = "zertiva-matching-text-card";
+            card.dataset.textId = text.id;
+            const head = document.createElement("div");
+            head.className = "zertiva-matching-text-head";
+            const label = document.createElement("span");
+            label.className = "zertiva-matching-text-label";
+            label.textContent = `TEXT ${text.number}`;
+            const badge = document.createElement("span");
+            badge.className = "zertiva-matching-text-badge";
+            head.append(label, badge);
+            const body = document.createElement("div");
+            body.className = "zertiva-matching-text-body";
+            body.textContent = text.content;
+            card.append(head, body);
+            grid.appendChild(card);
+            this._textElements.set(text.id, { card, badge });
+            card.addEventListener("click", () => {
+              if (this._isDestroyed) return;
+              if (this._matches.has(text.id)) {
+                this._disconnectText(text.id);
+                this._selectedText = null;
+                this._selectedTitle = null;
+                this._updateUI();
+                return;
+              }
+              if (this._selectedTitle) {
+                this._connect(text.id, this._selectedTitle);
+                this._selectedText = null;
+                this._selectedTitle = null;
+                this._updateUI();
+                return;
+              }
+              this._selectedText = this._selectedText === text.id ? null : text.id;
+              this._selectedTitle = null;
+              this._updateUI();
+            });
+            card.addEventListener("dragover", (e) => {
+              e.preventDefault();
+              e.dataTransfer.dropEffect = "move";
+              card.classList.add("zertiva-selected");
+            });
+            card.addEventListener("dragleave", () => {
+              if (!this._matches.has(text.id)) {
+                card.classList.remove("zertiva-selected");
+              }
+            });
+            card.addEventListener("drop", (e) => {
+              e.preventDefault();
+              card.classList.remove("zertiva-selected");
+              const titleId = e.dataTransfer.getData("text/plain");
+              if (titleId && titleId.startsWith("title-")) {
+                this._connect(text.id, titleId);
+                this._selectedText = null;
+                this._selectedTitle = null;
+                this._updateUI();
+              }
+            });
+          });
+        }
+        _buildTitleCards(grid) {
+          this._titleElements.clear();
+          this._titles.forEach((title, index) => {
+            const card = document.createElement("div");
+            card.className = "zertiva-matching-title-card";
+            card.dataset.titleId = title.id;
+            card.draggable = true;
+            const letter = document.createElement("span");
+            letter.className = "zertiva-matching-title-letter";
+            letter.textContent = title.letter || "";
+            const content = document.createElement("div");
+            content.className = "zertiva-matching-title-content";
+            const textSpan = document.createElement("span");
+            textSpan.className = "zertiva-matching-title-text";
+            textSpan.textContent = title.text;
+            const match = document.createElement("div");
+            match.className = "zertiva-matching-title-match";
+            content.append(textSpan, match);
+            card.append(letter, content);
+            grid.appendChild(card);
+            this._titleElements.set(title.id, { card, match });
+            card.addEventListener("click", () => {
+              if (this._isDestroyed) return;
+              if (this._titleToText.has(title.id)) {
+                this._disconnectTitle(title.id);
+                this._selectedTitle = null;
+                this._selectedText = null;
+                this._updateUI();
+                return;
+              }
+              if (this._selectedText) {
+                this._connect(this._selectedText, title.id);
+                this._selectedText = null;
+                this._selectedTitle = null;
+                this._updateUI();
+                return;
+              }
+              this._selectedTitle = this._selectedTitle === title.id ? null : title.id;
+              this._selectedText = null;
+              this._updateUI();
+            });
+            card.addEventListener("dragstart", (e) => {
+              e.dataTransfer.setData("text/plain", title.id);
+              e.dataTransfer.effectAllowed = "move";
+              card.classList.add("zertiva-selected");
+            });
+            card.addEventListener("dragend", () => {
+              card.classList.remove("zertiva-selected");
+            });
+          });
+        }
+        _connect(textId, titleId) {
+          if (this._matches.get(textId) === titleId) {
+            this._disconnectText(textId);
+            return;
+          }
+          if (titleId !== "title-none") {
+            const oldText = this._titleToText.get(titleId);
+            if (oldText && oldText !== textId) {
+              this._matches.delete(oldText);
+            }
+          }
+          const oldTitle = this._matches.get(textId);
+          if (oldTitle) {
+            this._titleToText.delete(oldTitle);
+          }
+          this._matches.set(textId, titleId);
+          this._titleToText.set(titleId, textId);
+          const textObj = this._texts.find((t) => t.id === textId);
+          const titleObj = this._titles.find((t) => t.id === titleId);
+          if (textObj && textObj.select && titleObj) {
+            try {
+              textObj.select.value = titleObj.value || "";
+              textObj.select.dispatchEvent(new Event("change", { bubbles: true }));
+            } catch (_) {
+            }
+          }
+        }
+        _disconnectText(textId) {
+          const titleId = this._matches.get(textId);
+          if (!titleId) return;
+          this._titleToText.delete(titleId);
+          this._matches.delete(textId);
+          const textObj = this._texts.find((t) => t.id === textId);
+          if (textObj && textObj.select) {
+            try {
+              textObj.select.selectedIndex = 0;
+              textObj.select.dispatchEvent(new Event("change", { bubbles: true }));
+            } catch (_) {
+            }
+          }
+        }
+        _disconnectTitle(titleId) {
+          const textId = this._titleToText.get(titleId);
+          if (textId) this._disconnectText(textId);
+        }
+        _updateUI() {
+          const total = this._texts.length;
+          const count = this._matches.size;
+          const percent = total ? count / total * 100 : 0;
+          if (this._progressText) {
+            this._progressText.textContent = `${count} / ${total} zugeordnet`;
+          }
+          if (this._progressFill) {
+            this._progressFill.style.width = percent + "%";
+          }
+          this._textElements.forEach((el, textId) => {
+            const linked = this._matches.get(textId);
+            el.card.classList.toggle("zertiva-selected", this._selectedText === textId);
+            el.card.classList.toggle("zertiva-linked", Boolean(linked));
+            el.badge.textContent = "";
+            if (linked) {
+              const title = this._titles.find((t) => t.id === linked);
+              if (title && title.letter) {
+                el.badge.textContent = title.letter;
+              }
+            }
+          });
+          this._titleElements.forEach((el, titleId) => {
+            const linked = this._titleToText.get(titleId);
+            el.card.classList.toggle("zertiva-selected", this._selectedTitle === titleId);
+            el.card.classList.toggle("zertiva-linked", Boolean(linked));
+            el.match.textContent = "";
+            if (linked) {
+              const text = this._texts.find((t) => t.id === linked);
+              if (text) {
+                const title = this._titles.find((t) => t.id === titleId);
+                if (title && title.letter) {
+                  el.match.textContent = `TEXT ${text.number}`;
+                }
+              }
+            }
+          });
+        }
+        _captureSizes() {
+          const root = this.root;
+          if (!root) return;
+          const firstText = this._textElements.values().next().value;
+          if (firstText) {
+            const rect = firstText.card.getBoundingClientRect();
+            if (rect.width > 0) {
+              root.style.setProperty("--zertiva-fixed-text-width", rect.width + "px");
+            }
+          }
+          const firstTitle = this._titleElements.values().next().value;
+          if (firstTitle) {
+            const rect = firstTitle.card.getBoundingClientRect();
+            if (rect.width > 0 && rect.height > 0) {
+              root.style.setProperty("--zertiva-fixed-title-width", rect.width + "px");
+              root.style.setProperty("--zertiva-fixed-title-height", rect.height + "px");
+            }
+          }
+        }
+        _handleResize() {
+          if (this._captureTimeout) clearTimeout(this._captureTimeout);
+          this._captureTimeout = setTimeout(() => this._captureSizes(), 50);
+        }
+        // ---- دالة مسح أنماط التصحيح ----
+        _clearCorrectionStyles() {
+          const container = document.getElementById(this.containerId);
+          if (!container) return;
+          container.querySelectorAll(".question-card").forEach((card) => {
+            card.style.removeProperty("background-color");
+            card.style.removeProperty("border");
+            card.style.removeProperty("box-shadow");
+            card.classList.remove("correct-answer-card", "wrong-answer-card");
+          });
+          container.querySelectorAll("select").forEach((select) => {
+            select.style.removeProperty("background-color");
+            select.style.removeProperty("border");
+            select.style.removeProperty("color");
+            select.style.removeProperty("box-shadow");
+          });
+          container.querySelectorAll("select option").forEach((option) => {
+            option.style.removeProperty("background-color");
+            option.style.removeProperty("color");
+            option.style.removeProperty("font-weight");
+            option.style.removeProperty("padding");
+            option.style.removeProperty("border-radius");
+          });
+          container.querySelectorAll(".correct-message, .inline-correct-answer, .correct-answer-message").forEach((msg) => {
+            msg.remove();
+          });
+          container.querySelectorAll(".result-box").forEach((box) => {
+            box.style.removeProperty("background-color");
+            box.style.removeProperty("color");
+            box.style.display = "";
+          });
+        }
+        // ---- تشغيل Help Mode ----
+        activate() {
+          if (this.isActive || this._isDestroyed) return;
+          if (!this._extractData()) {
+            console.warn(`\u26A0\uFE0F \u0644\u0627 \u064A\u0645\u0643\u0646 \u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u0644\u0640 ${this.modeName}: \u0627\u0644\u0628\u064A\u0627\u0646\u0627\u062A \u063A\u064A\u0631 \u0645\u0643\u062A\u0645\u0644\u0629.`);
+            return;
+          }
+          if (!this.root || !this.root.parentNode) {
+            this._buildUI();
+          }
+          if (!this.root) {
+            console.warn(`\u26A0\uFE0F \u0641\u0634\u0644 \u0628\u0646\u0627\u0621 \u0648\u0627\u062C\u0647\u0629 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u0644\u0640 ${this.modeName}`);
+            return;
+          }
+          const introKey = "help_intro_shown";
+          if (!localStorage.getItem(introKey)) {
+            this._showIntroModal(() => {
+              this._applyActivation();
+            });
+            return;
+          }
+          this._applyActivation();
+        }
+        _applyActivation() {
+          const container = document.getElementById(this.containerId);
+          if (container) {
+            Array.from(container.children).forEach((child) => {
+              if (child !== this.root) {
+                if (!child.dataset.zertivaOriginalDisplay) {
+                  child.dataset.zertivaOriginalDisplay = child.style.display || "";
+                }
+                child.style.display = "none";
+              }
+            });
+            container.prepend(this.root);
+            this.root.style.display = "flex";
+            container.classList.add("zertiva-matching-active");
+          }
+          this._hideOriginalControls();
+          if (container) {
+            container.querySelectorAll(".result-box").forEach((box) => {
+              if (!box.dataset.zertivaResultDisplay) {
+                box.dataset.zertivaResultDisplay = box.style.display || "";
+              }
+              box.style.display = "none";
+            });
+          }
+          this.isActive = true;
+          console.log(`\u2705 Help Mode activated for ${this.modeName}`);
+          const helpBtn = document.getElementById("matchingToggleBtn");
+          if (helpBtn) {
+            helpBtn.innerHTML = `<span class="material-symbols-outlined">auto_awesome</span>`;
+            helpBtn.title = "\u0625\u064A\u0642\u0627\u0641 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+            helpBtn.classList.add("active");
+          }
+        }
+        _hideOriginalControls() {
+          const selector = this.modeName === "lesen1" ? ".teil1-controls" : this.modeName === "lesen3" ? ".teil3-controls" : null;
+          if (!selector) return;
+          document.querySelectorAll(selector).forEach((el) => {
+            if (!el.dataset.zertivaHelpOldDisplay) {
+              el.dataset.zertivaHelpOldDisplay = el.style.display || "";
+            }
+            el.style.display = "none";
+          });
+        }
+        _showOriginalControls() {
+          const selector = this.modeName === "lesen1" ? ".teil1-controls" : this.modeName === "lesen3" ? ".teil3-controls" : null;
+          if (!selector) return;
+          document.querySelectorAll(selector).forEach((el) => {
+            const oldDisplay = el.dataset.zertivaHelpOldDisplay;
+            if (oldDisplay !== void 0) {
+              el.style.display = oldDisplay || "";
+              delete el.dataset.zertivaHelpOldDisplay;
+            } else {
+              el.style.display = "";
+            }
+          });
+        }
+        deactivate() {
+          if (!this.isActive || this._isDestroyed) return;
+          const container = document.getElementById(this.containerId);
+          if (container) {
+            Array.from(container.children).forEach((child) => {
+              if (child !== this.root) {
+                const originalDisplay = child.dataset.zertivaOriginalDisplay;
+                if (originalDisplay !== void 0) {
+                  child.style.display = originalDisplay || "";
+                  delete child.dataset.zertivaOriginalDisplay;
+                }
+                if (child.dataset.zertivaOriginalInnerHtml) {
+                  delete child.dataset.zertivaOriginalInnerHtml;
+                }
+              }
+            });
+            if (this.root && this.root.parentNode) {
+              this.root.parentNode.removeChild(this.root);
+            }
+            container.classList.remove("zertiva-matching-active");
+            container.querySelectorAll(".result-box").forEach((box) => {
+              const originalResultDisplay = box.dataset.zertivaResultDisplay;
+              if (originalResultDisplay !== void 0) {
+                box.style.display = originalResultDisplay || "";
+                delete box.dataset.zertivaResultDisplay;
+              } else {
+                box.style.display = "";
+              }
+            });
+          }
+          this._showOriginalControls();
+          this.isActive = false;
+          console.log(`\u2705 Help Mode deactivated for ${this.modeName}`);
+          const helpBtn = document.getElementById("matchingToggleBtn");
+          if (helpBtn) {
+            helpBtn.innerHTML = `<span class="material-symbols-outlined">help</span>`;
+            helpBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+            helpBtn.classList.remove("active");
+          }
+        }
+        _showIntroModal(callback) {
+          const overlay = document.createElement("div");
+          overlay.style.cssText = `
+      position: fixed; top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.3); backdrop-filter: blur(4px);
+      display: flex; justify-content: center; align-items: center;
+      z-index: 999999;
+    `;
+          const modal = document.createElement("div");
+          modal.style.cssText = `
+      background: #ffffff; border-radius: 20px; padding: 28px 30px;
+      max-width: 400px; width: 90%; box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      border: 1px solid rgba(200,200,200,0.2);
+      font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+      text-align: right; direction: rtl;
+    `;
+          modal.innerHTML = `
+      <h3 style="margin:0 0 12px 0; font-size:1.3rem; font-weight:600; color:#1e293b;">\u0645\u064A\u0632\u0629 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629</h3>
+      <p style="margin:0 0 16px 0; font-size:0.95rem; line-height:1.7; color:#475569;">
+        \u0647\u062F\u0647 \u0627\u0644\u0645\u064A\u0632\u0629 \u0648\u0627\u062C\u0628\u0647\u0627 \u0641\u0642\u0637 \u062A\u0633\u0647\u064A\u0644 \u0639\u0645\u0644\u064A\u0629 \u0627\u0644\u0627\u062C\u0627\u0628\u0629 \u0644\u0643 \u0646\u0636\u0631\u0627 \u0644\u0627\u0646 \u0644\u064A\u0632\u0646 1\u06483 \u0627\u0628\u0637\u0626 \u0641\u064A \u0645\u0644\u0626 \u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0627\u0633\u0626\u0644\u0629. \u0647\u062F\u0627 \u0627\u0644\u0648\u0636\u0639 \u0633\u064A\u0633\u0647\u0644 \u0639\u0644\u064A\u0643 \u062F\u0627\u0644\u0643 \u0643\u064A \u062A\u0631\u0627\u062C\u0639 \u0628\u0643\u0641\u0627\u0626\u0629 \u0648\u0633\u0631\u0639\u0629 \u0627\u0643\u062A\u0631
+      </p>
+      <label style="display:flex; align-items:center; gap:8px; font-size:0.9rem; color:#334155; margin-bottom:18px; cursor:pointer;">
+        <input type="checkbox" id="dontShowAgain" style="width:18px; height:18px; accent-color:#2c3e66;">
+        <span>\u0639\u062F\u0645 \u0625\u0638\u0647\u0627\u0631 \u0647\u0630\u0627 \u0645\u0631\u0629 \u0623\u062E\u0631\u0649</span>
+      </label>
+      <button id="introOkBtn" style="width:100%; padding:12px; border:none; border-radius:12px; background:#2c3e66; color:white; font-size:1rem; font-weight:600; cursor:pointer; transition:background 0.2s;">
+        \u062D\u0633\u0646\u0627\u064B
+      </button>
+    `;
+          overlay.appendChild(modal);
+          document.body.appendChild(overlay);
+          document.getElementById("introOkBtn").onclick = () => {
+            if (document.getElementById("dontShowAgain").checked) {
+              localStorage.setItem("help_intro_shown", "true");
+            }
+            overlay.remove();
+            if (typeof callback === "function") callback();
+          };
+        }
+        _updateMatchingButton(active) {
+          const btn = document.getElementById("matchingToggleBtn");
+          if (!btn) return;
+          const skill = btn.dataset.skill || this.modeName;
+          if (skill === this.modeName) {
+            btn.classList.toggle("active", active);
+            btn.innerHTML = `<span class="material-symbols-outlined">${active ? "compare_arrows" : "swap_horiz"}</span>`;
+            btn.title = active ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
+          }
+        }
+        toggle() {
+          if (this.isActive) {
+            this.deactivate();
+          } else {
+            this.activate();
+          }
+        }
+        reset() {
+          if (!this.isActive) return;
+          const textIds = Array.from(this._matches.keys());
+          textIds.forEach((id) => this._disconnectText(id));
+          this._selectedText = null;
+          this._selectedTitle = null;
+          this._updateUI();
+          if (typeof window.clearMatchingCorrection === "function") {
+            window.clearMatchingCorrection();
+          }
+        }
+      };
+      matchingLesen1 = new MatchingMode("teil1", "lesen1");
+      matchingLesen3 = new MatchingMode("teil3", "lesen3");
+      window.matchingLesen1 = matchingLesen1;
+      window.matchingLesen3 = matchingLesen3;
+      window.toggleMatchingLesen1 = function() {
+        matchingLesen1.toggle();
+      };
+      window.toggleMatchingLesen3 = function() {
+        matchingLesen3.toggle();
+      };
+      console.log("\u2705 Matching Mode (Lesen 1 & Lesen 3) ready.");
+    }
+  });
+
   // memoryTrainer.js
   var MemoryTrainer;
   var init_memoryTrainer = __esm({
@@ -26512,7 +31980,7 @@ var MyApp = (() => {
             id: v.id,
             title: v.title,
             file: v.file,
-            skill: currentSkill,
+            skill: currentSkill2,
             isVersion: true,
             parentId: exam.id
           });
@@ -26522,7 +31990,7 @@ var MyApp = (() => {
           id: exam.id,
           title: exam.title,
           file: exam.hasFile ? getActualFileName(exam.id) : null,
-          skill: currentSkill,
+          skill: currentSkill2,
           isVersion: false,
           parentId: exam.id
         });
@@ -26531,7 +31999,7 @@ var MyApp = (() => {
     return flattened;
   }
   async function renderExamListForSkill(skill, teilName) {
-    currentSkill = skill;
+    currentSkill2 = skill;
     window.currentSkill = skill;
     const ORDER_MODE_KEY = "examOrderMode";
     localStorage.removeItem(ORDER_MODE_KEY);
@@ -26866,7 +32334,7 @@ var MyApp = (() => {
       const nextExam = flatList[currentIndex + 1];
       if (nextExam) {
         const nextExamId = nextExam.id;
-        const isNextFree = isExamFree(currentSkill, nextExamId);
+        const isNextFree = isExamFree(currentSkill2, nextExamId);
         if (!isPremium && !isNextFree && nextBtn.style.display !== "none") {
           nextBtn.style.position = "relative";
           nextBtn.style.paddingLeft = "35px";
@@ -26945,7 +32413,7 @@ var MyApp = (() => {
       return;
     }
     currentExamId = examId;
-    currentSkill = skill;
+    currentSkill2 = skill;
     window.currentSkill = skill;
     window.currentExamId = examId;
     const interleavingRow = document.getElementById("interleavingRow");
@@ -27077,7 +32545,7 @@ var MyApp = (() => {
           buildTeil1(currentExamData.questions || []);
         }
       } else if (currentExamData.type === "truefalse") {
-        const container = document.getElementById(currentSkill);
+        const container = document.getElementById(currentSkill2);
         if (container && typeof window.buildTrueFalseExam === "function") {
           window.buildTrueFalseExam(container, currentExamData.questions, currentExamData.note);
         } else {
@@ -27199,11 +32667,11 @@ var MyApp = (() => {
       nextBtn.style.display = "none";
     }
     if (memoryBtn) {
-      if (currentSkill && SKILL_CONFIG[currentSkill]) {
+      if (currentSkill2 && SKILL_CONFIG[currentSkill2]) {
         memoryBtn.style.display = "inline-flex";
         memoryBtn.onclick = function() {
           if (window.startMemoryTrainerForExam) {
-            window.startMemoryTrainerForExam(currentSkill);
+            window.startMemoryTrainerForExam(currentSkill2);
           } else {
             alert("\u26A0\uFE0F \u0645\u064A\u0632\u0629 \u062A\u062F\u0631\u064A\u0628 \u0627\u0644\u0630\u0627\u0643\u0631\u0629 \u063A\u064A\u0631 \u0645\u062A\u0648\u0641\u0631\u0629 \u062D\u0627\u0644\u064A\u0627\u064B.");
           }
@@ -27221,7 +32689,7 @@ var MyApp = (() => {
       return;
     }
     const showTogglesSkills = ["hoeren1", "hoeren2", "hoeren3", "lesen1", "lesen2", "lesen3", "sprach1", "sprach2"];
-    if (!showTogglesSkills.includes(currentSkill)) {
+    if (!showTogglesSkills.includes(currentSkill2)) {
       const oldBtn12 = document.getElementById("viewModeToggleBtn1");
       const oldBtn22 = document.getElementById("viewModeToggleBtn2");
       if (oldBtn12) oldBtn12.style.display = "none";
@@ -27293,7 +32761,7 @@ var MyApp = (() => {
     const list = document.getElementById("examsList");
     if (!list) return;
     const allowedSkills = ["hoeren1", "hoeren2", "hoeren3", "lesen1", "lesen2", "lesen3", "sprach1", "sprach2", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3", "schreiben"];
-    if (!allowedSkills.includes(currentSkill)) {
+    if (!allowedSkills.includes(currentSkill2)) {
       return;
     }
     const oldGrid = document.getElementById("examGridContainer");
@@ -27529,7 +32997,7 @@ var MyApp = (() => {
   function addVersionBadgesFixed() {
     const container = document.getElementById("examsList");
     if (!container) return;
-    const skill = currentSkill || "lesen1";
+    const skill = currentSkill2 || "lesen1";
     if (!["lesen1", "lesen2", "lesen3", "sprach1", "sprach2"].includes(skill)) return;
     const items = container.querySelectorAll(".item:not(.teil-header):not(.memory-progress-bar-container)");
     if (!items.length) return;
@@ -27574,26 +33042,26 @@ var MyApp = (() => {
     });
   }
   function goBackToExamsList() {
-    if (currentSkill) {
-      if (currentSkill === "m\xFCndlich1") {
+    if (currentSkill2) {
+      if (currentSkill2 === "m\xFCndlich1") {
         document.getElementById("home").classList.remove("active");
         document.getElementById("exam").classList.remove("active");
         document.getElementById("list").classList.add("active");
         renderExamListForSkill("m\xFCndlich1", "M\xFCndlich - Teil 1 \u{1F4D6}");
-      } else if (currentSkill === "m\xFCndlich2") {
+      } else if (currentSkill2 === "m\xFCndlich2") {
         document.getElementById("home").classList.remove("active");
         document.getElementById("exam").classList.remove("active");
         document.getElementById("list").classList.add("active");
         renderExamListForSkill("m\xFCndlich2", "M\xFCndlich - Teil 2 \u{1F5E3}\uFE0F");
-      } else if (currentSkill === "m\xFCndlich3") {
+      } else if (currentSkill2 === "m\xFCndlich3") {
         document.getElementById("home").classList.remove("active");
         document.getElementById("exam").classList.remove("active");
         document.getElementById("list").classList.add("active");
         renderExamListForSkill("m\xFCndlich3", "M\xFCndlich - Teil 3 \u{1F3AF}");
-      } else if (currentSkill.startsWith("m\xFCndlich")) {
+      } else if (currentSkill2.startsWith("m\xFCndlich")) {
         renderExamListForSkill("m\xFCndlich", getTeilNameBySkill("m\xFCndlich"));
       } else {
-        const teil = teile.find((t) => t.skill === currentSkill);
+        const teil = teile.find((t) => t.skill === currentSkill2);
         if (teil) {
           document.getElementById("home").classList.remove("active");
           document.getElementById("exam").classList.remove("active");
@@ -27608,8 +33076,8 @@ var MyApp = (() => {
     }
   }
   function renderInfoExam(examData) {
-    let containerId = currentSkill;
-    if (currentSkill === "m\xFCndlich1" || currentSkill === "m\xFCndlich3") {
+    let containerId = currentSkill2;
+    if (currentSkill2 === "m\xFCndlich1" || currentSkill2 === "m\xFCndlich3") {
       containerId = "m\xFCndlich";
     }
     const container = document.getElementById(containerId);
@@ -27946,8 +33414,8 @@ var MyApp = (() => {
       resultDiv.innerHTML = "\u0627\u0644\u0646\u062A\u064A\u062C\u0629: " + finalScore + " / 25";
       resultDiv.style.display = "block";
     }
-    saveExamResult(currentSkill, currentExamId, parseFloat(finalScore));
-    const retryCount = incrementRetryCount(currentSkill, currentExamId);
+    saveExamResult(currentSkill2, currentExamId, parseFloat(finalScore));
+    const retryCount = incrementRetryCount(currentSkill2, currentExamId);
     if (typeof window.updateRetryCounter === "function") {
       window.updateRetryCounter();
     }
@@ -27955,7 +33423,7 @@ var MyApp = (() => {
       window.removeColorFromExam(currentExamId);
     }
     if (document.getElementById("list").classList.contains("active")) {
-      renderExamListForSkill(currentSkill, getTeilNameBySkill(currentSkill));
+      renderExamListForSkill(currentSkill2, getTeilNameBySkill(currentSkill2));
     }
   }
   function getStageKey(skill) {
@@ -28175,7 +33643,7 @@ var MyApp = (() => {
         }
       }
       if (!hasResult) {
-        const skill = currentSkill || "";
+        const skill = currentSkill2 || "";
         const title = el.querySelector(".exam-title");
         let examId = null;
         if (title) {
@@ -28368,16 +33836,16 @@ var MyApp = (() => {
   }
   function addRetryCounterToExam() {
     const forbiddenSkills = ["schreiben", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3"];
-    if (forbiddenSkills.includes(currentSkill)) {
+    if (forbiddenSkills.includes(currentSkill2)) {
       const oldCounter2 = document.getElementById("retryCounterBox");
       if (oldCounter2) oldCounter2.remove();
       return;
     }
     const oldCounter = document.getElementById("retryCounterBox");
     if (oldCounter) oldCounter.remove();
-    const retryCount = window.getRetryCount ? window.getRetryCount(currentSkill, currentExamId) : 0;
-    const reviewDays = window.getLastReviewDays ? window.getLastReviewDays(currentSkill, currentExamId) : null;
-    const timeMs = window.getExamTime ? window.getExamTime(currentSkill, currentExamId) : null;
+    const retryCount = window.getRetryCount ? window.getRetryCount(currentSkill2, currentExamId) : 0;
+    const reviewDays = window.getLastReviewDays ? window.getLastReviewDays(currentSkill2, currentExamId) : null;
+    const timeMs = window.getExamTime ? window.getExamTime(currentSkill2, currentExamId) : null;
     let reviewText = "";
     if (reviewDays === null) {
       reviewText = "\u0644\u0645 \u064A\u064F\u0631\u0627\u062C\u0639";
@@ -28496,7 +33964,7 @@ var MyApp = (() => {
   }
   function updateRetryCounter() {
     const forbiddenSkills = ["schreiben", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3"];
-    if (forbiddenSkills.includes(currentSkill)) {
+    if (forbiddenSkills.includes(currentSkill2)) {
       const oldCounter = document.getElementById("retryCounterBox");
       if (oldCounter) oldCounter.remove();
       return;
@@ -28506,9 +33974,9 @@ var MyApp = (() => {
       addRetryCounterToExam();
       return;
     }
-    const retryCount = window.getRetryCount ? window.getRetryCount(currentSkill, currentExamId) : 0;
-    const reviewDays = window.getLastReviewDays ? window.getLastReviewDays(currentSkill, currentExamId) : null;
-    const timeMs = window.getExamTime ? window.getExamTime(currentSkill, currentExamId) : null;
+    const retryCount = window.getRetryCount ? window.getRetryCount(currentSkill2, currentExamId) : 0;
+    const reviewDays = window.getLastReviewDays ? window.getLastReviewDays(currentSkill2, currentExamId) : null;
+    const timeMs = window.getExamTime ? window.getExamTime(currentSkill2, currentExamId) : null;
     let reviewText = "";
     if (reviewDays === null) {
       reviewText = "\u0644\u0645 \u064A\u064F\u0631\u0627\u062C\u0639";
@@ -28582,7 +34050,7 @@ var MyApp = (() => {
         }
       }
       if (timeMs === null) {
-        const skill = currentSkill || "";
+        const skill = currentSkill2 || "";
         const title = el.querySelector(".exam-title");
         let examId = null;
         if (title) {
@@ -28638,7 +34106,7 @@ var MyApp = (() => {
     interleavingRow.insertBefore(helpBtn, playBtn);
     console.log("\u2705 \u0632\u0631 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u062A\u0645 \u0625\u0636\u0627\u0641\u062A\u0647 \u0641\u064A \u0634\u0631\u064A\u0637 \u0627\u0644\u0623\u0632\u0631\u0627\u0631");
   }
-  var teile, currentExamData, currentSkill, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY, originalOpenExam2;
+  var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY, originalOpenExam2;
   var init_exams = __esm({
     "exams.js"() {
       window.isInterleavingActive = false;
@@ -28835,7 +34303,7 @@ var MyApp = (() => {
         }, 100);
       };
       currentExamData = null;
-      currentSkill = "lesen1";
+      currentSkill2 = "lesen1";
       currentExamId = null;
       currentExamsList = [];
       currentM\u00FCndlichPart = 2;
@@ -29849,8 +35317,8 @@ var MyApp = (() => {
       };
       window.saveExamResultGlobal = function(skill, examId, score) {
         saveExamResult(skill, examId, score);
-        if (document.getElementById("list").classList.contains("active") && currentSkill === skill) {
-          renderExamListForSkill(currentSkill, getTeilNameBySkill(currentSkill));
+        if (document.getElementById("list").classList.contains("active") && currentSkill2 === skill) {
+          renderExamListForSkill(currentSkill2, getTeilNameBySkill(currentSkill2));
         }
       };
       document.addEventListener("DOMContentLoaded", function() {
@@ -31831,7 +37299,7 @@ var MyApp = (() => {
         let currentOptionsDiv = null;
         let currentStartTime = 0;
         let questionStats = {};
-        let currentSkill2 = null;
+        let currentSkill3 = null;
         let currentExamId2 = null;
         let reflexSentences = [];
         function extractFirstWords(text, maxWords) {
@@ -31932,7 +37400,7 @@ var MyApp = (() => {
           if (gameStarted) return;
           gameStarted = true;
           gamePaused = false;
-          loadGameData(currentSkill2, currentExamId2).then((loaded) => {
+          loadGameData(currentSkill3, currentExamId2).then((loaded) => {
             if (!loaded) {
               showNotAvailableMessage();
               return;
@@ -32167,7 +37635,7 @@ var MyApp = (() => {
           };
         }
         function loadGameData(skill, examId) {
-          currentSkill2 = skill;
+          currentSkill3 = skill;
           currentExamId2 = examId;
           let filePath = `data/games/${skill}/exam${examId}.json`;
           console.log(`\u{1F4C2} \u062C\u0627\u0631\u064A \u062A\u062D\u0645\u064A\u0644: ${filePath}`);
@@ -32283,7 +37751,7 @@ var MyApp = (() => {
         }
         function startGame(skill, examId) {
           if (gameStarted) return;
-          currentSkill2 = skill;
+          currentSkill3 = skill;
           currentExamId2 = examId;
           setSpeedMode("reflex");
           showModeSelectionScreen();
@@ -32658,7 +38126,7 @@ var MyApp = (() => {
           document.body.appendChild(overlay);
           document.getElementById("restartGameBtn").onclick = () => {
             overlay.remove();
-            startGame(currentSkill2, currentExamId2);
+            startGame(currentSkill3, currentExamId2);
           };
           document.getElementById("closeGameBtn").onclick = () => overlay.remove();
           overlay.onclick = (e) => {
@@ -32669,9 +38137,9 @@ var MyApp = (() => {
           const gameBtn = document.getElementById("rapidGameBtn");
           if (gameBtn) {
             gameBtn.onclick = () => {
-              const currentSkill3 = typeof getCurrentSkill === "function" ? getCurrentSkill() : "lesen1";
+              const currentSkill4 = typeof getCurrentSkill === "function" ? getCurrentSkill() : "lesen1";
               const currentExamId3 = typeof getCurrentExamId === "function" ? getCurrentExamId() : 1;
-              startGame(currentSkill3, currentExamId3);
+              startGame(currentSkill4, currentExamId3);
             };
             console.log("\u{1F3AE} \u0632\u0631 \u0627\u0644\u0639\u0628 \u062A\u0645 \u0631\u0628\u0637\u0647");
             return;
@@ -33094,7 +38562,7 @@ var MyApp = (() => {
           if (modal) modal.classList.remove("active");
           showMainContent();
         }
-        function updateTimerDisplay() {
+        function updateTimerDisplay2() {
           const { timerMinutes, timerSeconds } = getElements();
           if (!timerMinutes) return;
           const mins = Math.floor(remainingSeconds / 60);
@@ -33237,7 +38705,7 @@ var MyApp = (() => {
             lastSavedMinute = Math.floor(elapsedSeconds / 60);
             clearPauseState();
             closeModal();
-            updateTimerDisplay();
+            updateTimerDisplay2();
             const { timerBar: timerBar2, pauseBtn: pauseBtn2 } = getElements();
             if (timerBar2) {
               timerBar2.style.display = "flex";
@@ -33250,7 +38718,7 @@ var MyApp = (() => {
                 endSession();
               } else {
                 remainingSeconds--;
-                updateTimerDisplay();
+                updateTimerDisplay2();
                 saveElapsedMinutes();
               }
             }, 1e3);
@@ -33264,7 +38732,7 @@ var MyApp = (() => {
           pausedMinutes = 0;
           lastSavedMinute = 0;
           closeModal();
-          updateTimerDisplay();
+          updateTimerDisplay2();
           const { timerBar, pauseBtn } = getElements();
           if (timerBar) {
             timerBar.style.display = "flex";
@@ -33277,7 +38745,7 @@ var MyApp = (() => {
               endSession();
             } else {
               remainingSeconds--;
-              updateTimerDisplay();
+              updateTimerDisplay2();
               saveElapsedMinutes();
             }
           }, 1e3);
@@ -33316,7 +38784,7 @@ var MyApp = (() => {
               endSession();
             } else {
               remainingSeconds--;
-              updateTimerDisplay();
+              updateTimerDisplay2();
               saveElapsedMinutes();
             }
           }, 1e3);
@@ -33481,7 +38949,7 @@ var MyApp = (() => {
               if (savedState.remainingSeconds) {
                 remainingSeconds = savedState.remainingSeconds;
                 totalSeconds = savedState.totalSeconds;
-                updateTimerDisplay();
+                updateTimerDisplay2();
                 const { timerBar, pauseBtn } = getElements();
                 if (timerBar) {
                   timerBar.style.display = "flex";
@@ -33827,6 +39295,7 @@ var MyApp = (() => {
     "entry.js"() {
       init_sentenceReorder();
       init_helpSystem();
+      init_engine();
       init_memoryTrainer();
       init_exams();
       var import_studyPlanner = __toESM(require_studyPlanner());
