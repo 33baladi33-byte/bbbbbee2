@@ -29955,7 +29955,6 @@ var MyApp = (() => {
         _applyActivation() {
           const container = document.getElementById(this.containerId);
           if (container) {
-            this._clearCorrectionStyles();
             Array.from(container.children).forEach((child) => {
               if (child !== this.root && !child.classList.contains("question-card")) {
                 if (!child.dataset.zertivaOriginalDisplay) {
@@ -30015,7 +30014,6 @@ var MyApp = (() => {
           if (!this.isActive || this._isDestroyed) return;
           const container = document.getElementById(this.containerId);
           if (container) {
-            this._clearCorrectionStyles();
             Array.from(container.children).forEach((child) => {
               if (child !== this.root) {
                 const originalDisplay = child.dataset.zertivaOriginalDisplay;
