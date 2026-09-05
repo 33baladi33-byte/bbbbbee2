@@ -29957,9 +29957,12 @@ var MyApp = (() => {
           if (container) {
             this._clearCorrectionStyles();
             Array.from(container.children).forEach((child) => {
-              if (child !== this.root) {
+              if (child !== this.root && !child.classList.contains("question-card")) {
                 if (!child.dataset.zertivaOriginalDisplay) {
                   child.dataset.zertivaOriginalDisplay = child.style.display || "";
+                }
+                if (!child.dataset.zertivaOriginalInnerHtml) {
+                  child.dataset.zertivaOriginalInnerHtml = child.innerHTML;
                 }
                 child.style.display = "none";
               }
@@ -30008,7 +30011,6 @@ var MyApp = (() => {
             }
           });
         }
-        // ---- إيقاف Help Mode ----
         deactivate() {
           if (!this.isActive || this._isDestroyed) return;
           const container = document.getElementById(this.containerId);
@@ -30020,8 +30022,11 @@ var MyApp = (() => {
                 if (originalDisplay !== void 0) {
                   child.style.display = originalDisplay || "";
                   delete child.dataset.zertivaOriginalDisplay;
-                } else {
-                  child.style.display = "";
+                }
+                const originalHtml = child.dataset.zertivaOriginalInnerHtml;
+                if (originalHtml !== void 0) {
+                  child.innerHTML = originalHtml;
+                  delete child.dataset.zertivaOriginalInnerHtml;
                 }
               }
             });
