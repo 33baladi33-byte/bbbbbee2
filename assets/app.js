@@ -25957,12 +25957,58 @@ var MyApp = (() => {
       card.appendChild(select);
       container.appendChild(card);
     }
+    let row = container.querySelector(".teil-controls-row");
+    if (!row) {
+      row = document.createElement("div");
+      row.className = "teil-controls-row";
+      container.appendChild(row);
+    }
+    let checkBtn = row.querySelector(".check-btn");
+    if (!checkBtn) {
+      checkBtn = document.createElement("button");
+      checkBtn.className = "check-btn";
+      checkBtn.textContent = "\u{1F4DD} Pr\xFCfen";
+      row.appendChild(checkBtn);
+    }
+    checkBtn.onclick = () => {
+      if (typeof checkMatchingExam === "function") checkMatchingExam();
+    };
+    let resetBtn = row.querySelector(".lesen-reset-btn");
+    if (!resetBtn) {
+      resetBtn = document.createElement("button");
+      resetBtn.className = "lesen-reset-btn";
+      resetBtn.textContent = "\u21BA";
+      row.appendChild(resetBtn);
+    }
+    resetBtn.onclick = function() {
+      try {
+        if (typeof matchingSelectedAnswers2 !== "undefined") matchingSelectedAnswers2 = {};
+        if (typeof currentMatchingExamData2 !== "undefined" && currentMatchingExamData2?.sharedOptions) {
+          matchingAvailableOptions2 = [...currentMatchingExamData2.sharedOptions];
+        }
+        container.querySelectorAll(".correct-message").forEach((el) => el.remove());
+        container.querySelectorAll(".result-box").forEach((el) => {
+          if (!el.id) el.remove();
+        });
+        if (typeof renderMatchingQuestions2 === "function") renderMatchingQuestions2();
+      } catch (e) {
+        console.error("\u274C Reset Lesen 1:", e);
+      }
+    };
+    const examBox = document.querySelector(".exam-box");
+    if (examBox) {
+      examBox.querySelectorAll(".check-btn, .reset-btn, .lesen-reset-btn").forEach((el) => {
+        const txt = el.textContent.trim();
+        if (txt.includes("Pr\xFCfen") || txt.includes("\u062A\u0635\u062D\u064A\u062D") || txt === "\u21BA") {
+          el.remove();
+        }
+      });
+    }
     const resultDiv = document.createElement("div");
     resultDiv.id = "matchingResult";
     resultDiv.className = "result-box";
     resultDiv.style.display = "none";
     container.appendChild(resultDiv);
-    setupTeilControls("teil1", "teil1");
   }
   function checkMatchingExam() {
     const questions = currentMatchingExamData2.questions;
@@ -26037,13 +26083,17 @@ var MyApp = (() => {
               break;
             }
           }
-          const existingMsg = card.querySelector(".correct-answer-message");
-          if (!existingMsg) {
-            const msg = document.createElement("div");
-            msg.className = "correct-answer-message";
-            msg.style.cssText = "color: #28a745; font-weight: bold; margin-top: 6px; font-size: 12px;";
-            msg.textContent = `\u2705 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629: ${correctAnswer}`;
-            card.appendChild(msg);
+          if (!optionExists) {
+            const textSpan = card.querySelector("span");
+            if (textSpan) {
+              const oldAnswer = textSpan.querySelector(".inline-correct-answer");
+              if (oldAnswer) oldAnswer.remove();
+              const answerSpan = document.createElement("span");
+              answerSpan.className = "inline-correct-answer";
+              answerSpan.style.cssText = "color: #2b8c4a; font-weight: 600; font-size: 0.75rem; display: block; margin-bottom: 4px;";
+              answerSpan.textContent = `\u2713 ${correctAnswer}`;
+              textSpan.prepend(answerSpan);
+            }
           }
         }
       }
@@ -26744,6 +26794,63 @@ var MyApp = (() => {
     twoColumns.appendChild(leftColumn);
     twoColumns.appendChild(rightColumn);
     container.appendChild(twoColumns);
+    let row = container.querySelector(".teil-controls-row");
+    if (!row) {
+      row = document.createElement("div");
+      row.className = "teil-controls-row";
+      container.appendChild(row);
+    }
+    let checkBtn = row.querySelector(".check-btn");
+    if (!checkBtn) {
+      checkBtn = document.createElement("button");
+      checkBtn.className = "check-btn";
+      checkBtn.textContent = "\u{1F4DD} Pr\xFCfen";
+      row.appendChild(checkBtn);
+    }
+    checkBtn.onclick = () => {
+      if (typeof checkTeil3Exam === "function") checkTeil3Exam();
+    };
+    let resetBtn = row.querySelector(".lesen-reset-btn");
+    if (!resetBtn) {
+      resetBtn = document.createElement("button");
+      resetBtn.className = "lesen-reset-btn";
+      resetBtn.textContent = "\u21BA";
+      row.appendChild(resetBtn);
+    }
+    resetBtn.onclick = function() {
+      try {
+        if (typeof teil3UserAnswers !== "undefined") teil3UserAnswers = {};
+        if (typeof teil3SelectedItem !== "undefined") teil3SelectedItem = null;
+        if (typeof teil3SelectedSit !== "undefined") teil3SelectedSit = null;
+        if (typeof teil3SelectedItemForLink !== "undefined") teil3SelectedItemForLink = null;
+        if (typeof teil3SelectedSitForLink !== "undefined") teil3SelectedSitForLink = null;
+        container.querySelectorAll("select").forEach((select) => {
+          select.selectedIndex = 0;
+        });
+        container.querySelectorAll(".correct-message").forEach((el) => el.remove());
+        const resultDiv2 = document.getElementById("teil3Result");
+        if (resultDiv2) {
+          resultDiv2.style.display = "none";
+          resultDiv2.innerHTML = "";
+        }
+        if (typeof updateTeil3SelectOptions === "function") updateTeil3SelectOptions();
+        if (typeof updateTeil3RightSideColors === "function") updateTeil3RightSideColors();
+        if (typeof currentTeil3Data !== "undefined" && currentTeil3Data?.items && typeof updateTeil3CardStyle === "function") {
+          currentTeil3Data.items.forEach((_, i) => updateTeil3CardStyle(i));
+        }
+      } catch (e) {
+        console.error("\u274C Reset Lesen 3:", e);
+      }
+    };
+    const examBox = document.querySelector(".exam-box");
+    if (examBox) {
+      examBox.querySelectorAll(".check-btn, .reset-btn, .lesen-reset-btn").forEach((el) => {
+        const txt = el.textContent.trim();
+        if (txt.includes("Pr\xFCfen") || txt.includes("\u062A\u0635\u062D\u064A\u062D") || txt === "\u21BA") {
+          el.remove();
+        }
+      });
+    }
     const resultDiv = document.createElement("div");
     resultDiv.id = "teil3Result";
     resultDiv.className = "result-box";
@@ -26751,7 +26858,6 @@ var MyApp = (() => {
     container.appendChild(resultDiv);
     updateTeil3SelectOptions();
     updateTeil3RightSideColors();
-    setupTeilControls("teil3", "teil3");
   }
   function checkTeil3Exam() {
     const items = currentTeil3Data.items;
@@ -27970,138 +28076,6 @@ var MyApp = (() => {
     _interleavingInitialized = false;
     console.log("\u2705 \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u062D\u0627\u0644\u0629 Interleaving");
   }
-  function setupTeilControls(containerId, type) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    if (!document.getElementById("lesen-final-controls-style")) {
-      const style = document.createElement("style");
-      style.id = "lesen-final-controls-style";
-      style.textContent = `
-            #teil1 .teil-controls-row,
-            #teil3 .teil-controls-row {
-                display: flex !important;
-                flex-direction: row !important;
-                flex-wrap: nowrap !important;
-                justify-content: center !important;
-                align-items: center !important;
-                gap: 15px !important;
-                width: 100% !important;
-                margin-top: 20px !important;
-            }
-            #teil1 .teil-controls-row .check-btn,
-            #teil3 .teil-controls-row .check-btn,
-            #teil1 .teil-controls-row .lesen-reset-btn,
-            #teil3 .teil-controls-row .lesen-reset-btn {
-                display: inline-flex !important;
-                flex: 0 0 auto !important;
-                width: auto !important;
-                min-width: 0 !important;
-                max-width: none !important;
-                height: 38px !important;
-                box-sizing: border-box !important;
-                margin: 0 !important;
-                padding: 8px 12px !important;
-                align-items: center !important;
-                justify-content: center !important;
-                border-radius: 6px !important;
-                white-space: nowrap !important;
-            }
-            #teil1 .teil-controls-row .check-btn,
-            #teil3 .teil-controls-row .check-btn {
-                background-color: #2c3e66 !important;
-                color: #fff !important;
-                border: none !important;
-                font-size: 14px !important;
-                font-weight: bold !important;
-            }
-            #teil1 .teil-controls-row .lesen-reset-btn,
-            #teil3 .teil-controls-row .lesen-reset-btn {
-                background-color: #6c757d !important;
-                color: #fff !important;
-                border: none !important;
-                font-size: 16px !important;
-                font-weight: bold !important;
-                cursor: pointer !important;
-            }
-            @media (max-width: 770px) {
-                #teil1 .teil-controls-row,
-                #teil3 .teil-controls-row {
-                    gap: 10px !important;
-                }
-            }
-            @media (max-width: 420px) {
-                #teil1 .teil-controls-row .check-btn,
-                #teil3 .teil-controls-row .check-btn {
-                    padding: 7px 10px !important;
-                    font-size: 13px !important;
-                }
-                #teil1 .teil-controls-row .lesen-reset-btn,
-                #teil3 .teil-controls-row .lesen-reset-btn {
-                    padding: 7px 10px !important;
-                    font-size: 15px !important;
-                }
-            }
-        `;
-      document.head.appendChild(style);
-    }
-    let row = container.querySelector(".teil-controls-row");
-    if (!row) {
-      row = document.createElement("div");
-      row.className = "teil-controls-row";
-      const backBtn = container.querySelector("#backToListBtn");
-      if (backBtn?.parentElement) {
-        backBtn.parentElement.insertAdjacentElement("beforebegin", row);
-      } else {
-        container.appendChild(row);
-      }
-    }
-    let checkBtn = row.querySelector(".check-btn");
-    if (!checkBtn) {
-      checkBtn = document.createElement("button");
-      checkBtn.className = "check-btn";
-      checkBtn.textContent = "\u{1F4DD} Pr\xFCfen";
-      row.appendChild(checkBtn);
-    }
-    if (type === "teil1" && typeof checkMatchingExam === "function") {
-      checkBtn.onclick = checkMatchingExam;
-    } else if (type === "teil3" && typeof checkTeil3Exam === "function") {
-      checkBtn.onclick = checkTeil3Exam;
-    }
-    let resetBtn = row.querySelector(".lesen-reset-btn");
-    if (!resetBtn) {
-      resetBtn = document.createElement("button");
-      resetBtn.className = "lesen-reset-btn";
-      resetBtn.textContent = "\u21BA";
-      row.appendChild(resetBtn);
-    }
-    resetBtn.onclick = function() {
-      if (type === "teil1") {
-        if (typeof matchingSelectedAnswers2 !== "undefined") matchingSelectedAnswers2 = {};
-        if (typeof currentMatchingExamData2 !== "undefined" && currentMatchingExamData2?.sharedOptions) {
-          matchingAvailableOptions2 = [...currentMatchingExamData2.sharedOptions];
-        }
-        if (typeof renderMatchingQuestions2 === "function") renderMatchingQuestions2();
-      } else if (type === "teil3") {
-        if (typeof teil3UserAnswers !== "undefined") teil3UserAnswers = {};
-        if (typeof teil3SelectedItem !== "undefined") teil3SelectedItem = null;
-        if (typeof teil3SelectedSit !== "undefined") teil3SelectedSit = null;
-        if (typeof teil3SelectedItemForLink !== "undefined") teil3SelectedItemForLink = null;
-        if (typeof teil3SelectedSitForLink !== "undefined") teil3SelectedSitForLink = null;
-        container.querySelectorAll("select").forEach((select) => select.selectedIndex = 0);
-        container.querySelectorAll(".correct-message").forEach((el) => el.remove());
-        const resultDiv = document.getElementById("teil3Result");
-        if (resultDiv) {
-          resultDiv.style.display = "none";
-          resultDiv.innerHTML = "";
-        }
-        if (typeof updateTeil3SelectOptions === "function") updateTeil3SelectOptions();
-        if (typeof updateTeil3RightSideColors === "function") updateTeil3RightSideColors();
-        if (typeof currentTeil3Data !== "undefined" && currentTeil3Data?.items && typeof updateTeil3CardStyle === "function") {
-          currentTeil3Data.items.forEach((_, i) => updateTeil3CardStyle(i));
-        }
-      }
-    };
-  }
   function pushAnswerToHistory(action) {
     if (!_historyEnabled) return;
     _answerHistory.push(action);
@@ -28618,13 +28592,6 @@ var MyApp = (() => {
         });
       }
     });
-  }
-  function setMatchingControlsVisibility(teilId, isMatching) {
-    const teil = document.querySelector(`#${teilId}`);
-    if (!teil) return;
-    const row = teil.querySelector(":scope > .teil-controls-row");
-    if (!row) return;
-    row.style.display = isMatching ? "none" : "";
   }
   var _hoerenData, interleavingOrders, lesen1OriginalNodes, lesen1ShuffledNodes, lesen1OrderSaved, lesen2OriginalNodes, lesen2ShuffledNodes, lesen2OrderSaved, lesen3OriginalNodes, lesen3ShuffledNodes, lesen3OrderSaved, examTimer2, currentSchreibenData, currentSprach2Data, sprach2UserAnswers, sprach2SelectedQuestionId, sprach2SelectedWordForLinking, currentSprach1Data, sprach1UserAnswers, sprach1OpenDropdownId, currentMatchingExamData2, matchingSelectedAnswers2, matchingAvailableOptions2, currentTeil2Data, teil2UserAnswers, currentTeil3Data, teil3UserAnswers, teil3SelectedItem, teil3SelectedSit, teil3SelectedItemForLink, teil3SelectedSitForLink, originalOpenExamGlobal, MemoryHighlightEngine, memoryEngine, toggleBtn, _toggleInProgress, _interleavingInitialized, _answerHistory, _historyEnabled, originalCheckTrueFalse, MatchingMode, matchingLesen1, matchingLesen3;
   var init_engine = __esm({
@@ -29750,15 +29717,6 @@ var MyApp = (() => {
               this._selectedTitle = null;
               this._updateUI();
             });
-            card.draggable = true;
-            card.addEventListener("dragstart", (e) => {
-              e.dataTransfer.setData("text/plain", text.id);
-              e.dataTransfer.effectAllowed = "move";
-              card.classList.add("zertiva-selected");
-            });
-            card.addEventListener("dragend", () => {
-              card.classList.remove("zertiva-selected");
-            });
             card.addEventListener("dragover", (e) => {
               e.preventDefault();
               e.dataTransfer.dropEffect = "move";
@@ -29778,18 +29736,6 @@ var MyApp = (() => {
                 this._selectedText = null;
                 this._selectedTitle = null;
                 this._updateUI();
-              }
-              const textId = e.dataTransfer.getData("text/plain");
-              if (textId && textId.startsWith("text-") && textId !== text.id) {
-                const sourceTitleId = this._matches.get(textId);
-                if (sourceTitleId) {
-                  this._matches.delete(textId);
-                  this._titleToText.delete(sourceTitleId);
-                  this._connect(text.id, sourceTitleId);
-                  this._selectedText = null;
-                  this._selectedTitle = null;
-                  this._updateUI();
-                }
               }
             });
           });
@@ -29835,7 +29781,6 @@ var MyApp = (() => {
               this._selectedText = null;
               this._updateUI();
             });
-            card.draggable = true;
             card.addEventListener("dragstart", (e) => {
               e.dataTransfer.setData("text/plain", title.id);
               e.dataTransfer.effectAllowed = "move";
@@ -29843,27 +29788,6 @@ var MyApp = (() => {
             });
             card.addEventListener("dragend", () => {
               card.classList.remove("zertiva-selected");
-            });
-            card.addEventListener("dragover", (e) => {
-              e.preventDefault();
-              e.dataTransfer.dropEffect = "move";
-              card.classList.add("zertiva-selected");
-            });
-            card.addEventListener("dragleave", () => {
-              if (!this._titleToText.has(title.id)) {
-                card.classList.remove("zertiva-selected");
-              }
-            });
-            card.addEventListener("drop", (e) => {
-              e.preventDefault();
-              card.classList.remove("zertiva-selected");
-              const textId = e.dataTransfer.getData("text/plain");
-              if (textId && textId.startsWith("text-")) {
-                this._connect(textId, title.id);
-                this._selectedText = null;
-                this._selectedTitle = null;
-                this._updateUI();
-              }
             });
           });
         }
@@ -30005,6 +29929,7 @@ var MyApp = (() => {
             box.style.display = "";
           });
         }
+        // ---- تشغيل Help Mode ----
         activate() {
           if (this.isActive || this._isDestroyed) return;
           if (!this._extractData()) {
@@ -30017,16 +29942,6 @@ var MyApp = (() => {
           if (!this.root) {
             console.warn(`\u26A0\uFE0F \u0641\u0634\u0644 \u0628\u0646\u0627\u0621 \u0648\u0627\u062C\u0647\u0629 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u0644\u0640 ${this.modeName}`);
             return;
-          }
-          const teilId = this.containerId;
-          if (typeof window.setMatchingControlsVisibility === "function") {
-            window.setMatchingControlsVisibility(teilId, true);
-          } else {
-            const teil = document.querySelector(`#${teilId}`);
-            if (teil) {
-              const row = teil.querySelector(":scope > .teil-controls-row");
-              if (row) row.style.display = "none";
-            }
           }
           const introKey = "help_intro_shown";
           if (!localStorage.getItem(introKey)) {
@@ -30045,9 +29960,6 @@ var MyApp = (() => {
               if (child !== this.root) {
                 if (!child.dataset.zertivaOriginalDisplay) {
                   child.dataset.zertivaOriginalDisplay = child.style.display || "";
-                }
-                if (!child.dataset.zertivaOriginalInnerHtml) {
-                  child.dataset.zertivaOriginalInnerHtml = child.innerHTML;
                 }
                 child.style.display = "none";
               }
@@ -30096,6 +30008,7 @@ var MyApp = (() => {
             }
           });
         }
+        // ---- إيقاف Help Mode ----
         deactivate() {
           if (!this.isActive || this._isDestroyed) return;
           const container = document.getElementById(this.containerId);
@@ -30109,11 +30022,6 @@ var MyApp = (() => {
                   delete child.dataset.zertivaOriginalDisplay;
                 } else {
                   child.style.display = "";
-                }
-                const originalHtml = child.dataset.zertivaOriginalInnerHtml;
-                if (originalHtml !== void 0) {
-                  child.innerHTML = originalHtml;
-                  delete child.dataset.zertivaOriginalInnerHtml;
                 }
               }
             });
@@ -30130,16 +30038,6 @@ var MyApp = (() => {
                 box.style.display = "";
               }
             });
-            const teilId = this.containerId;
-            if (typeof window.setMatchingControlsVisibility === "function") {
-              window.setMatchingControlsVisibility(teilId, false);
-            } else {
-              const teil = document.querySelector(`#${teilId}`);
-              if (teil) {
-                const row = teil.querySelector(":scope > .teil-controls-row");
-                if (row) row.style.display = "";
-              }
-            }
           }
           this._showOriginalControls();
           this.isActive = false;
@@ -30230,7 +30128,6 @@ var MyApp = (() => {
         matchingLesen3.toggle();
       };
       console.log("\u2705 Matching Mode (Lesen 1 & Lesen 3) ready.");
-      window.setMatchingControlsVisibility = setMatchingControlsVisibility;
     }
   });
 
