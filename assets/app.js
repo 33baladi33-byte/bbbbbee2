@@ -25995,15 +25995,6 @@ var MyApp = (() => {
         console.error("\u274C Reset Lesen 1:", e);
       }
     };
-    const examBox = document.querySelector(".exam-box");
-    if (examBox) {
-      examBox.querySelectorAll(".check-btn, .reset-btn, .lesen-reset-btn").forEach((el) => {
-        const txt = el.textContent.trim();
-        if (txt.includes("Pr\xFCfen") || txt.includes("\u062A\u0635\u062D\u064A\u062D") || txt === "\u21BA") {
-          el.remove();
-        }
-      });
-    }
     const resultDiv = document.createElement("div");
     resultDiv.id = "matchingResult";
     resultDiv.className = "result-box";
@@ -26842,15 +26833,6 @@ var MyApp = (() => {
         console.error("\u274C Reset Lesen 3:", e);
       }
     };
-    const examBox = document.querySelector(".exam-box");
-    if (examBox) {
-      examBox.querySelectorAll(".check-btn, .reset-btn, .lesen-reset-btn").forEach((el) => {
-        const txt = el.textContent.trim();
-        if (txt.includes("Pr\xFCfen") || txt.includes("\u062A\u0635\u062D\u064A\u062D") || txt === "\u21BA") {
-          el.remove();
-        }
-      });
-    }
     const resultDiv = document.createElement("div");
     resultDiv.id = "teil3Result";
     resultDiv.className = "result-box";
