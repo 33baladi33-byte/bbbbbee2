@@ -29984,6 +29984,20 @@ var MyApp = (() => {
               el.style.display = "none";
             });
           });
+          const btnSelectors = [
+            "#teil1 .check-btn",
+            "#teil1 .lesen-reset-btn",
+            "#teil3 .check-btn",
+            "#teil3 .lesen-reset-btn"
+          ];
+          btnSelectors.forEach((sel) => {
+            document.querySelectorAll(sel).forEach((btn) => {
+              if (!btn.dataset.zertivaBtnOriginalDisplay) {
+                btn.dataset.zertivaBtnOriginalDisplay = btn.style.display || "";
+              }
+              btn.style.display = "none";
+            });
+          });
         }
         _showOriginalControls() {
           let selectors = [];
@@ -30002,6 +30016,23 @@ var MyApp = (() => {
                 delete el.dataset.zertivaHelpOldDisplay;
               } else {
                 el.style.display = "";
+              }
+            });
+          });
+          const btnSelectors = [
+            "#teil1 .check-btn",
+            "#teil1 .lesen-reset-btn",
+            "#teil3 .check-btn",
+            "#teil3 .lesen-reset-btn"
+          ];
+          btnSelectors.forEach((sel) => {
+            document.querySelectorAll(sel).forEach((btn) => {
+              const oldDisplay = btn.dataset.zertivaBtnOriginalDisplay;
+              if (oldDisplay !== void 0) {
+                btn.style.display = oldDisplay || "";
+                delete btn.dataset.zertivaBtnOriginalDisplay;
+              } else {
+                btn.style.display = "";
               }
             });
           });
@@ -32775,9 +32806,7 @@ var MyApp = (() => {
     const list = document.getElementById("examsList");
     if (!list) return;
     const allowedSkills = ["hoeren1", "hoeren2", "hoeren3", "lesen1", "lesen2", "lesen3", "sprach1", "sprach2", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3", "schreiben"];
-    if (!allowedSkills.includes(currentSkill2)) {
-      return;
-    }
+    if (!allowedSkills.includes(currentSkill2)) return;
     const oldGrid = document.getElementById("examGridContainer");
     if (oldGrid) {
       while (oldGrid.firstChild) {
@@ -32785,12 +32814,31 @@ var MyApp = (() => {
       }
       oldGrid.remove();
     }
+    const items = [...list.querySelectorAll(".item")];
     if (mode === "list") {
-      [...list.querySelectorAll(".item")].forEach((el) => {
+      items.forEach((el) => {
+        if (el.querySelector(".zertiva-pro-lock")) {
+          el.style.display = "flex";
+          el.style.flexDirection = "row";
+          el.style.justifyContent = "flex-start";
+          el.style.alignItems = "center";
+          el.style.height = "auto";
+          el.style.padding = "8px 12px";
+          el.style.marginBottom = "8px";
+          el.style.minHeight = "44px";
+          el.style.fontSize = "0.65rem";
+          el.style.cursor = "pointer";
+          const lock = el.querySelector(".zertiva-pro-lock");
+          if (lock) {
+            lock.style.right = "8px";
+            lock.style.bottom = "8px";
+          }
+          return;
+        }
         el.style.cssText = `
                 display: flex !important;
                 flex-direction: row !important;
-                justify-content: flex-start !important; /* \u2190 \u062A\u063A\u064A\u064A\u0631 \u0645\u0646 space-between \u0625\u0644\u0649 flex-start */
+                justify-content: flex-start !important;
                 align-items: center !important;
                 height: auto !important;
                 padding: 8px 12px !important;
@@ -32803,22 +32851,11 @@ var MyApp = (() => {
                 font-size: 0.65rem !important;
                 cursor: pointer !important;
             `;
-        const title = el.querySelector(".exam-title");
-        if (title) {
-          title.style.textAlign = "left";
-          title.style.marginRight = "auto";
-        }
-        const rightSide = el.querySelector(".exam-right-icons");
-        if (rightSide) {
-          rightSide.style.marginLeft = "auto";
-        }
       });
-      console.log("\u{1F4C4} List View (\u0645\u062D\u0627\u0630\u0627\u0629 \u064A\u0633\u0627\u0631)");
+      console.log("\u{1F4C4} List View (\u0645\u0639 \u0627\u0644\u062D\u0641\u0627\u0638 \u0639\u0644\u0649 \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0645\u0642\u0641\u0644\u0629)");
       return;
     }
-    const exams = [...list.querySelectorAll(".item")].filter(
-      (el) => !el.classList.contains("teil-header") && !el.classList.contains("memory-progress-bar-container")
-    );
+    const exams = items.filter((el) => !el.classList.contains("teil-header") && !el.classList.contains("memory-progress-bar-container"));
     if (!exams.length) return;
     const grid = document.createElement("div");
     grid.id = "examGridContainer";
@@ -32871,11 +32908,27 @@ var MyApp = (() => {
     } catch (e) {
     }
     const contentMultiplier = 1.142857 * scaleFactor - 0.2142856;
-    const titleRatio = 0.65;
     const heightFactor = 1 + 0.2 * (contentMultiplier - 1);
     const adaptedHeight = Math.min(Math.max(fixedHeight * heightFactor, 42), 100);
     exams.forEach((item) => {
       grid.appendChild(item);
+      if (item.querySelector(".zertiva-pro-lock")) {
+        item.style.display = "flex";
+        item.style.flexDirection = "column";
+        item.style.justifyContent = "center";
+        item.style.alignItems = "center";
+        item.style.height = adaptedHeight + "px";
+        item.style.padding = "4px 4px";
+        item.style.margin = "0";
+        item.style.cursor = "pointer";
+        item.style.overflow = "visible";
+        const lock = item.querySelector(".zertiva-pro-lock");
+        if (lock) {
+          lock.style.right = "8px";
+          lock.style.bottom = "8px";
+        }
+        return;
+      }
       item.style.cssText = `
             display: flex;
             flex-direction: column;
@@ -32894,119 +32947,8 @@ var MyApp = (() => {
             transition: all 0.25s ease;
             overflow: visible;
         `;
-      item.addEventListener("mouseenter", function() {
-        const isPremium = this.querySelector(".premium-badge") !== null;
-        if (isPremium) {
-          this.style.backgroundColor = "rgba(255,255,255,0.95)";
-          this.style.transform = "translateY(-3px)";
-          this.style.borderColor = "#60a5fa";
-          this.style.boxShadow = "0 4px 12px rgba(47, 128, 237, 0.15)";
-        } else {
-          this.style.backgroundColor = "#f1f5f9";
-          this.style.transform = "translateY(-3px)";
-          this.style.borderColor = "#2F80ED";
-          this.style.boxShadow = "0 4px 12px rgba(47, 128, 237, 0.15)";
-        }
-        const title2 = this.querySelector(".exam-title");
-        if (title2) {
-          const isPremium2 = this.querySelector(".premium-badge") !== null;
-          title2.style.color = isPremium2 ? "#4b5563" : "#1e293b";
-        }
-        const premiumSpan = this.querySelector(".premium-badge");
-        if (premiumSpan) premiumSpan.style.transform = "scale(1.02)";
-      });
-      item.addEventListener("mouseleave", function() {
-        const isPremium = this.querySelector(".premium-badge") !== null;
-        if (isPremium) {
-          this.style.backgroundColor = "rgba(255,255,255,0.75)";
-          this.style.transform = "translateY(0)";
-          this.style.borderColor = "#e2e8f0";
-          this.style.boxShadow = "none";
-        } else {
-          this.style.backgroundColor = "#fafbfc";
-          this.style.transform = "translateY(0)";
-          this.style.borderColor = "#e8ecef";
-          this.style.boxShadow = "none";
-        }
-        const title2 = this.querySelector(".exam-title");
-        if (title2) {
-          const isPremium2 = this.querySelector(".premium-badge") !== null;
-          title2.style.color = isPremium2 ? "#6b7280" : "#1a202c";
-        }
-        const premiumSpan = this.querySelector(".premium-badge");
-        if (premiumSpan) premiumSpan.style.transform = "scale(1)";
-      });
-      item.addEventListener("mousedown", function() {
-        this.style.transform = "scale(0.98)";
-        this.style.backgroundColor = "#e2e8f0";
-        this.style.transition = "all 0.05s ease";
-      });
-      item.addEventListener("mouseup", function() {
-        const isPremium = this.querySelector(".premium-badge") !== null;
-        this.style.transform = "scale(1)";
-        this.style.backgroundColor = isPremium ? "rgba(255,255,255,0.95)" : "#f1f5f9";
-        this.style.transition = "all 0.25s ease";
-      });
-      const title = item.querySelector(".exam-title");
-      if (title) {
-        title.style.cssText = `
-                font-size: ${11 * contentMultiplier * titleRatio}px;
-                line-height: 1.1;
-                max-width: 95%;
-                white-space: normal;
-                word-break: break-word;
-                text-align: center;
-                flex-shrink: 1;
-                transition: color 0.25s ease;
-            `;
-      }
-      const badge = item.querySelector(".exam-result-badge");
-      if (badge) {
-        badge.style.cssText = `
-                font-size: ${8 * contentMultiplier}px;
-                line-height: 1;
-            `;
-      }
-      item.querySelectorAll(".exam-chip").forEach((chip) => {
-        chip.style.cssText = `
-                font-size: ${8 * contentMultiplier + 2}px;
-                line-height: 1;
-            `;
-        const icon = chip.querySelector(".material-symbols-outlined");
-        if (icon) {
-          icon.style.cssText = `
-                    font-size: ${8 * contentMultiplier + 4}px !important;
-                    line-height: 1;
-                `;
-        }
-      });
-      const versionBadge = item.querySelector(".custom-badge");
-      if (versionBadge) {
-        const vSize = 8 * contentMultiplier;
-        versionBadge.style.cssText = `
-                font-size: ${vSize}px !important;
-                height: ${Math.max(10, Math.min(18, 14 * contentMultiplier))}px !important;
-                padding: 0 5px !important;
-                line-height: 1 !important;
-                /* \u0644\u0627 \u0646\u0636\u0639 background, color, border, box-shadow \u0647\u0646\u0627\u060C \u062A\u062A\u0631\u0643 \u0644\u0644\u0640 CSS */
-            `;
-        const numSpan = versionBadge.querySelector("span:last-child");
-        if (numSpan) {
-          numSpan.style.cssText = `
-                    font-size: ${vSize}px !important;
-                    font-weight: 600 !important;
-                    line-height: 1 !important;
-                `;
-        }
-        versionBadge.style.removeProperty("background");
-        versionBadge.style.removeProperty("background-color");
-        versionBadge.style.removeProperty("color");
-        versionBadge.style.removeProperty("border");
-        versionBadge.style.removeProperty("box-shadow");
-        versionBadge.style.removeProperty("border-radius");
-      }
     });
-    console.log("\u{1F7E6} Grid View \u0645\u0639 \u0646\u0638\u0627\u0645 \u0627\u0644\u062D\u062C\u0645 \u0627\u0644\u0645\u062A\u062F\u0631\u062C (60%-150%)");
+    console.log("\u{1F7E6} Grid View (\u0645\u0639 \u0627\u0644\u062D\u0641\u0627\u0638 \u0639\u0644\u0649 \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0645\u0642\u0641\u0644\u0629)");
   }
   function addVersionBadgesFixed() {
     const container = document.getElementById("examsList");
