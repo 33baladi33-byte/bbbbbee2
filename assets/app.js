@@ -32786,10 +32786,8 @@ var MyApp = (() => {
     if (!showTogglesSkills.includes(currentSkill2)) {
       const oldBtn12 = document.getElementById("viewModeToggleBtn1");
       const oldBtn22 = document.getElementById("viewModeToggleBtn2");
-      const oldBtn32 = document.getElementById("viewModeToggleBtn3");
       if (oldBtn12) oldBtn12.style.display = "none";
       if (oldBtn22) oldBtn22.style.display = "none";
-      if (oldBtn32) oldBtn32.style.display = "none";
       return;
     }
     if (header.style.position !== "relative") {
@@ -32799,8 +32797,6 @@ var MyApp = (() => {
     if (oldBtn1) oldBtn1.remove();
     const oldBtn2 = document.getElementById("viewModeToggleBtn2");
     if (oldBtn2) oldBtn2.remove();
-    const oldBtn3 = document.getElementById("viewModeToggleBtn3");
-    if (oldBtn3) oldBtn3.remove();
     let currentState = 2;
     const ICONS_CYCLE = ["leaderboard", "timer_arrow_down", "123"];
     const btn1 = document.createElement("button");
@@ -32853,27 +32849,6 @@ var MyApp = (() => {
       }
     };
     header.appendChild(btn2);
-    const btn3 = document.createElement("button");
-    btn3.id = "viewModeToggleBtn3";
-    btn3.className = "view-mode-toggle-btn-1";
-    btn3.title = "\u062A\u0631\u062A\u064A\u0628 \u062D\u0633\u0628 \u0622\u062E\u0631 \u0645\u0631\u0627\u062C\u0639\u0629 (\u0627\u0644\u0623\u0642\u062F\u0645 \u0623\u0648\u0644\u0627\u064B)";
-    btn3.innerHTML = `<span class="material-symbols-outlined">history</span>`;
-    let isLastReviewOrderActive = false;
-    btn3.onclick = function(e) {
-      e.stopPropagation();
-      isLastReviewOrderActive = !isLastReviewOrderActive;
-      const span = this.querySelector(".material-symbols-outlined");
-      if (isLastReviewOrderActive) {
-        span.textContent = "history";
-        this.title = "\u0625\u0644\u063A\u0627\u0621 \u062A\u0631\u062A\u064A\u0628 \u0622\u062E\u0631 \u0645\u0631\u0627\u062C\u0639\u0629";
-        applyLastReviewOrder();
-      } else {
-        span.textContent = "history";
-        this.title = "\u062A\u0631\u062A\u064A\u0628 \u062D\u0633\u0628 \u0622\u062E\u0631 \u0645\u0631\u0627\u062C\u0639\u0629 (\u0627\u0644\u0623\u0642\u062F\u0645 \u0623\u0648\u0644\u0627\u064B)";
-        restoreOriginalOrder();
-      }
-    };
-    header.appendChild(btn3);
     applyExamListView(getExamListMode());
   }
   function applyExamListView(mode) {
