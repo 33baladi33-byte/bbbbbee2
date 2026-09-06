@@ -1508,12 +1508,12 @@ var MyApp = (() => {
     let lastSkill = getCurrentSkill2();
     setInterval(() => {
       const currentId = getCurrentExamId2();
-      const currentSkill3 = getCurrentSkill2();
-      if (currentId !== lastExamId || currentSkill3 !== lastSkill) {
+      const currentSkill4 = getCurrentSkill2();
+      if (currentId !== lastExamId || currentSkill4 !== lastSkill) {
         lastExamId = currentId;
-        lastSkill = currentSkill3;
+        lastSkill = currentSkill4;
         if (helpLayerActive) toggleHelp();
-        console.log(`\u{1F504} \u062A\u063A\u064A\u0631 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 \u0625\u0644\u0649: ${currentSkill3}_exam${currentId}`);
+        console.log(`\u{1F504} \u062A\u063A\u064A\u0631 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 \u0625\u0644\u0649: ${currentSkill4}_exam${currentId}`);
       }
     }, 500);
   }
@@ -27953,10 +27953,10 @@ var MyApp = (() => {
         btn.title = "Interleaving: OFF";
       }
     }
-    const currentSkill3 = window.currentSkill || "hoeren1";
-    if (currentSkill3.startsWith("hoeren")) {
-      console.log(`Calling rebuildTrueFalseCards for ${currentSkill3}...`);
-      const data = _hoerenData[currentSkill3];
+    const currentSkill4 = window.currentSkill || "hoeren1";
+    if (currentSkill4.startsWith("hoeren")) {
+      console.log(`Calling rebuildTrueFalseCards for ${currentSkill4}...`);
+      const data = _hoerenData[currentSkill4];
       if (data && data.questions && data.questions.length > 0) {
         if (typeof rebuildTrueFalseCards === "function") {
           setTimeout(() => {
@@ -27968,10 +27968,10 @@ var MyApp = (() => {
           _toggleInProgress = false;
         }
       } else {
-        console.warn(`\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0623\u0633\u0626\u0644\u0629 \u0644\u0640 ${currentSkill3}\u060C \u0627\u0646\u062A\u0638\u0631 \u062A\u062D\u0645\u064A\u0644 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646`);
+        console.warn(`\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0623\u0633\u0626\u0644\u0629 \u0644\u0640 ${currentSkill4}\u060C \u0627\u0646\u062A\u0638\u0631 \u062A\u062D\u0645\u064A\u0644 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646`);
         _toggleInProgress = false;
       }
-    } else if (currentSkill3 === "lesen1") {
+    } else if (currentSkill4 === "lesen1") {
       console.log(`Calling rebuildLesen1...`);
       if (typeof rebuildLesen1 === "function") {
         setTimeout(() => {
@@ -27982,7 +27982,7 @@ var MyApp = (() => {
         console.error("\u274C \u062F\u0627\u0644\u0629 rebuildLesen1 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629!");
         _toggleInProgress = false;
       }
-    } else if (currentSkill3 === "lesen2") {
+    } else if (currentSkill4 === "lesen2") {
       console.log(`Calling rebuildLesen2...`);
       if (typeof rebuildLesen2 === "function") {
         rebuildLesen2();
@@ -27991,7 +27991,7 @@ var MyApp = (() => {
         console.error("\u274C \u062F\u0627\u0644\u0629 rebuildLesen2 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629!");
         _toggleInProgress = false;
       }
-    } else if (currentSkill3 === "lesen3") {
+    } else if (currentSkill4 === "lesen3") {
       console.log(`Calling rebuildLesen3...`);
       if (typeof rebuildLesen3 === "function") {
         rebuildLesen3();
@@ -28001,13 +28001,13 @@ var MyApp = (() => {
         _toggleInProgress = false;
       }
     } else {
-      console.log(`\u26A0\uFE0F Interleaving \u063A\u064A\u0631 \u0645\u062F\u0639\u0648\u0645 \u0644\u0640 ${currentSkill3} \u062D\u0627\u0644\u064A\u0627\u064B`);
+      console.log(`\u26A0\uFE0F Interleaving \u063A\u064A\u0631 \u0645\u062F\u0639\u0648\u0645 \u0644\u0640 ${currentSkill4} \u062D\u0627\u0644\u064A\u0627\u064B`);
       window.isInterleavingActive = !window.isInterleavingActive;
       if (btn) {
         btn.classList.remove("active");
         btn.title = "Interleaving: OFF";
       }
-      alert(`\u26A0\uFE0F Interleaving \u064A\u0639\u0645\u0644 \u0641\u0642\u0637 \u0639\u0644\u0649 H\xF6ren Teil 1,2,3 \u0648 Lesen 1 \u0648 Lesen 2 \u062D\u0627\u0644\u064A\u0627\u064B (\u0627\u0644\u0645\u0647\u0627\u0631\u0629 \u0627\u0644\u062D\u0627\u0644\u064A\u0629: ${currentSkill3})`);
+      alert(`\u26A0\uFE0F Interleaving \u064A\u0639\u0645\u0644 \u0641\u0642\u0637 \u0639\u0644\u0649 H\xF6ren Teil 1,2,3 \u0648 Lesen 1 \u0648 Lesen 2 \u062D\u0627\u0644\u064A\u0627\u064B (\u0627\u0644\u0645\u0647\u0627\u0631\u0629 \u0627\u0644\u062D\u0627\u0644\u064A\u0629: ${currentSkill4})`);
       _toggleInProgress = false;
     }
   }
@@ -32076,7 +32076,7 @@ var MyApp = (() => {
             id: v.id,
             title: v.title,
             file: v.file,
-            skill: currentSkill2,
+            skill: currentSkill3,
             isVersion: true,
             parentId: exam.id
           });
@@ -32086,7 +32086,7 @@ var MyApp = (() => {
           id: exam.id,
           title: exam.title,
           file: exam.hasFile ? getActualFileName(exam.id) : null,
-          skill: currentSkill2,
+          skill: currentSkill3,
           isVersion: false,
           parentId: exam.id
         });
@@ -32095,7 +32095,7 @@ var MyApp = (() => {
     return flattened;
   }
   async function renderExamListForSkill(skill, teilName) {
-    currentSkill2 = skill;
+    currentSkill3 = skill;
     window.currentSkill = skill;
     const ORDER_MODE_KEY = "examOrderMode";
     localStorage.removeItem(ORDER_MODE_KEY);
@@ -32428,7 +32428,7 @@ var MyApp = (() => {
       const nextExam = flatList[currentIndex + 1];
       if (nextExam) {
         const nextExamId = nextExam.id;
-        const isNextFree = isExamFree(currentSkill2, nextExamId);
+        const isNextFree = isExamFree(currentSkill3, nextExamId);
         if (!isPremium && !isNextFree && nextBtn.style.display !== "none") {
           nextBtn.style.position = "relative";
           nextBtn.style.paddingLeft = "35px";
@@ -32507,7 +32507,7 @@ var MyApp = (() => {
       return;
     }
     currentExamId = examId;
-    currentSkill2 = skill;
+    currentSkill3 = skill;
     window.currentSkill = skill;
     window.currentExamId = examId;
     const interleavingRow = document.getElementById("interleavingRow");
@@ -32639,7 +32639,7 @@ var MyApp = (() => {
           buildTeil1(currentExamData.questions || []);
         }
       } else if (currentExamData.type === "truefalse") {
-        const container = document.getElementById(currentSkill2);
+        const container = document.getElementById(currentSkill3);
         if (container && typeof window.buildTrueFalseExam === "function") {
           window.buildTrueFalseExam(container, currentExamData.questions, currentExamData.note);
         } else {
@@ -32761,11 +32761,11 @@ var MyApp = (() => {
       nextBtn.style.display = "none";
     }
     if (memoryBtn) {
-      if (currentSkill2 && SKILL_CONFIG[currentSkill2]) {
+      if (currentSkill3 && SKILL_CONFIG[currentSkill3]) {
         memoryBtn.style.display = "inline-flex";
         memoryBtn.onclick = function() {
           if (window.startMemoryTrainerForExam) {
-            window.startMemoryTrainerForExam(currentSkill2);
+            window.startMemoryTrainerForExam(currentSkill3);
           } else {
             alert("\u26A0\uFE0F \u0645\u064A\u0632\u0629 \u062A\u062F\u0631\u064A\u0628 \u0627\u0644\u0630\u0627\u0643\u0631\u0629 \u063A\u064A\u0631 \u0645\u062A\u0648\u0641\u0631\u0629 \u062D\u0627\u0644\u064A\u0627\u064B.");
           }
@@ -32786,8 +32786,10 @@ var MyApp = (() => {
     if (!showTogglesSkills.includes(currentSkill2)) {
       const oldBtn12 = document.getElementById("viewModeToggleBtn1");
       const oldBtn22 = document.getElementById("viewModeToggleBtn2");
+      const oldBtn32 = document.getElementById("viewModeToggleBtn3");
       if (oldBtn12) oldBtn12.style.display = "none";
       if (oldBtn22) oldBtn22.style.display = "none";
+      if (oldBtn32) oldBtn32.style.display = "none";
       return;
     }
     if (header.style.position !== "relative") {
@@ -32797,6 +32799,8 @@ var MyApp = (() => {
     if (oldBtn1) oldBtn1.remove();
     const oldBtn2 = document.getElementById("viewModeToggleBtn2");
     if (oldBtn2) oldBtn2.remove();
+    const oldBtn3 = document.getElementById("viewModeToggleBtn3");
+    if (oldBtn3) oldBtn3.remove();
     let currentState = 2;
     const ICONS_CYCLE = ["leaderboard", "timer_arrow_down", "123"];
     const btn1 = document.createElement("button");
@@ -32849,13 +32853,34 @@ var MyApp = (() => {
       }
     };
     header.appendChild(btn2);
+    const btn3 = document.createElement("button");
+    btn3.id = "viewModeToggleBtn3";
+    btn3.className = "view-mode-toggle-btn-1";
+    btn3.title = "\u062A\u0631\u062A\u064A\u0628 \u062D\u0633\u0628 \u0622\u062E\u0631 \u0645\u0631\u0627\u062C\u0639\u0629 (\u0627\u0644\u0623\u0642\u062F\u0645 \u0623\u0648\u0644\u0627\u064B)";
+    btn3.innerHTML = `<span class="material-symbols-outlined">history</span>`;
+    let isLastReviewOrderActive = false;
+    btn3.onclick = function(e) {
+      e.stopPropagation();
+      isLastReviewOrderActive = !isLastReviewOrderActive;
+      const span = this.querySelector(".material-symbols-outlined");
+      if (isLastReviewOrderActive) {
+        span.textContent = "history";
+        this.title = "\u0625\u0644\u063A\u0627\u0621 \u062A\u0631\u062A\u064A\u0628 \u0622\u062E\u0631 \u0645\u0631\u0627\u062C\u0639\u0629";
+        applyLastReviewOrder();
+      } else {
+        span.textContent = "history";
+        this.title = "\u062A\u0631\u062A\u064A\u0628 \u062D\u0633\u0628 \u0622\u062E\u0631 \u0645\u0631\u0627\u062C\u0639\u0629 (\u0627\u0644\u0623\u0642\u062F\u0645 \u0623\u0648\u0644\u0627\u064B)";
+        restoreOriginalOrder();
+      }
+    };
+    header.appendChild(btn3);
     applyExamListView(getExamListMode());
   }
   function applyExamListView(mode) {
     const list = document.getElementById("examsList");
     if (!list) return;
     const allowedSkills = ["hoeren1", "hoeren2", "hoeren3", "lesen1", "lesen2", "lesen3", "sprach1", "sprach2", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3", "schreiben"];
-    if (!allowedSkills.includes(currentSkill2)) return;
+    if (!allowedSkills.includes(currentSkill3)) return;
     const oldGrid = document.getElementById("examGridContainer");
     if (oldGrid) {
       while (oldGrid.firstChild) {
@@ -33002,7 +33027,7 @@ var MyApp = (() => {
   function addVersionBadgesFixed() {
     const container = document.getElementById("examsList");
     if (!container) return;
-    const skill = currentSkill2 || "lesen1";
+    const skill = currentSkill3 || "lesen1";
     if (!["lesen1", "lesen2", "lesen3", "sprach1", "sprach2"].includes(skill)) return;
     const items = container.querySelectorAll(".item:not(.teil-header):not(.memory-progress-bar-container)");
     if (!items.length) return;
@@ -33047,26 +33072,26 @@ var MyApp = (() => {
     });
   }
   function goBackToExamsList() {
-    if (currentSkill2) {
-      if (currentSkill2 === "m\xFCndlich1") {
+    if (currentSkill3) {
+      if (currentSkill3 === "m\xFCndlich1") {
         document.getElementById("home").classList.remove("active");
         document.getElementById("exam").classList.remove("active");
         document.getElementById("list").classList.add("active");
         renderExamListForSkill("m\xFCndlich1", "M\xFCndlich - Teil 1 \u{1F4D6}");
-      } else if (currentSkill2 === "m\xFCndlich2") {
+      } else if (currentSkill3 === "m\xFCndlich2") {
         document.getElementById("home").classList.remove("active");
         document.getElementById("exam").classList.remove("active");
         document.getElementById("list").classList.add("active");
         renderExamListForSkill("m\xFCndlich2", "M\xFCndlich - Teil 2 \u{1F5E3}\uFE0F");
-      } else if (currentSkill2 === "m\xFCndlich3") {
+      } else if (currentSkill3 === "m\xFCndlich3") {
         document.getElementById("home").classList.remove("active");
         document.getElementById("exam").classList.remove("active");
         document.getElementById("list").classList.add("active");
         renderExamListForSkill("m\xFCndlich3", "M\xFCndlich - Teil 3 \u{1F3AF}");
-      } else if (currentSkill2.startsWith("m\xFCndlich")) {
+      } else if (currentSkill3.startsWith("m\xFCndlich")) {
         renderExamListForSkill("m\xFCndlich", getTeilNameBySkill("m\xFCndlich"));
       } else {
-        const teil = teile.find((t) => t.skill === currentSkill2);
+        const teil = teile.find((t) => t.skill === currentSkill3);
         if (teil) {
           document.getElementById("home").classList.remove("active");
           document.getElementById("exam").classList.remove("active");
@@ -33081,8 +33106,8 @@ var MyApp = (() => {
     }
   }
   function renderInfoExam(examData) {
-    let containerId = currentSkill2;
-    if (currentSkill2 === "m\xFCndlich1" || currentSkill2 === "m\xFCndlich3") {
+    let containerId = currentSkill3;
+    if (currentSkill3 === "m\xFCndlich1" || currentSkill3 === "m\xFCndlich3") {
       containerId = "m\xFCndlich";
     }
     const container = document.getElementById(containerId);
@@ -33419,8 +33444,8 @@ var MyApp = (() => {
       resultDiv.innerHTML = "\u0627\u0644\u0646\u062A\u064A\u062C\u0629: " + finalScore + " / 25";
       resultDiv.style.display = "block";
     }
-    saveExamResult(currentSkill2, currentExamId, parseFloat(finalScore));
-    const retryCount = incrementRetryCount(currentSkill2, currentExamId);
+    saveExamResult(currentSkill3, currentExamId, parseFloat(finalScore));
+    const retryCount = incrementRetryCount(currentSkill3, currentExamId);
     if (typeof window.updateRetryCounter === "function") {
       window.updateRetryCounter();
     }
@@ -33428,7 +33453,7 @@ var MyApp = (() => {
       window.removeColorFromExam(currentExamId);
     }
     if (document.getElementById("list").classList.contains("active")) {
-      renderExamListForSkill(currentSkill2, getTeilNameBySkill(currentSkill2));
+      renderExamListForSkill(currentSkill3, getTeilNameBySkill(currentSkill3));
     }
   }
   function getStageKey(skill) {
@@ -33648,7 +33673,7 @@ var MyApp = (() => {
         }
       }
       if (!hasResult) {
-        const skill = currentSkill2 || "";
+        const skill = currentSkill3 || "";
         const title = el.querySelector(".exam-title");
         let examId = null;
         if (title) {
@@ -33841,16 +33866,16 @@ var MyApp = (() => {
   }
   function addRetryCounterToExam() {
     const forbiddenSkills = ["schreiben", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3"];
-    if (forbiddenSkills.includes(currentSkill2)) {
+    if (forbiddenSkills.includes(currentSkill3)) {
       const oldCounter2 = document.getElementById("retryCounterBox");
       if (oldCounter2) oldCounter2.remove();
       return;
     }
     const oldCounter = document.getElementById("retryCounterBox");
     if (oldCounter) oldCounter.remove();
-    const retryCount = window.getRetryCount ? window.getRetryCount(currentSkill2, currentExamId) : 0;
-    const reviewDays = window.getLastReviewDays ? window.getLastReviewDays(currentSkill2, currentExamId) : null;
-    const timeMs = window.getExamTime ? window.getExamTime(currentSkill2, currentExamId) : null;
+    const retryCount = window.getRetryCount ? window.getRetryCount(currentSkill3, currentExamId) : 0;
+    const reviewDays = window.getLastReviewDays ? window.getLastReviewDays(currentSkill3, currentExamId) : null;
+    const timeMs = window.getExamTime ? window.getExamTime(currentSkill3, currentExamId) : null;
     let reviewText = "";
     if (reviewDays === null) {
       reviewText = "\u0644\u0645 \u064A\u064F\u0631\u0627\u062C\u0639";
@@ -33969,7 +33994,7 @@ var MyApp = (() => {
   }
   function updateRetryCounter() {
     const forbiddenSkills = ["schreiben", "m\xFCndlich", "m\xFCndlich1", "m\xFCndlich2", "m\xFCndlich3"];
-    if (forbiddenSkills.includes(currentSkill2)) {
+    if (forbiddenSkills.includes(currentSkill3)) {
       const oldCounter = document.getElementById("retryCounterBox");
       if (oldCounter) oldCounter.remove();
       return;
@@ -33979,9 +34004,9 @@ var MyApp = (() => {
       addRetryCounterToExam();
       return;
     }
-    const retryCount = window.getRetryCount ? window.getRetryCount(currentSkill2, currentExamId) : 0;
-    const reviewDays = window.getLastReviewDays ? window.getLastReviewDays(currentSkill2, currentExamId) : null;
-    const timeMs = window.getExamTime ? window.getExamTime(currentSkill2, currentExamId) : null;
+    const retryCount = window.getRetryCount ? window.getRetryCount(currentSkill3, currentExamId) : 0;
+    const reviewDays = window.getLastReviewDays ? window.getLastReviewDays(currentSkill3, currentExamId) : null;
+    const timeMs = window.getExamTime ? window.getExamTime(currentSkill3, currentExamId) : null;
     let reviewText = "";
     if (reviewDays === null) {
       reviewText = "\u0644\u0645 \u064A\u064F\u0631\u0627\u062C\u0639";
@@ -34055,7 +34080,7 @@ var MyApp = (() => {
         }
       }
       if (timeMs === null) {
-        const skill = currentSkill2 || "";
+        const skill = currentSkill3 || "";
         const title = el.querySelector(".exam-title");
         let examId = null;
         if (title) {
@@ -34078,6 +34103,41 @@ var MyApp = (() => {
     });
     data.forEach((item) => targetContainer.appendChild(item.el));
     console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u062D\u0633\u0628 \u0627\u0644\u0648\u0642\u062A (\u0645\u0646 \u0627\u0644\u0623\u0636\u0639\u0641 \u0625\u0644\u0649 \u0627\u0644\u0623\u0642\u0648\u0649)");
+  }
+  function applyLastReviewOrder() {
+    const list = document.getElementById("examsList");
+    if (!list) return;
+    const gridContainer = document.getElementById("examGridContainer");
+    const targetContainer = gridContainer || list;
+    const exams = [...targetContainer.querySelectorAll(".item")].filter(
+      (el) => !el.classList.contains("teil-header") && !el.classList.contains("memory-progress-bar-container")
+    );
+    if (exams.length === 0) {
+      console.warn("\u26A0\uFE0F applyLastReviewOrder: \u0644\u0627 \u062A\u0648\u062C\u062F \u0639\u0646\u0627\u0635\u0631");
+      return;
+    }
+    const skill = currentSkill3 || "";
+    const data = exams.map((el, index) => {
+      let days = null;
+      const title = el.querySelector(".exam-title");
+      let examId = null;
+      if (title) {
+        const match = title.textContent.match(/^(\d+):/);
+        if (match) examId = parseInt(match[1]);
+      }
+      if (skill && examId) {
+        days = getLastReviewDays(skill, examId);
+      }
+      return { el, days, originalIndex: index };
+    });
+    data.sort((a, b) => {
+      if (a.days === null && b.days === null) return a.originalIndex - b.originalIndex;
+      if (a.days === null) return 1;
+      if (b.days === null) return -1;
+      return b.days - a.days;
+    });
+    data.forEach((item) => targetContainer.appendChild(item.el));
+    console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u062D\u0633\u0628 \u0622\u062E\u0631 \u0645\u0631\u0627\u062C\u0639\u0629 (\u0627\u0644\u0623\u0642\u062F\u0645 \u0623\u0648\u0644\u0627\u064B)");
   }
   function createMatchingButton() {
     if (document.getElementById("matchingToggleBtn")) return;
@@ -34111,7 +34171,7 @@ var MyApp = (() => {
     interleavingRow.insertBefore(helpBtn, playBtn);
     console.log("\u2705 \u0632\u0631 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u062A\u0645 \u0625\u0636\u0627\u0641\u062A\u0647 \u0641\u064A \u0634\u0631\u064A\u0637 \u0627\u0644\u0623\u0632\u0631\u0627\u0631");
   }
-  var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY, originalOpenExam2;
+  var teile, currentExamData, currentSkill3, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY, originalOpenExam2;
   var init_exams = __esm({
     "exams.js"() {
       window.isInterleavingActive = false;
@@ -34308,7 +34368,7 @@ var MyApp = (() => {
         }, 100);
       };
       currentExamData = null;
-      currentSkill2 = "lesen1";
+      currentSkill3 = "lesen1";
       currentExamId = null;
       currentExamsList = [];
       currentM\u00FCndlichPart = 2;
@@ -35322,8 +35382,8 @@ var MyApp = (() => {
       };
       window.saveExamResultGlobal = function(skill, examId, score) {
         saveExamResult(skill, examId, score);
-        if (document.getElementById("list").classList.contains("active") && currentSkill2 === skill) {
-          renderExamListForSkill(currentSkill2, getTeilNameBySkill(currentSkill2));
+        if (document.getElementById("list").classList.contains("active") && currentSkill3 === skill) {
+          renderExamListForSkill(currentSkill3, getTeilNameBySkill(currentSkill3));
         }
       };
       document.addEventListener("DOMContentLoaded", function() {
@@ -35607,6 +35667,7 @@ var MyApp = (() => {
         console.log("\u2139\uFE0F \u0645\u062A\u063A\u064A\u0631\u0627\u062A Lesen1 \u0633\u062A\u064F\u0635\u062F\u0651\u0631 \u0645\u0646 engine.js");
       }
       window.applyTimeOrder = applyTimeOrder;
+      window.applyLastReviewOrder = applyLastReviewOrder;
       document.addEventListener("DOMContentLoaded", function() {
         setTimeout(createMatchingButton, 500);
       });
@@ -37328,7 +37389,7 @@ var MyApp = (() => {
         let currentOptionsDiv = null;
         let currentStartTime = 0;
         let questionStats = {};
-        let currentSkill3 = null;
+        let currentSkill4 = null;
         let currentExamId2 = null;
         let reflexSentences = [];
         function extractFirstWords(text, maxWords) {
@@ -37429,7 +37490,7 @@ var MyApp = (() => {
           if (gameStarted) return;
           gameStarted = true;
           gamePaused = false;
-          loadGameData(currentSkill3, currentExamId2).then((loaded) => {
+          loadGameData(currentSkill4, currentExamId2).then((loaded) => {
             if (!loaded) {
               showNotAvailableMessage();
               return;
@@ -37664,7 +37725,7 @@ var MyApp = (() => {
           };
         }
         function loadGameData(skill, examId) {
-          currentSkill3 = skill;
+          currentSkill4 = skill;
           currentExamId2 = examId;
           let filePath = `data/games/${skill}/exam${examId}.json`;
           console.log(`\u{1F4C2} \u062C\u0627\u0631\u064A \u062A\u062D\u0645\u064A\u0644: ${filePath}`);
@@ -37780,7 +37841,7 @@ var MyApp = (() => {
         }
         function startGame(skill, examId) {
           if (gameStarted) return;
-          currentSkill3 = skill;
+          currentSkill4 = skill;
           currentExamId2 = examId;
           setSpeedMode("reflex");
           showModeSelectionScreen();
@@ -38155,7 +38216,7 @@ var MyApp = (() => {
           document.body.appendChild(overlay);
           document.getElementById("restartGameBtn").onclick = () => {
             overlay.remove();
-            startGame(currentSkill3, currentExamId2);
+            startGame(currentSkill4, currentExamId2);
           };
           document.getElementById("closeGameBtn").onclick = () => overlay.remove();
           overlay.onclick = (e) => {
@@ -38166,9 +38227,9 @@ var MyApp = (() => {
           const gameBtn = document.getElementById("rapidGameBtn");
           if (gameBtn) {
             gameBtn.onclick = () => {
-              const currentSkill4 = typeof getCurrentSkill === "function" ? getCurrentSkill() : "lesen1";
+              const currentSkill5 = typeof getCurrentSkill === "function" ? getCurrentSkill() : "lesen1";
               const currentExamId3 = typeof getCurrentExamId === "function" ? getCurrentExamId() : 1;
-              startGame(currentSkill4, currentExamId3);
+              startGame(currentSkill5, currentExamId3);
             };
             console.log("\u{1F3AE} \u0632\u0631 \u0627\u0644\u0639\u0628 \u062A\u0645 \u0631\u0628\u0637\u0647");
             return;
