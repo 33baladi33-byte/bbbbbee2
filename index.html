@@ -2303,11 +2303,22 @@ body.dark-mode .mobile-banner span {
                 <div class="shape2-chevron">›</div>
             </div>
         </div>
-        <!-- زر إحصائياتي -->
+               <!-- زر إحصائياتي -->
         <button id="downloadReportBtn" class="shape2-stats">
             <span class="material-symbols-outlined">monitoring</span> إحصائياتي
         </button>
-            <!-- زر تسجيل خروج -->
+
+        <!-- زر اشترك (يظهر حسب الحالة) -->
+        <button id="profileSubscribeBtn" class="shape2-stats" style="display: none; background: linear-gradient(135deg, #2d6a4f, #1b4d3d); border-color: rgba(45, 106, 79, 0.3); box-shadow: 0 5px 16px rgba(45, 106, 79, 0.2);">
+            <span class="material-symbols-outlined">auto_awesome</span> اشترك
+        </button>
+
+        <!-- زر إنشاء حساب (يظهر حسب الحالة) -->
+        <button id="profileSignupBtn" class="shape2-logout" style="display: none; background: radial-gradient(120px 35px at 50% 100%, rgba(59,130,246,.07), transparent 75%), linear-gradient(180deg, rgba(29,32,43,.92), rgba(17,21,31,.96)); color: #60a5fa; border-color: rgba(59,130,246,.2);">
+            <span class="material-symbols-outlined">person_add</span> إنشاء حساب
+        </button>
+
+        <!-- زر تسجيل خروج -->
         <button id="profileLogoutBtn" class="shape2-logout">
             <span class="material-symbols-outlined">logout</span> تسجيل خروج
         </button>
@@ -5972,6 +5983,16 @@ document.addEventListener("DOMContentLoaded", function() {
     console.log('✅ Ask AI جاهز (يدعم 6 مزودات + حد يومي 15 رسالة + Prompt مختصر)');
 })();
 
+function calculateRemainingDays(examDateStr) {
+    if (!examDateStr) return 0;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const examDay = new Date(examDateStr);
+    examDay.setHours(0, 0, 0, 0);
+    const diff = Math.ceil((examDay - today) / (1000 * 60 * 60 * 24));
+    return Math.max(diff, 0);
+}
+
 function updateProfilePlannerStatus() {
     const textEl = document.getElementById('profilePlannerText');
     const statusRow = document.getElementById('profilePlannerRow');
@@ -5979,22 +6000,9 @@ function updateProfilePlannerStatus() {
 
     const examDateStr = localStorage.getItem('zertiva_exam_date');
     if (examDateStr) {
-        // استخدام نفس دالة Study Planner للحساب (مصدر واحد للحقيقة)
-        if (typeof window.calculateWorkingDays === 'function') {
-            const examDate = new Date(examDateStr);
-            const result = window.calculateWorkingDays(examDate);
-            const remaining = result.remainingDays;
-            textEl.textContent = `لديك ${remaining} يوم${remaining > 1 ? 'اً' : ''}`;
-            textEl.className = 'profile-planner-text-active';
-        } else {
-            // في حالة عدم توفر الدالة (حماية احتياطية)
-            const today = new Date(); today.setHours(0,0,0,0);
-            const examDay = new Date(examDateStr); examDay.setHours(0,0,0,0);
-            const diff = Math.ceil((examDay - today) / (1000 * 60 * 60 * 24));
-            const remaining = Math.max(diff, 0);
-            textEl.textContent = `لديك ${remaining} يوم${remaining > 1 ? 'اً' : ''}`;
-            textEl.className = 'profile-planner-text-active';
-        }
+        const remaining = calculateRemainingDays(examDateStr);
+        textEl.textContent = `لديك ${remaining} يوم${remaining > 1 ? 'اً' : ''}`;
+        textEl.className = 'profile-planner-text-active';
     } else {
         textEl.textContent = 'لم يتم إعداد الخطة اليومية بعد.';
         textEl.className = '';
