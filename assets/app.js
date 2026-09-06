@@ -29484,12 +29484,12 @@ var MyApp = (() => {
             return rect.width > 0 && rect.height > 0 && getComputedStyle(sel).display !== "none";
           });
           if (selects.length === 0) return false;
-          const maxSelects = this.modeName === "lesen1" ? 5 : 12;
+          let maxSelects = this.modeName === "lesen1" ? 5 : 12;
           this._selects = selects.slice(0, maxSelects);
           if (this._selects.length < 5) return false;
           this._texts = this._selects.map((select, index) => {
             let text = "\u0646\u0635 \u063A\u064A\u0631 \u0645\u0639\u0631\u0648\u0641";
-            const parent = select.parentElement;
+            let parent = select.parentElement;
             if (parent) {
               const children = Array.from(parent.children);
               const idx = children.indexOf(select);
@@ -29497,9 +29497,7 @@ var MyApp = (() => {
                 const prev = children[idx - 1];
                 if (prev && !prev.querySelector("select")) {
                   const raw = prev.textContent.trim();
-                  if (raw.length > 20) {
-                    text = raw;
-                  }
+                  if (raw.length > 20) text = raw;
                 }
               }
             }
@@ -29509,9 +29507,7 @@ var MyApp = (() => {
                 const clone = container2.cloneNode(true);
                 clone.querySelectorAll("select, button, input, textarea").forEach((el) => el.remove());
                 const raw = clone.textContent.trim();
-                if (raw.length > 20) {
-                  text = raw;
-                }
+                if (raw.length > 20) text = raw;
               }
             }
             return {
@@ -29523,10 +29519,7 @@ var MyApp = (() => {
           });
           const firstSelect = this._selects[0];
           if (!firstSelect) return false;
-          let options = Array.from(firstSelect.options).map((opt) => ({
-            value: opt.value,
-            text: opt.textContent.trim()
-          })).filter((opt) => {
+          let options = Array.from(firstSelect.options).map((opt) => ({ value: opt.value, text: opt.textContent.trim() })).filter((opt) => {
             if (!opt.text) return false;
             const lowerText = opt.text.toLowerCase();
             if (lowerText.includes("\u0627\u062E\u062A\u0631 \u0627\u0644\u0625\u062C\u0627\u0628\u0629") || lowerText.includes("\u0627\u062E\u062A\u0631 \u0627\u0644\u0639\u0646\u0648\u0627\u0646") || lowerText.includes("ausw\xE4hlen") || lowerText.includes("w\xE4hlen")) {
@@ -29535,30 +29528,33 @@ var MyApp = (() => {
             return true;
           });
           if (this.modeName === "lesen3") {
-            const noneOption = Array.from(firstSelect.options).find((opt) => opt.textContent.includes("\u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646"));
+            let noneOption = options.find((opt) => opt.text.includes("\u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646"));
+            if (!noneOption) {
+              const originalNone = Array.from(firstSelect.options).find((opt) => opt.textContent.includes("\u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646"));
+              if (originalNone) {
+                noneOption = { value: originalNone.value, text: originalNone.textContent.trim() };
+              }
+            }
             if (noneOption) {
-              options = options.filter(
-                (opt) => !opt.text.includes("\u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646")
-              );
-              options.unshift({
-                value: noneOption.value,
-                text: noneOption.textContent.trim()
-              });
+              options = options.filter((opt) => !opt.text.includes("\u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646"));
+              options.unshift({ value: noneOption.value, text: "\u2727 \u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646 \u2727" });
+            } else {
+              options.unshift({ value: "none", text: "\u2727 \u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646 \u2727" });
             }
           }
           this._titles = options.map((opt, idx) => {
             const isNone = opt.text.includes("\u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646");
+            const id = isNone ? "title-none" : `title-${idx + 1}`;
+            const letter = isNone ? "" : String.fromCharCode(65 + idx);
             return {
-              id: isNone ? "title-none" : `title-${idx + 1}`,
+              id,
               value: opt.value,
               text: opt.text,
-              letter: isNone ? "" : String.fromCharCode(65 + idx)
+              letter
             };
           });
           if (this.modeName === "lesen3") {
-            const noneIdx = this._titles.findIndex(
-              (title) => title.id === "title-none"
-            );
+            const noneIdx = this._titles.findIndex((t) => t.id === "title-none");
             if (noneIdx > 0) {
               const none = this._titles.splice(noneIdx, 1)[0];
               this._titles.unshift(none);
@@ -29567,13 +29563,19 @@ var MyApp = (() => {
           if (this._titles.length === 0) return false;
           this._texts.forEach((text) => {
             const val = text.select.value;
-            if (!val) return;
-            const title = this._titles.find(
-              (t) => t.value === val
-            );
-            if (title) {
-              this._matches.set(text.id, title.id);
-              this._titleToText.set(title.id, text.id);
+            if (val !== void 0 && val !== null && val !== "") {
+              let title = this._titles.find((t) => t.value === val);
+              if (!title && val === "none") {
+                title = this._titles.find((t) => t.id === "title-none");
+              }
+              if (title) {
+                if (title.id === "title-none") {
+                  this._matches.set(text.id, title.id);
+                } else {
+                  this._matches.set(text.id, title.id);
+                  this._titleToText.set(title.id, text.id);
+                }
+              }
             }
           });
           return true;
@@ -29818,28 +29820,25 @@ var MyApp = (() => {
         }
         _connect(textId, titleId) {
           if (this._matches.get(textId) === titleId) {
-            this._disconnectText(textId);
             return;
           }
-          if (titleId === "title-none") {
-            const oldText = this._titleToText.get(titleId);
-            if (oldText && oldText !== textId) {
-              this._matches.delete(oldText);
-              this._titleToText.delete(titleId);
+          const oldTitle = this._matches.get(textId);
+          if (oldTitle && oldTitle !== titleId) {
+            if (oldTitle !== "title-none") {
+              this._titleToText.delete(oldTitle);
             }
+          }
+          if (titleId === "title-none") {
+            this._matches.set(textId, titleId);
           } else {
             const oldText = this._titleToText.get(titleId);
             if (oldText && oldText !== textId) {
               this._matches.delete(oldText);
               this._titleToText.delete(titleId);
             }
+            this._matches.set(textId, titleId);
+            this._titleToText.set(titleId, textId);
           }
-          const oldTitle = this._matches.get(textId);
-          if (oldTitle) {
-            this._titleToText.delete(oldTitle);
-          }
-          this._matches.set(textId, titleId);
-          this._titleToText.set(titleId, textId);
           const textObj = this._texts.find((t) => t.id === textId);
           const titleObj = this._titles.find((t) => t.id === titleId);
           if (textObj && textObj.select && titleObj) {
@@ -29853,7 +29852,9 @@ var MyApp = (() => {
         _disconnectText(textId) {
           const titleId = this._matches.get(textId);
           if (!titleId) return;
-          this._titleToText.delete(titleId);
+          if (titleId !== "title-none") {
+            this._titleToText.delete(titleId);
+          }
           this._matches.delete(textId);
           const textObj = this._texts.find((t) => t.id === textId);
           if (textObj && textObj.select) {
@@ -31843,9 +31844,9 @@ var MyApp = (() => {
       case "hoeren3":
         return examNumber <= 6;
       case "lesen1":
-        return examNumber <= 4;
+        return examNumber <= 5;
       case "lesen2":
-        return examNumber <= 6;
+        return examNumber <= 7;
       case "lesen3":
         return examNumber <= 4;
       case "sprach1":
@@ -36975,10 +36976,6 @@ var MyApp = (() => {
             localStorage.setItem("zertiva_daily_hours", String(hours));
             if (typeof updateProfilePlannerStatus === "function") {
               updateProfilePlannerStatus();
-            } else {
-              const remaining = calculateRemainingDays ? calculateRemainingDays(date) : 0;
-              const profilePlannerText = document.getElementById("profilePlannerText");
-              if (profilePlannerText) profilePlannerText.textContent = remaining + " \u064A\u0648\u0645";
             }
             editInfoModal.style.display = "none";
           });
