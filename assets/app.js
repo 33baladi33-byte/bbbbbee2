@@ -31848,7 +31848,7 @@ var MyApp = (() => {
       case "lesen2":
         return examNumber <= 7;
       case "lesen3":
-        return examNumber <= 4;
+        return examNumber <= 6;
       case "sprach1":
         return examNumber <= 6;
       case "sprach2":
@@ -32786,8 +32786,10 @@ var MyApp = (() => {
     if (!showTogglesSkills.includes(currentSkill2)) {
       const oldBtn12 = document.getElementById("viewModeToggleBtn1");
       const oldBtn22 = document.getElementById("viewModeToggleBtn2");
+      const oldBtn32 = document.getElementById("viewModeToggleBtn3");
       if (oldBtn12) oldBtn12.style.display = "none";
       if (oldBtn22) oldBtn22.style.display = "none";
+      if (oldBtn32) oldBtn32.style.display = "none";
       return;
     }
     if (header.style.position !== "relative") {
@@ -32797,6 +32799,8 @@ var MyApp = (() => {
     if (oldBtn1) oldBtn1.remove();
     const oldBtn2 = document.getElementById("viewModeToggleBtn2");
     if (oldBtn2) oldBtn2.remove();
+    const oldBtn3 = document.getElementById("viewModeToggleBtn3");
+    if (oldBtn3) oldBtn3.remove();
     let currentState = 2;
     const ICONS_CYCLE = ["leaderboard", "timer_arrow_down", "123"];
     const btn1 = document.createElement("button");
@@ -32823,6 +32827,20 @@ var MyApp = (() => {
       }
     };
     header.appendChild(btn1);
+    const btn3 = document.createElement("button");
+    btn3.id = "viewModeToggleBtn3";
+    btn3.className = "view-mode-toggle-btn-3";
+    btn3.title = "\u062A\u0631\u062A\u064A\u0628 \u062D\u0633\u0628 \u0622\u062E\u0631 \u0645\u0631\u0627\u062C\u0639\u0629 (\u0627\u0644\u0623\u0642\u062F\u0645 \u0623\u0648\u0644\u0627\u064B)";
+    btn3.innerHTML = `<span class="material-symbols-outlined">calendar_apps_script</span>`;
+    btn3.onclick = function(e) {
+      e.stopPropagation();
+      if (typeof applyLastReviewOrder === "function") {
+        applyLastReviewOrder();
+      } else {
+        console.warn("\u26A0\uFE0F applyLastReviewOrder \u063A\u064A\u0631 \u0645\u0639\u0631\u0641");
+      }
+    };
+    header.appendChild(btn3);
     const btn2 = document.createElement("button");
     btn2.id = "viewModeToggleBtn2";
     btn2.className = "view-mode-toggle-btn-2";
@@ -34078,6 +34096,45 @@ var MyApp = (() => {
     });
     data.forEach((item) => targetContainer.appendChild(item.el));
     console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u062D\u0633\u0628 \u0627\u0644\u0648\u0642\u062A (\u0645\u0646 \u0627\u0644\u0623\u0636\u0639\u0641 \u0625\u0644\u0649 \u0627\u0644\u0623\u0642\u0648\u0649)");
+  }
+  function applyLastReviewOrder() {
+    const list = document.getElementById("examsList");
+    if (!list) return;
+    const gridContainer = document.getElementById("examGridContainer");
+    const targetContainer = gridContainer || list;
+    const exams = [...targetContainer.querySelectorAll(".item")].filter(
+      (el) => !el.classList.contains("teil-header") && !el.classList.contains("memory-progress-bar-container")
+    );
+    if (exams.length === 0) {
+      console.warn("\u26A0\uFE0F applyLastReviewOrder: \u0644\u0627 \u062A\u0648\u062C\u062F \u0639\u0646\u0627\u0635\u0631");
+      return;
+    }
+    const skill = window.currentSkill || "";
+    if (!skill) {
+      console.warn("\u26A0\uFE0F applyLastReviewOrder: currentSkill \u063A\u064A\u0631 \u0645\u0639\u0631\u0641");
+      return;
+    }
+    const data = exams.map((el, index) => {
+      let examId = null;
+      const title = el.querySelector(".exam-title");
+      if (title) {
+        const match = title.textContent.match(/^(\d+):/);
+        if (match) examId = parseInt(match[1]);
+      }
+      let days = null;
+      if (examId !== null) {
+        days = getLastReviewDays(skill, examId);
+      }
+      return { el, days, originalIndex: index };
+    });
+    data.sort((a, b) => {
+      if (a.days === null && b.days === null) return a.originalIndex - b.originalIndex;
+      if (a.days === null) return 1;
+      if (b.days === null) return -1;
+      return b.days - a.days;
+    });
+    data.forEach((item) => targetContainer.appendChild(item.el));
+    console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u062D\u0633\u0628 \u0622\u062E\u0631 \u0645\u0631\u0627\u062C\u0639\u0629 (\u0645\u0646 \u0627\u0644\u0623\u0642\u062F\u0645 \u0625\u0644\u0649 \u0627\u0644\u0623\u062D\u062F\u062B)");
   }
   function createMatchingButton() {
     if (document.getElementById("matchingToggleBtn")) return;
@@ -35607,6 +35664,7 @@ var MyApp = (() => {
         console.log("\u2139\uFE0F \u0645\u062A\u063A\u064A\u0631\u0627\u062A Lesen1 \u0633\u062A\u064F\u0635\u062F\u0651\u0631 \u0645\u0646 engine.js");
       }
       window.applyTimeOrder = applyTimeOrder;
+      window.applyLastReviewOrder = applyLastReviewOrder;
       document.addEventListener("DOMContentLoaded", function() {
         setTimeout(createMatchingButton, 500);
       });

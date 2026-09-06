@@ -5814,10 +5814,6 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 5 !important; }
         font-size: 18px;
     }
 }
-/* ============================================
-   أزرار تبديل شكل القائمة
-   ============================================ */
-
 .view-mode-toggle-btn-1 {
     position: absolute;
     right: 40px;
@@ -5849,7 +5845,39 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 5 !important; }
 .view-mode-toggle-btn-1 .material-symbols-outlined {
     font-size: 20px;
     line-height: 1;
+}
+
+.view-mode-toggle-btn-3 {
+    position: absolute;
+    right: 72px;
+    top: 26%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #6b7a8f;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: all 0.2s ease;
+    z-index: 10;
+    padding: 0;
+    font-family: inherit;
+    font-size: 20px;
+}
+
+.view-mode-toggle-btn-3:hover {
+    background: rgba(0, 0, 0, 0.06);
+    color: #2c3e66;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.view-mode-toggle-btn-3 .material-symbols-outlined {
+    font-size: 20px;
+    line-height: 1;
 }
 
 .view-mode-toggle-btn-2 {
@@ -5883,23 +5911,33 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 5 !important; }
 .view-mode-toggle-btn-2 .material-symbols-outlined {
     font-size: 20px;
     line-height: 1;
-    transition: all 0.2s ease;
 }
 
 @media (max-width: 768px) {
-    .view-mode-toggle-btn-1,
-    .view-mode-toggle-btn-2 {
+    .view-mode-toggle-btn-1 {
+        right: 32px;
         width: 26px;
         height: 26px;
         font-size: 18px;
     }
-    .view-mode-toggle-btn-1 {
-        right: 32px;
+    .view-mode-toggle-btn-1 .material-symbols-outlined {
+        font-size: 18px;
+    }
+    .view-mode-toggle-btn-3 {
+        right: 58px;
+        width: 26px;
+        height: 26px;
+        font-size: 18px;
+    }
+    .view-mode-toggle-btn-3 .material-symbols-outlined {
+        font-size: 18px;
     }
     .view-mode-toggle-btn-2 {
         right: 3px;
+        width: 26px;
+        height: 26px;
+        font-size: 18px;
     }
-    .view-mode-toggle-btn-1 .material-symbols-outlined,
     .view-mode-toggle-btn-2 .material-symbols-outlined {
         font-size: 18px;
     }
