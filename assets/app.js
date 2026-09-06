@@ -29769,6 +29769,25 @@ var MyApp = (() => {
             this._titleElements.set(title.id, { card, match });
             card.addEventListener("click", () => {
               if (this._isDestroyed) return;
+              if (title.id === "title-none") {
+                if (this._titleToText.has(title.id)) {
+                  this._selectedTitle = this._selectedTitle === title.id ? null : title.id;
+                  this._selectedText = null;
+                  this._updateUI();
+                  return;
+                }
+                if (this._selectedText) {
+                  this._connect(this._selectedText, title.id);
+                  this._selectedText = null;
+                  this._selectedTitle = null;
+                  this._updateUI();
+                  return;
+                }
+                this._selectedTitle = this._selectedTitle === title.id ? null : title.id;
+                this._selectedText = null;
+                this._updateUI();
+                return;
+              }
               if (this._titleToText.has(title.id)) {
                 this._disconnectTitle(title.id);
                 this._selectedTitle = null;
@@ -29802,10 +29821,17 @@ var MyApp = (() => {
             this._disconnectText(textId);
             return;
           }
-          if (titleId !== "title-none") {
+          if (titleId === "title-none") {
             const oldText = this._titleToText.get(titleId);
             if (oldText && oldText !== textId) {
               this._matches.delete(oldText);
+              this._titleToText.delete(titleId);
+            }
+          } else {
+            const oldText = this._titleToText.get(titleId);
+            if (oldText && oldText !== textId) {
+              this._matches.delete(oldText);
+              this._titleToText.delete(titleId);
             }
           }
           const oldTitle = this._matches.get(textId);
@@ -29818,7 +29844,7 @@ var MyApp = (() => {
           const titleObj = this._titles.find((t) => t.id === titleId);
           if (textObj && textObj.select && titleObj) {
             try {
-              textObj.select.value = titleObj.value;
+              textObj.select.value = titleObj.value || "";
               textObj.select.dispatchEvent(new Event("change", { bubbles: true }));
             } catch (_) {
             }
@@ -31804,30 +31830,28 @@ var MyApp = (() => {
       return false;
     }
     if (skill === "m\xFCndlich2" || skill === "m\xFCndlich") {
-      return examNumber <= 2;
+      return examNumber <= 6;
     }
     if (skill === "schreiben") {
-      return examNumber <= 2;
+      return examNumber <= 6;
     }
     switch (skill) {
       case "hoeren1":
-        return examNumber <= 4;
+        return examNumber <= 6;
       case "hoeren2":
-        return false;
-      // القسم كامل مدفوع
-      case "hoeren3":
-        return examNumber <= 3;
-      case "lesen1":
-        return false;
-      // القسم كامل مدفوع
-      case "lesen2":
-        return examNumber <= 3;
-      case "lesen3":
-        return examNumber <= 2;
-      case "sprach1":
         return examNumber <= 4;
+      case "hoeren3":
+        return examNumber <= 6;
+      case "lesen1":
+        return examNumber <= 4;
+      case "lesen2":
+        return examNumber <= 6;
+      case "lesen3":
+        return examNumber <= 4;
+      case "sprach1":
+        return examNumber <= 6;
       case "sprach2":
-        return examNumber <= 3;
+        return examNumber <= 4;
       default:
         return false;
     }
