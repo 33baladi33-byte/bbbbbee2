@@ -5993,6 +5993,16 @@ function calculateRemainingDays(examDateStr) {
     return Math.max(diff, 0);
 }
 
+function calculateRemainingDays(examDateStr) {
+    if (!examDateStr) return 0;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const examDay = new Date(examDateStr);
+    examDay.setHours(0, 0, 0, 0);
+    const diff = Math.ceil((examDay - today) / (1000 * 60 * 60 * 24));
+    return Math.max(diff, 0);
+}
+
 function updateProfilePlannerStatus() {
     const textEl = document.getElementById('profilePlannerText');
     const statusRow = document.getElementById('profilePlannerRow');
