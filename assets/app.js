@@ -29968,26 +29968,42 @@ var MyApp = (() => {
           }
         }
         _hideOriginalControls() {
-          const selector = this.modeName === "lesen1" ? ".teil1-controls" : this.modeName === "lesen3" ? ".teil3-controls" : null;
-          if (!selector) return;
-          document.querySelectorAll(selector).forEach((el) => {
-            if (!el.dataset.zertivaHelpOldDisplay) {
-              el.dataset.zertivaHelpOldDisplay = el.style.display || "";
-            }
-            el.style.display = "none";
+          let selectors = [];
+          if (this.modeName === "lesen1") {
+            selectors = [".teil1-controls", ".teil-controls-row"];
+          } else if (this.modeName === "lesen3") {
+            selectors = [".teil3-controls", ".teil-controls-row"];
+          } else {
+            return;
+          }
+          selectors.forEach((sel) => {
+            document.querySelectorAll(sel).forEach((el) => {
+              if (!el.dataset.zertivaHelpOldDisplay) {
+                el.dataset.zertivaHelpOldDisplay = el.style.display || "";
+              }
+              el.style.display = "none";
+            });
           });
         }
         _showOriginalControls() {
-          const selector = this.modeName === "lesen1" ? ".teil1-controls" : this.modeName === "lesen3" ? ".teil3-controls" : null;
-          if (!selector) return;
-          document.querySelectorAll(selector).forEach((el) => {
-            const oldDisplay = el.dataset.zertivaHelpOldDisplay;
-            if (oldDisplay !== void 0) {
-              el.style.display = oldDisplay || "";
-              delete el.dataset.zertivaHelpOldDisplay;
-            } else {
-              el.style.display = "";
-            }
+          let selectors = [];
+          if (this.modeName === "lesen1") {
+            selectors = [".teil1-controls", ".teil-controls-row"];
+          } else if (this.modeName === "lesen3") {
+            selectors = [".teil3-controls", ".teil-controls-row"];
+          } else {
+            return;
+          }
+          selectors.forEach((sel) => {
+            document.querySelectorAll(sel).forEach((el) => {
+              const oldDisplay = el.dataset.zertivaHelpOldDisplay;
+              if (oldDisplay !== void 0) {
+                el.style.display = oldDisplay || "";
+                delete el.dataset.zertivaHelpOldDisplay;
+              } else {
+                el.style.display = "";
+              }
+            });
           });
         }
         deactivate() {
@@ -32062,8 +32078,8 @@ var MyApp = (() => {
         div2.style.opacity = "0.88";
         div2.style.boxShadow = "inset 0 0 0 1px rgba(71,85,105,.04)";
         div2.style.cursor = "pointer";
-        titleSpan2.classList.remove("locked-title");
-        titleSpan2.style.color = "#475569";
+        div2.onmouseenter = null;
+        div2.onmouseleave = null;
         const lock = document.createElement("span");
         lock.className = "zertiva-pro-lock";
         lock.textContent = "lock";
@@ -32088,8 +32104,6 @@ var MyApp = (() => {
         z-index:20 !important;
     `;
         div2.appendChild(lock);
-        div2.onmouseenter = null;
-        div2.onmouseleave = null;
       };
       const exam = mainExams[i];
       const examNumber = exam.id;

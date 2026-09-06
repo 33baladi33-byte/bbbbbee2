@@ -9157,6 +9157,31 @@ body:has(#exam.active) #navSignupBtn {
     }
 }
 /* ============================================
+   إطار خفيف دائم لبطاقات Lesen 1 و 3
+   ============================================ */
+
+#teil1 .question-card,
+#teil3 .question-card {
+    border: 1px solid rgba(100, 116, 139, 0.16) !important;
+    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04) !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#teil1 .question-card:hover,
+#teil3 .question-card:hover {
+    border-color: rgba(59, 130, 246, 0.28) !important;
+    box-shadow: 0 2px 7px rgba(15, 23, 42, 0.06) !important;
+}
+
+/* ✅ الحفاظ على ألوان التصحيح (الأخضر/الأحمر) عن طريق إعطائها أولوية أعلى */
+#teil1 .question-card.correct-answer-card,
+#teil3 .question-card.correct-answer-card,
+#teil1 .question-card.wrong-answer-card,
+#teil3 .question-card.wrong-answer-card {
+    border: var(--correction-border, 3px solid #28a745) !important;
+    box-shadow: var(--correction-shadow, 0 0 0 4px rgba(40,167,69,0.25)) !important;
+}
+/* ============================================
    studySession.css - النسخة النهائية (متكاملة)
    ============================================ */
 
