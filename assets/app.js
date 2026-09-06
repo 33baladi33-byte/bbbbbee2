@@ -29484,12 +29484,12 @@ var MyApp = (() => {
             return rect.width > 0 && rect.height > 0 && getComputedStyle(sel).display !== "none";
           });
           if (selects.length === 0) return false;
-          let maxSelects = this.modeName === "lesen1" ? 5 : 12;
+          const maxSelects = this.modeName === "lesen1" ? 5 : 12;
           this._selects = selects.slice(0, maxSelects);
           if (this._selects.length < 5) return false;
           this._texts = this._selects.map((select, index) => {
             let text = "\u0646\u0635 \u063A\u064A\u0631 \u0645\u0639\u0631\u0648\u0641";
-            let parent = select.parentElement;
+            const parent = select.parentElement;
             if (parent) {
               const children = Array.from(parent.children);
               const idx = children.indexOf(select);
@@ -29497,7 +29497,9 @@ var MyApp = (() => {
                 const prev = children[idx - 1];
                 if (prev && !prev.querySelector("select")) {
                   const raw = prev.textContent.trim();
-                  if (raw.length > 20) text = raw;
+                  if (raw.length > 20) {
+                    text = raw;
+                  }
                 }
               }
             }
@@ -29507,7 +29509,9 @@ var MyApp = (() => {
                 const clone = container2.cloneNode(true);
                 clone.querySelectorAll("select, button, input, textarea").forEach((el) => el.remove());
                 const raw = clone.textContent.trim();
-                if (raw.length > 20) text = raw;
+                if (raw.length > 20) {
+                  text = raw;
+                }
               }
             }
             return {
@@ -29519,37 +29523,57 @@ var MyApp = (() => {
           });
           const firstSelect = this._selects[0];
           if (!firstSelect) return false;
-          const options = Array.from(firstSelect.options).map((opt) => ({ value: opt.value, text: opt.textContent.trim() })).filter((opt) => {
+          let options = Array.from(firstSelect.options).map((opt) => ({
+            value: opt.value,
+            text: opt.textContent.trim()
+          })).filter((opt) => {
             if (!opt.text) return false;
             const lowerText = opt.text.toLowerCase();
-            if (lowerText.includes("\u0627\u062E\u062A\u0631 \u0627\u0644\u0625\u062C\u0627\u0628\u0629") || lowerText.includes("\u0627\u062E\u062A\u0631 \u0627\u0644\u0639\u0646\u0648\u0627\u0646") || lowerText.includes("ausw\xE4hlen") || lowerText.includes("w\xE4hlen") || lowerText.includes("\u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646")) {
+            if (lowerText.includes("\u0627\u062E\u062A\u0631 \u0627\u0644\u0625\u062C\u0627\u0628\u0629") || lowerText.includes("\u0627\u062E\u062A\u0631 \u0627\u0644\u0639\u0646\u0648\u0627\u0646") || lowerText.includes("ausw\xE4hlen") || lowerText.includes("w\xE4hlen")) {
               return false;
             }
             return true;
           });
-          this._titles = options.map((opt, idx) => ({
-            id: `title-${idx + 1}`,
-            value: opt.value,
-            text: opt.text,
-            letter: String.fromCharCode(65 + idx)
-          }));
           if (this.modeName === "lesen3") {
-            this._titles.unshift({
-              id: "title-none",
-              value: "",
-              text: "\u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646",
-              letter: ""
-            });
+            const noneOption = Array.from(firstSelect.options).find((opt) => opt.textContent.includes("\u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646"));
+            if (noneOption) {
+              options = options.filter(
+                (opt) => !opt.text.includes("\u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646")
+              );
+              options.unshift({
+                value: noneOption.value,
+                text: noneOption.textContent.trim()
+              });
+            }
+          }
+          this._titles = options.map((opt, idx) => {
+            const isNone = opt.text.includes("\u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646");
+            return {
+              id: isNone ? "title-none" : `title-${idx + 1}`,
+              value: opt.value,
+              text: opt.text,
+              letter: isNone ? "" : String.fromCharCode(65 + idx)
+            };
+          });
+          if (this.modeName === "lesen3") {
+            const noneIdx = this._titles.findIndex(
+              (title) => title.id === "title-none"
+            );
+            if (noneIdx > 0) {
+              const none = this._titles.splice(noneIdx, 1)[0];
+              this._titles.unshift(none);
+            }
           }
           if (this._titles.length === 0) return false;
           this._texts.forEach((text) => {
             const val = text.select.value;
-            if (val) {
-              const title = this._titles.find((t) => t.value === val);
-              if (title) {
-                this._matches.set(text.id, title.id);
-                this._titleToText.set(title.id, text.id);
-              }
+            if (!val) return;
+            const title = this._titles.find(
+              (t) => t.value === val
+            );
+            if (title) {
+              this._matches.set(text.id, title.id);
+              this._titleToText.set(title.id, text.id);
             }
           });
           return true;
@@ -29794,7 +29818,7 @@ var MyApp = (() => {
           const titleObj = this._titles.find((t) => t.id === titleId);
           if (textObj && textObj.select && titleObj) {
             try {
-              textObj.select.value = titleObj.value || "";
+              textObj.select.value = titleObj.value;
               textObj.select.dispatchEvent(new Event("change", { bubbles: true }));
             } catch (_) {
             }
@@ -29978,7 +30002,7 @@ var MyApp = (() => {
           }
           selectors.forEach((sel) => {
             document.querySelectorAll(sel).forEach((el) => {
-              if (!el.dataset.zertivaHelpOldDisplay) {
+              if (el.dataset.zertivaHelpOldDisplay === void 0) {
                 el.dataset.zertivaHelpOldDisplay = el.style.display || "";
               }
               el.style.display = "none";
@@ -29992,7 +30016,7 @@ var MyApp = (() => {
           ];
           btnSelectors.forEach((sel) => {
             document.querySelectorAll(sel).forEach((btn) => {
-              if (!btn.dataset.zertivaBtnOriginalDisplay) {
+              if (btn.dataset.zertivaBtnOriginalDisplay === void 0) {
                 btn.dataset.zertivaBtnOriginalDisplay = btn.style.display || "";
               }
               btn.style.display = "none";
