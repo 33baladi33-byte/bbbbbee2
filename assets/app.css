@@ -9316,6 +9316,210 @@ body:has(#exam.active) #navSignupBtn {
 #teil3 .question-card.wrong-answer-card:hover {
     border-color: rgba(59, 130, 246, 0.28) !important;
     box-shadow: 0 2px 7px rgba(15, 23, 42, 0.06) !important;
+}/* ============================================
+   Why Zertiva Button & Popup
+   ============================================ */
+
+.why-zertiva-btn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    cursor: pointer;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+}
+
+.why-zertiva-btn:hover {
+    background: rgba(255, 255, 255, 0.10);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: scale(1.04);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
+}
+
+.why-zertiva-btn:active {
+    transform: scale(0.95);
+    transition-duration: 0.05s;
+}
+
+.why-icon-img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    display: block;
+    pointer-events: none;
+    border-radius: 4px;
+}
+
+/* ===== Why Zertiva Popup ===== */
+.why-zertiva-popup {
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    z-index: 9999999;
+    background: #0f172a;
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    width: 380px;
+    max-width: 90vw;
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 18px 20px 20px 20px;
+    box-sizing: border-box;
+    display: none;
+    direction: rtl;
+    text-align: right;
+    animation: whyPopupFadeIn 0.25s ease;
+}
+
+.why-zertiva-popup.active {
+    display: block;
+}
+
+@keyframes whyPopupFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.why-zertiva-popup::-webkit-scrollbar {
+    width: 4px;
+}
+
+.why-zertiva-popup::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.why-zertiva-popup::-webkit-scrollbar-thumb {
+    background: #38bdf8;
+    border-radius: 4px;
+}
+
+.why-popup-title {
+    color: #38bdf8;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+    text-align: right;
+    font-family: inherit;
+    letter-spacing: 0.3px;
+}
+
+.why-popup-text {
+    color: #cbd5e1;
+    font-size: 13px;
+    line-height: 1.8;
+    margin: 0;
+    font-family: inherit;
+}
+
+.why-popup-text .highlight {
+    color: #38bdf8;
+    font-weight: 600;
+}
+
+.why-popup-text .highlight-gold {
+    color: #fbbf24;
+    font-weight: 600;
+}
+
+.why-popup-text .highlight-green {
+    color: #34d399;
+    font-weight: 600;
+}
+
+.why-popup-text .highlight-rose {
+    color: #f87171;
+    font-weight: 600;
+}
+
+.why-popup-text p {
+    margin: 0 0 8px 0;
+}
+
+.why-popup-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .why-zertiva-btn {
+        width: 32px;
+        height: 32px;
+        border-radius: 10px;
+    }
+    
+    .why-icon-img {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .why-zertiva-popup {
+        width: 340px;
+        max-width: 92vw;
+        right: 10px;
+        top: 54px;
+        padding: 14px 16px 16px 16px;
+        max-height: 350px;
+    }
+    
+    .why-popup-title {
+        font-size: 14px;
+    }
+    
+    .why-popup-text {
+        font-size: 12px;
+        line-height: 1.7;
+    }
+}
+
+@media (max-width: 480px) {
+    .why-zertiva-btn {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+    }
+    
+    .why-icon-img {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .why-zertiva-popup {
+        width: 300px;
+        max-width: 94vw;
+        right: 6px;
+        top: 50px;
+        padding: 12px 14px 14px 14px;
+        max-height: 320px;
+    }
+    
+    .why-popup-title {
+        font-size: 13px;
+    }
+    
+    .why-popup-text {
+        font-size: 11px;
+        line-height: 1.6;
+    }
 }
 /* ============================================
    studySession.css - النسخة النهائية (متكاملة)
