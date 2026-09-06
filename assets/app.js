@@ -32713,10 +32713,10 @@ var MyApp = (() => {
         setTimeout(() => {
           const matchingBtn = document.getElementById("matchingToggleBtn");
           if (matchingBtn) {
-            const isActive = skill === "lesen1" && window.matchingLesen1 && window.matchingLesen1.isActive || skill === "lesen3" && window.matchingLesen3 && window.matchingLesen3.isActive;
-            matchingBtn.classList.toggle("active", isActive);
-            matchingBtn.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
-            matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
+            matchingBtn.style.display = "inline-flex";
+            matchingBtn.dataset.skill = skill;
+            matchingBtn.innerHTML = `<span class="material-symbols-outlined">health_cross</span>`;
+            matchingBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
           }
         }, 100);
       }
@@ -34150,7 +34150,7 @@ var MyApp = (() => {
     helpBtn.id = "matchingToggleBtn";
     helpBtn.className = "interleaving-icon-btn";
     helpBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
-    helpBtn.innerHTML = `<span class="material-symbols-outlined">help</span>`;
+    helpBtn.innerHTML = `<span class="material-symbols-outlined">health_cross</span>`;
     helpBtn.style.display = "none";
     helpBtn.addEventListener("click", function(e) {
       e.stopPropagation();
@@ -34163,8 +34163,8 @@ var MyApp = (() => {
         console.warn("\u26A0\uFE0F \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u063A\u064A\u0631 \u0645\u062A\u0627\u062D\u0629 \u0644\u0647\u0630\u0647 \u0627\u0644\u0645\u0647\u0627\u0631\u0629");
       }
     });
-    interleavingRow.insertBefore(helpBtn, playBtn);
-    console.log("\u2705 \u0632\u0631 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u062A\u0645 \u0625\u0636\u0627\u0641\u062A\u0647 \u0641\u064A \u0634\u0631\u064A\u0637 \u0627\u0644\u0623\u0632\u0631\u0627\u0631");
+    playBtn.parentNode.insertBefore(helpBtn, playBtn.nextSibling);
+    console.log("\u2705 \u0632\u0631 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u062A\u0645 \u0625\u0636\u0627\u0641\u062A\u0647 \u0628\u0639\u062F play_arrow");
   }
   var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY, originalOpenExam2;
   var init_exams = __esm({
@@ -35691,18 +35691,8 @@ var MyApp = (() => {
       window.updateMatchingButtonState = function() {
         const matchingBtn = document.getElementById("matchingToggleBtn");
         if (!matchingBtn) return;
-        const skill = matchingBtn.dataset.skill || window.currentSkill;
-        if (skill === "lesen1" && window.matchingLesen1) {
-          const isActive = window.matchingLesen1.isActive;
-          matchingBtn.classList.toggle("active", isActive);
-          matchingBtn.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
-          matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
-        } else if (skill === "lesen3" && window.matchingLesen3) {
-          const isActive = window.matchingLesen3.isActive;
-          matchingBtn.classList.toggle("active", isActive);
-          matchingBtn.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
-          matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
-        }
+        matchingBtn.innerHTML = `<span class="material-symbols-outlined">health_cross</span>`;
+        matchingBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
       };
       (function() {
         const btn = document.getElementById("checkCircleBtn");
