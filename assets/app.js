@@ -36325,6 +36325,8 @@ var MyApp = (() => {
     const profileIcon2 = document.getElementById("profileIcon");
     const studyPlannerBtn = document.getElementById("studyPlannerBtn");
     const settingsBtn2 = document.getElementById("settingsBtn");
+    const profileSubscribeBtn = document.getElementById("profileSubscribeBtn");
+    const profileSignupBtn = document.getElementById("profileSignupBtn");
     const homePage = document.getElementById("home");
     const isHomePage = homePage && homePage.classList.contains("active");
     if (!user) {
@@ -36348,6 +36350,23 @@ var MyApp = (() => {
       const oldBtn = document.getElementById("dropdownUpgradeBtn");
       if (oldBtn) oldBtn.remove();
       _currentUserStatus = "free";
+      if (profileSubscribeBtn) {
+        profileSubscribeBtn.style.display = "flex";
+        profileSubscribeBtn.textContent = "\u0627\u0634\u062A\u0631\u0643";
+        profileSubscribeBtn.onclick = function() {
+          window.location.href = "subscribe.html";
+        };
+      }
+      if (profileSignupBtn) {
+        profileSignupBtn.style.display = "flex";
+        profileSignupBtn.textContent = "\u0625\u0646\u0634\u0627\u0621 \u062D\u0633\u0627\u0628";
+        profileSignupBtn.onclick = function() {
+          if (typeof openAuthModal === "function") {
+            openAuthModal("signup");
+            if (profileDropdown2) profileDropdown2.classList.remove("show");
+          }
+        };
+      }
       if (typeof window.toggleSessionButton === "function") {
         setTimeout(window.toggleSessionButton, 50);
       }
@@ -36373,6 +36392,8 @@ var MyApp = (() => {
     const isPremium = data && data.plan === "premium" && (!data.premiumUntil || new Date(data.premiumUntil).getTime() > Date.now());
     _currentUserStatus = isPremium ? "premium" : "free";
     if (isPremium) {
+      if (profileSubscribeBtn) profileSubscribeBtn.style.display = "none";
+      if (profileSignupBtn) profileSignupBtn.style.display = "none";
       if (profileStatus) profileStatus.textContent = "\u0645\u0634\u062A\u0631\u0643 (Pro)";
       if (profileExpiryText && data.premiumUntil) {
         profileExpiryText.textContent = new Date(data.premiumUntil).toLocaleDateString("ar-EG");
@@ -36385,6 +36406,14 @@ var MyApp = (() => {
       if (featuresSubscribeBtn) featuresSubscribeBtn.style.display = "none";
       if (settingsBtn2) settingsBtn2.style.display = "inline-flex";
     } else {
+      if (profileSubscribeBtn) {
+        profileSubscribeBtn.style.display = "flex";
+        profileSubscribeBtn.textContent = "\u0627\u0634\u062A\u0631\u0643";
+        profileSubscribeBtn.onclick = function() {
+          window.location.href = "subscribe.html";
+        };
+      }
+      if (profileSignupBtn) profileSignupBtn.style.display = "none";
       if (profileStatus) profileStatus.textContent = "\u0645\u062C\u0627\u0646\u064A";
       if (profileExpiryText) profileExpiryText.textContent = "\u062D\u0633\u0627\u0628 \u0645\u062C\u0627\u0646\u064A";
       const premiumStatus = document.getElementById("profilePremiumStatus");
@@ -36920,14 +36949,13 @@ var MyApp = (() => {
             }
             localStorage.setItem("zertiva_exam_date", date);
             localStorage.setItem("zertiva_daily_hours", String(hours));
-            const today = /* @__PURE__ */ new Date();
-            today.setHours(0, 0, 0, 0);
-            const examDate = new Date(date);
-            examDate.setHours(0, 0, 0, 0);
-            const diff = Math.ceil((examDate - today) / (1e3 * 60 * 60 * 24));
-            const remaining = Math.max(diff, 0);
-            const profilePlannerText = document.getElementById("profilePlannerText");
-            if (profilePlannerText) profilePlannerText.textContent = remaining + " \u064A\u0648\u0645";
+            if (typeof updateProfilePlannerStatus === "function") {
+              updateProfilePlannerStatus();
+            } else {
+              const remaining = calculateRemainingDays ? calculateRemainingDays(date) : 0;
+              const profilePlannerText = document.getElementById("profilePlannerText");
+              if (profilePlannerText) profilePlannerText.textContent = remaining + " \u064A\u0648\u0645";
+            }
             editInfoModal.style.display = "none";
           });
         }
