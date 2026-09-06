@@ -29195,12 +29195,7 @@ var MyApp = (() => {
             select.style.removeProperty("backgroundColor");
             select.style.removeProperty("color");
             select.style.removeProperty("fontWeight");
-            select.style.removeProperty("border");
-            select.style.removeProperty("padding");
             select.style.removeProperty("borderRadius");
-            if (select.style.length === 0) {
-              select.removeAttribute("style");
-            }
           });
           const labels = this.container.querySelectorAll("label");
           labels.forEach((label) => {
@@ -32813,13 +32808,13 @@ var MyApp = (() => {
         span.textContent = ICONS_CYCLE[nextIconIndex2];
       }
       if (currentState === 0) {
-        applyLeaderboardOrder();
+        restoreOriginalOrder();
       } else if (currentState === 1) {
         applyLastReviewOrder();
       } else if (currentState === 2) {
-        applyTimeOrder();
+        applyLeaderboardOrder();
       } else {
-        restoreOriginalOrder();
+        applyTimeOrder();
       }
     };
     header.appendChild(btn1);
@@ -32851,13 +32846,13 @@ var MyApp = (() => {
     header.appendChild(btn2);
     applyExamListView(getExamListMode());
     if (currentState === 0) {
-      applyLeaderboardOrder();
+      restoreOriginalOrder();
     } else if (currentState === 1) {
       applyLastReviewOrder();
     } else if (currentState === 2) {
-      applyTimeOrder();
+      applyLeaderboardOrder();
     } else {
-      restoreOriginalOrder();
+      applyTimeOrder();
     }
   }
   function applyExamListView(mode) {
@@ -32876,20 +32871,20 @@ var MyApp = (() => {
     if (mode === "list") {
       items.forEach((el) => {
         if (el.querySelector(".zertiva-pro-lock")) {
-          el.style.display = "flex";
-          el.style.flexDirection = "row";
-          el.style.justifyContent = "flex-start";
-          el.style.alignItems = "center";
-          el.style.height = "auto";
-          el.style.padding = "8px 12px";
-          el.style.marginBottom = "8px";
-          el.style.minHeight = "44px";
-          el.style.fontSize = "0.65rem";
-          el.style.cursor = "pointer";
+          el.style.setProperty("display", "flex", "important");
+          el.style.setProperty("flex-direction", "row", "important");
+          el.style.setProperty("justify-content", "flex-start", "important");
+          el.style.setProperty("align-items", "center", "important");
+          el.style.setProperty("height", "auto", "important");
+          el.style.setProperty("padding", "8px 12px", "important");
+          el.style.setProperty("margin-bottom", "8px", "important");
+          el.style.setProperty("min-height", "44px", "important");
+          el.style.setProperty("font-size", "0.65rem", "important");
+          el.style.setProperty("cursor", "pointer", "important");
           const lock = el.querySelector(".zertiva-pro-lock");
           if (lock) {
-            lock.style.right = "8px";
-            lock.style.bottom = "8px";
+            lock.style.setProperty("right", "8px", "important");
+            lock.style.setProperty("bottom", "8px", "important");
           }
           return;
         }
