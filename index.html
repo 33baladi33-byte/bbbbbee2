@@ -782,123 +782,124 @@
     }
 }
 
-    /* ===== نافذة الإشعارات - تحسين الهاتف (على اليمين) ===== */
-    @media (max-width: 768px) {
-        .notification-dropdown {
-            position: fixed !important;
-            top: 60px !important;
-            left: auto !important;
-            right: 12px !important;
-            transform: none !important;
-            bottom: auto !important;
-            width: 92% !important;
-            max-width: 360px !important;
-            min-width: 280px !important;
-            max-height: 70vh !important;
-            height: auto !important;
-            border-radius: 18px !important;
-            box-shadow: 0 20px 45px rgba(0,0,0,0.35) !important;
-            border: 1px solid rgba(56, 189, 248, 0.15) !important;
-            box-sizing: border-box !important;
-            flex-shrink: 0 !important;
-            overflow-y: auto !important;
-            overflow-x: hidden !important;
-            z-index: 99999 !important;
-            background: #0f172a !important;
-        }
-        
-        .notification-dropdown::before {
-            display: none !important;
-        }
-        
-        .notification-header {
-            font-size: 0.8rem !important;
-            padding: 12px 16px !important;
-            flex-wrap: wrap !important;
-            gap: 6px !important;
-            flex-shrink: 0 !important;
-            width: 100% !important;
-            box-sizing: border-box !important;
-            display: flex !important;
-            justify-content: space-between !important;
-            align-items: center !important;
-        }
-        
-        .notification-header span {
-            font-size: 13px !important;
-        }
-        
-        .notification-list {
-            max-height: none !important;
-            padding: 4px 0 !important;
-            overflow-y: auto !important;
-            flex: 1 !important;
-            width: 100% !important;
-            box-sizing: border-box !important;
-        }
-        
-        .notification-item {
-            padding: 12px 14px !important;
-            font-size: 0.75rem !important;
-            gap: 10px !important;
-            border-bottom: 1px solid rgba(255,255,255,0.05) !important;
-            width: 100% !important;
-            box-sizing: border-box !important;
-            flex-wrap: wrap !important;
-            word-break: break-word !important;
-        }
-        
-        .notification-item .notification-icon {
-            font-size: 16px !important;
-            min-width: 24px !important;
-            margin-left: 6px !important;
-        }
-        
-        .notification-item .notification-title {
-            font-size: 13px !important;
-            font-weight: 600 !important;
-            margin-bottom: 2px !important;
-        }
-        
-        .notification-item .notification-message {
-            font-size: 11px !important;
-            line-height: 1.4 !important;
-        }
-        
-        .notification-item .notification-time {
-            font-size: 9px !important;
-            margin-top: 2px !important;
-        }
-        
-        .mark-all-read {
-            font-size: 0.7rem !important;
-            padding: 6px 12px !important;
-            min-height: 32px !important;
-            border-radius: 20px !important;
-            flex-shrink: 0 !important;
-        }
-        
-        .notification-empty {
-            padding: 24px 16px !important;
-            font-size: 12px !important;
-        }
-        
-        .notification-show-all,
-        .notification-show-less {
-            padding: 10px 12px !important;
-            flex-shrink: 0 !important;
-            width: 100% !important;
-            box-sizing: border-box !important;
-        }
-        
-        .show-all-btn,
-        .show-less-btn {
-            font-size: 11px !important;
-            padding: 8px 12px !important;
-            min-height: 36px !important;
-            width: 100% !important;
-        }
+@media (max-width: 768px) {
+    .notification-dropdown {
+        position: fixed !important;
+        top: 60px !important;
+        left: auto !important;
+        right: 12px !important;
+        transform: none !important;
+        bottom: auto !important;
+        width: 92% !important;
+        max-width: 360px !important;
+        min-width: 280px !important;
+        max-height: 70vh !important;
+        height: auto !important;
+        border-radius: 18px !important;
+        box-shadow: 0 20px 45px rgba(0,0,0,0.35) !important;
+        border: 1px solid rgba(56, 189, 248, 0.15) !important;
+        box-sizing: border-box !important;
+        flex-shrink: 0 !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        z-index: 99999 !important;
+        background: #0f172a !important;
+        display: none;   /* ← تم إزالة !important */
     }
+    
+    /* باقي الكود يبقى كما هو تماماً */
+    .notification-dropdown::before {
+        display: none !important;
+    }
+    
+    .notification-header {
+        font-size: 0.8rem !important;
+        padding: 12px 16px !important;
+        flex-wrap: wrap !important;
+        gap: 6px !important;
+        flex-shrink: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+    
+    .notification-header span {
+        font-size: 13px !important;
+    }
+    
+    .notification-list {
+        max-height: none !important;
+        padding: 4px 0 !important;
+        overflow-y: auto !important;
+        flex: 1 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    .notification-item {
+        padding: 12px 14px !important;
+        font-size: 0.75rem !important;
+        gap: 10px !important;
+        border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        flex-wrap: wrap !important;
+        word-break: break-word !important;
+    }
+    
+    .notification-item .notification-icon {
+        font-size: 16px !important;
+        min-width: 24px !important;
+        margin-left: 6px !important;
+    }
+    
+    .notification-item .notification-title {
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        margin-bottom: 2px !important;
+    }
+    
+    .notification-item .notification-message {
+        font-size: 11px !important;
+        line-height: 1.4 !important;
+    }
+    
+    .notification-item .notification-time {
+        font-size: 9px !important;
+        margin-top: 2px !important;
+    }
+    
+    .mark-all-read {
+        font-size: 0.7rem !important;
+        padding: 6px 12px !important;
+        min-height: 32px !important;
+        border-radius: 20px !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .notification-empty {
+        padding: 24px 16px !important;
+        font-size: 12px !important;
+    }
+    
+    .notification-show-all,
+    .notification-show-less {
+        padding: 10px 12px !important;
+        flex-shrink: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    .show-all-btn,
+    .show-less-btn {
+        font-size: 11px !important;
+        padding: 8px 12px !important;
+        min-height: 36px !important;
+        width: 100% !important;
+    }
+}
         
 
     /* ============================================
@@ -4990,7 +4991,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 
 <!-- ===== Why Zertiva Popup ===== -->
-<div class="why-zertiva-popup" id="whyZertivaPopup" style="display:none;">
+<div class="why-zertiva-popup" id="whyZertivaPopup">
     <div class="why-popup-title">❓ علاش غتنجح معانا؟</div>
     <div class="why-popup-text">
         <p><span class="highlight">أولاً وأهم شيء:</span> غتاخد <span class="highlight">كل التيمات القدام والجداد</span>، وحتى <span class="highlight">مواضيع تركيا</span>، و<span class="highlight">أي موضوع جديد</span> كنزيدوه مباشرة وكتخروكوم بيه فقائمة الإشعارات.</p>
@@ -5048,47 +5049,7 @@ document.addEventListener("DOMContentLoaded", function() {
     console.log('✅ Why Zertiva: الزر والنافذة جاهزان');
 })();
 
-// ============================================
-// Notification Button & Dropdown
-// ============================================
-(function initNotifications() {
-    const bell = document.getElementById('notificationBell');
-    const dropdown = document.getElementById('notificationDropdown');
-    
-    if (!bell || !dropdown) {
-        console.warn('⚠️ الإشعارات: الزر أو النافذة غير موجودة');
-        return;
-    }
 
-    let isOpen = false;
-
-    function toggleDropdown(e) {
-        e.stopPropagation();
-        isOpen = !isOpen;
-        dropdown.classList.toggle('active', isOpen);
-    }
-
-    function closeDropdown() {
-        isOpen = false;
-        dropdown.classList.remove('active');
-    }
-
-    bell.addEventListener('click', toggleDropdown);
-
-    document.addEventListener('click', function(e) {
-        if (isOpen && !dropdown.contains(e.target) && e.target !== bell && !bell.contains(e.target)) {
-            closeDropdown();
-        }
-    });
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && isOpen) {
-            closeDropdown();
-        }
-    });
-
-    console.log('✅ زر الإشعارات جاهز');
-})();
 
 // ============================================
 // تأكيد تنفيذ الأكواد بعد تحميل DOM
