@@ -32786,10 +32786,8 @@ var MyApp = (() => {
     if (!showTogglesSkills.includes(currentSkill2)) {
       const oldBtn12 = document.getElementById("viewModeToggleBtn1");
       const oldBtn22 = document.getElementById("viewModeToggleBtn2");
-      const oldBtn32 = document.getElementById("viewModeToggleBtn3");
       if (oldBtn12) oldBtn12.style.display = "none";
       if (oldBtn22) oldBtn22.style.display = "none";
-      if (oldBtn32) oldBtn32.style.display = "none";
       return;
     }
     if (header.style.position !== "relative") {
@@ -32799,48 +32797,39 @@ var MyApp = (() => {
     if (oldBtn1) oldBtn1.remove();
     const oldBtn2 = document.getElementById("viewModeToggleBtn2");
     if (oldBtn2) oldBtn2.remove();
-    const oldBtn3 = document.getElementById("viewModeToggleBtn3");
-    if (oldBtn3) oldBtn3.remove();
-    let currentState = 2;
-    const ICONS_CYCLE = ["leaderboard", "timer_arrow_down", "123"];
+    const SORT_STATE_KEY = "examListSortMode";
+    const ICONS_CYCLE = ["leaderboard", "calendar_apps_script", "timer_arrow_down", "123"];
+    let currentState = parseInt(localStorage.getItem(SORT_STATE_KEY));
+    if (isNaN(currentState) || currentState < 0 || currentState > 3) {
+      currentState = 3;
+    }
     const btn1 = document.createElement("button");
     btn1.id = "viewModeToggleBtn1";
     btn1.className = "view-mode-toggle-btn-1";
     btn1.title = "\u062A\u0628\u062F\u064A\u0644 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0642\u0627\u0626\u0645\u0629";
-    const nextIconIndex = (currentState + 1) % 3;
+    const nextIconIndex = (currentState + 1) % 4;
     btn1.innerHTML = `<span class="material-symbols-outlined">${ICONS_CYCLE[nextIconIndex]}</span>`;
     btn1.onclick = function(e) {
       e.stopPropagation();
-      let nextState = (currentState + 1) % 3;
+      let nextState = (currentState + 1) % 4;
       currentState = nextState;
+      localStorage.setItem(SORT_STATE_KEY, String(currentState));
       const span = this.querySelector(".material-symbols-outlined");
       if (span) {
-        let nextIconIndex2 = (currentState + 1) % 3;
+        let nextIconIndex2 = (currentState + 1) % 4;
         span.textContent = ICONS_CYCLE[nextIconIndex2];
       }
       if (currentState === 0) {
         applyLeaderboardOrder();
       } else if (currentState === 1) {
+        applyLastReviewOrder();
+      } else if (currentState === 2) {
         applyTimeOrder();
       } else {
         restoreOriginalOrder();
       }
     };
     header.appendChild(btn1);
-    const btn3 = document.createElement("button");
-    btn3.id = "viewModeToggleBtn3";
-    btn3.className = "view-mode-toggle-btn-3";
-    btn3.title = "\u062A\u0631\u062A\u064A\u0628 \u062D\u0633\u0628 \u0622\u062E\u0631 \u0645\u0631\u0627\u062C\u0639\u0629 (\u0627\u0644\u0623\u0642\u062F\u0645 \u0623\u0648\u0644\u0627\u064B)";
-    btn3.innerHTML = `<span class="material-symbols-outlined">calendar_apps_script</span>`;
-    btn3.onclick = function(e) {
-      e.stopPropagation();
-      if (typeof applyLastReviewOrder === "function") {
-        applyLastReviewOrder();
-      } else {
-        console.warn("\u26A0\uFE0F applyLastReviewOrder \u063A\u064A\u0631 \u0645\u0639\u0631\u0641");
-      }
-    };
-    header.appendChild(btn3);
     const btn2 = document.createElement("button");
     btn2.id = "viewModeToggleBtn2";
     btn2.className = "view-mode-toggle-btn-2";
@@ -32868,6 +32857,15 @@ var MyApp = (() => {
     };
     header.appendChild(btn2);
     applyExamListView(getExamListMode());
+    if (currentState === 0) {
+      applyLeaderboardOrder();
+    } else if (currentState === 1) {
+      applyLastReviewOrder();
+    } else if (currentState === 2) {
+      applyTimeOrder();
+    } else {
+      restoreOriginalOrder();
+    }
   }
   function applyExamListView(mode) {
     const list = document.getElementById("examsList");
