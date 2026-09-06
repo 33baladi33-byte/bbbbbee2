@@ -34127,12 +34127,12 @@ var MyApp = (() => {
     });
     data.sort((a, b) => {
       if (a.days === null && b.days === null) return a.originalIndex - b.originalIndex;
-      if (a.days === null) return 1;
-      if (b.days === null) return -1;
+      if (a.days === null) return -1;
+      if (b.days === null) return 1;
       return b.days - a.days;
     });
     data.forEach((item) => targetContainer.appendChild(item.el));
-    console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u062D\u0633\u0628 \u0622\u062E\u0631 \u0645\u0631\u0627\u062C\u0639\u0629 (\u0645\u0646 \u0627\u0644\u0623\u0642\u062F\u0645 \u0625\u0644\u0649 \u0627\u0644\u0623\u062D\u062F\u062B)");
+    console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u062D\u0633\u0628 \u0622\u062E\u0631 \u0645\u0631\u0627\u062C\u0639\u0629 (\u063A\u064A\u0631 \u0627\u0644\u0645\u0631\u0627\u062C\u0639\u0629 \u0623\u0648\u0644\u0627\u064B\u060C \u062B\u0645 \u0627\u0644\u0623\u0642\u062F\u0645 \u0641\u0627\u0644\u0623\u062D\u062F\u062B)");
   }
   function createMatchingButton() {
     if (document.getElementById("matchingToggleBtn")) return;
