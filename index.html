@@ -2232,26 +2232,24 @@ body.dark-mode .mobile-banner span {
 </div>   <!-- إغلاق left-side -->
     
    <div class="right-side">
-    <!-- تم إزالة زر info بناءً على الطلب -->
-    
- <div class="notification-container">
-     <button id="notificationBell" class="notification-bell">
-    <svg viewBox="0 0 448 512" class="bell-icon">
-        <path d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"/>
-    </svg>
-    <span id="notificationBadge" class="notification-badge" style="display: none;">0</span>
-</button>
+    <div class="notification-container">
+        <button id="notificationBell" class="notification-bell">
+            <svg viewBox="0 0 448 512" class="bell-icon">
+                <path d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"/>
+            </svg>
+            <span id="notificationBadge" class="notification-badge" style="display: none;">0</span>
+        </button>
     </div>
-<!-- ⏰ جلسة مراجعة -->
-<button id="studySessionBtn" class="study-session-btn" title="جلسة مراجعة">
-    <img src="images/clock.png" alt="Timer" class="icon-img">
-</button>
-
-<!-- Logo -->
-<div class="logo-icon" id="logoHomeBtn">
-    <img src="images/logo.webp" loading="lazy" alt="Zertiva" class="logo-img">
-</div>
-  </div>
+    <!-- ✅ الزر الجديد: Why Zertiva -->
+    <button class="why-zertiva-btn" id="whyZertivaBtn" title="لماذا Zertiva؟">
+        <img src="images/why.png" alt="لماذا Zertiva؟" class="why-icon-img">
+    </button>
+    <button id="studySessionBtn" class="study-session-btn" title="جلسة مراجعة">
+        <img src="images/clock.png" alt="Timer" class="icon-img">
+    </button>
+    <div class="logo-icon" id="logoHomeBtn">
+        <img src="images/logo.webp" loading="lazy" alt="Zertiva" class="logo-img">
+    </div>
 </div>
 
 <!-- ===== الملف الشخصي (الشكل 2 النهائي - دائم) ===== -->
@@ -4978,6 +4976,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <!-- ===== نافذة الإشعارات (منقولة إلى أعلى مستوى) ===== -->
+<!-- ===== نافذة الإشعارات (منقولة إلى أعلى مستوى) ===== -->
 <div id="notificationDropdown" class="notification-dropdown">
     <div class="notification-header">
         <span>📬 الإشعارات</span>
@@ -4989,6 +4988,67 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
     </div>
 </div>
+
+<!-- ===== Why Zertiva Popup ===== -->
+<div class="why-zertiva-popup" id="whyZertivaPopup" style="display:none;">
+    <div class="why-popup-title">❓ علاش غتنجح معانا؟</div>
+    <div class="why-popup-text">
+        <p><span class="highlight">أولاً وأهم شيء:</span> غتاخد <span class="highlight">كل التيمات القدام والجداد</span>، وحتى <span class="highlight">مواضيع تركيا</span>، و<span class="highlight">أي موضوع جديد</span> كنزيدوه مباشرة وكتخروكوم بيه فقائمة الإشعارات.</p>
+        <p><span class="highlight">ثانياً:</span> هنا غتلاقا <span class="highlight">ميزات متطورة</span>، الهدف ديالها الأول انك نتا تراجع <span class="highlight">بسرعة وكفاءة</span> أكثر من أي موقع آخر.</p>
+        <p><span class="highlight">ثالثاً:</span> هنيناك وعتيناك غير الحوايج المهمة، أما باش تدوز امتحان فيه هوغن، ليزن، شبخاخ، باوشتاين وشخايبن فمرة وحدة، أو حتى أوديوات الهوغن أو بزاااف دالحوايج آخرين، هما فقط <span class="highlight-rose">مضيعة للوقت</span>. وماشي غير هدشي، فراه بزاف دالحوايج الآخرين مكيزيدو حتى إضافة حقيقية.</p>
+        <p><span class="highlight">وأخيراً:</span> نتا مكتراجعش ففوضى، بل ف<span class="highlight">نظام سلس، سريع، مساعد</span>، وأهم شيء أنه <span class="highlight-gold">موثوق</span>.</p>
+    </div>
+</div>
+
+<script>
+// ============================================
+// Why Zertiva Button & Popup
+// ============================================
+(function initWhyZertiva() {
+    const btn = document.getElementById('whyZertivaBtn');
+    const popup = document.getElementById('whyZertivaPopup');
+    
+    if (!btn || !popup) {
+        console.warn('⚠️ Why Zertiva: الزر أو النافذة غير موجودة');
+        return;
+    }
+
+    let isOpen = false;
+
+    function togglePopup(e) {
+        e.stopPropagation();
+        isOpen = !isOpen;
+        popup.classList.toggle('active', isOpen);
+    }
+
+    function closePopup() {
+        isOpen = false;
+        popup.classList.remove('active');
+    }
+
+    btn.addEventListener('click', togglePopup);
+
+    document.addEventListener('click', function(e) {
+        if (isOpen && !popup.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
+            closePopup();
+        }
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && isOpen) {
+            closePopup();
+        }
+    });
+
+    window.addEventListener('scroll', function() {
+        if (isOpen) {
+            closePopup();
+        }
+    });
+
+    console.log('✅ Why Zertiva: الزر والنافذة جاهزان');
+})();
+</script>
 
 <!-- ===== زر Ask AI العائم ===== -->
 <button id="askAIFloatingBtn">
