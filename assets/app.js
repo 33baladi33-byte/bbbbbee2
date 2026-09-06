@@ -30013,9 +30013,8 @@ var MyApp = (() => {
           console.log(`\u2705 Help Mode activated for ${this.modeName}`);
           const helpBtn = document.getElementById("matchingToggleBtn");
           if (helpBtn) {
-            helpBtn.innerHTML = `<span class="material-symbols-outlined">auto_awesome</span>`;
-            helpBtn.title = "\u0625\u064A\u0642\u0627\u0641 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
             helpBtn.classList.add("active");
+            helpBtn.title = "\u0625\u064A\u0642\u0627\u0641 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
           }
         }
         _hideOriginalControls() {
@@ -30123,9 +30122,8 @@ var MyApp = (() => {
           console.log(`\u2705 Help Mode deactivated for ${this.modeName}`);
           const helpBtn = document.getElementById("matchingToggleBtn");
           if (helpBtn) {
-            helpBtn.innerHTML = `<span class="material-symbols-outlined">help</span>`;
-            helpBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
             helpBtn.classList.remove("active");
+            helpBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
           }
         }
         _showIntroModal(callback) {
@@ -32322,7 +32320,6 @@ var MyApp = (() => {
       container.appendChild(div);
     }
     createViewModeToggles();
-    restoreOriginalOrder();
     const mode2 = getViewModeIndex2();
     if (mode2 === 1) {
       applyExamListView("grid");
@@ -32334,10 +32331,6 @@ var MyApp = (() => {
       if (typeof window.applyExamColors === "function") {
         setTimeout(window.applyExamColors, 50);
       }
-    }
-    const savedOrder = localStorage.getItem("examOrderMode");
-    if (savedOrder === "1" && typeof applyLeaderboardOrder === "function") {
-      applyLeaderboardOrder();
     }
   }
   function showVersionsPopup(exam, skill) {
