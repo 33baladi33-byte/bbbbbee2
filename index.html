@@ -6003,25 +6003,43 @@ function calculateRemainingDays(examDateStr) {
     return Math.max(diff, 0);
 }
 
+
 function updateProfilePlannerStatus() {
     const textEl = document.getElementById('profilePlannerText');
-    const statusRow = document.getElementById('profilePlannerRow');
-    if (!statusRow) return;
+    if (!textEl) return;
 
     const examDateStr = localStorage.getItem('zertiva_exam_date');
     if (examDateStr) {
         const remaining = calculateRemainingDays(examDateStr);
-        textEl.textContent = `لديك ${remaining} يوم${remaining > 1 ? 'اً' : ''}`;
-        textEl.className = 'profile-planner-text-active';
+        // تحديث الرقم فقط، مع الحفاظ على class الأصلي
+        textEl.textContent = `${remaining} يوم`;
+        // نضمن أن class هو shape2-value (التصميم الأصلي)
+        textEl.className = 'shape2-value';
     } else {
+        // في حالة عدم وجود تاريخ، نعرض النص المناسب
         textEl.textContent = 'لم يتم إعداد الخطة اليومية بعد.';
-        textEl.className = '';
+        // نستخدم class فارغ أو shape2-value حسب التصميم الأصلي
+        textEl.className = 'shape2-value';
     }
 }
 
 // تحديث النص عند تحميل الصفحة
-document.addEventListener('DOMContentLoaded', updateProfilePlannerStatus);
+document.addEventListener('DOMContentLoaded', function() {
+    // تحديث حالة المستخدم
+    if (typeof updateProfilePlannerStatus === 'function') {
+        updateProfilePlannerStatus();
+    }
+});
 
+// أيضًا نستدعي التحديث عند تغير حالة المستخدم (تسجيل دخول/خروج)
+// نضيف مستمعًا للتغيير في localStorage (للتحديث عند تغير التاريخ من أي مكان)
+window.addEventListener('storage', function(e) {
+    if (e.key === 'zertiva_exam_date' || e.key === 'zertiva_daily_hours') {
+        if (typeof updateProfilePlannerStatus === 'function') {
+            updateProfilePlannerStatus();
+        }
+    }
+});
 // تحديث النص تلقائياً عند حفظ البيانات (من خلال localStorage)
 window.addEventListener('storage', function(e) {
     if (e.key === 'zertiva_exam_date' || e.key === 'zertiva_daily_hours') {
