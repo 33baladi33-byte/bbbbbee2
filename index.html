@@ -4999,7 +4999,6 @@ document.addEventListener("DOMContentLoaded", function() {
         <p><span class="highlight">وأخيراً:</span> نتا مكتراجعش ففوضى، بل ف<span class="highlight">نظام سلس، سريع، مساعد</span>، وأهم شيء أنه <span class="highlight-gold">موثوق</span>.</p>
     </div>
 </div>
-
 <script>
 // ============================================
 // Why Zertiva Button & Popup
@@ -5090,8 +5089,42 @@ document.addEventListener("DOMContentLoaded", function() {
 
     console.log('✅ زر الإشعارات جاهز');
 })();
+
+// ============================================
+// تأكيد تنفيذ الأكواد بعد تحميل DOM
+// ============================================
+(function ensureExecution() {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔄 إعادة محاولة ربط الأزرار بعد تحميل DOM');
+            // إعادة استدعاء الدوال للتأكد من ربطها
+            if (typeof initWhyZertiva === 'function') initWhyZertiva();
+            if (typeof initNotifications === 'function') initNotifications();
+        });
+    } else {
+        console.log('✅ DOM جاهز، الأزرار مربوطة بالفعل');
+    }
+})();
 </script>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 <!-- ===== زر Ask AI العائم ===== -->
 <button id="askAIFloatingBtn">
     <img src="images/stars.png" alt="Ask AI" class="ask-ai-img">
