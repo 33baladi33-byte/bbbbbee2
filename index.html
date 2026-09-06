@@ -5048,6 +5048,48 @@ document.addEventListener("DOMContentLoaded", function() {
 
     console.log('✅ Why Zertiva: الزر والنافذة جاهزان');
 })();
+
+// ============================================
+// Notification Button & Dropdown
+// ============================================
+(function initNotifications() {
+    const bell = document.getElementById('notificationBell');
+    const dropdown = document.getElementById('notificationDropdown');
+    
+    if (!bell || !dropdown) {
+        console.warn('⚠️ الإشعارات: الزر أو النافذة غير موجودة');
+        return;
+    }
+
+    let isOpen = false;
+
+    function toggleDropdown(e) {
+        e.stopPropagation();
+        isOpen = !isOpen;
+        dropdown.classList.toggle('active', isOpen);
+    }
+
+    function closeDropdown() {
+        isOpen = false;
+        dropdown.classList.remove('active');
+    }
+
+    bell.addEventListener('click', toggleDropdown);
+
+    document.addEventListener('click', function(e) {
+        if (isOpen && !dropdown.contains(e.target) && e.target !== bell && !bell.contains(e.target)) {
+            closeDropdown();
+        }
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && isOpen) {
+            closeDropdown();
+        }
+    });
+
+    console.log('✅ زر الإشعارات جاهز');
+})();
 </script>
 
 <!-- ===== زر Ask AI العائم ===== -->
