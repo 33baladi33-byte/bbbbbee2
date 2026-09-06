@@ -32791,10 +32791,10 @@ var MyApp = (() => {
     const oldBtn2 = document.getElementById("viewModeToggleBtn2");
     if (oldBtn2) oldBtn2.remove();
     const SORT_STATE_KEY = "examListSortMode";
-    const ICONS_CYCLE = ["leaderboard", "calendar_apps_script", "timer_arrow_down", "123"];
+    const ICONS_CYCLE = ["123", "calendar_apps_script", "leaderboard", "timer_arrow_down"];
     let currentState = parseInt(localStorage.getItem(SORT_STATE_KEY));
     if (isNaN(currentState) || currentState < 0 || currentState > 3) {
-      currentState = 3;
+      currentState = 0;
     }
     const btn1 = document.createElement("button");
     btn1.id = "viewModeToggleBtn1";
@@ -34083,10 +34083,10 @@ var MyApp = (() => {
       if (a.timeMs === null) return -1;
       if (b.timeMs === null) return 1;
       if (a.timeMs === b.timeMs) return a.originalIndex - b.originalIndex;
-      return a.timeMs - b.timeMs;
+      return b.timeMs - a.timeMs;
     });
     data.forEach((item) => targetContainer.appendChild(item.el));
-    console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u062D\u0633\u0628 \u0627\u0644\u0648\u0642\u062A (\u0645\u0646 \u0627\u0644\u0623\u0636\u0639\u0641 \u0625\u0644\u0649 \u0627\u0644\u0623\u0642\u0648\u0649)");
+    console.log("\u2705 \u062A\u0645 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u062D\u0633\u0628 \u0627\u0644\u0648\u0642\u062A (\u0628\u062F\u0648\u0646 \u0648\u0642\u062A \u0623\u0648\u0644\u0627\u064B\u060C \u062B\u0645 \u0627\u0644\u0623\u0637\u0648\u0644 \u0641\u0627\u0644\u0623\u0642\u0635\u0631)");
   }
   function applyLastReviewOrder() {
     const list = document.getElementById("examsList");
