@@ -32894,7 +32894,7 @@ var MyApp = (() => {
             } else {
               matchingBtn.style.display = "none";
             }
-            setTimeout(updateHealthCrossVisibility, 10);
+            updateHealthCrossVisibility();
           }
         }
       }
