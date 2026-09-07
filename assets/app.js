@@ -30242,12 +30242,63 @@ var MyApp = (() => {
           this.originalState = null;
           this.newButtonContainer = null;
           this._deactivateBound = this.deactivate.bind(this);
+          this._interleavingBtnOriginalDisplay = null;
+        }
+        /**
+         * عرض نافذة المساعدة – بنفس نظام Lesen 1 و 3
+         */
+        _showIntroModal(callback) {
+          const overlay = document.createElement("div");
+          overlay.style.cssText = `
+      position: fixed; top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.3); backdrop-filter: blur(4px);
+      display: flex; justify-content: center; align-items: center;
+      z-index: 999999;
+    `;
+          const modal = document.createElement("div");
+          modal.style.cssText = `
+      background: #ffffff; border-radius: 20px; padding: 28px 30px;
+      max-width: 400px; width: 90%; box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      border: 1px solid rgba(200,200,200,0.2);
+      font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+      text-align: right; direction: rtl;
+    `;
+          modal.innerHTML = `
+      <p style="margin:0 0 16px 0; font-size:0.95rem; line-height:1.7; color:#475569;">
+        \u0647\u0630\u0647 \u0627\u0644\u0645\u064A\u0632\u0629 \u0647\u062F\u0641\u0647\u0627 \u0645\u062D\u0627\u0648\u0644\u0629 \u062A\u0633\u0647\u064A\u0644 \u0639\u0645\u0644\u064A\u0629 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0644\u0643\u060C \u0643\u064A \u062A\u0631\u0627\u062C\u0639 \u0628\u0643\u0641\u0627\u0621\u0629 \u0648\u0633\u0631\u0639\u0629 \u0623\u0643\u062B\u0631.
+      </p>
+      <label style="display:flex; align-items:center; gap:8px; font-size:0.9rem; color:#334155; margin-bottom:18px; cursor:pointer;">
+        <input type="checkbox" id="hoeren2DontShowAgain" style="width:18px; height:18px; accent-color:#2c3e66;">
+        <span>\u0639\u062F\u0645 \u0625\u0638\u0647\u0627\u0631 \u0647\u0630\u0627 \u0645\u0631\u0629 \u0623\u062E\u0631\u0649</span>
+      </label>
+      <button id="hoeren2IntroOkBtn" style="width:100%; padding:12px; border:none; border-radius:12px; background:#2c3e66; color:white; font-size:1rem; font-weight:600; cursor:pointer; transition:background 0.2s;">
+        \u062D\u0633\u0646\u0627\u064B
+      </button>
+    `;
+          overlay.appendChild(modal);
+          document.body.appendChild(overlay);
+          document.getElementById("hoeren2IntroOkBtn").onclick = () => {
+            if (document.getElementById("hoeren2DontShowAgain").checked) {
+              localStorage.setItem("hoeren2_help_intro_shown", "true");
+            }
+            overlay.remove();
+            if (typeof callback === "function") callback();
+          };
         }
         /**
          * تفعيل الوضع – نسخة مطابقة تمامًا للـ Prototype
          */
         activate() {
           if (this.isActive) return;
+          if (!localStorage.getItem("hoeren2_help_intro_shown")) {
+            this._showIntroModal(() => {
+              this._applyActivation();
+            });
+            return;
+          }
+          this._applyActivation();
+        }
+        _applyActivation() {
           const container = document.getElementById("hoeren2");
           if (!container) {
             console.warn("\u26A0\uFE0F Hoeren2HealthMode: #hoeren2 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F");
@@ -30368,6 +30419,11 @@ var MyApp = (() => {
           if (originalControls) {
             originalControls.style.setProperty("display", "none", "important");
           }
+          const interleavingBtn = document.getElementById("interleavingBtn");
+          if (interleavingBtn) {
+            this._interleavingBtnOriginalDisplay = interleavingBtn.style.display || "";
+            interleavingBtn.style.setProperty("display", "none", "important");
+          }
           const newButtonContainer = document.createElement("div");
           newButtonContainer.style.setProperty("display", "flex", "important");
           newButtonContainer.style.setProperty("justify-content", "center", "important");
@@ -30405,6 +30461,15 @@ var MyApp = (() => {
           if (this.newButtonContainer && this.newButtonContainer.parentNode) {
             this.newButtonContainer.parentNode.removeChild(this.newButtonContainer);
             this.newButtonContainer = null;
+          }
+          const interleavingBtn = document.getElementById("interleavingBtn");
+          if (interleavingBtn) {
+            if (this._interleavingBtnOriginalDisplay !== null) {
+              interleavingBtn.style.display = this._interleavingBtnOriginalDisplay;
+            } else {
+              interleavingBtn.style.removeProperty("display");
+            }
+            this._interleavingBtnOriginalDisplay = null;
           }
           if (originalControls) {
             if (original.controlsDisplay !== null) {
@@ -30473,9 +30538,6 @@ var MyApp = (() => {
           this.isActive = false;
           console.log("\u2705 Hoeren2HealthMode: \u062A\u0645 \u0627\u0644\u0625\u0644\u063A\u0627\u0621 \u0648\u0639\u0648\u062F\u0629 \u0627\u0644\u062D\u0627\u0644\u0629 \u0627\u0644\u0623\u0635\u0644\u064A\u0629");
         }
-        /**
-         * تبديل الحالة (تفعيل/إلغاء)
-         */
         toggle() {
           if (this.isActive) {
             this.deactivate();
@@ -30483,10 +30545,13 @@ var MyApp = (() => {
             this.activate();
           }
         }
-        /**
-         * إعادة تعيين (إلغاء فقط)
-         */
         reset() {
+          if (this.isActive) this.deactivate();
+        }
+        /**
+         * إلغاء إجباري (للشاشات الصغيرة)
+         */
+        forceDeactivate() {
           if (this.isActive) this.deactivate();
         }
       };
@@ -32815,23 +32880,21 @@ var MyApp = (() => {
           if (memoryToggleBtn) memoryToggleBtn.style.display = "";
           if (playBtn) playBtn.style.display = "";
           if (matchingBtn) {
+            matchingBtn.dataset.skill = skill;
             if (skill === "lesen1" || skill === "lesen3") {
-              matchingBtn.style.display = "inline-flex";
               const isActive = skill === "lesen1" && window.matchingLesen1 && window.matchingLesen1.isActive || skill === "lesen3" && window.matchingLesen3 && window.matchingLesen3.isActive;
               matchingBtn.classList.toggle("active", isActive);
-              matchingBtn.dataset.skill = skill;
-              matchingBtn.innerHTML = `<span class="material-symbols-outlined">health_cross</span>`;
-              matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+              matchingBtn.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
+              matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
             } else if (skill === "hoeren2") {
-              matchingBtn.style.display = "inline-flex";
               const isActive = window.hoeren2Health && window.hoeren2Health.isActive;
               matchingBtn.classList.toggle("active", isActive);
-              matchingBtn.dataset.skill = skill;
               matchingBtn.innerHTML = `<span class="material-symbols-outlined">health_cross</span>`;
               matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0639\u0631\u0636 \u0627\u0644\u0645\u0632\u062F\u0648\u062C";
             } else {
               matchingBtn.style.display = "none";
             }
+            setTimeout(updateHealthCrossVisibility, 10);
           }
         }
       }
@@ -34461,6 +34524,10 @@ var MyApp = (() => {
       } else if (skill === "lesen3" && window.matchingLesen3) {
         window.matchingLesen3.toggle();
       } else if (skill === "hoeren2" && window.hoeren2Health) {
+        if (window.innerWidth < 900) {
+          console.warn("\u26A0\uFE0F health_cross \u063A\u064A\u0631 \u0645\u062A\u0627\u062D \u0644\u0644\u0634\u0627\u0634\u0627\u062A \u0627\u0644\u0623\u0635\u063A\u0631 \u0645\u0646 900px");
+          return;
+        }
         window.hoeren2Health.toggle();
       } else {
         console.warn("\u26A0\uFE0F health_cross \u063A\u064A\u0631 \u0645\u062A\u0627\u062D \u0644\u0647\u0630\u0647 \u0627\u0644\u0645\u0647\u0627\u0631\u0629");
@@ -34468,8 +34535,34 @@ var MyApp = (() => {
     });
     playBtn.parentNode.insertBefore(helpBtn, playBtn.nextSibling);
     console.log("\u2705 \u0632\u0631 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u062A\u0645 \u0625\u0636\u0627\u0641\u062A\u0647 \u0628\u0639\u062F play_arrow");
+    updateHealthCrossVisibility();
   }
-  var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY, originalOpenExam2;
+  function updateHealthCrossVisibility() {
+    const matchingBtn = document.getElementById("matchingToggleBtn");
+    if (!matchingBtn) return;
+    const skill = matchingBtn.dataset.skill || window.currentSkill;
+    const width = window.innerWidth;
+    if (skill === "hoeren2") {
+      if (width >= 900) {
+        matchingBtn.style.display = "inline-flex";
+      } else {
+        matchingBtn.style.display = "none";
+        if (window.hoeren2Health && window.hoeren2Health.isActive) {
+          window.hoeren2Health.forceDeactivate();
+          matchingBtn.classList.remove("active");
+          matchingBtn.innerHTML = `<span class="material-symbols-outlined">health_cross</span>`;
+          matchingBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0639\u0631\u0636 \u0627\u0644\u0645\u0632\u062F\u0648\u062C";
+        }
+      }
+      return;
+    }
+    if (skill === "lesen1" || skill === "lesen3") {
+      matchingBtn.style.display = "inline-flex";
+      return;
+    }
+    matchingBtn.style.display = "none";
+  }
+  var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY, originalOpenExam2, resizeTimeout;
   var init_exams = __esm({
     "exams.js"() {
       window.isInterleavingActive = false;
@@ -35976,16 +36069,19 @@ var MyApp = (() => {
           setTimeout(() => {
             const matchingBtn = document.getElementById("matchingToggleBtn");
             if (matchingBtn) {
+              matchingBtn.dataset.skill = skill;
               if (skill === "lesen1" || skill === "lesen3") {
-                matchingBtn.style.display = "inline-flex";
-                matchingBtn.dataset.skill = skill;
                 const isActive = skill === "lesen1" && window.matchingLesen1 && window.matchingLesen1.isActive || skill === "lesen3" && window.matchingLesen3 && window.matchingLesen3.isActive;
                 matchingBtn.classList.toggle("active", isActive);
                 matchingBtn.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
                 matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
-              } else {
-                matchingBtn.style.display = "none";
+              } else if (skill === "hoeren2") {
+                const isActive = window.hoeren2Health && window.hoeren2Health.isActive;
+                matchingBtn.classList.toggle("active", isActive);
+                matchingBtn.innerHTML = `<span class="material-symbols-outlined">health_cross</span>`;
+                matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0639\u0631\u0636 \u0627\u0644\u0645\u0632\u062F\u0648\u062C";
               }
+              updateHealthCrossVisibility();
             }
           }, 200);
           return result;
@@ -35995,20 +36091,30 @@ var MyApp = (() => {
         const matchingBtn = document.getElementById("matchingToggleBtn");
         if (!matchingBtn) return;
         const skill = matchingBtn.dataset.skill || window.currentSkill;
-        let isActive = false;
         if (skill === "lesen1" || skill === "lesen3") {
-          isActive = skill === "lesen1" && window.matchingLesen1 && window.matchingLesen1.isActive || skill === "lesen3" && window.matchingLesen3 && window.matchingLesen3.isActive;
-          matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+          const isActive = skill === "lesen1" && window.matchingLesen1 && window.matchingLesen1.isActive || skill === "lesen3" && window.matchingLesen3 && window.matchingLesen3.isActive;
+          matchingBtn.classList.toggle("active", isActive);
+          matchingBtn.innerHTML = `<span class="material-symbols-outlined">${isActive ? "compare_arrows" : "swap_horiz"}</span>`;
+          matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
         } else if (skill === "hoeren2") {
-          isActive = window.hoeren2Health && window.hoeren2Health.isActive;
+          const isActive = window.hoeren2Health && window.hoeren2Health.isActive;
+          matchingBtn.classList.toggle("active", isActive);
+          matchingBtn.innerHTML = `<span class="material-symbols-outlined">health_cross</span>`;
           matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0639\u0631\u0636 \u0627\u0644\u0645\u0632\u062F\u0648\u062C";
         } else {
           matchingBtn.style.display = "none";
           return;
         }
-        matchingBtn.classList.toggle("active", isActive);
-        matchingBtn.innerHTML = `<span class="material-symbols-outlined">health_cross</span>`;
+        updateHealthCrossVisibility();
       };
+      resizeTimeout = null;
+      window.addEventListener("resize", function() {
+        if (resizeTimeout) clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function() {
+          updateHealthCrossVisibility();
+          resizeTimeout = null;
+        }, 100);
+      });
       (function() {
         const btn = document.getElementById("checkCircleBtn");
         const tooltip = document.getElementById("checkCircleTooltip");
