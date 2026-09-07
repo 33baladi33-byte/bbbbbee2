@@ -36059,6 +36059,7 @@ var MyApp = (() => {
       }
       window.applyTimeOrder = applyTimeOrder;
       window.applyLastReviewOrder = applyLastReviewOrder;
+      window.updateHealthCrossVisibility = updateHealthCrossVisibility;
       document.addEventListener("DOMContentLoaded", function() {
         setTimeout(createMatchingButton, 500);
         setTimeout(updateHealthCrossVisibility, 600);
