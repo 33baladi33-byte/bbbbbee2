@@ -32867,7 +32867,11 @@ var MyApp = (() => {
         const gameBtn = document.getElementById("rapidGameBtn");
         const memoryToggleBtn = document.getElementById("memoryToggleBtn");
         const playBtn = document.getElementById("playTimerBtn");
-        const matchingBtn = document.getElementById("matchingToggleBtn");
+        let matchingBtn = document.getElementById("matchingToggleBtn");
+        if (!matchingBtn) {
+          createMatchingButton();
+          matchingBtn = document.getElementById("matchingToggleBtn");
+        }
         if (skill === "sprach1" || skill === "sprach2") {
           if (swapBtn) swapBtn.style.display = "none";
           if (gameBtn) gameBtn.style.display = "";
