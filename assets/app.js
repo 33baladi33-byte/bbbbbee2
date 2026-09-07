@@ -36487,6 +36487,7 @@ var MyApp = (() => {
     }
     if (settingsBtn2) settingsBtn2.style.display = isHomePage ? "none" : "inline-flex";
     if (myInfoBtn) myInfoBtn.style.display = isHomePage ? "none" : "inline-flex";
+    if (studySessionBtn) studySessionBtn.style.display = isHomePage ? "none" : "inline-flex";
     if (typeof window.renderInitialExamList === "function") {
       const listPage = document.getElementById("list");
       if (listPage && listPage.classList.contains("active")) {
