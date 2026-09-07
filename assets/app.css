@@ -9337,79 +9337,9 @@ body:has(#exam.active) #navSignupBtn {
     border-color: rgba(59, 130, 246, 0.28) !important;
     box-shadow: 0 2px 7px rgba(15, 23, 42, 0.06) !important;
 }
-
-/* ===== Why Zertiva Button - مطابق تماماً لزر خطة اليوم (نسخة نهائية) ===== */
-#whyZertivaBtn {
-    position: relative !important;
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: none !important;
-    background-clip: padding-box !important;
-    height: 40px !important;
-    padding: 0 14px !important;
-    border-radius: 12px !important;
-    cursor: pointer !important;
-    transition: all 0.3s ease !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
-    transform: scale(0.85) !important;
-    transform-origin: center center !important;
-    flex-shrink: 0 !important;
-    overflow: hidden !important;
-    box-sizing: border-box !important;
-    font-size: 0 !important;
-    gap: 0 !important;
-    color: #E5E7EB !important;
-    font-family: inherit !important;
-}
-
-#whyZertivaBtn:hover {
-    transform: scale(0.884) !important;
-}
-
-/* الإطار المتوهج المتدرج (نفس خطة اليوم) */
-#whyZertivaBtn::before {
-    content: '' !important;
-    position: absolute !important;
-    top: -2px !important;
-    left: -2px !important;
-    right: -2px !important;
-    bottom: -2px !important;
-    border-radius: 14px !important;
-    z-index: -1 !important;
-    padding: 2px !important;
-    background: linear-gradient(135deg, #7dd3fc, #60a5fa, #8b5cf6, #38bdf8, #7dd3fc) !important;
-    background-size: 300% 300% !important;
-    animation: gradientMove 4s linear infinite !important;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) !important;
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) !important;
-    -webkit-mask-composite: xor !important;
-    mask-composite: exclude !important;
-    pointer-events: none !important;
-}
-
-#whyZertivaBtn::after {
-    content: '' !important;
-    position: absolute !important;
-    top: -4px !important;
-    left: -4px !important;
-    right: -4px !important;
-    bottom: -4px !important;
-    border-radius: 16px !important;
-    z-index: -2 !important;
-    box-shadow: 0 0 6px rgba(56, 189, 248, 0.2) !important;
-    opacity: 0.5 !important;
-    transition: opacity 0.3s ease, box-shadow 0.3s ease !important;
-    pointer-events: none !important;
-}
-
-#whyZertivaBtn:hover::after {
-    opacity: 1 !important;
-    box-shadow: 0 0 12px rgba(56, 189, 248, 0.35) !important;
-}
-
-/* الصورة داخل الزر */
+/* ===== Why Zertiva Button - يعتمد على كلاس study-planner-icon-btn فقط ===== */
+/* لا حاجة لستايلات خاصة بالمعرف، كل شيء موروث من الكلاس */
+/* تأكيد أن الصورة لها نفس ستايلات خطة اليوم */
 #whyZertivaBtn .planner-icon-img {
     width: 20px !important;
     height: 20px !important;
@@ -9423,12 +9353,6 @@ body:has(#exam.active) #navSignupBtn {
 
 /* التكيف مع الهواتف (نفس خطة اليوم) */
 @media (max-width: 768px) {
-    #whyZertivaBtn {
-        height: 32px !important;
-        padding: 0 10px !important;
-        border-radius: 10px !important;
-        transform: scale(0.85) !important;
-    }
     #whyZertivaBtn .planner-icon-img {
         width: 16px !important;
         height: 16px !important;
@@ -9436,12 +9360,6 @@ body:has(#exam.active) #navSignupBtn {
 }
 
 @media (max-width: 480px) {
-    #whyZertivaBtn {
-        height: 28px !important;
-        padding: 0 8px !important;
-        border-radius: 8px !important;
-        transform: scale(0.85) !important;
-    }
     #whyZertivaBtn .planner-icon-img {
         width: 14px !important;
         height: 14px !important;
