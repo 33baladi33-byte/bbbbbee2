@@ -36061,6 +36061,7 @@ var MyApp = (() => {
       window.applyLastReviewOrder = applyLastReviewOrder;
       document.addEventListener("DOMContentLoaded", function() {
         setTimeout(createMatchingButton, 500);
+        setTimeout(updateHealthCrossVisibility, 600);
       });
       originalOpenExam2 = window.openExam;
       if (typeof originalOpenExam2 === "function") {
