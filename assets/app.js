@@ -30244,7 +30244,7 @@ var MyApp = (() => {
           this._deactivateBound = this.deactivate.bind(this);
         }
         /**
-         * تفعيل الوضع
+         * تفعيل الوضع – نسخة مطابقة تمامًا للـ Prototype
          */
         activate() {
           if (this.isActive) return;
@@ -30342,7 +30342,7 @@ var MyApp = (() => {
             card.style.setProperty("min-width", "0", "important");
             card.style.setProperty("margin-bottom", "0", "important");
             card.style.setProperty("box-sizing", "border-box", "important");
-            card.style.setProperty("padding", "4px 4px", "important");
+            card.style.setProperty("padding", "2px 2px", "important");
             card.style.setProperty("flex-wrap", "nowrap", "important");
             const span = card.querySelector("span:not(.option-label)");
             if (span) {
@@ -30350,62 +30350,20 @@ var MyApp = (() => {
               span.style.setProperty("min-width", "0", "important");
               span.style.setProperty("word-break", "break-word", "important");
               span.style.setProperty("padding", "0 2px", "important");
-              span.style.setProperty("font-size", "0.75rem", "important");
-              span.style.setProperty("line-height", "1.4", "important");
             }
             const labels = card.querySelectorAll(".option-label");
             labels.forEach((label) => {
-              label.style.setProperty("display", "flex", "important");
-              label.style.setProperty("flex-direction", "row", "important");
-              label.style.setProperty("align-items", "center", "important");
-              label.style.setProperty("gap", "2px", "important");
-              label.style.setProperty("padding", "2px 6px", "important");
-              label.style.setProperty("font-size", "0.55rem", "important");
-              label.style.setProperty("margin", "0 0 2px 0", "important");
-              label.style.setProperty("border-radius", "4px", "important");
-              label.style.setProperty("border", "1px solid #ccc", "important");
-              label.style.setProperty("background", "#f9f9f9", "important");
-              label.style.setProperty("width", "auto", "important");
-              label.style.setProperty("min-width", "0", "important");
               label.style.setProperty("flex", "0 0 auto", "important");
+              label.style.setProperty("padding", "6px 6px", "important");
+              label.style.setProperty("font-size", "0.6rem", "important");
+              label.style.setProperty("margin", "0 2px", "important");
+              label.style.setProperty("gap", "2px", "important");
               const radio = label.querySelector("input");
               if (radio) {
                 radio.style.setProperty("width", "12px", "important");
                 radio.style.setProperty("height", "12px", "important");
-                radio.style.setProperty("margin", "0 2px 0 0", "important");
               }
             });
-            card.style.setProperty("display", "flex", "important");
-            card.style.setProperty("flex-direction", "column", "important");
-            card.style.setProperty("align-items", "stretch", "important");
-            card.style.setProperty("justify-content", "space-between", "important");
-            card.style.setProperty("gap", "2px", "important");
-            if (span) {
-              span.style.setProperty("order", "0", "important");
-              span.style.setProperty("margin-bottom", "2px", "important");
-            }
-            const labelsContainer = card.querySelector(".options-container") || card;
-            labels.forEach((label) => {
-              label.style.setProperty("display", "flex", "important");
-              label.style.setProperty("flex-direction", "row", "important");
-              label.style.setProperty("justify-content", "flex-start", "important");
-              label.style.setProperty("width", "100%", "important");
-            });
-            let optionsWrapper = card.querySelector(".hoeren2-options-wrapper");
-            if (!optionsWrapper) {
-              optionsWrapper = document.createElement("div");
-              optionsWrapper.className = "hoeren2-options-wrapper";
-              optionsWrapper.style.setProperty("display", "flex", "important");
-              optionsWrapper.style.setProperty("flex-direction", "column", "important");
-              optionsWrapper.style.setProperty("gap", "2px", "important");
-              optionsWrapper.style.setProperty("align-items", "stretch", "important");
-              const labelsArray = card.querySelectorAll(".option-label");
-              const parent = labelsArray[0]?.parentNode;
-              if (parent) {
-                labelsArray.forEach((l) => optionsWrapper.appendChild(l));
-                parent.appendChild(optionsWrapper);
-              }
-            }
           });
           if (originalControls) {
             originalControls.style.setProperty("display", "none", "important");
@@ -30436,10 +30394,10 @@ var MyApp = (() => {
           container.appendChild(newButtonContainer);
           this.newButtonContainer = newButtonContainer;
           this.isActive = true;
-          console.log("\u2705 Hoeren2HealthMode: \u062A\u0645 \u0627\u0644\u062A\u0641\u0639\u064A\u0644");
+          console.log("\u2705 Hoeren2HealthMode: \u062A\u0645 \u0627\u0644\u062A\u0641\u0639\u064A\u0644 (\u0645\u0637\u0627\u0628\u0642 \u0644\u0644\u0640 Prototype)");
         }
         /**
-         * إلغاء الوضع واستعادة الحالة الأصلية
+         * إلغاء الوضع واستعادة الحالة الأصلية 100%
          */
         deactivate() {
           if (!this.isActive) return;
@@ -30513,7 +30471,7 @@ var MyApp = (() => {
             }
           });
           this.isActive = false;
-          console.log("\u2705 Hoeren2HealthMode: \u062A\u0645 \u0627\u0644\u0625\u0644\u063A\u0627\u0621");
+          console.log("\u2705 Hoeren2HealthMode: \u062A\u0645 \u0627\u0644\u0625\u0644\u063A\u0627\u0621 \u0648\u0639\u0648\u062F\u0629 \u0627\u0644\u062D\u0627\u0644\u0629 \u0627\u0644\u0623\u0635\u0644\u064A\u0629");
         }
         /**
          * تبديل الحالة (تفعيل/إلغاء)
