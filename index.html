@@ -131,6 +131,30 @@
     }
 }
 
+.profile-dropdown {
+    position: fixed;
+    top: clamp(8px, 1.4vh, 24px);
+    left: clamp(6px, 1.2vw, 20px);
+    width: clamp(240px, 28vw, 380px);
+    box-sizing: border-box;
+    padding: clamp(7px, .75vw, 11px) clamp(7px, .75vw, 11px) clamp(7px, .65vw, 9px);
+    display: flex;
+    flex-direction: column;
+    direction: rtl;
+    color: #ffffff;
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    background:
+        radial-gradient(190px 120px at 8% 5%, rgba(49,100,230,.14), transparent 72%),
+        radial-gradient(200px 120px at 94% 4%, rgba(102,45,220,.18), transparent 72%),
+        linear-gradient(145deg, #111621 0%, #0d121d 52%, #0a1019 100%);
+    border: 1px solid rgba(148,163,184,.18);
+    border-radius: clamp(11px, 1.15vw, 17px);
+    box-shadow: 0 clamp(12px, 1.5vw, 20px) clamp(30px, 3vw, 45px) rgba(0,0,0,.58), 0 5px 20px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.055);
+    z-index: 100000;
+    overflow: hidden;
+    animation: shape2Appear .25s cubic-bezier(.2,.8,.2,1);
+    display: none;
+}
 @keyframes shape2Appear {
     from { opacity: 0; transform: translateY(-7px) scale(.985); }
     to { opacity: 1; transform: translateY(0) scale(1); }
@@ -486,13 +510,12 @@
     position: relative;
     z-index: 2;
 }
+
 @media (max-width: 330px) {
     .profile-dropdown {
-        width: calc(100vw - 10px) !important;
-        left: 5px !important;
-        top: 56px !important;
-        right: auto !important;
-        max-width: 340px !important;
+        width: calc(100vw - 10px);
+        left: 5px;
+        top: 5px;
     }
 }
 
@@ -2234,13 +2257,15 @@ body.dark-mode .mobile-banner span {
         <img src="images/logo.webp" loading="lazy" alt="Zertiva" class="logo-img">
     </div>
 </div>
-<!-- ===== الملف الشخصي (تم نقله إلى نهاية body للظهور فوق كل شيء) ===== -->
+
+<!-- ===== الملف الشخصي (الشكل 2 النهائي - دائم) ===== -->
 <div id="profileDropdown" class="profile-dropdown">
     <!-- النجوم -->
     <div class="shape2-sparkles">
-        <span class="star-big">✧</span>
+        <span class="star-big">✧</et currentScale = 105span>
         <span class="star-small">✦</span>
     </div>
+    <!-- (تم حذف زر الإعدادات) -->
 
     <!-- الأفاتار والمعلومات -->
     <div class="shape2-left">
@@ -2275,15 +2300,14 @@ body.dark-mode .mobile-banner span {
                 <div class="shape2-value uid" id="profileUidValue">---</div>
                 <div class="shape2-chevron">›</div>
             </div>
-            <div class="shape2-info-row" id="profilePlannerRowClickable">
+                     <div class="shape2-info-row" id="profilePlannerRowClickable">
                 <div class="shape2-icon"><span class="material-symbols-outlined">schedule</span></div>
                 <div class="shape2-label">لديك</div>
                 <div class="shape2-value" id="profilePlannerText">0 يوم</div>
                 <div class="shape2-chevron">›</div>
             </div>
         </div>
-
-        <!-- زر إحصائياتي -->
+               <!-- زر إحصائياتي -->
         <button id="downloadReportBtn" class="shape2-stats">
             <span class="material-symbols-outlined">monitoring</span> إحصائياتي
         </button>
@@ -2303,6 +2327,7 @@ body.dark-mode .mobile-banner span {
             <span class="material-symbols-outlined">logout</span> تسجيل خروج
         </button>
     </div>
+</div>
 </div>
 
 <!-- ===== نافذة تعديل المعلومات (فتح من صف لديك) ===== -->
