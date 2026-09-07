@@ -29459,6 +29459,9 @@ var MyApp = (() => {
           this._titleElements = /* @__PURE__ */ new Map();
           this._progressText = null;
           this._progressFill = null;
+          this._label = null;
+          this._fill = null;
+          this._icon = null;
           this._isDestroyed = false;
           this._resizeHandler = null;
           this._captureTimeout = null;
@@ -29598,15 +29601,59 @@ var MyApp = (() => {
           title.textContent = this.modeName === "lesen1" ? "Lesen Teil 1" : "Lesen Teil 3";
           const progress = document.createElement("div");
           progress.className = "zertiva-matching-progress";
-          const progressText = document.createElement("span");
-          this._progressText = progressText;
-          const progressBar = document.createElement("span");
-          progressBar.className = "zertiva-matching-progress-bar";
-          const progressFill = document.createElement("span");
-          progressFill.className = "zertiva-matching-progress-fill";
-          this._progressFill = progressFill;
-          progressBar.appendChild(progressFill);
-          progress.append(progressText, progressBar);
+          progress.style.cssText = `
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        background: rgba(44,62,102,0.08);
+        padding: 2px 9px 2px 7px;
+        border-radius: 30px;
+        border: 1px solid rgba(44,62,102,0.14);
+        backdrop-filter: blur(2px);
+    `;
+          const barOuter = document.createElement("div");
+          barOuter.style.cssText = `
+        width: 42px;
+        height: 3px;
+        background: rgba(44,62,102,0.14);
+        border-radius: 4px;
+        overflow: hidden;
+    `;
+          const barFill = document.createElement("div");
+          barFill.style.cssText = `
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #2c3e66, #38bdf8);
+        border-radius: 4px;
+        transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    `;
+          barOuter.appendChild(barFill);
+          this._fill = barFill;
+          const label = document.createElement("span");
+          label.style.cssText = `
+        font-size: 0.62rem;
+        font-weight: 600;
+        color: #1e293b;
+        letter-spacing: 0.01em;
+        line-height: 1;
+    `;
+          label.textContent = `0 / 5`;
+          this._label = label;
+          const completionIcon = document.createElement("span");
+          completionIcon.textContent = "\u2713";
+          completionIcon.style.cssText = `
+        font-size: 10px;
+        font-weight: 700;
+        color: #22c55e;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        margin-left: -2px;
+        line-height: 1;
+    `;
+          this._icon = completionIcon;
+          progress.appendChild(barOuter);
+          progress.appendChild(label);
+          progress.appendChild(completionIcon);
           header.append(title, progress);
           const textArea = document.createElement("div");
           textArea.className = "zertiva-matching-text-area";
@@ -29868,11 +29915,14 @@ var MyApp = (() => {
           const total = this._texts.length;
           const count = this._matches.size;
           const percent = total ? count / total * 100 : 0;
-          if (this._progressText) {
-            this._progressText.textContent = `${count} / ${total} zugeordnet`;
+          if (this._label) {
+            this._label.textContent = `${count} / ${total}`;
           }
-          if (this._progressFill) {
-            this._progressFill.style.width = percent + "%";
+          if (this._fill) {
+            this._fill.style.width = percent + "%";
+          }
+          if (this._icon) {
+            this._icon.style.opacity = count === total && total > 0 ? "1" : "0";
           }
           this._textElements.forEach((el, textId) => {
             const linked = this._matches.get(textId);
