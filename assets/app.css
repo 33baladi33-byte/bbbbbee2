@@ -9166,7 +9166,7 @@ body:has(#exam.active) #navSignupBtn {
 /* صف الأزرار */
 #teil1 .teil-controls-row,
 #teil3 .teil-controls-row {
-    display: flex !important;
+    display: flex;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     justify-content: center !important;
