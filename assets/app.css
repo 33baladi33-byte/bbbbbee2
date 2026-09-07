@@ -1988,12 +1988,19 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 5 !important; }
         font-size: 9px !important;
     }
     
-     .profile-icon {
+  @media (max-width: 768px) {
+    .profile-icon {
         width: 32px !important;
         height: 32px !important;
         font-size: 14px !important;
         border-radius: 10px !important;
     }
+    .logo-icon {
+        width: 32px !important;
+        height: 32px !important;
+        border-radius: 10px !important;
+    }
+}
     
     .settings-icon-btn,
     .study-planner-icon-btn,
@@ -7107,7 +7114,6 @@ body.dark-mode .planner-section-title {
     opacity: 1;
     box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
 }
-
 @keyframes gradientMove {
     0% { background-position: 0% 0%; }
     50% { background-position: 100% 100%; }
@@ -9320,21 +9326,24 @@ body:has(#exam.active) #navSignupBtn {
    Why Zertiva Button & Popup
    ============================================ */
 
-/* ===== زر Why Zertiva - مطابق لزر الإشعارات ===== */
+/* ===== زر Why Zertiva - مطابق لزر خطة اليوم ===== */
 .why-zertiva-btn {
-    height: 35px;
-    padding: 0 12px;
+    position: relative;
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: none;
+    background-clip: padding-box;
+    height: 40px;
+    padding: 0 14px;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transform: scale(0.85);
+    transform-origin: center center;
     flex-shrink: 0;
-    position: relative;
     font-size: 0;
     gap: 0;
     color: #E5E7EB;
@@ -9344,27 +9353,59 @@ body:has(#exam.active) #navSignupBtn {
 }
 
 .why-zertiva-btn:hover {
-    background: rgba(255, 255, 255, 0.10);
-    border-color: rgba(255, 255, 255, 0.15);
-    transform: scale(1.04);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
+    transform: scale(0.884) !important;
 }
 
-.why-zertiva-btn:active {
-    transform: scale(0.95);
-    transition-duration: 0.05s;
+.why-zertiva-btn::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 14px;
+    z-index: -1;
+    padding: 2px;
+    background: linear-gradient(135deg, #7dd3fc, #60a5fa, #8b5cf6, #38bdf8, #7dd3fc);
+    background-size: 300% 300%;
+    animation: gradientMove 4s linear infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.why-zertiva-btn::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 16px;
+    z-index: -2;
+    box-shadow: 0 0 6px rgba(56, 189, 248, 0.2);
+    opacity: 0.5;
+    transition: opacity 0.3s ease, box-shadow 0.3s ease;
+    pointer-events: none;
+}
+
+.why-zertiva-btn:hover::after {
+    opacity: 1;
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
 }
 
 /* حجم الصورة داخل الزر */
 .why-icon-img {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     display: block;
     object-fit: contain;
     pointer-events: none;
-    filter: brightness(0) invert(1);
-    opacity: 0.85;
     border-radius: 4px;
+    animation: none;
+    transform: none;
 }
 
 /* ===== Why Zertiva Popup ===== */
@@ -9466,17 +9507,17 @@ body:has(#exam.active) #navSignupBtn {
     margin-bottom: 0;
 }
 
-/* ===== Responsive ===== */
 @media (max-width: 768px) {
     .why-zertiva-btn {
-        height: 26px;
-        padding: 0 8px;
+        height: 32px;
+        padding: 0 10px;
         border-radius: 10px;
+        transform: scale(0.85);
     }
     
     .why-icon-img {
-        width: 14px;
-        height: 14px;
+        width: 16px;
+        height: 16px;
     }
     
     .why-zertiva-popup {
