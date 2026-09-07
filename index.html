@@ -9204,14 +9204,6 @@ if (expiryText) {
     }
 
 
-
-
-
-
-
-
-
-
     document.getElementById('footerHomeBtn')?.addEventListener('click', function(e) {
         e.preventDefault();
         if (typeof goHome === 'function') {
@@ -9235,6 +9227,45 @@ if (expiryText) {
 })();
 
 
+</script>
+<script>
+// حل نهائي لمشكلة زر الملف الشخصي (تعطيل ربط auth.js القديم)
+(function() {
+    // تأخير صغير للتأكد من تحميل auth.js وتنفيذ ربطه
+    setTimeout(function() {
+        const icon = document.getElementById('profileIcon');
+        const dropdown = document.getElementById('profileDropdown');
+        if (!icon || !dropdown) return;
+
+        // استنساخ الأيقونة لإزالة جميع المستمعات القديمة (بما فيها من auth.js)
+        const newIcon = icon.cloneNode(true);
+        icon.parentNode.replaceChild(newIcon, icon);
+
+        // ربط الحدث الجديد
+        newIcon.addEventListener('click', function(e) {
+            e.stopPropagation();
+            dropdown.classList.toggle('show');
+        });
+
+        // إغلاق عند النقر خارجها
+        document.addEventListener('click', function(e) {
+            if (dropdown.classList.contains('show') &&
+                !dropdown.contains(e.target) &&
+                e.target !== newIcon) {
+                dropdown.classList.remove('show');
+            }
+        });
+
+        // إغلاق عند الضغط على Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
+            }
+        });
+
+        console.log('✅ زر الملف الشخصي تم إعادة ربطه بنجاح (بعد تعطيل auth.js)');
+    }, 300); // تأخير 300 مللي للتأكد من انتهاء auth.js
+})();
 </script>
 </body>
 </html>
