@@ -36465,8 +36465,6 @@ var MyApp = (() => {
       if (premiumStatus) premiumStatus.textContent = "\u0645\u0641\u0639\u0644\u0629";
       if (navSubscribeBtn2) navSubscribeBtn2.style.display = "none";
       if (featuresSubscribeBtn) featuresSubscribeBtn.style.display = "none";
-      if (settingsBtn2) settingsBtn2.style.display = "inline-flex";
-      if (myInfoBtn) myInfoBtn.style.display = "inline-flex";
     } else {
       if (profileSubscribeBtn) {
         profileSubscribeBtn.style.display = "flex";
@@ -36482,13 +36480,13 @@ var MyApp = (() => {
       if (premiumStatus) premiumStatus.textContent = "\u063A\u064A\u0631 \u0645\u0641\u0639\u0644\u0629";
       if (navSubscribeBtn2) navSubscribeBtn2.style.display = "inline-flex";
       if (featuresSubscribeBtn) featuresSubscribeBtn.style.display = "inline-flex";
-      if (settingsBtn2) settingsBtn2.style.display = "none";
-      if (myInfoBtn) myInfoBtn.style.display = "inline-flex";
     }
     const avatarEl = document.getElementById("profileAvatar");
     if (avatarEl && user.email) {
       avatarEl.textContent = user.email.charAt(0).toUpperCase();
     }
+    if (settingsBtn2) settingsBtn2.style.display = isHomePage ? "none" : "inline-flex";
+    if (myInfoBtn) myInfoBtn.style.display = isHomePage ? "none" : "inline-flex";
     if (typeof window.renderInitialExamList === "function") {
       const listPage = document.getElementById("list");
       if (listPage && listPage.classList.contains("active")) {
