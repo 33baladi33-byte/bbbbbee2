@@ -33067,24 +33067,24 @@ var MyApp = (() => {
         setTimeout(() => {
           const matchingBtn = document.getElementById("matchingToggleBtn");
           if (matchingBtn) {
-            matchingBtn.style.display = "inline-flex";
             matchingBtn.dataset.skill = skill;
             const isActive = skill === "lesen1" && window.matchingLesen1 && window.matchingLesen1.isActive || skill === "lesen3" && window.matchingLesen3 && window.matchingLesen3.isActive;
             matchingBtn.classList.toggle("active", isActive);
             matchingBtn.innerHTML = `<span class="material-symbols-outlined">health_cross</span>`;
             matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+            updateHealthCrossVisibility();
           }
         }, 100);
       } else if (skill === "hoeren2") {
         setTimeout(() => {
           const matchingBtn = document.getElementById("matchingToggleBtn");
           if (matchingBtn) {
-            matchingBtn.style.display = "inline-flex";
             matchingBtn.dataset.skill = "hoeren2";
             const isActive = window.hoeren2Health && window.hoeren2Health.isActive;
             matchingBtn.classList.toggle("active", isActive);
             matchingBtn.innerHTML = `<span class="material-symbols-outlined">health_cross</span>`;
             matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0639\u0631\u0636 \u0627\u0644\u0645\u0632\u062F\u0648\u062C";
+            updateHealthCrossVisibility();
           }
         }, 100);
       }
