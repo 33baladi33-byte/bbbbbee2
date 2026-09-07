@@ -29767,6 +29767,19 @@ var MyApp = (() => {
               this._selectedTitle = null;
               this._updateUI();
             });
+            card.draggable = !this._matches.has(text.id);
+            card.addEventListener("dragstart", (e) => {
+              if (this._matches.has(text.id)) {
+                e.preventDefault();
+                return;
+              }
+              e.dataTransfer.setData("text/plain", text.id);
+              e.dataTransfer.effectAllowed = "move";
+              card.classList.add("zertiva-selected");
+            });
+            card.addEventListener("dragend", () => {
+              card.classList.remove("zertiva-selected");
+            });
             card.addEventListener("dragover", (e) => {
               e.preventDefault();
               e.dataTransfer.dropEffect = "move";
@@ -29850,6 +29863,7 @@ var MyApp = (() => {
               this._selectedText = null;
               this._updateUI();
             });
+            card.draggable = true;
             card.addEventListener("dragstart", (e) => {
               e.dataTransfer.setData("text/plain", title.id);
               e.dataTransfer.effectAllowed = "move";
@@ -29857,6 +29871,28 @@ var MyApp = (() => {
             });
             card.addEventListener("dragend", () => {
               card.classList.remove("zertiva-selected");
+            });
+            card.addEventListener("dragover", (e) => {
+              e.preventDefault();
+              e.dataTransfer.dropEffect = "move";
+              card.classList.add("zertiva-selected");
+            });
+            card.addEventListener("dragleave", () => {
+              card.classList.remove("zertiva-selected");
+            });
+            card.addEventListener("drop", (e) => {
+              e.preventDefault();
+              card.classList.remove("zertiva-selected");
+              const textId = e.dataTransfer.getData("text/plain");
+              if (textId && textId.startsWith("text-")) {
+                if (this._matches.has(textId)) {
+                  this._disconnectText(textId);
+                }
+                this._connect(textId, title.id);
+                this._selectedText = null;
+                this._selectedTitle = null;
+                this._updateUI();
+              }
             });
           });
         }
@@ -30293,6 +30329,10 @@ var MyApp = (() => {
           this.newButtonContainer = null;
           this._deactivateBound = this.deactivate.bind(this);
           this._interleavingBtnOriginalDisplay = null;
+          this._label = null;
+          this._fill = null;
+          this._icon = null;
+          this._progressContainer = null;
         }
         /**
          * عرض نافذة المساعدة – بنفس نظام Lesen 1 و 3
@@ -30453,13 +30493,13 @@ var MyApp = (() => {
               span.style.setProperty("padding", "0 2px", "important");
             }
             const labels = card.querySelectorAll(".option-label");
-            labels.forEach((label) => {
-              label.style.setProperty("flex", "0 0 auto", "important");
-              label.style.setProperty("padding", "6px 6px", "important");
-              label.style.setProperty("font-size", "0.6rem", "important");
-              label.style.setProperty("margin", "0 2px", "important");
-              label.style.setProperty("gap", "2px", "important");
-              const radio = label.querySelector("input");
+            labels.forEach((label2) => {
+              label2.style.setProperty("flex", "0 0 auto", "important");
+              label2.style.setProperty("padding", "6px 6px", "important");
+              label2.style.setProperty("font-size", "0.6rem", "important");
+              label2.style.setProperty("margin", "0 2px", "important");
+              label2.style.setProperty("gap", "2px", "important");
+              const radio = label2.querySelector("input");
               if (radio) {
                 radio.style.setProperty("width", "12px", "important");
                 radio.style.setProperty("height", "12px", "important");
@@ -30476,13 +30516,13 @@ var MyApp = (() => {
           }
           const newButtonContainer = document.createElement("div");
           newButtonContainer.style.setProperty("display", "flex", "important");
-          newButtonContainer.style.setProperty("justify-content", "center", "important");
+          newButtonContainer.style.setProperty("justify-content", "space-between", "important");
           newButtonContainer.style.setProperty("align-items", "center", "important");
           newButtonContainer.style.setProperty("grid-column", "1 / -1", "important");
           newButtonContainer.style.setProperty("grid-row", "-1", "important");
           newButtonContainer.style.setProperty("width", "100%", "important");
           newButtonContainer.style.setProperty("box-sizing", "border-box", "important");
-          newButtonContainer.style.setProperty("padding", "4px 0", "important");
+          newButtonContainer.style.setProperty("padding", "4px 8px", "important");
           const finishedBtn = document.createElement("button");
           finishedBtn.type = "button";
           finishedBtn.textContent = "\u0627\u0646\u062A\u0647\u064A\u062A";
@@ -30496,17 +30536,104 @@ var MyApp = (() => {
           finishedBtn.style.setProperty("font-weight", "600", "important");
           finishedBtn.style.setProperty("cursor", "pointer", "important");
           finishedBtn.addEventListener("click", this._deactivateBound);
+          const progressWrapper = document.createElement("div");
+          progressWrapper.style.cssText = `
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        background: rgba(44,62,102,0.08);
+        padding: 2px 9px 2px 7px;
+        border-radius: 30px;
+        border: 1px solid rgba(44,62,102,0.14);
+        backdrop-filter: blur(2px);
+        flex-shrink: 0;
+    `;
+          const barOuter = document.createElement("div");
+          barOuter.style.cssText = `
+        width: 42px;
+        height: 3px;
+        background: rgba(44,62,102,0.14);
+        border-radius: 4px;
+        overflow: hidden;
+    `;
+          const barFill = document.createElement("div");
+          barFill.style.cssText = `
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #2c3e66, #38bdf8);
+        border-radius: 4px;
+        transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    `;
+          barOuter.appendChild(barFill);
+          this._fill = barFill;
+          const totalQuestions = cards.length;
+          const label = document.createElement("span");
+          label.style.cssText = `
+        font-size: 0.62rem;
+        font-weight: 600;
+        color: #1e293b;
+        letter-spacing: 0.01em;
+        line-height: 1;
+    `;
+          label.textContent = `0 / ${totalQuestions}`;
+          this._label = label;
+          const completionIcon = document.createElement("span");
+          completionIcon.textContent = "\u2713";
+          completionIcon.style.cssText = `
+        font-size: 10px;
+        font-weight: 700;
+        color: #22c55e;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        margin-left: -2px;
+        line-height: 1;
+    `;
+          this._icon = completionIcon;
+          progressWrapper.appendChild(barOuter);
+          progressWrapper.appendChild(label);
+          progressWrapper.appendChild(completionIcon);
+          newButtonContainer.appendChild(progressWrapper);
           newButtonContainer.appendChild(finishedBtn);
           container.appendChild(newButtonContainer);
           this.newButtonContainer = newButtonContainer;
+          this._progressContainer = progressWrapper;
+          this._updateProgress();
+          const radios = container.querySelectorAll('input[type="radio"]');
+          radios.forEach((radio) => {
+            radio.addEventListener("change", () => {
+              this._updateProgress();
+            });
+          });
           this.isActive = true;
           console.log("\u2705 Hoeren2HealthMode: \u062A\u0645 \u0627\u0644\u062A\u0641\u0639\u064A\u0644 (\u0645\u0637\u0627\u0628\u0642 \u0644\u0644\u0640 Prototype)");
+        }
+        _updateProgress() {
+          if (!this.container) return;
+          const total = this.container.querySelectorAll(".question-card").length;
+          const answered = this.container.querySelectorAll('input[type="radio"]:checked').length;
+          const percent = total ? answered / total * 100 : 0;
+          if (this._label) {
+            this._label.textContent = `${answered} / ${total}`;
+          }
+          if (this._fill) {
+            this._fill.style.width = percent + "%";
+          }
+          if (this._icon) {
+            this._icon.style.opacity = answered === total && total > 0 ? "1" : "0";
+          }
         }
         /**
          * إلغاء الوضع واستعادة الحالة الأصلية 100%
          */
         deactivate() {
           if (!this.isActive) return;
+          if (this._progressContainer && this._progressContainer.parentNode) {
+            this._progressContainer.parentNode.removeChild(this._progressContainer);
+            this._progressContainer = null;
+          }
+          this._label = null;
+          this._fill = null;
+          this._icon = null;
           const { original, cards, noteElement, originalControls } = this.originalState || {};
           if (this.newButtonContainer && this.newButtonContainer.parentNode) {
             this.newButtonContainer.parentNode.removeChild(this.newButtonContainer);
