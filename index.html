@@ -131,6 +131,36 @@
     }
 }
 
+.profile-dropdown {
+    position: fixed !important;
+    top: 60px !important;
+    left: 10px !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: clamp(300px, 32vw, 400px) !important;
+    max-height: none !important;
+    height: auto !important;
+    box-sizing: border-box;
+    padding: 6px 12px !important;
+    display: flex;
+    flex-direction: column;
+    direction: rtl;
+    color: #ffffff;
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    background:
+        radial-gradient(190px 120px at 8% 5%, rgba(49,100,230,.14), transparent 72%),
+        radial-gradient(200px 120px at 94% 4%, rgba(102,45,220,.18), transparent 72%),
+        linear-gradient(145deg, #111621 0%, #0d121d 52%, #0a1019 100%);
+    border: 1px solid rgba(148,163,184,.18);
+    border-radius: 12px !important;
+    box-shadow: 0 12px 30px rgba(0,0,0,.58), 0 5px 20px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.055);
+    z-index: 9999999 !important;
+    overflow: hidden !important;
+    animation: shape2Appear .25s cubic-bezier(.2,.8,.2,1);
+    display: none;
+    margin: 0 !important;
+    transform: none !important;
+}
 @keyframes shape2Appear {
     from { opacity: 0; transform: translateY(-7px) scale(.985); }
     to { opacity: 1; transform: translateY(0) scale(1); }
@@ -486,13 +516,12 @@
     position: relative;
     z-index: 2;
 }
+
 @media (max-width: 330px) {
     .profile-dropdown {
-        width: calc(100vw - 10px) !important;
-        left: 5px !important;
-        top: 56px !important;
-        right: auto !important;
-        max-width: 340px !important;
+        width: calc(100vw - 10px);
+        left: 5px;
+        top: 5px;
     }
 }
 
