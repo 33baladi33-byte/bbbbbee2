@@ -2205,7 +2205,7 @@ body.dark-mode .mobile-banner span {
 <body class="home-page">
 <div class="top-bar">
 <div class="left-side">
-    <img src="images/profile.png" id="profileIcon" class="profile-icon" alt="Profile" style="display: none;">
+ <img src="images/profile.png" id="profileIcon" class="profile-icon" alt="Profile" style="display: flex;">
     <button id="settingsBtn" class="settings-icon-btn" title="إعدادات العرض">
         <img src="images/settings.png" alt="Settings" class="icon-img">
     </button>
@@ -9203,15 +9203,6 @@ if (expiryText) {
         }
     }
 
-
-
-
-
-
-
-
-
-
     document.getElementById('footerHomeBtn')?.addEventListener('click', function(e) {
         e.preventDefault();
         if (typeof goHome === 'function') {
@@ -9234,6 +9225,42 @@ if (expiryText) {
 
 })();
 
+// ============================================
+// تشغيل زر الملف الشخصي بعد نقله إلى نهاية body
+// ============================================
+(function() {
+    const profileIcon = document.getElementById('profileIcon');
+    const profileDropdown = document.getElementById('profileDropdown');
+    if (!profileIcon || !profileDropdown) {
+        console.warn('⚠️ عناصر الملف الشخصي غير موجودة');
+        return;
+    }
+
+    // تبديل الخانة عند النقر على الأيقونة
+    profileIcon.addEventListener('click', function(e) {
+        e.stopPropagation();
+        profileDropdown.classList.toggle('show');
+    });
+
+    // إغلاق الخانة عند النقر خارجها
+    document.addEventListener('click', function(e) {
+        if (profileDropdown.classList.contains('show') &&
+            !profileDropdown.contains(e.target) &&
+            e.target !== profileIcon) {
+            profileDropdown.classList.remove('show');
+        }
+    });
+
+    // إغلاق الخانة عند الضغط على Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && profileDropdown.classList.contains('show')) {
+            profileDropdown.classList.remove('show');
+        }
+    });
+
+    console.log('✅ زر الملف الشخصي مربوط بنجاح بعد النقل');
+})();
+</script>
 
 </script>
 <!-- ===== الملف الشخصي (منقول إلى نهاية body) ===== -->
