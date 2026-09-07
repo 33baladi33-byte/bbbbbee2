@@ -28575,7 +28575,7 @@ var MyApp = (() => {
       }
     });
   }
-  var _hoerenData, interleavingOrders, lesen1OriginalNodes, lesen1ShuffledNodes, lesen1OrderSaved, lesen2OriginalNodes, lesen2ShuffledNodes, lesen2OrderSaved, lesen3OriginalNodes, lesen3ShuffledNodes, lesen3OrderSaved, examTimer2, currentSchreibenData, currentSprach2Data, sprach2UserAnswers, sprach2SelectedQuestionId, sprach2SelectedWordForLinking, currentSprach1Data, sprach1UserAnswers, sprach1OpenDropdownId, currentMatchingExamData2, matchingSelectedAnswers2, matchingAvailableOptions2, currentTeil2Data, teil2UserAnswers, currentTeil3Data, teil3UserAnswers, teil3SelectedItem, teil3SelectedSit, teil3SelectedItemForLink, teil3SelectedSitForLink, originalOpenExamGlobal, MemoryHighlightEngine, memoryEngine, toggleBtn, _toggleInProgress, _interleavingInitialized, _answerHistory, _historyEnabled, originalCheckTrueFalse, MatchingMode, matchingLesen1, matchingLesen3;
+  var _hoerenData, interleavingOrders, lesen1OriginalNodes, lesen1ShuffledNodes, lesen1OrderSaved, lesen2OriginalNodes, lesen2ShuffledNodes, lesen2OrderSaved, lesen3OriginalNodes, lesen3ShuffledNodes, lesen3OrderSaved, examTimer2, currentSchreibenData, currentSprach2Data, sprach2UserAnswers, sprach2SelectedQuestionId, sprach2SelectedWordForLinking, currentSprach1Data, sprach1UserAnswers, sprach1OpenDropdownId, currentMatchingExamData2, matchingSelectedAnswers2, matchingAvailableOptions2, currentTeil2Data, teil2UserAnswers, currentTeil3Data, teil3UserAnswers, teil3SelectedItem, teil3SelectedSit, teil3SelectedItemForLink, teil3SelectedSitForLink, originalOpenExamGlobal, MemoryHighlightEngine, memoryEngine, toggleBtn, _toggleInProgress, _interleavingInitialized, _answerHistory, _historyEnabled, originalCheckTrueFalse, MatchingMode, matchingLesen1, matchingLesen3, Hoeren2HealthMode, hoeren2Health;
   var init_engine = __esm({
     "engine.js"() {
       console.log("\u2705 engine.js \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647");
@@ -30004,6 +30004,20 @@ var MyApp = (() => {
               box.style.display = "none";
             });
           }
+          const interleavingBtn = document.getElementById("interleavingBtn");
+          if (interleavingBtn) {
+            if (!interleavingBtn.dataset.zertivaOriginalDisplay) {
+              interleavingBtn.dataset.zertivaOriginalDisplay = interleavingBtn.style.display || "";
+            }
+            interleavingBtn.style.display = "none";
+          }
+          const memoryToggleBtn = document.getElementById("memoryToggleBtn");
+          if (memoryToggleBtn) {
+            if (!memoryToggleBtn.dataset.zertivaOriginalDisplay) {
+              memoryToggleBtn.dataset.zertivaOriginalDisplay = memoryToggleBtn.style.display || "";
+            }
+            memoryToggleBtn.style.display = "none";
+          }
           this.isActive = true;
           console.log(`\u2705 Help Mode activated for ${this.modeName}`);
           const helpBtn = document.getElementById("matchingToggleBtn");
@@ -30113,6 +30127,26 @@ var MyApp = (() => {
             });
           }
           this._showOriginalControls();
+          const interleavingBtn = document.getElementById("interleavingBtn");
+          if (interleavingBtn) {
+            const originalDisplay = interleavingBtn.dataset.zertivaOriginalDisplay;
+            if (originalDisplay !== void 0) {
+              interleavingBtn.style.display = originalDisplay || "";
+              delete interleavingBtn.dataset.zertivaOriginalDisplay;
+            } else {
+              interleavingBtn.style.display = "";
+            }
+          }
+          const memoryToggleBtn = document.getElementById("memoryToggleBtn");
+          if (memoryToggleBtn) {
+            const originalDisplay = memoryToggleBtn.dataset.zertivaOriginalDisplay;
+            if (originalDisplay !== void 0) {
+              memoryToggleBtn.style.display = originalDisplay || "";
+              delete memoryToggleBtn.dataset.zertivaOriginalDisplay;
+            } else {
+              memoryToggleBtn.style.display = "";
+            }
+          }
           this.isActive = false;
           console.log(`\u2705 Help Mode deactivated for ${this.modeName}`);
           const helpBtn = document.getElementById("matchingToggleBtn");
@@ -30193,6 +30227,7 @@ var MyApp = (() => {
       matchingLesen3 = new MatchingMode("teil3", "lesen3");
       window.matchingLesen1 = matchingLesen1;
       window.matchingLesen3 = matchingLesen3;
+      window.hoeren2Health = hoeren2Health;
       window.toggleMatchingLesen1 = function() {
         matchingLesen1.toggle();
       };
@@ -30200,6 +30235,305 @@ var MyApp = (() => {
         matchingLesen3.toggle();
       };
       console.log("\u2705 Matching Mode (Lesen 1 & Lesen 3) ready.");
+      Hoeren2HealthMode = class {
+        constructor() {
+          this.isActive = false;
+          this.container = null;
+          this.originalState = null;
+          this.newButtonContainer = null;
+          this._deactivateBound = this.deactivate.bind(this);
+        }
+        /**
+         * تفعيل الوضع
+         */
+        activate() {
+          if (this.isActive) return;
+          const container = document.getElementById("hoeren2");
+          if (!container) {
+            console.warn("\u26A0\uFE0F Hoeren2HealthMode: #hoeren2 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F");
+            return;
+          }
+          this.container = container;
+          let noteElement = null;
+          for (const child of container.children) {
+            if (child.textContent && (child.textContent.includes("\u0645\u0644\u0627\u062D\u0638\u0629") || child.textContent.includes("Note"))) {
+              noteElement = child;
+              break;
+            }
+          }
+          if (!noteElement) {
+            const allDivs = container.querySelectorAll("div");
+            for (const div of allDivs) {
+              if (div.textContent.includes("\u0645\u0644\u0627\u062D\u0638\u0629") || div.textContent.includes("Note")) {
+                noteElement = div;
+                break;
+              }
+            }
+          }
+          const cards = [...container.querySelectorAll(":scope > .question-card")];
+          if (cards.length === 0) {
+            console.warn("\u26A0\uFE0F Hoeren2HealthMode: \u0644\u0627 \u062A\u0648\u062C\u062F \u0628\u0637\u0627\u0642\u0627\u062A \u0623\u0633\u0626\u0644\u0629");
+            return;
+          }
+          let originalControls = null;
+          const checkBtn = container.querySelector(".check-btn");
+          if (checkBtn) {
+            let parent = checkBtn.parentElement;
+            while (parent && parent !== container) {
+              const btns = parent.querySelectorAll("button");
+              if (btns.length >= 2) {
+                const hasPr\u00FCfen = btns[0]?.textContent.includes("Pr\xFCfen") || btns[1]?.textContent.includes("Pr\xFCfen");
+                const hasReset = btns[0]?.textContent === "\u21BA" || btns[1]?.textContent === "\u21BA";
+                if (hasPr\u00FCfen && hasReset) {
+                  originalControls = parent;
+                  break;
+                }
+              }
+              parent = parent.parentElement;
+            }
+          }
+          if (!originalControls) {
+            const numbersDiv = container.querySelector("#truefalseCorrectNumbers");
+            if (numbersDiv) {
+              const parent = numbersDiv.parentElement;
+              if (parent && parent.querySelector(".check-btn")) {
+                originalControls = parent;
+              }
+            }
+          }
+          const original = {
+            containerStyle: container.getAttribute("style"),
+            cards: cards.map((c) => c.getAttribute("style")),
+            cardSpans: cards.map((c) => {
+              const span = c.querySelector("span:not(.option-label)");
+              return span ? span.getAttribute("style") : null;
+            }),
+            cardLabels: cards.map((c) => {
+              const labels = c.querySelectorAll(".option-label");
+              return Array.from(labels).map((l) => l.getAttribute("style"));
+            }),
+            controlsHTML: originalControls ? originalControls.innerHTML : null,
+            controlsStyle: originalControls ? originalControls.getAttribute("style") : null,
+            controlsDisplay: originalControls ? originalControls.style.display : null,
+            noteStyle: noteElement ? noteElement.getAttribute("style") : null
+          };
+          this.originalState = { original, cards, noteElement, originalControls };
+          container.style.setProperty("display", "grid", "important");
+          container.style.setProperty("grid-template-columns", "repeat(2, minmax(0, 1fr))", "important");
+          container.style.setProperty("grid-template-rows", "auto repeat(5, auto) auto", "important");
+          container.style.setProperty("grid-auto-flow", "row", "important");
+          container.style.setProperty("column-gap", "8px", "important");
+          container.style.setProperty("row-gap", "8px", "important");
+          container.style.setProperty("width", "100%", "important");
+          container.style.setProperty("box-sizing", "border-box", "important");
+          if (noteElement) {
+            noteElement.style.setProperty("grid-column", "1 / -1", "important");
+            noteElement.style.setProperty("grid-row", "1", "important");
+            noteElement.style.setProperty("margin-bottom", "0", "important");
+            noteElement.style.setProperty("width", "100%", "important");
+            noteElement.style.setProperty("box-sizing", "border-box", "important");
+          }
+          cards.forEach((card, index) => {
+            const column = index < 5 ? 1 : 2;
+            const row = index % 5 + 2;
+            card.style.setProperty("grid-column", String(column), "important");
+            card.style.setProperty("grid-row", String(row), "important");
+            card.style.setProperty("width", "100%", "important");
+            card.style.setProperty("min-width", "0", "important");
+            card.style.setProperty("margin-bottom", "0", "important");
+            card.style.setProperty("box-sizing", "border-box", "important");
+            card.style.setProperty("padding", "4px 4px", "important");
+            card.style.setProperty("flex-wrap", "nowrap", "important");
+            const span = card.querySelector("span:not(.option-label)");
+            if (span) {
+              span.style.setProperty("flex", "1 1 0%", "important");
+              span.style.setProperty("min-width", "0", "important");
+              span.style.setProperty("word-break", "break-word", "important");
+              span.style.setProperty("padding", "0 2px", "important");
+              span.style.setProperty("font-size", "0.75rem", "important");
+              span.style.setProperty("line-height", "1.4", "important");
+            }
+            const labels = card.querySelectorAll(".option-label");
+            labels.forEach((label) => {
+              label.style.setProperty("display", "flex", "important");
+              label.style.setProperty("flex-direction", "row", "important");
+              label.style.setProperty("align-items", "center", "important");
+              label.style.setProperty("gap", "2px", "important");
+              label.style.setProperty("padding", "2px 6px", "important");
+              label.style.setProperty("font-size", "0.55rem", "important");
+              label.style.setProperty("margin", "0 0 2px 0", "important");
+              label.style.setProperty("border-radius", "4px", "important");
+              label.style.setProperty("border", "1px solid #ccc", "important");
+              label.style.setProperty("background", "#f9f9f9", "important");
+              label.style.setProperty("width", "auto", "important");
+              label.style.setProperty("min-width", "0", "important");
+              label.style.setProperty("flex", "0 0 auto", "important");
+              const radio = label.querySelector("input");
+              if (radio) {
+                radio.style.setProperty("width", "12px", "important");
+                radio.style.setProperty("height", "12px", "important");
+                radio.style.setProperty("margin", "0 2px 0 0", "important");
+              }
+            });
+            card.style.setProperty("display", "flex", "important");
+            card.style.setProperty("flex-direction", "column", "important");
+            card.style.setProperty("align-items", "stretch", "important");
+            card.style.setProperty("justify-content", "space-between", "important");
+            card.style.setProperty("gap", "2px", "important");
+            if (span) {
+              span.style.setProperty("order", "0", "important");
+              span.style.setProperty("margin-bottom", "2px", "important");
+            }
+            const labelsContainer = card.querySelector(".options-container") || card;
+            labels.forEach((label) => {
+              label.style.setProperty("display", "flex", "important");
+              label.style.setProperty("flex-direction", "row", "important");
+              label.style.setProperty("justify-content", "flex-start", "important");
+              label.style.setProperty("width", "100%", "important");
+            });
+            let optionsWrapper = card.querySelector(".hoeren2-options-wrapper");
+            if (!optionsWrapper) {
+              optionsWrapper = document.createElement("div");
+              optionsWrapper.className = "hoeren2-options-wrapper";
+              optionsWrapper.style.setProperty("display", "flex", "important");
+              optionsWrapper.style.setProperty("flex-direction", "column", "important");
+              optionsWrapper.style.setProperty("gap", "2px", "important");
+              optionsWrapper.style.setProperty("align-items", "stretch", "important");
+              const labelsArray = card.querySelectorAll(".option-label");
+              const parent = labelsArray[0]?.parentNode;
+              if (parent) {
+                labelsArray.forEach((l) => optionsWrapper.appendChild(l));
+                parent.appendChild(optionsWrapper);
+              }
+            }
+          });
+          if (originalControls) {
+            originalControls.style.setProperty("display", "none", "important");
+          }
+          const newButtonContainer = document.createElement("div");
+          newButtonContainer.style.setProperty("display", "flex", "important");
+          newButtonContainer.style.setProperty("justify-content", "center", "important");
+          newButtonContainer.style.setProperty("align-items", "center", "important");
+          newButtonContainer.style.setProperty("grid-column", "1 / -1", "important");
+          newButtonContainer.style.setProperty("grid-row", "-1", "important");
+          newButtonContainer.style.setProperty("width", "100%", "important");
+          newButtonContainer.style.setProperty("box-sizing", "border-box", "important");
+          newButtonContainer.style.setProperty("padding", "4px 0", "important");
+          const finishedBtn = document.createElement("button");
+          finishedBtn.type = "button";
+          finishedBtn.textContent = "\u0627\u0646\u062A\u0647\u064A\u062A";
+          finishedBtn.style.setProperty("padding", "8px 24px", "important");
+          finishedBtn.style.setProperty("min-height", "36px", "important");
+          finishedBtn.style.setProperty("background", "#2c3e66", "important");
+          finishedBtn.style.setProperty("color", "#ffffff", "important");
+          finishedBtn.style.setProperty("border", "none", "important");
+          finishedBtn.style.setProperty("border-radius", "8px", "important");
+          finishedBtn.style.setProperty("font-size", "14px", "important");
+          finishedBtn.style.setProperty("font-weight", "600", "important");
+          finishedBtn.style.setProperty("cursor", "pointer", "important");
+          finishedBtn.addEventListener("click", this._deactivateBound);
+          newButtonContainer.appendChild(finishedBtn);
+          container.appendChild(newButtonContainer);
+          this.newButtonContainer = newButtonContainer;
+          this.isActive = true;
+          console.log("\u2705 Hoeren2HealthMode: \u062A\u0645 \u0627\u0644\u062A\u0641\u0639\u064A\u0644");
+        }
+        /**
+         * إلغاء الوضع واستعادة الحالة الأصلية
+         */
+        deactivate() {
+          if (!this.isActive) return;
+          const { original, cards, noteElement, originalControls } = this.originalState || {};
+          if (this.newButtonContainer && this.newButtonContainer.parentNode) {
+            this.newButtonContainer.parentNode.removeChild(this.newButtonContainer);
+            this.newButtonContainer = null;
+          }
+          if (originalControls) {
+            if (original.controlsDisplay !== null) {
+              originalControls.style.setProperty("display", original.controlsDisplay, "important");
+            } else {
+              originalControls.style.removeProperty("display");
+            }
+            if (original.controlsStyle !== null) {
+              originalControls.setAttribute("style", original.controlsStyle);
+            } else {
+              originalControls.removeAttribute("style");
+            }
+          }
+          if (this.container) {
+            if (original.containerStyle === null) {
+              this.container.removeAttribute("style");
+            } else {
+              this.container.setAttribute("style", original.containerStyle);
+            }
+          }
+          cards.forEach((card, index) => {
+            const oldStyle = original.cards[index];
+            if (oldStyle === null) {
+              card.removeAttribute("style");
+            } else {
+              card.setAttribute("style", oldStyle);
+            }
+            const span = card.querySelector("span:not(.option-label)");
+            if (span) {
+              const oldSpanStyle = original.cardSpans[index];
+              if (oldSpanStyle === null) {
+                span.removeAttribute("style");
+              } else {
+                span.setAttribute("style", oldSpanStyle);
+              }
+            }
+            const labels = card.querySelectorAll(".option-label");
+            const oldLabels = original.cardLabels[index] || [];
+            labels.forEach((label, i) => {
+              if (i < oldLabels.length) {
+                if (oldLabels[i] === null) {
+                  label.removeAttribute("style");
+                } else {
+                  label.setAttribute("style", oldLabels[i]);
+                }
+              }
+            });
+          });
+          if (noteElement) {
+            if (original.noteStyle === null) {
+              noteElement.removeAttribute("style");
+            } else {
+              noteElement.setAttribute("style", original.noteStyle);
+            }
+          }
+          cards.forEach((card) => {
+            const wrapper = card.querySelector(".hoeren2-options-wrapper");
+            if (wrapper) {
+              const parent = wrapper.parentNode;
+              while (wrapper.firstChild) {
+                parent.insertBefore(wrapper.firstChild, wrapper);
+              }
+              wrapper.remove();
+            }
+          });
+          this.isActive = false;
+          console.log("\u2705 Hoeren2HealthMode: \u062A\u0645 \u0627\u0644\u0625\u0644\u063A\u0627\u0621");
+        }
+        /**
+         * تبديل الحالة (تفعيل/إلغاء)
+         */
+        toggle() {
+          if (this.isActive) {
+            this.deactivate();
+          } else {
+            this.activate();
+          }
+        }
+        /**
+         * إعادة تعيين (إلغاء فقط)
+         */
+        reset() {
+          if (this.isActive) this.deactivate();
+        }
+      };
+      hoeren2Health = new Hoeren2HealthMode();
+      window.hoeren2Health = hoeren2Health;
     }
   });
 
@@ -32528,8 +32862,15 @@ var MyApp = (() => {
               const isActive = skill === "lesen1" && window.matchingLesen1 && window.matchingLesen1.isActive || skill === "lesen3" && window.matchingLesen3 && window.matchingLesen3.isActive;
               matchingBtn.classList.toggle("active", isActive);
               matchingBtn.dataset.skill = skill;
-              matchingBtn.textContent = isActive ? "compare_arrows" : "swap_horiz";
-              matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
+              matchingBtn.innerHTML = `<span class="material-symbols-outlined">health_cross</span>`;
+              matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+            } else if (skill === "hoeren2") {
+              matchingBtn.style.display = "inline-flex";
+              const isActive = window.hoeren2Health && window.hoeren2Health.isActive;
+              matchingBtn.classList.toggle("active", isActive);
+              matchingBtn.dataset.skill = skill;
+              matchingBtn.innerHTML = `<span class="material-symbols-outlined">health_cross</span>`;
+              matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0639\u0631\u0636 \u0627\u0644\u0645\u0632\u062F\u0648\u062C";
             } else {
               matchingBtn.style.display = "none";
             }
@@ -32703,8 +33044,22 @@ var MyApp = (() => {
           if (matchingBtn) {
             matchingBtn.style.display = "inline-flex";
             matchingBtn.dataset.skill = skill;
+            const isActive = skill === "lesen1" && window.matchingLesen1 && window.matchingLesen1.isActive || skill === "lesen3" && window.matchingLesen3 && window.matchingLesen3.isActive;
+            matchingBtn.classList.toggle("active", isActive);
             matchingBtn.innerHTML = `<span class="material-symbols-outlined">health_cross</span>`;
-            matchingBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+            matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+          }
+        }, 100);
+      } else if (skill === "hoeren2") {
+        setTimeout(() => {
+          const matchingBtn = document.getElementById("matchingToggleBtn");
+          if (matchingBtn) {
+            matchingBtn.style.display = "inline-flex";
+            matchingBtn.dataset.skill = "hoeren2";
+            const isActive = window.hoeren2Health && window.hoeren2Health.isActive;
+            matchingBtn.classList.toggle("active", isActive);
+            matchingBtn.innerHTML = `<span class="material-symbols-outlined">health_cross</span>`;
+            matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0639\u0631\u0636 \u0627\u0644\u0645\u0632\u062F\u0648\u062C";
           }
         }, 100);
       }
@@ -34147,8 +34502,10 @@ var MyApp = (() => {
         window.matchingLesen1.toggle();
       } else if (skill === "lesen3" && window.matchingLesen3) {
         window.matchingLesen3.toggle();
+      } else if (skill === "hoeren2" && window.hoeren2Health) {
+        window.hoeren2Health.toggle();
       } else {
-        console.warn("\u26A0\uFE0F \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u063A\u064A\u0631 \u0645\u062A\u0627\u062D\u0629 \u0644\u0647\u0630\u0647 \u0627\u0644\u0645\u0647\u0627\u0631\u0629");
+        console.warn("\u26A0\uFE0F health_cross \u063A\u064A\u0631 \u0645\u062A\u0627\u062D \u0644\u0647\u0630\u0647 \u0627\u0644\u0645\u0647\u0627\u0631\u0629");
       }
     });
     playBtn.parentNode.insertBefore(helpBtn, playBtn.nextSibling);
@@ -35679,8 +36036,20 @@ var MyApp = (() => {
       window.updateMatchingButtonState = function() {
         const matchingBtn = document.getElementById("matchingToggleBtn");
         if (!matchingBtn) return;
+        const skill = matchingBtn.dataset.skill || window.currentSkill;
+        let isActive = false;
+        if (skill === "lesen1" || skill === "lesen3") {
+          isActive = skill === "lesen1" && window.matchingLesen1 && window.matchingLesen1.isActive || skill === "lesen3" && window.matchingLesen3 && window.matchingLesen3.isActive;
+          matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
+        } else if (skill === "hoeren2") {
+          isActive = window.hoeren2Health && window.hoeren2Health.isActive;
+          matchingBtn.title = isActive ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0639\u0631\u0636 \u0627\u0644\u0645\u0632\u062F\u0648\u062C";
+        } else {
+          matchingBtn.style.display = "none";
+          return;
+        }
+        matchingBtn.classList.toggle("active", isActive);
         matchingBtn.innerHTML = `<span class="material-symbols-outlined">health_cross</span>`;
-        matchingBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
       };
       (function() {
         const btn = document.getElementById("checkCircleBtn");

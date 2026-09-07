@@ -9162,7 +9162,6 @@ body:has(#exam.active) #navSignupBtn {
 /* ============================================
    أزرار Prüfen و Nochmal versuchen في Lesen 1 و 3
    ============================================ */
-
 /* صف الأزرار */
 #teil1 .teil-controls-row,
 #teil3 .teil-controls-row {
@@ -9179,7 +9178,7 @@ body:has(#exam.active) #navSignupBtn {
 /* زر التصحيح - مستطيل صغير */
 #teil1 .teil-controls-row .check-btn,
 #teil3 .teil-controls-row .check-btn {
-    display: inline-flex !important;
+    display: inline-flex;
     align-items: center !important;
     justify-content: center !important;
     padding: 8px 20px !important;
@@ -9212,7 +9211,7 @@ body:has(#exam.active) #navSignupBtn {
 /* زر إعادة المحاولة - مربع صغير */
 #teil1 .teil-controls-row .lesen-reset-btn,
 #teil3 .teil-controls-row .lesen-reset-btn {
-    display: inline-flex !important;
+    display: inline-flex;
     align-items: center !important;
     justify-content: center !important;
     padding: 8px 12px !important;
@@ -9590,6 +9589,40 @@ body:has(#exam.active) #navSignupBtn {
 #myInfoBtn,
 #studyPlannerBtn {
     display: none;
+}
+/* ============================================
+   Hoeren2 Health Cross - تحسينات إضافية
+   ============================================ */
+
+/* لتقليل الهوامش في وضع الشبكة */
+#hoeren2.health-mode-active .question-card {
+    padding: 4px 4px !important;
+    margin-bottom: 0 !important;
+}
+
+#hoeren2.health-mode-active .option-label {
+    padding: 2px 6px !important;
+    font-size: 0.55rem !important;
+    gap: 2px !important;
+}
+
+#hoeren2.health-mode-active .option-label input[type="radio"] {
+    width: 12px !important;
+    height: 12px !important;
+}
+
+/* عند تفعيل الوضع، نضيف كلاس health-mode-active للحاوية */
+#hoeren2.health-mode-active {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+}
+
+/* لتوافق الهواتف الصغيرة جداً */
+@media (max-width: 480px) {
+    #hoeren2.health-mode-active .question-card span:not(.option-label) {
+        font-size: 0.65rem !important;
+    }
 }
 /* ============================================
    studySession.css - النسخة النهائية (متكاملة)
