@@ -36384,6 +36384,7 @@ var MyApp = (() => {
     const profileIcon2 = document.getElementById("profileIcon");
     const studyPlannerBtn = document.getElementById("studyPlannerBtn");
     const settingsBtn2 = document.getElementById("settingsBtn");
+    const myInfoBtn = document.getElementById("myInfoBtn");
     const profileSubscribeBtn = document.getElementById("profileSubscribeBtn");
     const profileSignupBtn = document.getElementById("profileSignupBtn");
     const homePage = document.getElementById("home");
@@ -36406,6 +36407,7 @@ var MyApp = (() => {
       if (profileIcon2) profileIcon2.style.display = "none";
       if (studyPlannerBtn) studyPlannerBtn.style.display = isHomePage ? "none" : "inline-flex";
       if (settingsBtn2) settingsBtn2.style.display = "none";
+      if (myInfoBtn) myInfoBtn.style.display = "none";
       const oldBtn = document.getElementById("dropdownUpgradeBtn");
       if (oldBtn) oldBtn.remove();
       _currentUserStatus = "free";
@@ -36464,6 +36466,7 @@ var MyApp = (() => {
       if (navSubscribeBtn2) navSubscribeBtn2.style.display = "none";
       if (featuresSubscribeBtn) featuresSubscribeBtn.style.display = "none";
       if (settingsBtn2) settingsBtn2.style.display = "inline-flex";
+      if (myInfoBtn) myInfoBtn.style.display = "inline-flex";
     } else {
       if (profileSubscribeBtn) {
         profileSubscribeBtn.style.display = "flex";
@@ -36480,6 +36483,7 @@ var MyApp = (() => {
       if (navSubscribeBtn2) navSubscribeBtn2.style.display = "inline-flex";
       if (featuresSubscribeBtn) featuresSubscribeBtn.style.display = "inline-flex";
       if (settingsBtn2) settingsBtn2.style.display = "none";
+      if (myInfoBtn) myInfoBtn.style.display = "inline-flex";
     }
     const avatarEl = document.getElementById("profileAvatar");
     if (avatarEl && user.email) {

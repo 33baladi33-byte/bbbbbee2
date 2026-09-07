@@ -15,41 +15,6 @@ body {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ========================================
    Hero Section (New Clean & Premium)
    ======================================== */
@@ -9619,6 +9584,12 @@ body:has(#exam.active) #navSignupBtn {
         padding: 8px 20px;
         font-size: 13px;
     }
+}
+/* إخفاء الأزرار التي تعتمد على JavaScript افتراضياً لمنع الظهور المؤقت */
+#settingsBtn,
+#myInfoBtn,
+#studyPlannerBtn {
+    display: none;
 }
 /* ============================================
    studySession.css - النسخة النهائية (متكاملة)
