@@ -2209,9 +2209,9 @@ body.dark-mode .mobile-banner span {
     <button id="settingsBtn" class="settings-icon-btn" title="إعدادات العرض">
         <img src="images/settings.png" alt="Settings" class="icon-img">
     </button>
-    <!-- ✅ الزر الجديد: إحصائياتي -->
-    <button id="myInfoBtn" class="study-planner-icon-btn" title="إحصائياتي">
-        <img src="images/myinfo.png" alt="إحصائياتي" class="planner-icon-img">
+    <!-- ✅ الزر الجديد: إحصائياتي (مطابق لزر الإعدادات) -->
+    <button id="myInfoBtn" class="settings-icon-btn" title="إحصائياتي">
+        <img src="images/myinfo.png" alt="إحصائياتي" class="icon-img">
     </button>
     <button id="studyPlannerBtn" class="study-planner-icon-btn" title="خطة اليوم الذكية">
         <img src="images/game.png" alt="خطة اليوم" class="planner-icon-img">
@@ -2236,7 +2236,6 @@ body.dark-mode .mobile-banner span {
     </button>
     <!-- تم إزالة زر اشترك -->
 </div>   <!-- إغلاق left-side -->
-
 <div class="right-side">
     <!-- ✅ الزر الجديد: Why Zertiva (مطابق لزر خطة اليوم) -->
     <button class="study-planner-icon-btn" id="whyZertivaBtn" title="لماذا Zertiva؟">
@@ -4997,6 +4996,14 @@ document.addEventListener("DOMContentLoaded", function() {
     </div>
 </div>
 
+
+
+
+
+
+
+
+    
 <!-- ===== Why Zertiva Popup ===== -->
 <div class="why-zertiva-popup" id="whyZertivaPopup">
     <div style="padding: 2px 12px; width: 100%; max-width: 560px; box-sizing: border-box; border-radius: 8px; font-family: 'Segoe UI', system-ui, sans-serif; direction: rtl; color: #e2e8f0; margin: 0 auto;">
@@ -5037,7 +5044,9 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
     </div>
 </div>
-<script>// ============================================
+<script>
+    
+   // ============================================
 // Why Zertiva Button & Popup
 // ============================================
 (function initWhyZertiva() {
@@ -5113,16 +5122,13 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function openReport() {
-        // استدعاء نفس دالة الإحصائيات المستخدمة في الملف الشخصي
         if (typeof window.openReportPage === 'function') {
             window.openReportPage();
         } else {
-            // محاولة محاكاة الضغط على زر الإحصائيات في الملف الشخصي
             const reportBtn = document.getElementById('downloadReportBtn');
             if (reportBtn) {
                 reportBtn.click();
             } else {
-                // محاولة بديلة: فتح الصفحة مباشرة
                 window.open('report.html', '_blank');
             }
         }
@@ -5134,7 +5140,6 @@ document.addEventListener("DOMContentLoaded", function() {
     yesBtn.addEventListener('click', openReport);
     noBtn.addEventListener('click', closePopup);
 
-    // إغلاق عند الضغط خارج الـ popup
     popup.addEventListener('click', function(e) {
         if (e.target === popup) {
             closePopup();
