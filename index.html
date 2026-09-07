@@ -2209,6 +2209,10 @@ body.dark-mode .mobile-banner span {
     <button id="settingsBtn" class="settings-icon-btn" title="إعدادات العرض">
         <img src="images/settings.png" alt="Settings" class="icon-img">
     </button>
+    <!-- ✅ الزر الجديد: إحصائياتي -->
+    <button id="myInfoBtn" class="study-planner-icon-btn" title="إحصائياتي">
+        <img src="images/myinfo.png" alt="إحصائياتي" class="planner-icon-img">
+    </button>
     <button id="studyPlannerBtn" class="study-planner-icon-btn" title="خطة اليوم الذكية">
         <img src="images/game.png" alt="خطة اليوم" class="planner-icon-img">
     </button>
@@ -2232,11 +2236,11 @@ body.dark-mode .mobile-banner span {
     </button>
     <!-- تم إزالة زر اشترك -->
 </div>   <!-- إغلاق left-side -->
-    
+
 <div class="right-side">
-    <!-- ✅ الزر الجديد: Why Zertiva (نُقل إلى يسار زر الإشعارات) -->
-    <button class="why-zertiva-btn" id="whyZertivaBtn" title="لماذا Zertiva؟">
-        <img src="images/why.png" alt="لماذا Zertiva؟" class="why-icon-img">
+    <!-- ✅ الزر الجديد: Why Zertiva (مطابق لزر خطة اليوم) -->
+    <button class="study-planner-icon-btn" id="whyZertivaBtn" title="لماذا Zertiva؟">
+        <img src="images/why.png" alt="لماذا Zertiva؟" class="planner-icon-img">
     </button>
 
     <div class="notification-container">
@@ -5021,8 +5025,19 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
     </div>
 </div>
-<script>
-// ============================================
+
+<!-- ===== My Info Popup ===== -->
+<div class="myinfo-popup-overlay" id="myInfoPopup">
+    <div class="myinfo-popup">
+        <div class="myinfo-popup-title"> هل تريد رؤية معلوماتك؟</div>
+        <div class="myinfo-popup-sub">سيتم نقلك إلى صفحة إحصائياتك الشخصية.</div>
+        <div class="myinfo-popup-buttons">
+            <button class="myinfo-popup-btn yes" id="myInfoPopupYes">نعم</button>
+            <button class="myinfo-popup-btn no" id="myInfoPopupNo">ليس الآن</button>
+        </div>
+    </div>
+</div>
+<script>// ============================================
 // Why Zertiva Button & Popup
 // ============================================
 (function initWhyZertiva() {
@@ -5070,43 +5085,72 @@ document.addEventListener("DOMContentLoaded", function() {
     console.log('✅ Why Zertiva: الزر والنافذة جاهزان');
 })();
 
-
-
 // ============================================
-// تأكيد تنفيذ الأكواد بعد تحميل DOM
+// My Info Button & Popup
 // ============================================
-(function ensureExecution() {
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🔄 إعادة محاولة ربط الأزرار بعد تحميل DOM');
-            // إعادة استدعاء الدوال للتأكد من ربطها
-            if (typeof initWhyZertiva === 'function') initWhyZertiva();
-            if (typeof initNotifications === 'function') initNotifications();
-        });
-    } else {
-        console.log('✅ DOM جاهز، الأزرار مربوطة بالفعل');
+(function initMyInfo() {
+    const btn = document.getElementById('myInfoBtn');
+    const popup = document.getElementById('myInfoPopup');
+    const yesBtn = document.getElementById('myInfoPopupYes');
+    const noBtn = document.getElementById('myInfoPopupNo');
+
+    if (!btn || !popup || !yesBtn || !noBtn) {
+        console.warn('⚠️ My Info: بعض العناصر غير موجودة');
+        return;
     }
+
+    let isOpen = false;
+
+    function openPopup(e) {
+        e.stopPropagation();
+        isOpen = true;
+        popup.classList.add('active');
+    }
+
+    function closePopup() {
+        isOpen = false;
+        popup.classList.remove('active');
+    }
+
+    function openReport() {
+        // استدعاء نفس دالة الإحصائيات المستخدمة في الملف الشخصي
+        if (typeof window.openReportPage === 'function') {
+            window.openReportPage();
+        } else {
+            // محاولة محاكاة الضغط على زر الإحصائيات في الملف الشخصي
+            const reportBtn = document.getElementById('downloadReportBtn');
+            if (reportBtn) {
+                reportBtn.click();
+            } else {
+                // محاولة بديلة: فتح الصفحة مباشرة
+                window.open('report.html', '_blank');
+            }
+        }
+        closePopup();
+    }
+
+    btn.addEventListener('click', openPopup);
+
+    yesBtn.addEventListener('click', openReport);
+    noBtn.addEventListener('click', closePopup);
+
+    // إغلاق عند الضغط خارج الـ popup
+    popup.addEventListener('click', function(e) {
+        if (e.target === popup) {
+            closePopup();
+        }
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && isOpen) {
+            closePopup();
+        }
+    });
+
+    console.log('✅ My Info: الزر والنافذة جاهزان');
 })();
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     
+</script>
 <!-- ===== زر Ask AI العائم ===== -->
 <button id="askAIFloatingBtn">
     <img src="images/stars.png" alt="Ask AI" class="ask-ai-img">
