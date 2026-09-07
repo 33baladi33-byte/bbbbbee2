@@ -2258,76 +2258,7 @@ body.dark-mode .mobile-banner span {
     </div>
 </div>
 
-<!-- ===== الملف الشخصي (الشكل 2 النهائي - دائم) ===== -->
-<div id="profileDropdown" class="profile-dropdown">
-    <!-- النجوم -->
-    <div class="shape2-sparkles">
-        <span class="star-big">✧</et currentScale = 105span>
-        <span class="star-small">✦</span>
-    </div>
-    <!-- (تم حذف زر الإعدادات) -->
-
-    <!-- الأفاتار والمعلومات -->
-    <div class="shape2-left">
-        <div class="shape2-avatar" id="profileAvatar">G</div>
-        <div class="shape2-user">
-            <div class="shape2-email">
-                <span class="shape2-email-text" id="profileEmailText">غير مسجل</span>
-                <span class="shape2-check">✓</span>
-            </div>
-            <div class="shape2-status" id="profileStatus"></div>
-        </div>
-    </div>
-
-    <!-- صفوف المعلومات -->
-    <div class="shape2-right">
-        <div class="shape2-info">
-            <div class="shape2-info-row">
-                <div class="shape2-icon"><span class="material-symbols-outlined">calendar_month</span></div>
-                <div class="shape2-label">الصلاحية حتى</div>
-                <div class="shape2-value" id="profileExpiryText">حساب مجاني</div>
-                <div class="shape2-chevron">›</div>
-            </div>
-            <div class="shape2-info-row">
-                <div class="shape2-icon"><span class="material-symbols-outlined">workspace_premium</span></div>
-                <div class="shape2-label">المراجعة المميزة</div>
-                <div class="shape2-value green" id="profilePremiumStatus">غير مفعلة</div>
-                <div class="shape2-chevron">›</div>
-            </div>
-            <div class="shape2-info-row">
-                <div class="shape2-icon"><span class="material-symbols-outlined">person</span></div>
-                <div class="shape2-label">معرف المستخدم</div>
-                <div class="shape2-value uid" id="profileUidValue">---</div>
-                <div class="shape2-chevron">›</div>
-            </div>
-                     <div class="shape2-info-row" id="profilePlannerRowClickable">
-                <div class="shape2-icon"><span class="material-symbols-outlined">schedule</span></div>
-                <div class="shape2-label">لديك</div>
-                <div class="shape2-value" id="profilePlannerText">0 يوم</div>
-                <div class="shape2-chevron">›</div>
-            </div>
-        </div>
-               <!-- زر إحصائياتي -->
-        <button id="downloadReportBtn" class="shape2-stats">
-            <span class="material-symbols-outlined">monitoring</span> إحصائياتي
-        </button>
-
-        <!-- زر اشترك (يظهر حسب الحالة) -->
-        <button id="profileSubscribeBtn" class="shape2-stats" style="display: none; background: linear-gradient(135deg, #2d6a4f, #1b4d3d); border-color: rgba(45, 106, 79, 0.3); box-shadow: 0 5px 16px rgba(45, 106, 79, 0.2);">
-            <span class="material-symbols-outlined">auto_awesome</span> اشترك
-        </button>
-
-        <!-- زر إنشاء حساب (يظهر حسب الحالة) -->
-        <button id="profileSignupBtn" class="shape2-logout" style="display: none; background: radial-gradient(120px 35px at 50% 100%, rgba(59,130,246,.07), transparent 75%), linear-gradient(180deg, rgba(29,32,43,.92), rgba(17,21,31,.96)); color: #60a5fa; border-color: rgba(59,130,246,.2);">
-            <span class="material-symbols-outlined">person_add</span> إنشاء حساب
-        </button>
-
-        <!-- زر تسجيل خروج -->
-        <button id="profileLogoutBtn" class="shape2-logout">
-            <span class="material-symbols-outlined">logout</span> تسجيل خروج
-        </button>
-    </div>
-</div>
+<!-- تم نقل الملف الشخصي إلى نهاية الملف (انظر التعديل 2) -->
 </div>
 
 <!-- ===== نافذة تعديل المعلومات (فتح من صف لديك) ===== -->
@@ -9305,5 +9236,76 @@ if (expiryText) {
 
 
 </script>
+<!-- ===== الملف الشخصي (منقول إلى نهاية body) ===== -->
+<div id="profileDropdown" class="profile-dropdown">
+    <!-- النجوم -->
+    <div class="shape2-sparkles">
+        <span class="star-big">✧</span>
+        <span class="star-small">✦</span>
+    </div>
+    <!-- (تم حذف زر الإعدادات) -->
+
+    <!-- الأفاتار والمعلومات -->
+    <div class="shape2-left">
+        <div class="shape2-avatar" id="profileAvatar">G</div>
+        <div class="shape2-user">
+            <div class="shape2-email">
+                <span class="shape2-email-text" id="profileEmailText">غير مسجل</span>
+                <span class="shape2-check">✓</span>
+            </div>
+            <div class="shape2-status" id="profileStatus"></div>
+        </div>
+    </div>
+
+    <!-- صفوف المعلومات -->
+    <div class="shape2-right">
+        <div class="shape2-info">
+            <div class="shape2-info-row">
+                <div class="shape2-icon"><span class="material-symbols-outlined">calendar_month</span></div>
+                <div class="shape2-label">الصلاحية حتى</div>
+                <div class="shape2-value" id="profileExpiryText">حساب مجاني</div>
+                <div class="shape2-chevron">›</div>
+            </div>
+            <div class="shape2-info-row">
+                <div class="shape2-icon"><span class="material-symbols-outlined">workspace_premium</span></div>
+                <div class="shape2-label">المراجعة المميزة</div>
+                <div class="shape2-value green" id="profilePremiumStatus">غير مفعلة</div>
+                <div class="shape2-chevron">›</div>
+            </div>
+            <div class="shape2-info-row">
+                <div class="shape2-icon"><span class="material-symbols-outlined">person</span></div>
+                <div class="shape2-label">معرف المستخدم</div>
+                <div class="shape2-value uid" id="profileUidValue">---</div>
+                <div class="shape2-chevron">›</div>
+            </div>
+                     <div class="shape2-info-row" id="profilePlannerRowClickable">
+                <div class="shape2-icon"><span class="material-symbols-outlined">schedule</span></div>
+                <div class="shape2-label">لديك</div>
+                <div class="shape2-value" id="profilePlannerText">0 يوم</div>
+                <div class="shape2-chevron">›</div>
+            </div>
+        </div>
+               <!-- زر إحصائياتي -->
+        <button id="downloadReportBtn" class="shape2-stats">
+            <span class="material-symbols-outlined">monitoring</span> إحصائياتي
+        </button>
+
+        <!-- زر اشترك (يظهر حسب الحالة) -->
+        <button id="profileSubscribeBtn" class="shape2-stats" style="display: none; background: linear-gradient(135deg, #2d6a4f, #1b4d3d); border-color: rgba(45, 106, 79, 0.3); box-shadow: 0 5px 16px rgba(45, 106, 79, 0.2);">
+            <span class="material-symbols-outlined">auto_awesome</span> اشترك
+        </button>
+
+        <!-- زر إنشاء حساب (يظهر حسب الحالة) -->
+        <button id="profileSignupBtn" class="shape2-logout" style="display: none; background: radial-gradient(120px 35px at 50% 100%, rgba(59,130,246,.07), transparent 75%), linear-gradient(180deg, rgba(29,32,43,.92), rgba(17,21,31,.96)); color: #60a5fa; border-color: rgba(59,130,246,.2);">
+            <span class="material-symbols-outlined">person_add</span> إنشاء حساب
+        </button>
+
+        <!-- زر تسجيل خروج -->
+        <button id="profileLogoutBtn" class="shape2-logout">
+            <span class="material-symbols-outlined">logout</span> تسجيل خروج
+        </button>
+    </div>
+</div>
+
 </body>
 </html>
