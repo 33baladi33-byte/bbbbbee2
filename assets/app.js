@@ -30402,14 +30402,8 @@ var MyApp = (() => {
               break;
             }
           }
-          if (!noteElement) {
-            const allDivs = container.querySelectorAll("div");
-            for (const div of allDivs) {
-              if (div.textContent.includes("\u0645\u0644\u0627\u062D\u0638\u0629") || div.textContent.includes("Note")) {
-                noteElement = div;
-                break;
-              }
-            }
+          if (noteElement) {
+            noteElement.style.display = "none";
           }
           const cards = [...container.querySelectorAll(":scope > .question-card")];
           if (cards.length === 0) {
@@ -30467,77 +30461,18 @@ var MyApp = (() => {
           container.style.setProperty("row-gap", "8px", "important");
           container.style.setProperty("width", "100%", "important");
           container.style.setProperty("box-sizing", "border-box", "important");
-          if (noteElement) {
-            noteElement.style.setProperty("grid-column", "1 / -1", "important");
-            noteElement.style.setProperty("grid-row", "1", "important");
-            noteElement.style.setProperty("margin-bottom", "0", "important");
-            noteElement.style.setProperty("width", "100%", "important");
-            noteElement.style.setProperty("box-sizing", "border-box", "important");
-          }
-          cards.forEach((card, index) => {
-            const column = index < 5 ? 1 : 2;
-            const row = index % 5 + 2;
-            card.style.setProperty("grid-column", String(column), "important");
-            card.style.setProperty("grid-row", String(row), "important");
-            card.style.setProperty("width", "100%", "important");
-            card.style.setProperty("min-width", "0", "important");
-            card.style.setProperty("margin-bottom", "0", "important");
-            card.style.setProperty("box-sizing", "border-box", "important");
-            card.style.setProperty("padding", "2px 2px", "important");
-            card.style.setProperty("flex-wrap", "nowrap", "important");
-            const span = card.querySelector("span:not(.option-label)");
-            if (span) {
-              span.style.setProperty("flex", "1 1 0%", "important");
-              span.style.setProperty("min-width", "0", "important");
-              span.style.setProperty("word-break", "break-word", "important");
-              span.style.setProperty("padding", "0 2px", "important");
-            }
-            const labels = card.querySelectorAll(".option-label");
-            labels.forEach((label2) => {
-              label2.style.setProperty("flex", "0 0 auto", "important");
-              label2.style.setProperty("padding", "6px 6px", "important");
-              label2.style.setProperty("font-size", "0.6rem", "important");
-              label2.style.setProperty("margin", "0 2px", "important");
-              label2.style.setProperty("gap", "2px", "important");
-              const radio = label2.querySelector("input");
-              if (radio) {
-                radio.style.setProperty("width", "12px", "important");
-                radio.style.setProperty("height", "12px", "important");
-              }
-            });
-          });
-          if (originalControls) {
-            originalControls.style.setProperty("display", "none", "important");
-          }
-          const interleavingBtn = document.getElementById("interleavingBtn");
-          if (interleavingBtn) {
-            this._interleavingBtnOriginalDisplay = interleavingBtn.style.display || "";
-            interleavingBtn.style.setProperty("display", "none", "important");
-          }
-          const newButtonContainer = document.createElement("div");
-          newButtonContainer.style.setProperty("display", "flex", "important");
-          newButtonContainer.style.setProperty("justify-content", "space-between", "important");
-          newButtonContainer.style.setProperty("align-items", "center", "important");
-          newButtonContainer.style.setProperty("grid-column", "1 / -1", "important");
-          newButtonContainer.style.setProperty("grid-row", "-1", "important");
-          newButtonContainer.style.setProperty("width", "100%", "important");
-          newButtonContainer.style.setProperty("box-sizing", "border-box", "important");
-          newButtonContainer.style.setProperty("padding", "4px 8px", "important");
-          const finishedBtn = document.createElement("button");
-          finishedBtn.type = "button";
-          finishedBtn.textContent = "\u0627\u0646\u062A\u0647\u064A\u062A";
-          finishedBtn.style.setProperty("padding", "8px 24px", "important");
-          finishedBtn.style.setProperty("min-height", "36px", "important");
-          finishedBtn.style.setProperty("background", "#2c3e66", "important");
-          finishedBtn.style.setProperty("color", "#ffffff", "important");
-          finishedBtn.style.setProperty("border", "none", "important");
-          finishedBtn.style.setProperty("border-radius", "8px", "important");
-          finishedBtn.style.setProperty("font-size", "14px", "important");
-          finishedBtn.style.setProperty("font-weight", "600", "important");
-          finishedBtn.style.setProperty("cursor", "pointer", "important");
-          finishedBtn.addEventListener("click", this._deactivateBound);
           const progressWrapper = document.createElement("div");
           progressWrapper.style.cssText = `
+        grid-column: 1 / -1;
+        grid-row: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 2px 4px 2px 4px;
+        box-sizing: border-box;
+    `;
+          const progress = document.createElement("div");
+          progress.style.cssText = `
         display: flex;
         align-items: center;
         gap: 7px;
@@ -30589,14 +30524,77 @@ var MyApp = (() => {
         line-height: 1;
     `;
           this._icon = completionIcon;
-          progressWrapper.appendChild(barOuter);
-          progressWrapper.appendChild(label);
-          progressWrapper.appendChild(completionIcon);
-          newButtonContainer.appendChild(progressWrapper);
+          progress.appendChild(barOuter);
+          progress.appendChild(label);
+          progress.appendChild(completionIcon);
+          progressWrapper.appendChild(progress);
+          container.appendChild(progressWrapper);
+          this._progressContainer = progressWrapper;
+          cards.forEach((card, index) => {
+            const column = index < 5 ? 1 : 2;
+            const row = index % 5 + 2;
+            card.style.setProperty("grid-column", String(column), "important");
+            card.style.setProperty("grid-row", String(row), "important");
+            card.style.setProperty("width", "100%", "important");
+            card.style.setProperty("min-width", "0", "important");
+            card.style.setProperty("margin-bottom", "0", "important");
+            card.style.setProperty("box-sizing", "border-box", "important");
+            card.style.setProperty("padding", "2px 2px", "important");
+            card.style.setProperty("flex-wrap", "nowrap", "important");
+            const span = card.querySelector("span:not(.option-label)");
+            if (span) {
+              span.style.setProperty("flex", "1 1 0%", "important");
+              span.style.setProperty("min-width", "0", "important");
+              span.style.setProperty("word-break", "break-word", "important");
+              span.style.setProperty("padding", "0 2px", "important");
+            }
+            const labels = card.querySelectorAll(".option-label");
+            labels.forEach((label2) => {
+              label2.style.setProperty("flex", "0 0 auto", "important");
+              label2.style.setProperty("padding", "6px 6px", "important");
+              label2.style.setProperty("font-size", "0.6rem", "important");
+              label2.style.setProperty("margin", "0 2px", "important");
+              label2.style.setProperty("gap", "2px", "important");
+              const radio = label2.querySelector("input");
+              if (radio) {
+                radio.style.setProperty("width", "12px", "important");
+                radio.style.setProperty("height", "12px", "important");
+              }
+            });
+          });
+          if (originalControls) {
+            originalControls.style.setProperty("display", "none", "important");
+          }
+          const interleavingBtn = document.getElementById("interleavingBtn");
+          if (interleavingBtn) {
+            this._interleavingBtnOriginalDisplay = interleavingBtn.style.display || "";
+            interleavingBtn.style.setProperty("display", "none", "important");
+          }
+          const newButtonContainer = document.createElement("div");
+          newButtonContainer.style.setProperty("display", "flex", "important");
+          newButtonContainer.style.setProperty("justify-content", "center", "important");
+          newButtonContainer.style.setProperty("align-items", "center", "important");
+          newButtonContainer.style.setProperty("grid-column", "1 / -1", "important");
+          newButtonContainer.style.setProperty("grid-row", "-1", "important");
+          newButtonContainer.style.setProperty("width", "100%", "important");
+          newButtonContainer.style.setProperty("box-sizing", "border-box", "important");
+          newButtonContainer.style.setProperty("padding", "4px 0", "important");
+          const finishedBtn = document.createElement("button");
+          finishedBtn.type = "button";
+          finishedBtn.textContent = "\u0627\u0646\u062A\u0647\u064A\u062A";
+          finishedBtn.style.setProperty("padding", "8px 24px", "important");
+          finishedBtn.style.setProperty("min-height", "36px", "important");
+          finishedBtn.style.setProperty("background", "#2c3e66", "important");
+          finishedBtn.style.setProperty("color", "#ffffff", "important");
+          finishedBtn.style.setProperty("border", "none", "important");
+          finishedBtn.style.setProperty("border-radius", "8px", "important");
+          finishedBtn.style.setProperty("font-size", "14px", "important");
+          finishedBtn.style.setProperty("font-weight", "600", "important");
+          finishedBtn.style.setProperty("cursor", "pointer", "important");
+          finishedBtn.addEventListener("click", this._deactivateBound);
           newButtonContainer.appendChild(finishedBtn);
           container.appendChild(newButtonContainer);
           this.newButtonContainer = newButtonContainer;
-          this._progressContainer = progressWrapper;
           this._updateProgress();
           const radios = container.querySelectorAll('input[type="radio"]');
           radios.forEach((radio) => {
