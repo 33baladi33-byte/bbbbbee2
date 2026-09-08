@@ -1401,6 +1401,122 @@ var MyApp = (() => {
       card.style.marginBottom = "16px";
       container.appendChild(card);
     }
+    if (skill === "lesen1" || skill === "lesen3") {
+      const allElements = container.querySelectorAll("*");
+      allElements.forEach((el) => {
+        el.style.setProperty("direction", "ltr", "important");
+        el.style.setProperty("text-align", "left", "important");
+        el.dir = "ltr";
+      });
+      const cards = container.querySelectorAll(":scope > div");
+      cards.forEach((card, index) => {
+        const children = Array.from(card.children);
+        if (children.length < 5) return;
+        let indices = {
+          paragraph: -1,
+          trans1: -1,
+          keywords1: -1,
+          title: -1,
+          trans2: -1,
+          keywords2: -1,
+          mental: -1,
+          why: -1,
+          memory: -1
+        };
+        children.forEach((child, idx) => {
+          const text = child.textContent.trim();
+          if (text.includes("\u{1F4D6} \u0628\u062F\u0627\u064A\u0629 \u0627\u0644\u0641\u0642\u0631\u0629")) indices.paragraph = idx;
+          else if (text.includes("\u0627\u0644\u062A\u0631\u062C\u0645\u0629") && indices.trans1 === -1 && indices.paragraph !== -1) indices.trans1 = idx;
+          else if (text.includes("\u{1F4CC} \u0643\u0644\u0645\u0627\u062A \u0627\u0644\u0641\u0642\u0631\u0629")) indices.keywords1 = idx;
+          else if (text.includes("\u2194\uFE0F \u0627\u0644\u0639\u0646\u0648\u0627\u0646")) indices.title = idx;
+          else if (text.includes("\u0627\u0644\u062A\u0631\u062C\u0645\u0629") && indices.trans2 === -1 && indices.title !== -1) indices.trans2 = idx;
+          else if (text.includes("\u{1F4CC} \u0643\u0644\u0645\u0627\u062A \u0627\u0644\u0639\u0646\u0648\u0627\u0646")) indices.keywords2 = idx;
+          else if (text.includes("\u{1F517} \u0627\u0644\u0631\u0627\u0628\u0637 \u0627\u0644\u0630\u0647\u0646\u064A")) indices.mental = idx;
+          else if (text.includes("\u{1F4A1} \u0644\u0645\u0627\u0630\u0627 \u064A\u0644\u062A\u0642\u064A\u0627\u0646\u061F")) indices.why = idx;
+          else if (text.includes("\u{1F9E0} \u0645\u0641\u062A\u0627\u062D \u0627\u0644\u062D\u0641\u0638")) indices.memory = idx;
+        });
+        if (indices.paragraph === -1 || indices.title === -1) return;
+        function wrapGroup(startIdx, endIdx) {
+          if (startIdx === -1 || endIdx === -1 || startIdx > endIdx) return null;
+          const group = document.createElement("div");
+          group.style.cssText = `
+          padding: clamp(4px, 1vw, 12px) clamp(6px, 1.2vw, 16px);
+          margin-bottom: clamp(6px, 1vw, 14px);
+          border-radius: clamp(4px, 0.8vw, 10px);
+          background: #f8f9fc;
+          border: 1px solid #eef2f6;
+          direction: ltr;
+          text-align: left;
+          width: 100%;
+          box-sizing: border-box;
+        `;
+          const items = children.slice(startIdx, endIdx + 1);
+          items.forEach((item) => {
+            item.style.direction = "ltr";
+            item.style.textAlign = "left";
+            item.style.fontSize = "clamp(12px, 1.2vw, 16px)";
+            group.appendChild(item);
+          });
+          return group;
+        }
+        const end1 = indices.keywords1 !== -1 ? indices.keywords1 : indices.title - 1;
+        const group1 = wrapGroup(indices.paragraph, end1);
+        const end2 = indices.keywords2 !== -1 ? indices.keywords2 : indices.mental - 1;
+        const group2 = wrapGroup(indices.title, end2);
+        const group3 = wrapGroup(indices.mental, indices.mental);
+        const group4 = wrapGroup(indices.why, indices.why);
+        const group5 = wrapGroup(indices.memory, indices.memory);
+        while (card.firstChild) card.removeChild(card.firstChild);
+        if (group1) card.appendChild(group1);
+        if (group2) card.appendChild(group2);
+        if (group3) card.appendChild(group3);
+        if (group4) card.appendChild(group4);
+        if (group5) card.appendChild(group5);
+        card.style.position = "relative";
+        card.style.padding = `clamp(2px, 0.5vw, 8px) clamp(2px, 0.5vw, 8px) clamp(2px, 0.5vw, 8px) clamp(28px, 3.5vw, 50px) !important`;
+        card.style.margin = "0 0 clamp(6px, 1.2vw, 16px) 0";
+        card.style.width = "100%";
+        card.style.maxWidth = "100%";
+        card.style.boxSizing = "border-box";
+        card.style.boxShadow = "0 4px 16px rgba(0, 0, 0, 0.2)";
+        card.style.borderRadius = "clamp(6px, 1vw, 12px)";
+        card.style.background = "#ffffff";
+        card.style.border = "1px solid #c8d0d8";
+        const numberSpan = document.createElement("span");
+        numberSpan.textContent = `${index + 1}`;
+        numberSpan.style.cssText = `
+        position: absolute;
+        top: clamp(2px, 0.4vw, 6px);
+        left: clamp(4px, 0.6vw, 12px);
+        font-size: clamp(10px, 0.9vw, 14px);
+        font-weight: 700;
+        color: #2563eb;
+        background: rgba(37, 99, 235, 0.08);
+        padding: 0 clamp(4px, 0.6vw, 10px);
+        border-radius: clamp(8px, 1vw, 14px);
+        border: 1px solid rgba(37, 99, 235, 0.15);
+        line-height: 1.4;
+        font-family: inherit;
+      `;
+        card.appendChild(numberSpan);
+        const decoration = document.createElement("div");
+        decoration.style.cssText = `
+        position: absolute;
+        top: clamp(4px, 0.6vw, 10px);
+        right: clamp(6px, 0.8vw, 12px);
+        width: clamp(18px, 2vw, 32px);
+        height: clamp(2px, 0.3vw, 4px);
+        background: #2563eb;
+        border-radius: 2px;
+        opacity: 0.7;
+      `;
+        card.appendChild(decoration);
+      });
+      container.style.width = "100%";
+      container.style.maxWidth = "100%";
+      container.style.padding = "clamp(4px, 1vw, 16px)";
+      container.style.boxSizing = "border-box";
+    }
     return container;
   }
   function hideExamContent() {
@@ -30124,7 +30240,8 @@ var MyApp = (() => {
           selectors.forEach((sel) => {
             document.querySelectorAll(sel).forEach((el) => {
               if (el.dataset.zertivaHelpOldDisplay === void 0) {
-                el.dataset.zertivaHelpOldDisplay = el.style.display || "";
+                const originalDisplay = el.dataset.zertivaOriginalDisplay;
+                el.dataset.zertivaHelpOldDisplay = originalDisplay !== void 0 ? originalDisplay : el.style.display || "";
               }
               el.style.display = "none";
             });
@@ -30138,7 +30255,7 @@ var MyApp = (() => {
           btnSelectors.forEach((sel) => {
             document.querySelectorAll(sel).forEach((btn) => {
               if (btn.dataset.zertivaBtnOriginalDisplay === void 0) {
-                btn.dataset.zertivaBtnOriginalDisplay = btn.style.display || "";
+                btn.dataset.zertivaBtnOriginalDisplay = "";
               }
               btn.style.display = "none";
             });
