@@ -29809,7 +29809,7 @@ var MyApp = (() => {
               this.deactivate();
               const helpBtn = document.getElementById("matchingToggleBtn");
               if (helpBtn) {
-                helpBtn.innerHTML = `<span class="material-symbols-outlined">help</span>`;
+                helpBtn.innerHTML = `<span class="material-symbols-outlined">health_cross</span>`;
                 helpBtn.title = "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
                 helpBtn.classList.remove("active");
               }
@@ -30389,8 +30389,8 @@ var MyApp = (() => {
           const skill = btn.dataset.skill || this.modeName;
           if (skill === this.modeName) {
             btn.classList.toggle("active", active);
-            btn.innerHTML = `<span class="material-symbols-outlined">${active ? "compare_arrows" : "swap_horiz"}</span>`;
-            btn.title = active ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0648\u0636\u0639 Matching";
+            btn.innerHTML = `<span class="material-symbols-outlined">${active ? "compare_arrows" : "health_cross"}</span>`;
+            btn.title = active ? "\u0627\u0644\u0639\u0648\u062F\u0629 \u0625\u0644\u0649 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0623\u0635\u0644\u064A" : "\u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629";
           }
         }
         toggle() {
