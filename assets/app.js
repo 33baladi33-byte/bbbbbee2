@@ -1381,33 +1381,19 @@ var MyApp = (() => {
       return container;
     }
     correctQuestions.sort((a, b) => a - b);
-    const mainTitle = document.createElement("div");
-    mainTitle.style.cssText = `
-    font-size: clamp(22px, 2.5vw, 32px);
-    font-weight: 700;
-    color: #0f172a;
-    text-align: center;
-    margin-bottom: 24px;
-    padding-bottom: 12px;
-    border-bottom: 2px solid #e2e8f0;
-    letter-spacing: 1px;
-    direction: rtl;
-  `;
-    mainTitle.textContent = "\u{1F9E0} \u0645\u0633\u0627\u0639\u062F\u0629 \u0644\u0644\u0641\u0647\u0645";
-    container.appendChild(mainTitle);
     for (let i = 0; i < correctQuestions.length; i++) {
       const qNumber = correctQuestions[i];
       const card = createHelpCardWithoutHeader(qNumber);
       card.style.marginBottom = "16px";
       container.appendChild(card);
     }
+    const allElements = container.querySelectorAll("*");
+    allElements.forEach((el) => {
+      el.style.setProperty("direction", "ltr", "important");
+      el.style.setProperty("text-align", "left", "important");
+      el.dir = "ltr";
+    });
     if (skill === "lesen1" || skill === "lesen3") {
-      const allElements = container.querySelectorAll("*");
-      allElements.forEach((el) => {
-        el.style.setProperty("direction", "ltr", "important");
-        el.style.setProperty("text-align", "left", "important");
-        el.dir = "ltr";
-      });
       const cards = container.querySelectorAll(":scope > div");
       cards.forEach((card, index) => {
         const children = Array.from(card.children);
