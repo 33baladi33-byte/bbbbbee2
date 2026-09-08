@@ -25867,13 +25867,9 @@ var MyApp = (() => {
         score++;
         card.classList.add("correct-answer-card");
         card.style.backgroundColor = "#d4edda";
-        card.style.border = "3px solid #28a745";
-        card.style.boxShadow = "0 0 0 4px rgba(40,167,69,0.25)";
       } else {
         card.classList.add("wrong-answer-card");
         card.style.backgroundColor = "#fef0e0";
-        card.style.border = "3px solid #e67e22";
-        card.style.boxShadow = "0 0 0 4px rgba(230,126,34,0.25)";
         const textSpan2 = card.querySelector("span");
         if (textSpan2) {
           const oldAnswer = textSpan2.querySelector(".inline-correct-answer");
