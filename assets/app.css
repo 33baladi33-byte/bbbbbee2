@@ -2506,14 +2506,25 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
         transform: scale(0.96) !important;
     }
     
-    /* Sprach Teil 2 - قائمة الكلمات */
-    #sprach2 .sprach2-word-card {
+      #sprach2 .sprach2-word-card {
         padding: 6px 8px !important;
         font-size: 0.65rem !important;
         border-radius: 10px !important;
         background: #f8fafc !important;
         border: 1px solid #eef2f6 !important;
         margin: 4px 0 !important;
+        text-align: center !important;
+        min-height: 30px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    /* جعل حاوية الكلمات تستخدم grid responsive مع عدد أعمدة يتكيف */
+    #sprach2 > div > div:last-child > div:last-child {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)) !important;
+        gap: 8px !important;
+        padding: 4px 0 !important;
     }
 
     /* ===== تحسينات إضافية للتوحيد ===== */
@@ -3568,52 +3579,56 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
         }
     }
     
-    /* ===== تحسين Teil 3 للهواتف الصغيرة (عرض ≤ 550px) ===== */
-    @media (max-width: 550px) {
-        /* إخفاء العمود الأيمن (Situationen) */
-        #teil3 > div[style*="display: flex"] > div:last-child {
-            display: none !important;
-        }
-        
-        /* العمود الأيسر يأخذ العرض بالكامل */
-        #teil3 > div[style*="display: flex"] > div:first-child {
-            width: 100% !important;
-            max-width: 100% !important;
-            flex: none !important;
-        }
-        
-        /* الحاوية الأم تسمح بالتمرير الأفقي */
-        #teil3 > div[style*="display: flex"] {
-            overflow-x: auto !important;
-            overflow-y: visible !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            display: block !important;
-            scroll-behavior: smooth !important;
-            -webkit-overflow-scrolling: touch !important;
-        }
-        
-        /* الشبكة تصبح أعرض من الشاشة للسماح بالتمرير */
-        #teil3 [style*="grid-template-columns: 1fr 1fr"] {
-            display: grid !important;
-            width: fit-content !important;
-            min-width: 650px !important;
-            grid-template-columns: repeat(2, 300px) !important;
-            column-gap: 18px !important;
-            padding-right: 120px !important;
-            /* نضمن عدم قص المحتوى */
-            overflow: visible !important;
-        }
-        
-        /* ضبط البطاقات الفردية لتأخذ العرض الكامل داخل الخلية */
-        #teil3 [style*="grid-template-columns: 1fr 1fr"] > * {
-            width: 100% !important;
-            min-width: 0 !important;
-            max-width: 100% !important;
-            box-sizing: border-box !important;
-        }
+
+@media (max-width: 550px) {
+    /* إخفاء العمود الأيمن (Situationen) في الشاشات الصغيرة جداً */
+    #teil3 > div[style*="display: flex"] > div:last-child {
+        display: none !important;
     }
     
+    /* العمود الأيسر يأخذ العرض بالكامل */
+    #teil3 > div[style*="display: flex"] > div:first-child {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: none !important;
+    }
+    
+    /* الحاوية الأم تصبح عرض كامل مع إزالة التمرير الإجباري */
+    #teil3 > div[style*="display: flex"] {
+        overflow-x: visible !important;
+        overflow-y: visible !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        display: block !important;
+    }
+    
+    /* الشبكة تصبح Responsive مع نفس عدد الأعمدة (2) لكن بأحجام مرنة */
+    #teil3 [style*="grid-template-columns: 1fr 1fr"] {
+        display: grid !important;
+        width: 100% !important;
+        min-width: unset !important;
+        grid-template-columns: 1fr 1fr !important;
+        column-gap: 12px !important;
+        row-gap: 12px !important;
+        padding-right: 0 !important;
+        overflow: visible !important;
+    }
+    
+    /* ضبط البطاقات الفردية لتأخذ العرض الكامل داخل الخلية */
+    #teil3 [style*="grid-template-columns: 1fr 1fr"] > * {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+}
+
+/* عند 400px فما دون، نجعل الأعمدة 1 */
+@media (max-width: 400px) {
+    #teil3 [style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+    }
+}
     /* تحسين Teil 1 */
     #teil1 .question-card {
         padding: 12px !important;
@@ -7775,14 +7790,27 @@ body:has(#list.active) #backHomeBtn {
         white-space: normal !important;
         box-sizing: border-box !important;
     }
-    #sprach1 .option-label,
+     #sprach1 .option-label,
     #sprach2 .option-label {
-        width: 100% !important;
+        width: auto !important;
         box-sizing: border-box !important;
         padding: 8px 10px !important;
         margin-bottom: 6px !important;
         font-size: 0.8rem !important;
         word-break: break-word !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+        flex: 0 0 auto !important;
+        min-width: 60px !important;
+    }
+    /* جعل حاوية الخيارات تستخدم flex-wrap */
+    #sprach1 .sprach1-option-group > div:last-child {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
     }
 }/* ========================================
    New Hero Section Content & Cards

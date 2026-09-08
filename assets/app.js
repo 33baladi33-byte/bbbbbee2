@@ -27116,7 +27116,6 @@ var MyApp = (() => {
     }
   }
   function applyTeil1CorrectionColors() {
-    if (window.innerWidth > 768) return;
     const selects = document.querySelectorAll("#teil1 select");
     selects.forEach((select) => {
       const card = select.closest(".question-card");
@@ -27135,7 +27134,6 @@ var MyApp = (() => {
     });
   }
   function applyTeil3CorrectionColors() {
-    if (window.innerWidth > 768) return;
     const selects = document.querySelectorAll("#teil3 select");
     selects.forEach((select) => {
       const card = select.closest(".question-card");
