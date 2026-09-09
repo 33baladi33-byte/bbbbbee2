@@ -48,7 +48,7 @@ var MyApp = (() => {
         // ==========================================
         // الفتح الرئيسي
         // ==========================================
-        static open(container, sentenceElement, questionId, iconElement) {
+        static open(container2, sentenceElement, questionId, iconElement) {
           console.log("\u{1F9E9} \u0641\u062A\u062D SentenceReorder");
           if (this.isOpen) {
             console.log("\u26A0\uFE0F \u0646\u0627\u0641\u0630\u0629 \u0645\u0641\u062A\u0648\u062D\u0629 \u0628\u0627\u0644\u0641\u0639\u0644");
@@ -61,7 +61,7 @@ var MyApp = (() => {
             console.warn("\u26A0\uFE0F \u0644\u0627 \u064A\u0648\u062C\u062F \u0646\u0635 \u0644\u0644\u062C\u0645\u0644\u0629");
             return;
           }
-          this.currentContainer = container;
+          this.currentContainer = container2;
           this.currentSentenceElement = sentenceElement;
           this.currentQuestionId = questionId;
           this.isOpen = true;
@@ -1230,8 +1230,8 @@ var MyApp = (() => {
         wrapper.appendChild(titleEl);
       }
       if (isKeywordList) {
-        const container = document.createElement("div");
-        container.style.cssText = `
+        const container2 = document.createElement("div");
+        container2.style.cssText = `
                 display: flex;
                 flex-wrap: wrap;
                 gap: 4px 8px;
@@ -1250,9 +1250,9 @@ var MyApp = (() => {
                     white-space: nowrap;
                 `;
           span.textContent = item;
-          container.appendChild(span);
+          container2.appendChild(span);
         });
-        wrapper.appendChild(container);
+        wrapper.appendChild(container2);
       } else {
         const contentEl = document.createElement("div");
         contentEl.style.cssText = `
@@ -1362,9 +1362,9 @@ var MyApp = (() => {
     }
   }
   function createHelpLayer() {
-    const container = document.createElement("div");
-    container.id = "helpLayerContainer";
-    container.style.cssText = `
+    const container2 = document.createElement("div");
+    container2.id = "helpLayerContainer";
+    container2.style.cssText = `
     background: #f8f9fa;
     border-radius: 16px;
     padding: 20px 24px;
@@ -1377,24 +1377,24 @@ var MyApp = (() => {
     const examId = getCurrentExamId2();
     const correctQuestions = getCorrectQuestions(skill, examId);
     if (!correctQuestions || correctQuestions.length === 0) {
-      container.innerHTML = '<div style="text-align:center;padding:40px;color:#666;font-size:16px;">\u{1F4DA} \u0644\u0627 \u062A\u0648\u062C\u062F \u0623\u0633\u0626\u0644\u0629 \u0635\u062D\u064A\u062D\u0629 \u0645\u0633\u062C\u0644\u0629 \u0641\u064A \u0647\u0630\u0627 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646</div>';
-      return container;
+      container2.innerHTML = '<div style="text-align:center;padding:40px;color:#666;font-size:16px;">\u{1F4DA} \u0644\u0627 \u062A\u0648\u062C\u062F \u0623\u0633\u0626\u0644\u0629 \u0635\u062D\u064A\u062D\u0629 \u0645\u0633\u062C\u0644\u0629 \u0641\u064A \u0647\u0630\u0627 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646</div>';
+      return container2;
     }
     correctQuestions.sort((a, b) => a - b);
     for (let i = 0; i < correctQuestions.length; i++) {
       const qNumber = correctQuestions[i];
       const card = createHelpCardWithoutHeader(qNumber);
       card.style.marginBottom = "16px";
-      container.appendChild(card);
+      container2.appendChild(card);
     }
-    const allElements = container.querySelectorAll("*");
+    const allElements = container2.querySelectorAll("*");
     allElements.forEach((el) => {
       el.style.setProperty("direction", "ltr", "important");
       el.style.setProperty("text-align", "left", "important");
       el.dir = "ltr";
     });
     if (skill === "lesen1" || skill === "lesen3") {
-      const cards = container.querySelectorAll(":scope > div");
+      const cards = container2.querySelectorAll(":scope > div");
       cards.forEach((card, index) => {
         const children = Array.from(card.children);
         if (children.length < 5) return;
@@ -1498,12 +1498,12 @@ var MyApp = (() => {
       `;
         card.appendChild(decoration);
       });
-      container.style.width = "100%";
-      container.style.maxWidth = "100%";
-      container.style.padding = "clamp(4px, 1vw, 16px)";
-      container.style.boxSizing = "border-box";
+      container2.style.width = "100%";
+      container2.style.maxWidth = "100%";
+      container2.style.padding = "clamp(4px, 1vw, 16px)";
+      container2.style.boxSizing = "border-box";
     }
-    return container;
+    return container2;
   }
   function hideExamContent() {
     const hidden = [];
@@ -24760,9 +24760,9 @@ var MyApp = (() => {
     console.log("\u{1F504} \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 \u062A\u0631\u062A\u064A\u0628 Lesen3");
   }
   function updateTimerDisplay(text) {
-    const container = document.getElementById("retryCounterBox");
-    if (!container) return;
-    const timeBox = container.querySelectorAll("div")[2];
+    const container2 = document.getElementById("retryCounterBox");
+    if (!container2) return;
+    const timeBox = container2.querySelectorAll("div")[2];
     if (timeBox) {
       timeBox.innerHTML = `\u0623\u062C\u0628\u062A \u0639\u0644\u0649 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 \u0641\u064A: <strong style="font-weight:700;">${text}</strong>`;
     }
@@ -24836,9 +24836,9 @@ var MyApp = (() => {
     }
   }
   function renderSchreibenExam() {
-    const container = document.getElementById("schreiben");
-    if (!container) return;
-    container.innerHTML = "";
+    const container2 = document.getElementById("schreiben");
+    if (!container2) return;
+    container2.innerHTML = "";
     const data = currentSchreibenData;
     const twoColumns = document.createElement("div");
     twoColumns.style.display = "flex";
@@ -24958,7 +24958,7 @@ var MyApp = (() => {
     rightColumn.appendChild(templateBox);
     twoColumns.appendChild(leftColumn);
     twoColumns.appendChild(rightColumn);
-    container.appendChild(twoColumns);
+    container2.appendChild(twoColumns);
   }
   function isSprach2WordUsed(word) {
     for (let key in sprach2UserAnswers) {
@@ -24998,9 +24998,9 @@ var MyApp = (() => {
     });
   }
   function renderSprach2Exam() {
-    const container = document.getElementById("sprach2");
-    if (!container) return;
-    container.innerHTML = "";
+    const container2 = document.getElementById("sprach2");
+    if (!container2) return;
+    container2.innerHTML = "";
     const text = currentSprach2Data.text;
     const options = currentSprach2Data.options;
     const allOptions = currentSprach2Data.allOptions;
@@ -25296,14 +25296,14 @@ var MyApp = (() => {
     rightColumn.appendChild(wordsGrid);
     twoColumns.appendChild(leftColumn);
     twoColumns.appendChild(rightColumn);
-    container.appendChild(twoColumns);
+    container2.appendChild(twoColumns);
     const buttonContainer = document.createElement("div");
     buttonContainer.style.display = "flex";
     buttonContainer.style.gap = "15px";
     buttonContainer.style.justifyContent = "center";
     buttonContainer.style.marginTop = "25px";
     const checkBtn = document.createElement("button");
-    checkBtn.innerText = "\u2705 \u062A\u0635\u062D\u064A\u062D";
+    checkBtn.innerText = "\u{1F4DD} Pr\xFCfen";
     checkBtn.className = "check-btn";
     checkBtn.style.padding = "12px 24px";
     checkBtn.style.backgroundColor = "#2c3e66";
@@ -25326,36 +25326,18 @@ var MyApp = (() => {
     resetBtn.style.fontWeight = "bold";
     resetBtn.onclick = resetSprach2Exam;
     buttonContainer.appendChild(resetBtn);
-    container.appendChild(buttonContainer);
+    container2.appendChild(buttonContainer);
     const resultDiv = document.createElement("div");
     resultDiv.id = "sprach2Result";
     resultDiv.className = "result-box";
     resultDiv.style.display = "none";
-    container.appendChild(resultDiv);
+    container2.appendChild(resultDiv);
   }
   function resetSprach2Exam() {
     sprach2UserAnswers = {};
     sprach2SelectedQuestionId = null;
     sprach2SelectedWordForLinking = null;
-    for (let i = 1; i <= currentSprach2Data.options.length; i++) {
-      const btn = document.getElementById(`sprach2_btn_${i}`);
-      if (btn) {
-        btn.textContent = `__( ${i} )__`;
-        btn.style.backgroundColor = "#e0e0e0";
-        btn.style.color = "#333";
-        btn.classList.remove("selected-for-link");
-        btn.style.border = "none";
-      }
-    }
-    const allWords = document.querySelectorAll(".sprach2-word-card");
-    allWords.forEach((card) => {
-      card.style.backgroundColor = "#ffffff";
-      card.style.border = "1px solid #7c6ce6";
-      card.style.color = "#4a4a4a";
-      card.style.cursor = "pointer";
-      card.style.opacity = "1";
-      card.classList.remove("selected-for-link");
-    });
+    renderSprach2Exam();
     const resultDiv = document.getElementById("sprach2Result");
     if (resultDiv) resultDiv.style.display = "none";
     console.log("\u2705 \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 Sprachbausteine Teil 2");
@@ -25365,7 +25347,10 @@ var MyApp = (() => {
     let score = 0;
     const total = options.length;
     const pointsPerQuestion = 25 / total;
-    document.querySelectorAll(".custom-correct-hint").forEach((el) => el.remove());
+    container = document.getElementById("sprach2");
+    if (container) {
+      container.querySelectorAll(".custom-correct-hint").forEach((el) => el.remove());
+    }
     for (let i = 0; i < options.length; i++) {
       const opt = options[i];
       const userAnswer = sprach2UserAnswers[opt.id];
@@ -25462,9 +25447,9 @@ var MyApp = (() => {
     }
   }
   function renderSprach1Exam() {
-    const container = document.getElementById("sprach1");
-    if (!container) return;
-    container.innerHTML = "";
+    const container2 = document.getElementById("sprach1");
+    if (!container2) return;
+    container2.innerHTML = "";
     const text = currentSprach1Data.text;
     const options = currentSprach1Data.options;
     const twoColumns = document.createElement("div");
@@ -25582,14 +25567,14 @@ var MyApp = (() => {
     rightColumn.appendChild(optionsContainer);
     twoColumns.appendChild(leftColumn);
     twoColumns.appendChild(rightColumn);
-    container.appendChild(twoColumns);
+    container2.appendChild(twoColumns);
     const buttonContainer = document.createElement("div");
     buttonContainer.style.display = "flex";
     buttonContainer.style.gap = "15px";
     buttonContainer.style.justifyContent = "center";
     buttonContainer.style.marginTop = "25px";
     const checkBtn = document.createElement("button");
-    checkBtn.innerText = "\u2705 \u062A\u0635\u062D\u064A\u062D";
+    checkBtn.innerText = "\u{1F4DD} Pr\xFCfen";
     checkBtn.className = "check-btn";
     checkBtn.style.padding = "12px 24px";
     checkBtn.style.backgroundColor = "#2c3e66";
@@ -25612,12 +25597,12 @@ var MyApp = (() => {
     resetBtn.style.fontWeight = "bold";
     resetBtn.onclick = resetSprach1Exam;
     buttonContainer.appendChild(resetBtn);
-    container.appendChild(buttonContainer);
+    container2.appendChild(buttonContainer);
     const resultDiv = document.createElement("div");
     resultDiv.id = "sprach1Result";
     resultDiv.className = "result-box";
     resultDiv.style.display = "none";
-    container.appendChild(resultDiv);
+    container2.appendChild(resultDiv);
   }
   function openSprach1Dropdown(questionId) {
     if (sprach1OpenDropdownId) {
@@ -25702,24 +25687,7 @@ var MyApp = (() => {
   }
   function resetSprach1Exam() {
     sprach1UserAnswers = {};
-    for (let i = 1; i <= currentSprach1Data.options.length; i++) {
-      const btn = document.getElementById(`sprach1_btn_${i}`);
-      if (btn) {
-        btn.textContent = `__(${i})__`;
-        btn.style.backgroundColor = "#e0e0e0";
-        btn.style.color = "#333";
-      }
-      for (let j = 0; j < currentSprach1Data.options.length; j++) {
-        const opt = currentSprach1Data.options[j];
-        if (opt.id === i) {
-          for (let k = 0; k < opt.options.length; k++) {
-            const radio = document.getElementById(`sprach1_opt_${i}_${k}`);
-            if (radio) radio.checked = false;
-          }
-          break;
-        }
-      }
-    }
+    renderSprach1Exam();
     const resultDiv = document.getElementById("sprach1Result");
     if (resultDiv) resultDiv.style.display = "none";
     console.log("\u2705 \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 Sprachbausteine Teil 1");
@@ -25729,7 +25697,10 @@ var MyApp = (() => {
     let score = 0;
     const total = options.length;
     const pointsPerQuestion = 25 / total;
-    document.querySelectorAll(".custom-correct-hint").forEach((el) => el.remove());
+    container = document.getElementById("sprach1");
+    if (container) {
+      container.querySelectorAll(".custom-correct-hint").forEach((el) => el.remove());
+    }
     for (let i = 0; i < options.length; i++) {
       const opt = options[i];
       const userAnswer = sprach1UserAnswers[opt.id];
@@ -25742,6 +25713,7 @@ var MyApp = (() => {
         btn.classList.remove("correct", "wrong");
         btn.style.backgroundColor = "";
         btn.style.color = "";
+        btn.style.border = "";
         if (isCorrect) {
           btn.classList.add("correct");
           btn.setAttribute("data-correct", "true");
@@ -25818,21 +25790,21 @@ var MyApp = (() => {
       }
     }
   }
-  function checkTrueFalseExam(container, questions, answers, correctNumbersContainer) {
+  function checkTrueFalseExam(container2, questions, answers, correctNumbersContainer) {
     let questionsToCheck = questions;
-    const skillId = container.id;
+    const skillId = container2.id;
     const data = _hoerenData[skillId];
     if (data && data.originalQuestions && data.originalQuestions.length > 0) {
       questionsToCheck = data.originalQuestions;
     }
     if (!questionsToCheck || !Array.isArray(questionsToCheck) || questionsToCheck.length === 0) {
       console.error("\u274C \u062E\u0637\u0623: \u0644\u0627 \u062A\u0648\u062C\u062F \u0623\u0633\u0626\u0644\u0629 \u0644\u0644\u062A\u0635\u062D\u064A\u062D");
-      let resultDiv2 = container.querySelector("#truefalseResult");
+      let resultDiv2 = container2.querySelector("#truefalseResult");
       if (!resultDiv2) {
         resultDiv2 = document.createElement("div");
         resultDiv2.id = "truefalseResult";
         resultDiv2.className = "result-box";
-        container.appendChild(resultDiv2);
+        container2.appendChild(resultDiv2);
       }
       resultDiv2.innerHTML = "\u274C \u0644\u0627 \u062A\u0648\u062C\u062F \u0623\u0633\u0626\u0644\u0629 \u0641\u064A \u0647\u0630\u0627 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646";
       resultDiv2.style.display = "block";
@@ -25841,7 +25813,7 @@ var MyApp = (() => {
     let score = 0;
     const total = questionsToCheck.length;
     const pointsPerQuestion = 25 / total;
-    const cards = container.querySelectorAll(".question-card");
+    const cards = container2.querySelectorAll(".question-card");
     for (const card of cards) {
       const textSpan = card.querySelector("span");
       if (!textSpan) continue;
@@ -25940,12 +25912,12 @@ var MyApp = (() => {
       }
     }
     const finalScore = (score * pointsPerQuestion).toFixed(2);
-    let resultDiv = container.querySelector("#truefalseResult");
+    let resultDiv = container2.querySelector("#truefalseResult");
     if (!resultDiv) {
       resultDiv = document.createElement("div");
       resultDiv.id = "truefalseResult";
       resultDiv.className = "result-box";
-      container.appendChild(resultDiv);
+      container2.appendChild(resultDiv);
     }
     resultDiv.innerHTML = `\u0627\u0644\u0646\u062A\u064A\u062C\u0629: ${finalScore} / 25`;
     resultDiv.style.display = "block";
@@ -25962,7 +25934,7 @@ var MyApp = (() => {
       resultDiv.style.color = "white";
     }
     if (typeof window.saveExamResultGlobal === "function") {
-      const skill = container.id || "hoeren";
+      const skill = container2.id || "hoeren";
       const examId = window.currentExamId || 1;
       window.saveExamResultGlobal(skill, examId, parseFloat(finalScore));
     }
@@ -25982,7 +25954,7 @@ var MyApp = (() => {
     if (examTimer2.isRunning) {
       const elapsed = examTimer2.stop();
       if (elapsed !== null) {
-        const skill = container.id || window.currentSkill || "";
+        const skill = container2.id || window.currentSkill || "";
         const examId = window.currentExamId || 1;
         if (skill && examId) {
           saveExamTime(skill, examId, elapsed);
@@ -25994,9 +25966,9 @@ var MyApp = (() => {
     }, 100);
   }
   function renderMatchingQuestions2() {
-    const container = document.getElementById("teil1");
-    if (!container) return;
-    container.innerHTML = "";
+    const container2 = document.getElementById("teil1");
+    if (!container2) return;
+    container2.innerHTML = "";
     const questions = currentMatchingExamData2.questions;
     for (let i = 0; i < questions.length; i++) {
       const q = questions[i];
@@ -26063,13 +26035,13 @@ var MyApp = (() => {
         };
       })(i);
       card.appendChild(select);
-      container.appendChild(card);
+      container2.appendChild(card);
     }
-    let row = container.querySelector(".teil-controls-row");
+    let row = container2.querySelector(".teil-controls-row");
     if (!row) {
       row = document.createElement("div");
       row.className = "teil-controls-row";
-      container.appendChild(row);
+      container2.appendChild(row);
     }
     let checkBtn = row.querySelector(".check-btn");
     if (!checkBtn) {
@@ -26094,8 +26066,8 @@ var MyApp = (() => {
         if (typeof currentMatchingExamData2 !== "undefined" && currentMatchingExamData2?.sharedOptions) {
           matchingAvailableOptions2 = [...currentMatchingExamData2.sharedOptions];
         }
-        container.querySelectorAll(".correct-message").forEach((el) => el.remove());
-        container.querySelectorAll(".result-box").forEach((el) => {
+        container2.querySelectorAll(".correct-message").forEach((el) => el.remove());
+        container2.querySelectorAll(".result-box").forEach((el) => {
           if (!el.id) el.remove();
         });
         if (typeof renderMatchingQuestions2 === "function") renderMatchingQuestions2();
@@ -26107,7 +26079,7 @@ var MyApp = (() => {
     resultDiv.id = "matchingResult";
     resultDiv.className = "result-box";
     resultDiv.style.display = "none";
-    container.appendChild(resultDiv);
+    container2.appendChild(resultDiv);
   }
   function checkMatchingExam() {
     const questions = currentMatchingExamData2.questions;
@@ -26244,9 +26216,9 @@ var MyApp = (() => {
     }
   }
   function renderTeil2Exam() {
-    const container = document.getElementById("teil2");
-    if (!container) return;
-    container.innerHTML = "";
+    const container2 = document.getElementById("teil2");
+    if (!container2) return;
+    container2.innerHTML = "";
     const twoColumns = document.createElement("div");
     twoColumns.style.display = "flex";
     twoColumns.style.gap = "30px";
@@ -26395,7 +26367,7 @@ var MyApp = (() => {
     questionsColumn.appendChild(resultDiv);
     twoColumns.appendChild(textColumn);
     twoColumns.appendChild(questionsColumn);
-    container.appendChild(twoColumns);
+    container2.appendChild(twoColumns);
   }
   function checkTeil2Exam() {
     const questions = currentTeil2Data.questions;
@@ -26744,9 +26716,9 @@ var MyApp = (() => {
     }
   }
   function renderTeil3Exam() {
-    const container = document.getElementById("teil3");
-    if (!container) return;
-    container.innerHTML = "";
+    const container2 = document.getElementById("teil3");
+    if (!container2) return;
+    container2.innerHTML = "";
     const items = currentTeil3Data.items;
     const situations = currentTeil3Data.situations;
     const twoColumns = document.createElement("div");
@@ -26892,12 +26864,12 @@ var MyApp = (() => {
     rightColumn.appendChild(situationsList);
     twoColumns.appendChild(leftColumn);
     twoColumns.appendChild(rightColumn);
-    container.appendChild(twoColumns);
-    let row = container.querySelector(".teil-controls-row");
+    container2.appendChild(twoColumns);
+    let row = container2.querySelector(".teil-controls-row");
     if (!row) {
       row = document.createElement("div");
       row.className = "teil-controls-row";
-      container.appendChild(row);
+      container2.appendChild(row);
     }
     let checkBtn = row.querySelector(".check-btn");
     if (!checkBtn) {
@@ -26923,10 +26895,10 @@ var MyApp = (() => {
         if (typeof teil3SelectedSit !== "undefined") teil3SelectedSit = null;
         if (typeof teil3SelectedItemForLink !== "undefined") teil3SelectedItemForLink = null;
         if (typeof teil3SelectedSitForLink !== "undefined") teil3SelectedSitForLink = null;
-        container.querySelectorAll("select").forEach((select) => {
+        container2.querySelectorAll("select").forEach((select) => {
           select.selectedIndex = 0;
         });
-        container.querySelectorAll(".correct-message").forEach((el) => el.remove());
+        container2.querySelectorAll(".correct-message").forEach((el) => el.remove());
         const resultDiv2 = document.getElementById("teil3Result");
         if (resultDiv2) {
           resultDiv2.style.display = "none";
@@ -26945,7 +26917,7 @@ var MyApp = (() => {
     resultDiv.id = "teil3Result";
     resultDiv.className = "result-box";
     resultDiv.style.display = "none";
-    container.appendChild(resultDiv);
+    container2.appendChild(resultDiv);
     updateTeil3SelectOptions();
     updateTeil3RightSideColors();
   }
@@ -27195,10 +27167,10 @@ var MyApp = (() => {
     ];
     return textColors[index % textColors.length] || "#1565C0";
   }
-  function highlightTextInContainer(container, searchText, colorIndex) {
-    if (!container || !searchText) return;
+  function highlightTextInContainer(container2, searchText, colorIndex) {
+    if (!container2 || !searchText) return;
     const walker = document.createTreeWalker(
-      container,
+      container2,
       NodeFilter.SHOW_TEXT,
       {
         acceptNode: function(node) {
@@ -27243,11 +27215,11 @@ var MyApp = (() => {
       }
     });
   }
-  function highlightSelectOption(container, searchText, colorIndex) {
-    if (!container || !searchText) return;
+  function highlightSelectOption(container2, searchText, colorIndex) {
+    if (!container2 || !searchText) return;
     const searchTrimmed = searchText.trim();
     const txtColor = getTextColorByIndex(colorIndex);
-    const selects = container.querySelectorAll("select");
+    const selects = container2.querySelectorAll("select");
     selects.forEach((select) => {
       for (let i = 0; i < select.options.length; i++) {
         const option = select.options[i];
@@ -27263,7 +27235,7 @@ var MyApp = (() => {
         }
       }
     });
-    const labels = container.querySelectorAll("label");
+    const labels = container2.querySelectorAll("label");
     labels.forEach((label) => {
       const spans = label.querySelectorAll("span");
       spans.forEach((span) => {
@@ -27278,7 +27250,7 @@ var MyApp = (() => {
         }
       });
     });
-    const wordCards = container.querySelectorAll(".sprach2-word-card");
+    const wordCards = container2.querySelectorAll(".sprach2-word-card");
     wordCards.forEach((card) => {
       const textElement = card.querySelector("span") || card;
       if (textElement.textContent.trim() === searchTrimmed) {
@@ -27286,7 +27258,7 @@ var MyApp = (() => {
         textElement.style.fontWeight = "bold";
       }
     });
-    const allElements = container.querySelectorAll('.option, .option-btn, .choice, [class*="option"]');
+    const allElements = container2.querySelectorAll('.option, .option-btn, .choice, [class*="option"]');
     allElements.forEach((el) => {
       if (el.textContent.trim() === searchTrimmed) {
         el.style.color = txtColor;
@@ -27302,24 +27274,24 @@ var MyApp = (() => {
   function applyAutoHighlights(examData) {
     if (!examData) return;
     if (examData.type === "matching" && examData.questions) {
-      const container = document.getElementById("teil1");
-      if (!container) return;
+      const container2 = document.getElementById("teil1");
+      if (!container2) return;
       const questions = examData.questions || [];
       const options = examData.sharedOptions || [];
       questions.forEach((q, index) => {
         const firstWords = getFirstWords(q.text, 7);
         const color = q.highlightColor !== void 0 ? q.highlightColor : index % 12;
-        highlightTextInContainer(container, firstWords, color);
+        highlightTextInContainer(container2, firstWords, color);
         const correctOption = options[q.correct];
         if (correctOption) {
-          highlightSelectOption(container, correctOption, color);
+          highlightSelectOption(container2, correctOption, color);
         }
       });
       return;
     }
     if (examData.type === "teil3" && examData.items) {
-      const container = document.getElementById("teil3");
-      if (!container) return;
+      const container2 = document.getElementById("teil3");
+      if (!container2) return;
       const items = examData.items || [];
       const memoryHighlights = examData.memoryHighlights || [];
       if (memoryHighlights.length > 0) {
@@ -27328,7 +27300,7 @@ var MyApp = (() => {
           const parts = highlight.parts || [];
           parts.forEach((partText) => {
             if (!partText || partText.trim() === "") return;
-            highlightTextInContainer(container, partText, color);
+            highlightTextInContainer(container2, partText, color);
           });
         });
       }
@@ -27336,7 +27308,7 @@ var MyApp = (() => {
         if (item.correct === null || item.correct === void 0) return;
         const color = item.highlightColor !== void 0 ? item.highlightColor : index % 12;
         const correctIndex = item.correct;
-        const selects = container.querySelectorAll("select");
+        const selects = container2.querySelectorAll("select");
         selects.forEach((select, idx) => {
           if (idx === index) {
             const optionsArray = [...select.options];
@@ -27360,9 +27332,9 @@ var MyApp = (() => {
     }
     if ((examData.type === "sprach1" || examData.type === "sprach2") && examData.options) {
       const containerId = examData.type === "sprach1" ? "sprach1" : "sprach2";
-      const container = document.getElementById(containerId);
-      if (!container) return;
-      const buttons = container.querySelectorAll('button.sprach1-gap-btn, button.sprach2-gap-btn, button[id*="sprach1_btn"], button[id*="sprach2_btn"]');
+      const container2 = document.getElementById(containerId);
+      if (!container2) return;
+      const buttons = container2.querySelectorAll('button.sprach1-gap-btn, button.sprach2-gap-btn, button[id*="sprach1_btn"], button[id*="sprach2_btn"]');
       examData.options.forEach((option, index) => {
         const highlight = option.memoryHighlight;
         if (!highlight) return;
@@ -27468,7 +27440,7 @@ var MyApp = (() => {
             btn.style.opacity = "0.85";
           }
           if (highlight.connector) {
-            highlightSelectOption(container, highlight.connector, color);
+            highlightSelectOption(container2, highlight.connector, color);
           }
         }
       });
@@ -27491,11 +27463,11 @@ var MyApp = (() => {
       return;
     }
     if (examData.type === "matching" && examData.questions) {
-      const container = document.getElementById("teil1");
-      if (!container) return;
+      const container2 = document.getElementById("teil1");
+      if (!container2) return;
       const questions = examData.questions || [];
       const options = examData.sharedOptions || [];
-      const selects = container.querySelectorAll("select");
+      const selects = container2.querySelectorAll("select");
       selects.forEach((select, index) => {
         const q = questions[index];
         if (!q) return;
@@ -27517,10 +27489,10 @@ var MyApp = (() => {
       return;
     }
     if (examData.type === "teil3" && examData.items) {
-      const container = document.getElementById("teil3");
-      if (!container) return;
+      const container2 = document.getElementById("teil3");
+      if (!container2) return;
       const items = examData.items || [];
-      const selects = container.querySelectorAll("select");
+      const selects = container2.querySelectorAll("select");
       selects.forEach((select, index) => {
         const item = items[index];
         if (!item || item.correct === null || item.correct === void 0) return;
@@ -27545,13 +27517,13 @@ var MyApp = (() => {
     }
     if ((examData.type === "sprach1" || examData.type === "sprach2") && examData.options) {
       const containerId = examData.type === "sprach1" ? "sprach1" : "sprach2";
-      const container = document.getElementById(containerId);
-      if (!container) return;
+      const container2 = document.getElementById(containerId);
+      if (!container2) return;
       examData.options.forEach((option, index) => {
         const highlight = option.memoryHighlight;
         if (!highlight || !highlight.connector) return;
         const color = highlight.color !== void 0 ? highlight.color : index % 12;
-        highlightSelectOption(container, highlight.connector, color);
+        highlightSelectOption(container2, highlight.connector, color);
       });
     }
   }
@@ -27573,15 +27545,15 @@ var MyApp = (() => {
       console.log("========== END REBUILD (NO DATA) ==========");
       return;
     }
-    const container = document.getElementById(activeSkill);
-    if (!container) {
+    const container2 = document.getElementById(activeSkill);
+    if (!container2) {
       console.warn(`\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u062D\u0627\u0648\u064A\u0629 ${activeSkill}`);
       console.log("========== END REBUILD (NO CONTAINER) ==========");
       return;
     }
-    container.style.display = "block";
-    data.container = container;
-    console.log(`container =`, container);
+    container2.style.display = "block";
+    data.container = container2;
+    console.log(`container =`, container2);
     console.log(`questions =`, data.questions);
     console.log(`questions length =`, data.questions ? data.questions.length : 0);
     console.log(`interleaving =`, window.isInterleavingActive);
@@ -27606,33 +27578,33 @@ var MyApp = (() => {
     questionsToUse.forEach((q, i) => {
       console.log(i + 1, q.text);
     });
-    console.log("cards before delete =", container.querySelectorAll(".question-card").length);
-    const oldCards = container.querySelectorAll(".question-card");
+    console.log("cards before delete =", container2.querySelectorAll(".question-card").length);
+    const oldCards = container2.querySelectorAll(".question-card");
     oldCards.forEach((card) => card.remove());
     window._trueFalseUserAnswers = {};
-    const result = container.querySelector("#truefalseResult");
+    const result = container2.querySelector("#truefalseResult");
     if (result) {
       result.style.display = "none";
       result.innerHTML = "";
     }
-    const numbers = container.querySelector("#truefalseCorrectNumbers");
+    const numbers = container2.querySelector("#truefalseCorrectNumbers");
     if (numbers) {
       numbers.style.display = "none";
     }
-    const allMessages = container.querySelectorAll(".correct-message");
+    const allMessages = container2.querySelectorAll(".correct-message");
     allMessages.forEach((msg) => msg.remove());
-    const allCards = container.querySelectorAll(".question-card");
+    const allCards = container2.querySelectorAll(".question-card");
     allCards.forEach((card) => {
       card.classList.remove("correct-answer-card", "wrong-answer-card");
     });
-    const allLabels = container.querySelectorAll(".option-label");
+    const allLabels = container2.querySelectorAll(".option-label");
     allLabels.forEach((label) => {
       label.style.backgroundColor = "white";
       label.style.border = "1px solid #ccc";
     });
     let buttonsContainer = null;
     let createNewButtons = false;
-    const allDivs = container.querySelectorAll("div");
+    const allDivs = container2.querySelectorAll("div");
     for (let el of allDivs) {
       const btns = el.querySelectorAll("button");
       if (btns.length >= 2) {
@@ -27645,10 +27617,10 @@ var MyApp = (() => {
       }
     }
     if (!buttonsContainer) {
-      const checkBtn = container.querySelector(".check-btn");
+      const checkBtn = container2.querySelector(".check-btn");
       if (checkBtn) {
         let parent = checkBtn.parentElement;
-        while (parent && parent !== container) {
+        while (parent && parent !== container2) {
           if (parent.querySelectorAll("button").length >= 2) {
             buttonsContainer = parent;
             break;
@@ -27658,7 +27630,7 @@ var MyApp = (() => {
       }
     }
     if (!buttonsContainer) {
-      container.querySelectorAll(".check-btn").forEach((btn) => {
+      container2.querySelectorAll(".check-btn").forEach((btn) => {
         const parent = btn.closest("div");
         if (parent && parent.children.length <= 3) {
           parent.remove();
@@ -27666,7 +27638,7 @@ var MyApp = (() => {
           btn.remove();
         }
       });
-      container.querySelectorAll("button").forEach((btn) => {
+      container2.querySelectorAll("button").forEach((btn) => {
         if (btn.textContent === "\u21BA") {
           const parent = btn.closest("div");
           if (parent && parent.children.length <= 2) {
@@ -27747,13 +27719,13 @@ var MyApp = (() => {
       div.appendChild(labelTrue);
       div.appendChild(labelFalse);
       div.appendChild(textSpan);
-      if (buttonsContainer && buttonsContainer.parentNode === container) {
-        container.insertBefore(div, buttonsContainer);
+      if (buttonsContainer && buttonsContainer.parentNode === container2) {
+        container2.insertBefore(div, buttonsContainer);
       } else {
-        container.appendChild(div);
+        container2.appendChild(div);
       }
     }
-    console.log("cards after rebuild =", container.querySelectorAll(".question-card").length);
+    console.log("cards after rebuild =", container2.querySelectorAll(".question-card").length);
     if (createNewButtons) {
       const activeSkill2 = window.currentSkill || "hoeren1";
       const data2 = _hoerenData[activeSkill2];
@@ -27791,7 +27763,7 @@ var MyApp = (() => {
       checkBtnNew.onclick = () => {
         const data3 = _hoerenData[activeSkill2];
         const questionsToCheck = data3 && data3.originalQuestions.length > 0 ? data3.originalQuestions : finalQuestions;
-        checkTrueFalseExam(container, questionsToCheck, window._trueFalseUserAnswers, correctNumbersContainer);
+        checkTrueFalseExam(container2, questionsToCheck, window._trueFalseUserAnswers, correctNumbersContainer);
       };
       const resetBtnNew = document.createElement("button");
       resetBtnNew.innerText = "\u21BA";
@@ -27805,15 +27777,15 @@ var MyApp = (() => {
       resetBtnNew.style.fontWeight = "bold";
       resetBtnNew.onclick = function() {
         for (let key in window._trueFalseUserAnswers) delete window._trueFalseUserAnswers[key];
-        container.querySelectorAll('input[type="radio"]').forEach((radio) => radio.checked = false);
-        container.querySelectorAll(".question-card").forEach((card) => card.classList.remove("correct-answer-card", "wrong-answer-card"));
-        container.querySelectorAll(".correct-message").forEach((msg) => msg.remove());
-        container.querySelectorAll(".option-label").forEach((label) => {
+        container2.querySelectorAll('input[type="radio"]').forEach((radio) => radio.checked = false);
+        container2.querySelectorAll(".question-card").forEach((card) => card.classList.remove("correct-answer-card", "wrong-answer-card"));
+        container2.querySelectorAll(".correct-message").forEach((msg) => msg.remove());
+        container2.querySelectorAll(".option-label").forEach((label) => {
           label.style.backgroundColor = "white";
           label.style.border = "1px solid #ccc";
         });
         correctNumbersContainer.style.display = "none";
-        const resultDiv = container.querySelector("#truefalseResult");
+        const resultDiv = container2.querySelector("#truefalseResult");
         if (resultDiv) {
           resultDiv.style.display = "none";
           resultDiv.innerHTML = "";
@@ -27823,11 +27795,11 @@ var MyApp = (() => {
       buttonsDiv.appendChild(resetBtnNew);
       newButtonContainer.appendChild(correctNumbersContainer);
       newButtonContainer.appendChild(buttonsDiv);
-      container.appendChild(newButtonContainer);
+      container2.appendChild(newButtonContainer);
       buttonsContainer = newButtonContainer;
     }
     if (Object.keys(savedAnswers).length > 0) {
-      const allRadios = container.querySelectorAll('input[type="radio"]');
+      const allRadios = container2.querySelectorAll('input[type="radio"]');
       allRadios.forEach((radio) => {
         const name = radio.name;
         const match = name.match(/q_(\d+)/);
@@ -27844,9 +27816,9 @@ var MyApp = (() => {
       window._trueFalseUserAnswers = savedAnswers;
     }
     console.log("===== FINAL HTML =====");
-    console.log(container.innerText.substring(0, 300));
+    console.log(container2.innerText.substring(0, 300));
     console.log("===== FIRST CARD TEXT IN DOM =====");
-    const allSpans = container.querySelectorAll(".question-card span");
+    const allSpans = container2.querySelectorAll(".question-card span");
     allSpans.forEach((span, idx) => {
       console.log(`span ${idx + 1}:`, span.innerText);
     });
@@ -27854,12 +27826,12 @@ var MyApp = (() => {
   }
   function rebuildLesen1() {
     console.log("\u{1F504} \u0625\u0639\u0627\u062F\u0629 \u0628\u0646\u0627\u0621 Lesen 1...");
-    const container = document.getElementById("teil1");
-    if (!container) {
+    const container2 = document.getElementById("teil1");
+    if (!container2) {
       console.warn("\u26A0\uFE0F #teil1 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F");
       return;
     }
-    const cards = [...container.querySelectorAll(".question-card")];
+    const cards = [...container2.querySelectorAll(".question-card")];
     if (cards.length === 0) {
       console.warn("\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0628\u0637\u0627\u0642\u0627\u062A \u0641\u064A #teil1");
       return;
@@ -27890,28 +27862,28 @@ var MyApp = (() => {
     }
     let targetNodes = window.isInterleavingActive ? lesen1ShuffledNodes : lesen1OriginalNodes;
     console.log(`\u{1F504} \u062A\u0637\u0628\u064A\u0642 \u0627\u0644\u062A\u0631\u062A\u064A\u0628: ${window.isInterleavingActive ? "\u0645\u062E\u062A\u0644\u0637" : "\u0623\u0635\u0644\u064A"}`, targetNodes.map((c) => c.id));
-    const firstNonCard = container.querySelector(":scope > :not(.question-card)");
+    const firstNonCard = container2.querySelector(":scope > :not(.question-card)");
     cards.forEach((card) => card.remove());
     if (firstNonCard) {
       for (let i = 0; i < targetNodes.length; i++) {
-        container.insertBefore(targetNodes[i], firstNonCard);
+        container2.insertBefore(targetNodes[i], firstNonCard);
       }
     } else {
       for (let node of targetNodes) {
-        container.appendChild(node);
+        container2.appendChild(node);
       }
     }
     console.log("\u2705 \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0631\u062A\u064A\u0628 \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A \u0628\u0646\u062C\u0627\u062D");
   }
   function rebuildLesen2() {
     console.log("\u{1F504} \u0625\u0639\u0627\u062F\u0629 \u0628\u0646\u0627\u0621 Lesen 2...");
-    const container = document.getElementById("teil2");
-    if (!container) {
+    const container2 = document.getElementById("teil2");
+    if (!container2) {
       console.warn("\u26A0\uFE0F #teil2 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F");
       return;
     }
     let questionsContainer = null;
-    const allDivs = container.querySelectorAll("div");
+    const allDivs = container2.querySelectorAll("div");
     for (const div of allDivs) {
       const directCards = [...div.children].filter(
         (el) => el.classList && el.classList.contains("question-card")
@@ -27972,13 +27944,13 @@ var MyApp = (() => {
   }
   function rebuildLesen3() {
     console.log("\u{1F504} \u0625\u0639\u0627\u062F\u0629 \u0628\u0646\u0627\u0621 Lesen 3...");
-    const container = document.getElementById("teil3");
-    if (!container) {
+    const container2 = document.getElementById("teil3");
+    if (!container2) {
       console.warn("\u26A0\uFE0F #teil3 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F");
       return;
     }
     let questionsContainer = null;
-    const allDivs = container.querySelectorAll("div");
+    const allDivs = container2.querySelectorAll("div");
     for (const div of allDivs) {
       const directCards = [...div.children].filter(
         (el) => el.classList && el.classList.contains("question-card")
@@ -28626,9 +28598,9 @@ var MyApp = (() => {
       });
     }
   }
-  function addSentencePuzzleIcons(container, questions) {
-    if (!container || !questions) return;
-    const cards = container.querySelectorAll(".question-card");
+  function addSentencePuzzleIcons(container2, questions) {
+    if (!container2 || !questions) return;
+    const cards = container2.querySelectorAll(".question-card");
     cards.forEach((card, index) => {
       const textSpan = card.querySelector("span");
       if (!textSpan) return;
@@ -28665,7 +28637,7 @@ var MyApp = (() => {
             const cleanText = textSpan.textContent.replace(/^\d+\s*/, "");
             const tempElement = document.createElement("span");
             tempElement.textContent = cleanText;
-            SentenceReorder.open(container, tempElement, questionId, this);
+            SentenceReorder.open(container2, tempElement, questionId, this);
           }
         };
         icon.addEventListener("mouseenter", function() {
@@ -28884,21 +28856,21 @@ var MyApp = (() => {
         renderSprach1Exam();
       };
       sprach1OpenDropdownId = null;
-      window.buildTrueFalseExam = function(container, questions, note) {
+      window.buildTrueFalseExam = function(container2, questions, note) {
         if (!questions || !Array.isArray(questions) || questions.length === 0) {
           console.error("\u274C \u062E\u0637\u0623: \u0644\u0627 \u062A\u0648\u062C\u062F \u0623\u0633\u0626\u0644\u0629 \u0641\u064A \u0647\u0630\u0627 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646");
-          if (container) {
-            container.innerHTML = '<div style="text-align:center; color:#ff6b6b; padding:30px; background:#fff; border-radius:12px;"> \u062D\u062F\u062B \u062E\u0637\u0623 \u0641\u064A \u062A\u062D\u0645\u064A\u0644 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646. \u064A\u0631\u062C\u0649 \u0627\u0644\u0645\u062D\u0627\u0648\u0644\u0629 \u0645\u0631\u0629 \u0623\u062E\u0631\u0649.</div>';
+          if (container2) {
+            container2.innerHTML = '<div style="text-align:center; color:#ff6b6b; padding:30px; background:#fff; border-radius:12px;"> \u062D\u062F\u062B \u062E\u0637\u0623 \u0641\u064A \u062A\u062D\u0645\u064A\u0644 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646. \u064A\u0631\u062C\u0649 \u0627\u0644\u0645\u062D\u0627\u0648\u0644\u0629 \u0645\u0631\u0629 \u0623\u062E\u0631\u0649.</div>';
           }
           return;
         }
-        container.innerHTML = "";
-        container.style.display = "block";
-        const skillId = container.id;
+        container2.innerHTML = "";
+        container2.style.display = "block";
+        const skillId = container2.id;
         if (skillId.startsWith("hoeren")) {
           const data = _hoerenData[skillId];
           if (data) {
-            data.container = container;
+            data.container = container2;
             data.questions = questions.map((q, index) => ({
               ...q,
               displayNumber: index + 1
@@ -28923,7 +28895,7 @@ var MyApp = (() => {
           noteDiv.style.fontSize = "14px";
           noteDiv.style.fontWeight = "bold";
           noteDiv.innerHTML = `\u{1F4CC} <strong>\u0645\u0644\u0627\u062D\u0638\u0629:</strong> ${note}`;
-          container.appendChild(noteDiv);
+          container2.appendChild(noteDiv);
         }
         let finalQuestions = questions;
         if (skillId.startsWith("hoeren") && window.isInterleavingActive) {
@@ -29011,7 +28983,7 @@ var MyApp = (() => {
           div.appendChild(labelTrue);
           div.appendChild(labelFalse);
           div.appendChild(textSpan);
-          container.appendChild(div);
+          container2.appendChild(div);
         }
         const buttonContainer = document.createElement("div");
         buttonContainer.style.display = "flex";
@@ -29046,7 +29018,7 @@ var MyApp = (() => {
         checkBtn.onclick = () => {
           const data = _hoerenData[skillId];
           const questionsToCheck = data && data.originalQuestions.length > 0 ? data.originalQuestions : finalQuestions;
-          checkTrueFalseExam(container, questionsToCheck, window._trueFalseUserAnswers, correctNumbersContainer);
+          checkTrueFalseExam(container2, questionsToCheck, window._trueFalseUserAnswers, correctNumbersContainer);
         };
         const resetBtn = document.createElement("button");
         resetBtn.innerText = "\u21BA";
@@ -29059,7 +29031,7 @@ var MyApp = (() => {
         resetBtn.style.fontSize = "16px";
         resetBtn.style.fontWeight = "bold";
         resetBtn.onclick = function() {
-          container.querySelectorAll(".sentence-puzzle-icon").forEach((icon) => {
+          container2.querySelectorAll(".sentence-puzzle-icon").forEach((icon) => {
             icon.remove();
           });
           if (window.SentenceReorder) {
@@ -29078,17 +29050,17 @@ var MyApp = (() => {
           for (let key in window._trueFalseUserAnswers) {
             delete window._trueFalseUserAnswers[key];
           }
-          const allRadios = container.querySelectorAll('input[type="radio"]');
+          const allRadios = container2.querySelectorAll('input[type="radio"]');
           allRadios.forEach((radio) => {
             radio.checked = false;
           });
-          const cards = container.querySelectorAll(".question-card");
+          const cards = container2.querySelectorAll(".question-card");
           cards.forEach((card) => {
             card.classList.remove("correct-answer-card", "wrong-answer-card");
           });
-          const allMessages = container.querySelectorAll(".correct-message");
+          const allMessages = container2.querySelectorAll(".correct-message");
           allMessages.forEach((msg) => msg.remove());
-          const optionLabels = container.querySelectorAll(".option-label");
+          const optionLabels = container2.querySelectorAll(".option-label");
           optionLabels.forEach((label) => {
             label.style.backgroundColor = "white";
             label.style.border = "1px solid #ccc";
@@ -29096,7 +29068,7 @@ var MyApp = (() => {
           if (correctNumbersContainer) {
             correctNumbersContainer.style.display = "none";
           }
-          const resultDiv2 = container.querySelector("#truefalseResult");
+          const resultDiv2 = container2.querySelector("#truefalseResult");
           if (resultDiv2) {
             resultDiv2.style.display = "none";
             resultDiv2.innerHTML = "";
@@ -29106,14 +29078,14 @@ var MyApp = (() => {
         buttonsDiv.appendChild(resetBtn);
         buttonContainer.appendChild(correctNumbersContainer);
         buttonContainer.appendChild(buttonsDiv);
-        container.appendChild(buttonContainer);
+        container2.appendChild(buttonContainer);
         let resultDiv = document.getElementById("truefalseResult");
         if (!resultDiv) {
           resultDiv = document.createElement("div");
           resultDiv.id = "truefalseResult";
           resultDiv.className = "result-box";
           resultDiv.style.display = "none";
-          container.appendChild(resultDiv);
+          container2.appendChild(resultDiv);
         }
       };
       currentMatchingExamData2 = null;
@@ -29536,10 +29508,10 @@ var MyApp = (() => {
       console.log("\u2705 \u0646\u0638\u0627\u0645 \u0627\u062E\u062A\u0635\u0627\u0631\u0627\u062A \u0644\u0648\u062D\u0629 \u0627\u0644\u0645\u0641\u0627\u062A\u064A\u062D \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647 \u0628\u0646\u062C\u0627\u062D");
       console.log("\u2705 \u0646\u0638\u0627\u0645 Interleaving \u062C\u0627\u0647\u0632 - \u064A\u0639\u0645\u0644 \u0639\u0644\u0649 H\xF6ren Teil 1,2,3 \u0648 Lesen 1 \u0648 Lesen 2");
       originalCheckTrueFalse = checkTrueFalseExam;
-      checkTrueFalseExam = function(container, questions, answers, correctNumbersContainer) {
-        originalCheckTrueFalse(container, questions, answers, correctNumbersContainer);
+      checkTrueFalseExam = function(container2, questions, answers, correctNumbersContainer) {
+        originalCheckTrueFalse(container2, questions, answers, correctNumbersContainer);
         setTimeout(() => {
-          addSentencePuzzleIcons(container, questions);
+          addSentencePuzzleIcons(container2, questions);
         }, 150);
       };
       console.log("\u2705 \u062A\u0645 \u0631\u0628\u0637 SentenceReorder \u0645\u0639 engine.js (\u0645\u0639 \u062F\u0639\u0645 Reset)");
@@ -29581,9 +29553,9 @@ var MyApp = (() => {
           return false;
         }
         _extractData() {
-          const container = document.getElementById(this.containerId);
-          if (!container) return false;
-          const selects = Array.from(container.querySelectorAll("select")).filter((sel) => {
+          const container2 = document.getElementById(this.containerId);
+          if (!container2) return false;
+          const selects = Array.from(container2.querySelectorAll("select")).filter((sel) => {
             const rect = sel.getBoundingClientRect();
             return rect.width > 0 && rect.height > 0 && getComputedStyle(sel).display !== "none";
           });
@@ -29606,9 +29578,9 @@ var MyApp = (() => {
               }
             }
             if (text === "\u0646\u0635 \u063A\u064A\u0631 \u0645\u0639\u0631\u0648\u0641") {
-              const container2 = select.closest(".question-card, .item, div");
-              if (container2) {
-                const clone = container2.cloneNode(true);
+              const container22 = select.closest(".question-card, .item, div");
+              if (container22) {
+                const clone = container22.cloneNode(true);
                 clone.querySelectorAll("select, button, input, textarea").forEach((el) => el.remove());
                 const raw = clone.textContent.trim();
                 if (raw.length > 20) text = raw;
@@ -29687,8 +29659,8 @@ var MyApp = (() => {
         _buildUI() {
           if (this._isBuilding) return;
           this._isBuilding = true;
-          const container = document.getElementById(this.containerId);
-          if (!container) {
+          const container2 = document.getElementById(this.containerId);
+          if (!container2) {
             this._isBuilding = false;
             return;
           }
@@ -29821,7 +29793,7 @@ var MyApp = (() => {
           });
           actions.appendChild(doneBtn);
           root.appendChild(actions);
-          container.appendChild(root);
+          container2.appendChild(root);
           this.root = root;
           this._buildTextCards(textGrid);
           this._buildTitleCards(titleGrid);
@@ -30119,31 +30091,31 @@ var MyApp = (() => {
         }
         // ---- دالة مسح أنماط التصحيح ----
         _clearCorrectionStyles() {
-          const container = document.getElementById(this.containerId);
-          if (!container) return;
-          container.querySelectorAll(".question-card").forEach((card) => {
+          const container2 = document.getElementById(this.containerId);
+          if (!container2) return;
+          container2.querySelectorAll(".question-card").forEach((card) => {
             card.style.removeProperty("background-color");
             card.style.removeProperty("border");
             card.style.removeProperty("box-shadow");
             card.classList.remove("correct-answer-card", "wrong-answer-card");
           });
-          container.querySelectorAll("select").forEach((select) => {
+          container2.querySelectorAll("select").forEach((select) => {
             select.style.removeProperty("background-color");
             select.style.removeProperty("border");
             select.style.removeProperty("color");
             select.style.removeProperty("box-shadow");
           });
-          container.querySelectorAll("select option").forEach((option) => {
+          container2.querySelectorAll("select option").forEach((option) => {
             option.style.removeProperty("background-color");
             option.style.removeProperty("color");
             option.style.removeProperty("font-weight");
             option.style.removeProperty("padding");
             option.style.removeProperty("border-radius");
           });
-          container.querySelectorAll(".correct-message, .inline-correct-answer, .correct-answer-message").forEach((msg) => {
+          container2.querySelectorAll(".correct-message, .inline-correct-answer, .correct-answer-message").forEach((msg) => {
             msg.remove();
           });
-          container.querySelectorAll(".result-box").forEach((box) => {
+          container2.querySelectorAll(".result-box").forEach((box) => {
             box.style.removeProperty("background-color");
             box.style.removeProperty("color");
             box.style.display = "";
@@ -30173,9 +30145,9 @@ var MyApp = (() => {
           this._applyActivation();
         }
         _applyActivation() {
-          const container = document.getElementById(this.containerId);
-          if (container) {
-            Array.from(container.children).forEach((child) => {
+          const container2 = document.getElementById(this.containerId);
+          if (container2) {
+            Array.from(container2.children).forEach((child) => {
               if (child !== this.root) {
                 if (!child.dataset.zertivaOriginalDisplay) {
                   child.dataset.zertivaOriginalDisplay = child.style.display || "";
@@ -30183,13 +30155,13 @@ var MyApp = (() => {
                 child.style.display = "none";
               }
             });
-            container.prepend(this.root);
+            container2.prepend(this.root);
             this.root.style.display = "flex";
-            container.classList.add("zertiva-matching-active");
+            container2.classList.add("zertiva-matching-active");
           }
           this._hideOriginalControls();
-          if (container) {
-            container.querySelectorAll(".result-box").forEach((box) => {
+          if (container2) {
+            container2.querySelectorAll(".result-box").forEach((box) => {
               if (!box.dataset.zertivaResultDisplay) {
                 box.dataset.zertivaResultDisplay = box.style.display || "";
               }
@@ -30291,9 +30263,9 @@ var MyApp = (() => {
         }
         deactivate() {
           if (!this.isActive || this._isDestroyed) return;
-          const container = document.getElementById(this.containerId);
-          if (container) {
-            Array.from(container.children).forEach((child) => {
+          const container2 = document.getElementById(this.containerId);
+          if (container2) {
+            Array.from(container2.children).forEach((child) => {
               if (child !== this.root) {
                 const originalDisplay = child.dataset.zertivaOriginalDisplay;
                 if (originalDisplay !== void 0) {
@@ -30308,8 +30280,8 @@ var MyApp = (() => {
             if (this.root && this.root.parentNode) {
               this.root.parentNode.removeChild(this.root);
             }
-            container.classList.remove("zertiva-matching-active");
-            container.querySelectorAll(".result-box").forEach((box) => {
+            container2.classList.remove("zertiva-matching-active");
+            container2.querySelectorAll(".result-box").forEach((box) => {
               const originalResultDisplay = box.dataset.zertivaResultDisplay;
               if (originalResultDisplay !== void 0) {
                 box.style.display = originalResultDisplay || "";
@@ -30496,14 +30468,14 @@ var MyApp = (() => {
           this._applyActivation();
         }
         _applyActivation() {
-          const container = document.getElementById("hoeren2");
-          if (!container) {
+          const container2 = document.getElementById("hoeren2");
+          if (!container2) {
             console.warn("\u26A0\uFE0F Hoeren2HealthMode: #hoeren2 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F");
             return;
           }
-          this.container = container;
+          this.container = container2;
           let noteElement = null;
-          for (const child of container.children) {
+          for (const child of container2.children) {
             if (child.textContent && (child.textContent.includes("\u0645\u0644\u0627\u062D\u0638\u0629") || child.textContent.includes("Note"))) {
               noteElement = child;
               break;
@@ -30512,16 +30484,16 @@ var MyApp = (() => {
           if (noteElement) {
             noteElement.style.display = "none";
           }
-          const cards = [...container.querySelectorAll(":scope > .question-card")];
+          const cards = [...container2.querySelectorAll(":scope > .question-card")];
           if (cards.length === 0) {
             console.warn("\u26A0\uFE0F Hoeren2HealthMode: \u0644\u0627 \u062A\u0648\u062C\u062F \u0628\u0637\u0627\u0642\u0627\u062A \u0623\u0633\u0626\u0644\u0629");
             return;
           }
           let originalControls = null;
-          const checkBtn = container.querySelector(".check-btn");
+          const checkBtn = container2.querySelector(".check-btn");
           if (checkBtn) {
             let parent = checkBtn.parentElement;
-            while (parent && parent !== container) {
+            while (parent && parent !== container2) {
               const btns = parent.querySelectorAll("button");
               if (btns.length >= 2) {
                 const hasPr\u00FCfen = btns[0]?.textContent.includes("Pr\xFCfen") || btns[1]?.textContent.includes("Pr\xFCfen");
@@ -30535,7 +30507,7 @@ var MyApp = (() => {
             }
           }
           if (!originalControls) {
-            const numbersDiv = container.querySelector("#truefalseCorrectNumbers");
+            const numbersDiv = container2.querySelector("#truefalseCorrectNumbers");
             if (numbersDiv) {
               const parent = numbersDiv.parentElement;
               if (parent && parent.querySelector(".check-btn")) {
@@ -30544,7 +30516,7 @@ var MyApp = (() => {
             }
           }
           const original = {
-            containerStyle: container.getAttribute("style"),
+            containerStyle: container2.getAttribute("style"),
             cards: cards.map((c) => c.getAttribute("style")),
             cardSpans: cards.map((c) => {
               const span = c.querySelector("span:not(.option-label)");
@@ -30560,14 +30532,14 @@ var MyApp = (() => {
             noteStyle: noteElement ? noteElement.getAttribute("style") : null
           };
           this.originalState = { original, cards, noteElement, originalControls };
-          container.style.setProperty("display", "grid", "important");
-          container.style.setProperty("grid-template-columns", "repeat(2, minmax(0, 1fr))", "important");
-          container.style.setProperty("grid-template-rows", "auto repeat(5, auto) auto", "important");
-          container.style.setProperty("grid-auto-flow", "row", "important");
-          container.style.setProperty("column-gap", "8px", "important");
-          container.style.setProperty("row-gap", "8px", "important");
-          container.style.setProperty("width", "100%", "important");
-          container.style.setProperty("box-sizing", "border-box", "important");
+          container2.style.setProperty("display", "grid", "important");
+          container2.style.setProperty("grid-template-columns", "repeat(2, minmax(0, 1fr))", "important");
+          container2.style.setProperty("grid-template-rows", "auto repeat(5, auto) auto", "important");
+          container2.style.setProperty("grid-auto-flow", "row", "important");
+          container2.style.setProperty("column-gap", "8px", "important");
+          container2.style.setProperty("row-gap", "8px", "important");
+          container2.style.setProperty("width", "100%", "important");
+          container2.style.setProperty("box-sizing", "border-box", "important");
           const progressWrapper = document.createElement("div");
           progressWrapper.style.cssText = `
         grid-column: 1 / -1;
@@ -30635,7 +30607,7 @@ var MyApp = (() => {
           progress.appendChild(label);
           progress.appendChild(completionIcon);
           progressWrapper.appendChild(progress);
-          container.appendChild(progressWrapper);
+          container2.appendChild(progressWrapper);
           this._progressContainer = progressWrapper;
           cards.forEach((card, index) => {
             const column = index < 5 ? 1 : 2;
@@ -30700,10 +30672,10 @@ var MyApp = (() => {
           finishedBtn.style.setProperty("cursor", "pointer", "important");
           finishedBtn.addEventListener("click", this._deactivateBound);
           newButtonContainer.appendChild(finishedBtn);
-          container.appendChild(newButtonContainer);
+          container2.appendChild(newButtonContainer);
           this.newButtonContainer = newButtonContainer;
           this._updateProgress();
-          const radios = container.querySelectorAll('input[type="radio"]');
+          const radios = container2.querySelectorAll('input[type="radio"]');
           radios.forEach((radio) => {
             radio.addEventListener("change", () => {
               this._updateProgress();
@@ -32591,12 +32563,12 @@ var MyApp = (() => {
     return "free";
   }
   function renderTeileList() {
-    const container = document.getElementById("teileList");
-    if (!container) return;
-    container.innerHTML = "";
+    const container2 = document.getElementById("teileList");
+    if (!container2) return;
+    container2.innerHTML = "";
     const isLargeScreen = window.innerWidth >= 1080;
     const justifyContent = isLargeScreen ? "center" : "flex-start";
-    container.style.cssText = `
+    container2.style.cssText = `
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -32642,13 +32614,13 @@ var MyApp = (() => {
           renderExamListForSkill(skill, teilName);
         };
       })(teil.skill, teil.name, i);
-      container.appendChild(btn);
+      container2.appendChild(btn);
     }
   }
   function renderM\u00FCndlichPartTabs() {
-    const container = document.getElementById("examsList");
-    if (!container) return;
-    const oldTabs = container.querySelector(".m\xFCndlich-tabs");
+    const container2 = document.getElementById("examsList");
+    if (!container2) return;
+    const oldTabs = container2.querySelector(".m\xFCndlich-tabs");
     if (oldTabs) oldTabs.remove();
     const tabsDiv = document.createElement("div");
     tabsDiv.className = "m\xFCndlich-tabs";
@@ -32697,7 +32669,7 @@ var MyApp = (() => {
       };
       tabsDiv.appendChild(btn);
     });
-    container.insertBefore(tabsDiv, container.firstChild);
+    container2.insertBefore(tabsDiv, container2.firstChild);
   }
   function getFlattenedExamList(exams) {
     const flattened = [];
@@ -32731,18 +32703,18 @@ var MyApp = (() => {
     window.currentSkill = skill;
     const ORDER_MODE_KEY = "examOrderMode";
     localStorage.removeItem(ORDER_MODE_KEY);
-    const container = document.getElementById("examsList");
-    if (!container) return;
-    container.innerHTML = "";
+    const container2 = document.getElementById("examsList");
+    if (!container2) return;
+    container2.innerHTML = "";
     if (skill === "m\xFCndlich1" || skill === "m\xFCndlich2" || skill === "m\xFCndlich3" || skill === "m\xFCndlich") {
       renderM\u00FCndlichPartTabs();
     }
     const headerDiv = document.createElement("div");
     headerDiv.className = "teil-header";
     headerDiv.innerHTML = `<strong> ${teilName || getTeilNameBySkill(skill)}</strong>`;
-    container.appendChild(headerDiv);
+    container2.appendChild(headerDiv);
     if (SKILL_CONFIG[skill]) {
-      renderMemoryProgressBar(skill, container);
+      renderMemoryProgressBar(skill, container2);
     }
     let targetSkill = skill;
     let targetExams = examsDatabase[skill] || [];
@@ -32760,7 +32732,7 @@ var MyApp = (() => {
     }
     currentExamsList = targetExams;
     if (targetExams.length === 0) {
-      container.innerHTML += '<div class="item" style="text-align:center; color:#999;">\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u0645\u062A\u0627\u062D\u0629 \u062D\u0627\u0644\u064A\u0627\u064B \u0641\u064A \u0647\u0630\u0627 \u0627\u0644\u062C\u0632\u0621</div>';
+      container2.innerHTML += '<div class="item" style="text-align:center; color:#999;">\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u0645\u062A\u0627\u062D\u0629 \u062D\u0627\u0644\u064A\u0627\u064B \u0641\u064A \u0647\u0630\u0627 \u0627\u0644\u062C\u0632\u0621</div>';
       return;
     }
     const userStatus = await getUserStatusForExam();
@@ -32951,7 +32923,7 @@ var MyApp = (() => {
         div.style.backgroundColor = "#f8f9fa";
         div.onclick = () => alert(`\u26A0\uFE0F \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 \u0631\u0642\u0645 ${exam.id} \u0633\u064A\u062A\u0645 \u0625\u0636\u0627\u0641\u062A\u0647 \u0642\u0631\u064A\u0628\u0627\u064B.`);
       }
-      container.appendChild(div);
+      container2.appendChild(div);
     }
     createViewModeToggles();
     const mode2 = getViewModeIndex2();
@@ -33275,9 +33247,9 @@ var MyApp = (() => {
           buildTeil1(currentExamData.questions || []);
         }
       } else if (currentExamData.type === "truefalse") {
-        const container = document.getElementById(currentSkill2);
-        if (container && typeof window.buildTrueFalseExam === "function") {
-          window.buildTrueFalseExam(container, currentExamData.questions, currentExamData.note);
+        const container2 = document.getElementById(currentSkill2);
+        if (container2 && typeof window.buildTrueFalseExam === "function") {
+          window.buildTrueFalseExam(container2, currentExamData.questions, currentExamData.note);
         } else {
           buildTeil1(currentExamData.questions || []);
         }
@@ -33666,11 +33638,11 @@ var MyApp = (() => {
     console.log("\u{1F7E6} Grid View (\u0645\u0639 \u0627\u0644\u062D\u0641\u0627\u0638 \u0639\u0644\u0649 \u0627\u0644\u062E\u0627\u0646\u0627\u062A \u0627\u0644\u0645\u0642\u0641\u0644\u0629)");
   }
   function addVersionBadgesFixed() {
-    const container = document.getElementById("examsList");
-    if (!container) return;
+    const container2 = document.getElementById("examsList");
+    if (!container2) return;
     const skill = currentSkill2 || "lesen1";
     if (!["lesen1", "lesen2", "lesen3", "sprach1", "sprach2"].includes(skill)) return;
-    const items = container.querySelectorAll(".item:not(.teil-header):not(.memory-progress-bar-container)");
+    const items = container2.querySelectorAll(".item:not(.teil-header):not(.memory-progress-bar-container)");
     if (!items.length) return;
     items.forEach((el) => {
       const title = el.querySelector(".exam-title");
@@ -33751,15 +33723,15 @@ var MyApp = (() => {
     if (currentSkill2 === "m\xFCndlich1" || currentSkill2 === "m\xFCndlich3") {
       containerId = "m\xFCndlich";
     }
-    const container = document.getElementById(containerId);
-    if (!container) {
+    const container2 = document.getElementById(containerId);
+    if (!container2) {
       console.error("\u274C \u0627\u0644\u062D\u0627\u0648\u064A\u0629 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629:", containerId);
       return;
     }
-    container.innerHTML = "";
+    container2.innerHTML = "";
     const content = examData.content;
     if (!content) {
-      container.innerHTML = "<div class='error'>\u26A0\uFE0F \u0644\u0627 \u064A\u0648\u062C\u062F \u0645\u062D\u062A\u0648\u0649 \u0644\u0644\u0639\u0631\u0636</div>";
+      container2.innerHTML = "<div class='error'>\u26A0\uFE0F \u0644\u0627 \u064A\u0648\u062C\u062F \u0645\u062D\u062A\u0648\u0649 \u0644\u0644\u0639\u0631\u0636</div>";
       return;
     }
     let html = `
@@ -33841,7 +33813,7 @@ var MyApp = (() => {
       html += `<div style="text-align: center; padding: 20px; margin-top: 20px; border-top: 1px solid #e0e4e8;"><div style="font-size: 0.9rem; color: #5a6874; background: #ffffff; display: inline-block; padding: 10px 25px; border-radius: 40px; border: 1px solid #e0e4e8;">${content.footerMessage}</div></div>`;
     }
     html += `</div>`;
-    container.innerHTML = html;
+    container2.innerHTML = html;
     document.querySelectorAll(".toggle-suggestions-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
         const groupId = btn.getAttribute("data-group");
@@ -33866,9 +33838,9 @@ var MyApp = (() => {
     }
   }
   function renderTipsExam(examData) {
-    const container = document.getElementById("tips");
-    if (!container) return;
-    container.innerHTML = "";
+    const container2 = document.getElementById("tips");
+    if (!container2) return;
+    container2.innerHTML = "";
     const content = examData.content || "";
     const paragraphs = content.split("\n\n");
     for (let i = 0; i < paragraphs.length; i++) {
@@ -33894,13 +33866,13 @@ var MyApp = (() => {
       formattedText = formattedText.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
       formattedText = formattedText.replace(/^(.*?):/gm, "<strong>$1:</strong>");
       card.innerHTML = formattedText;
-      container.appendChild(card);
+      container2.appendChild(card);
     }
   }
   function renderM\u00FCndlichExam(examData) {
-    const container = document.getElementById("m\xFCndlich");
-    if (!container) return;
-    container.innerHTML = "";
+    const container2 = document.getElementById("m\xFCndlich");
+    if (!container2) return;
+    container2.innerHTML = "";
     const noteWrapper = document.createElement("div");
     noteWrapper.className = "m\xFCndlich-header-note-wrapper";
     noteWrapper.style.cssText = `
@@ -33930,14 +33902,14 @@ var MyApp = (() => {
   `;
     noteDiv.innerHTML = `\u2726 \u064A\u0645\u0643\u0646\u0643 \u0623\u062E\u0630 \u0623\u0641\u0643\u0627\u0631 \u0645\u0646 \u0647\u0646\u0627 \u0648\u0645\u0639\u0631\u0641\u0629 \u0643\u064A\u0641 \u064A\u0645\u0643\u0646 \u0623\u0646 \u064A\u0643\u0648\u0646 \u0647\u062F\u0627 \u0627\u0644\u062C\u0632\u0621\u060C \u0648\u064A\u0645\u0643\u0646\u0643 \u0627\u0644\u062A\u0642\u0644\u064A\u062F \u0642\u0644\u064A\u0644\u0627\u060C \u0644\u0643\u0646 \u064A\u062C\u0628 \u0623\u0646 \u062A\u0639\u0645\u0644 \u0646\u0633\u062E\u0629 \u062E\u0627\u0635\u0629 \u0628\u0643 \u0648\u0644\u0627 \u062A\u0642\u0644\u062F\u0647 \u062D\u0631\u0641\u064A\u0627.`;
     noteWrapper.appendChild(noteDiv);
-    container.appendChild(noteWrapper);
+    container2.appendChild(noteWrapper);
     const parts = examData.parts || {};
     const allgemeinCard = createM\u00FCndlichCard("\u{1F4D6} \u0627\u0644\u0641\u0643\u0631\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 (Allgemeine Idee)", parts.allgemein || "\u0644\u0627 \u064A\u0648\u062C\u062F \u0646\u0635");
-    container.appendChild(allgemeinCard);
+    container2.appendChild(allgemeinCard);
     const meinungCard = createM\u00FCndlichCard("\u{1F4AD} \u0627\u0644\u0631\u0623\u064A (Meinung)", parts.meinung || "\u0644\u0627 \u064A\u0648\u062C\u062F \u0646\u0635");
-    container.appendChild(meinungCard);
+    container2.appendChild(meinungCard);
     const erfahrungCard = createM\u00FCndlichCard("\u2728 \u0627\u0644\u062A\u062C\u0631\u0628\u0629 (Erfahrung)", parts.erfahrung || "\u0644\u0627 \u064A\u0648\u062C\u062F \u0646\u0635");
-    container.appendChild(erfahrungCard);
+    container2.appendChild(erfahrungCard);
   }
   function createM\u00FCndlichCard(title, text) {
     const card = document.createElement("div");
@@ -33973,8 +33945,8 @@ var MyApp = (() => {
   }
   function showTeil(teilNumber) {
     teile.forEach((teil, idx) => {
-      const container = document.getElementById(teil.container);
-      if (container) container.style.display = idx + 1 === teilNumber ? "block" : "none";
+      const container2 = document.getElementById(teil.container);
+      if (container2) container2.style.display = idx + 1 === teilNumber ? "block" : "none";
     });
   }
   function goHome() {
@@ -33994,17 +33966,17 @@ var MyApp = (() => {
     if (homeBtn) homeBtn.style.display = "block";
   }
   function buildTeil1(questions) {
-    const container = document.getElementById("teil1");
-    if (!container) {
+    const container2 = document.getElementById("teil1");
+    if (!container2) {
       console.warn("\u26A0\uFE0F buildTeil1: \u0627\u0644\u062D\u0627\u0648\u064A\u0629 teil1 \u063A\u064A\u0631 \u0645\u0648\u062C\u0648\u062F\u0629");
       return;
     }
     if (!questions || !Array.isArray(questions) || questions.length === 0) {
       console.warn("\u26A0\uFE0F buildTeil1: \u0644\u0627 \u062A\u0648\u062C\u062F \u0623\u0633\u0626\u0644\u0629 \u0644\u0639\u0631\u0636\u0647\u0627");
-      container.innerHTML = '<div style="text-align:center; padding:20px; color:#999;">\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0623\u0633\u0626\u0644\u0629 \u0641\u064A \u0647\u0630\u0627 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646</div>';
+      container2.innerHTML = '<div style="text-align:center; padding:20px; color:#999;">\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0623\u0633\u0626\u0644\u0629 \u0641\u064A \u0647\u0630\u0627 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646</div>';
       return;
     }
-    container.innerHTML = "";
+    container2.innerHTML = "";
     let userAnswers = {};
     for (let i = 0; i < questions.length; i++) {
       const q = questions[i];
@@ -34032,7 +34004,7 @@ var MyApp = (() => {
         optionsDiv.appendChild(label);
       }
       card.appendChild(optionsDiv);
-      container.appendChild(card);
+      container2.appendChild(card);
     }
     const checkBtn = document.createElement("button");
     checkBtn.innerText = "\u2705 \u062A\u0635\u062D\u064A\u062D";
@@ -34040,12 +34012,12 @@ var MyApp = (() => {
     checkBtn.onclick = function() {
       checkTeil1(questions, userAnswers);
     };
-    container.appendChild(checkBtn);
+    container2.appendChild(checkBtn);
     const resultDiv = document.createElement("div");
     resultDiv.id = "teil1Result";
     resultDiv.className = "result-box";
     resultDiv.style.display = "none";
-    container.appendChild(resultDiv);
+    container2.appendChild(resultDiv);
   }
   function checkTeil1(questions, answers) {
     let score = 0;
@@ -34208,7 +34180,7 @@ var MyApp = (() => {
     const overall = (currentStage - 1 + stageProgress / 100) / totalStages * 100;
     return Math.min(100, Math.round(overall));
   }
-  function renderMemoryProgressBar(skill, container) {
+  function renderMemoryProgressBar(skill, container2) {
     const percent = getOverallProgress(skill);
     const currentStage = getCurrentStage(skill);
     const totalStages = getTotalStages(skill);
@@ -34232,7 +34204,7 @@ var MyApp = (() => {
     \u21BA
 </button>
     `;
-    container.insertBefore(bar, container.firstChild);
+    container2.insertBefore(bar, container2.firstChild);
   }
   function resetAllLevels() {
     const skill = window.currentSkill || window.memoryTrainer?.currentSkill;
@@ -34531,9 +34503,9 @@ var MyApp = (() => {
       timeText = window.formatTime(timeMs);
       timeColor = window.getTimeColor(timeMs);
     }
-    const container = document.createElement("div");
-    container.id = "retryCounterBox";
-    container.style.cssText = `
+    const container2 = document.createElement("div");
+    container2.id = "retryCounterBox";
+    container2.style.cssText = `
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -34603,9 +34575,9 @@ var MyApp = (() => {
         box-sizing: border-box;
         text-align: right;
     `;
-    container.appendChild(reviewBox);
-    container.appendChild(retryBox);
-    container.appendChild(timeBox);
+    container2.appendChild(reviewBox);
+    container2.appendChild(retryBox);
+    container2.appendChild(timeBox);
     const interleavingRow = document.getElementById("interleavingRow");
     if (interleavingRow) {
       interleavingRow.style.display = "flex";
@@ -34613,7 +34585,7 @@ var MyApp = (() => {
       interleavingRow.style.justifyContent = "space-between";
       interleavingRow.style.flexWrap = "wrap";
       interleavingRow.style.gap = "10px";
-      interleavingRow.appendChild(container);
+      interleavingRow.appendChild(container2);
     } else {
       const btnContainer = document.querySelector('#exam .exam-controls, .exam-controls, .controls-row, [style*="gap: 10px"]');
       if (btnContainer) {
@@ -34621,13 +34593,13 @@ var MyApp = (() => {
         btnContainer.style.alignItems = "center";
         btnContainer.style.justifyContent = "space-between";
         btnContainer.style.flexWrap = "wrap";
-        btnContainer.appendChild(container);
+        btnContainer.appendChild(container2);
       } else {
         const containerEl = document.querySelector("#exam, .exam-content, .exam-box, .page.active");
         if (containerEl) {
           const wrapper = document.createElement("div");
           wrapper.style.cssText = "display: flex; flex-direction: column; align-items: flex-end; margin: 0 0 15px 0;";
-          wrapper.appendChild(container);
+          wrapper.appendChild(container2);
           containerEl.prepend(wrapper);
         }
       }
@@ -34640,8 +34612,8 @@ var MyApp = (() => {
       if (oldCounter) oldCounter.remove();
       return;
     }
-    const container = document.getElementById("retryCounterBox");
-    if (!container) {
+    const container2 = document.getElementById("retryCounterBox");
+    if (!container2) {
       addRetryCounterToExam();
       return;
     }
@@ -34658,12 +34630,12 @@ var MyApp = (() => {
     }
     const timeText = timeMs !== null ? window.formatTime(timeMs) : "\u0644\u0645 \u064A\u064F\u0633\u062C\u0644";
     const timeColor = timeMs !== null ? window.getTimeColor(timeMs) : "gray";
-    const retryBox = container.querySelectorAll("div")[1];
+    const retryBox = container2.querySelectorAll("div")[1];
     if (retryBox) {
       retryBox.innerHTML = `\u0639\u0627\u0648\u062F\u062A \u0647\u0630\u0627 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 <strong style="color:#2563eb;font-weight:700;">${retryCount}</strong> ${retryCount === 1 ? "\u0645\u0631\u0629" : "\u0645\u0631\u0627\u062A"}`;
       retryBox.style.textAlign = "right";
     }
-    const reviewBox = container.querySelectorAll("div")[0];
+    const reviewBox = container2.querySelectorAll("div")[0];
     if (reviewBox) {
       let reviewColor = "#64748b";
       if (reviewDays === null) {
@@ -34680,7 +34652,7 @@ var MyApp = (() => {
       reviewBox.innerHTML = `\u0622\u062E\u0631 \u0645\u0631\u0627\u062C\u0639\u0629: <strong style="color:${reviewColor};font-weight:700;">${reviewText}</strong>`;
       reviewBox.style.textAlign = "right";
     }
-    const timeBox = container.querySelectorAll("div")[2];
+    const timeBox = container2.querySelectorAll("div")[2];
     if (timeBox) {
       timeBox.innerHTML = `\u0623\u062C\u0628\u062A \u0639\u0644\u0649 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646 \u0641\u064A: <strong style="color:${timeColor};font-weight:700;">${timeText}</strong>`;
       timeBox.style.textAlign = "right";
@@ -36824,9 +36796,9 @@ var MyApp = (() => {
         }
         function lockStudyPlanButtons() {
           if (hasStudyPlanAccess()) return;
-          const container = document.getElementById("studyPlannerContainer");
-          if (!container) return;
-          container.querySelectorAll(".planner-section-btn[data-skill]").forEach((btn) => {
+          const container2 = document.getElementById("studyPlannerContainer");
+          if (!container2) return;
+          container2.querySelectorAll(".planner-section-btn[data-skill]").forEach((btn) => {
             if (btn.dataset.studyPlanLocked) return;
             btn.dataset.studyPlanLocked = "true";
             btn.classList.add("study-plan-locked");
@@ -36838,7 +36810,7 @@ var MyApp = (() => {
               return false;
             };
           });
-          container.querySelectorAll(".planner-check-btn").forEach((btn) => {
+          container2.querySelectorAll(".planner-check-btn").forEach((btn) => {
             if (btn.id === "plannerSetupBtn") return;
             if (btn.closest("#customWeightsContainer")) return;
             if (btn.dataset.studyPlanLocked) return;
@@ -36852,7 +36824,7 @@ var MyApp = (() => {
               return false;
             };
           });
-          container.querySelectorAll(".exam-card").forEach((card) => {
+          container2.querySelectorAll(".exam-card").forEach((card) => {
             if (card.dataset.studyPlanLocked) return;
             card.dataset.studyPlanLocked = "true";
             card.classList.add("study-plan-locked");
@@ -36864,7 +36836,7 @@ var MyApp = (() => {
               return false;
             };
           });
-          container.querySelectorAll(".planner-card button, .planner-card .exam-card").forEach((el) => {
+          container2.querySelectorAll(".planner-card button, .planner-card .exam-card").forEach((el) => {
             if (el.dataset.studyPlanLocked) return;
             const isNonExec = el.id === "plannerSettingsBtn" || el.id === "plannerInfoBtn" || el.id === "customSystemBtn" || el.id === "plannerSetupBtn";
             if (isNonExec) return;
@@ -36878,7 +36850,7 @@ var MyApp = (() => {
               return false;
             });
           });
-          const customCheckBtn = container.querySelector("#customCheckBtn");
+          const customCheckBtn = container2.querySelector("#customCheckBtn");
           if (customCheckBtn && !customCheckBtn.dataset.studyPlanLocked) {
             customCheckBtn.dataset.studyPlanLocked = "true";
             customCheckBtn.classList.add("study-plan-locked");
@@ -36890,12 +36862,12 @@ var MyApp = (() => {
               return false;
             };
           }
-          const systemBtn = container.querySelector("#customSystemBtn");
+          const systemBtn = container2.querySelector("#customSystemBtn");
           if (systemBtn) {
             systemBtn.classList.remove("study-plan-locked");
             delete systemBtn.dataset.studyPlanLocked;
           }
-          container.querySelectorAll(".study-plan-locked").forEach((el) => {
+          container2.querySelectorAll(".study-plan-locked").forEach((el) => {
             if (el.dataset.studyPlanLockedCapture) return;
             el.dataset.studyPlanLockedCapture = "true";
             el.addEventListener("click", function(e) {
@@ -36917,12 +36889,12 @@ var MyApp = (() => {
           setTimeout(lockStudyPlanButtons, 50);
         }
         function setupObserver() {
-          const container = document.getElementById("studyPlannerContainer");
-          if (!container) return;
+          const container2 = document.getElementById("studyPlannerContainer");
+          if (!container2) return;
           const observer = new MutationObserver(function() {
             applyStudyPlanLock();
           });
-          observer.observe(container, { childList: true, subtree: true });
+          observer.observe(container2, { childList: true, subtree: true });
           window._studyPlanObserver = observer;
         }
         window.openWhatsAppSubscribe = openWhatsAppSubscribe;
@@ -38102,12 +38074,12 @@ var MyApp = (() => {
           if (gameOverlay) gameOverlay.remove();
           gameOverlay = document.createElement("div");
           gameOverlay.style.cssText = "position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);z-index:10000;display:flex;justify-content:center;align-items:center;backdrop-filter:blur(4px)";
-          const container = document.createElement("div");
-          container.style.cssText = "background:white;border-radius:28px;padding:30px;width:90%;max-width:450px;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,0.2);position:relative";
+          const container2 = document.createElement("div");
+          container2.style.cssText = "background:white;border-radius:28px;padding:30px;width:90%;max-width:450px;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,0.2);position:relative";
           const title = document.createElement("div");
           title.textContent = "\u{1F3AE} \u0627\u062E\u062A\u0631 \u0627\u0644\u0648\u0636\u0639 \u0627\u0644\u0645\u0646\u0627\u0633\u0628 \u0644\u0643";
           title.style.cssText = "font-size:18px;font-weight:600;color:#2c3e66;margin-bottom:20px";
-          container.appendChild(title);
+          container2.appendChild(title);
           const modesContainer = document.createElement("div");
           modesContainer.style.cssText = "display:flex;justify-content:center;gap:15px;margin-bottom:20px";
           const reflexBtn = document.createElement("button");
@@ -38128,7 +38100,7 @@ var MyApp = (() => {
           };
           modesContainer.appendChild(reflexBtn);
           modesContainer.appendChild(focusBtn);
-          container.appendChild(modesContainer);
+          container2.appendChild(modesContainer);
           const buttonsContainer = document.createElement("div");
           buttonsContainer.style.cssText = "display:flex;justify-content:center;gap:12px;margin-top:15px";
           const startBtn = document.createElement("button");
@@ -38161,8 +38133,8 @@ var MyApp = (() => {
             gameStarted = false;
           };
           buttonsContainer.appendChild(cancelBtn);
-          container.appendChild(buttonsContainer);
-          gameOverlay.appendChild(container);
+          container2.appendChild(buttonsContainer);
+          gameOverlay.appendChild(container2);
           document.body.appendChild(gameOverlay);
           function updateModeSelectionUI(reflex, focus) {
             if (currentSpeedMode === "reflex") {
@@ -38217,13 +38189,13 @@ var MyApp = (() => {
           if (timerInterval) clearInterval(timerInterval);
           if (transitionTimeout) clearTimeout(transitionTimeout);
           if (gameOverlay) {
-            const container = gameOverlay.querySelector(".game-container-inner");
-            if (container) {
-              const progressDiv = container.querySelector(".game-progress");
+            const container2 = gameOverlay.querySelector(".game-container-inner");
+            if (container2) {
+              const progressDiv = container2.querySelector(".game-progress");
               if (progressDiv) progressDiv.textContent = `1 / ${currentRound.length}`;
-              const existingMsg = container.querySelector(".mode-change-message");
+              const existingMsg = container2.querySelector(".mode-change-message");
               if (!existingMsg) {
-                const bottomBar = container.querySelector(".bottom-bar");
+                const bottomBar = container2.querySelector(".bottom-bar");
                 if (bottomBar) {
                   const msg = document.createElement("div");
                   msg.className = "mode-change-message";
@@ -38232,7 +38204,7 @@ var MyApp = (() => {
                   bottomBar.insertBefore(msg, bottomBar.querySelector(".control-btns"));
                 }
               }
-              const pauseBtn = container.querySelector("#gamePauseBtn");
+              const pauseBtn = container2.querySelector("#gamePauseBtn");
               if (pauseBtn) pauseBtn.textContent = "\u25B6 Resume";
             }
           }
@@ -38272,8 +38244,8 @@ var MyApp = (() => {
           console.log(`\u{1F3AE} \u062A\u0645 \u0627\u0644\u062A\u0628\u062F\u064A\u0644 \u0625\u0644\u0649 \u0648\u0636\u0639 ${SPEED_MODES[mode].name} - \u0627\u0644\u0648\u0642\u062A: ${SETTINGS.timePerQuestion} \u062B\u0627\u0646\u064A\u0629`);
         }
         function createSpeedModeSelector() {
-          const container = document.createElement("div");
-          container.style.cssText = "display:flex;justify-content:center;gap:8px;margin:15px 0 10px 0";
+          const container2 = document.createElement("div");
+          container2.style.cssText = "display:flex;justify-content:center;gap:8px;margin:15px 0 10px 0";
           const reflexBtn = document.createElement("button");
           reflexBtn.id = "modeReflexBtn";
           reflexBtn.textContent = "\u26A1\u26A1\u26A1 Reflex";
@@ -38288,9 +38260,9 @@ var MyApp = (() => {
           focusBtn.onclick = () => {
             setSpeedMode("focus");
           };
-          container.appendChild(reflexBtn);
-          container.appendChild(focusBtn);
-          return container;
+          container2.appendChild(reflexBtn);
+          container2.appendChild(focusBtn);
+          return container2;
         }
         function createCircularTimer(percent) {
           const radius = 18;
@@ -38651,15 +38623,15 @@ var MyApp = (() => {
           if (gameOverlay) gameOverlay.remove();
           gameOverlay = document.createElement("div");
           gameOverlay.style.cssText = "position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);z-index:10000;display:flex;justify-content:center;align-items:center;backdrop-filter:blur(4px)";
-          const container = document.createElement("div");
-          container.className = "game-container-inner";
-          container.style.cssText = "background:white;border-radius:28px;padding:30px;width:90%;max-width:700px;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,0.2);position:relative";
+          const container2 = document.createElement("div");
+          container2.className = "game-container-inner";
+          container2.style.cssText = "background:white;border-radius:28px;padding:30px;width:90%;max-width:700px;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,0.2);position:relative";
           const timerContainer = document.createElement("div");
           timerContainer.className = "circular-timer-container";
           timerContainer.style.cssText = "position:absolute;top:8px;left:8px;width:40px;height:40px";
           const timerSvg = createCircularTimer(100);
           timerContainer.appendChild(timerSvg.svg);
-          container.appendChild(timerContainer);
+          container2.appendChild(timerContainer);
           const questionDiv = document.createElement("div");
           questionDiv.style.cssText = "font-size:20px;font-weight:500;padding:20px 30px;background:#f5f7fc;border-radius:20px;margin-bottom:25px;color:#1a1a2e;line-height:1.5";
           if (q.type === "sprach") {
@@ -38671,7 +38643,7 @@ var MyApp = (() => {
           } else {
             questionDiv.textContent = q.firstWords;
           }
-          container.appendChild(questionDiv);
+          container2.appendChild(questionDiv);
           const optionsDiv = document.createElement("div");
           optionsDiv.className = "game-options-div";
           optionsDiv.style.cssText = "display:flex;flex-direction:column;gap:12px;margin-bottom:20px";
@@ -38760,7 +38732,7 @@ var MyApp = (() => {
               optionsDiv.appendChild(optBtn);
             });
           }
-          container.appendChild(optionsDiv);
+          container2.appendChild(optionsDiv);
           const bottomBar = document.createElement("div");
           bottomBar.className = "bottom-bar";
           bottomBar.style.cssText = "display:flex;justify-content:space-between;align-items:center;margin-top:10px;flex-wrap:wrap;gap:10px";
@@ -38793,8 +38765,8 @@ var MyApp = (() => {
           exitBtn.onclick = () => exitGame();
           controlBtns.appendChild(exitBtn);
           bottomBar.appendChild(controlBtns);
-          container.appendChild(bottomBar);
-          gameOverlay.appendChild(container);
+          container2.appendChild(bottomBar);
+          gameOverlay.appendChild(container2);
           document.body.appendChild(gameOverlay);
           if (gameStarted) {
             gameActive = true;
@@ -38883,8 +38855,8 @@ var MyApp = (() => {
           const accuracy = total > 0 ? (correct / total * 100).toFixed(0) : 0;
           const overlay = document.createElement("div");
           overlay.style.cssText = "position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:10000;display:flex;justify-content:center;align-items:center;backdrop-filter:blur(2px)";
-          const container = document.createElement("div");
-          container.style.cssText = "background:white;border-radius:16px;padding:16px 20px;width:90%;max-width:320px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.08);border:1px solid rgba(0,0,0,0.05)";
+          const container2 = document.createElement("div");
+          container2.style.cssText = "background:white;border-radius:16px;padding:16px 20px;width:90%;max-width:320px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.08);border:1px solid rgba(0,0,0,0.05)";
           let gradeIcon = "";
           let gradeColor = "";
           if (accuracy >= 80) {
@@ -38897,7 +38869,7 @@ var MyApp = (() => {
             gradeIcon = "\u{1F4AA}";
             gradeColor = "#b45f06";
           }
-          container.innerHTML = `
+          container2.innerHTML = `
             <div style="font-size:24px;margin-bottom:4px">${gradeIcon}</div>
             <div style="font-size:28px;font-weight:600;color:#2c3e66;margin:4px 0">${correct}/${total}</div>
             <div style="font-size:13px;color:${gradeColor};margin-bottom:12px">${accuracy}%</div>
@@ -38909,7 +38881,7 @@ var MyApp = (() => {
                 <button id="closeGameBtn" style="background:#f0f0f0;color:#666;border:none;border-radius:24px;padding:8px 16px;font-size:12px;cursor:pointer">\u2716 \u0625\u063A\u0644\u0627\u0642</button>
             </div>
         `;
-          overlay.appendChild(container);
+          overlay.appendChild(container2);
           document.body.appendChild(overlay);
           document.getElementById("restartGameBtn").onclick = () => {
             overlay.remove();

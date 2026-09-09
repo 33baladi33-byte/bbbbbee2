@@ -2433,7 +2433,9 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
     .mobile-dropdown-item:active {
         transform: scale(0.98) !important;
     }
-    /* ===== تحسينات Sprachbausteine Teil 1 و Teil 2 للهواتف (تحت 770px فقط) ===== */
+
+
+    /* ===== تحسينات Sprachbausteine Teil 1 و Teil 2 للهواتف (تحت 770px) ===== */
     
     /* الحاويات الرئيسية - تسمح بعرض النص بالكامل */
     #sprach1,
@@ -2534,14 +2536,38 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
         color: #155724 !important;
     }
     
-    /* حالة خاطئ */
+    /* حالة خاطئ أو فارغ */
     #sprach1 .sprach1-gap-btn.wrong,
     #sprach1 .sprach1-gap-btn[data-wrong="true"],
     #sprach2 .sprach2-gap-btn.wrong,
     #sprach2 .sprach2-gap-btn[data-wrong="true"] {
-        background: #f8d7da !important;
-        border: 2px solid #dc3545 !important;
-        color: #721c24 !important;
+        background: #fef0e0 !important;
+        border: 2px solid #e67e22 !important;
+        color: #856404 !important;
+    }
+    
+    /* تلميحات الإجابة الصحيحة */
+    .custom-correct-hint {
+        display: inline !important;
+        margin-left: 4px !important;
+        color: #2b8c4a !important;
+        font-weight: bold !important;
+        font-size: inherit !important;
+        vertical-align: baseline !important;
+        white-space: nowrap !important;
+        background: none !important;
+        border: none !important;
+        padding: 0 !important;
+        line-height: inherit !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        height: auto !important;
+        width: auto !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        float: none !important;
+        clear: none !important;
+        pointer-events: none !important;
     }
     
     /* Sprach 2: تحسينات إضافية تحت 770px */
@@ -2570,17 +2596,6 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
         font-weight: 500 !important;
         white-space: normal !important;
         word-break: keep-all !important;
-    }
-    /* تحسين أزرار الفجوات تحت 770px */
-    #sprach2 .sprach2-gap-btn {
-        font-size: 0.7rem !important;
-        padding: 4px 8px !important;
-        min-height: 32px !important;
-        background: #f8fafc !important;
-        border: 1px solid #e2e8f0 !important;
-        border-radius: 6px !important;
-        white-space: nowrap !important;
-        max-width: 90px !important;
     }
 
     /* ===== تحسينات إضافية للتوحيد ===== */
