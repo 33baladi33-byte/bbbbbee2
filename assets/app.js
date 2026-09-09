@@ -25022,16 +25022,14 @@ var MyApp = (() => {
     leftTitle.style.marginTop = "0";
     leftTitle.style.color = "#2c3e66";
     leftColumn.appendChild(leftTitle);
+    const isMobile = window.innerWidth < 770;
     let htmlText = text;
     for (let i = 1; i <= options.length; i++) {
       const btnId = `sprach2_btn_${i}`;
       const currentAnswer = sprach2UserAnswers[i];
       const btnText = currentAnswer || `__( ${i} )__`;
-      let btnStyle = "background-color: #e0e0e0; border: none; padding: 4px 12px; border-radius: 20px; cursor: pointer; font-size: 14px; font-weight: bold; margin: 0 2px;";
-      if (currentAnswer) {
-        btnStyle = "background-color: #d4edda; border: 2px solid #28a745; padding: 4px 12px; border-radius: 20px; cursor: pointer; font-size: 14px; font-weight: bold; margin: 0 2px; color: #155724;";
-      }
-      const btnHtml = `<button id="${btnId}" class="sprach2-gap-btn" data-qid="${i}" style="${btnStyle}">${btnText}</button>`;
+      const extraText = isMobile ? " \u2713 unbedingt" : "";
+      const btnHtml = `<button id="${btnId}" class="sprach2-gap-btn" data-qid="${i}">${btnText}${extraText}</button>`;
       htmlText = htmlText.replace(`__( ${i} )__`, btnHtml);
       htmlText = htmlText.replace(`......(${i})......`, btnHtml);
       htmlText = htmlText.replace(`......(${i})`, btnHtml);
@@ -25080,9 +25078,8 @@ var MyApp = (() => {
                       const targetBtn = document.getElementById(`sprach2_btn_${sprach2SelectedQuestionId}`);
                       if (targetBtn) {
                         targetBtn.textContent = w;
-                        targetBtn.style.backgroundColor = "#d4edda";
-                        targetBtn.style.border = "2px solid #28a745";
-                        targetBtn.style.color = "#155724";
+                        targetBtn.className = "sprach2-gap-btn correct";
+                        targetBtn.setAttribute("data-correct", "true");
                       }
                       const cardEl = document.getElementById(`sprach2_word_${w}`);
                       if (cardEl) {
@@ -25117,10 +25114,12 @@ var MyApp = (() => {
                 };
               }
               btn.textContent = `__( ${qId} )__`;
-              btn.style.backgroundColor = "#e0e0e0";
-              btn.style.color = "#333";
-              btn.classList.remove("selected-for-link");
-              btn.style.border = "none";
+              btn.className = "sprach2-gap-btn";
+              btn.removeAttribute("data-correct");
+              btn.removeAttribute("data-wrong");
+              btn.style.backgroundColor = "";
+              btn.style.color = "";
+              btn.style.border = "";
               const parentDiv = btn.parentElement;
               const existingMsg = parentDiv.querySelector(".correct-answer-hint");
               if (existingMsg) existingMsg.remove();
@@ -25146,9 +25145,8 @@ var MyApp = (() => {
               }
               sprach2UserAnswers[qId] = word;
               btn.textContent = word;
-              btn.style.backgroundColor = "#d4edda";
-              btn.style.border = "2px solid #28a745";
-              btn.style.color = "#155724";
+              btn.className = "sprach2-gap-btn correct";
+              btn.setAttribute("data-correct", "true");
               pushAnswerToHistory({
                 type: "sprach2_link",
                 qId,
@@ -25242,9 +25240,8 @@ var MyApp = (() => {
               const targetBtn = document.getElementById(`sprach2_btn_${sprach2SelectedQuestionId}`);
               if (targetBtn) {
                 targetBtn.textContent = w;
-                targetBtn.style.backgroundColor = "#d4edda";
-                targetBtn.style.border = "2px solid #28a745";
-                targetBtn.style.color = "#155724";
+                targetBtn.className = "sprach2-gap-btn correct";
+                targetBtn.setAttribute("data-correct", "true");
               }
               const cardEl = document.getElementById(`sprach2_word_${w}`);
               if (cardEl) {
@@ -25334,11 +25331,6 @@ var MyApp = (() => {
     resultDiv.id = "sprach2Result";
     resultDiv.className = "result-box";
     resultDiv.style.display = "none";
-    resultDiv.style.marginTop = "20px";
-    resultDiv.style.padding = "15px";
-    resultDiv.style.borderRadius = "8px";
-    resultDiv.style.textAlign = "center";
-    resultDiv.style.fontWeight = "bold";
     container.appendChild(resultDiv);
   }
   function resetSprach2Exam() {
@@ -25373,33 +25365,40 @@ var MyApp = (() => {
     let score = 0;
     const total = options.length;
     const pointsPerQuestion = 25 / total;
-    document.querySelectorAll(".correct-answer-hint").forEach((el) => el.remove());
+    document.querySelectorAll(".custom-correct-hint").forEach((el) => el.remove());
     for (let i = 0; i < options.length; i++) {
       const opt = options[i];
       const userAnswer = sprach2UserAnswers[opt.id];
       const isCorrect = userAnswer === opt.correct;
       const btn = document.getElementById(`sprach2_btn_${opt.id}`);
+      if (btn) {
+        btn.classList.remove("correct", "wrong");
+        btn.style.backgroundColor = "";
+        btn.style.color = "";
+        btn.style.border = "";
+        btn.title = "";
+      }
       if (isCorrect) {
         score++;
         if (btn) {
           btn.textContent = opt.correct;
-          btn.style.backgroundColor = "#d4edda";
-          btn.style.border = "2px solid #28a745";
-          btn.style.color = "#155724";
-          btn.style.opacity = "0.85";
+          btn.classList.add("correct");
+          btn.setAttribute("data-correct", "true");
         }
       } else {
         if (btn) {
-          btn.style.backgroundColor = "#fee2e2";
-          btn.style.color = "#dc2626";
-          btn.style.border = "1px solid #dc2626";
+          btn.classList.add("wrong");
+          btn.setAttribute("data-wrong", "true");
           btn.textContent = opt.correct;
-          btn.style.opacity = "0.85";
           if (userAnswer) {
             btn.title = `\u0625\u062C\u0627\u0628\u062A\u0643: ${userAnswer}`;
           } else {
             btn.title = "\u0644\u0645 \u062A\u062C\u0628 \u0639\u0644\u0649 \u0647\u0630\u0627 \u0627\u0644\u0633\u0624\u0627\u0644";
           }
+          const hint = document.createElement("span");
+          hint.className = "custom-correct-hint";
+          hint.textContent = ` \u2713 ${opt.correct}`;
+          btn.parentNode.insertBefore(hint, btn.nextSibling);
         }
       }
     }
@@ -25486,12 +25485,14 @@ var MyApp = (() => {
     leftTitle.style.marginTop = "0";
     leftTitle.style.color = "#2c3e66";
     leftColumn.appendChild(leftTitle);
+    const isMobile = window.innerWidth < 770;
     let htmlText = text;
     for (let i = 1; i <= options.length; i++) {
       const btnId = `sprach1_btn_${i}`;
       const currentAnswer = sprach1UserAnswers[i];
       const btnText = currentAnswer || `__(${i})__`;
-      const btnHtml = `<button id="${btnId}" class="sprach1-gap-btn" style="background-color: #e0e0e0; border: none; padding: 4px 12px; border-radius: 20px; cursor: pointer; font-size: 14px; font-weight: bold; margin: 0 2px;">${btnText}</button>`;
+      const extraText = isMobile ? " \u2713 unbedingt" : "";
+      const btnHtml = `<button id="${btnId}" class="sprach1-gap-btn">${btnText}${extraText}</button>`;
       htmlText = htmlText.replace(`\u2304 __ (${i}) __ \u2304`, btnHtml);
     }
     const textDiv = document.createElement("div");
@@ -25728,6 +25729,7 @@ var MyApp = (() => {
     let score = 0;
     const total = options.length;
     const pointsPerQuestion = 25 / total;
+    document.querySelectorAll(".custom-correct-hint").forEach((el) => el.remove());
     for (let i = 0; i < options.length; i++) {
       const opt = options[i];
       const userAnswer = sprach1UserAnswers[opt.id];
@@ -25737,12 +25739,20 @@ var MyApp = (() => {
       }
       const btn = document.getElementById(`sprach1_btn_${opt.id}`);
       if (btn) {
+        btn.classList.remove("correct", "wrong");
+        btn.style.backgroundColor = "";
+        btn.style.color = "";
         if (isCorrect) {
-          btn.style.backgroundColor = "#28a745";
-          btn.style.color = "white";
+          btn.classList.add("correct");
+          btn.setAttribute("data-correct", "true");
         } else {
-          btn.style.backgroundColor = "#fef0e0";
-          btn.style.color = "#e67e22";
+          btn.classList.add("wrong");
+          btn.setAttribute("data-wrong", "true");
+          const correctAnswer2 = opt.options[opt.correct];
+          const hint = document.createElement("span");
+          hint.className = "custom-correct-hint";
+          hint.textContent = ` \u2713 ${correctAnswer2}`;
+          btn.parentNode.insertBefore(hint, btn.nextSibling);
         }
       }
       const optGroup = document.getElementById(`sprach1_opt_group_${opt.id}`);
