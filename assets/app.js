@@ -938,8 +938,8 @@ var MyApp = (() => {
       "lesen3_exam35": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       "lesen3_exam37": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       "lesen3_exam36": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      "lesen3_exam3b": [1, 2, 3, 4, 5, 6, 7],
-      "lesen3_exam6b": [1, 2, 3, 4, 5, 6, 7, 8],
+      "lesen3_exam109": [1, 2, 3, 4, 5, 6, 7],
+      "lesen3_exam110": [1, 2, 3, 4, 5, 6, 7, 8],
       "lesen3_exam111": [1, 2, 3, 4, 5, 6, 7, 8],
       "lesen3_exam112": [1, 2, 3, 4, 5, 6],
       // Sprach Teil 1 (40 امتحان)
@@ -5403,7 +5403,7 @@ var MyApp = (() => {
         imagine: "\u{1F3A4}\u{1F30D} \u0641\u0646\u0627\u0646\u064A\u0646 \u0639\u0644\u0649 \u0645\u0633\u0627\u0631\u062D \u0641\u064A \u0645\u062F\u064A\u0646\u0629 \u0625\u0633\u064A\u0646\u0633",
         correct: true
       };
-      HELP_DATA2["lesen1_exam1b_q1"] = {
+      HELP_DATA2["lesen1_exam1_q1"] = {
         paragraphStart: "Die Zahlen wirken auf dem ersten Blick dramatisch.",
         paragraphTranslation: "\u0627\u0644\u0623\u0631\u0642\u0627\u0645 \u062A\u0628\u062F\u0648 \u0644\u0644\u0648\u0647\u0644\u0629 \u0627\u0644\u0623\u0648\u0644\u0649 \u0635\u0627\u062F\u0645\u0629.",
         paragraphKeywords: [
@@ -5424,7 +5424,7 @@ var MyApp = (() => {
         memoryKey: "Erdbeeren \u2192 Tomaten",
         correct: 9
       };
-      HELP_DATA2["lesen1_exam1b_q2"] = {
+      HELP_DATA2["lesen1_exam1_q2"] = {
         paragraphStart: "Immer mehr M\xE4dchen leiden an schweren Essst\xF6rungen.",
         paragraphTranslation: "\u0627\u0644\u0645\u0632\u064A\u062F \u0648\u0627\u0644\u0645\u0632\u064A\u062F \u0645\u0646 \u0627\u0644\u0641\u062A\u064A\u0627\u062A \u064A\u0639\u0627\u0646\u064A\u0646 \u0645\u0646 \u0627\u0636\u0637\u0631\u0627\u0628\u0627\u062A \u0623\u0643\u0644 \u062E\u0637\u064A\u0631\u0629.",
         paragraphKeywords: [
@@ -5445,7 +5445,7 @@ var MyApp = (() => {
         memoryKey: "M\xE4dchen \u2192 Krankheit",
         correct: 7
       };
-      HELP_DATA2["lesen1_exam1b_q3"] = {
+      HELP_DATA2["lesen1_exam1_q3"] = {
         paragraphStart: "Energiesparlampen, umweltfreundliche Elektroger\xE4te, Bio-Nagellack.",
         paragraphTranslation: "\u0645\u0635\u0627\u0628\u064A\u062D \u062A\u0648\u0641\u064A\u0631 \u0627\u0644\u0637\u0627\u0642\u0629\u060C \u0623\u062C\u0647\u0632\u0629 \u0643\u0647\u0631\u0628\u0627\u0626\u064A\u0629 \u0635\u062F\u064A\u0642\u0629 \u0644\u0644\u0628\u064A\u0626\u0629\u060C \u0637\u0644\u0627\u0621 \u0623\u0638\u0627\u0641\u0631 \u0639\u0636\u0648\u064A.",
         paragraphKeywords: [
@@ -5466,7 +5466,7 @@ var MyApp = (() => {
         memoryKey: "Umweltschutz-Wettbewerb",
         correct: 1
       };
-      HELP_DATA2["lesen1_exam1b_q4"] = {
+      HELP_DATA2["lesen1_exam1_q4"] = {
         paragraphStart: "13,5 Meter lang und leuchtend gelb.",
         paragraphTranslation: "\u0628\u0637\u0648\u0644 13.5 \u0645\u062A\u0631 \u0648\u0628\u0644\u0648\u0646 \u0623\u0635\u0641\u0631 \u0633\u0627\u0637\u0639.",
         paragraphKeywords: [
@@ -5487,7 +5487,7 @@ var MyApp = (() => {
         memoryKey: "gelbes Schiff \u2192 Meer \u2192 Plastik",
         correct: 0
       };
-      HELP_DATA2["lesen1_exam1b_q5"] = {
+      HELP_DATA2["lesen1_exam1_q5"] = {
         paragraphStart: "Mobbing ist kein neues Ph\xE4nomen.",
         paragraphTranslation: "\u0627\u0644\u062A\u0646\u0645\u0631 \u0644\u064A\u0633 \u0638\u0627\u0647\u0631\u0629 \u062C\u062F\u064A\u062F\u0629.",
         paragraphKeywords: [
@@ -5718,7 +5718,7 @@ var MyApp = (() => {
         memoryKey: "T\xDCV + Kinderwagen",
         correct: 3
       };
-      HELP_DATA2["lesen1_exam3b_q1"] = {
+      HELP_DATA2["lesen1_exam103_q1"] = {
         paragraphStart: "An der Ostk\xFCste Attikas in Griechenland lag in der Antike der Ort Marathon.",
         paragraphTranslation: "\u0639\u0644\u0649 \u0627\u0644\u0633\u0627\u062D\u0644 \u0627\u0644\u0634\u0631\u0642\u064A \u0644\u0622\u062A\u064A\u0643\u0627 \u0641\u064A \u0627\u0644\u064A\u0648\u0646\u0627\u0646 \u0627\u0644\u0642\u062F\u064A\u0645\u0629 \u0643\u0627\u0646 \u0645\u0648\u0642\u0639 \u0645\u0627\u0631\u0627\u062B\u0648\u0646.",
         paragraphKeywords: [
@@ -5739,7 +5739,7 @@ var MyApp = (() => {
         memoryKey: "Marathon \u2192 alle Altersgruppen",
         correct: 7
       };
-      HELP_DATA2["lesen1_exam3b_q2"] = {
+      HELP_DATA2["lesen1_exam103_q2"] = {
         paragraphStart: "Warum soll sich der Mensch nun auf Stra\xDFen und Wegen fortbewegen?",
         paragraphTranslation: "\u0644\u0645\u0627\u0630\u0627 \u0639\u0644\u0649 \u0627\u0644\u0625\u0646\u0633\u0627\u0646 \u0623\u0646 \u064A\u062A\u062D\u0631\u0643 \u0639\u0644\u0649 \u0627\u0644\u0637\u0631\u0642 \u0648\u0627\u0644\u0645\u0633\u0627\u0631\u0627\u062A\u061F",
         paragraphKeywords: [
@@ -5760,7 +5760,7 @@ var MyApp = (() => {
         memoryKey: "Eltern + Baby + Joggen",
         correct: 5
       };
-      HELP_DATA2["lesen1_exam3b_q3"] = {
+      HELP_DATA2["lesen1_exam103_q3"] = {
         paragraphStart: "Schweizer Forscher haben herausgefunden, dass nur 6 Minuten Hochleistungstraining pro Woche...",
         paragraphTranslation: "\u0628\u0627\u062D\u062B\u0648\u0646 \u0633\u0648\u064A\u0633\u0631\u064A\u0648\u0646 \u0627\u0643\u062A\u0634\u0641\u0648\u0627 \u0623\u0646 6 \u062F\u0642\u0627\u0626\u0642 \u0641\u0642\u0637 \u0645\u0646 \u0627\u0644\u062A\u062F\u0631\u064A\u0628 \u0639\u0627\u0644\u064A \u0627\u0644\u0623\u062F\u0627\u0621 \u0623\u0633\u0628\u0648\u0639\u064A\u064B\u0627...",
         paragraphKeywords: [
@@ -5781,7 +5781,7 @@ var MyApp = (() => {
         memoryKey: "6 Minuten \u2192 Fitness",
         correct: 2
       };
-      HELP_DATA2["lesen1_exam3b_q4"] = {
+      HELP_DATA2["lesen1_exam103_q4"] = {
         paragraphStart: "Mehr Bewegung als Ausgleich f\xFCr zu langes Sitzen im B\xFCro...",
         paragraphTranslation: "\u0627\u0644\u0645\u0632\u064A\u062F \u0645\u0646 \u0627\u0644\u062D\u0631\u0643\u0629 \u0643\u062A\u0639\u0648\u064A\u0636 \u0639\u0646 \u0627\u0644\u062C\u0644\u0648\u0633 \u0627\u0644\u0637\u0648\u064A\u0644 \u0641\u064A \u0627\u0644\u0645\u0643\u062A\u0628...",
         paragraphKeywords: [
@@ -5802,7 +5802,7 @@ var MyApp = (() => {
         memoryKey: "Regeln f\xFCr Sport",
         correct: 0
       };
-      HELP_DATA2["lesen1_exam3b_q5"] = {
+      HELP_DATA2["lesen1_exam103_q5"] = {
         paragraphStart: "Viele frischgebackene Eltern stehen einem riesigen Angebot an Kinderwagen gegen\xFCber.",
         paragraphTranslation: "\u0627\u0644\u0639\u062F\u064A\u062F \u0645\u0646 \u0627\u0644\u0622\u0628\u0627\u0621 \u0627\u0644\u062C\u062F\u062F \u064A\u0648\u0627\u062C\u0647\u0648\u0646 \u0639\u0631\u0636\u064B\u0627 \u0636\u062E\u0645\u064B\u0627 \u0645\u0646 \u0639\u0631\u0628\u0627\u062A \u0627\u0644\u0623\u0637\u0641\u0627\u0644.",
         paragraphKeywords: [
@@ -6333,7 +6333,7 @@ var MyApp = (() => {
         memoryKey: "Salzburg \u2192 Markterneuerung",
         correct: 0
       };
-      HELP_DATA2["lesen1_exam1b_q1"] = {
+      HELP_DATA2["lesen1_exam101_q1"] = {
         paragraphStart: "Die Zahlen wirken auf dem ersten Blick dramatisch: 15 Prozent der Kinder sind \xFCbergewichtig",
         paragraphTranslation: "\u0627\u0644\u0623\u0631\u0642\u0627\u0645 \u062A\u0628\u062F\u0648 \u0644\u0644\u0648\u0647\u0644\u0629 \u0627\u0644\u0623\u0648\u0644\u0649 \u0635\u0627\u062F\u0645\u0629: 15% \u0645\u0646 \u0627\u0644\u0623\u0637\u0641\u0627\u0644 \u064A\u0639\u0627\u0646\u0648\u0646 \u0645\u0646 \u0632\u064A\u0627\u062F\u0629 \u0627\u0644\u0648\u0632\u0646.",
         paragraphKeywords: ["\xFCbergewichtig = \u0632\u064A\u0627\u062F\u0629 \u0648\u0632\u0646", "Kochstudio = \u0627\u0633\u062A\u0648\u062F\u064A\u0648 \u0637\u0628\u062E", "Erdbeeren = \u0641\u0631\u0627\u0648\u0644\u0629", "Tomaten = \u0637\u0645\u0627\u0637\u0645", "Praxis = \u062A\u0637\u0628\u064A\u0642 \u0639\u0645\u0644\u064A"],
@@ -6345,7 +6345,7 @@ var MyApp = (() => {
         memoryKey: "Erdbeeren \u2192 Tomaten",
         correct: 9
       };
-      HELP_DATA2["lesen1_exam1b_q2"] = {
+      HELP_DATA2["lesen1_exam101_q2"] = {
         paragraphStart: "Immer mehr M\xE4dchen leiden an schweren Essst\xF6rungen",
         paragraphTranslation: "\u0627\u0644\u0645\u0632\u064A\u062F \u0648\u0627\u0644\u0645\u0632\u064A\u062F \u0645\u0646 \u0627\u0644\u0641\u062A\u064A\u0627\u062A \u064A\u0639\u0627\u0646\u064A\u0646 \u0645\u0646 \u0627\u0636\u0637\u0631\u0627\u0628\u0627\u062A \u0623\u0643\u0644 \u062E\u0637\u064A\u0631\u0629.",
         paragraphKeywords: ["M\xE4dchen = \u0641\u062A\u064A\u0627\u062A", "Essst\xF6rungen = \u0627\u0636\u0637\u0631\u0627\u0628\u0627\u062A \u0623\u0643\u0644", "Di\xE4t = \u062D\u0645\u064A\u0629", "Krankheit = \u0645\u0631\u0636", "Therapie = \u0639\u0644\u0627\u062C"],
@@ -6357,7 +6357,7 @@ var MyApp = (() => {
         memoryKey: "Di\xE4t \u2192 Krankheit",
         correct: 7
       };
-      HELP_DATA2["lesen1_exam1b_q3"] = {
+      HELP_DATA2["lesen1_exam101_q3"] = {
         paragraphStart: "Energiesparlampen, umweltfreundliche Elektroger\xE4te, Bio-Nagellack",
         paragraphTranslation: "\u0645\u0635\u0627\u0628\u064A\u062D \u062A\u0648\u0641\u064A\u0631 \u0627\u0644\u0637\u0627\u0642\u0629\u060C \u0623\u062C\u0647\u0632\u0629 \u0643\u0647\u0631\u0628\u0627\u0626\u064A\u0629 \u0635\u062F\u064A\u0642\u0629 \u0644\u0644\u0628\u064A\u0626\u0629\u060C \u0637\u0644\u0627\u0621 \u0623\u0638\u0627\u0641\u0631 \u0639\u0636\u0648\u064A.",
         paragraphKeywords: ["Energiesparlampen = \u0645\u0635\u0627\u0628\u064A\u062D \u062A\u0648\u0641\u064A\u0631", "umweltfreundlich = \u0635\u062F\u064A\u0642 \u0644\u0644\u0628\u064A\u0626\u0629", "Wettbewerb = \u0645\u0633\u0627\u0628\u0642\u0629", "Jugend forscht = \u0634\u0628\u0627\u0628 \u064A\u0628\u062D\u062B\u0648\u0646"],
@@ -6369,7 +6369,7 @@ var MyApp = (() => {
         memoryKey: "Sch\xFClerwettbewerb \u2192 Umweltschutz",
         correct: 1
       };
-      HELP_DATA2["lesen1_exam1b_q4"] = {
+      HELP_DATA2["lesen1_exam101_q4"] = {
         paragraphStart: "13,5 Meter lang und leuchtend gelb - die 'Aldebaran' zieht die Blicke im Jachthafen auf sich.",
         paragraphTranslation: "\u0628\u0637\u0648\u0644 13.5 \u0645\u062A\u0631 \u0648\u0628\u0644\u0648\u0646 \u0623\u0635\u0641\u0631 \u0633\u0627\u0637\u0639 - '\u0623\u0644\u062F\u064A\u0628\u0627\u0631\u0627\u0646' \u062A\u062C\u0630\u0628 \u0627\u0644\u0623\u0646\u0638\u0627\u0631 \u0641\u064A \u0627\u0644\u0645\u064A\u0646\u0627\u0621.",
         paragraphKeywords: ["Aldebaran = \u0633\u0641\u064A\u0646\u0629", "Nordsee = \u0628\u062D\u0631 \u0627\u0644\u0634\u0645\u0627\u0644", "Plastik = \u0628\u0644\u0627\u0633\u062A\u064A\u0643", "Meeresforscher = \u0628\u0627\u062D\u062B\u0648\u0646 \u0628\u062D\u0631\u064A\u0648\u0646"],
@@ -6381,7 +6381,7 @@ var MyApp = (() => {
         memoryKey: "Aldebaran \u2192 Meeresforschung",
         correct: 0
       };
-      HELP_DATA2["lesen1_exam1b_q5"] = {
+      HELP_DATA2["lesen1_exam101_q5"] = {
         paragraphStart: "Mobbing ist kein neues Ph\xE4nomen.",
         paragraphTranslation: "\u0627\u0644\u062A\u0646\u0645\u0631 \u0644\u064A\u0633 \u0638\u0627\u0647\u0631\u0629 \u062C\u062F\u064A\u062F\u0629.",
         paragraphKeywords: ["Mobbing = \u062A\u0646\u0645\u0631", "Psychoterror = \u0625\u0631\u0647\u0627\u0628 \u0646\u0641\u0633\u064A", "Schule = \u0645\u062F\u0631\u0633\u0629", "Isolation = \u0639\u0632\u0644\u0629", "Schikanen = \u0645\u0636\u0627\u064A\u0642\u0627\u062A"],
@@ -6453,7 +6453,7 @@ var MyApp = (() => {
         memoryKey: "T\xDCV + Kinderwagen",
         correct: 3
       };
-      HELP_DATA2["lesen1_exam5b_q1"] = {
+      HELP_DATA2["lesen1_exam102_q1"] = {
         paragraphStart: "Der Begriff Extremsport wird oft subjektiv verwendet.",
         paragraphTranslation: "\u0645\u0635\u0637\u0644\u062D \u0627\u0644\u0631\u064A\u0627\u0636\u0627\u062A \u0627\u0644\u062E\u0637\u064A\u0631\u0629 \u063A\u0627\u0644\u0628\u0627\u064B \u0645\u0627 \u064A\u064F\u0633\u062A\u062E\u062F\u0645 \u0628\u0634\u0643\u0644 \u0634\u062E\u0635\u064A.",
         paragraphKeywords: ["Extremsport = \u0631\u064A\u0627\u0636\u0629 \u062E\u0637\u064A\u0631\u0629", "Risiko = \u062E\u0637\u0631", "Adrenalinschub = \u062F\u0641\u0639\u0629 \u0623\u062F\u0631\u064A\u0646\u0627\u0644\u064A\u0646", "Sportsucht = \u0625\u062F\u0645\u0627\u0646 \u0631\u064A\u0627\u0636\u0629"],
@@ -6465,7 +6465,7 @@ var MyApp = (() => {
         memoryKey: "Extremsport = Nervenkitzel",
         correct: 4
       };
-      HELP_DATA2["lesen1_exam5b_q2"] = {
+      HELP_DATA2["lesen1_exam102_q2"] = {
         paragraphStart: "Musik, Sport, ehrenamtliches Engagement - die Teilnahme von Jugendlichen",
         paragraphTranslation: "\u0627\u0644\u0645\u0648\u0633\u064A\u0642\u0649 \u0648\u0627\u0644\u0631\u064A\u0627\u0636\u0629 \u0648\u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u062A\u0637\u0648\u0639\u064A - \u0645\u0634\u0627\u0631\u0643\u0629 \u0627\u0644\u0634\u0628\u0627\u0628 \u0641\u064A \u0647\u0630\u0647 \u0627\u0644\u0623\u0646\u0634\u0637\u0629.",
         paragraphKeywords: ["Freizeitaktivit\xE4ten = \u0623\u0646\u0634\u0637\u0629 \u0623\u0648\u0642\u0627\u062A \u0641\u0631\u0627\u063A", "Jugendlichen = \u0634\u0628\u0627\u0628", "Studie = \u062F\u0631\u0627\u0633\u0629", "bildungsorientiert = \u0645\u0648\u062C\u0647 \u062A\u0639\u0644\u064A\u0645\u064A\u0627\u064B"],
@@ -6477,7 +6477,7 @@ var MyApp = (() => {
         memoryKey: "Freizeitverhalten \u2192 Jugend",
         correct: 3
       };
-      HELP_DATA2["lesen1_exam5b_q3"] = {
+      HELP_DATA2["lesen1_exam102_q3"] = {
         paragraphStart: "In Firmen gibt es sie schon, jetzt wollen auch Schulen Entspannungskurse anbieten.",
         paragraphTranslation: "\u0641\u064A \u0627\u0644\u0634\u0631\u0643\u0627\u062A \u064A\u0648\u062C\u062F\u0648\u0646 \u0628\u0627\u0644\u0641\u0639\u0644\u060C \u0627\u0644\u0622\u0646 \u062A\u0631\u064A\u062F \u0627\u0644\u0645\u062F\u0627\u0631\u0633 \u0623\u064A\u0636\u0627\u064B \u062A\u0642\u062F\u064A\u0645 \u062F\u0648\u0631\u0627\u062A \u0627\u0633\u062A\u0631\u062E\u0627\u0621.",
         paragraphKeywords: ["Entspannungskurse = \u062F\u0648\u0631\u0627\u062A \u0627\u0633\u062A\u0631\u062E\u0627\u0621", "Sch\xFCler = \u0637\u0644\u0627\u0628", "Stress = \u0636\u063A\u0637", "Konzentration = \u062A\u0631\u0643\u064A\u0632"],
@@ -6489,7 +6489,7 @@ var MyApp = (() => {
         memoryKey: "Sch\xFCler + Stress \u2192 Entspannung",
         correct: 5
       };
-      HELP_DATA2["lesen1_exam5b_q4"] = {
+      HELP_DATA2["lesen1_exam102_q4"] = {
         paragraphStart: "Tanja Kleist ist von modernem Tanz absolut begeistert.",
         paragraphTranslation: "\u062A\u0627\u0646\u064A\u0627 \u0643\u0644\u0627\u064A\u0633\u062A \u0645\u0641\u062A\u0648\u0646\u0629 \u0628\u0627\u0644\u0631\u0642\u0635 \u0627\u0644\u062D\u062F\u064A\u062B \u062A\u0645\u0627\u0645\u0627\u064B.",
         paragraphKeywords: ["Tanz = \u0631\u0642\u0635", "Hip-Hop = \u0647\u064A\u0628 \u0647\u0648\u0628", "Teilnehmer = \u0645\u0634\u0627\u0631\u0643\u064A\u0646", "Training = \u062A\u062F\u0631\u064A\u0628"],
@@ -6501,7 +6501,7 @@ var MyApp = (() => {
         memoryKey: "Tanzkurs \u2192 freie Pl\xE4tze",
         correct: 0
       };
-      HELP_DATA2["lesen1_exam5b_q5"] = {
+      HELP_DATA2["lesen1_exam102_q5"] = {
         paragraphStart: "Montags Tennis, dienstags Klavierunterricht, mittwochs Jazztanz",
         paragraphTranslation: "\u0627\u0644\u0625\u062B\u0646\u064A\u0646 \u062A\u0646\u0633\u060C \u0627\u0644\u062B\u0644\u0627\u062B\u0627\u0621 \u062F\u0631\u0633 \u0628\u064A\u0627\u0646\u0648\u060C \u0627\u0644\u0623\u0631\u0628\u0639\u0627\u0621 \u0631\u0642\u0635 \u062C\u0627\u0632.",
         paragraphKeywords: ["Freizeitstress = \u0636\u063A\u0637 \u0648\u0642\u062A \u0641\u0631\u0627\u063A", "Eltern = \u0623\u0647\u0644", "Kinder = \u0623\u0637\u0641\u0627\u0644", "Langeweile = \u0645\u0644\u0644"],
@@ -6513,7 +6513,7 @@ var MyApp = (() => {
         memoryKey: "keine Zeit f\xFCr Langeweile",
         correct: 6
       };
-      HELP_DATA2["lesen1_exam5c_q1"] = {
+      HELP_DATA2["lesen1_exam106_q1"] = {
         paragraphStart: "Der Begriff Extremsport wird oft subjektiv verwendet.",
         paragraphTranslation: "\u0645\u0635\u0637\u0644\u062D \u0627\u0644\u0631\u064A\u0627\u0636\u0627\u062A \u0627\u0644\u062E\u0637\u064A\u0631\u0629 \u063A\u0627\u0644\u0628\u0627\u064B \u0645\u0627 \u064A\u064F\u0633\u062A\u062E\u062F\u0645 \u0628\u0634\u0643\u0644 \u0634\u062E\u0635\u064A.",
         paragraphKeywords: ["Extremsport = \u0631\u064A\u0627\u0636\u0629 \u062E\u0637\u064A\u0631\u0629", "Risiko = \u062E\u0637\u0631", "Adrenalinschub = \u062F\u0641\u0639\u0629 \u0623\u062F\u0631\u064A\u0646\u0627\u0644\u064A\u0646", "Sportsucht = \u0625\u062F\u0645\u0627\u0646 \u0631\u064A\u0627\u0636\u0629"],
@@ -6525,7 +6525,7 @@ var MyApp = (() => {
         memoryKey: "Extremsport = Nervenkitzel",
         correct: 4
       };
-      HELP_DATA2["lesen1_exam5c_q2"] = {
+      HELP_DATA2["lesen1_exam106_q2"] = {
         paragraphStart: "Musik, Sport, ehrenamtliches Engagement - die Teilnahme von Jugendlichen",
         paragraphTranslation: "\u0627\u0644\u0645\u0648\u0633\u064A\u0642\u0649 \u0648\u0627\u0644\u0631\u064A\u0627\u0636\u0629 \u0648\u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u062A\u0637\u0648\u0639\u064A - \u0645\u0634\u0627\u0631\u0643\u0629 \u0627\u0644\u0634\u0628\u0627\u0628 \u0641\u064A \u0647\u0630\u0647 \u0627\u0644\u0623\u0646\u0634\u0637\u0629.",
         paragraphKeywords: ["Freizeitaktivit\xE4ten = \u0623\u0646\u0634\u0637\u0629 \u0623\u0648\u0642\u0627\u062A \u0641\u0631\u0627\u063A", "Jugendlichen = \u0634\u0628\u0627\u0628", "Studie = \u062F\u0631\u0627\u0633\u0629", "bildungsorientiert = \u0645\u0648\u062C\u0647 \u062A\u0639\u0644\u064A\u0645\u064A\u0627\u064B"],
@@ -6537,7 +6537,7 @@ var MyApp = (() => {
         memoryKey: "Freizeitverhalten \u2192 Jugend",
         correct: 3
       };
-      HELP_DATA2["lesen1_exam5c_q3"] = {
+      HELP_DATA2["lesen1_exam106_q3"] = {
         paragraphStart: "In Firmen gibt es sie schon, jetzt wollen auch Schulen Entspannungskurse anbieten.",
         paragraphTranslation: "\u0641\u064A \u0627\u0644\u0634\u0631\u0643\u0627\u062A \u064A\u0648\u062C\u062F\u0648\u0646 \u0628\u0627\u0644\u0641\u0639\u0644\u060C \u0627\u0644\u0622\u0646 \u062A\u0631\u064A\u062F \u0627\u0644\u0645\u062F\u0627\u0631\u0633 \u0623\u064A\u0636\u0627\u064B \u062A\u0642\u062F\u064A\u0645 \u062F\u0648\u0631\u0627\u062A \u0627\u0633\u062A\u0631\u062E\u0627\u0621.",
         paragraphKeywords: ["Entspannungskurse = \u062F\u0648\u0631\u0627\u062A \u0627\u0633\u062A\u0631\u062E\u0627\u0621", "Sch\xFCler = \u0637\u0644\u0627\u0628", "Stress = \u0636\u063A\u0637", "Konzentration = \u062A\u0631\u0643\u064A\u0632"],
@@ -6549,7 +6549,7 @@ var MyApp = (() => {
         memoryKey: "Sch\xFCler + Stress \u2192 Entspannung",
         correct: 5
       };
-      HELP_DATA2["lesen1_exam5c_q4"] = {
+      HELP_DATA2["lesen1_exam106_q4"] = {
         paragraphStart: "Tanja Kleist ist von modernem Tanz absolut begeistert.",
         paragraphTranslation: "\u062A\u0627\u0646\u064A\u0627 \u0643\u0644\u0627\u064A\u0633\u062A \u0645\u0641\u062A\u0648\u0646\u0629 \u0628\u0627\u0644\u0631\u0642\u0635 \u0627\u0644\u062D\u062F\u064A\u062B \u062A\u0645\u0627\u0645\u0627\u064B.",
         paragraphKeywords: ["Tanz = \u0631\u0642\u0635", "Hip-Hop = \u0647\u064A\u0628 \u0647\u0648\u0628", "Teilnehmer = \u0645\u0634\u0627\u0631\u0643\u064A\u0646", "Training = \u062A\u062F\u0631\u064A\u0628"],
@@ -6561,7 +6561,7 @@ var MyApp = (() => {
         memoryKey: "Tanzkurs \u2192 freie Pl\xE4tze",
         correct: 0
       };
-      HELP_DATA2["lesen1_exam5c_q5"] = {
+      HELP_DATA2["lesen1_exam106_q5"] = {
         paragraphStart: "Montags Tennis, dienstags Klavierunterricht, mittwochs Jazztanz",
         paragraphTranslation: "\u0627\u0644\u0625\u062B\u0646\u064A\u0646 \u062A\u0646\u0633\u060C \u0627\u0644\u062B\u0644\u0627\u062B\u0627\u0621 \u062F\u0631\u0633 \u0628\u064A\u0627\u0646\u0648\u060C \u0627\u0644\u0623\u0631\u0628\u0639\u0627\u0621 \u0631\u0642\u0635 \u062C\u0627\u0632.",
         paragraphKeywords: ["Freizeitstress = \u0636\u063A\u0637 \u0648\u0642\u062A \u0641\u0631\u0627\u063A", "Eltern = \u0623\u0647\u0644", "Kinder = \u0623\u0637\u0641\u0627\u0644", "Langeweile = \u0645\u0644\u0644"],
@@ -6573,7 +6573,7 @@ var MyApp = (() => {
         memoryKey: "keine Zeit f\xFCr Langeweile",
         correct: 6
       };
-      HELP_DATA2["lesen1_exam8b_q1"] = {
+      HELP_DATA2["lesen1_exam108_q1"] = {
         paragraphStart: "Der Buchtitel erinnert an eine Horrorgeschichte: 'Die Nacht'.",
         paragraphTranslation: "\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u0643\u062A\u0627\u0628 \u064A\u0630\u0643\u0631 \u0628\u0642\u0635\u0629 \u0631\u0639\u0628: '\u0627\u0644\u0644\u064A\u0644'.",
         paragraphKeywords: ["Nacht = \u0644\u064A\u0644", "Dunkelheit = \u0638\u0644\u0627\u0645", "k\xFCnstliches Licht = \u0625\u0636\u0627\u0621\u0629 \u0635\u0646\u0627\u0639\u064A\u0629", "Sterne = \u0646\u062C\u0648\u0645"],
@@ -6585,7 +6585,7 @@ var MyApp = (() => {
         memoryKey: "k\xFCnstliches Licht \u2192 keine Dunkelheit",
         correct: 1
       };
-      HELP_DATA2["lesen1_exam8b_q2"] = {
+      HELP_DATA2["lesen1_exam108_q2"] = {
         paragraphStart: "Fotos machen ist heute nicht schwer.",
         paragraphTranslation: "\u0627\u0644\u062A\u0642\u0627\u0637 \u0627\u0644\u0635\u0648\u0631 \u0627\u0644\u064A\u0648\u0645 \u0644\u064A\u0633 \u0635\u0639\u0628\u0627\u064B.",
         paragraphKeywords: ["Fotos = \u0635\u0648\u0631", "Fotografie = \u062A\u0635\u0648\u064A\u0631", "Ratgeber = \u062F\u0644\u064A\u0644", "Basiswissen = \u0645\u0639\u0631\u0641\u0629 \u0623\u0633\u0627\u0633\u064A\u0629"],
@@ -6597,7 +6597,7 @@ var MyApp = (() => {
         memoryKey: "Ratgeber \u2192 Fotografie lernen",
         correct: 8
       };
-      HELP_DATA2["lesen1_exam8b_q3"] = {
+      HELP_DATA2["lesen1_exam108_q3"] = {
         paragraphStart: "Bilder der Fotografin Annie Leibovitz sind ab kommendem Samstag im Kunsthaus Wien zu sehen.",
         paragraphTranslation: "\u0635\u0648\u0631 \u0627\u0644\u0645\u0635\u0648\u0631\u0629 \u0622\u0646\u064A \u0644\u064A\u0628\u0648\u0641\u064A\u062A\u0632 \u0633\u062A\u064F\u0639\u0631\u0636 \u0627\u0628\u062A\u062F\u0627\u0621\u064B \u0645\u0646 \u0627\u0644\u0633\u0628\u062A \u0627\u0644\u0645\u0642\u0628\u0644 \u0641\u064A \u0645\u062A\u062D\u0641 \u0627\u0644\u0641\u0646\u0648\u0646 \u0641\u064A \u0641\u064A\u064A\u0646\u0627.",
         paragraphKeywords: ["Annie Leibovitz = \u0622\u0646\u064A \u0644\u064A\u0628\u0648\u0641\u064A\u062A\u0632", "Ausstellung = \u0645\u0639\u0631\u0636", "Portraits = \u0635\u0648\u0631 \u0634\u062E\u0635\u064A\u0629", "K\xFCnstlerin = \u0641\u0646\u0627\u0646\u0629"],
@@ -6609,7 +6609,7 @@ var MyApp = (() => {
         memoryKey: "Annie Leibovitz \u2192 Ausstellung",
         correct: 0
       };
-      HELP_DATA2["lesen1_exam8b_q4"] = {
+      HELP_DATA2["lesen1_exam108_q4"] = {
         paragraphStart: "Die Abk\xFCrzung TWAN klingt nach einem neuen Computerprogramm",
         paragraphTranslation: "\u0627\u0644\u0627\u062E\u062A\u0635\u0627\u0631 TWAN \u064A\u0628\u062F\u0648 \u0643\u0628\u0631\u0646\u0627\u0645\u062C \u0643\u0645\u0628\u064A\u0648\u062A\u0631 \u062C\u062F\u064A\u062F.",
         paragraphKeywords: ["TWAN = \u0637\u0631\u064A\u0642\u0629 \u062A\u0635\u0648\u064A\u0631", "Sterne = \u0646\u062C\u0648\u0645", "Erde = \u0623\u0631\u0636", "Landschaften = \u0645\u0646\u0627\u0638\u0631 \u0637\u0628\u064A\u0639\u064A\u0629"],
@@ -6621,7 +6621,7 @@ var MyApp = (() => {
         memoryKey: "TWAN \u2192 Sterne \xFCber der Erde",
         correct: 6
       };
-      HELP_DATA2["lesen1_exam8b_q5"] = {
+      HELP_DATA2["lesen1_exam108_q5"] = {
         paragraphStart: "Er geh\xF6rte zu den ganz Gro\xDFen seines Fachs: Andreas Feininger.",
         paragraphTranslation: "\u0643\u0627\u0646 \u0645\u0646 \u0643\u0628\u0627\u0631 \u0641\u0646\u0647: \u0623\u0646\u062F\u0631\u064A\u0627\u0633 \u0641\u0627\u064A\u0646\u064A\u0646\u063A\u0631.",
         paragraphKeywords: ["Andreas Feininger = \u0623\u0646\u062F\u0631\u064A\u0627\u0633 \u0641\u0627\u064A\u0646\u064A\u0646\u063A\u0631", "Biografie = \u0633\u064A\u0631\u0629 \u0630\u0627\u062A\u064A\u0629", "Architekt = \u0645\u0647\u0646\u062F\u0633 \u0645\u0639\u0645\u0627\u0631\u064A", "New York = \u0646\u064A\u0648\u064A\u0648\u0631\u0643"],
@@ -6633,7 +6633,7 @@ var MyApp = (() => {
         memoryKey: "Feininger \u2192 Architekt \u2192 Fotograf",
         correct: 2
       };
-      HELP_DATA2["lesen1_exam9b_q1"] = {
+      HELP_DATA2["lesen1_exam105_q1"] = {
         paragraphStart: "Berlin wird in 10 Jahren rund 5.000 Lehrkr\xE4fte weniger brauchen als derzeit.",
         paragraphTranslation: "\u0628\u0631\u0644\u064A\u0646 \u0633\u062A\u062D\u062A\u0627\u062C \u0625\u0644\u0649 \u062D\u0648\u0627\u0644\u064A 5000 \u0645\u0639\u0644\u0645 \u0623\u0642\u0644 \u0628\u0639\u062F 10 \u0633\u0646\u0648\u0627\u062A.",
         paragraphKeywords: ["Berlin = \u0628\u0631\u0644\u064A\u0646", "GEW = \u0646\u0642\u0627\u0628\u0629", "Lehrermangel = \u0646\u0642\u0635 \u0645\u0639\u0644\u0645\u064A\u0646", "Ruhestand = \u062A\u0642\u0627\u0639\u062F", "befristete Vertr\xE4ge = \u0639\u0642\u0648\u062F \u0645\u062D\u062F\u062F\u0629"],
@@ -6645,7 +6645,7 @@ var MyApp = (() => {
         memoryKey: "Berlin \u2192 Lehrermangel",
         correct: 5
       };
-      HELP_DATA2["lesen1_exam9b_q2"] = {
+      HELP_DATA2["lesen1_exam105_q2"] = {
         paragraphStart: "Wer sich in Berlin um eine Stelle als Lehrer bewirbt, muss hart im Nehmen sein.",
         paragraphTranslation: "\u0645\u0646 \u064A\u062A\u0642\u062F\u0645 \u0644\u0648\u0638\u064A\u0641\u0629 \u0645\u0639\u0644\u0645 \u0641\u064A \u0628\u0631\u0644\u064A\u0646\u060C \u0639\u0644\u064A\u0647 \u0623\u0646 \u064A\u0643\u0648\u0646 \u0635\u0628\u0648\u0631\u0627\u064B.",
         paragraphKeywords: ["Berlin = \u0628\u0631\u0644\u064A\u0646", "Lehrkr\xE4fte = \u0645\u0639\u0644\u0645\u0648\u0646", "Hamburg = \u0647\u0627\u0645\u0628\u0648\u0631\u063A", "Abwanderung = \u0647\u062C\u0631\u0629", "GEW = \u0646\u0642\u0627\u0628\u0629"],
@@ -6657,7 +6657,7 @@ var MyApp = (() => {
         memoryKey: "Berlin \u2192 Abwanderung",
         correct: 6
       };
-      HELP_DATA2["lesen1_exam9b_q3"] = {
+      HELP_DATA2["lesen1_exam105_q3"] = {
         paragraphStart: "Eltern \xFCber Stundenausfall und Schulleiter \xFCber fehlende Bewerber.",
         paragraphTranslation: "\u0623\u0648\u0644\u064A\u0627\u0621 \u0627\u0644\u0623\u0645\u0648\u0631 \u064A\u0634\u0643\u0648\u0646 \u0645\u0646 \u0625\u0644\u063A\u0627\u0621 \u0627\u0644\u062D\u0635\u0635 \u0648\u0645\u062F\u064A\u0631\u0648 \u0627\u0644\u0645\u062F\u0627\u0631\u0633 \u0645\u0646 \u0646\u0642\u0635 \u0627\u0644\u0645\u062A\u0642\u062F\u0645\u064A\u0646.",
         paragraphKeywords: ["Lehrermangel = \u0646\u0642\u0635 \u0645\u0639\u0644\u0645\u064A\u0646", "Deutschland = \u0623\u0644\u0645\u0627\u0646\u064A\u0627", "VBE = \u0646\u0642\u0627\u0628\u0629", "Pensionierung = \u062A\u0642\u0627\u0639\u062F", "400.000 = 400 \u0623\u0644\u0641"],
@@ -6669,7 +6669,7 @@ var MyApp = (() => {
         memoryKey: "400.000 \u2192 Lehrermangel",
         correct: 4
       };
-      HELP_DATA2["lesen1_exam9b_q4"] = {
+      HELP_DATA2["lesen1_exam105_q4"] = {
         paragraphStart: "Bildungspolitiker und Lehrervertreter wollen Abiturienten scharenweise in den Lehrerberuf locken.",
         paragraphTranslation: "\u0633\u064A\u0627\u0633\u064A\u0648\u0646 \u0648\u0646\u0642\u0627\u0628\u064A\u0648\u0646 \u064A\u0631\u064A\u062F\u0648\u0646 \u062C\u0630\u0628 \u0627\u0644\u062E\u0631\u064A\u062C\u064A\u0646 \u0628\u0623\u0639\u062F\u0627\u062F \u0643\u0628\u064A\u0631\u0629 \u0644\u0645\u0647\u0646\u0629 \u0627\u0644\u062A\u062F\u0631\u064A\u0633.",
         paragraphKeywords: ["Bildungsforscher = \u0628\u0627\u062D\u062B\u0648\u0646 \u062A\u0639\u0644\u064A\u0645", "Lehrermangel = \u0646\u0642\u0635 \u0645\u0639\u0644\u0645\u064A\u0646", "ausgeglichene Bilanz = \u0645\u064A\u0632\u0627\u0646 \u0645\u062A\u0648\u0627\u0632\u0646", "Kultusministerkonferenz = \u0645\u0624\u062A\u0645\u0631 \u0648\u0632\u0631\u0627\u0621 \u0627\u0644\u062A\u0639\u0644\u064A\u0645"],
@@ -6681,7 +6681,7 @@ var MyApp = (() => {
         memoryKey: "kein Mangel \u2192 ausgeglichene Bilanz",
         correct: 2
       };
-      HELP_DATA2["lesen1_exam9b_q5"] = {
+      HELP_DATA2["lesen1_exam105_q5"] = {
         paragraphStart: "M\xE4dchen haben tendenziell bessere Noten und stellen 56 Prozent der Abiturienten.",
         paragraphTranslation: "\u0627\u0644\u0641\u062A\u064A\u0627\u062A \u062A\u062D\u0635\u064A\u0644\u0647\u0646 \u0623\u0641\u0636\u0644 \u0648\u064A\u0645\u062B\u0644\u0646 56% \u0645\u0646 \u0627\u0644\u062E\u0631\u064A\u062C\u064A\u0646.",
         paragraphKeywords: ["M\xE4dchen = \u0628\u0646\u0627\u062A", "Grundschulen = \u0645\u062F\u0627\u0631\u0633 \u0627\u0628\u062A\u062F\u0627\u0626\u064A\u0629", "m\xE4nnliche Lehrkr\xE4fte = \u0645\u0639\u0644\u0645\u0648\u0646 \u0631\u062C\u0627\u0644", "Frauenanteil = \u0646\u0633\u0628\u0629 \u0627\u0644\u0646\u0633\u0627\u0621", "Vorbilder = \u0642\u062F\u0648\u0627\u062A"],
@@ -6693,7 +6693,7 @@ var MyApp = (() => {
         memoryKey: "Grundschule \u2192 M\xE4nner selten",
         correct: 0
       };
-      HELP_DATA2["lesen1_exam10b_q1"] = {
+      HELP_DATA2["lesen1_exam107_q1"] = {
         paragraphStart: "Das Lesemagazin MENU hat eine Umfrage zu den popul\xE4rsten M\xE4rkten in \xD6sterreich durchgef\xFChrt.",
         paragraphTranslation: "\u0645\u062C\u0644\u0629 MENU \u0623\u062C\u0631\u062A \u0627\u0633\u062A\u0637\u0644\u0627\u0639\u0627\u064B \u0644\u0623\u0643\u062B\u0631 \u0627\u0644\u0623\u0633\u0648\u0627\u0642 \u0634\u0639\u0628\u064A\u0629 \u0641\u064A \u0627\u0644\u0646\u0645\u0633\u0627.",
         paragraphKeywords: ["MENU = \u0645\u062C\u0644\u0629", "Umfrage = \u0627\u0633\u062A\u0637\u0644\u0627\u0639", "M\xE4rkte = \u0623\u0633\u0648\u0627\u0642", "\xD6sterreich = \u0627\u0644\u0646\u0645\u0633\u0627", "St. P\xF6lten = \u0633\u0627\u0646\u062A \u0628\u0648\u0644\u062A\u0646"],
@@ -6705,7 +6705,7 @@ var MyApp = (() => {
         memoryKey: "MENU \u2192 Top-M\xE4rkte \xD6sterreich",
         correct: 3
       };
-      HELP_DATA2["lesen1_exam10b_q2"] = {
+      HELP_DATA2["lesen1_exam107_q2"] = {
         paragraphStart: "Sie sind der Meinung, dass Ihre Qualifikationen ausreichen, um Karriere zu machen?",
         paragraphTranslation: "\u0647\u0644 \u062A\u0639\u062A\u0642\u062F \u0623\u0646 \u0645\u0624\u0647\u0644\u0627\u062A\u0643 \u0643\u0627\u0641\u064A\u0629 \u0644\u062A\u062D\u0642\u064A\u0642 \u0645\u0647\u0646\u0629 \u0646\u0627\u062C\u062D\u0629\u061F",
         paragraphKeywords: ["Qualifikationen = \u0645\u0624\u0647\u0644\u0627\u062A", "Selbstmarketing = \u062A\u0633\u0648\u064A\u0642 \u0630\u0627\u062A\u064A", "Karriere = \u0645\u0647\u0646\u0629", "Seminar = \u062F\u0648\u0631\u0629 \u062A\u062F\u0631\u064A\u0628\u064A\u0629", "Klagenfurt = \u0643\u0644\u0627\u063A\u0646\u0641\u0648\u0631\u062A"],
@@ -6717,7 +6717,7 @@ var MyApp = (() => {
         memoryKey: "Selbstmarketing \u2192 Seminar",
         correct: 5
       };
-      HELP_DATA2["lesen1_exam10b_q3"] = {
+      HELP_DATA2["lesen1_exam107_q3"] = {
         paragraphStart: "Der Wiener Naschmarkt geh\xF6rt zu \xD6sterreichs beliebtesten M\xE4rkten.",
         paragraphTranslation: "\u0633\u0648\u0642 \u0646\u0627\u0634 \u0641\u064A \u0641\u064A\u064A\u0646\u0627 \u0645\u0646 \u0623\u0643\u062B\u0631 \u0627\u0644\u0623\u0633\u0648\u0627\u0642 \u0634\u0639\u0628\u064A\u0629 \u0641\u064A \u0627\u0644\u0646\u0645\u0633\u0627.",
         paragraphKeywords: ["Naschmarkt = \u0633\u0648\u0642 \u0646\u0627\u0634", "Wien = \u0641\u064A\u064A\u0646\u0627", "gr\xF6\xDFter Markt = \u0623\u0643\u0628\u0631 \u0633\u0648\u0642", "Otto Wagner = \u0623\u0648\u062A\u0648 \u0641\u0627\u063A\u0646\u0631", "Reisef\xFChrer = \u062F\u0644\u064A\u0644 \u0633\u064A\u0627\u062D\u064A"],
@@ -6729,7 +6729,7 @@ var MyApp = (() => {
         memoryKey: "Naschmarkt \u2192 Wiens gr\xF6\xDFter Markt",
         correct: 9
       };
-      HELP_DATA2["lesen1_exam10b_q4"] = {
+      HELP_DATA2["lesen1_exam107_q4"] = {
         paragraphStart: "Wer bloggt, zeigt neben Fachkompetenz auch Kreativit\xE4t.",
         paragraphTranslation: "\u0645\u0646 \u064A\u062F\u0648\u0646\u060C \u064A\u0638\u0647\u0631 \u0625\u0644\u0649 \u062C\u0627\u0646\u0628 \u0627\u0644\u0643\u0641\u0627\u0621\u0629 \u0627\u0644\u0645\u0647\u0646\u064A\u0629 \u0623\u064A\u0636\u0627\u064B \u0625\u0628\u062F\u0627\u0639\u0627\u064B.",
         paragraphKeywords: ["bloggt = \u064A\u062F\u0648\u0646", "Kreativit\xE4t = \u0625\u0628\u062F\u0627\u0639", "Arbeitgeber = \u0623\u0631\u0628\u0627\u0628 \u0639\u0645\u0644", "Bewerbung = \u062A\u0642\u062F\u064A\u0645 \u0648\u0638\u064A\u0641\u0629", "Firmeninterna = \u0623\u0633\u0631\u0627\u0631 \u0627\u0644\u0634\u0631\u0643\u0629"],
@@ -6741,7 +6741,7 @@ var MyApp = (() => {
         memoryKey: "Blog \u2192 Karriere",
         correct: 4
       };
-      HELP_DATA2["lesen1_exam10b_q5"] = {
+      HELP_DATA2["lesen1_exam107_q5"] = {
         paragraphStart: "Bis Herbst soll ein neues Marktkonzept f\xFCr den altehrw\xFCrdigen Salzburger Gr\xFCnmarkt vorliegen.",
         paragraphTranslation: "\u0628\u062D\u0644\u0648\u0644 \u0627\u0644\u062E\u0631\u064A\u0641\u060C \u0645\u0646 \u0627\u0644\u0645\u0642\u0631\u0631 \u062A\u0642\u062F\u064A\u0645 \u0645\u0641\u0647\u0648\u0645 \u062C\u062F\u064A\u062F \u0644\u0633\u0648\u0642 \u0633\u0627\u0644\u0632\u0628\u0648\u0631\u063A \u0627\u0644\u0623\u062E\u0636\u0631 \u0627\u0644\u0639\u0631\u064A\u0642.",
         paragraphKeywords: ["Salzburger Gr\xFCnmarkt = \u0633\u0648\u0642 \u0633\u0627\u0644\u0632\u0628\u0648\u0631\u063A", "Marktkonzept = \u0645\u0641\u0647\u0648\u0645 \u0633\u0648\u0642", "nachhaltig = \u0645\u0633\u062A\u062F\u0627\u0645", "Biologische Lebensmittel = \u0623\u0637\u0639\u0645\u0629 \u0639\u0636\u0648\u064A\u0629", "Foodbloggerin = \u0645\u062F\u0648\u0646\u0629 \u0637\u0639\u0627\u0645"],
@@ -11368,7 +11368,7 @@ var MyApp = (() => {
         memoryKey: "Zeitmanagement \u2192 Stress reduzieren",
         correct: 1
       };
-      HELP_DATA2["lesen3_exam3b_q1"] = {
+      HELP_DATA2["lesen3_exam109_q1"] = {
         paragraphStart: "Die Nachfrage nach individueller Farb- und Stilberatung ist gro\xDF.",
         paragraphTranslation: "\u0627\u0644\u0637\u0644\u0628 \u0639\u0644\u0649 \u0627\u0633\u062A\u0634\u0627\u0631\u0627\u062A \u0627\u0644\u0623\u0644\u0648\u0627\u0646 \u0648\u0627\u0644\u0623\u0646\u0627\u0642\u0629 \u0627\u0644\u0641\u0631\u062F\u064A\u0629 \u0643\u0628\u064A\u0631.",
         paragraphKeywords: [
@@ -11389,7 +11389,7 @@ var MyApp = (() => {
         memoryKey: "Stilberatung \u2192 Kleidungsstil",
         correct: 5
       };
-      HELP_DATA2["lesen3_exam3b_q2"] = {
+      HELP_DATA2["lesen3_exam109_q2"] = {
         paragraphStart: "Die meisten Menschen kennen keine Strategien, wie sie ihr Lernverhalten",
         paragraphTranslation: "\u0645\u0639\u0638\u0645 \u0627\u0644\u0646\u0627\u0633 \u0644\u0627 \u064A\u0639\u0631\u0641\u0648\u0646 \u0627\u0633\u062A\u0631\u0627\u062A\u064A\u062C\u064A\u0627\u062A \u0644\u062A\u062F\u0631\u064A\u0628 \u0633\u0644\u0648\u0643\u0647\u0645 \u0627\u0644\u062A\u0639\u0644\u064A\u0645\u064A",
         paragraphKeywords: [
@@ -11410,7 +11410,7 @@ var MyApp = (() => {
         memoryKey: "Lernstrategien \u2192 besser lernen",
         correct: 3
       };
-      HELP_DATA2["lesen3_exam3b_q3"] = {
+      HELP_DATA2["lesen3_exam109_q3"] = {
         paragraphStart: "Dieses erstmals 1788 erschienene Buch handelt von dem Umgang der Menschen miteinander",
         paragraphTranslation: "\u0647\u0630\u0627 \u0627\u0644\u0643\u062A\u0627\u0628 \u0627\u0644\u0630\u064A \u0635\u062F\u0631 \u0644\u0623\u0648\u0644 \u0645\u0631\u0629 \u0639\u0627\u0645 1788 \u064A\u062A\u062D\u062F\u062B \u0639\u0646 \u062A\u0639\u0627\u0645\u0644 \u0627\u0644\u0646\u0627\u0633 \u0645\u0639 \u0628\u0639\u0636\u0647\u0645 \u0627\u0644\u0628\u0639\u0636",
         paragraphKeywords: [
@@ -11431,7 +11431,7 @@ var MyApp = (() => {
         memoryKey: "1788 \u2192 H\xF6flichkeit",
         correct: 7
       };
-      HELP_DATA2["lesen3_exam3b_q4"] = {
+      HELP_DATA2["lesen3_exam109_q4"] = {
         paragraphStart: "Jeder Mensch kann seine kommunikativen M\xF6glichkeiten entdecken",
         paragraphTranslation: "\u0643\u0644 \u0625\u0646\u0633\u0627\u0646 \u064A\u0645\u0643\u0646\u0647 \u0627\u0643\u062A\u0634\u0627\u0641 \u0642\u062F\u0631\u0627\u062A\u0647 \u0627\u0644\u062A\u0648\u0627\u0635\u0644\u064A\u0629",
         paragraphKeywords: [
@@ -11452,7 +11452,7 @@ var MyApp = (() => {
         memoryKey: "Rede\xE4ngste \u2192 \xFCberwinden",
         correct: 9
       };
-      HELP_DATA2["lesen3_exam3b_q5"] = {
+      HELP_DATA2["lesen3_exam109_q5"] = {
         paragraphStart: "Der K\xF6rper l\xFCgt nicht, Gesten und Geb\xE4rden decken die Ebene des Unbewusstsein auf",
         paragraphTranslation: "\u0627\u0644\u062C\u0633\u062F \u0644\u0627 \u064A\u0643\u0630\u0628\u060C \u0627\u0644\u0625\u064A\u0645\u0627\u0621\u0627\u062A \u0648\u0627\u0644\u062D\u0631\u0643\u0627\u062A \u062A\u0643\u0634\u0641 \u0645\u0633\u062A\u0648\u0649 \u0627\u0644\u0644\u0627\u0648\u0639\u064A",
         paragraphKeywords: [
@@ -11473,7 +11473,7 @@ var MyApp = (() => {
         memoryKey: "K\xF6rpersprache \u2192 Gestik + Mimik",
         correct: 4
       };
-      HELP_DATA2["lesen3_exam3b_q6"] = {
+      HELP_DATA2["lesen3_exam109_q6"] = {
         paragraphStart: "Rolph Barth 'Basiswissen: Bewerbungstraining' Die Konkurrenz auf dem Arbeitsmarkt",
         paragraphTranslation: "\u0631\u0648\u0644\u0641 \u0628\u0627\u0631\u062B '\u0623\u0633\u0627\u0633\u064A\u0627\u062A: \u062A\u062F\u0631\u064A\u0628 \u0627\u0644\u062A\u0642\u062F\u064A\u0645 \u0639\u0644\u0649 \u0627\u0644\u0648\u0638\u0627\u0626\u0641' \u0627\u0644\u0645\u0646\u0627\u0641\u0633\u0629 \u0641\u064A \u0633\u0648\u0642 \u0627\u0644\u0639\u0645\u0644",
         paragraphKeywords: [
@@ -11494,7 +11494,7 @@ var MyApp = (() => {
         memoryKey: "Bewerbungstraining \u2192 Vorstellungsgespr\xE4ch",
         correct: 6
       };
-      HELP_DATA2["lesen3_exam3b_q7"] = {
+      HELP_DATA2["lesen3_exam109_q7"] = {
         paragraphStart: "Viele Menschen wissen nicht mehr, wo Ihnen der Kopf steht.",
         paragraphTranslation: "\u0643\u062B\u064A\u0631 \u0645\u0646 \u0627\u0644\u0646\u0627\u0633 \u0644\u0627 \u064A\u0639\u0631\u0641\u0648\u0646 \u0623\u064A\u0646 \u0623\u0630\u0647\u0627\u0646\u0647\u0645 \u0645\u0646 \u0623\u0642\u062F\u0627\u0645\u0647\u0645.",
         paragraphKeywords: [
@@ -12376,7 +12376,7 @@ var MyApp = (() => {
         memoryKey: "Kind \u2192 Technik-Museum",
         correct: 9
       };
-      HELP_DATA2["lesen3_exam10b_q1"] = {
+      HELP_DATA2["lesen3_exam111_q1"] = {
         paragraphStart: "Neues Angebot der VHS Ab dem kommenden Monat bietet die Volkshochschule in Zusammenarbeit mit der B\xFCrgerschaft in unserem Stadtteil F\xFChrungen an.",
         paragraphTranslation: "\u0639\u0631\u0636 \u062C\u062F\u064A\u062F \u0645\u0646 \u0645\u062F\u0631\u0633\u0629 \u0627\u0644\u0634\u0639\u0628 \u0628\u062F\u0621\u0627\u064B \u0645\u0646 \u0627\u0644\u0634\u0647\u0631 \u0627\u0644\u0642\u0627\u062F\u0645\u060C \u062A\u0642\u062F\u0645 \u0645\u062F\u0631\u0633\u0629 \u0627\u0644\u0634\u0639\u0628 \u0628\u0627\u0644\u062A\u0639\u0627\u0648\u0646 \u0645\u0639 \u0627\u0644\u0645\u0648\u0627\u0637\u0646\u064A\u0646 \u0641\u064A \u062D\u064A\u0646\u0627 \u062C\u0648\u0644\u0627\u062A \u0625\u0631\u0634\u0627\u062F\u064A\u0629.",
         paragraphKeywords: [
@@ -12397,7 +12397,7 @@ var MyApp = (() => {
         memoryKey: "neu in Stadt \u2192 F\xFChrung",
         correct: 7
       };
-      HELP_DATA2["lesen3_exam10b_q2"] = {
+      HELP_DATA2["lesen3_exam111_q2"] = {
         paragraphStart: "Kurzreise nach M\xFCnchen Studienreisen Studius bietet Ihnen einen besonderen Ausflug an: Fahren Sie mit unserem modernen Reisebus am fr\xFChen Morgen von K\xF6ln nach M\xFCnchen zum Deutschen Museum",
         paragraphTranslation: "\u0631\u062D\u0644\u0629 \u0642\u0635\u064A\u0631\u0629 \u0625\u0644\u0649 \u0645\u064A\u0648\u0646\u064A\u062E \u062A\u0642\u062F\u0645 \u0644\u0643 '\u0633\u062A\u0648\u062F\u064A\u0648\u0633' \u0631\u062D\u0644\u0629 \u062E\u0627\u0635\u0629: \u0627\u0646\u0637\u0644\u0642 \u0645\u0639 \u062D\u0627\u0641\u0644\u062A\u0646\u0627 \u0627\u0644\u062D\u062F\u064A\u062B\u0629 \u0641\u064A \u0627\u0644\u0635\u0628\u0627\u062D \u0627\u0644\u0628\u0627\u0643\u0631 \u0645\u0646 \u0643\u0648\u0644\u0648\u0646\u064A\u0627 \u0625\u0644\u0649 \u0645\u064A\u0648\u0646\u064A\u062E \u0625\u0644\u0649 \u0627\u0644\u0645\u062A\u062D\u0641 \u0627\u0644\u0623\u0644\u0645\u0627\u0646\u064A",
         paragraphKeywords: [
@@ -12418,7 +12418,7 @@ var MyApp = (() => {
         memoryKey: "Technikgeschichte \u2192 Deutsches Museum",
         correct: 3
       };
-      HELP_DATA2["lesen3_exam10b_q3"] = {
+      HELP_DATA2["lesen3_exam111_q3"] = {
         paragraphStart: "Entspannung am Wasser Von M\xE4rz bis September (bei sch\xF6nem Wetter auch l\xE4nger) k\xF6nnen Sie bei unserem Bootsverleih 'Wasserfall' das Gef\xE4hrt Ihrer Wahl ausleihen",
         paragraphTranslation: "\u0627\u0633\u062A\u0631\u062E\u0627\u0621 \u0639\u0644\u0649 \u0627\u0644\u0645\u0627\u0621 \u0645\u0646 \u0645\u0627\u0631\u0633 \u0625\u0644\u0649 \u0633\u0628\u062A\u0645\u0628\u0631 (\u0648\u0641\u064A \u0627\u0644\u0637\u0642\u0633 \u0627\u0644\u062C\u064A\u062F \u0644\u0641\u062A\u0631\u0629 \u0623\u0637\u0648\u0644) \u064A\u0645\u0643\u0646\u0643 \u0627\u0633\u062A\u0626\u062C\u0627\u0631 \u0627\u0644\u0645\u0631\u0643\u0628\u0629 \u0627\u0644\u062A\u064A \u062A\u062E\u062A\u0627\u0631\u0647\u0627 \u0645\u0646 \u062A\u0623\u062C\u064A\u0631 \u0627\u0644\u0642\u0648\u0627\u0631\u0628 '\u0634\u0644\u0627\u0644'",
         paragraphKeywords: [
@@ -12439,7 +12439,7 @@ var MyApp = (() => {
         memoryKey: "Boot \u2192 Bewegung",
         correct: 0
       };
-      HELP_DATA2["lesen3_exam10b_q4"] = {
+      HELP_DATA2["lesen3_exam111_q4"] = {
         paragraphStart: "Schiffe versenken, Marmorkuchen und selbstgebastelte Papierh\xFCte Das bietet Ihnen unser Service 'Kinderfeiern leicht gemacht'.",
         paragraphTranslation: "\u0625\u063A\u0631\u0627\u0642 \u0627\u0644\u0633\u0641\u0646\u060C \u0643\u0639\u0643\u0629 \u0627\u0644\u0631\u062E\u0627\u0645\u060C \u0648\u0627\u0644\u0642\u0628\u0639\u0627\u062A \u0627\u0644\u0648\u0631\u0642\u064A\u0629 \u0627\u0644\u0645\u0635\u0646\u0648\u0639\u0629 \u064A\u062F\u0648\u064A\u0627\u064B \u0647\u0630\u0627 \u0645\u0627 \u064A\u0642\u062F\u0645\u0647 \u0644\u0643 \u062E\u062F\u0645\u062A\u0646\u0627 '\u062D\u0641\u0644\u0627\u062A \u0627\u0644\u0623\u0637\u0641\u0627\u0644 \u0628\u0633\u0647\u0648\u0644\u0629'.",
         paragraphKeywords: [
@@ -12460,7 +12460,7 @@ var MyApp = (() => {
         memoryKey: "Kindergeburtstag \u2192 Hilfe",
         correct: 2
       };
-      HELP_DATA2["lesen3_exam10b_q5"] = {
+      HELP_DATA2["lesen3_exam111_q5"] = {
         paragraphStart: "Nur auf Reisen lernt der Mensch Seit fast f\xFCnf Jahrzehnten bietet die \xFCberregionale Bildungsakademie 'Lernform e.V.' allen interessierten B\xFCrgerinnen und B\xFCrgern Ausfl\xFCge zu wichtigen Orten der deutschen Geschichte an.",
         paragraphTranslation: "\u0641\u0642\u0637 \u0628\u0627\u0644\u0633\u0641\u0631 \u064A\u062A\u0639\u0644\u0645 \u0627\u0644\u0625\u0646\u0633\u0627\u0646 \u0645\u0646\u0630 \u0645\u0627 \u064A\u0642\u0631\u0628 \u0645\u0646 \u062E\u0645\u0633\u0629 \u0639\u0642\u0648\u062F\u060C \u062A\u0642\u062F\u0645 \u0623\u0643\u0627\u062F\u064A\u0645\u064A\u0629 \u0627\u0644\u062A\u0639\u0644\u064A\u0645 '\u0644\u064A\u0631\u0646\u0641\u0648\u0631\u0645' \u0644\u062C\u0645\u064A\u0639 \u0627\u0644\u0645\u0648\u0627\u0637\u0646\u064A\u0646 \u0627\u0644\u0645\u0647\u062A\u0645\u064A\u0646 \u0631\u062D\u0644\u0627\u062A \u0625\u0644\u0649 \u0623\u0645\u0627\u0643\u0646 \u0645\u0647\u0645\u0629 \u0641\u064A \u0627\u0644\u062A\u0627\u0631\u064A\u062E \u0627\u0644\u0623\u0644\u0645\u0627\u0646\u064A.",
         paragraphKeywords: [
@@ -12481,7 +12481,7 @@ var MyApp = (() => {
         memoryKey: "deutsche Geschichte \u2192 St\xE4dte",
         correct: 8
       };
-      HELP_DATA2["lesen3_exam10b_q6"] = {
+      HELP_DATA2["lesen3_exam111_q6"] = {
         paragraphStart: "Deutschland aus einer anderen Perspektive Lernen Sie die sch\xF6nsten deutschen Landschaften vom Fluss aus mit einer unserer Flusskreuzfahrten kennen.",
         paragraphTranslation: "\u0623\u0644\u0645\u0627\u0646\u064A\u0627 \u0645\u0646 \u0645\u0646\u0638\u0648\u0631 \u0622\u062E\u0631 \u062A\u0639\u0631\u0641 \u0639\u0644\u0649 \u0623\u062C\u0645\u0644 \u0627\u0644\u0645\u0646\u0627\u0638\u0631 \u0627\u0644\u0637\u0628\u064A\u0639\u064A\u0629 \u0627\u0644\u0623\u0644\u0645\u0627\u0646\u064A\u0629 \u0645\u0646 \u0627\u0644\u0646\u0647\u0631 \u0645\u0639 \u0625\u062D\u062F\u0649 \u0631\u062D\u0644\u0627\u062A\u0646\u0627 \u0627\u0644\u0646\u0647\u0631\u064A\u0629.",
         paragraphKeywords: [
@@ -12502,7 +12502,7 @@ var MyApp = (() => {
         memoryKey: "Schiffsreise \u2192 Fluss",
         correct: 4
       };
-      HELP_DATA2["lesen3_exam10b_q7"] = {
+      HELP_DATA2["lesen3_exam111_q7"] = {
         paragraphStart: "Unser Stadtteil ist lebendig Deshalb planen wir, im kommenden Jahr auf allen Pl\xE4tzen des Stadtteils ein Fest durchzuf\xFChren.",
         paragraphTranslation: "\u062D\u064A\u0646\u0627 \u062D\u064A\u0648\u064A \u0644\u0630\u0644\u0643 \u0646\u062E\u0637\u0637 \u0641\u064A \u0627\u0644\u0639\u0627\u0645 \u0627\u0644\u0642\u0627\u062F\u0645 \u0644\u0625\u0642\u0627\u0645\u0629 \u0627\u062D\u062A\u0641\u0627\u0644 \u0641\u064A \u062C\u0645\u064A\u0639 \u0633\u0627\u062D\u0627\u062A \u0627\u0644\u062D\u064A.",
         paragraphKeywords: [
@@ -12523,7 +12523,7 @@ var MyApp = (() => {
         memoryKey: "Stadtteil \u2192 Helfer gesucht",
         correct: 5
       };
-      HELP_DATA2["lesen3_exam10b_q8"] = {
+      HELP_DATA2["lesen3_exam111_q8"] = {
         paragraphStart: "Technik - spannend und verst\xE4ndlich Sie kennen die typische Kinderfrage: 'Wie geht das?'",
         paragraphTranslation: "\u0627\u0644\u062A\u0642\u0646\u064A\u0629 - \u0645\u062B\u064A\u0631\u0629 \u0648\u0645\u0641\u0647\u0648\u0645\u0629 \u062A\u0639\u0631\u0641 \u0627\u0644\u0633\u0624\u0627\u0644 \u0627\u0644\u0646\u0645\u0648\u0630\u062C\u064A \u0644\u0644\u0623\u0637\u0641\u0627\u0644: '\u0643\u064A\u0641 \u064A\u0639\u0645\u0644 \u0647\u0630\u0627\u061F'",
         paragraphKeywords: [
@@ -12712,7 +12712,7 @@ var MyApp = (() => {
         memoryKey: "Musiktandem \u2192 Instrument lernen",
         correct: 0
       };
-      HELP_DATA2["lesen3_exam6b_q1"] = {
+      HELP_DATA2["lesen3_exam110_q1"] = {
         paragraphStart: "Die Veranstaltungsprofis Seit mehr als zwanzig Jahren organisieren wir Messen (Buchmessen, Verbrauchermessen, Fahrradmessen, Automessen, Spielemessen) in ganz Europa.",
         paragraphTranslation: "\u062E\u0628\u0631\u0627\u0621 \u0627\u0644\u0641\u0639\u0627\u0644\u064A\u0627\u062A \u0645\u0646\u0630 \u0623\u0643\u062B\u0631 \u0645\u0646 \u0639\u0634\u0631\u064A\u0646 \u0639\u0627\u0645\u0627\u064B\u060C \u0646\u0646\u0638\u0645 \u0645\u0639\u0627\u0631\u0636 (\u0645\u0639\u0627\u0631\u0636 \u0643\u062A\u0628\u060C \u0645\u0639\u0627\u0631\u0636 \u0627\u0633\u062A\u0647\u0644\u0627\u0643\u064A\u0629\u060C \u0645\u0639\u0627\u0631\u0636 \u062F\u0631\u0627\u062C\u0627\u062A\u060C \u0645\u0639\u0627\u0631\u0636 \u0633\u064A\u0627\u0631\u0627\u062A\u060C \u0645\u0639\u0627\u0631\u0636 \u0623\u0644\u0639\u0627\u0628) \u0641\u064A \u062C\u0645\u064A\u0639 \u0623\u0646\u062D\u0627\u0621 \u0623\u0648\u0631\u0648\u0628\u0627.",
         paragraphKeywords: [
@@ -12733,7 +12733,7 @@ var MyApp = (() => {
         memoryKey: "Veranstaltung \u2192 Stelle",
         correct: 2
       };
-      HELP_DATA2["lesen3_exam6b_q2"] = {
+      HELP_DATA2["lesen3_exam110_q2"] = {
         paragraphStart: "Gemeinsam mehr erleben Gruppenreisen bieten wir Ihnen bereits ab f\xFCnf Personen an - St\xE4dtereisen, Wellnesswochenenden und neu im Angebot auch Reisen zu kulturellen Veranstaltungen.",
         paragraphTranslation: "\u062A\u062C\u0631\u0628\u0629 \u0627\u0644\u0645\u0632\u064A\u062F \u0645\u0639\u0627\u064B \u0646\u0642\u062F\u0645 \u0644\u0643 \u0631\u062D\u0644\u0627\u062A \u062C\u0645\u0627\u0639\u064A\u0629 \u0627\u0628\u062A\u062F\u0627\u0621\u064B \u0645\u0646 \u062E\u0645\u0633\u0629 \u0623\u0634\u062E\u0627\u0635 - \u0631\u062D\u0644\u0627\u062A \u0645\u062F\u0646\u060C \u0639\u0637\u0644\u0627\u062A \u0646\u0647\u0627\u064A\u0629 \u0623\u0633\u0628\u0648\u0639 \u0635\u062D\u064A\u0629\u060C \u0648\u062C\u062F\u064A\u062F\u0627\u064B \u0631\u062D\u0644\u0627\u062A \u0625\u0644\u0649 \u0641\u0639\u0627\u0644\u064A\u0627\u062A \u062B\u0642\u0627\u0641\u064A\u0629.",
         paragraphKeywords: [
@@ -12754,7 +12754,7 @@ var MyApp = (() => {
         memoryKey: "Gruppenreise \u2192 Musikveranstaltung",
         correct: 1
       };
-      HELP_DATA2["lesen3_exam6b_q3"] = {
+      HELP_DATA2["lesen3_exam110_q3"] = {
         paragraphStart: "Musikfestival Taubertal: 24. Juli bis 3. August Auch in diesem Jahr kommen wieder viele bekannte Bands und interessante neue K\xFCnstler.",
         paragraphTranslation: "\u0645\u0647\u0631\u062C\u0627\u0646 \u062A\u0627\u0648\u0628\u064A\u0631\u062A\u0627\u0644 \u0627\u0644\u0645\u0648\u0633\u064A\u0642\u064A: 24 \u064A\u0648\u0644\u064A\u0648 \u0625\u0644\u0649 3 \u0623\u063A\u0633\u0637\u0633 \u0647\u0630\u0627 \u0627\u0644\u0639\u0627\u0645 \u0623\u064A\u0636\u0627\u064B\u060C \u064A\u0623\u062A\u064A \u0627\u0644\u0639\u062F\u064A\u062F \u0645\u0646 \u0627\u0644\u0641\u0631\u0642 \u0627\u0644\u0645\u0639\u0631\u0648\u0641\u0629 \u0648\u0627\u0644\u0641\u0646\u0627\u0646\u064A\u0646 \u0627\u0644\u062C\u062F\u062F \u0627\u0644\u0645\u062B\u064A\u0631\u064A\u0646 \u0644\u0644\u0627\u0647\u062A\u0645\u0627\u0645.",
         paragraphKeywords: [
@@ -12775,7 +12775,7 @@ var MyApp = (() => {
         memoryKey: "Musikfestival \u2192 Job",
         correct: 7
       };
-      HELP_DATA2["lesen3_exam6b_q4"] = {
+      HELP_DATA2["lesen3_exam110_q4"] = {
         paragraphStart: "Alle Veranstaltungen aus einer Hand Ob Jazz, Rock, Klassik, Musical: Bei uns finden Sie Veranstaltungen aus allen Musikbereichen!",
         paragraphTranslation: "\u062C\u0645\u064A\u0639 \u0627\u0644\u0641\u0639\u0627\u0644\u064A\u0627\u062A \u0645\u0646 \u064A\u062F \u0648\u0627\u062D\u062F\u0629 \u0633\u0648\u0627\u0621 \u062C\u0627\u0632\u060C \u0631\u0648\u0643\u060C \u0643\u0644\u0627\u0633\u064A\u0643\u064A\u060C \u0645\u0648\u0633\u064A\u0642\u064A: \u0639\u0646\u062F\u0646\u0627 \u062A\u062C\u062F \u0641\u0639\u0627\u0644\u064A\u0627\u062A \u0645\u0646 \u062C\u0645\u064A\u0639 \u0627\u0644\u0645\u062C\u0627\u0644\u0627\u062A \u0627\u0644\u0645\u0648\u0633\u064A\u0642\u064A\u0629!",
         paragraphKeywords: [
@@ -12796,7 +12796,7 @@ var MyApp = (() => {
         memoryKey: "Eintrittskarten \u2192 Geschenk",
         correct: 3
       };
-      HELP_DATA2["lesen3_exam6b_q5"] = {
+      HELP_DATA2["lesen3_exam110_q5"] = {
         paragraphStart: "Wir organisieren Veranstaltungen in verschiedenen Gr\xF6\xDFenordnungen - von der kleinen Familienfeier mit zehn Personen bis hin zu gro\xDFen Firmenveranstaltungen mit mehreren Hundert Teilnehmern.",
         paragraphTranslation: "\u0646\u0646\u0638\u0645 \u0641\u0639\u0627\u0644\u064A\u0627\u062A \u0628\u0623\u062D\u062C\u0627\u0645 \u0645\u062E\u062A\u0644\u0641\u0629 - \u0645\u0646 \u0627\u062D\u062A\u0641\u0627\u0644 \u0639\u0627\u0626\u0644\u064A \u0635\u063A\u064A\u0631 \u0628\u0639\u0634\u0631\u0629 \u0623\u0634\u062E\u0627\u0635 \u0625\u0644\u0649 \u0641\u0639\u0627\u0644\u064A\u0627\u062A \u0634\u0631\u0643\u0627\u062A \u0643\u0628\u064A\u0631\u0629 \u0628\u0645\u0626\u0627\u062A \u0627\u0644\u0645\u0634\u0627\u0631\u0643\u064A\u0646.",
         paragraphKeywords: [
@@ -12817,7 +12817,7 @@ var MyApp = (() => {
         memoryKey: "Veranstaltung \u2192 Unterst\xFCtzung",
         correct: 6
       };
-      HELP_DATA2["lesen3_exam6b_q6"] = {
+      HELP_DATA2["lesen3_exam110_q6"] = {
         paragraphStart: "I Gitarre, Violine & Co. Im Musikverein Wohlklang lernen schon die ganz Kleinen den spielerischen Umgang mit Instrumenten.",
         paragraphTranslation: "\u0627\u0644\u063A\u064A\u062A\u0627\u0631\u060C \u0627\u0644\u0643\u0645\u0627\u0646 \u0648\u063A\u064A\u0631\u0647\u0627 \u0641\u064A \u062C\u0645\u0639\u064A\u0629 \u0627\u0644\u0645\u0648\u0633\u064A\u0642\u0649 '\u0644\u062D\u0646 \u062C\u0645\u064A\u0644'\u060C \u064A\u062A\u0639\u0644\u0645 \u0627\u0644\u0635\u063A\u0627\u0631 \u062C\u062F\u0627\u064B \u0627\u0644\u062A\u0639\u0627\u0645\u0644 \u0627\u0644\u0645\u0631\u062D \u0645\u0639 \u0627\u0644\u0622\u0644\u0627\u062A \u0627\u0644\u0645\u0648\u0633\u064A\u0642\u064A\u0629.",
         paragraphKeywords: [
@@ -12838,7 +12838,7 @@ var MyApp = (() => {
         memoryKey: "Kinder \u2192 Musik",
         correct: 5
       };
-      HELP_DATA2["lesen3_exam6b_q7"] = {
+      HELP_DATA2["lesen3_exam110_q7"] = {
         paragraphStart: "Rhein/Ruhr-Festival Im kommenden Herbst findet zum ersten Mal das neue Rhein/Ruhr-Festival statt - und wir ben\xF6tigen noch Hilfe.",
         paragraphTranslation: "\u0645\u0647\u0631\u062C\u0627\u0646 \u0627\u0644\u0631\u0627\u064A\u0646/\u0627\u0644\u0631\u0648\u0631 \u0641\u064A \u0627\u0644\u062E\u0631\u064A\u0641 \u0627\u0644\u0642\u0627\u062F\u0645\u060C \u0633\u064A\u0642\u0627\u0645 \u0645\u0647\u0631\u062C\u0627\u0646 \u0627\u0644\u0631\u0627\u064A\u0646/\u0627\u0644\u0631\u0648\u0631 \u0627\u0644\u062C\u062F\u064A\u062F \u0644\u0623\u0648\u0644 \u0645\u0631\u0629 - \u0648\u0646\u062D\u0646 \u0628\u062D\u0627\u062C\u0629 \u0625\u0644\u0649 \u0645\u0633\u0627\u0639\u062F\u0629.",
         paragraphKeywords: [
@@ -12859,7 +12859,7 @@ var MyApp = (() => {
         memoryKey: "Musikerin \u2192 Festival",
         correct: 9
       };
-      HELP_DATA2["lesen3_exam6b_q8"] = {
+      HELP_DATA2["lesen3_exam110_q8"] = {
         paragraphStart: "Musiker gesucht Seit einem Jahr vermitteln wir 'Musiktandems' - Musiker suchen Musiker und geben sich gegenseitig Unterricht.",
         paragraphTranslation: "\u0645\u0637\u0644\u0648\u0628 \u0645\u0648\u0633\u064A\u0642\u064A\u0648\u0646 \u0645\u0646\u0630 \u0639\u0627\u0645\u060C \u0646\u0642\u062F\u0645 '\u062B\u0646\u0627\u0626\u064A\u0627\u062A \u0645\u0648\u0633\u064A\u0642\u064A\u0629' - \u0645\u0648\u0633\u064A\u0642\u064A\u0648\u0646 \u064A\u0628\u062D\u062B\u0648\u0646 \u0639\u0646 \u0645\u0648\u0633\u064A\u0642\u064A\u064A\u0646 \u0648\u064A\u0642\u062F\u0645\u0648\u0646 \u062F\u0631\u0648\u0633\u0627\u064B \u0645\u062A\u0628\u0627\u062F\u0644\u0629.",
         paragraphKeywords: [
@@ -16114,7 +16114,7 @@ var MyApp = (() => {
         memoryKey: "Kom\xF6die \u2192 lachen",
         correct: 9
       };
-      HELP_DATA2["lesen3_exam24b_q1"] = {
+      HELP_DATA2["lesen3_exam112_q1"] = {
         paragraphStart: "Das Museum der Badekultur l\xE4dt gro\xDFe und kleine Besucher zu einer informativen und kurzweiligen Reise durch 2000 Jahre Badekultur ein.",
         paragraphTranslation: "\u0645\u062A\u062D\u0641 \u062B\u0642\u0627\u0641\u0629 \u0627\u0644\u0627\u0633\u062A\u062D\u0645\u0627\u0645 \u064A\u062F\u0639\u0648 \u0627\u0644\u0632\u0648\u0627\u0631 \u0627\u0644\u0643\u0628\u0627\u0631 \u0648\u0627\u0644\u0635\u063A\u0627\u0631 \u0644\u0631\u062D\u0644\u0629 \u0645\u0645\u062A\u0639\u0629 \u0639\u0628\u0631 2000 \u0639\u0627\u0645 \u0645\u0646 \u062B\u0642\u0627\u0641\u0629 \u0627\u0644\u0627\u0633\u062A\u062D\u0645\u0627\u0645.",
         paragraphKeywords: [
@@ -16135,7 +16135,7 @@ var MyApp = (() => {
         memoryKey: "Museum \u2192 Kinder",
         correct: 0
       };
-      HELP_DATA2["lesen3_exam24b_q2"] = {
+      HELP_DATA2["lesen3_exam112_q2"] = {
         paragraphStart: "Die Badrenovierung steht vor der T\xFCr? Dann besuchen Sie unsere gro\xDFe B\xE4derausstellung.",
         paragraphTranslation: "\u062A\u062C\u062F\u064A\u062F \u0627\u0644\u062D\u0645\u0627\u0645 \u0639\u0644\u0649 \u0627\u0644\u0623\u0628\u0648\u0627\u0628\u061F \u0625\u0630\u0646 \u0632\u0631 \u0645\u0639\u0631\u0636 \u0627\u0644\u062D\u0645\u0627\u0645\u0627\u062A \u0627\u0644\u0643\u0628\u064A\u0631 \u0644\u062F\u064A\u0646\u0627.",
         paragraphKeywords: [
@@ -16156,7 +16156,7 @@ var MyApp = (() => {
         memoryKey: "Badrenovierung \u2192 Musterb\xE4der",
         correct: 8
       };
-      HELP_DATA2["lesen3_exam24b_q3"] = {
+      HELP_DATA2["lesen3_exam112_q3"] = {
         paragraphStart: "Ein Blick hinter die Kulissen Entdecken Sie die Welt von 'Alpen-Naturkosmetik'.",
         paragraphTranslation: "\u0646\u0638\u0631\u0629 \u062E\u0644\u0641 \u0627\u0644\u0643\u0648\u0627\u0644\u064A\u0633 \u0627\u0643\u062A\u0634\u0641 \u0639\u0627\u0644\u0645 '\u0645\u0633\u062A\u062D\u0636\u0631\u0627\u062A \u0627\u0644\u062A\u062C\u0645\u064A\u0644 \u0627\u0644\u0637\u0628\u064A\u0639\u064A\u0629 \u0645\u0646 \u0627\u0644\u0623\u0644\u0628'.",
         paragraphKeywords: [
@@ -16177,7 +16177,7 @@ var MyApp = (() => {
         memoryKey: "Naturkosmetik \u2192 Herstellung",
         correct: 6
       };
-      HELP_DATA2["lesen3_exam24b_q4"] = {
+      HELP_DATA2["lesen3_exam112_q4"] = {
         paragraphStart: "Rom bei Nacht Erleben Sie die Ewige Stadt nach Einbruch der Dunkelheit bei einer Besichtigungstour in einer kleinen Gruppe.",
         paragraphTranslation: "\u0631\u0648\u0645\u0627 \u0644\u064A\u0644\u0627\u064B \u0627\u0643\u062A\u0634\u0641 \u0627\u0644\u0645\u062F\u064A\u0646\u0629 \u0627\u0644\u062E\u0627\u0644\u062F\u0629 \u0628\u0639\u062F \u062D\u0644\u0648\u0644 \u0627\u0644\u0638\u0644\u0627\u0645 \u0641\u064A \u062C\u0648\u0644\u0629 \u0627\u0633\u062A\u0643\u0634\u0627\u0641\u064A\u0629 \u0641\u064A \u0645\u062C\u0645\u0648\u0639\u0629 \u0635\u063A\u064A\u0631\u0629.",
         paragraphKeywords: [
@@ -16198,7 +16198,7 @@ var MyApp = (() => {
         memoryKey: "Rom \u2192 besondere Aktivit\xE4ten",
         correct: 4
       };
-      HELP_DATA2["lesen3_exam24b_q5"] = {
+      HELP_DATA2["lesen3_exam112_q5"] = {
         paragraphStart: "Werden Sie Botschafter unserer Stadt! Sie kennen sich gut in Koblenz aus, interessieren sich f\xFCr die Geschichte von Stadt und Region und gehen gerne auf andere zu?",
         paragraphTranslation: "\u0643\u0646 \u0633\u0641\u064A\u0631\u0627\u064B \u0644\u0645\u062F\u064A\u0646\u062A\u0646\u0627! \u0647\u0644 \u062A\u0639\u0631\u0641 \u0643\u0648\u0628\u0644\u0646\u0632 \u062C\u064A\u062F\u0627\u064B\u060C \u0648\u062A\u0647\u062A\u0645 \u0628\u062A\u0627\u0631\u064A\u062E \u0627\u0644\u0645\u062F\u064A\u0646\u0629 \u0648\u0627\u0644\u0645\u0646\u0637\u0642\u0629\u060C \u0648\u062A\u062D\u0628 \u0627\u0644\u062A\u0648\u0627\u0635\u0644 \u0645\u0639 \u0627\u0644\u0622\u062E\u0631\u064A\u0646\u061F",
         paragraphKeywords: [
@@ -16219,7 +16219,7 @@ var MyApp = (() => {
         memoryKey: "Stadtf\xFChrer \u2192 Ausbildung",
         correct: 1
       };
-      HELP_DATA2["lesen3_exam24b_q6"] = {
+      HELP_DATA2["lesen3_exam112_q6"] = {
         paragraphStart: "Zwei Meister am Herd in der Filmkom\xF6die 'Zwei Meister am Herd' dreht sich alles um Gourmets, Sterne und feinste Zutaten.",
         paragraphTranslation: "\u0633\u064A\u062F\u0627\u0646 \u0641\u064A \u0627\u0644\u0645\u0637\u0628\u062E \u0641\u064A \u0627\u0644\u0641\u064A\u0644\u0645 \u0627\u0644\u0643\u0648\u0645\u064A\u062F\u064A '\u0633\u064A\u062F\u0627\u0646 \u0641\u064A \u0627\u0644\u0645\u0637\u0628\u062E'\u060C \u0643\u0644 \u0634\u064A\u0621 \u064A\u062F\u0648\u0631 \u062D\u0648\u0644 \u0627\u0644\u0630\u0648\u0627\u0642\u0629 \u0648\u0627\u0644\u0646\u062C\u0648\u0645 \u0648\u0623\u0641\u0636\u0644 \u0627\u0644\u0645\u0643\u0648\u0646\u0627\u062A.",
         paragraphKeywords: [

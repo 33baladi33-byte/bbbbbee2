@@ -2525,44 +2525,8 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
         transform: scale(0.96) !important;
     }
     
-    /* Sprach 2: تحسينات إضافية تحت 770px */
-    /* جعل بطاقات الكلمات تظهر في شبكة مع الحفاظ على نفس الشكل الأصلي */
-    #sprach2 > div > div:last-child > div:last-child {
-        display: grid !important;
-        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)) !important;
-        gap: 10px !important;
-        padding: 4px 0 !important;
-    }
-    #sprach2 .sprach2-word-card {
-        padding: 8px 10px !important;
-        font-size: 0.75rem !important;
-        border-radius: 8px !important;
-        background: #ffffff !important;
-        border: 1px solid #dce5ec !important;
-        text-align: center !important;
-        cursor: pointer !important;
-        transition: all 0.2s ease !important;
-        min-width: 60px !important;
-        min-height: 34px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        color: #1e293b !important;
-        font-weight: 500 !important;
-        white-space: normal !important;
-        word-break: keep-all !important;
-    }
-    /* تحسين أزرار الفجوات تحت 770px */
-    #sprach2 .sprach2-gap-btn {
-        font-size: 0.7rem !important;
-        padding: 4px 8px !important;
-        min-height: 32px !important;
-        background: #f8fafc !important;
-        border: 1px solid #e2e8f0 !important;
-        border-radius: 6px !important;
-        white-space: nowrap !important;
-        max-width: 90px !important;
-    }
+
+
 
     /* ===== تحسينات إضافية للتوحيد ===== */
     
@@ -7863,26 +7827,211 @@ body:has(#list.active) #backHomeBtn {
     #sprach1 .option-label span {
         font-size: 0.75rem !important;
     }
-    /* Sprach 2: الحفاظ على التصميم الأصلي للخيارات */
-    #sprach2 .option-label {
-        width: auto !important;
-        box-sizing: border-box !important;
-        padding: 8px 10px !important;
-        margin-bottom: 6px !important;
-        font-size: 0.8rem !important;
-        word-break: break-word !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        gap: 4px !important;
-        flex: 0 0 auto !important;
-        min-width: 60px !important;
-        background: #f8fafc !important;
-        border: 1px solid #e2e8f0 !important;
-        border-radius: 12px !important;
-    }
+
 }
 
+/* ============================================================
+   Sprach 1 & Sprach 2 - Responsive جديد تحت 770px
+   ============================================================ */
 
+/* 1. تنسيق موحد لأزرار الفجوات (Gaps) - Rounded Pill */
+#sprach1 .sprach1-gap-btn,
+#sprach2 .sprach2-gap-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    vertical-align: middle !important;
+    box-sizing: border-box !important;
+    
+    width: 38px !important;
+    min-width: 38px !important;
+    max-width: 38px !important;
+    height: 22px !important;
+    min-height: 22px !important;
+    max-height: 22px !important;
+    
+    padding: 0 !important;
+    margin: 0 2px !important;
+    
+    background: #d1d5db !important;
+    border: 1.5px solid #9ca3af !important;
+    border-radius: 12px !important;
+    
+    color: #1f2937 !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    
+    flex: 0 0 auto !important;
+    cursor: pointer !important;
+    transition: background 0.2s, border-color 0.2s, color 0.2s !important;
+}
+
+/* حالات التصحيح لأزرار الفجوات */
+#sprach1 .sprach1-gap-btn.correct,
+#sprach2 .sprach2-gap-btn.correct,
+#sprach1 .sprach1-gap-btn[data-correct="true"],
+#sprach2 .sprach2-gap-btn[data-correct="true"] {
+    background: #d4edda !important;
+    border-color: #28a745 !important;
+    color: #155724 !important;
+}
+
+#sprach1 .sprach1-gap-btn.wrong,
+#sprach2 .sprach2-gap-btn.wrong,
+#sprach1 .sprach1-gap-btn.empty,
+#sprach2 .sprach2-gap-btn.empty,
+#sprach1 .sprach1-gap-btn[data-wrong="true"],
+#sprach2 .sprach2-gap-btn[data-wrong="true"] {
+    background: #fef0e0 !important;
+    border-color: #e67e22 !important;
+    color: #856404 !important;
+}
+
+/* 2. محاذاة النص إلى اليسار في العمود الأول */
+#sprach1 > div > div:first-child,
+#sprach2 > div > div:first-child {
+    text-align: left !important;
+}
+
+/* 3. Sprach 2: عرض الكلمات (Wörter) في صفوف أفقية مع flex-wrap */
+#sprach2 .sprach2-option-group,
+#sprach2 .option-group,
+#sprach2 .word-group {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 8px !important;
+}
+
+#sprach2 .sprach2-option-group > div:last-child,
+#sprach2 .option-group > div:last-child,
+#sprach2 .word-group > .options-container {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px 10px !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    padding: 4px 0 !important;
+    width: 100% !important;
+}
+
+/* تنسيق بطاقات الكلمات في Sprach 2 */
+#sprach2 .sprach2-word-card {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 4px 10px !important;
+    background: #f1f5f9 !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 6px !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    color: #1e293b !important;
+    cursor: pointer !important;
+    transition: background 0.2s, border-color 0.2s !important;
+    white-space: nowrap !important;
+    flex: 0 0 auto !important;
+    min-height: 28px !important;
+}
+
+#sprach2 .sprach2-word-card:hover {
+    background: #e2e8f0 !important;
+}
+
+/* تلوين الكلمات بعد التصحيح */
+#sprach2 .sprach2-word-card.correct-option {
+    background: #d4edda !important;
+    border-color: #28a745 !important;
+    color: #155724 !important;
+}
+#sprach2 .sprach2-word-card.wrong-option {
+    background: #fef0e0 !important;
+    border-color: #e67e22 !important;
+    color: #856404 !important;
+}
+
+/* 4. أزرار التصحيح وإعادة المحاولة في نفس السطر */
+#sprach1 > div:last-child,
+#sprach2 > div:last-child {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    justify-content: flex-start !important;
+    margin-top: 16px !important;
+    flex-wrap: nowrap !important;
+}
+
+#sprach1 .check-btn,
+#sprach2 .check-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 6px 14px !important;
+    min-height: 32px !important;
+    height: auto !important;
+    background: #374151 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 6px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: background 0.2s !important;
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+}
+
+#sprach1 .check-btn:hover,
+#sprach2 .check-btn:hover {
+    background: #1f2937 !important;
+}
+
+#sprach1 .check-btn + button,
+#sprach2 .check-btn + button,
+#sprach1 .reset-btn,
+#sprach2 .reset-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 6px 12px !important;
+    min-height: 32px !important;
+    height: auto !important;
+    min-width: 32px !important;
+    background: #6b7280 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 6px !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: background 0.2s !important;
+    flex: 0 0 auto !important;
+    line-height: 1 !important;
+}
+
+#sprach1 .check-btn + button:hover,
+#sprach2 .check-btn + button:hover,
+#sprach1 .reset-btn:hover,
+#sprach2 .reset-btn:hover {
+    background: #4b5563 !important;
+}
+
+/* 5. تحسين ظهور الـ Hint (الإجابة الصحيحة بجانب الفجوة) */
+#sprach1 .sprach1-gap-btn + .custom-correct-hint,
+#sprach2 .sprach2-gap-btn + .custom-correct-hint {
+    display: inline !important;
+    margin-left: 2px !important;
+    color: #2b8c4a !important;
+    font-weight: bold !important;
+    font-size: inherit !important;
+    white-space: nowrap !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    line-height: inherit !important;
+}
 
 
 /* ========================================
