@@ -2546,6 +2546,7 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
         color: #856404 !important;
     }
     
+   
     /* تلميحات الإجابة الصحيحة - تبقى inline ولا تكسر السطر */
     .custom-correct-hint {
         display: inline !important;
@@ -2568,6 +2569,8 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
         float: none !important;
         clear: none !important;
         pointer-events: none !important;
+        /* تأكيد إضافي لمنع أي تحول إلى block */
+        display: inline !important;
     }
     
     /* التأكد من أن حاوية النص لا تكسر السطر بسبب الـ hint */
