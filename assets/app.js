@@ -25022,14 +25022,12 @@ var MyApp = (() => {
     leftTitle.style.marginTop = "0";
     leftTitle.style.color = "#2c3e66";
     leftColumn.appendChild(leftTitle);
-    const isMobile = window.innerWidth < 770;
     let htmlText = text;
     for (let i = 1; i <= options.length; i++) {
       const btnId = `sprach2_btn_${i}`;
       const currentAnswer = sprach2UserAnswers[i];
       const btnText = currentAnswer || `__( ${i} )__`;
-      const extraText = isMobile ? " \u2713 unbedingt" : "";
-      const btnHtml = `<button id="${btnId}" class="sprach2-gap-btn" data-qid="${i}">${btnText}${extraText}</button>`;
+      const btnHtml = `<button id="${btnId}" class="sprach2-gap-btn" data-qid="${i}">${btnText}</button>`;
       htmlText = htmlText.replace(`__( ${i} )__`, btnHtml);
       htmlText = htmlText.replace(`......(${i})......`, btnHtml);
       htmlText = htmlText.replace(`......(${i})`, btnHtml);
@@ -25298,6 +25296,7 @@ var MyApp = (() => {
     twoColumns.appendChild(rightColumn);
     container2.appendChild(twoColumns);
     const buttonContainer = document.createElement("div");
+    buttonContainer.className = "button-container";
     buttonContainer.style.display = "flex";
     buttonContainer.style.gap = "15px";
     buttonContainer.style.justifyContent = "center";
@@ -25470,14 +25469,12 @@ var MyApp = (() => {
     leftTitle.style.marginTop = "0";
     leftTitle.style.color = "#2c3e66";
     leftColumn.appendChild(leftTitle);
-    const isMobile = window.innerWidth < 770;
     let htmlText = text;
     for (let i = 1; i <= options.length; i++) {
       const btnId = `sprach1_btn_${i}`;
       const currentAnswer = sprach1UserAnswers[i];
       const btnText = currentAnswer || `__(${i})__`;
-      const extraText = isMobile ? " \u2713 unbedingt" : "";
-      const btnHtml = `<button id="${btnId}" class="sprach1-gap-btn">${btnText}${extraText}</button>`;
+      const btnHtml = `<button id="${btnId}" class="sprach1-gap-btn">${btnText}</button>`;
       htmlText = htmlText.replace(`\u2304 __ (${i}) __ \u2304`, btnHtml);
     }
     const textDiv = document.createElement("div");
@@ -25569,6 +25566,7 @@ var MyApp = (() => {
     twoColumns.appendChild(rightColumn);
     container2.appendChild(twoColumns);
     const buttonContainer = document.createElement("div");
+    buttonContainer.className = "button-container";
     buttonContainer.style.display = "flex";
     buttonContainer.style.gap = "15px";
     buttonContainer.style.justifyContent = "center";

@@ -2434,7 +2434,6 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
         transform: scale(0.98) !important;
     }
 
-
     /* ===== تحسينات Sprachbausteine Teil 1 و Teil 2 للهواتف (تحت 770px) ===== */
     
     /* الحاويات الرئيسية - تسمح بعرض النص بالكامل */
@@ -2524,6 +2523,7 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
         justify-content: center !important;
         box-sizing: border-box !important;
         transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease !important;
+        white-space: nowrap !important;
     }
     
     /* حالة صحيح */
@@ -2546,7 +2546,7 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
         color: #856404 !important;
     }
     
-    /* تلميحات الإجابة الصحيحة */
+    /* تلميحات الإجابة الصحيحة - تبقى inline ولا تكسر السطر */
     .custom-correct-hint {
         display: inline !important;
         margin-left: 4px !important;
@@ -2568,6 +2568,67 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
         float: none !important;
         clear: none !important;
         pointer-events: none !important;
+    }
+    
+    /* التأكد من أن حاوية النص لا تكسر السطر بسبب الـ hint */
+    #sprach1 .sprach1-gap-btn,
+    #sprach2 .sprach2-gap-btn {
+        white-space: nowrap !important;
+    }
+    
+    /* ===== أزرار Prüfen و ↺ تحت 770px ===== */
+    #sprach1 .button-container,
+    #sprach2 .button-container {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        gap: 8px !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: auto !important;
+        margin-top: 20px !important;
+    }
+    
+    #sprach1 .button-container .check-btn,
+    #sprach2 .button-container .check-btn,
+    #sprach1 .button-container .reset-btn,
+    #sprach2 .button-container .reset-btn {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: auto !important;
+        padding: 6px 14px !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        background: #4a5568 !important;
+        color: #ffffff !important;
+        border: none !important;
+        border-radius: 6px !important;
+        cursor: pointer !important;
+        min-height: 32px !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+        transition: background 0.2s !important;
+        font-family: inherit !important;
+        line-height: 1 !important;
+        letter-spacing: 0.2px !important;
+    }
+    
+    #sprach1 .button-container .reset-btn,
+    #sprach2 .button-container .reset-btn {
+        background: #6c757d !important;
+        min-width: 32px !important;
+        padding: 6px 10px !important;
+        font-size: 16px !important;
+    }
+    
+    #sprach1 .button-container .check-btn:hover,
+    #sprach2 .button-container .check-btn:hover {
+        background: #2d3748 !important;
+    }
+    
+    #sprach1 .button-container .reset-btn:hover,
+    #sprach2 .button-container .reset-btn:hover {
+        background: #5a6268 !important;
     }
     
     /* Sprach 2: تحسينات إضافية تحت 770px */
@@ -2597,7 +2658,6 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
         white-space: normal !important;
         word-break: keep-all !important;
     }
-
     /* ===== تحسينات إضافية للتوحيد ===== */
     
     /* أزرار العودة */
