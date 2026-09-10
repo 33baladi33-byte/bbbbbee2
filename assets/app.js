@@ -26384,31 +26384,18 @@ var MyApp = (() => {
     const pointsPerQuestion = 25 / total;
     const cards = container2.querySelectorAll(".question-card");
     for (const card of cards) {
-      const textSpan = card.querySelector("span");
-      if (!textSpan) continue;
-      const match = textSpan.textContent.match(/^(\d+)\s+(.+)$/);
-      if (!match) continue;
-      const displayNumber = parseInt(match[1]);
-      const questionText = match[2].trim();
+      const displayNumber = parseInt(card.dataset.questionId);
+      if (isNaN(displayNumber)) continue;
       let q = null;
-      let qIndex = -1;
       for (let i = 0; i < questionsToCheck.length; i++) {
         if (questionsToCheck[i].displayNumber === displayNumber) {
           q = questionsToCheck[i];
-          qIndex = i;
           break;
         }
       }
-      if (!q) {
-        for (let i = 0; i < questionsToCheck.length; i++) {
-          if (questionsToCheck[i].text.trim() === questionText) {
-            q = questionsToCheck[i];
-            qIndex = i;
-            break;
-          }
-        }
-      }
       if (!q) continue;
+      const textSpan = card.querySelector("span");
+      if (!textSpan) continue;
       const userAnswer = answers[displayNumber];
       const isCorrect = userAnswer === q.correct;
       card.classList.remove("correct-answer-card", "wrong-answer-card");
@@ -26457,21 +26444,10 @@ var MyApp = (() => {
     if (correctNumbersContainer) {
       correctNumbersContainer.style.display = "block";
       let correctNumbers = [];
-      for (const card of cards) {
-        const textSpan = card.querySelector("span");
-        if (!textSpan) continue;
-        const match = textSpan.textContent.match(/^(\d+)/);
-        if (!match) continue;
-        const displayNumber = parseInt(match[1]);
-        let q = null;
-        for (let i = 0; i < questionsToCheck.length; i++) {
-          if (questionsToCheck[i].displayNumber === displayNumber) {
-            q = questionsToCheck[i];
-            break;
-          }
-        }
-        if (q && q.correct === true) {
-          correctNumbers.push(displayNumber);
+      for (let i = 0; i < questionsToCheck.length; i++) {
+        const q = questionsToCheck[i];
+        if (q && q.correct === true && q.displayNumber !== void 0) {
+          correctNumbers.push(q.displayNumber);
         }
       }
       if (correctNumbers.length > 0) {
@@ -29642,9 +29618,12 @@ var MyApp = (() => {
           const cards = container2.querySelectorAll(".question-card");
           cards.forEach((card) => {
             card.classList.remove("correct-answer-card", "wrong-answer-card");
+            card.style.removeProperty("background-color");
+            card.style.removeProperty("border");
+            card.style.removeProperty("box-shadow");
           });
-          const allMessages = container2.querySelectorAll(".correct-message");
-          allMessages.forEach((msg) => msg.remove());
+          container2.querySelectorAll(".correct-message").forEach((msg) => msg.remove());
+          container2.querySelectorAll(".inline-correct-answer").forEach((msg) => msg.remove());
           const optionLabels = container2.querySelectorAll(".option-label");
           optionLabels.forEach((label) => {
             label.style.backgroundColor = "white";
