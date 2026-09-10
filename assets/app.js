@@ -27560,16 +27560,61 @@ var MyApp = (() => {
             card.style.boxShadow = "0 0 0 4px rgba(230,126,34,0.25)";
           }
           const oldMsg = card.querySelector(".correct-message");
-          if (!oldMsg) {
-            const msg = document.createElement("div");
-            msg.className = "correct-message";
-            msg.style.color = "#28a745";
-            msg.style.marginTop = "10px";
-            msg.style.fontSize = "13px";
-            const correctText2 = correctIndex !== null && correctIndex !== void 0 ? `${String.fromCharCode(97 + correctIndex)}. ${currentTeil3Data.situations[correctIndex]}` : "\u2727 \u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646 \u2727";
-            msg.innerHTML = `\u2705 \u0627\u0644\u0625\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629: ${correctText2}`;
-            card.appendChild(msg);
+          if (oldMsg) oldMsg.remove();
+          let correctText2;
+          if (correctIndex === null || correctIndex === void 0) {
+            correctText2 = "\u2727 \u0628\u062F\u0648\u0646 \u0639\u0646\u0648\u0627\u0646 \u2727";
+          } else {
+            correctText2 = currentTeil3Data.situations[correctIndex] || "(\u063A\u064A\u0631 \u0645\u062D\u062F\u062F)";
           }
+          const msg = document.createElement("div");
+          msg.className = "correct-message inline-correct-answer";
+          msg.style.setProperty("display", "flex", "important");
+          msg.style.setProperty("flex-direction", "row", "important");
+          msg.style.setProperty("align-items", "flex-start", "important");
+          msg.style.setProperty("gap", "8px", "important");
+          msg.style.setProperty("direction", "ltr", "important");
+          msg.style.setProperty("text-align", "left", "important");
+          msg.style.setProperty("padding", "clamp(8px, 1vw, 12px) clamp(12px, 1.5vw, 16px)", "important");
+          msg.style.setProperty("margin-top", "10px", "important");
+          msg.style.setProperty("margin-bottom", "4px", "important");
+          msg.style.setProperty("background", "linear-gradient(135deg, rgba(34, 197, 94, 0.10), rgba(34, 197, 94, 0.04))", "important");
+          msg.style.setProperty("border", "1px solid rgba(34, 197, 94, 0.35)", "important");
+          msg.style.setProperty("border-radius", "8px", "important");
+          msg.style.setProperty("font-family", "'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif", "important");
+          msg.style.setProperty("-webkit-font-smoothing", "antialiased", "important");
+          msg.style.setProperty("-moz-osx-font-smoothing", "grayscale", "important");
+          msg.style.setProperty("text-rendering", "optimizeLegibility", "important");
+          msg.style.setProperty("font-feature-settings", "'kern' 1, 'liga' 1", "important");
+          msg.style.setProperty("box-shadow", "0 2px 6px rgba(34, 197, 94, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.5)", "important");
+          msg.style.setProperty("box-sizing", "border-box", "important");
+          msg.style.setProperty("width", "100%", "important");
+          msg.style.setProperty("max-width", "100%", "important");
+          msg.style.setProperty("overflow-wrap", "break-word", "important");
+          msg.style.setProperty("word-wrap", "break-word", "important");
+          msg.style.setProperty("word-break", "normal", "important");
+          msg.style.setProperty("white-space", "normal", "important");
+          const checkSpan = document.createElement("span");
+          checkSpan.textContent = "\u2713";
+          checkSpan.style.setProperty("color", "#16a34a", "important");
+          checkSpan.style.setProperty("font-weight", "800", "important");
+          checkSpan.style.setProperty("font-size", "clamp(14px, 1.3vw, 18px)", "important");
+          checkSpan.style.setProperty("line-height", "1.2", "important");
+          checkSpan.style.setProperty("flex-shrink", "0", "important");
+          checkSpan.style.setProperty("margin-top", "2px", "important");
+          const textSpan = document.createElement("span");
+          textSpan.textContent = correctText2;
+          textSpan.style.setProperty("color", "#15803d", "important");
+          textSpan.style.setProperty("font-weight", "600", "important");
+          textSpan.style.setProperty("font-size", "clamp(12px, 1.1vw, 15px)", "important");
+          textSpan.style.setProperty("line-height", "1.6", "important");
+          textSpan.style.setProperty("flex", "1", "important");
+          textSpan.style.setProperty("min-width", "0", "important");
+          textSpan.style.setProperty("overflow-wrap", "break-word", "important");
+          textSpan.style.setProperty("word-wrap", "break-word", "important");
+          msg.appendChild(checkSpan);
+          msg.appendChild(textSpan);
+          card.appendChild(msg);
         }
       }
     }
@@ -31433,6 +31478,26 @@ var MyApp = (() => {
       };
       hoeren2Health = new Hoeren2HealthMode();
       window.hoeren2Health = hoeren2Health;
+      (function fixProfileDropdownPosition() {
+        function relocate() {
+          const dropdown = document.getElementById("profileDropdown");
+          if (!dropdown) return;
+          if (dropdown.parentElement === document.body) return;
+          const wasOpen = dropdown.classList.contains("show");
+          document.body.appendChild(dropdown);
+          if (wasOpen) dropdown.classList.add("show");
+          console.log("\u2705 [Profile] \u062A\u0645 \u0646\u0642\u0644 #profileDropdown \u0625\u0644\u0649 <body>");
+        }
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", relocate);
+        } else {
+          relocate();
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+          const observer = new MutationObserver(relocate);
+          observer.observe(document.body, { childList: true });
+        });
+      })();
     }
   });
 
