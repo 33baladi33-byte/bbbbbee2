@@ -1383,6 +1383,8 @@ var MyApp = (() => {
     correctQuestions.sort((a, b) => a - b);
     for (let i = 0; i < correctQuestions.length; i++) {
       const qNumber = correctQuestions[i];
+      const helpData = findHelpData(skill, examId, qNumber);
+      if (!helpData) continue;
       const card = createHelpCardWithoutHeader(qNumber);
       card.style.marginBottom = "16px";
       container2.appendChild(card);
@@ -26670,25 +26672,49 @@ var MyApp = (() => {
       if (isCorrect && selectedIndex !== -1) {
         score++;
         card.classList.add("correct-answer-card");
-        card.style.backgroundColor = "#d4edda";
-        card.style.border = "3px solid #28a745";
-        card.style.boxShadow = "0 0 0 4px rgba(40,167,69,0.25)";
-        if (selectElem) {
-          selectElem.style.backgroundColor = "#d4edda";
-          selectElem.style.border = "2px solid #28a745";
-          selectElem.style.color = "#155724";
-          selectElem.style.boxShadow = "0 0 0 3px rgba(40,167,69,0.2)";
+        if (window.innerWidth < 768) {
+          card.style.setProperty("background-color", "#d4edda", "important");
+          card.style.setProperty("border", "3px solid #28a745", "important");
+          card.style.setProperty("box-shadow", "0 0 0 4px rgba(40,167,69,0.20)", "important");
+          if (selectElem) {
+            selectElem.style.setProperty("background-color", "#c3e6cb", "important");
+            selectElem.style.setProperty("border", "2px solid #28a745", "important");
+            selectElem.style.setProperty("color", "#155724", "important");
+            selectElem.style.setProperty("font-weight", "600", "important");
+          }
+        } else {
+          card.style.backgroundColor = "#d4edda";
+          card.style.border = "3px solid #28a745";
+          card.style.boxShadow = "0 0 0 4px rgba(40,167,69,0.25)";
+          if (selectElem) {
+            selectElem.style.backgroundColor = "#d4edda";
+            selectElem.style.border = "2px solid #28a745";
+            selectElem.style.color = "#155724";
+            selectElem.style.boxShadow = "0 0 0 3px rgba(40,167,69,0.2)";
+          }
         }
       } else {
         card.classList.add("wrong-answer-card");
-        card.style.backgroundColor = "#fef0e0";
-        card.style.border = "3px solid #e67e22";
-        card.style.boxShadow = "0 0 0 4px rgba(230,126,34,0.25)";
-        if (selectElem) {
-          selectElem.style.backgroundColor = "#fef0e0";
-          selectElem.style.border = "2px solid #e67e22";
-          selectElem.style.color = "#155724";
-          selectElem.style.boxShadow = "0 0 0 3px rgba(230,126,34,0.2)";
+        if (window.innerWidth < 768) {
+          card.style.setProperty("background-color", "#fef0e0", "important");
+          card.style.setProperty("border", "3px solid #e67e22", "important");
+          card.style.setProperty("box-shadow", "0 0 0 4px rgba(230,126,34,0.20)", "important");
+          if (selectElem) {
+            selectElem.style.setProperty("background-color", "#fde2c8", "important");
+            selectElem.style.setProperty("border", "2px solid #e67e22", "important");
+            selectElem.style.setProperty("color", "#856404", "important");
+            selectElem.style.setProperty("font-weight", "600", "important");
+          }
+        } else {
+          card.style.backgroundColor = "#fef0e0";
+          card.style.border = "3px solid #e67e22";
+          card.style.boxShadow = "0 0 0 4px rgba(230,126,34,0.25)";
+          if (selectElem) {
+            selectElem.style.backgroundColor = "#fef0e0";
+            selectElem.style.border = "2px solid #e67e22";
+            selectElem.style.color = "#155724";
+            selectElem.style.boxShadow = "0 0 0 3px rgba(230,126,34,0.2)";
+          }
           let optionExists = false;
           for (let j = 0; j < selectElem.options.length; j++) {
             if (selectElem.options[j].value === correctAnswer) {
@@ -27490,17 +27516,43 @@ var MyApp = (() => {
       if (card) {
         if (isCorrect && userAnswer !== void 0 && userAnswer !== null && userAnswer !== "") {
           score++;
-          card.style.backgroundColor = "#d4edda";
-          card.style.border = "3px solid #28a745";
-          card.style.boxShadow = "0 0 0 4px rgba(40,167,69,0.25)";
           card.classList.remove("wrong-answer-card");
           card.classList.add("correct-answer-card");
+          if (window.innerWidth < 768) {
+            card.style.setProperty("background-color", "#d4edda", "important");
+            card.style.setProperty("border", "3px solid #28a745", "important");
+            card.style.setProperty("box-shadow", "0 0 0 4px rgba(40,167,69,0.20)", "important");
+            const selectInCard = card.querySelector("select");
+            if (selectInCard) {
+              selectInCard.style.setProperty("background-color", "#c3e6cb", "important");
+              selectInCard.style.setProperty("border", "2px solid #28a745", "important");
+              selectInCard.style.setProperty("color", "#155724", "important");
+              selectInCard.style.setProperty("font-weight", "600", "important");
+            }
+          } else {
+            card.style.backgroundColor = "#d4edda";
+            card.style.border = "3px solid #28a745";
+            card.style.boxShadow = "0 0 0 4px rgba(40,167,69,0.25)";
+          }
         } else {
-          card.style.backgroundColor = "#fef0e0";
-          card.style.border = "3px solid #e67e22";
-          card.style.boxShadow = "0 0 0 4px rgba(230,126,34,0.25)";
           card.classList.remove("correct-answer-card");
           card.classList.add("wrong-answer-card");
+          if (window.innerWidth < 768) {
+            card.style.setProperty("background-color", "#fef0e0", "important");
+            card.style.setProperty("border", "3px solid #e67e22", "important");
+            card.style.setProperty("box-shadow", "0 0 0 4px rgba(230,126,34,0.20)", "important");
+            const selectInCard = card.querySelector("select");
+            if (selectInCard) {
+              selectInCard.style.setProperty("background-color", "#fde2c8", "important");
+              selectInCard.style.setProperty("border", "2px solid #e67e22", "important");
+              selectInCard.style.setProperty("color", "#856404", "important");
+              selectInCard.style.setProperty("font-weight", "600", "important");
+            }
+          } else {
+            card.style.backgroundColor = "#fef0e0";
+            card.style.border = "3px solid #e67e22";
+            card.style.boxShadow = "0 0 0 4px rgba(230,126,34,0.25)";
+          }
           const oldMsg = card.querySelector(".correct-message");
           if (!oldMsg) {
             const msg = document.createElement("div");
