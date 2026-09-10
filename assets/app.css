@@ -2447,12 +2447,13 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
     }
     
     /* جميع النصوص الطويلة داخل الأقسام (تستثني الخيارات والأزرار) */
+    /* جميع النصوص الطويلة داخل الأقسام (تستثني الخيارات والأزرار والـ hints) */
     #sprach1 div:not(.option-label):not(.check-btn):not(.nav-exam-btn),
     #sprach1 p,
-    #sprach1 span:not(.option-label span),
+    #sprach1 span:not(.option-label span):not(.custom-correct-hint),
     #sprach2 div:not(.option-label):not(.check-btn):not(.nav-exam-btn),
     #sprach2 p,
-    #sprach2 span:not(.option-label span) {
+    #sprach2 span:not(.option-label span):not(.custom-correct-hint) {
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
@@ -2464,6 +2465,34 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
         padding: 4px 8px !important;
         font-size: 0.8rem !important;
         line-height: 1.7 !important;
+    }
+    
+    /* الـ hint يبقى inline دائمًا داخل النص (لا يكسر السطر) */
+    #sprach1 .custom-correct-hint,
+    #sprach2 .custom-correct-hint {
+        display: inline !important;
+        width: auto !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        height: auto !important;
+        padding: 0 !important;
+        margin: 0 0 0 4px !important;
+        font-size: inherit !important;
+        line-height: inherit !important;
+        white-space: nowrap !important;
+        vertical-align: baseline !important;
+        color: #2b8c4a !important;
+        font-weight: bold !important;
+        background: none !important;
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        box-sizing: content-box !important;
+        float: none !important;
+        clear: none !important;
+        position: static !important;
+        overflow: visible !important;
+        pointer-events: none !important;
     }
     
     /* العناصر التي تحوي الفراغات (__(1)__) */
@@ -2635,13 +2664,21 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
     }
     
     /* Sprach 2: تحسينات إضافية تحت 770px */
-    /* جعل بطاقات الكلمات تظهر في شبكة مع الحفاظ على نفس الشكل الأصلي */
-    #sprach2 > div > div:last-child > div:last-child {
-        display: grid !important;
-        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)) !important;
-        gap: 10px !important;
-        padding: 4px 0 !important;
+   
+     /* ===== Sprach 2: إخفاء عمود Wörter على الهاتف (Picker يحل محله) ===== */
+    #sprach2 .sprach2-words-column {
+        display: none !important;
     }
+    
+    /* عمود النص يأخذ العرض الكامل بعد إخفاء Wörter */
+    #sprach2 .sprach2-text-column {
+        flex: 1 1 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    
+    /* Sprach 2: تحسينات بطاقات الكلمات (للأجهزة التي لا تستخدم Picker) */
     #sprach2 .sprach2-word-card {
         padding: 8px 10px !important;
         font-size: 0.75rem !important;
@@ -7926,6 +7963,28 @@ body:has(#list.active) #backHomeBtn {
         max-width: 100% !important;
         box-sizing: border-box !important;
         padding: 0 6px !important;
+    }
+
+    /* 📝 Text title - محاذاة إلى اليسار على الهاتف فقط */
+    #sprach1 > div > div:first-child > h3,
+    #sprach2 > div > div:first-child > h3 {
+        text-align: left !important;
+        direction: ltr !important;
+    }
+
+    /* ===== إخفاء بطاقة 📋 Wörter على الهاتف فقط (Picker يحل محلها) ===== */
+    /* نستخدم selector آمن يعتمد على الكلاس أو على نمط inline المميز لعمود Wörter */
+    #sprach2 .sprach2-words-column,
+    #sprach2 > div > div[style*="flex: 0.8"] {
+        display: none !important;
+    }
+
+    /* عمود النص في Sprach 2 يأخذ العرض الكامل بعد إخفاء Wörter */
+    #sprach2 > div > div:first-child {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        flex: 1 1 100% !important;
     }
     #sprach1 > div > div,
     #sprach2 > div > div {
