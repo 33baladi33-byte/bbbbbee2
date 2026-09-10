@@ -1512,11 +1512,9 @@ var MyApp = (() => {
     const allChildren = [...section.children];
     for (let child of allChildren) {
       if (child.id !== "helpLayerContainer") {
-        if (child.style.display !== "none") {
-          child.dataset.originalDisplay = child.style.display || "";
-          child.style.display = "none";
-          hidden.push(child);
-        }
+        child.dataset.originalDisplay = child.style.display || "";
+        child.style.setProperty("display", "none", "important");
+        hidden.push(child);
       }
     }
     return hidden;
@@ -1526,12 +1524,11 @@ var MyApp = (() => {
     elements.forEach((el) => {
       if (el) {
         const originalDisplay = el.dataset.originalDisplay;
-        if (originalDisplay !== void 0) {
+        el.style.removeProperty("display");
+        if (originalDisplay !== void 0 && originalDisplay !== "") {
           el.style.display = originalDisplay;
-          delete el.dataset.originalDisplay;
-        } else {
-          el.style.display = "";
         }
+        delete el.dataset.originalDisplay;
       }
     });
   }
@@ -25018,6 +25015,12 @@ var MyApp = (() => {
     leftColumn.style.border = "1px solid #ddd";
     leftColumn.style.maxHeight = "600px";
     leftColumn.style.overflowY = "auto";
+    if (window.innerWidth < 770) {
+      leftColumn.style.setProperty("flex", "1 1 100%", "important");
+      leftColumn.style.setProperty("min-width", "0", "important");
+      leftColumn.style.setProperty("max-width", "100%", "important");
+      leftColumn.style.setProperty("width", "100%", "important");
+    }
     const leftTitle = document.createElement("h3");
     leftTitle.innerHTML = "\u{1F4DD} Text";
     leftTitle.style.marginTop = "0";
@@ -25194,6 +25197,15 @@ var MyApp = (() => {
     rightColumn.style.border = "1px solid #d0e0ff";
     rightColumn.style.maxHeight = "600px";
     rightColumn.style.overflowY = "auto";
+    if (window.innerWidth < 770) {
+      rightColumn.style.setProperty("display", "none", "important");
+      rightColumn.style.setProperty("height", "0", "important");
+      rightColumn.style.setProperty("min-height", "0", "important");
+      rightColumn.style.setProperty("max-height", "0", "important");
+      rightColumn.style.setProperty("padding", "0", "important");
+      rightColumn.style.setProperty("margin", "0", "important");
+      rightColumn.style.setProperty("overflow", "hidden", "important");
+    }
     const rightTitle = document.createElement("h3");
     rightTitle.innerHTML = "\u{1F4CB} W\xF6rter";
     rightTitle.style.marginTop = "0";
@@ -25366,6 +25378,42 @@ var MyApp = (() => {
         setupSprach2MobilePicker();
       }
     }, 0);
+  }
+  function updateSprach2WorterVisibility() {
+    const container2 = document.getElementById("sprach2");
+    if (!container2) return;
+    const wCol = container2.querySelector(".sprach2-words-column");
+    const tCol = container2.querySelector(".sprach2-text-column");
+    if (!wCol) return;
+    if (window.innerWidth < 770) {
+      wCol.style.setProperty("display", "none", "important");
+      wCol.style.setProperty("height", "0", "important");
+      wCol.style.setProperty("min-height", "0", "important");
+      wCol.style.setProperty("max-height", "0", "important");
+      wCol.style.setProperty("padding", "0", "important");
+      wCol.style.setProperty("margin", "0", "important");
+      wCol.style.setProperty("overflow", "hidden", "important");
+      if (tCol) {
+        tCol.style.setProperty("flex", "1 1 100%", "important");
+        tCol.style.setProperty("min-width", "0", "important");
+        tCol.style.setProperty("max-width", "100%", "important");
+        tCol.style.setProperty("width", "100%", "important");
+      }
+    } else {
+      wCol.style.removeProperty("display");
+      wCol.style.removeProperty("height");
+      wCol.style.removeProperty("min-height");
+      wCol.style.removeProperty("max-height");
+      wCol.style.removeProperty("padding");
+      wCol.style.removeProperty("margin");
+      wCol.style.removeProperty("overflow");
+      if (tCol) {
+        tCol.style.removeProperty("flex");
+        tCol.style.removeProperty("min-width");
+        tCol.style.removeProperty("max-width");
+        tCol.style.removeProperty("width");
+      }
+    }
   }
   function _sprach2PickerGetAllWords() {
     const words = [];
@@ -29086,7 +29134,7 @@ var MyApp = (() => {
       }
     });
   }
-  var _hoerenData, interleavingOrders, lesen1OriginalNodes, lesen1ShuffledNodes, lesen1OrderSaved, lesen2OriginalNodes, lesen2ShuffledNodes, lesen2OrderSaved, lesen3OriginalNodes, lesen3ShuffledNodes, lesen3OrderSaved, examTimer2, currentSchreibenData, currentSprach2Data, sprach2UserAnswers, sprach2SelectedQuestionId, sprach2SelectedWordForLinking, _sprach2PickerState, currentSprach1Data, sprach1UserAnswers, sprach1OpenDropdownId, currentMatchingExamData2, matchingSelectedAnswers2, matchingAvailableOptions2, currentTeil2Data, teil2UserAnswers, currentTeil3Data, teil3UserAnswers, teil3SelectedItem, teil3SelectedSit, teil3SelectedItemForLink, teil3SelectedSitForLink, originalOpenExamGlobal, MemoryHighlightEngine, memoryEngine, toggleBtn, _toggleInProgress, _interleavingInitialized, _answerHistory, _historyEnabled, originalCheckTrueFalse, MatchingMode, matchingLesen1, matchingLesen3, Hoeren2HealthMode, hoeren2Health;
+  var _hoerenData, interleavingOrders, lesen1OriginalNodes, lesen1ShuffledNodes, lesen1OrderSaved, lesen2OriginalNodes, lesen2ShuffledNodes, lesen2OrderSaved, lesen3OriginalNodes, lesen3ShuffledNodes, lesen3OrderSaved, examTimer2, currentSchreibenData, currentSprach2Data, sprach2UserAnswers, sprach2SelectedQuestionId, sprach2SelectedWordForLinking, _sprach2ResizeTimer, _sprach2PickerState, currentSprach1Data, sprach1UserAnswers, sprach1OpenDropdownId, currentMatchingExamData2, matchingSelectedAnswers2, matchingAvailableOptions2, currentTeil2Data, teil2UserAnswers, currentTeil3Data, teil3UserAnswers, teil3SelectedItem, teil3SelectedSit, teil3SelectedItemForLink, teil3SelectedSitForLink, originalOpenExamGlobal, MemoryHighlightEngine, memoryEngine, toggleBtn, _toggleInProgress, _interleavingInitialized, _answerHistory, _historyEnabled, originalCheckTrueFalse, MatchingMode, matchingLesen1, matchingLesen3, Hoeren2HealthMode, hoeren2Health;
   var init_engine = __esm({
     "engine.js"() {
       console.log("\u2705 engine.js \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647");
@@ -29280,6 +29328,13 @@ var MyApp = (() => {
         sprach2SelectedWordForLinking = null;
         renderSprach2Exam();
       };
+      _sprach2ResizeTimer = null;
+      window.addEventListener("resize", function() {
+        if (_sprach2ResizeTimer) clearTimeout(_sprach2ResizeTimer);
+        _sprach2ResizeTimer = setTimeout(function() {
+          updateSprach2WorterVisibility();
+        }, 100);
+      });
       _sprach2PickerState = {
         isActive: false,
         currentPopup: null,

@@ -2445,15 +2445,16 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
         padding: 0 6px !important;
         overflow: visible !important;
     }
-    
-    /* جميع النصوص الطويلة داخل الأقسام (تستثني الخيارات والأزرار) */
-    /* جميع النصوص الطويلة داخل الأقسام (تستثني الخيارات والأزرار والـ hints) */
-    #sprach1 div:not(.option-label):not(.check-btn):not(.nav-exam-btn),
-    #sprach1 p,
-    #sprach1 span:not(.option-label span):not(.custom-correct-hint),
-    #sprach2 div:not(.option-label):not(.check-btn):not(.nav-exam-btn),
-    #sprach2 p,
-    #sprach2 span:not(.option-label span):not(.custom-correct-hint) {
+
+
+
+    /* جميع النصوص الطويلة داخل الأقسام (تستثني الخيارات والأزرار والـ hints ومحتوى المساعدة) */
+    #sprach1 div:not(.option-label):not(.check-btn):not(.nav-exam-btn):not(#helpLayerContainer):not(#helpLayerContainer *),
+    #sprach1 p:not(#helpLayerContainer p),
+    #sprach1 span:not(.option-label span):not(.custom-correct-hint):not(#helpLayerContainer span),
+    #sprach2 div:not(.option-label):not(.check-btn):not(.nav-exam-btn):not(.sprach2-words-column):not(.sprach2-text-column):not(#helpLayerContainer):not(#helpLayerContainer *),
+    #sprach2 p:not(#helpLayerContainer p),
+    #sprach2 span:not(.option-label span):not(.custom-correct-hint):not(#helpLayerContainer span) {
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
@@ -2465,6 +2466,23 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
         padding: 4px 8px !important;
         font-size: 0.8rem !important;
         line-height: 1.7 !important;
+    }
+    
+    /* العناصر التي تحوي الفراغات (__(1)__) - تستثني محتوى المساعدة */
+    #sprach1 [style*="background"]:not(#helpLayerContainer [style*="background"]),
+    #sprach1 [style*="background-color"]:not(#helpLayerContainer [style*="background-color"]),
+    #sprach2 [style*="background"]:not(#helpLayerContainer [style*="background"]),
+    #sprach2 [style*="background-color"]:not(#helpLayerContainer [style*="background-color"]) {
+        display: inline-block !important;
+        min-width: 35px !important;
+        padding: 2px 6px !important;
+        margin: 2px !important;
+        text-align: center !important;
+        word-break: break-word !important;
+        background: #f1f5f9 !important;
+        border: 1px dashed #cbd5e1 !important;
+        border-radius: 6px !important;
+        font-size: 0.7rem !important;
     }
     
     /* الـ hint يبقى inline دائمًا داخل النص (لا يكسر السطر) */
@@ -2495,22 +2513,7 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
         pointer-events: none !important;
     }
     
-    /* العناصر التي تحوي الفراغات (__(1)__) */
-    #sprach1 [style*="background"],
-    #sprach1 [style*="background-color"],
-    #sprach2 [style*="background"],
-    #sprach2 [style*="background-color"] {
-        display: inline-block !important;
-        min-width: 35px !important;
-        padding: 2px 6px !important;
-        margin: 2px !important;
-        text-align: center !important;
-        word-break: break-word !important;
-        background: #f1f5f9 !important;
-        border: 1px dashed #cbd5e1 !important;
-        border-radius: 6px !important;
-        font-size: 0.7rem !important;
-    }
+ 
     
     /* خيارات الإجابة - تبقى كما هي مع تحسينات بسيطة */
     #sprach1 .option-label,
