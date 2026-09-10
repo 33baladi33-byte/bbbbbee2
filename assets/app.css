@@ -2447,14 +2447,13 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
     }
 
 
-
-    /* جميع النصوص الطويلة داخل الأقسام (تستثني الخيارات والأزرار والـ hints ومحتوى المساعدة) */
+    /* جميع النصوص الطويلة داخل الأقسام (تستثني الخيارات والأزرار والـ hints وعمود Wörter والتلوين الذكي) */
     #sprach1 div:not(.option-label):not(.check-btn):not(.nav-exam-btn):not(#helpLayerContainer):not(#helpLayerContainer *),
     #sprach1 p:not(#helpLayerContainer p),
-    #sprach1 span:not(.option-label span):not(.custom-correct-hint):not(#helpLayerContainer span),
+    #sprach1 span:not(.option-label span):not(.custom-correct-hint):not(#helpLayerContainer span):not(.memory-highlight),
     #sprach2 div:not(.option-label):not(.check-btn):not(.nav-exam-btn):not(.sprach2-words-column):not(.sprach2-text-column):not(#helpLayerContainer):not(#helpLayerContainer *),
     #sprach2 p:not(#helpLayerContainer p),
-    #sprach2 span:not(.option-label span):not(.custom-correct-hint):not(#helpLayerContainer span) {
+    #sprach2 span:not(.option-label span):not(.custom-correct-hint):not(#helpLayerContainer span):not(.memory-highlight) {
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
@@ -2466,6 +2465,25 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
         padding: 4px 8px !important;
         font-size: 0.8rem !important;
         line-height: 1.7 !important;
+    }
+    
+    /* ✅ التلوين الذكي (.memory-highlight) يعود inline داخل النص */
+    #sprach1 span.memory-highlight,
+    #sprach2 span.memory-highlight {
+        display: inline !important;
+        width: auto !important;
+        max-width: none !important;
+        height: auto !important;
+        padding: 1px 3px !important;
+        margin: 0 !important;
+        border-radius: 3px !important;
+        font-weight: bold !important;
+        line-height: inherit !important;
+        vertical-align: baseline !important;
+        white-space: normal !important;
+        box-sizing: content-box !important;
+        float: none !important;
+        clear: none !important;
     }
         /* العناصر التي تحوي الفراغات (__(1)__) - تستثني محتوى المساعدة والأزرار */
     #sprach1 [style*="background"]:not(#helpLayerContainer [style*="background"]):not(.check-btn):not(.reset-btn),
