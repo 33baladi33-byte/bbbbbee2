@@ -26706,6 +26706,7 @@ var MyApp = (() => {
             selectElem.style.setProperty("font-weight", "600", "important");
           }
         } else {
+          card.classList.add("wrong-answer-card");
           card.style.backgroundColor = "#fef0e0";
           card.style.border = "3px solid #e67e22";
           card.style.boxShadow = "0 0 0 4px rgba(230,126,34,0.25)";
@@ -26714,27 +26715,32 @@ var MyApp = (() => {
             selectElem.style.border = "2px solid #e67e22";
             selectElem.style.color = "#155724";
             selectElem.style.boxShadow = "0 0 0 3px rgba(230,126,34,0.2)";
-          }
-          let optionExists = false;
-          for (let j = 0; j < selectElem.options.length; j++) {
-            if (selectElem.options[j].value === correctAnswer) {
-              optionExists = true;
-              const cleanText = selectElem.options[j].textContent.replace(/^✅\s*/, "");
-              selectElem.options[j].textContent = `\u2705 ${cleanText}`;
-              selectElem.options[j].selected = true;
-              break;
+            for (let j = 0; j < selectElem.options.length; j++) {
+              if (selectElem.options[j].value === correctAnswer) {
+                const cleanText = selectElem.options[j].textContent.replace(/^✅\s*/, "");
+                selectElem.options[j].textContent = `\u2705 ${cleanText}`;
+                break;
+              }
             }
-          }
-          if (!optionExists) {
-            const textSpan = card.querySelector("span");
-            if (textSpan) {
-              const oldAnswer = textSpan.querySelector(".inline-correct-answer");
-              if (oldAnswer) oldAnswer.remove();
-              const answerSpan = document.createElement("span");
+            if (window.innerWidth < 768) {
+              const oldHint = card.querySelector(".inline-correct-answer");
+              if (oldHint) oldHint.remove();
+              const answerSpan = document.createElement("div");
               answerSpan.className = "inline-correct-answer";
-              answerSpan.style.cssText = "color: #2b8c4a; font-weight: 600; font-size: 0.75rem; display: block; margin-bottom: 4px;";
-              answerSpan.textContent = `\u2713 ${correctAnswer}`;
-              textSpan.prepend(answerSpan);
+              answerSpan.style.cssText = `
+            color: #2b8c4a;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+            padding: 4px 10px;
+            background: rgba(40, 167, 69, 0.10);
+            border: 1px solid rgba(40, 167, 69, 0.25);
+            border-radius: 6px;
+            display: inline-block;
+            direction: rtl;
+          `;
+              answerSpan.textContent = "\u2713 " + correctAnswer;
+              selectElem.parentNode.insertBefore(answerSpan, selectElem);
             }
           }
         }
