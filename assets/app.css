@@ -9911,15 +9911,22 @@ body:has(#exam.active) #navSignupBtn {
         font-size: 0.65rem !important;
     }
 }
-    /* إخفاء result-box الفارغ */
-    #sprach1Result:empty,
-    #sprach2Result:empty {
+       /* إخفاء result-box الفارغ (بـ data-empty) */
+    #sprach1Result[data-empty="true"],
+    #sprach2Result[data-empty="true"] {
         display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
     }
     
-    /* إخفاء إذا كان يحتوي على مسافات فقط (احتياطي) */
-    #sprach1Result:not(:has(*)):not(:has(text)),
-    #sprach2Result:not(:has(*)):not(:has(text)) {
+    /* إخفاء احتياطي إذا كان فارغًا */
+    #sprach1Result:empty,
+    #sprach2Result:empty {
         display: none !important;
     }
 /* ============================================

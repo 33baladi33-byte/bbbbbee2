@@ -25185,6 +25185,7 @@ var MyApp = (() => {
     }
     leftColumn.appendChild(textDiv);
     const rightColumn = document.createElement("div");
+    rightColumn.className = "sprach2-words-column";
     rightColumn.style.flex = "0.8";
     rightColumn.style.minWidth = "250px";
     rightColumn.style.backgroundColor = "#f0f8ff";
@@ -25358,7 +25359,7 @@ var MyApp = (() => {
     const resultDiv = document.createElement("div");
     resultDiv.id = "sprach2Result";
     resultDiv.className = "result-box";
-    resultDiv.style.display = "none";
+    resultDiv.style.setProperty("display", "none", "important");
     container2.appendChild(resultDiv);
     setTimeout(function() {
       if (typeof setupSprach2MobilePicker === "function") {
@@ -25719,9 +25720,10 @@ var MyApp = (() => {
     renderSprach2Exam();
     const resultDiv = document.getElementById("sprach2Result");
     if (resultDiv) {
-      resultDiv.style.display = "none";
       resultDiv.innerHTML = "";
       resultDiv.textContent = "";
+      resultDiv.setAttribute("data-empty", "true");
+      resultDiv.style.setProperty("display", "none", "important");
     }
     console.log("\u2705 \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 Sprachbausteine Teil 2");
   }
@@ -25790,20 +25792,23 @@ var MyApp = (() => {
     if (resultDiv) {
       if (finalScore !== void 0 && finalScore !== null) {
         resultDiv.innerHTML = `\u0627\u0644\u0646\u062A\u064A\u062C\u0629: ${finalScore} / 15`;
-        resultDiv.style.display = "block";
+        resultDiv.style.setProperty("display", "block", "important");
+        resultDiv.setAttribute("data-empty", "false");
         if (finalScore >= 12) {
-          resultDiv.style.backgroundColor = "#d4edda";
-          resultDiv.style.color = "#155724";
+          resultDiv.style.setProperty("background-color", "#d4edda", "important");
+          resultDiv.style.setProperty("color", "#155724", "important");
         } else if (finalScore >= 9) {
-          resultDiv.style.backgroundColor = "#fff3cd";
-          resultDiv.style.color = "#856404";
+          resultDiv.style.setProperty("background-color", "#fff3cd", "important");
+          resultDiv.style.setProperty("color", "#856404", "important");
         } else {
-          resultDiv.style.backgroundColor = "#f8d7da";
-          resultDiv.style.color = "#721c24";
+          resultDiv.style.setProperty("background-color", "#f8d7da", "important");
+          resultDiv.style.setProperty("color", "#721c24", "important");
         }
       } else {
-        resultDiv.style.display = "none";
         resultDiv.innerHTML = "";
+        resultDiv.textContent = "";
+        resultDiv.setAttribute("data-empty", "true");
+        resultDiv.style.setProperty("display", "none", "important");
       }
     }
     if (typeof window.saveExamResultGlobal === "function") {
@@ -26016,7 +26021,7 @@ var MyApp = (() => {
     const resultDiv = document.createElement("div");
     resultDiv.id = "sprach1Result";
     resultDiv.className = "result-box";
-    resultDiv.style.display = "none";
+    resultDiv.style.setProperty("display", "none", "important");
     container2.appendChild(resultDiv);
   }
   function openSprach1Dropdown(questionId) {
@@ -26105,9 +26110,10 @@ var MyApp = (() => {
     renderSprach1Exam();
     const resultDiv = document.getElementById("sprach1Result");
     if (resultDiv) {
-      resultDiv.style.display = "none";
       resultDiv.innerHTML = "";
       resultDiv.textContent = "";
+      resultDiv.setAttribute("data-empty", "true");
+      resultDiv.style.setProperty("display", "none", "important");
     }
     console.log("\u2705 \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 Sprachbausteine Teil 1");
   }
@@ -26172,20 +26178,23 @@ var MyApp = (() => {
     if (resultDiv) {
       if (finalScore !== void 0 && finalScore !== null) {
         resultDiv.innerHTML = `\u0627\u0644\u0646\u062A\u064A\u062C\u0629: ${finalScore} / 15`;
-        resultDiv.style.display = "block";
+        resultDiv.style.setProperty("display", "block", "important");
+        resultDiv.setAttribute("data-empty", "false");
         if (finalScore >= 12) {
-          resultDiv.style.backgroundColor = "#d4edda";
-          resultDiv.style.color = "#155724";
+          resultDiv.style.setProperty("background-color", "#d4edda", "important");
+          resultDiv.style.setProperty("color", "#155724", "important");
         } else if (finalScore >= 9) {
-          resultDiv.style.backgroundColor = "#fff3cd";
-          resultDiv.style.color = "#856404";
+          resultDiv.style.setProperty("background-color", "#fff3cd", "important");
+          resultDiv.style.setProperty("color", "#856404", "important");
         } else {
-          resultDiv.style.backgroundColor = "#f8d7da";
-          resultDiv.style.color = "#721c24";
+          resultDiv.style.setProperty("background-color", "#f8d7da", "important");
+          resultDiv.style.setProperty("color", "#721c24", "important");
         }
       } else {
-        resultDiv.style.display = "none";
         resultDiv.innerHTML = "";
+        resultDiv.textContent = "";
+        resultDiv.setAttribute("data-empty", "true");
+        resultDiv.style.setProperty("display", "none", "important");
       }
     }
     if (typeof window.saveExamResultGlobal === "function") {
