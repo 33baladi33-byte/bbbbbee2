@@ -25298,31 +25298,59 @@ var MyApp = (() => {
     const buttonContainer = document.createElement("div");
     buttonContainer.className = "button-container";
     buttonContainer.style.display = "flex";
-    buttonContainer.style.gap = "15px";
+    buttonContainer.style.flexDirection = "row";
+    buttonContainer.style.flexWrap = "nowrap";
+    buttonContainer.style.gap = "8px";
     buttonContainer.style.justifyContent = "center";
+    buttonContainer.style.alignItems = "center";
     buttonContainer.style.marginTop = "25px";
     const checkBtn = document.createElement("button");
     checkBtn.innerText = "\u{1F4DD} Pr\xFCfen";
     checkBtn.className = "check-btn";
-    checkBtn.style.padding = "12px 24px";
-    checkBtn.style.backgroundColor = "#2c3e66";
-    checkBtn.style.color = "white";
+    checkBtn.style.display = "inline-flex";
+    checkBtn.style.alignItems = "center";
+    checkBtn.style.justifyContent = "center";
+    checkBtn.style.height = "32px";
+    checkBtn.style.minHeight = "32px";
+    checkBtn.style.maxHeight = "32px";
+    checkBtn.style.padding = "0 14px";
+    checkBtn.style.fontSize = "13px";
+    checkBtn.style.fontWeight = "600";
+    checkBtn.style.backgroundColor = "#4a5568";
+    checkBtn.style.color = "#ffffff";
     checkBtn.style.border = "none";
-    checkBtn.style.borderRadius = "8px";
+    checkBtn.style.borderRadius = "6px";
     checkBtn.style.cursor = "pointer";
-    checkBtn.style.fontSize = "16px";
+    checkBtn.style.boxSizing = "border-box";
+    checkBtn.style.verticalAlign = "middle";
+    checkBtn.style.lineHeight = "1";
+    checkBtn.style.margin = "0";
+    checkBtn.style.fontFamily = "inherit";
     checkBtn.onclick = checkSprach2Exam;
     buttonContainer.appendChild(checkBtn);
     const resetBtn = document.createElement("button");
     resetBtn.innerText = "\u21BA";
-    resetBtn.style.padding = "8px 12px";
+    resetBtn.style.display = "inline-flex";
+    resetBtn.style.alignItems = "center";
+    resetBtn.style.justifyContent = "center";
+    resetBtn.style.height = "32px";
+    resetBtn.style.minHeight = "32px";
+    resetBtn.style.maxHeight = "32px";
+    resetBtn.style.width = "32px";
+    resetBtn.style.minWidth = "32px";
+    resetBtn.style.padding = "0";
+    resetBtn.style.fontSize = "16px";
+    resetBtn.style.fontWeight = "600";
     resetBtn.style.backgroundColor = "#6c757d";
-    resetBtn.style.color = "white";
+    resetBtn.style.color = "#ffffff";
     resetBtn.style.border = "none";
     resetBtn.style.borderRadius = "6px";
     resetBtn.style.cursor = "pointer";
-    resetBtn.style.fontSize = "16px";
-    resetBtn.style.fontWeight = "bold";
+    resetBtn.style.boxSizing = "border-box";
+    resetBtn.style.verticalAlign = "middle";
+    resetBtn.style.lineHeight = "1";
+    resetBtn.style.margin = "0";
+    resetBtn.style.fontFamily = "inherit";
     resetBtn.onclick = resetSprach2Exam;
     buttonContainer.appendChild(resetBtn);
     container2.appendChild(buttonContainer);
@@ -25331,6 +25359,375 @@ var MyApp = (() => {
     resultDiv.className = "result-box";
     resultDiv.style.display = "none";
     container2.appendChild(resultDiv);
+    setTimeout(function() {
+      if (typeof setupSprach2MobilePicker === "function") {
+        setupSprach2MobilePicker();
+      }
+    }, 0);
+  }
+  function _sprach2PickerGetAllWords() {
+    const words = [];
+    document.querySelectorAll("#sprach2 .sprach2-word-card").forEach((card) => {
+      const text = (card.textContent || "").trim();
+      if (text) words.push(text);
+    });
+    if (words.length === 0) {
+      try {
+        if (typeof currentSprach2Data !== "undefined" && currentSprach2Data && currentSprach2Data.allOptions) {
+          return [...currentSprach2Data.allOptions];
+        }
+      } catch (e) {
+      }
+    }
+    return words;
+  }
+  function _sprach2PickerGetUsedWords() {
+    const used = /* @__PURE__ */ new Set();
+    try {
+      if (typeof sprach2UserAnswers !== "undefined" && sprach2UserAnswers) {
+        for (let key in sprach2UserAnswers) {
+          if (sprach2UserAnswers[key]) used.add(sprach2UserAnswers[key]);
+        }
+      }
+    } catch (e) {
+    }
+    return used;
+  }
+  function _sprach2PickerGetCurrentAnswer(qId) {
+    try {
+      if (typeof sprach2UserAnswers !== "undefined" && sprach2UserAnswers) {
+        return sprach2UserAnswers[qId] || null;
+      }
+    } catch (e) {
+    }
+    return null;
+  }
+  function _sprach2PickerClosePopup() {
+    if (_sprach2PickerState.currentPopup && _sprach2PickerState.currentPopup.parentNode) {
+      _sprach2PickerState.currentPopup.parentNode.removeChild(_sprach2PickerState.currentPopup);
+    }
+    _sprach2PickerState.currentPopup = null;
+    _sprach2PickerState.currentGapBtn = null;
+  }
+  function _sprach2PickerPositionPopup(popup, btn) {
+    const rect = btn.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const vw = window.innerWidth;
+    const margin = 8;
+    popup.style.visibility = "hidden";
+    popup.style.display = "block";
+    popup.style.top = "0px";
+    popup.style.left = "0px";
+    const pRect = popup.getBoundingClientRect();
+    const pW = pRect.width;
+    const pH = pRect.height;
+    const spaceBelow = vh - rect.bottom - margin;
+    const spaceAbove = rect.top - margin;
+    let top;
+    if (spaceBelow >= pH + 4) {
+      top = rect.bottom + 4;
+    } else if (spaceAbove >= pH + 4) {
+      top = rect.top - pH - 4;
+    } else if (spaceBelow >= spaceAbove) {
+      top = rect.bottom + 4;
+    } else {
+      top = rect.top - pH - 4;
+    }
+    if (top < margin) top = margin;
+    if (top + pH > vh - margin) top = vh - pH - margin;
+    let left = rect.left;
+    if (left + pW > vw - margin) left = vw - pW - margin;
+    if (left < margin) left = margin;
+    if (left + pW > vw - margin) {
+      left = margin;
+      popup.style.maxWidth = vw - margin * 2 + "px";
+    }
+    popup.style.top = top + "px";
+    popup.style.left = left + "px";
+    popup.style.visibility = "visible";
+  }
+  function _sprach2PickerSelectWord(btn, qId, word) {
+    try {
+      if (typeof sprach2UserAnswers !== "undefined") {
+        sprach2UserAnswers[qId] = word;
+      }
+    } catch (e) {
+    }
+    btn.textContent = word;
+    btn.className = "sprach2-gap-btn correct";
+    btn.setAttribute("data-correct", "true");
+    const wordCard = document.getElementById("sprach2_word_" + word);
+    if (wordCard) {
+      wordCard.style.backgroundColor = "#d4edda";
+      wordCard.style.border = "2px solid #28a745";
+      wordCard.style.color = "#155724";
+      wordCard.style.cursor = "default";
+      wordCard.style.opacity = "0.85";
+    }
+    const parent = btn.parentElement;
+    if (parent) {
+      const oldHint = parent.querySelector(".custom-correct-hint");
+      if (oldHint) oldHint.remove();
+    }
+    try {
+      if (typeof clearSprach2ButtonSelection === "function") {
+        clearSprach2ButtonSelection();
+      }
+    } catch (e) {
+    }
+  }
+  function _sprach2PickerClearChoice(btn, qId) {
+    let oldWord = null;
+    try {
+      if (typeof sprach2UserAnswers !== "undefined") {
+        oldWord = sprach2UserAnswers[qId];
+        delete sprach2UserAnswers[qId];
+      }
+    } catch (e) {
+    }
+    btn.textContent = `__( ${qId} )__`;
+    btn.className = "sprach2-gap-btn";
+    btn.removeAttribute("data-correct");
+    btn.removeAttribute("data-wrong");
+    btn.style.backgroundColor = "";
+    btn.style.color = "";
+    btn.style.border = "";
+    if (oldWord) {
+      const wordCard = document.getElementById("sprach2_word_" + oldWord);
+      if (wordCard) {
+        wordCard.style.backgroundColor = "#ffffff";
+        wordCard.style.border = "1px solid #7c6ce6";
+        wordCard.style.color = "#4a4a4a";
+        wordCard.style.cursor = "pointer";
+        wordCard.style.opacity = "1";
+      }
+    }
+    const parent = btn.parentElement;
+    if (parent) {
+      const oldHint = parent.querySelector(".custom-correct-hint");
+      if (oldHint) oldHint.remove();
+    }
+  }
+  function _sprach2PickerCreatePopup(btn, qId) {
+    const allWords = _sprach2PickerGetAllWords();
+    const usedWords = _sprach2PickerGetUsedWords();
+    const currentAnswer = _sprach2PickerGetCurrentAnswer(qId);
+    if (currentAnswer) usedWords.delete(currentAnswer);
+    const popup = document.createElement("div");
+    popup.className = "sprach2-mobile-picker-popup";
+    const vw = window.innerWidth;
+    const maxPopupWidth = vw - 20;
+    const tileMinWidth = 70;
+    const gap = 6;
+    const padding = 20;
+    const maxCols = Math.floor((maxPopupWidth - padding + gap) / (tileMinWidth + gap));
+    const actualCols = Math.max(2, Math.min(3, maxCols));
+    popup.style.cssText = `
+        position: fixed;
+        z-index: 9999999;
+        background: #ffffff;
+        border: 1px solid #dce5ec;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+        padding: 10px;
+        width: max-content;
+        max-width: ${maxPopupWidth}px;
+        max-height: 320px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        font-family: inherit;
+        font-size: 13px;
+        direction: ltr;
+        display: none;
+        -webkit-overflow-scrolling: touch;
+        box-sizing: border-box;
+    `;
+    const header = document.createElement("div");
+    header.textContent = `\u0627\u062E\u062A\u064A\u0627\u0631 \u0644\u0644\u062E\u0627\u0646\u0629 ${qId}`;
+    header.style.cssText = `
+        font-size: 11px;
+        font-weight: 600;
+        color: #64748b;
+        padding: 0 2px 8px 2px;
+        border-bottom: 1px solid #eef2f6;
+        margin-bottom: 8px;
+        direction: rtl;
+        text-align: right;
+    `;
+    popup.appendChild(header);
+    if (allWords.length === 0) {
+      const emptyMsg = document.createElement("div");
+      emptyMsg.textContent = "\u0644\u0627 \u062A\u0648\u062C\u062F \u0643\u0644\u0645\u0627\u062A \u0641\u064A \u0628\u0646\u0643 \u0627\u0644\u0643\u0644\u0645\u0627\u062A";
+      emptyMsg.style.cssText = `
+            padding: 16px;
+            color: #94a3b8;
+            font-size: 12px;
+            text-align: center;
+            direction: rtl;
+        `;
+      popup.appendChild(emptyMsg);
+      return popup;
+    }
+    const grid = document.createElement("div");
+    grid.style.cssText = `
+        display: grid;
+        grid-template-columns: repeat(${actualCols}, minmax(0, 1fr));
+        gap: ${gap}px;
+        direction: ltr;
+    `;
+    allWords.forEach((word) => {
+      const isUsed = usedWords.has(word);
+      const isCurrent = currentAnswer === word;
+      const tile = document.createElement("div");
+      tile.textContent = word;
+      tile.title = word;
+      tile.style.cssText = `
+            padding: 8px 4px;
+            border-radius: 8px;
+            border: 1px solid ${isCurrent ? "#28a745" : isUsed ? "#e2e8f0" : "#dce5ec"};
+            background: ${isCurrent ? "#d4edda" : isUsed ? "#f8fafc" : "#ffffff"};
+            color: ${isCurrent ? "#155724" : isUsed ? "#cbd5e1" : "#1e293b"};
+            cursor: ${isUsed ? "not-allowed" : "pointer"};
+            text-align: center;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.12s ease;
+            box-sizing: border-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            opacity: ${isUsed ? "0.55" : "1"};
+            min-width: 0;
+            max-width: 100%;
+        `;
+      if (!isUsed) {
+        tile.onmouseenter = () => {
+          tile.style.background = "#f0f9ff";
+        };
+        tile.onmouseleave = () => {
+          tile.style.background = isCurrent ? "#d4edda" : "#ffffff";
+        };
+        tile.onclick = (e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          _sprach2PickerSelectWord(btn, qId, word);
+          _sprach2PickerClosePopup();
+        };
+      }
+      grid.appendChild(tile);
+    });
+    popup.appendChild(grid);
+    if (currentAnswer) {
+      const clearBtn = document.createElement("div");
+      clearBtn.textContent = "\u2715 \u0625\u0632\u0627\u0644\u0629 \u0627\u0644\u0627\u062E\u062A\u064A\u0627\u0631";
+      clearBtn.style.cssText = `
+            margin-top: 8px;
+            padding: 8px 12px;
+            text-align: center;
+            border-radius: 8px;
+            background: #fef2f2;
+            color: #dc3545;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            direction: rtl;
+            transition: background 0.12s;
+            -webkit-tap-highlight-color: transparent;
+        `;
+      clearBtn.onmouseenter = () => {
+        clearBtn.style.background = "#fee2e2";
+      };
+      clearBtn.onmouseleave = () => {
+        clearBtn.style.background = "#fef2f2";
+      };
+      clearBtn.onclick = (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        _sprach2PickerClearChoice(btn, qId);
+        _sprach2PickerClosePopup();
+      };
+      popup.appendChild(clearBtn);
+    }
+    return popup;
+  }
+  function _sprach2PickerOnGapClick(e) {
+    if (!_sprach2PickerState.isActive) return;
+    const btn = e.currentTarget;
+    const btnId = btn.id || "";
+    const match = btnId.match(/sprach2_btn_(\d+)/);
+    if (!match) return;
+    const qId = parseInt(match[1], 10);
+    e.stopImmediatePropagation();
+    e.preventDefault();
+    if (_sprach2PickerState.currentGapBtn === btn && _sprach2PickerState.currentPopup) {
+      _sprach2PickerClosePopup();
+      return;
+    }
+    _sprach2PickerClosePopup();
+    const popup = _sprach2PickerCreatePopup(btn, qId);
+    document.body.appendChild(popup);
+    _sprach2PickerPositionPopup(popup, btn);
+    _sprach2PickerState.currentPopup = popup;
+    _sprach2PickerState.currentGapBtn = btn;
+  }
+  function _sprach2PickerOnOutsideClick(e) {
+    if (!_sprach2PickerState.currentPopup) return;
+    if (_sprach2PickerState.currentPopup.contains(e.target)) return;
+    if (_sprach2PickerState.currentGapBtn && _sprach2PickerState.currentGapBtn.contains(e.target)) return;
+    _sprach2PickerClosePopup();
+  }
+  function _sprach2PickerOnEsc(e) {
+    if (e.key === "Escape") _sprach2PickerClosePopup();
+  }
+  function _sprach2PickerOnScrollOrResize() {
+    if (_sprach2PickerState.currentPopup && _sprach2PickerState.currentGapBtn) {
+      _sprach2PickerPositionPopup(_sprach2PickerState.currentPopup, _sprach2PickerState.currentGapBtn);
+    }
+  }
+  function setupSprach2MobilePicker() {
+    _sprach2PickerTeardown();
+    const container2 = document.getElementById("sprach2");
+    if (!container2) return;
+    const buttons = container2.querySelectorAll(".sprach2-gap-btn");
+    if (buttons.length === 0) return;
+    _sprach2PickerState.boundButtons = [];
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", _sprach2PickerOnGapClick, true);
+      _sprach2PickerState.boundButtons.push(btn);
+    });
+    _sprach2PickerState.outsideClickHandler = _sprach2PickerOnOutsideClick;
+    document.addEventListener("click", _sprach2PickerState.outsideClickHandler, true);
+    _sprach2PickerState.escHandler = _sprach2PickerOnEsc;
+    document.addEventListener("keydown", _sprach2PickerState.escHandler);
+    _sprach2PickerState.scrollHandler = _sprach2PickerOnScrollOrResize;
+    window.addEventListener("scroll", _sprach2PickerState.scrollHandler, true);
+    window.addEventListener("resize", _sprach2PickerState.scrollHandler);
+    _sprach2PickerState.isActive = true;
+  }
+  function _sprach2PickerTeardown() {
+    _sprach2PickerClosePopup();
+    _sprach2PickerState.boundButtons.forEach((btn) => {
+      if (btn && btn.removeEventListener) {
+        btn.removeEventListener("click", _sprach2PickerOnGapClick, true);
+      }
+    });
+    _sprach2PickerState.boundButtons = [];
+    if (_sprach2PickerState.outsideClickHandler) {
+      document.removeEventListener("click", _sprach2PickerState.outsideClickHandler, true);
+      _sprach2PickerState.outsideClickHandler = null;
+    }
+    if (_sprach2PickerState.escHandler) {
+      document.removeEventListener("keydown", _sprach2PickerState.escHandler);
+      _sprach2PickerState.escHandler = null;
+    }
+    if (_sprach2PickerState.scrollHandler) {
+      window.removeEventListener("scroll", _sprach2PickerState.scrollHandler, true);
+      window.removeEventListener("resize", _sprach2PickerState.scrollHandler);
+      _sprach2PickerState.scrollHandler = null;
+    }
+    _sprach2PickerState.isActive = false;
   }
   function resetSprach2Exam() {
     sprach2UserAnswers = {};
@@ -25338,14 +25735,18 @@ var MyApp = (() => {
     sprach2SelectedWordForLinking = null;
     renderSprach2Exam();
     const resultDiv = document.getElementById("sprach2Result");
-    if (resultDiv) resultDiv.style.display = "none";
+    if (resultDiv) {
+      resultDiv.style.display = "none";
+      resultDiv.innerHTML = "";
+      resultDiv.textContent = "";
+    }
     console.log("\u2705 \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 Sprachbausteine Teil 2");
   }
   function checkSprach2Exam() {
     const options = currentSprach2Data.options;
     let score = 0;
     const total = options.length;
-    const pointsPerQuestion = 25 / total;
+    const pointsPerQuestion = 15 / total;
     container = document.getElementById("sprach2");
     if (container) {
       container.querySelectorAll(".custom-correct-hint").forEach((el) => el.remove());
@@ -25404,18 +25805,23 @@ var MyApp = (() => {
     const finalScore = (score * pointsPerQuestion).toFixed(2);
     const resultDiv = document.getElementById("sprach2Result");
     if (resultDiv) {
-      resultDiv.innerHTML = `\u0627\u0644\u0646\u062A\u064A\u062C\u0629: ${finalScore} / 25`;
-      resultDiv.style.display = "block";
-    }
-    if (finalScore >= 20) {
-      resultDiv.style.backgroundColor = "#d4edda";
-      resultDiv.style.color = "#155724";
-    } else if (finalScore >= 15) {
-      resultDiv.style.backgroundColor = "#fff3cd";
-      resultDiv.style.color = "#856404";
-    } else {
-      resultDiv.style.backgroundColor = "#f8d7da";
-      resultDiv.style.color = "#721c24";
+      if (finalScore !== void 0 && finalScore !== null) {
+        resultDiv.innerHTML = `\u0627\u0644\u0646\u062A\u064A\u062C\u0629: ${finalScore} / 15`;
+        resultDiv.style.display = "block";
+        if (finalScore >= 12) {
+          resultDiv.style.backgroundColor = "#d4edda";
+          resultDiv.style.color = "#155724";
+        } else if (finalScore >= 9) {
+          resultDiv.style.backgroundColor = "#fff3cd";
+          resultDiv.style.color = "#856404";
+        } else {
+          resultDiv.style.backgroundColor = "#f8d7da";
+          resultDiv.style.color = "#721c24";
+        }
+      } else {
+        resultDiv.style.display = "none";
+        resultDiv.innerHTML = "";
+      }
     }
     if (typeof window.saveExamResultGlobal === "function") {
       const examId = currentSprach2Data.id || window.currentExamId || 1;
@@ -25568,31 +25974,59 @@ var MyApp = (() => {
     const buttonContainer = document.createElement("div");
     buttonContainer.className = "button-container";
     buttonContainer.style.display = "flex";
-    buttonContainer.style.gap = "15px";
+    buttonContainer.style.flexDirection = "row";
+    buttonContainer.style.flexWrap = "nowrap";
+    buttonContainer.style.gap = "8px";
     buttonContainer.style.justifyContent = "center";
+    buttonContainer.style.alignItems = "center";
     buttonContainer.style.marginTop = "25px";
     const checkBtn = document.createElement("button");
     checkBtn.innerText = "\u{1F4DD} Pr\xFCfen";
     checkBtn.className = "check-btn";
-    checkBtn.style.padding = "12px 24px";
-    checkBtn.style.backgroundColor = "#2c3e66";
-    checkBtn.style.color = "white";
+    checkBtn.style.display = "inline-flex";
+    checkBtn.style.alignItems = "center";
+    checkBtn.style.justifyContent = "center";
+    checkBtn.style.height = "32px";
+    checkBtn.style.minHeight = "32px";
+    checkBtn.style.maxHeight = "32px";
+    checkBtn.style.padding = "0 14px";
+    checkBtn.style.fontSize = "13px";
+    checkBtn.style.fontWeight = "600";
+    checkBtn.style.backgroundColor = "#4a5568";
+    checkBtn.style.color = "#ffffff";
     checkBtn.style.border = "none";
-    checkBtn.style.borderRadius = "8px";
+    checkBtn.style.borderRadius = "6px";
     checkBtn.style.cursor = "pointer";
-    checkBtn.style.fontSize = "16px";
+    checkBtn.style.boxSizing = "border-box";
+    checkBtn.style.verticalAlign = "middle";
+    checkBtn.style.lineHeight = "1";
+    checkBtn.style.margin = "0";
+    checkBtn.style.fontFamily = "inherit";
     checkBtn.onclick = checkSprach1Exam;
     buttonContainer.appendChild(checkBtn);
     const resetBtn = document.createElement("button");
     resetBtn.innerText = "\u21BA";
-    resetBtn.style.padding = "8px 12px";
+    resetBtn.style.display = "inline-flex";
+    resetBtn.style.alignItems = "center";
+    resetBtn.style.justifyContent = "center";
+    resetBtn.style.height = "32px";
+    resetBtn.style.minHeight = "32px";
+    resetBtn.style.maxHeight = "32px";
+    resetBtn.style.width = "32px";
+    resetBtn.style.minWidth = "32px";
+    resetBtn.style.padding = "0";
+    resetBtn.style.fontSize = "16px";
+    resetBtn.style.fontWeight = "600";
     resetBtn.style.backgroundColor = "#6c757d";
-    resetBtn.style.color = "white";
+    resetBtn.style.color = "#ffffff";
     resetBtn.style.border = "none";
     resetBtn.style.borderRadius = "6px";
     resetBtn.style.cursor = "pointer";
-    resetBtn.style.fontSize = "16px";
-    resetBtn.style.fontWeight = "bold";
+    resetBtn.style.boxSizing = "border-box";
+    resetBtn.style.verticalAlign = "middle";
+    resetBtn.style.lineHeight = "1";
+    resetBtn.style.margin = "0";
+    resetBtn.style.fontFamily = "inherit";
     resetBtn.onclick = resetSprach1Exam;
     buttonContainer.appendChild(resetBtn);
     container2.appendChild(buttonContainer);
@@ -25687,14 +26121,18 @@ var MyApp = (() => {
     sprach1UserAnswers = {};
     renderSprach1Exam();
     const resultDiv = document.getElementById("sprach1Result");
-    if (resultDiv) resultDiv.style.display = "none";
+    if (resultDiv) {
+      resultDiv.style.display = "none";
+      resultDiv.innerHTML = "";
+      resultDiv.textContent = "";
+    }
     console.log("\u2705 \u062A\u0645 \u0625\u0639\u0627\u062F\u0629 \u062A\u0639\u064A\u064A\u0646 Sprachbausteine Teil 1");
   }
   function checkSprach1Exam() {
     const options = currentSprach1Data.options;
     let score = 0;
     const total = options.length;
-    const pointsPerQuestion = 25 / total;
+    const pointsPerQuestion = 15 / total;
     container = document.getElementById("sprach1");
     if (container) {
       container.querySelectorAll(".custom-correct-hint").forEach((el) => el.remove());
@@ -25749,18 +26187,23 @@ var MyApp = (() => {
     const finalScore = (score * pointsPerQuestion).toFixed(2);
     const resultDiv = document.getElementById("sprach1Result");
     if (resultDiv) {
-      resultDiv.innerHTML = `\u0627\u0644\u0646\u062A\u064A\u062C\u0629: ${finalScore} / 25`;
-      resultDiv.style.display = "block";
-    }
-    if (finalScore >= 20) {
-      resultDiv.style.backgroundColor = "#d4edda";
-      resultDiv.style.color = "#155724";
-    } else if (finalScore >= 15) {
-      resultDiv.style.backgroundColor = "#fff3cd";
-      resultDiv.style.color = "#856404";
-    } else {
-      resultDiv.style.backgroundColor = "#f8d7da";
-      resultDiv.style.color = "#721c24";
+      if (finalScore !== void 0 && finalScore !== null) {
+        resultDiv.innerHTML = `\u0627\u0644\u0646\u062A\u064A\u062C\u0629: ${finalScore} / 15`;
+        resultDiv.style.display = "block";
+        if (finalScore >= 12) {
+          resultDiv.style.backgroundColor = "#d4edda";
+          resultDiv.style.color = "#155724";
+        } else if (finalScore >= 9) {
+          resultDiv.style.backgroundColor = "#fff3cd";
+          resultDiv.style.color = "#856404";
+        } else {
+          resultDiv.style.backgroundColor = "#f8d7da";
+          resultDiv.style.color = "#721c24";
+        }
+      } else {
+        resultDiv.style.display = "none";
+        resultDiv.innerHTML = "";
+      }
     }
     if (typeof window.saveExamResultGlobal === "function") {
       const examId = currentSprach1Data.id || window.currentExamId || 1;
@@ -28651,7 +29094,7 @@ var MyApp = (() => {
       }
     });
   }
-  var _hoerenData, interleavingOrders, lesen1OriginalNodes, lesen1ShuffledNodes, lesen1OrderSaved, lesen2OriginalNodes, lesen2ShuffledNodes, lesen2OrderSaved, lesen3OriginalNodes, lesen3ShuffledNodes, lesen3OrderSaved, examTimer2, currentSchreibenData, currentSprach2Data, sprach2UserAnswers, sprach2SelectedQuestionId, sprach2SelectedWordForLinking, currentSprach1Data, sprach1UserAnswers, sprach1OpenDropdownId, currentMatchingExamData2, matchingSelectedAnswers2, matchingAvailableOptions2, currentTeil2Data, teil2UserAnswers, currentTeil3Data, teil3UserAnswers, teil3SelectedItem, teil3SelectedSit, teil3SelectedItemForLink, teil3SelectedSitForLink, originalOpenExamGlobal, MemoryHighlightEngine, memoryEngine, toggleBtn, _toggleInProgress, _interleavingInitialized, _answerHistory, _historyEnabled, originalCheckTrueFalse, MatchingMode, matchingLesen1, matchingLesen3, Hoeren2HealthMode, hoeren2Health;
+  var _hoerenData, interleavingOrders, lesen1OriginalNodes, lesen1ShuffledNodes, lesen1OrderSaved, lesen2OriginalNodes, lesen2ShuffledNodes, lesen2OrderSaved, lesen3OriginalNodes, lesen3ShuffledNodes, lesen3OrderSaved, examTimer2, currentSchreibenData, currentSprach2Data, sprach2UserAnswers, sprach2SelectedQuestionId, sprach2SelectedWordForLinking, _sprach2PickerState, currentSprach1Data, sprach1UserAnswers, sprach1OpenDropdownId, currentMatchingExamData2, matchingSelectedAnswers2, matchingAvailableOptions2, currentTeil2Data, teil2UserAnswers, currentTeil3Data, teil3UserAnswers, teil3SelectedItem, teil3SelectedSit, teil3SelectedItemForLink, teil3SelectedSitForLink, originalOpenExamGlobal, MemoryHighlightEngine, memoryEngine, toggleBtn, _toggleInProgress, _interleavingInitialized, _answerHistory, _historyEnabled, originalCheckTrueFalse, MatchingMode, matchingLesen1, matchingLesen3, Hoeren2HealthMode, hoeren2Health;
   var init_engine = __esm({
     "engine.js"() {
       console.log("\u2705 engine.js \u062A\u0645 \u062A\u062D\u0645\u064A\u0644\u0647");
@@ -28844,6 +29287,15 @@ var MyApp = (() => {
         sprach2SelectedQuestionId = null;
         sprach2SelectedWordForLinking = null;
         renderSprach2Exam();
+      };
+      _sprach2PickerState = {
+        isActive: false,
+        currentPopup: null,
+        currentGapBtn: null,
+        boundButtons: [],
+        outsideClickHandler: null,
+        escHandler: null,
+        scrollHandler: null
       };
       currentSprach1Data = null;
       sprach1UserAnswers = {};

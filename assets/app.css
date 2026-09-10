@@ -2689,7 +2689,7 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
         justify-content: center !important;
     }
     
-    /* نافذة النتيجة */
+       /* نافذة النتيجة */
     .result-box {
         bottom: 16px !important;
         padding: 8px 16px !important;
@@ -2699,6 +2699,37 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
         box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
     }
     
+    /* ===== خانة النتيجة في Sprach 1 و Sprach 2 - كبسولة صغيرة ===== */
+    #sprach1Result,
+    #sprach2Result {
+        position: fixed !important;
+        bottom: 20px !important;
+        left: 50% !important;
+        top: auto !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        width: auto !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        padding: 6px 16px !important;
+        margin: 0 !important;
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+        line-height: 1.2 !important;
+        border: none !important;
+        border-radius: 30px !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+        z-index: 1000 !important;
+        animation: none !important;
+    }
+    
+    /* إخفاء result-box الفارغ في Sprach 1 و Sprach 2 */
+    #sprach1Result:empty,
+    #sprach2Result:empty {
+        display: none !important;
+    }
     /* حاوية الامتحان */
     .exam-box {
         padding: 12px !important;
@@ -9821,6 +9852,17 @@ body:has(#exam.active) #navSignupBtn {
         font-size: 0.65rem !important;
     }
 }
+    /* إخفاء result-box الفارغ */
+    #sprach1Result:empty,
+    #sprach2Result:empty {
+        display: none !important;
+    }
+    
+    /* إخفاء إذا كان يحتوي على مسافات فقط (احتياطي) */
+    #sprach1Result:not(:has(*)):not(:has(text)),
+    #sprach2Result:not(:has(*)):not(:has(text)) {
+        display: none !important;
+    }
 /* ============================================
    studySession.css - النسخة النهائية (متكاملة)
    ============================================ */
