@@ -25009,6 +25009,7 @@ var MyApp = (() => {
     twoColumns.style.gap = "30px";
     twoColumns.style.flexWrap = "wrap";
     const leftColumn = document.createElement("div");
+    leftColumn.className = "sprach2-text-column";
     leftColumn.style.flex = "1.5";
     leftColumn.style.minWidth = "400px";
     leftColumn.style.backgroundColor = "#f9f9f9";
@@ -25587,7 +25588,7 @@ var MyApp = (() => {
             border: 1px solid ${isCurrent ? "#28a745" : isUsed ? "#e2e8f0" : "#dce5ec"};
             background: ${isCurrent ? "#d4edda" : isUsed ? "#f8fafc" : "#ffffff"};
             color: ${isCurrent ? "#155724" : isUsed ? "#cbd5e1" : "#1e293b"};
-            cursor: ${isUsed ? "not-allowed" : "pointer"};
+            cursor: ${isUsed && !isCurrent ? "not-allowed" : "pointer"};
             text-align: center;
             font-size: 12px;
             font-weight: 500;
@@ -25598,16 +25599,29 @@ var MyApp = (() => {
             white-space: nowrap;
             user-select: none;
             -webkit-tap-highlight-color: transparent;
-            opacity: ${isUsed ? "0.55" : "1"};
+            opacity: ${isUsed && !isCurrent ? "0.55" : "1"};
             min-width: 0;
             max-width: 100%;
         `;
-      if (!isUsed) {
+      if (isCurrent) {
+        tile.onmouseenter = () => {
+          tile.style.background = "#fef2f2";
+        };
+        tile.onmouseleave = () => {
+          tile.style.background = "#d4edda";
+        };
+        tile.onclick = (e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          _sprach2PickerClearChoice(btn, qId);
+          _sprach2PickerClosePopup();
+        };
+      } else if (!isUsed) {
         tile.onmouseenter = () => {
           tile.style.background = "#f0f9ff";
         };
         tile.onmouseleave = () => {
-          tile.style.background = isCurrent ? "#d4edda" : "#ffffff";
+          tile.style.background = "#ffffff";
         };
         tile.onclick = (e) => {
           e.stopPropagation();
@@ -25619,37 +25633,6 @@ var MyApp = (() => {
       grid.appendChild(tile);
     });
     popup.appendChild(grid);
-    if (currentAnswer) {
-      const clearBtn = document.createElement("div");
-      clearBtn.textContent = "\u2715 \u0625\u0632\u0627\u0644\u0629 \u0627\u0644\u0627\u062E\u062A\u064A\u0627\u0631";
-      clearBtn.style.cssText = `
-            margin-top: 8px;
-            padding: 8px 12px;
-            text-align: center;
-            border-radius: 8px;
-            background: #fef2f2;
-            color: #dc3545;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            direction: rtl;
-            transition: background 0.12s;
-            -webkit-tap-highlight-color: transparent;
-        `;
-      clearBtn.onmouseenter = () => {
-        clearBtn.style.background = "#fee2e2";
-      };
-      clearBtn.onmouseleave = () => {
-        clearBtn.style.background = "#fef2f2";
-      };
-      clearBtn.onclick = (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-        _sprach2PickerClearChoice(btn, qId);
-        _sprach2PickerClosePopup();
-      };
-      popup.appendChild(clearBtn);
-    }
     return popup;
   }
   function _sprach2PickerOnGapClick(e) {
