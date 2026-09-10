@@ -2467,12 +2467,11 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
         font-size: 0.8rem !important;
         line-height: 1.7 !important;
     }
-    
-    /* العناصر التي تحوي الفراغات (__(1)__) - تستثني محتوى المساعدة */
-    #sprach1 [style*="background"]:not(#helpLayerContainer [style*="background"]),
-    #sprach1 [style*="background-color"]:not(#helpLayerContainer [style*="background-color"]),
-    #sprach2 [style*="background"]:not(#helpLayerContainer [style*="background"]),
-    #sprach2 [style*="background-color"]:not(#helpLayerContainer [style*="background-color"]) {
+        /* العناصر التي تحوي الفراغات (__(1)__) - تستثني محتوى المساعدة والأزرار */
+    #sprach1 [style*="background"]:not(#helpLayerContainer [style*="background"]):not(.check-btn):not(.reset-btn),
+    #sprach1 [style*="background-color"]:not(#helpLayerContainer [style*="background-color"]):not(.check-btn):not(.reset-btn),
+    #sprach2 [style*="background"]:not(#helpLayerContainer [style*="background"]):not(.check-btn):not(.reset-btn),
+    #sprach2 [style*="background-color"]:not(#helpLayerContainer [style*="background-color"]):not(.check-btn):not(.reset-btn) {
         display: inline-block !important;
         min-width: 35px !important;
         padding: 2px 6px !important;

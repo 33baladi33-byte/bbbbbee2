@@ -24726,6 +24726,94 @@ var MyApp = (() => {
           return "lesen1";
         };
       }
+      (function() {
+        "use strict";
+        function applySprachHelpCardFixes(helpLayer) {
+          if (!helpLayer) return;
+          const containerProps = {
+            "display": "block",
+            "padding": "0",
+            "margin": "0",
+            "min-width": "0",
+            "max-width": "100%",
+            "width": "100%",
+            "background": "transparent",
+            "background-color": "transparent",
+            "border": "none",
+            "border-radius": "0",
+            "font-size": "inherit",
+            "text-align": "initial",
+            "word-break": "normal",
+            "overflow-wrap": "normal",
+            "white-space": "normal",
+            "box-sizing": "border-box",
+            "overflow-x": "visible",
+            "line-height": "normal"
+          };
+          Object.entries(containerProps).forEach(([p, v]) => {
+            helpLayer.style.setProperty(p, v, "important");
+          });
+          const cards = [...helpLayer.querySelectorAll(":scope > div")];
+          cards.forEach((card) => {
+            card.style.setProperty("padding", "14px 16px", "important");
+            card.style.setProperty("font-size", "13px", "important");
+            card.style.setProperty("box-sizing", "border-box", "important");
+            card.style.setProperty("width", "100%", "important");
+            card.style.setProperty("max-width", "100%", "important");
+            card.style.setProperty("margin-bottom", "12px", "important");
+            card.style.setProperty("direction", "rtl", "important");
+            card.style.setProperty("text-align", "right", "important");
+          });
+          const allTextEls = helpLayer.querySelectorAll("div, span, p, strong, em, b, i");
+          allTextEls.forEach((el) => {
+            if (el.parentElement === helpLayer) return;
+            const cs = getComputedStyle(el);
+            const fs = parseFloat(cs.fontSize);
+            if (fs >= 15) {
+              el.style.setProperty("font-size", "13px", "important");
+            } else if (fs < 11) {
+              el.style.setProperty("font-size", "12px", "important");
+            }
+            el.style.setProperty("line-height", "1.6", "important");
+            const pl = parseFloat(cs.paddingLeft);
+            if (pl === 0 && el.textContent.trim().length > 3) {
+              el.style.setProperty("padding-left", "4px", "important");
+            }
+          });
+          helpLayer.querySelectorAll("div").forEach((el) => {
+            const fs = parseFloat(getComputedStyle(el).fontSize);
+            if (fs >= 16 && el.children.length === 0) {
+              el.style.setProperty("font-size", "12.5px", "important");
+            }
+          });
+          console.log("\u2705 [HelpFix] \u062A\u0645 \u062A\u0637\u0628\u064A\u0642 \u0625\u0635\u0644\u0627\u062D \u0628\u0637\u0627\u0642\u0627\u062A \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u0641\u064A Sprach 1/2");
+        }
+        const observer = new MutationObserver(function(mutations) {
+          if (window.innerWidth >= 770) return;
+          for (const m of mutations) {
+            for (const node of m.addedNodes) {
+              if (node.nodeType !== 1) continue;
+              if (node.id === "helpLayerContainer") {
+                const parent = node.parentElement;
+                if (parent && (parent.id === "sprach1" || parent.id === "sprach2")) {
+                  setTimeout(() => applySprachHelpCardFixes(node), 20);
+                }
+              }
+              if (node.querySelector) {
+                const helpLayer = node.querySelector("#helpLayerContainer");
+                if (helpLayer) {
+                  const parent = helpLayer.parentElement;
+                  if (parent && (parent.id === "sprach1" || parent.id === "sprach2")) {
+                    setTimeout(() => applySprachHelpCardFixes(helpLayer), 20);
+                  }
+                }
+              }
+            }
+          }
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+        console.log("\u2705 [HelpFix] \u062A\u0645 \u062A\u0641\u0639\u064A\u0644 \u0625\u0635\u0644\u0627\u062D \u0628\u0637\u0627\u0642\u0627\u062A \u0627\u0644\u0645\u0633\u0627\u0639\u062F\u0629 \u0641\u064A Sprach 1/2 (\u062A\u062D\u062A 770px)");
+      })();
       if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", () => {
           addHelpButton();
