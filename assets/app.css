@@ -3843,7 +3843,6 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
         }
     }
     
-
 @media (max-width: 550px) {
     /* إخفاء العمود الأيمن (Situationen) */
     #teil3 > div[style*="display: flex"] > div:last-child {
@@ -3861,7 +3860,8 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
     /* العمود الأيسر: عرض كامل + تمرير أفقي */
     #teil3 > div[style*="display: flex"] > div:first-child {
         width: 100% !important;
-        max-width: 100% !important;
+        max-width: 100vw !important;
+        min-width: 0 !important;
         flex: none !important;
         overflow-x: auto !important;
         overflow-y: hidden !important;
@@ -3883,7 +3883,7 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
         border-radius: 3px;
     }
 
-    /* الشبكة: بطاقات بعرض ثابت + مساحة إضافية 20px في النهاية */
+    /* الشبكة: بطاقات بعرض ثابت + مساحة إضافية 30px في النهاية */
     #teil3 [style*="grid-template-columns: 1fr 1fr"] {
         display: grid !important;
         grid-template-columns: repeat(2, 270px) !important;
@@ -3892,7 +3892,7 @@ body:has(#exam.active) .left-side #navSignupBtn { order: 6 !important; }
         width: max-content !important;
         min-width: max-content !important;
         max-width: none !important;
-        padding: 0 20px 0 0 !important;
+        padding: 0 30px 0 0 !important;
         margin: 0 !important;
         overflow: visible !important;
     }

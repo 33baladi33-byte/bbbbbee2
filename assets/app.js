@@ -26715,34 +26715,36 @@ var MyApp = (() => {
             selectElem.style.border = "2px solid #e67e22";
             selectElem.style.color = "#155724";
             selectElem.style.boxShadow = "0 0 0 3px rgba(230,126,34,0.2)";
-            for (let j = 0; j < selectElem.options.length; j++) {
-              if (selectElem.options[j].value === correctAnswer) {
-                const cleanText = selectElem.options[j].textContent.replace(/^✅\s*/, "");
-                selectElem.options[j].textContent = `\u2705 ${cleanText}`;
-                break;
-              }
-            }
-            if (window.innerWidth < 768) {
-              const oldHint = card.querySelector(".inline-correct-answer");
-              if (oldHint) oldHint.remove();
-              const answerSpan = document.createElement("div");
-              answerSpan.className = "inline-correct-answer";
-              answerSpan.style.cssText = `
-            color: #2b8c4a;
-            font-weight: bold;
-            font-size: 0.85rem;
-            margin-bottom: 6px;
-            padding: 4px 10px;
-            background: rgba(40, 167, 69, 0.10);
-            border: 1px solid rgba(40, 167, 69, 0.25);
-            border-radius: 6px;
-            display: inline-block;
-            direction: rtl;
-          `;
-              answerSpan.textContent = "\u2713 " + correctAnswer;
-              selectElem.parentNode.insertBefore(answerSpan, selectElem);
+          }
+        }
+        if (selectElem) {
+          for (let j = 0; j < selectElem.options.length; j++) {
+            if (selectElem.options[j].value === correctAnswer) {
+              const cleanText = selectElem.options[j].textContent.replace(/^✅\s*/, "");
+              selectElem.options[j].textContent = `\u2705 ${cleanText}`;
+              break;
             }
           }
+        }
+        if (selectElem) {
+          const oldHint = card.querySelector(".inline-correct-answer");
+          if (oldHint) oldHint.remove();
+          const answerSpan = document.createElement("div");
+          answerSpan.className = "inline-correct-answer";
+          answerSpan.style.cssText = `
+          color: #2b8c4a;
+          font-weight: bold;
+          font-size: 0.85rem;
+          margin-bottom: 6px;
+          padding: 4px 10px;
+          background: rgba(40, 167, 69, 0.10);
+          border: 1px solid rgba(40, 167, 69, 0.25);
+          border-radius: 6px;
+          display: inline-block;
+          direction: rtl;
+        `;
+          answerSpan.textContent = "\u2713 " + correctAnswer;
+          selectElem.parentNode.insertBefore(answerSpan, selectElem);
         }
       }
     }
