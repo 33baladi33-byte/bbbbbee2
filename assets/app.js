@@ -36540,7 +36540,7 @@ var MyApp = (() => {
         { id: 39, title: "Englisch als weltweite Unternehmenssprache", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
         { id: 40, title: "Trinkgeld geben", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
         { id: 41, title: "Teilzeitarbeit f\xFCr M\xE4nner", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" },
-        { id: 42, title: "Nahrungserg\xE4nzungsmittel", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" }
+        { id: 42, title: "Nahrungserg - \xE4nzungsmittel ", enabled: true, hasFile: true, skillPath: "m\xFCndlich2" }
       ];
       m\u00FCndlich3Exams = [
         { id: 1, title: " \u0627\u0644\u062A\u062E\u0637\u064A\u0637 \u0648\u062D\u0644 \u0645\u0634\u0643\u0644 ", enabled: true, hasFile: true, skillPath: "m\xFCndlich3" }
