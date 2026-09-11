@@ -37187,6 +37187,66 @@ var MyApp = (() => {
         setTimeout(tryPlace, 100);
         console.log("\u2705 \u0632\u0631 check_circle \u062C\u0627\u0647\u0632 (\u0645\u0639 \u0646\u0642\u0644 \u062F\u064A\u0646\u0627\u0645\u064A\u0643\u064A \u0644\u0644\u0647\u0627\u062A\u0641).");
       })();
+      (function installLockedCardsSizeFix() {
+        function applyFix() {
+          const allItems = [...document.querySelectorAll("#examsList .item")].filter(
+            (c) => !c.classList.contains("teil-header") && !c.classList.contains("memory-progress-bar-container")
+          );
+          if (allItems.length < 2) return;
+          const refCard = allItems.find((c) => !c.querySelector(".zertiva-pro-lock"));
+          if (!refCard) return;
+          const refCS = getComputedStyle(refCard);
+          const refMinH = refCS.minHeight;
+          const refPadTop = refCS.paddingTop;
+          const refPadBottom = refCS.paddingBottom;
+          const refMarginBottom = refCS.marginBottom;
+          if (!refMinH || refMinH === "0px") return;
+          allItems.forEach((card) => {
+            if (!card.querySelector(".zertiva-pro-lock")) return;
+            const cs = getComputedStyle(card);
+            if (cs.minHeight !== refMinH) {
+              card.style.removeProperty("min-height");
+              const after = getComputedStyle(card).minHeight;
+              if (after !== refMinH) {
+                card.style.setProperty("min-height", refMinH, "important");
+              }
+            }
+          });
+          const last = allItems[allItems.length - 1];
+          const lastCS = getComputedStyle(last);
+          if (lastCS.paddingTop !== refPadTop) {
+            last.style.setProperty("padding-top", refPadTop, "important");
+          }
+          if (lastCS.paddingBottom !== refPadBottom) {
+            last.style.setProperty("padding-bottom", refPadBottom, "important");
+          }
+          if (lastCS.marginBottom !== refMarginBottom) {
+            last.style.setProperty("margin-bottom", refMarginBottom, "important");
+          }
+        }
+        let scheduled = false;
+        function scheduleFix() {
+          if (scheduled) return;
+          scheduled = true;
+          setTimeout(() => {
+            scheduled = false;
+            applyFix();
+          }, 20);
+        }
+        scheduleFix();
+        const list = document.getElementById("examsList");
+        if (list) {
+          const obs = new MutationObserver(scheduleFix);
+          obs.observe(list, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ["style"]
+          });
+        }
+        setInterval(scheduleFix, 400);
+        console.log("\u2705 [Locked Cards Fix] \u062A\u0645 \u062A\u0641\u0639\u064A\u0644 \u062A\u0648\u062D\u064A\u062F \u062D\u062C\u0645 \u0627\u0644\u0628\u0637\u0627\u0642\u0627\u062A \u0627\u0644\u0645\u0642\u0641\u0644\u0629");
+      })();
     }
   });
 
