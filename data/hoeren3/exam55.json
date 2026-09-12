@@ -1,0 +1,16 @@
+{
+  "title": "Hörverstehen Teil 3 - Zugverkehr",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Der Zugverkehr nach Westend ist aufgrund von Personalmangel unterbrochen.", "correct": false },
+    { "text": "Kursanmeldungen sind trotz geschlossener Anmeldezentrale online möglich.", "correct": true },
+    { "text": "Die neuen Parkausweise sind ab sofort ausschließlich digital verfügbar.", "correct": false },
+    { "text": "Das Museum bietet am Wochenende freien Eintritt für alle Altersgruppen.", "correct": false },
+    { "text": "Die Verpflegung der Freiwilligen wird vom Veranstalter übernommen.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 2, "parts": ["Kursanmeldungen sind trotz geschlossener Anmeldezentrale online möglich."] },
+    { "color": 10, "parts": ["Die Verpflegung der Freiwilligen wird vom Veranstalter übernommen."] }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Hörverstehen Teil 3 - Konzert ist am 29 Mai",
+  "type": "truefalse",
+  "note": "الجمل غير مكتملة لكن الاجوبة صحيحة 100% تم تسريبها من طرف بنت حصلت على 75 /75",
+  "questions": [
+    { "text": "Ein Konzert ist am 29 Mai in Frankfurt", "correct": false },
+    { "text": "Wir können am Nachmittag die Firma anrufen", "correct": false },
+    { "text": "…für Erwachsene kostet 280 Euro", "correct": true },
+    { "text": "Es gibt auch Programme für Kinder", "correct": true },
+    { "text": "….Sonntag", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 3, "parts": ["…für Erwachsene kostet 280 Euro"] },
+    { "color": 7, "parts": ["Es gibt auch Programme für Kinder"] }
+  ]
+}

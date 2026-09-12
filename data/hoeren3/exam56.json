@@ -1,0 +1,15 @@
+{
+  "title": "Hörverstehen Teil 3 - Musikfest",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Das Musikfest wendet sich vornehmlich an Berufsmusiker.", "correct": false },
+    { "text": "„MoveSmart“ unterstützt umweltschonende Verkehrsentscheidungen.", "correct": true },
+    { "text": "Die Sendung „Zeitzeugen erzählen“ nutzt ausschließlich Interviews aus den 80er-Jahren.", "correct": false },
+    { "text": "„Jobwechsel 40+“ ist speziell für Berufseinsteiger konzipiert.", "correct": false },
+    { "text": "Das Zentrum ermöglicht Besuchern eigenständige Experimente.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 5, "parts": ["„MoveSmart“ unterstützt umweltschonende Verkehrsentscheidungen."] }
+  ]
+}

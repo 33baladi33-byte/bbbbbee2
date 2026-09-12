@@ -1,0 +1,16 @@
+{
+  "title": "Hörverstehen Teil 3 - Autobahn A4 / 50 cent",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Auf der Autobahn A4 ist nur eine Fahrspur gesperrt.", "correct": true },
+    { "text": "Das Sommer Sonnen-Festival beginnt am Samstag um 21 Uhr.", "correct": false },
+    { "text": "Kinder unter 14 Jahren zahlen weniger für den Kinobesuch.", "correct": true },
+    { "text": "Der Zug nach Hamburg hat 15 Minuten Verspätung.", "correct": false },
+    { "text": "Die Teilnahme am gewinnspiel kostet 50 Cent", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": ["Auf der Autobahn A4 ist nur eine Fahrspur gesperrt."] },
+    { "color": 5, "parts": ["Kinder unter 14 Jahren zahlen weniger für den Kinobesuch."] },
+    { "color": 9, "parts": ["Die Teilnahme am gewinnspiel kostet 50 Cent"] }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Hörverstehen Teil 3 - Open-Air-Kino",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Das Open-Air-Kino zeigt im Juli an jedem Wochentag einen Film.", "correct": false },
+    { "text": "Zum Flughafen muss man am Westkreuz in einen Bus umsteigen.", "correct": true },
+    { "text": "In akuten Notfällen soll man zur Vertretungspraxis gehen.", "correct": false },
+    { "text": "Die Abgabe von Bücherspenden ist nur von Montag bis Freitag möglich.", "correct": false },
+    { "text": "Auf der A8 ist vor allem abends mit Stau zu rechnen.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 4, "parts": ["Zum Flughafen muss man am Westkreuz in einen Bus umsteigen."] }
+  ]
+}

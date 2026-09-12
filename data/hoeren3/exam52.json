@@ -1,0 +1,15 @@
+{
+  "title": "Hörverstehen Teil 3 - Aktionstag",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Interessierte können beim Aktionstag Aufgaben unverbindlich ausprobieren.", "correct": true },
+    { "text": "Die Akrobatik-Vorführung fällt wegen des starken Windes komplett aus.", "correct": false },
+    { "text": "In dem Beitrag wird vor der Nutzung von Passwort-Managern gewarnt.", "correct": false },
+    { "text": "Besuchern wird empfohlen, ihr Auto am Nordeingang des Parks abzustellen.", "correct": false },
+    { "text": "Für das Probetraining im Box-Club muss man sich vorher anmelden.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 2, "parts": ["Interessierte können beim Aktionstag Aufgaben unverbindlich ausprobieren."] }
+  ]
+}

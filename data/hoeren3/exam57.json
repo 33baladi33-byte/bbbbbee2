@@ -1,0 +1,17 @@
+{
+  "title": "Hörverstehen Teil 3 - Akrobatik-Show im Park",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Interessierte können am Aktionstag die ehrenamtliche Arbeit direkt austesten.", "correct": true },
+    { "text": "Die geplante Akrobatik-Show im Park muss dieses Jahr entfallen.", "correct": false },
+    { "text": "Nutzer werden vor einer neuen Methode zum Datendiebstahl gewarnt.", "correct": true },
+    { "text": "Die Besucher sollten für die Anreise zum Festival das Rad nutzen.", "correct": true },
+    { "text": "Für die Teilnahme am Schnuppertraining ist eine Voranmeldung nötig.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": ["Interessierte können am Aktionstag die ehrenamtliche Arbeit direkt austesten."] },
+    { "color": 3, "parts": ["Nutzer werden vor einer neuen Methode zum Datendiebstahl gewarnt."] },
+    { "color": 6, "parts": ["Die Besucher sollten für die Anreise zum Festival das Rad nutzen."] }
+  ]
+}

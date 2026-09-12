@@ -1,0 +1,15 @@
+{
+  "title": "Hörverstehen Teil 3 - Klavierkonzert",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Festivalbesucher erhalten beim Vorzeigen ihres Tickets Rabatt auf Bus und Bahn.", "correct": false },
+    { "text": "Das Klavierkonzert am 3. Juli findet wegen einer Erkrankung der Künstler nicht statt.", "correct": false },
+    { "text": "Im Botanischen Garten gibt es am Sonntag Tipps zur Pflege von Obstbäumen.", "correct": true },
+    { "text": "Die Sonderausstellung im Museum zeigt historische Arbeitskleidung aus Leder.", "correct": false },
+    { "text": "Die A6 ist zwischen Baden-Baden und Rastatt in beide Richtungen gesperrt.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 6, "parts": ["Im Botanischen Garten gibt es am Sonntag Tipps zur Pflege von Obstbäumen."] }
+  ]
+}

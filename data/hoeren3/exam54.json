@@ -1,0 +1,15 @@
+{
+  "title": "Hörverstehen Teil 3 - Süddeutschland",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Morgen wird in Süddeutschland mit Neuschnee gerechnet.", "correct": true },
+    { "text": "Die Polizei sucht Kinder, die von zu Hause geflohen sind.", "correct": false },
+    { "text": "Samstags gibt es bei der Firma telefonische Beratung.", "correct": false },
+    { "text": "Besucher können problemlos mit dem Auto in die Altstadt fahren.", "correct": false },
+    { "text": "Die historische Bahn fährt im Dezember nach Plan.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 8, "parts": ["Morgen wird in Süddeutschland mit Neuschnee gerechnet."] }
+  ]
+}
