@@ -1,0 +1,150 @@
+{
+  "title": "Lesen Teil 3 - Exam 39: ein Austauschjahr",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "Gestalten statt nur einrichten. Unser erfahrenes Team plant mit Ihnen ein maßgeschneidertes Konzept für Ihre Räume - von modernen Bodenbelägen über hochwertige Türen bis hin zu innovativen Lichtlösungen. Wir kümmern uns um Malerarbeiten, Badmodernisierung, Elektroinstallationen und maßgefertigte Einbauten. Alles aus einer Hand: Planung in 3D, fachgerechte Demontage, zuverlässige Lieferung und präzise Montage. Ob kleine Veränderungen oder Komplettumbau - wir bieten transparente Angebote, verbindliche Zeitpläne und fünf Jahre Garantie.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "b",
+      "text": "Dachwohnung und Raumklima. Einfach wohler fühlen: Unsere kompakten Geräte mit Abluftschlauch benötigen nur eine Steckdose und sorgen zuverlässig für ein angenehmes Raumklima. Gerade in Dachwohnungen oder Büros unter dem Dach, wo sich die Luft schnell staut, bringen sie spürbare Erleichterung - dauerhaft frische Umgebung und angenehm kühle Luft. Wenn es Richtung Winter kühler wird, können die Geräte zusätzlich als Heizung genutzt werden. Persönliche Beratung täglich 10-18 Uhr.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "c",
+      "text": "KochBoxPlus - Zutaten frei Haus. Frisch kochen ohne Einkaufsstress? Mit KochBoxPlus bekommen Sie wöchentlich eine Box voller Zutaten samt Rezepten bequem nach Hause geliefert. Alle Lebensmittel sind sorgfältig ausgewählt, praktisch portioniert und direkt für die Zubereitung geeignet. Die Auswahl reicht von internationaler Küche bis zu regionalen Klassikern. Die Boxen sind flexibel kündbar und eignen sich sowohl für Singles als auch für Familien.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "d",
+      "text": "Mehr Zeit für die schönen Dinge im Leben. Sie möchten Ihre freie Zeit nicht mit Hausarbeit verbringen? Unsere Haushaltshilfen kommen zu Ihnen und sorgen für ein gepflegtes Ambiente. Ob Küche, Bad oder Wohnbereich: Unsere Fachkräfte arbeiten sorgfältig, vertrauensvoll und unter Einhaltung aktueller Hygienestandards. Sie entscheiden selbst, wie oft und zu welchen Zeiten unsere Mitarbeiter eingesetzt werden. Auf Wunsch übernehmen wir auch zusätzliche Aufgaben wie Bügeln oder Einkaufen.",
+      "correct": 7,
+      "highlightColor": 0
+    },
+    {
+      "id": "e",
+      "text": "SoloDrive - Kleintransporter für Ihren Umzug. Unsere Kleintransporter sind die ideale Lösung für alle, die flexibel bleiben möchten: günstige Tagespreise inklusive 200 Freikilometer, praktische Zurrschienen für sicheren Transport und optional Sackkarre, Decken und Verpackungsmaterial. Besonders bei innerstädtischen oder kurzfristig geplanten Umzügen sind die wendigen Fahrzeuge bestens geeignet. Führerschein Klasse B.",
+      "correct": 8,
+      "highlightColor": 1
+    },
+    {
+      "id": "f",
+      "text": "Dialog - Ihr Partner für Kommunikation. Sie möchten sich auf ein Studium oder einen Auslandsaufenthalt vorbereiten oder einfach besser in der Fremdsprache kommunizieren? Bei Dialog finden Sie intensive Kurse in vielen Fremdsprachen. Kleine Gruppen, flexible Zeiten und praxisnahe Inhalte sorgen für schnellen Lernerfolg. Individuell bieten wir zudem Trainings für berufliche Zwecke an - vor Ort oder online.",
+      "correct": 6,
+      "highlightColor": 2
+    },
+    {
+      "id": "g",
+      "text": "Zukunft praktisch erleben. Du stehst kurz vor dem Schulabschluss und interessierst dich für eine Lehre? Unser Berufsinformationszentrum bietet spannende Workshops in Holz-, Metall-, Bau- und Elektrotechnik. Hier kannst du eigene Aufgaben ausprobieren, moderne Werkzeuge kennenlernen und Einblicke in verschiedene Tätigkeitsfelder bekommen. Du triffst Auszubildende, kannst Fragen stellen und Kontakte zu Betrieben knüpfen. Außerdem erfährst du alles über Karrierewege, Verdienstmöglichkeiten und Chancen für Weiterbildungen.",
+      "correct": 1,
+      "highlightColor": 3
+    },
+    {
+      "id": "h",
+      "text": "Schüleraustausch Horizonte. Einblick in eine andere Kultur, neue Kontakte und erste Sprachpraxis im Zielsprachenland - das alles bietet unser Schüleraustausch-Programm. Jugendliche können ihre Sommerpause nutzen und bis zum Beginn des neuen Schuljahres bei sorgfältig ausgewählten Gastfamilien wohnen. Sie besuchen gemeinsam mit Gleichaltrigen ein Sprach- und Freizeitprogramm. Zur Auswahl stehen Ziele in Europa, den USA und Kanada.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "i",
+      "text": "Hort Sonnenblume. Kinder verbringen die Zeit nach dem Unterricht in einer angenehmen Atmosphäre. Nach einer gesunden Mahlzeit widmen sie sich in kleinen Gruppen ihren Hausaufgaben, unterstützt von pädagogischen Fachkräften. Anschließend gibt es kreative Projekte, Sport und Spiele, gemeinsames Kochen oder Zeit zum Lesen und Entspannen. Flexible Abholzeiten, Geschwisterrabatt und Ermäßigung mit Bildungsgutschein sind möglich.",
+      "correct": 9,
+      "highlightColor": 4
+    },
+    {
+      "id": "j",
+      "text": "EnergieWohl - Wohlfühlen in jeder Jahreszeit. Nie mehr frieren in den eigenen vier Wänden: Unsere modernen Systeme spenden angenehme Wärme, selbst wenn draußen tiefe Kälte herrscht. Dank innovativer Technik wird die vorhandene Energie optimal genutzt, sodass Sie Heizkosten deutlich senken können. Besonders für Wohnungen, die in der kalten Jahreszeit schnell auskühlen, bieten wir maßgeschneiderte Lösungen. Die Geräte arbeiten leise, nachhaltig und zuverlässig.",
+      "correct": 2,
+      "highlightColor": 5
+    },
+    {
+      "id": "k",
+      "text": "TäglichFrisch - Entlastung für Ihren Alltag. Sie möchten weniger Zeit am Herd verbringen, aber trotzdem abwechslungsreich essen? Täglich stehen fertig zubereitete Mahlzeiten zur Verfügung. Von leichten Suppen über knackige Salate bis zu herzhaften Hauptgerichten - die Auswahl wird wöchentlich neu zusammengestellt. Alles kommt frisch aus der Küche und wird in nachhaltigen Verpackungen überbracht.",
+      "correct": 3,
+      "highlightColor": 6
+    },
+    {
+      "id": "l",
+      "text": "HausErnte - Qualität zum Mitnehmen. Bei HausErnte dreht sich alles um frisches Obst und Gemüse direkt von den Feldern unserer Region. An unseren Ständen können Sie spontan einkaufen oder feste Körbe vorbestellen, die wöchentlich bereitstehen. So erhalten Sie eine konstante Auswahl an gesunden Produkten. Besonders beliebt sind saisonale Spezialitäten wie Beeren, Spargel oder Kürbis. Auf Wunsch ist eine regelmäßige Lieferung frei Haus möglich.",
+      "correct": 5,
+      "highlightColor": 7
+    }
+  ],
+  "situations": [
+    "Ihre Tochter interessiert sich für ein Austauschjahr an einer Schule im Ausland.",
+    "Ihr Sohn überlegt, nach der Schule eine Ausbildung zum Schreiner zu machen.",
+    "Ihre Dachwohnung ist im Winter sehr kalt und Sie wollen Energie sparen.",
+    "Sie möchten fertige Mahlzeiten bekommen und nicht selbst kochen.",
+    "Ihre Freundin möchte ihre Küche modernisieren und sucht professionelle Hilfe.",
+    "Sie möchten regelmäßig frisches Obst und Gemüse nach Hause zugestellt bekommen.",
+    "Sie möchten einen Sprachkurs besuchen, um im Job voranzukommen.",
+    "Sie haben keine Zeit zum Putzen und brauchen eine regelmäßige Reinigungshilfe.",
+    "Ihr Bekannter benötigt kurzfristig Unterstützung bei einem Umzug.",
+    "Sie suchen für Ihr Grundschulkind eine sinnvolle Betreuung am Nachmittag."
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (a, b, c, h). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Mehr Zeit für die schönen Dinge im Leben",
+        "Sie haben keine Zeit zum Putzen und brauchen eine regelmäßige Reinigungshilfe."
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "SoloDrive - Kleintransporter für Ihren Umzug",
+        "Ihr Bekannter benötigt kurzfristig Unterstützung bei einem Umzug."
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Dialog - Ihr Partner für Kommunikation",
+        "Sie möchten einen Sprachkurs besuchen, um im Job voranzukommen."
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Zukunft praktisch erleben",
+        "Ihr Sohn überlegt, nach der Schule eine Ausbildung zum Schreiner zu machen."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Hort Sonnenblume",
+        "Sie suchen für Ihr Grundschulkind eine sinnvolle Betreuung am Nachmittag."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "EnergieWohl - Wohlfühlen in jeder Jahreszeit",
+        "Ihre Dachwohnung ist im Winter sehr kalt und Sie wollen Energie sparen."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "TäglichFrisch - Entlastung für Ihren Alltag",
+        "Sie möchten fertige Mahlzeiten bekommen und nicht selbst kochen."
+      ]
+    },
+    {
+      "color": 7,
+      "parts": [
+        "HausErnte - Qualität zum Mitnehmen",
+        "Sie möchten regelmäßig frisches Obst und Gemüse nach Hause zugestellt bekommen."
+      ]
+    }
+  ]
+}

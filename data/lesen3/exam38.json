@@ -1,0 +1,143 @@
+{
+  "title": "Lesen Teil 3 - Exam 38: Geschenk für Ihren zehnjährigen",
+  "skill": "lesen3",
+  "type": "teil3",
+  "items": [
+    {
+      "id": "a",
+      "text": "Moderne Architektur - ein umstrittener Baustil. Vortrag über die Bauhaus-Bewegung, funktionale Materialien und bekannte Beispiele wie Bauhaus und Villa Savoye. Mo., 15.11., 19 Uhr, Kunsthalle. Eintritt frei.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "b",
+      "text": "Entdeckungsreise durch die Hamburger Stadtgeschichte. Kinderlesung mit Hamburger Sagen und Legenden, Störtebeker, Hexen, Riesen, Teufeln und Prinzessinnen.",
+      "correct": 0,
+      "highlightColor": 0
+    },
+    {
+      "id": "c",
+      "text": "Vom Arbeiten und Leben auf Frachtschiffen. Kapitän Johannes Eisen berichtet über Bordalltag, Hafen, See und Besatzung. 13. Februar, 16 Uhr, Traditionsschiff im Frachthafen. Eintritt 8 Euro.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "d",
+      "text": "800. Stadtgeburtstag. Jahresprogramm vom Neujahrskonzert über ein Stadtfest bis zur großen Silvester-Lasershow in der historischen Altstadt.",
+      "correct": 2,
+      "highlightColor": 1
+    },
+    {
+      "id": "e",
+      "text": "Deutsches Museum sucht Mitarbeiter/in. Teilzeitstelle im Ausstellungsdienst für den Kinderbereich; Aufsicht, Wartung und Mitarbeit an pädagogischen Programmen.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "f",
+      "text": "Sonderausstellung „Antike Welten“. Kulturgeschichte der Griechen, Etrusker und Römer; antike Kunst, Porträts und die „Zeit der Helden“. Di.-So. 9-18 Uhr.",
+      "correct": 1,
+      "highlightColor": 2
+    },
+    {
+      "id": "g",
+      "text": "Winterliche Hafenrundfahrt. Einstündige Rundfahrt durch den Hamburger Hafen mit Geschichten und Heißgetränk. Tickets online oder vor Ort.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "h",
+      "text": "Winterattraktionen im Museumshafen. Historische und moderne Schiffe, darunter alte Segelschiffe; Einblick in die maritime Vergangenheit.",
+      "correct": 9,
+      "highlightColor": 3
+    },
+    {
+      "id": "i",
+      "text": "Architektur-Ikonen in Düsseldorf. Führung vom historischen Stahlhof über den Medienhafen bis zum modernen Kö-Bogen.",
+      "correct": 7,
+      "highlightColor": 4
+    },
+    {
+      "id": "j",
+      "text": "Gästeführerin in Rostock. Individuelle Stadt- und Fahrradtouren, Betriebs- und Studienausflüge; Führungen auch auf Englisch.",
+      "correct": 6,
+      "highlightColor": 5
+    },
+    {
+      "id": "k",
+      "text": "Messe Schiff und Boot. Wassersportmesse mit Tauchen, Surfen, Stand-up-Paddling, Kanufahren, Workshops und Mitmachaktionen.",
+      "correct": null,
+      "highlightColor": null
+    },
+    {
+      "id": "l",
+      "text": "Stadtführer/in in Hamburg werden. Nebenjob für kommunikative, zuverlässige Menschen mit Fremdsprachenkenntnissen. Stundenlohn 15 Euro.",
+      "correct": 4,
+      "highlightColor": 6
+    }
+  ],
+  "situations": [
+    "Sie suchen ein Geschenk für Ihren zehnjährigen lesebegeisterten Neffen.",
+    "Sie möchten etwas über die Geschichte des Altertums erfahren.",
+    "Ihre Freundin wünscht sich einen festlichen Start ins neue Jahr.",
+    "Sie möchten sich über berühmte Seefahrer und Entdecker informieren.",
+    "Ihr bewegungsfreudiger Bekannter braucht einen Nebenjob.",
+    "Sie suchen nach Outdoor-Aktivitäten für heiße Sommertage.",
+    "Ihre Chefin sammelt Ideen für eine maßgeschneiderte Unternehmung mit dem Team.",
+    "Ihre Bekannte möchte Gebäude berühmter Architekten sehen.",
+    "Sie möchten den Hafen aus einer neuen Perspektive erleben.",
+    "Ihr Freund möchte gern alte Schiffe besichtigen."
+  ],
+  "note": "⚠️ ملاحظة: هناك فقرات ليس لها عنوان مناسب (a, c, e, g, k). سيتم اعتبارها صحيحة إذا تركت بدون اختيار.",
+  "memoryHighlights": [
+    {
+      "color": 0,
+      "parts": [
+        "Entdeckungsreise durch die Hamburger Stadtgeschichte",
+        "Sie suchen ein Geschenk für Ihren zehnjährigen lesebegeisterten Neffen."
+      ]
+    },
+    {
+      "color": 1,
+      "parts": [
+        "800. Stadtgeburtstag",
+        "Ihre Freundin wünscht sich einen festlichen Start ins neue Jahr."
+      ]
+    },
+    {
+      "color": 2,
+      "parts": [
+        "Sonderausstellung „Antike Welten“",
+        "Sie möchten etwas über die Geschichte des Altertums erfahren."
+      ]
+    },
+    {
+      "color": 3,
+      "parts": [
+        "Winterattraktionen im Museumshafen",
+        "Ihr Freund möchte gern alte Schiffe besichtigen."
+      ]
+    },
+    {
+      "color": 4,
+      "parts": [
+        "Architektur-Ikonen in Düsseldorf",
+        "Ihre Bekannte möchte Gebäude berühmter Architekten sehen."
+      ]
+    },
+    {
+      "color": 5,
+      "parts": [
+        "Gästeführerin in Rostock",
+        "Ihre Chefin sammelt Ideen für eine maßgeschneiderte Unternehmung mit dem Team."
+      ]
+    },
+    {
+      "color": 6,
+      "parts": [
+        "Stadtführer/in in Hamburg werden",
+        "Ihr bewegungsfreudiger Bekannter braucht einen Nebenjob."
+      ]
+    }
+  ]
+}
