@@ -15,18 +15,16 @@
 <!-- SEO & Open Graph - نظيف واحترافي -->
 <title>Zertiva B2</title>
 <meta property="og:title" content="Zertiva B2">
-<meta property="og:description" content="أقوى منصة Telc B2">
+<meta property="og:description" content="انسب موقع للتحضير لامتحان التيلك بي2">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://33baladi33-byte.github.io/bbbbbee2/">
-<meta property="og:image" content="https://33baladi33-byte.github.io/bbbbbee2/images/logo.webp">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://zertivab2.online/">
+<meta property="og:image" content="https://zertivab2.online/images/logo.webp">
 <meta property="og:image:alt" content="Zertiva B2">
 <meta property="og:site_name" content="Zertiva B2">
 <meta property="og:locale" content="ar_AR">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Zertiva B2">
-<meta name="twitter:description" content="أقوى منصة Telc B2">
+<meta name="twitter:description" content="انسب موقع للتحضير لامتحان التيلك بي2">
 <meta name="twitter:image" content="https://zertivab2.online/images/logo.webp">
 <meta name="twitter:image:alt" content="Zertiva B2">
 
@@ -4665,20 +4663,33 @@ window.updateAskAIContext = function(skill, examId) {
         window.currentSkill = activeSkill;
         console.log(`  📌 تم تعيين currentSkill = ${window.currentSkill} (Custom)`);
 
+          // ✅ قائمة استثناء ثابتة (حسب ID): امتحانات الاحتياط لا تدخل "أدوات التحكم"
+        const excludedFromCustomPlan = {
+            hoeren1: [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63],
+            hoeren2: [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72],
+            hoeren3: [51, 52, 53, 54, 55, 56, 57]
+        };
+
         const allExams = [];
         const skillKeys = Object.keys(window.examsDatabase);
         skillKeys.forEach(skill => {
-            const examIds = window.examsDatabase[skill].map(e => e.id).filter(id => id !== undefined);
+            let examIds = window.examsDatabase[skill].map(e => e.id).filter(id => id !== undefined);
+            const excluded = excludedFromCustomPlan[skill];
+            if (excluded && excluded.length > 0) {
+                examIds = examIds.filter(id => excluded.indexOf(id) === -1);
+            }
             examIds.forEach(id => {
                 const score = window.getExamResult ? window.getExamResult(skill, id) : null;
                 const retries = window.getRetryCount ? window.getRetryCount(skill, id) : 0;
                 const lastReviewDays = window.getLastReviewDays ? window.getLastReviewDays(skill, id) : null;
+                const time = window.getExamTime ? window.getExamTime(skill, id) : null;
                 allExams.push({
                     id: id,
                     skill: skill,
                     score: score,
                     retries: retries,
                     lastReviewDays: lastReviewDays,
+                    time: time,
                     isNew: (score === null)
                 });
             });
@@ -4699,11 +4710,16 @@ window.updateAskAIContext = function(skill, examId) {
 
         const totalExams = 10;
 
+           // ✅ منطق أولوية جديد لـ «أدوات التحكم»:
+        // 1) الأقدم مراجعة → أولوية أعلى (وزن قوي جداً)
+        // 2) الأقل إعادات → أولوية أعلى (وزن متوسط)
+        // 3) الأطول وقتاً → أولوية أعلى (وزن ضعيف)
+        // القيمة الأصغر = أولوية أعلى
         function calculatePriority(exam) {
-            const scoreWeight = (exam.score !== null) ? exam.score : 0;
-            const retryWeight = exam.retries;
-            const reviewWeight = (exam.lastReviewDays !== null) ? exam.lastReviewDays : 0;
-            return (scoreWeight * 10000) + (retryWeight * 100) + reviewWeight;
+            const daysScore  = exam.lastReviewDays === null ? -100000 : -(exam.lastReviewDays * 1000);
+            const retryScore = exam.retries * 10;
+            const timeScore  = (exam.time !== null && exam.time > 0) ? -Math.floor(exam.time / 10000) : 0;
+            return daysScore + retryScore + timeScore;
         }
 
         const sortedExams = remainingExams.slice().sort((a, b) => {
@@ -4726,13 +4742,36 @@ window.updateAskAIContext = function(skill, examId) {
         const selectedExams = [];
         let remainingToSelect = totalExams;
 
-        sectionKeys.forEach(skill => {
+              sectionKeys.forEach(skill => {
             const weight = weights[skill];
             if (weight === 0) return;
             const count = weight / 10;
             if (count === 0) return;
+
             const examsForSkill = sortedExams.filter(e => e.skill === skill);
-            const taken = examsForSkill.slice(0, count);
+
+            // ✅ عامل التنويع: 1 امتحان متنوع لكل 5 امتحانات (20%)
+            // إذا كان العدد < 5، لا نضيف أي امتحان متنوع.
+            const diverseCount = Math.floor(count / 5);
+            const mainCount = count - diverseCount;
+
+            // 1) الامتحانات ذات الأولوية الأعلى
+            const topExams = examsForSkill.slice(0, mainCount);
+
+            // 2) الامتحانات المتنوعة: من بقية القائمة (بعد mainCount) بخلط عشوائي
+            let diverseExams = [];
+            if (diverseCount > 0 && examsForSkill.length > mainCount) {
+                const pool = examsForSkill.slice(mainCount);
+                const shuffled = [...pool];
+                for (let i = shuffled.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+                }
+                diverseExams = shuffled.slice(0, diverseCount);
+            }
+
+            const taken = [...topExams, ...diverseExams];
+
             if (taken.length > 0) {
                 examGroups[skill] = taken;
                 selectedExams.push(...taken);
@@ -4776,10 +4815,20 @@ window.updateAskAIContext = function(skill, examId) {
             return `منذ ${days} يوم`;
         }
 
+           // ✅ قائمة استثناء ثابتة (حسب ID): امتحانات الاحتياط لا تُعرض في نتيجة "أدوات التحكم"
+        const excludedFromCustomPlanRender = {
+            hoeren1: [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63],
+            hoeren2: [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72],
+            hoeren3: [51, 52, 53, 54, 55, 56, 57]
+        };
+
         let groupsHTML = '';
         const sortedSkills = sectionKeys.filter(s => weights[s] > 0);
         sortedSkills.forEach(skill => {
-            const exams = examGroups[skill] || [];
+            const excluded = excludedFromCustomPlanRender[skill];
+            const exams = (examGroups[skill] || []).filter(e => {
+                return !excluded || excluded.indexOf(e.id) === -1;
+            });
             if (exams.length === 0) return;
             const skillLabel = CUSTOM_SECTIONS.find(s => s.id === skill)?.label || skill;
             groupsHTML += `
@@ -5020,7 +5069,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <p style="margin: 0 0 0px 0;">
                 <span style="color: #94a3b8;">›</span>
                 <strong style="color: #f1f5f9;">ثالثاً:</strong>
-                <span style="margin-right: 4px;">هنيناك وعتيناك غير الحوايج المهمة، متلا فالمراجعة باش تدوز امتحان فيه جميع الاجزاء. هوغن، ليزن، شبخاخ، باوشتاين وشخايبن فمرة وحدة، أو حتى أوديوات الهوغن أو بزاااف دالحوايج الآخرين، هما فقط <span style="color: #D96B7B; font-weight: 500;">مضيعة للوقت</span>. وماشي غير هدشي، فراه بزاف دالحوايج الآخرين مكيزيدو حتى إضافة حقيقية.</span>
+                <span style="margin-right: 4px;">هنيناك وعتيناك غير الحوايج المهمة، عكس بعض المنصات متلا غتلقاو فيهم امتحان فيه جميع الاجزاء. هوغن، ليزن، شبخاخ، باوشتاين وشخايبن فمرة وحدة، أو بعض الاشياء اللي ماشي مهمة متلا أوديوات الهوغن أو بزاااف دالحوايج الآخرين، هما بالنسبة لاشخاص نجحو فوقت وجهد اقل، فقط <span style="color: #D96B7B; font-weight: 500;">مضيعة للوقت</span>.</span>
             </p>
             <p style="margin: 0;">
                 <span style="color: #94a3b8;">›</span>
