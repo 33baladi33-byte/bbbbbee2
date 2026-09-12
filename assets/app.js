@@ -33631,6 +33631,70 @@ var MyApp = (() => {
         setTimeout(window.applyExamColors, 50);
       }
     }
+    applyReserveToggle();
+  }
+  function applyReserveToggle() {
+    const RESERVE_LABEL = "(\u0627\u062D\u062A\u064A\u0627\u0637)";
+    const TOGGLE_ID = "reserve-toggle-btn";
+    const VALID_SKILLS = ["hoeren1", "hoeren2", "hoeren3"];
+    const container2 = document.getElementById("examsList");
+    if (!container2) return;
+    const oldToggle = document.getElementById(TOGGLE_ID);
+    if (oldToggle) oldToggle.remove();
+    const skill = typeof currentSkill2 !== "undefined" && currentSkill2 || window.currentSkill || "";
+    if (!VALID_SKILLS.includes(skill)) return;
+    const gridContainer = document.getElementById("examGridContainer");
+    const searchRoot = gridContainer || container2;
+    const items = [...searchRoot.querySelectorAll(".item")].filter(
+      (el) => !el.classList.contains("teil-header") && !el.classList.contains("memory-progress-bar-container")
+    );
+    const reserve = [];
+    const normal = [];
+    items.forEach((item) => {
+      const title = item.querySelector(".exam-title");
+      if (!title) return;
+      if ((title.textContent || "").includes(RESERVE_LABEL)) reserve.push(item);
+      else normal.push(item);
+    });
+    if (reserve.length === 0) return;
+    reserve.forEach((item) => {
+      item.style.setProperty("display", "none", "important");
+    });
+    const wrapper = document.createElement("div");
+    wrapper.id = TOGGLE_ID;
+    wrapper.style.cssText = "display:flex;justify-content:center;align-items:center;width:100%;margin:4px 0 6px 0;";
+    const toggle = document.createElement("div");
+    toggle.style.cssText = "width:24px;height:24px;background:#e2e8f0;color:#334155;border-radius:50%;text-align:center;line-height:24px;font-size:13px;cursor:pointer;user-select:none;transition:transform 0.2s ease,background 0.2s ease;transform:rotate(0deg);";
+    toggle.textContent = "\u276F";
+    toggle.onmouseenter = function() {
+      this.style.background = "#cbd5e1";
+    };
+    toggle.onmouseleave = function() {
+      this.style.background = "#e2e8f0";
+    };
+    let isExpanded = false;
+    toggle.onclick = function() {
+      isExpanded = !isExpanded;
+      reserve.forEach((item) => {
+        if (isExpanded) {
+          item.style.removeProperty("display");
+        } else {
+          item.style.setProperty("display", "none", "important");
+        }
+      });
+      this.style.transform = isExpanded ? "rotate(90deg)" : "rotate(0deg)";
+    };
+    wrapper.appendChild(toggle);
+    if (gridContainer && gridContainer.parentNode === container2) {
+      container2.insertBefore(wrapper, gridContainer.nextSibling);
+    } else {
+      const last = normal[normal.length - 1];
+      if (last && last.parentNode) {
+        last.parentNode.insertBefore(wrapper, last.nextSibling);
+      } else {
+        container2.appendChild(wrapper);
+      }
+    }
   }
   function showVersionsPopup(exam, skill) {
     const overlay = document.createElement("div");
@@ -34169,6 +34233,7 @@ var MyApp = (() => {
         setExamListMode("list");
         applyExamListView("list");
       }
+      applyReserveToggle();
     };
     header.appendChild(btn2);
     applyExamListView(getExamListMode());
@@ -34334,7 +34399,7 @@ var MyApp = (() => {
     const container2 = document.getElementById("examsList");
     if (!container2) return;
     const skill = currentSkill2 || "lesen1";
-    if (!["lesen1", "lesen2", "lesen3", "sprach1", "sprach2"].includes(skill)) return;
+    if (!["hoeren1", "lesen1", "lesen2", "lesen3", "sprach1", "sprach2"].includes(skill)) return;
     const items = container2.querySelectorAll(".item:not(.teil-header):not(.memory-progress-bar-container)");
     if (!items.length) return;
     items.forEach((el) => {
