@@ -1,0 +1,118 @@
+{
+  "title": "Sprachbausteine Teil 1 - Exam 43: Hallo Jakob",
+  "skill": "sprach1",
+  "type": "sprach1",
+  "text": "Hallo Jakob,\nEndlich melde ich mich ⌄ __ (1) __ ⌄ bei dir – es tut mir leid, dass es so lange gedauert hat! Ich bin jetzt seit zwei Monaten in Deutschland und es ist richtig viel passiert. In dieser Zeit habe ich im Krankenhaus eine Stelle ⌄ __ (2) __ ⌄ Krankenpfleger bekommen. Die Arbeit gefällt mir gut. Unser Team ist international, und ich arbeite mit Leuten aus ganz ⌄ __ (3) __ ⌄ Ländern zusammen, zum Beispiel aus Vietnam und von den Philippinen. Mit ein paar von ihnen habe ich mich schon nach der Arbeit und am Wochenende getroffen, sie kennen ⌄ __ (4) __ ⌄ in Hamburg gut aus und haben mir ein paar schöne Orte in der Stadt gezeigt.\nEine kleine Wohnung habe ich auch bereits gefunden, sie ist sogar in der Nähe des Krankenhauses. Die Miete ist ⌄ __ (5) __ ⌄ ein bisschen teuer, aber ehrlich gesagt bin ich froh, dass ich überhaupt etwas gefunden habe. Wie du siehst, läuft es also ganz gut. Das Einzige, ⌄ __ (6) __ ⌄ mir manchmal fehlt, ist die spanische Sprache. Ich habe bisher nur sehr wenige Leute getroffen, ⌄ __ (7) __ ⌄ Spanisch sprechen. ⌄ __ (8) __ ⌄ auch in meiner Freizeit. Das ist einerseits anstrengend, aber andererseits merke ich, dass mein Deutsch jeden Tag besser wird.\nIch ⌄ __ (9) __ ⌄ es übrigens schön, wenn wir uns mal wieder sehen würden. Hast du Lust, mich mal in Hamburg zu besuchen? ⌄ __ (10) __ ⌄ das nicht geht, könnte ich an Ostern auch zu dir nach Salzburg kommen.\nViele Grüße, Antonio",
+  "options": [
+    {
+      "id": 1,
+      "options": ["halt", "ja", "mal"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "mich",
+        "connector": "mal",
+        "after": "bei dir",
+        "color": 1
+      }
+    },
+    {
+      "id": 2,
+      "options": ["als", "für", "von"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "eine Stelle",
+        "connector": "als",
+        "after": "Krankenpfleger",
+        "color": 2
+      }
+    },
+    {
+      "id": 3,
+      "options": ["verschiedenen", "viele", "Vielerlei"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "aus ganz",
+        "connector": "verschiedenen",
+        "after": "Ländern",
+        "color": 3
+      }
+    },
+    {
+      "id": 4,
+      "options": ["mich", "mir", "sich"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "sie kennen",
+        "connector": "sich",
+        "after": "in Hamburg",
+        "color": 4
+      }
+    },
+    {
+      "id": 5,
+      "options": ["aber", "sehr", "zwar"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Die Miete ist",
+        "connector": "zwar",
+        "after": "ein bisschen teuer",
+        "color": 5
+      }
+    },
+    {
+      "id": 6,
+      "options": ["dass", "die", "was"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "Das Einzige,",
+        "connector": "was",
+        "after": "mir manchmal fehlt",
+        "color": 6
+      }
+    },
+    {
+      "id": 7,
+      "options": ["die", "sie", "welche"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "Leute getroffen,",
+        "connector": "die",
+        "after": "Spanisch sprechen",
+        "color": 7
+      }
+    },
+    {
+      "id": 8,
+      "options": ["aber", "als", "sondern"],
+      "correct": 0,
+      "memoryHighlight": {
+        "before": "sprechen.",
+        "connector": "aber",
+        "after": "auch in meiner Freizeit",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["fand", "fände", "finde"],
+      "correct": 1,
+      "memoryHighlight": {
+        "before": "Ich",
+        "connector": "fände",
+        "after": "es übrigens schön",
+        "color": 9
+      }
+    },
+    {
+      "id": 10,
+      "options": ["Als", "Da", "Wenn"],
+      "correct": 2,
+      "memoryHighlight": {
+        "before": "besuchen?",
+        "connector": "Wenn",
+        "after": "das nicht geht",
+        "color": 10
+      }
+    }
+  ]
+}
