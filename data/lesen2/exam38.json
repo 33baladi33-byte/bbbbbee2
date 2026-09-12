@@ -1,0 +1,60 @@
+{
+  "title": "Lesen Teil 2 - Exam 38: Kreuzfahrttourismus / Auswirkungen von Massentourismus",
+  "skill": "lesen2",
+  "type": "teil2",
+  "text": "Kreuzfahrtschiffe sind längst nicht mehr nur Schiffe, die Reisende von einem Hafen zum nächsten bringen. Sie sind mittlerweile schwimmende Hotelanlagen und bieten Touristinnen und Touristen ein Rundum-sorglos-Paket. Ein Tag auf dem Schiff bedeutet deswegen schon lange nicht mehr Langeweile, sondern ermöglicht Erholung und Spaß. Zumeist verfügen Kreuzfahrtschiffe über große Poolanlagen und ganze Wellnessbereiche. Außerdem findet man dort mehrere Restaurants, Theater sowie Bars und Diskotheken. Auch die Bordkabinen stehen hinsichtlich Ausstattung und Komfort einem klassischen Hotel an Land in nichts nach.\n\nTrotz dieser Vorzüge ist der wichtigste Grund für die steigende Beliebtheit das Entdecken vieler Orte in kurzer Zeit. Ohne Stress durch Staus auf Autobahnen oder lange Warteschlangen an Flughäfen ist es möglich, mehrere Orte oder sogar mehrere Länder in wenigen Tagen oder Wochen zu bereisen. Dies spricht abenteuerlustige junge Leute und Familien mit Kindern an. Auch für körperlich eingeschränkte Menschen, für die Auto- oder Flugreisen aufgrund des Alters oder einer Erkrankung beschwerlich sein können, sind Kreuzfahrten geeignet. Sie ziehen sogar den größten Nutzen daraus, da diese Art des Reisens für sie oftmals die einzige Möglichkeit darstellt, überhaupt Fernreisen zu unternehmen.\n\nAuswirkungen von Massentourismus Der Tourismus ist für viele Städte und Länder Fluch und Segen zugleich. Während er in touristisch geprägten Regionen einen zentralen Wirtschaftszweig ausmacht, indem Arbeitsplätze geschaffen werden und lokale Unternehmen profitieren, werden die Stimmen immer lauter, die auf negative Auswirkungen aufmerksam machen. Dazu zählt der sogenannte Massentourismus. Besuchen viele Menschen gleichzeitig dasselbe Reiseziel, stehen diese Hotspots vor ökologischen und sozialen Herausforderungen.\n\nBegünstigt wird der Massentourismus vor allem durch Pauschalreisen und Kreuzfahrten, die das Reisen komfortabel und massentauglich machen. Letzteres stellt besonders für kleine Küstenorte, bei denen fast täglich Schiffe anlegen, ein enormes Problem dar. In norwegischen Kleinstädten wie Geiranger, Flåm oder Hellesylt übersteigt die Zahl der Kreuzfahrtpassagiere die Einwohnerzahl um ein Vielfaches. Auch größere Städte wie Venedig oder Amsterdam stehen dem Massentourismus kritisch gegenüber.\n\nProblematisch ist vor allem die Umweltverschmutzung, die sowohl durch die Schiffe selbst als auch durch die Touristinnen und Touristen verursacht wird. Der CO2-Ausstoß eines Kreuzfahrtschiffes pro Tag kann so hoch sein wie der von rund 80.000 Autos, und ein Reisender produziert am Tag fast doppelt so viel Müll wie eine einheimische Person. Wegen der hohen Besucherzahlen erleidet die Bausubstanz historischer Straßen und Plätze erhebliche Schäden. Bewohnerinnen und Bewohner klagen über Lärm, überfüllte Innenstädte und Straßen. Sie fühlen sich aus ihren Städten verdrängt, weil freier Wohnraum lieber für Ferienwohnungen genutzt wird oder zuvor frei zugängliche Plätze nur noch gegen Eintritt betreten werden dürfen. Viele lokale Geschäfte werden durch Souvenirshops oder überteuerte Cafés ersetzt. Die Bevölkerung fordert deshalb mehr Schutzmaßnahmen, damit Tourismus wieder für alle als Segen angesehen werden kann.",
+  "questions": [
+    {
+      "text": "Kreuzfahrten werden immer beliebter wegen",
+      "options": [
+        "a. der vielfältigen und komfortablen Angebote an Bord.",
+        "b. des abwechslungsreichen und kompakten Reiseprogramms.",
+        "c. des zunehmend stressigen Auto- und Flugverkehrs."
+      ],
+      "correct": 1
+    },
+    {
+      "text": "Von Kreuzfahrten profitieren am meisten",
+      "options": [
+        "a. Familien mit Kindern.",
+        "b. Jugendliche mit Entdeckerdrang.",
+        "c. Menschen mit Beeinträchtigungen."
+      ],
+      "correct": 2
+    },
+    {
+      "text": "In kleineren Küstenstädten gibt es fast täglich mehr",
+      "options": [
+        "a. Kreuzfahrtschiffe als Einheimische.",
+        "b. Schwierigkeiten durch Kreuzfahrtschiffe.",
+        "c. Touristen als Einheimische."
+      ],
+      "correct": 2
+    },
+    {
+      "text": "Kreuzfahrtschiffe werden kritisiert, weil sie",
+      "options": [
+        "a. das Ansehen einer Stadt gefährden.",
+        "b. die Luft verschmutzen.",
+        "c. zu viel Müll produzieren."
+      ],
+      "correct": 1
+    },
+    {
+      "text": "Viele Einheimische sind unzufrieden, weil",
+      "options": [
+        "a. die Infrastruktur überlastet ist.",
+        "b. die Mietpreise steigen.",
+        "c. es zu wenig Polizeischutz gibt."
+      ],
+      "correct": 0
+    }
+  ],
+  "memoryHighlights": [
+    { "color": 3, "parts": [ "des abwechslungsreichen und kompakten Reiseprogramms." ] },
+    { "color": 7, "parts": [ "Menschen mit Beeinträchtigungen." ] },
+    { "color": 1, "parts": [ "Touristen als Einheimische." ] },
+    { "color": 9, "parts": [ "die Luft verschmutzen." ] },
+    { "color": 5, "parts": [ "die Infrastruktur überlastet ist." ] }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "title": "Lesen Teil 2 - Exam 39: Lebenslanges Lernen",
+  "skill": "lesen2",
+  "type": "teil2",
+  "text": "In einer Welt, die sich ständig verändert, ist Lernen längst nicht nur auf Schulzeit oder Studium beschränkt. Es begleitet uns ein Leben lang. Lebenslanges Lernen umfasst alle Lebensphasen und fördert berufliches Weiterkommen sowie persönliches Wohlbefinden.\n\nDer Psychologe Dr. Franz Schmidt erklärt, Lernen finde überall statt: beim Lesen eines Buches, auf Reisen oder beim Ausprobieren eines Hobbys. Neue Fähigkeiten und Fremdsprachen eröffneten Perspektiven und hielten geistig flexibel. Wer sich regelmäßig mit neuen Themen beschäftigt, entdeckt neue Möglichkeiten.\n\nNeue Fähigkeiten tragen zu einem erfüllteren Leben bei. Musik, Sport, Malen oder Fotografieren fordern das Gehirn und können Stress abbauen. Auch der soziale Aspekt ist wichtig: Sprachkurse, Workshops und ehrenamtliche Tätigkeiten schaffen Kontakte. Für ältere Menschen kann Lernen Einsamkeit verhindern.\n\nStudien belegen, dass lebenslanges Lernen das Gehirn jung hält. Neuroplastizität ermöglicht Veränderungen bis ins hohe Alter. Anspruchsvolle Tätigkeiten wie Schach oder Sprachen können das Demenzrisiko verringern. Sogenannte Super-Ager bleiben neugierig, stellen sich Herausforderungen und sind offen für Veränderungen.\n\nDank moderner Technologie ist Weiterbildung leicht zugänglich. Online-Kurse, Podcasts und Lern-Apps bieten zahlreiche Möglichkeiten, den eigenen Lernweg unabhängig vom Alter zu gestalten. Lernen ist eine Reise, die niemals endet.",
+  "questions": [
+    {
+      "text": "Lebenslanges Lernen",
+      "options": [
+        "a. erfordert eine berufliche sowie persönliche Weiterentwicklung.",
+        "b. ist ein geplanter Prozess während des gesamten Lebens.",
+        "c. ist nicht mit der schulischen Bildung gleichzusetzen."
+      ],
+      "correct": 2
+    },
+    {
+      "text": "Dr. Franz Schmidt betont, dass Lernen",
+      "options": [
+        "a. in vielen alltäglichen Situationen geschieht.",
+        "b. von Fremdsprachen für alle zwingend erforderlich ist.",
+        "c. vor allem der beruflichen Entwicklung dient."
+      ],
+      "correct": 0
+    },
+    {
+      "text": "Der soziale Aspekt des Lernens",
+      "options": [
+        "a. ermöglicht es, neue Kontakte zu knüpfen.",
+        "b. fördert das Gefühl der Einsamkeit.",
+        "c. setzt kreative Fähigkeiten voraus."
+      ],
+      "correct": 0
+    },
+    {
+      "text": "Die „Super-Ager“",
+      "options": [
+        "a. bevorzugen Routine und Stabilität.",
+        "b. fühlen sich den Studien zufolge viel jünger.",
+        "c. sind Neuem gegenüber aufgeschlossen."
+      ],
+      "correct": 2
+    },
+    {
+      "text": "Die Digitalisierung",
+      "options": [
+        "a. gibt den Menschen vor, welche Themen sie lernen sollen.",
+        "b. macht es allen möglich, das Lernen selbst zu organisieren.",
+        "c. sorgt dafür, dass Lernen ausschließlich online stattfindet."
+      ],
+      "correct": 1
+    }
+  ],
+  "memoryHighlights": [
+    { "color": 2, "parts": [ "ist nicht mit der schulischen Bildung gleichzusetzen." ] },
+    { "color": 6, "parts": [ "in vielen alltäglichen Situationen geschieht." ] },
+    { "color": 10, "parts": [ "ermöglicht es, neue Kontakte zu knüpfen." ] },
+    { "color": 4, "parts": [ "sind Neuem gegenüber aufgeschlossen." ] },
+    { "color": 8, "parts": [ "macht es allen möglich, das Lernen selbst zu organisieren." ] }
+  ]
+}
