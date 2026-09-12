@@ -1,0 +1,23 @@
+{
+  "title": "Hörverstehen Teil 2 - Janis",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Janis findet, dass Autoren heute von Kritikern ignoriert werden.", "correct": false },
+    { "text": "Das Setting seines Romans basiert auf einer Weltreise.", "correct": false },
+    { "text": "Sein Biologie-Studium hilft ihm beim Entwurf der Monster.", "correct": true },
+    { "text": "Janis schreibt seine ersten Entwürfe handschriftlich.", "correct": false },
+    { "text": "Der Autor korrigiert niemals während des ersten Schreibens.", "correct": true },
+    { "text": "Janis findet den Plot wichtiger als die Charaktere.", "correct": false },
+    { "text": "Früher versuchte Janis, Erfolg durch Trends zu kopieren.", "correct": true },
+    { "text": "Der Verlag hat das Buchende gegen seinen Willen geändert.", "correct": false },
+    { "text": "Janis braucht Stille und Einsamkeit zum Schreiben.", "correct": false },
+    { "text": "Er rät jungen Autoren, soziale Medien nicht zu wichtig zu nehmen.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": ["Sein Biologie-Studium hilft ihm beim Entwurf der Monster."] },
+    { "color": 2, "parts": ["Der Autor korrigiert niemals während des ersten Schreibens."] },
+    { "color": 3, "parts": ["Früher versuchte Janis, Erfolg durch Trends zu kopieren."] },
+    { "color": 4, "parts": ["Er rät jungen Autoren, soziale Medien nicht zu wichtig zu nehmen."] }
+  ]
+}

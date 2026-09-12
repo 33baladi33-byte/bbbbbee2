@@ -1,0 +1,25 @@
+{
+  "title": "Hörverstehen Teil 2 - Leo Berger",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Leo Berger wechselt regelmäßig seinen Standort.", "correct": true },
+    { "text": "Sein Tagesablauf ist kaum vom Wetter abhängig.", "correct": false },
+    { "text": "Früher arbeitete Leo Berger viel draußen in der Natur.", "correct": false },
+    { "text": "Die Wasser- und Energieversorgung erfordert Planung.", "correct": true },
+    { "text": "Dieser Lebensstil polarisiert in sozialen Netzwerken.", "correct": true },
+    { "text": "Leo Berger fühlt sich seit dem Vanleben gesünder.", "correct": true },
+    { "text": "Sein Umfeld reagierte teilweise mit Unverständnis.", "correct": true },
+    { "text": "Der Van dient ihm gleichzeitig als Wohnraum und Arbeitsplatz.", "correct": true },
+    { "text": "Ständiger Ortswechsel stellt für Leo Berger keinerlei Belastung dar.", "correct": false },
+    { "text": "Leo Berger schließt ein festes Leben derzeit nicht aus.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": ["Leo Berger wechselt regelmäßig seinen Standort."] },
+    { "color": 2, "parts": ["Die Wasser- und Energieversorgung erfordert Planung."] },
+    { "color": 3, "parts": ["Dieser Lebensstil polarisiert in sozialen Netzwerken."] },
+    { "color": 4, "parts": ["Leo Berger fühlt sich seit dem Vanleben gesünder."] },
+    { "color": 5, "parts": ["Sein Umfeld reagierte teilweise mit Unverständnis."] },
+    { "color": 6, "parts": ["Der Van dient ihm gleichzeitig als Wohnraum und Arbeitsplatz."] }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "title": "Hörverstehen Teil 2 - Jonas",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Zu Studienbeginn hatte Jonas keinerlei Gründungsabsichten.", "correct": true },
+    { "text": "Der Impuls für das Projekt entstand in einem obligatorischen Seminar.", "correct": true },
+    { "text": "Jonas startete ohne anfängliche finanzielle Hilfe.", "correct": true },
+    { "text": "Die Maschinennutzung war für Jonas nicht kostenpflichtig.", "correct": true },
+    { "text": "Die Lieferauflagen der Stadtwerke zwangen Jonas zur Studienpause.", "correct": true },
+    { "text": "Beide Elternteile begrüßten seine Studienpause gleichermaßen.", "correct": false },
+    { "text": "Die Anfangshalle bot äußerst schlechte Arbeitsbedingungen.", "correct": true },
+    { "text": "Jonas’ aktuelles Einkommen liegt unter den verbreiteten Erwartungen.", "correct": true },
+    { "text": "Sein Unternehmen recycelt inzwischen auch Textilabfälle.", "correct": false },
+    { "text": "Jonas möchte junge Initiativen durch Schulungen unterstützen.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": ["Zu Studienbeginn hatte Jonas keinerlei Gründungsabsichten."] },
+    { "color": 2, "parts": ["Der Impuls für das Projekt entstand in einem obligatorischen Seminar."] },
+    { "color": 3, "parts": ["Jonas startete ohne anfängliche finanzielle Hilfe."] },
+    { "color": 4, "parts": ["Die Maschinennutzung war für Jonas nicht kostenpflichtig."] },
+    { "color": 5, "parts": ["Die Lieferauflagen der Stadtwerke zwangen Jonas zur Studienpause."] },
+    { "color": 6, "parts": ["Die Anfangshalle bot äußerst schlechte Arbeitsbedingungen."] },
+    { "color": 7, "parts": ["Jonas’ aktuelles Einkommen liegt unter den verbreiteten Erwartungen."] },
+    { "color": 8, "parts": ["Jonas möchte junge Initiativen durch Schulungen unterstützen."] }
+  ]
+}

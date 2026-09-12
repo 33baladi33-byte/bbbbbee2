@@ -1,0 +1,23 @@
+{
+  "title": "Hörverstehen Teil 2 - Martin",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Seine erste Ausbildung absolvierte Martin als Bäcker.", "correct": false },
+    { "text": "Er arbeitete mehr als zehn Jahre in einer Bankfiliale.", "correct": true },
+    { "text": "Die Ursache des Berufswechsels war eine betriebsbedingte Kündigung.", "correct": false },
+    { "text": "Martins Partnerin reagierte zunächst kritisch auf seine Entscheidung.", "correct": false },
+    { "text": "Martin fand den Start in der Bäckerei körperlich hart.", "correct": true },
+    { "text": "Er konnte ohne Hygieneschulung in der Bäckerei anfangen.", "correct": false },
+    { "text": "Martin schätzt besonders den persönlichen Kontakt zu den Kunden.", "correct": true },
+    { "text": "Sein Einkommen ist jetzt höher als bei der Bank.", "correct": false },
+    { "text": "Eine eigene Bäckerei kommt für Martin nicht infrage.", "correct": false },
+    { "text": "Er empfiehlt eine sorgfältige Planung vor einem Jobwechsel.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": ["Er arbeitete mehr als zehn Jahre in einer Bankfiliale."] },
+    { "color": 2, "parts": ["Martin fand den Start in der Bäckerei körperlich hart."] },
+    { "color": 3, "parts": ["Martin schätzt besonders den persönlichen Kontakt zu den Kunden."] },
+    { "color": 4, "parts": ["Er empfiehlt eine sorgfältige Planung vor einem Jobwechsel."] }
+  ]
+}

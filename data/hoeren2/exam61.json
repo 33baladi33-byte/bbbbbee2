@@ -1,0 +1,25 @@
+{
+  "title": "Hörverstehen Teil 2 - Journalisten - Weber",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Weber ist heute vor Auftritten gar nicht mehr nervös.", "correct": false },
+    { "text": "Im Studium ist Weber die Praxis besonders wichtig.", "correct": true },
+    { "text": "Weber dreht in seiner Freizeit gerne eigene Filme.", "correct": false },
+    { "text": "Journalisten müssen heute multimedial arbeiten können.", "correct": true },
+    { "text": "Sportjournalist ist heute kein realistischer Berufswunsch.", "correct": false },
+    { "text": "Ein guter Journalist braucht Entdeckergeist.", "correct": true },
+    { "text": "Ein Unfall beendete Webers Karriere als Handballer.", "correct": true },
+    { "text": "Weber sammelte erst nach dem Studium Berufserfahrung.", "correct": false },
+    { "text": "Journalisten sollten gegenüber Stars neutral bleiben.", "correct": true },
+    { "text": "Weber rät nach dem Abitur zu Praktika in Redaktionen.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": ["Im Studium ist Weber die Praxis besonders wichtig."] },
+    { "color": 2, "parts": ["Journalisten müssen heute multimedial arbeiten können."] },
+    { "color": 3, "parts": ["Ein guter Journalist braucht Entdeckergeist."] },
+    { "color": 4, "parts": ["Ein Unfall beendete Webers Karriere als Handballer."] },
+    { "color": 5, "parts": ["Journalisten sollten gegenüber Stars neutral bleiben."] },
+    { "color": 6, "parts": ["Weber rät nach dem Abitur zu Praktika in Redaktionen."] }
+  ]
+}

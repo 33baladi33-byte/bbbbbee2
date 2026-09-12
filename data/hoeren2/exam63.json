@@ -1,0 +1,23 @@
+{
+  "title": "Hörverstehen Teil 2 - Dr. Lenz",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Frau Dr. Lenz spricht aus ihrem ruhigen Büro.", "correct": false },
+    { "text": "Das Projekt „Lern-Zukunft“ läuft erst seit wenigen Wochen.", "correct": false },
+    { "text": "Es gibt für die Schüler keine Anwesenheitspflicht.", "correct": false },
+    { "text": "Feedbackgespräche ersetzen die klassischen Schulnoten.", "correct": true },
+    { "text": "Lehrer halten weiterhin überwiegend Frontalunterricht.", "correct": false },
+    { "text": "Alle Eltern befürworteten das Konzept von Anfang an.", "correct": false },
+    { "text": "Die Schule wurde rein aus Staatsmitteln finanziert.", "correct": false },
+    { "text": "Das Interesse am Schulmodell hat zugenommen.", "correct": true },
+    { "text": "Das Konzept verlangt viel Selbstorganisation.", "correct": true },
+    { "text": "Frau Dr. Lenz blickt trotz Stress positiv in die Zukunft.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": ["Feedbackgespräche ersetzen die klassischen Schulnoten."] },
+    { "color": 2, "parts": ["Das Interesse am Schulmodell hat zugenommen."] },
+    { "color": 3, "parts": ["Das Konzept verlangt viel Selbstorganisation."] },
+    { "color": 4, "parts": ["Frau Dr. Lenz blickt trotz Stress positiv in die Zukunft."] }
+  ]
+}

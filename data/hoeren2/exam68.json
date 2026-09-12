@@ -1,0 +1,25 @@
+{
+  "title": "Hörverstehen Teil 2 - Auslöser",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Thomas rauchte zum ersten Mal mit 14.", "correct": true },
+    { "text": "Er rauchte besonders oft in Stresssituationen.", "correct": true },
+    { "text": "Der Auslöser zum Rauchstopp war ein Krankenhausaufenthalt.", "correct": false },
+    { "text": "Er plante seinen Rauchstopp zum Jahresanfang.", "correct": true },
+    { "text": "Am ersten Tag hatte er kaum Verlangen nach Zigaretten.", "correct": false },
+    { "text": "Kollegen halfen ihm beim Aufhören.", "correct": true },
+    { "text": "Er verzichtete bewusst auf digitale Hilfsmittel beim Aufhören.", "correct": false },
+    { "text": "Der psychische Entzug war schwieriger als der körperliche.", "correct": true },
+    { "text": "Heute verspürt Thomas regelmäßig starke Rauchlust.", "correct": false },
+    { "text": "Für seine Tochter ist Rauchen ein völlig fremder Begriff.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": ["Thomas rauchte zum ersten Mal mit 14."] },
+    { "color": 2, "parts": ["Er rauchte besonders oft in Stresssituationen."] },
+    { "color": 3, "parts": ["Er plante seinen Rauchstopp zum Jahresanfang."] },
+    { "color": 4, "parts": ["Kollegen halfen ihm beim Aufhören."] },
+    { "color": 5, "parts": ["Der psychische Entzug war schwieriger als der körperliche."] },
+    { "color": 6, "parts": ["Für seine Tochter ist Rauchen ein völlig fremder Begriff."] }
+  ]
+}

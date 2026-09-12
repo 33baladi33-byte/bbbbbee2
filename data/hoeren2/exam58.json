@@ -1,0 +1,24 @@
+{
+  "title": "Hörverstehen Teil 2 - Matteo",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Matteos erstes Restaurant schloss wegen eines Küchenbrands.", "correct": false },
+    { "text": "Matteo wuchs hauptsächlich bei seinem Onkel auf dem Land auf.", "correct": true },
+    { "text": "Auf dem Bauernhof gab es keine anderen Kinder außer Matteo.", "correct": false },
+    { "text": "Die Ausbildung war für Matteo psychisch sehr belastend.", "correct": true },
+    { "text": "Bei Bewerbern achtet Matteo zuerst auf gute Noten und Diplome.", "correct": false },
+    { "text": "Der Geschmack des Essens ist Matteo wichtiger als das Aussehen.", "correct": true },
+    { "text": "Seine Kochschule ist in erster Linie für Erwachsene gedacht.", "correct": true },
+    { "text": "Matteo lehnt Fertiggerichte und Fast Food komplett ab.", "correct": false },
+    { "text": "Matteo findet TV-Kochshows eine absolute Zeitverschwendung.", "correct": false },
+    { "text": "Privat kocht Matteo am liebsten ganz einfache Mahlzeiten.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": ["Matteo wuchs hauptsächlich bei seinem Onkel auf dem Land auf."] },
+    { "color": 2, "parts": ["Die Ausbildung war für Matteo psychisch sehr belastend."] },
+    { "color": 3, "parts": ["Der Geschmack des Essens ist Matteo wichtiger als das Aussehen."] },
+    { "color": 4, "parts": ["Seine Kochschule ist in erster Linie für Erwachsene gedacht."] },
+    { "color": 5, "parts": ["Privat kocht Matteo am liebsten ganz einfache Mahlzeiten."] }
+  ]
+}

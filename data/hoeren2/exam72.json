@@ -1,0 +1,24 @@
+{
+  "title": "Hörverstehen Teil 2 - Tarek",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Tarek Hesse begann seine berufliche Laufbahn als Stadtplaner.", "correct": true },
+    { "text": "Das erste Gartenprojekt entstand auf einem Firmengelände.", "correct": false },
+    { "text": "Manche Gärten befinden sich auf ehemaligen Parkplätzen.", "correct": true },
+    { "text": "Das Projekt verfolgt vor allem wirtschaftliche Ziele.", "correct": false },
+    { "text": "Die Teilnahme ist kostenpflichtig, aber stark nachgefragt.", "correct": false },
+    { "text": "Es gibt feste Regeln, wer was anbauen darf.", "correct": false },
+    { "text": "Die Organisation kümmert sich um regelmäßige Ernteaktionen.", "correct": true },
+    { "text": "Kinder dürfen nur unter Aufsicht mitarbeiten.", "correct": false },
+    { "text": "Einige Teilnehmer sind wegen der Unordnung wieder ausgestiegen.", "correct": true },
+    { "text": "Tarek Hesse kann sich eine internationale Ausweitung vorstellen.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": ["Tarek Hesse begann seine berufliche Laufbahn als Stadtplaner."] },
+    { "color": 2, "parts": ["Manche Gärten befinden sich auf ehemaligen Parkplätzen."] },
+    { "color": 3, "parts": ["Die Organisation kümmert sich um regelmäßige Ernteaktionen."] },
+    { "color": 4, "parts": ["Einige Teilnehmer sind wegen der Unordnung wieder ausgestiegen."] },
+    { "color": 5, "parts": ["Tarek Hesse kann sich eine internationale Ausweitung vorstellen."] }
+  ]
+}

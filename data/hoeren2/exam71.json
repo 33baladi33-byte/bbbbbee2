@@ -1,0 +1,24 @@
+{
+  "title": "Hörverstehen Teil 2 - Nora",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Nora Weidlich war früher Architektin.", "correct": false },
+    { "text": "Die Idee entstand erst während des Bauprozesses.", "correct": false },
+    { "text": "Das Grundstück stellt ein älteres Ehepaar zur Verfügung.", "correct": true },
+    { "text": "Der Bau verlief weitgehend problemlos.", "correct": false },
+    { "text": "Der Alltag funktioniert auch auf kleinem Raum.", "correct": true },
+    { "text": "Das Loslassen von Besitz war herausfordernd.", "correct": true },
+    { "text": "Einschränkungen beim Komfort belasten sie dauerhaft.", "correct": false },
+    { "text": "Das Umfeld reagierte anfangs eher kritisch.", "correct": false },
+    { "text": "Größere Wohnungen kommen für sie aktuell nicht infrage.", "correct": true },
+    { "text": "Minimalismus bedeutet für sie mehr Lebensqualität.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": ["Das Grundstück stellt ein älteres Ehepaar zur Verfügung."] },
+    { "color": 2, "parts": ["Der Alltag funktioniert auch auf kleinem Raum."] },
+    { "color": 3, "parts": ["Das Loslassen von Besitz war herausfordernd."] },
+    { "color": 4, "parts": ["Größere Wohnungen kommen für sie aktuell nicht infrage."] },
+    { "color": 5, "parts": ["Minimalismus bedeutet für sie mehr Lebensqualität."] }
+  ]
+}

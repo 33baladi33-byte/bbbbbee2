@@ -1,0 +1,25 @@
+{
+  "title": "Hörverstehen Teil 2 - Lukas",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Lukas war nach dem Schulabschluss zunächst unentschlossen.", "correct": true },
+    { "text": "Die Lehrer halfen dem Gastschüler bei Sprachproblemen kaum.", "correct": true },
+    { "text": "Spanien ist als Au-Pair-Land aktuell wenig gefragt.", "correct": false },
+    { "text": "Lukas dachte auch über einen Aufenthalt in Italien nach.", "correct": true },
+    { "text": "Früher schickte man Au-Pairs vor allem zur Arbeit nach England.", "correct": false },
+    { "text": "Lukas rät dazu, unbedingt einen Vertrag abzuschließen.", "correct": true },
+    { "text": "Lukas kritisiert die hohen Kosten der Vermittlungsagenturen.", "correct": false },
+    { "text": "Lukas fühlte sich anfangs nicht als Teil der Familie.", "correct": true },
+    { "text": "Die Reise nach Madrid stärkte den Zusammenhalt mit der Familie.", "correct": true },
+    { "text": "Lukas lernte Spanisch hauptsächlich im Sprachkurs.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": ["Lukas war nach dem Schulabschluss zunächst unentschlossen."] },
+    { "color": 2, "parts": ["Die Lehrer halfen dem Gastschüler bei Sprachproblemen kaum."] },
+    { "color": 3, "parts": ["Lukas dachte auch über einen Aufenthalt in Italien nach."] },
+    { "color": 4, "parts": ["Lukas rät dazu, unbedingt einen Vertrag abzuschließen."] },
+    { "color": 5, "parts": ["Lukas fühlte sich anfangs nicht als Teil der Familie."] },
+    { "color": 6, "parts": ["Die Reise nach Madrid stärkte den Zusammenhalt mit der Familie."] }
+  ]
+}

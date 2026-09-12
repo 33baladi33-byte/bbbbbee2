@@ -1,0 +1,22 @@
+{
+  "title": "Hörverstehen Teil 2 - Frau Seidel",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Frau Seidel erledigt ihre Arbeit überwiegend am Schreibtisch.", "correct": false },
+    { "text": "Die Bauarbeiten fallen in eine stark frequentierte Zeit.", "correct": true },
+    { "text": "Die aktuellen Probleme betreffen ausschließlich den Regionalverkehr.", "correct": false },
+    { "text": "Der Ersatzverkehr erfolgt ausschließlich mit Bussen.", "correct": false },
+    { "text": "Geschäftsreisende bleiben von den Störungen weitgehend unbeeinträchtigt.", "correct": false },
+    { "text": "Einschränkungen wirken sich nicht auf alle Freizeitangebote gleichermaßen aus.", "correct": true },
+    { "text": "Man erwartet eine vollständige Rückkehr zum Normalbetrieb.", "correct": false },
+    { "text": "Die Situation ist im Vergleich zum letzten Wochenende deutlich entspannter.", "correct": false },
+    { "text": "Vergleichbare Situationen traten früher nie während der Ferien auf.", "correct": false },
+    { "text": "Trotz der Belastung ist Frau Seidel mit ihrer Arbeit zufrieden.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": ["Die Bauarbeiten fallen in eine stark frequentierte Zeit."] },
+    { "color": 2, "parts": ["Einschränkungen wirken sich nicht auf alle Freizeitangebote gleichermaßen aus."] },
+    { "color": 3, "parts": ["Trotz der Belastung ist Frau Seidel mit ihrer Arbeit zufrieden."] }
+  ]
+}

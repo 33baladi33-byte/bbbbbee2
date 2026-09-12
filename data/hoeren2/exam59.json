@@ -1,0 +1,24 @@
+{
+  "title": "Hörverstehen Teil 2 - Mallorca (Neu)",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Mallorca ist als Reiseziel laut Dr. Weber am Ende.", "correct": false },
+    { "text": "„Coolcationing“ ist Urlaub in kühleren Gebieten.", "correct": true },
+    { "text": "Nordeuropa-Reisenden ist ein günstiger Preis sehr wichtig.", "correct": false },
+    { "text": "In Schweden wird das Jedermannsrecht oft missbraucht.", "correct": true },
+    { "text": "Albaniens Tourismus-Infrastruktur wurde schnell modernisiert.", "correct": true },
+    { "text": "Das Baltikum zieht Touristen durch viele Golfplätze an.", "correct": false },
+    { "text": "Laut Dr. Weber sind Visum-Regeln das Hauptproblem bei Ost-Reisen.", "correct": false },
+    { "text": "Reisen in den Osten scheitern oft an schlechten Verbindungen.", "correct": true },
+    { "text": "Senioren bevorzugen heute vor allem gemütliche Urlaube.", "correct": false },
+    { "text": "„Best-Ager“ buchen immer öfter schwierige Fernwanderungen.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": ["„Coolcationing“ ist Urlaub in kühleren Gebieten."] },
+    { "color": 2, "parts": ["In Schweden wird das Jedermannsrecht oft missbraucht."] },
+    { "color": 3, "parts": ["Albaniens Tourismus-Infrastruktur wurde schnell modernisiert."] },
+    { "color": 4, "parts": ["Reisen in den Osten scheitern oft an schlechten Verbindungen."] },
+    { "color": 5, "parts": ["„Best-Ager“ buchen immer öfter schwierige Fernwanderungen."] }
+  ]
+}

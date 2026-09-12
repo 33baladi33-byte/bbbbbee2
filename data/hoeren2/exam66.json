@@ -1,0 +1,25 @@
+{
+  "title": "Hörverstehen Teil 2 - Laura",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Laura arbeitete früher in einer Werbeagentur.", "correct": true },
+    { "text": "Der Gedanke ans Landleben kam ihr während eines Urlaubs.", "correct": true },
+    { "text": "Ihre Eltern fanden ihre Entscheidung sofort gut.", "correct": false },
+    { "text": "Ihr Partner unterstützte sie bei der Veränderung.", "correct": true },
+    { "text": "Laura hat sich vor dem Umzug nicht vorbereitet.", "correct": false },
+    { "text": "Der Start auf dem Hof war körperlich belastend.", "correct": true },
+    { "text": "Auf ihrem Hof betreibt Laura Tierhaltung.", "correct": true },
+    { "text": "Sie führt einen kleinen Hofladen mit regionalen Lebensmitteln.", "correct": false },
+    { "text": "Ihre heutigen Einnahmen übertreffen ihr früheres Gehalt.", "correct": false },
+    { "text": "Laura möchte auf ihrem Hof Schulungen anbieten.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": ["Laura arbeitete früher in einer Werbeagentur."] },
+    { "color": 2, "parts": ["Der Gedanke ans Landleben kam ihr während eines Urlaubs."] },
+    { "color": 3, "parts": ["Ihr Partner unterstützte sie bei der Veränderung."] },
+    { "color": 4, "parts": ["Der Start auf dem Hof war körperlich belastend."] },
+    { "color": 5, "parts": ["Auf ihrem Hof betreibt Laura Tierhaltung."] },
+    { "color": 6, "parts": ["Laura möchte auf ihrem Hof Schulungen anbieten."] }
+  ]
+}

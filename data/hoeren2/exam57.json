@@ -1,0 +1,21 @@
+{
+  "title": "Hörverstehen Teil 2 - Carina (المعدل 2)",
+  "type": "truefalse",
+  "questions": [
+    { "text": "Carina Traumt Davon Filmspiel in Holandy.", "correct": false },
+    { "text": "Carina steht iher Beruf an erste Stelle.", "correct": false },
+    { "text": "Carina hat sich der Agentur mit einem Film präsentiert.", "correct": false },
+    { "text": "Carina musste für einen Film ihr Gewicht stark verändern", "correct": false },
+    { "text": "Carina macht lieber gefühlvolle Filme als Action-Filme", "correct": false },
+    { "text": "Wegen der vielen Fehlstunden hatte Carina Probleme mit dem Direktor der Schule.", "correct": false },
+    { "text": "Carinas Eltern haben ihre Tochter von Anfang an unterstützt.", "correct": false },
+    { "text": "Carina findet den Wechsel zwischen Schule und Drehterminen nicht immer Proplemlos.", "correct": true },
+    { "text": "Bei Dialogen darf man auch selbst etwas erfinden.", "correct": true },
+    { "text": "Corina würde keine Filmspiel spielen.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 6, "parts": ["Carina findet den Wechsel zwischen Schule und Drehterminen nicht immer Proplemlos."] },
+    { "color": 7, "parts": ["Bei Dialogen darf man auch selbst etwas erfinden."] },
+    { "color": 8, "parts": ["Corina würde keine Filmspiel spielen."] }
+  ]
+}

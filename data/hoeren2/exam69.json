@@ -1,0 +1,23 @@
+{
+  "title": "Hörverstehen Teil 2 - David",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "David Steiner arbeitete früher in der Gastronomie.", "correct": false },
+    { "text": "Sein Entschluss zur Selbstständigkeit entstand während eines Praktikums.", "correct": false },
+    { "text": "Seine Eltern haben ihn bei der Finanzierung des Cafés unterstützt.", "correct": false },
+    { "text": "David hat den Standort eher zufällig gefunden.", "correct": true },
+    { "text": "Werbung über soziale Medien war für ihn anfangs nicht relevant.", "correct": false },
+    { "text": "Viele Stammgäste schätzen die persönliche Atmosphäre.", "correct": true },
+    { "text": "Der Umsatz deckte in den ersten Monaten kaum die laufenden Kosten.", "correct": true },
+    { "text": "Mittlerweile hat David zwei Vollzeitkräfte.", "correct": false },
+    { "text": "Längere Pausen während der Saison gönnt er sich regelmäßig.", "correct": false },
+    { "text": "Ein zweiter Standort kommt für ihn in einigen Jahren infrage.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": ["David hat den Standort eher zufällig gefunden."] },
+    { "color": 2, "parts": ["Viele Stammgäste schätzen die persönliche Atmosphäre."] },
+    { "color": 3, "parts": ["Der Umsatz deckte in den ersten Monaten kaum die laufenden Kosten."] },
+    { "color": 4, "parts": ["Ein zweiter Standort kommt für ihn in einigen Jahren infrage."] }
+  ]
+}
