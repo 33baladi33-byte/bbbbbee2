@@ -35258,15 +35258,11 @@ var MyApp = (() => {
       this.style.transform = isExpanded ? "rotate(90deg)" : "rotate(0deg)";
     };
     wrapper.appendChild(toggle);
-    if (gridContainer && gridContainer.parentNode === container2) {
-      container2.insertBefore(wrapper, gridContainer.nextSibling);
+    const last = normal[normal.length - 1];
+    if (last && last.parentNode) {
+      last.parentNode.insertBefore(wrapper, last.nextSibling);
     } else {
-      const last = normal[normal.length - 1];
-      if (last && last.parentNode) {
-        last.parentNode.insertBefore(wrapper, last.nextSibling);
-      } else {
-        container2.appendChild(wrapper);
-      }
+      container2.appendChild(wrapper);
     }
   }
   function showVersionsPopup(exam, skill) {
@@ -36407,8 +36403,7 @@ var MyApp = (() => {
     const key = getStageKey(skill);
     try {
       const stage = parseInt(localStorage.getItem(key)) || 1;
-      const config = SKILL_CONFIG[skill];
-      const totalStages = config ? Math.ceil(config.totalExams / config.examsPerStage) : 1;
+      const totalStages = getTotalStages(skill);
       return Math.max(1, Math.min(stage, totalStages));
     } catch {
       return 1;
@@ -36422,18 +36417,17 @@ var MyApp = (() => {
     }
   }
   function getTotalStages(skill) {
-    const config = SKILL_CONFIG[skill];
-    if (!config) return 1;
-    return Math.ceil(config.totalExams / config.examsPerStage);
+    const exams = examsDatabase[skill];
+    const total = Array.isArray(exams) ? exams.length : 0;
+    if (total === 0) return 1;
+    return Math.ceil(total / EXAMS_PER_STAGE);
   }
   function getExamsForStage(skill, stage) {
-    const config = SKILL_CONFIG[skill];
-    if (!config) return [];
-    const start = (stage - 1) * config.examsPerStage;
-    const end = Math.min(start + config.examsPerStage, config.totalExams);
-    const exams = [];
-    for (let i = start + 1; i <= end; i++) exams.push(i);
-    return exams;
+    const exams = examsDatabase[skill] || [];
+    if (exams.length === 0) return [];
+    const start = (stage - 1) * EXAMS_PER_STAGE;
+    const end = Math.min(start + EXAMS_PER_STAGE, exams.length);
+    return exams.slice(start, end).map((e) => e.id);
   }
   function buildSentenceId(skill, examId, questionIndex) {
     return `${skill}_exam${examId}_${questionIndex}`;
@@ -37151,7 +37145,7 @@ var MyApp = (() => {
     }
     matchingBtn.style.display = "none";
   }
-  var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY, originalOpenExam2, resizeTimeout;
+  var teile, currentExamData, currentSkill2, currentExamId, currentExamsList, currentM\u00FCndlichPart, tipsExams, lesenExams, lesen2Exams, lesen3Exams, sprach1Exams, sprach2Exams, schreibenExams, m\u00FCndlich1Exams, m\u00FCndlich2Exams, m\u00FCndlich3Exams, examsDatabase, activeTeilId, EXAMS_PER_STAGE, SKILL_CONFIG, LEVELS_KEY, MAX_LEVEL, VIEW_ICONS_2, VIEW_MODE_KEY_2, EXAM_LIST_MODE_KEY, originalOpenExam2, resizeTimeout;
   var init_exams = __esm({
     "exams.js"() {
       window.isInterleavingActive = false;
@@ -38468,6 +38462,7 @@ var MyApp = (() => {
         }
       });
       renderTeileList();
+      EXAMS_PER_STAGE = 5;
       SKILL_CONFIG = {
         hoeren1: { totalExams: 45, examsPerStage: 15, totalSentences: 108 },
         hoeren2: { totalExams: 55, examsPerStage: 15, totalSentences: 273 },
@@ -38481,13 +38476,12 @@ var MyApp = (() => {
       LEVELS_KEY = "memory_levels";
       MAX_LEVEL = 5;
       window.loadStageExams = async function(skill) {
-        const config = SKILL_CONFIG[skill];
-        if (!config) {
-          console.warn(`\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0625\u0639\u062F\u0627\u062F\u0627\u062A \u0644\u0644\u0645\u0647\u0627\u0631\u0629: ${skill}`);
+        const exams = examsDatabase[skill] || [];
+        if (exams.length === 0) {
+          console.warn(`\u26A0\uFE0F \u0644\u0627 \u062A\u0648\u062C\u062F \u0627\u0645\u062A\u062D\u0627\u0646\u0627\u062A \u0644\u0644\u0645\u0647\u0627\u0631\u0629: ${skill}`);
           return;
         }
-        const exams = examsDatabase[skill] || [];
-        const totalExams = config.totalExams;
+        const totalExams = exams.length;
         const currentStage = getCurrentStage(skill);
         const examIds = getExamsForStage(skill, currentStage);
         console.log(`\u{1F4DA} \u062A\u062D\u0645\u064A\u0644 \u0627\u0644\u0645\u0631\u062D\u0644\u0629 ${currentStage} \u0645\u0646 ${getTotalStages(skill)} \u0644\u0640 ${skill}`);
