@@ -1,0 +1,39 @@
+{
+  "title": "Lesen Teil 1 - Exam 58: Das alte Leben",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "a. Das alte Leben hinter sich lassen - Ein Erfahrungsbericht.",
+    "c. Gefährlicher Trend: Ein jugendliches Aussehen um jeden Preis.",
+    "e. Gesünder leben dank alternativer Heilmethode.",
+    "f. Immer mehr Minderjährige greifen zu Kosmetik.",
+    "g. Monotonie hat Einfluss auf unser Zeitgefühl."
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Make-up, Lidschatten, Lippenstift und mehr: Schon seit einigen Jahren warnt die Weltgesundheitsorganisation WHO vor den Risiken solcher Artikel für Kinder und Jugendliche. Viele Inhaltsstoffe sind für die empfindliche Kinderhaut ungeeignet und können Allergien oder gesundheitliche Schäden verursachen. Dennoch greifen immer mehr Kinder und Teenager zu kosmetischen Produkten. Die Medizinerin Anja Kaukholz sieht vor allem soziale Medien als Ursache. Influencer vermitteln, ein natürliches Aussehen reiche nicht aus. Eltern sollten Interesse nicht verbieten, aber erklären, dass der Wert eines Kindes nicht vom Aussehen abhängt, und geeignete natürliche Produkte auswählen.",
+      "correct": 3,
+      "highlightColor": 1
+    },
+    {
+      "text": "Text 2: Essen macht gesund! Dies verspricht die ayurvedische Ernährungslehre, die sich besonders bei jungen Erwachsenen wachsender Beliebtheit erfreut. Das Erfolgsrezept: keine strenge Diät, sondern Aktivierung der körpereigenen Selbstheilungskräfte. Die Ärztin Aparna Kumar erstellt anhand von Gesundheitszustand, Alter und individuellen Bedürfnissen ganzheitliche Ernährungspläne. Hochwertige Lebensmittel, passende Mengen, Gewürze und Kräuter spielen eine zentrale Rolle. Die Ernährungsform soll auch bei Depressionen, chronischen Problemen oder Migräne helfen.",
+      "correct": 2,
+      "highlightColor": 3
+    },
+    {
+      "text": "Text 3: Können Sie sich erinnern, als sich sechs Wochen Sommerferien wie eine Ewigkeit anfühlten? Im Erwachsenenalter fragen wir uns oft, wie schnell ein Jahr vergangen ist. Die Biologin Dr. Juliane Simmermann erklärt dies mit Alltagsroutinen: Wiederholte Handlungen lassen wenig Neues geschehen und die Tage gefühlt schneller vorbeigehen. Routinen geben zwar Stabilität und Sicherheit, doch wer den Eindruck hat, sein Leben rase, sollte sie gelegentlich unterbrechen: einen anderen Weg zur Arbeit nehmen oder vor dem Schlafengehen spazieren gehen.",
+      "correct": 4,
+      "highlightColor": 5
+    },
+    {
+      "text": "Text 4: Arno Schneider hat geschafft, wovon viele träumen. Der 47-Jährige lebt mit seiner Frau Katharina und den Kindern Max und Tim auf Bali. Vor vier Jahren wanderte die Familie aus und bereut keinen Tag. Sie hat weniger Geld, aber einen besseren Alltag und entspannt bei Stress am Meer. Auslöser war die wachsende Unzufriedenheit mit Arnos früherem Beruf als Bäcker. Heute betreibt das Ehepaar auf Bali ein Café mit selbst gebackenem Kuchen.",
+      "correct": 0,
+      "highlightColor": 7
+    },
+    {
+      "text": "Text 5: Der Wunsch, jünger auszusehen, nimmt immer bizarrere Züge an. Bei privaten Treffen werden kosmetische Behandlungen bis hin zu Botox angeboten. Das Nervengift soll Falten reduzieren, kann bei falscher Anwendung jedoch irreparable Schäden und allergische Reaktionen verursachen. Häufig fehlen den Behandelnden medizinische Kenntnisse. Der Dermatologe Dr. Ulrich Brechschleid warnt: Für Schönheit sollte man nie die eigene Gesundheit aufs Spiel setzen.",
+      "correct": 1,
+      "highlightColor": 9
+    }
+  ]
+}

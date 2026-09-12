@@ -1,0 +1,39 @@
+{
+  "title": "Lesen Teil 1 - Exam 57: Gesundheit / Symptomen",
+  "skill": "lesen1",
+  "type": "matching",
+  "sharedOptions": [
+    "b. Schlaflos? Wann Sie sich besser ärztlichen Rat holen sollten",
+    "c. Mögliche Gesundheitsrisiken durch Mikroplastik im Körper",
+    "d. Mehr Schlaf, weniger Kilos",
+    "f. Powernap, joggen oder frische Luft? Was wirklich wach macht",
+    "i. Wenn das Wetter den Körper stresst"
+  ],
+  "questions": [
+    {
+      "text": "Text 1: Viele Menschen kennen das: Um die Mittagszeit kommt plötzlich die große Müdigkeit und es fällt schwer, sich auf die Arbeit zu konzentrieren. Zum Glück hat die Schlafmedizinerin Charlotte Bruckner ein paar einfache Tipps, die helfen, wieder fitter zu werden: 1. Stehen Sie auf, gehen Sie ein paar Schritte oder machen Sie Gymnastik. Noch besser ist ein kurzer Spaziergang an der frischen Luft. 2. Eine kalte Dusche am Morgen und ein paar Spritzer Wasser ins Gesicht regen den Kreislauf an. 3. Lüften Sie regelmäßig, am besten stoßlüften. Der kühlere Luftstrom wirkt erfrischend. 4. Kaffee kann helfen; die Wirkung spüren wir nach 15 bis 30 Minuten. 5. Die effektivste Methode ist ein kurzes Nickerchen. Schlafen Sie nicht länger als 30 Minuten.",
+      "correct": 3,
+      "highlightColor": 0
+    },
+    {
+      "text": "Text 2: Fühlen Sie sich morgens oft wie gerädert und greifen zu Süßem oder Fettigem? Damit sind Sie nicht allein. Zahlreiche Studien zeigen, dass Schlafmangel mit Heißhunger und Übergewicht zusammenhängt. Eine Untersuchung mit rund 70 Studierenden ergab: Wer vier bis fünf Stunden pro Nacht schläft, entwickelt deutlich mehr Appetit - vor allem auf Ungesundes. Schlafmangel beeinflusst die Hungerhormone Ghrelin und Leptin. Eine Studie aus den USA zeigte, dass Menschen, die ihre Schlafdauer verlängerten, weniger Kalorien zu sich nahmen und Gewicht verloren.",
+      "correct": 2,
+      "highlightColor": 2
+    },
+    {
+      "text": "Text 3: Wenn die Temperaturen plötzlich stark schwanken, merken viele Menschen, dass sich ihr Körper nur schwer anpasst. Tatsächlich muss unser Organismus ständig daran arbeiten, die Körpertemperatur bei etwa 37 Grad zu halten. Gesunde Menschen spüren diese Anpassung oft gar nicht. Bei Wetterempfindlichen können Müdigkeit, Kopfschmerzen, Reizbarkeit oder Kreislaufprobleme auftreten. Besonders Menschen mit Rheuma oder Herz-Kreislauf-Problemen reagieren. Auch das Frühjahr ist belastend: Die Tage werden heller, die Melatoninproduktion sinkt und der Körper muss das Gleichgewicht zwischen Melatonin und Serotonin neu einstellen.",
+      "correct": 4,
+      "highlightColor": 4
+    },
+    {
+      "text": "Text 4: Mikroplastik ist mittlerweile allgegenwärtig. Es befindet sich in Lebensmitteln, im Trinkwasser und sogar in der Luft. Forschende warnen vor möglichen gesundheitlichen Risiken. In einer neuen Studie wurden bei fast 800 Personen im Alter zwischen 20 und 80 Jahren verschiedene Proben untersucht und in unterschiedlichen Organen Mikroplastik gefunden. Besonders alarmierend war, dass ältere Menschen mit einem hohen Anteil an Mikroplastik häufiger an Erkrankungen von Leber oder Nieren litten. Die Wissenschaft beurteilt einen starken Anstieg als sehr bedenklich und empfiehlt verschiedene Maßnahmen, um die Aufnahme zu reduzieren: Wasser aus Glasflaschen trinken, Leitungswasser nutzen und Lebensmittel nicht in Plastikbehältern erhitzen.",
+      "correct": 1,
+      "highlightColor": 6
+    },
+    {
+      "text": "Text 5: Sie liegen nachts lange wach und wälzen sich im Bett hin und her? Wenn das häufiger vorkommt, sollten Sie genauer hinsehen. Schlafstörungen sind weit verbreitet und können auf gesundheitliche Probleme hinweisen. Typische Warnzeichen sind, dass Sie sehr lange zum Einschlafen brauchen, nachts häufig aufwachen oder früh wach werden und nicht wieder einschlafen. Nächtliche Insomnie kann sich schnell auf den Alltag auswirken und zu Tagesmüdigkeit, Konzentrationsschwäche und Gereiztheit führen. Wenn die Schlafprobleme mindestens drei Nächte pro Woche und länger als drei Monate auftreten, spricht man von chronischer Insomnie. Häufige Auslöser sind psychische Erkrankungen, Angststörungen oder Suchterkrankungen. Im Gegensatz zu kurzfristigem schlechten Schlaf sollte anhaltende Insomnie ärztlich abgeklärt werden.",
+      "correct": 0,
+      "highlightColor": 8
+    }
+  ]
+}
