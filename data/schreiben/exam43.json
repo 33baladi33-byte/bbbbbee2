@@ -1,0 +1,29 @@
+{
+  "title": "Schreiben - Exam 43: Kochkurs für Anfänger",
+  "skill": "schreiben",
+  "type": "schreiben",
+  "situation": {
+    "title": "Kochkurs für Anfänger",
+    "level": "B2",
+    "text": "Kochen leicht gemacht!\nKochkurs für Anfängerinnen und Anfänger\nBist du bereit, die Welt des Kochens zu entdecken? Unser Kochkurs für Anfängerinnen und Anfänger ist der perfekte Einstieg!\n\nIn einer entspannten und freundlichen Atmosphäre lernst du die Grundlagen für die Zubereitung leckere Gerichte kennen und kannst dadurch auch bald selbst dein eigenes Lieblingsessen zubereiten!\n\nWas dich erwartet:\n• einfache Rezepte für leckere und gesunde Mahlzeiten\n• praktische Übungen unter professioneller Anleitung\n• gemeinschaftliche Atmosphäre beim gemeinsamen Kochen und Essen mit Gleichgesinnten\n\nKursdetails:\nDauer: 4 Wochen\nOrt: Küchenstudio Michealisbaum\nZeit: mittwochs 17:00–19:30 Uhr\nKosten: 250 Euro inklusive aller Zutaten und Getränke\n\nKontakt: info@kochenleicht.com oder 0344 258584"
+  },
+  "aufgabe": {
+    "wordCount": "150–180 Wörter",
+    "description": "Sie haben an einem Kochkurs für Anfängerinnen und Anfänger teilgenommen. Leider waren Sie überhaupt nicht zufrieden. Schreiben Sie eine Beschwerde an den Veranstalter. Behandeln Sie darin entweder a) drei der folgenden Punkte oder b) zwei der folgenden Punkte und einen Aspekt Ihrer Wahl. Überlegen Sie sich vor dem Schreiben eine passende Reihenfolge der Punkte, einen passenden Betreff, eine passende Anrede, Einleitung und einen passenden Schluss. Schreiben Sie mindestens 150 Wörter.",
+    "points": [
+      "Beschreiben Sie Ihre Erwartungen nach dem Lesen der Werbeanzeige.",
+      "Schildern Sie, was Sie bei dem Kochkurs erlebt haben.",
+      "Erklären Sie, welche Erwartungen Sie an den Veranstalter haben.",
+      "Beschreiben Sie, was Sie tun, falls Sie keine Antwort bekommen."
+    ]
+  },
+  "pointsNumbers": [1, 2, 3, 4],
+  "template": {
+    "title": "✦ هدا فقط متال لمنهجية نتا قاد ديالك وحدة ديالك",
+    "text": "Betreff: Beschwerde über…\n\nSehr geehrte Damen und Herren,\n\nVor einigen Tagen habe ich ... genutzt, weil ich ... möchte. Leider bin ich damit sehr unzufrieden, denn es gab mehrere Probleme, die ich nicht akzeptieren kann. Deshalb möchte ich mich beschweren und hoffe auf eine Lösung.\n\nEinige Punkte aus der Beschreibung wurden nicht erfüllt, nämlich ..., ... und ...\n\nAus diesem Grund bin ich sehr unzufrieden und erwarte eine angemessene Antwort auf meine Beschwerde. Wenn ich innerhalb von drei Werktagen keine Antwort erhalte, werde ich meine Erfahrung öffentlich teilen.\n\nFür eine bessere Kundenzufriedenheit empfehle ich, dass die Leistungen wie versprochen erbracht werden und die Kommunikation verständlicher gestaltet wird, da dies Probleme vermeidet.\n\nIch bitte Sie freundlich, mich unter der Nummer 06 99xxxxxxxx zu kontaktieren.\n\nMit freundlichen Grüßen\nName",
+    "colors": {
+      "blue": "#4A90E2",
+      "gray": "#333333"
+    }
+  }
+}
