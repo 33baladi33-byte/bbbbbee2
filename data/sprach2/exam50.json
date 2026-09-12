@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 50: Über den Zusammenhang",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Jeder Mensch ist anders. Wir alle haben individuelle Charakterzüge, Werte und Interessen. Das schlägt sich auch bei der Wahl unserer Hobbys nieder. .__( 1 )__. wollen wir unsere Freizeit mit Aktivitäten verbringen, die uns glücklich machen. In der Psychologie geht man von fünf zentralen Charaktereigenschaften aus. .__( 2 )__. jener Eigenschaften verändern sich die Präferenzen für Hobbys. So liegt es zum Beispiel .__( 3 )__., dass offene Personen Neues entdecken. Zu gewissenhaften Menschen .__( 4 )__. am besten Hobbys, die ihre strukturierte Seite .__( 5 )__. lassen. Für extrovertierte Personen eignen sich .__( 6 )__. Aktivitäten wie Konzerte oder Feste. Verträgliche Menschen sind gern .__( 7 )__. engagiert. Zu neurotischen Menschen passen beruhigende Hobbys, die sich ohne Gesellschaft .__( 8 )__. lassen. Obwohl diese Theorie plausibel erscheint, ist sie .__( 9 )__. kaum wissenschaftlich untersucht. Jeder Mensch sollte seinen Hobbys nachgehen - .__( 10 )__. von seinen Charaktermerkmalen.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["ALLEINE", "NAHE", "AUSLEBEN", "PASSEN", "AUSPROBIEREN", "SCHLIESSLICH", "AUSÜBEN", "SOZIAL", "BISLANG", "TROTZDEM", "EHRENAMTLICH", "UNABHÄNGIG", "ENTSPRECHEND", "ZUGRUNDE GEHOREN"],
+      "correct": "SCHLIESSLICH",
+      "memoryHighlight": {
+        "before": "nieder.",
+        "connector": "SCHLIESSLICH",
+        "after": "wollen wir",
+        "color": 1
+      }
+    },
+    {
+      "id": 2,
+      "options": ["ALLEINE", "NAHE", "AUSLEBEN", "PASSEN", "AUSPROBIEREN", "SCHLIESSLICH", "AUSÜBEN", "SOZIAL", "BISLANG", "TROTZDEM", "EHRENAMTLICH", "UNABHÄNGIG", "ENTSPRECHEND", "ZUGRUNDE GEHOREN"],
+      "correct": "ENTSPRECHEND",
+      "memoryHighlight": {
+        "before": "aus.",
+        "connector": "ENTSPRECHEND",
+        "after": "jener Eigenschaften",
+        "color": 2
+      }
+    },
+    {
+      "id": 3,
+      "options": ["ALLEINE", "NAHE", "AUSLEBEN", "PASSEN", "AUSPROBIEREN", "SCHLIESSLICH", "AUSÜBEN", "SOZIAL", "BISLANG", "TROTZDEM", "EHRENAMTLICH", "UNABHÄNGIG", "ENTSPRECHEND", "ZUGRUNDE GEHOREN"],
+      "correct": "NAHE",
+      "memoryHighlight": {
+        "before": "zum Beispiel",
+        "connector": "NAHE",
+        "after": ", dass offene",
+        "color": 3
+      }
+    },
+    {
+      "id": 4,
+      "options": ["ALLEINE", "NAHE", "AUSLEBEN", "PASSEN", "AUSPROBIEREN", "SCHLIESSLICH", "AUSÜBEN", "SOZIAL", "BISLANG", "TROTZDEM", "EHRENAMTLICH", "UNABHÄNGIG", "ENTSPRECHEND", "ZUGRUNDE GEHOREN"],
+      "correct": "PASSEN",
+      "memoryHighlight": {
+        "before": "Menschen",
+        "connector": "PASSEN",
+        "after": "am besten",
+        "color": 4
+      }
+    },
+    {
+      "id": 5,
+      "options": ["ALLEINE", "NAHE", "AUSLEBEN", "PASSEN", "AUSPROBIEREN", "SCHLIESSLICH", "AUSÜBEN", "SOZIAL", "BISLANG", "TROTZDEM", "EHRENAMTLICH", "UNABHÄNGIG", "ENTSPRECHEND", "ZUGRUNDE GEHOREN"],
+      "correct": "AUSLEBEN",
+      "memoryHighlight": {
+        "before": "strukturierte Seite",
+        "connector": "AUSLEBEN",
+        "after": "lassen",
+        "color": 5
+      }
+    },
+    {
+      "id": 6,
+      "options": ["ALLEINE", "NAHE", "AUSLEBEN", "PASSEN", "AUSPROBIEREN", "SCHLIESSLICH", "AUSÜBEN", "SOZIAL", "BISLANG", "TROTZDEM", "EHRENAMTLICH", "UNABHÄNGIG", "ENTSPRECHEND", "ZUGRUNDE GEHOREN"],
+      "correct": "SOZIAL",
+      "memoryHighlight": {
+        "before": "eignen sich",
+        "connector": "SOZIAL",
+        "after": "Aktivitäten",
+        "color": 6
+      }
+    },
+    {
+      "id": 7,
+      "options": ["ALLEINE", "NAHE", "AUSLEBEN", "PASSEN", "AUSPROBIEREN", "SCHLIESSLICH", "AUSÜBEN", "SOZIAL", "BISLANG", "TROTZDEM", "EHRENAMTLICH", "UNABHÄNGIG", "ENTSPRECHEND", "ZUGRUNDE GEHOREN"],
+      "correct": "EHRENAMTLICH",
+      "memoryHighlight": {
+        "before": "gern",
+        "connector": "EHRENAMTLICH",
+        "after": "engagiert",
+        "color": 7
+      }
+    },
+    {
+      "id": 8,
+      "options": ["ALLEINE", "NAHE", "AUSLEBEN", "PASSEN", "AUSPROBIEREN", "SCHLIESSLICH", "AUSÜBEN", "SOZIAL", "BISLANG", "TROTZDEM", "EHRENAMTLICH", "UNABHÄNGIG", "ENTSPRECHEND", "ZUGRUNDE GEHOREN"],
+      "correct": "AUSÜBEN",
+      "memoryHighlight": {
+        "before": "Gesellschaft",
+        "connector": "AUSÜBEN",
+        "after": "lassen",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["ALLEINE", "NAHE", "AUSLEBEN", "PASSEN", "AUSPROBIEREN", "SCHLIESSLICH", "AUSÜBEN", "SOZIAL", "BISLANG", "TROTZDEM", "EHRENAMTLICH", "UNABHÄNGIG", "ENTSPRECHEND", "ZUGRUNDE GEHOREN"],
+      "correct": "BISLANG",
+      "memoryHighlight": {
+        "before": "ist sie",
+        "connector": "BISLANG",
+        "after": "kaum wissenschaftlich",
+        "color": 9
+      }
+    },
+    {
+      "id": 10,
+      "options": ["ALLEINE", "NAHE", "AUSLEBEN", "PASSEN", "AUSPROBIEREN", "SCHLIESSLICH", "AUSÜBEN", "SOZIAL", "BISLANG", "TROTZDEM", "EHRENAMTLICH", "UNABHÄNGIG", "ENTSPRECHEND", "ZUGRUNDE GEHOREN"],
+      "correct": "UNABHÄNGIG",
+      "memoryHighlight": {
+        "before": "nachgehen -",
+        "connector": "UNABHÄNGIG",
+        "after": "von seinen",
+        "color": 10
+      }
+    }
+  ],
+  "allOptions": ["ALLEINE", "NAHE", "AUSLEBEN", "PASSEN", "AUSPROBIEREN", "SCHLIESSLICH", "AUSÜBEN", "SOZIAL", "BISLANG", "TROTZDEM", "EHRENAMTLICH", "UNABHÄNGIG", "ENTSPRECHEND", "ZUGRUNDE GEHOREN"]
+}

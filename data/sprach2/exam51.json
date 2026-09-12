@@ -1,0 +1,119 @@
+{
+  "title": "Sprachbausteine Teil 2 - Exam 51: Sprachwandel",
+  "skill": "sprach2",
+  "type": "sprach2",
+  "text": "Deutsche Sprache, schwere Sprache! Warum heißt es zum Beispiel das Mädchen, wenn Mädchen doch immer weiblich sind? Wieso hat man Angst vor Spinnen und nicht wegen Spinnen? Die Erklärung ist simpel und frustrierend: .__( 1 )__! Im Laufe der Zeit haben sich durch unseren Sprachgebrauch sprachliche Phänomene etabliert, die heutzutage als willkürlich und unlogisch empfunden werden können. Sprachhistoriker Rüdiger Müllerlein sagt .__( 2 )__: „In Deutschland gibt es keine Institution, die regelt, was falsch und was richtig ist. Da sich unsere Sprache in einem stetigen Wandel befindet, müssen alle Grammatikbücher, die auf dem Markt sind, deshalb regelmäßig erneuert werden.“\nVor allem für Deutschlernende stellt dies eine große Herausforderung dar. Woher .__( 3 )__. man denn, was richtig und was falsch ist, wenn sich das ständig ändert? Darauf antwortet der Sprachhistoriker: „Derzeit orientiert man sich an der Sprache, die im Rundfunk und im Fernsehen gesprochen wird.“ Für Deutschlernende, die noch .__( 4 )__. Zeit zu Zeit im Regelschungel herumirren, gibt es aber laut Rüdiger Müllerlein Grund zur Hoffnung: „Da die sozialen Medien das klassische Fernsehen nach und nach verdrängen, passt sich unsere Sprache auch in den anderen Bereichen immer mehr an dieses sogenannte Social-Media-Deutsch .__( 5 )__.“ Die Meinungen über diese Entwicklungen gehen auseinander. So .__( 6 )__. Kritiker beispielsweise ein verbindliches Regelwerk, in dem Rechtschreibung, Aussprache und Grammatik geregelt sind. Sie sehen diese Veränderungen nämlich als Zeichen des Sprachverfalls. Die Verbindung, die man .__( 7 )__. der eigenen Kultur hat, könne verloren gehen, wenn viele deutsche Begriffe von englischen Ausdrücken verdrängt werden würden. Rüdiger Müllerlein .__( 8 )__. von diesem Anliegen wenig: „Im Zeitalter der Globalisierung ergibt es keinen Sinn, eine Sprache konservieren zu wollen. Es gibt zum Beispiel immer wieder neue technische Begriffe, die in den Sprachgebrauch aufgenommen werden müssen, da mitunter die notwendige deutsche .__( 9 )__. Verfügung stehen.“\nSprache ist also ein Spiegel der Gesellschaft und Sprachwandel somit ein natürlicher Prozess, der sich durch ein Regelwerk nicht aufhalten .__( 10 )__.",
+  "options": [
+    {
+      "id": 1,
+      "options": ["AN", "KENNT", "AUF", "LÄSST", "DAZU", "VON", "FORDERN", "WEISS", "ZU", "GLEICHZEITIG", "ZUGLEICH", "HÄLT", "ZUR", "KANN"],
+      "correct": "ZUGLEICH",
+      "memoryHighlight": {
+        "before": "frustrierend:",
+        "connector": "ZUGLEICH",
+        "after": "! Im Laufe",
+        "color": 1
+      }
+    },
+    {
+      "id": 2,
+      "options": ["AN", "KENNT", "AUF", "LÄSST", "DAZU", "VON", "FORDERN", "WEISS", "ZU", "GLEICHZEITIG", "ZUGLEICH", "HÄLT", "ZUR", "KANN"],
+      "correct": "DAZU",
+      "memoryHighlight": {
+        "before": "sagt",
+        "connector": "DAZU",
+        "after": ": „In Deutschland",
+        "color": 2
+      }
+    },
+    {
+      "id": 3,
+      "options": ["AN", "KENNT", "AUF", "LÄSST", "DAZU", "VON", "FORDERN", "WEISS", "ZU", "GLEICHZEITIG", "ZUGLEICH", "HÄLT", "ZUR", "KANN"],
+      "correct": "WEISS",
+      "memoryHighlight": {
+        "before": "Woher",
+        "connector": "WEISS",
+        "after": "man denn",
+        "color": 3
+      }
+    },
+    {
+      "id": 4,
+      "options": ["AN", "KENNT", "AUF", "LÄSST", "DAZU", "VON", "FORDERN", "WEISS", "ZU", "GLEICHZEITIG", "ZUGLEICH", "HÄLT", "ZUR", "KANN"],
+      "correct": "VON",
+      "memoryHighlight": {
+        "before": "die noch",
+        "connector": "VON",
+        "after": "Zeit zu Zeit",
+        "color": 4
+      }
+    },
+    {
+      "id": 5,
+      "options": ["AN", "KENNT", "AUF", "LÄSST", "DAZU", "VON", "FORDERN", "WEISS", "ZU", "GLEICHZEITIG", "ZUGLEICH", "HÄLT", "ZUR", "KANN"],
+      "correct": "AN",
+      "memoryHighlight": {
+        "before": "Social-Media-Deutsch",
+        "connector": "AN",
+        "after": "„ Die Meinungen",
+        "color": 5
+      }
+    },
+    {
+      "id": 6,
+      "options": ["AN", "KENNT", "AUF", "LÄSST", "DAZU", "VON", "FORDERN", "WEISS", "ZU", "GLEICHZEITIG", "ZUGLEICH", "HÄLT", "ZUR", "KANN"],
+      "correct": "FORDERN",
+      "memoryHighlight": {
+        "before": "So",
+        "connector": "FORDERN",
+        "after": "Kritiker beispielsweise",
+        "color": 6
+      }
+    },
+    {
+      "id": 7,
+      "options": ["AN", "KENNT", "AUF", "LÄSST", "DAZU", "VON", "FORDERN", "WEISS", "ZU", "GLEICHZEITIG", "ZUGLEICH", "HÄLT", "ZUR", "KANN"],
+      "correct": "ZU",
+      "memoryHighlight": {
+        "before": "die man",
+        "connector": "ZU",
+        "after": "der eigenen Kultur",
+        "color": 7
+      }
+    },
+    {
+      "id": 8,
+      "options": ["AN", "KENNT", "AUF", "LÄSST", "DAZU", "VON", "FORDERN", "WEISS", "ZU", "GLEICHZEITIG", "ZUGLEICH", "HÄLT", "ZUR", "KANN"],
+      "correct": "HÄLT",
+      "memoryHighlight": {
+        "before": "Müllerlein",
+        "connector": "HÄLT",
+        "after": "von diesem Anliegen",
+        "color": 8
+      }
+    },
+    {
+      "id": 9,
+      "options": ["AN", "KENNT", "AUF", "LÄSST", "DAZU", "VON", "FORDERN", "WEISS", "ZU", "GLEICHZEITIG", "ZUGLEICH", "HÄLT", "ZUR", "KANN"],
+      "correct": "ZUR",
+      "memoryHighlight": {
+        "before": "notwendige deutsche",
+        "connector": "ZUR",
+        "after": "Verfügung stehen",
+        "color": 9
+      }
+    },
+    {
+      "id": 10,
+      "options": ["AN", "KENNT", "AUF", "LÄSST", "DAZU", "VON", "FORDERN", "WEISS", "ZU", "GLEICHZEITIG", "ZUGLEICH", "HÄLT", "ZUR", "KANN"],
+      "correct": "LÄSST",
+      "memoryHighlight": {
+        "before": "aufhalten",
+        "connector": "LÄSST",
+        "after": ".",
+        "color": 10
+      }
+    }
+  ],
+  "allOptions": ["AN", "KENNT", "AUF", "LÄSST", "DAZU", "VON", "FORDERN", "WEISS", "ZU", "GLEICHZEITIG", "ZUGLEICH", "HÄLT", "ZUR", "KANN"]
+}
