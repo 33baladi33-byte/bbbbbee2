@@ -1,0 +1,17 @@
+{
+  "title": "Hörverstehen Teil 1 - Frühzeitige",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Frühzeitige Wetterwarnungen konnten Evakuierungen im Süden nicht verhindern.", "correct": true },
+    { "text": "Junge Erwachsene sehen das Auto wieder häufiger als Statussymbol.", "correct": false },
+    { "text": "Private Kassen lehnen die Gesundheitsreform ab, gesetzliche befürworten sie.", "correct": true },
+    { "text": "Mikroplastik gelangt laut Forschung auch über die Luft in den Körper.", "correct": true },
+    { "text": "Die Art Basel wurde wegen Stromproblemen komplett abgesagt.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 2, "parts": ["Frühzeitige Wetterwarnungen konnten Evakuierungen im Süden nicht verhindern."] },
+    { "color": 5, "parts": ["Private Kassen lehnen die Gesundheitsreform ab, gesetzliche befürworten sie."] },
+    { "color": 8, "parts": ["Mikroplastik gelangt laut Forschung auch über die Luft in den Körper."] }
+  ]
+}

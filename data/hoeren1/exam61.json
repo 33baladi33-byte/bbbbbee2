@@ -1,0 +1,16 @@
+{
+  "title": "Hörverstehen Teil 1 - Fahrkarten",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Fahrkarten sind in Großstädten zuletzt stark im Preis gesunken.", "correct": false },
+    { "text": "Die Ausstellung im Naturkundemuseum beschränkt sich auf die Tierwelt Europas.", "correct": false },
+    { "text": "Der Sportanteil unter Jugendlichen ist rückläufig.", "correct": true },
+    { "text": "In Polen kam ein Schauspieler wegen Steuern ins Gefängnis.", "correct": false },
+    { "text": "Der Brand führte zu erheblichen Verkehrsbehinderungen.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 3, "parts": ["Der Sportanteil unter Jugendlichen ist rückläufig."] },
+    { "color": 6, "parts": ["Der Brand führte zu erheblichen Verkehrsbehinderungen."] }
+  ]
+}

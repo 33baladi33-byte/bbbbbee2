@@ -1,0 +1,16 @@
+{
+  "title": "Hörverstehen Teil 1 - AirBerlin",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "AirBerlin-New ist wieder europäischer Branchenführer.", "correct": false },
+    { "text": "Ein Sportverein in Hamburg bietet nur Kurse für Mitglieder an.", "correct": false },
+    { "text": "In der Altenpflege gibt es weiterhin große Personalprobleme.", "correct": true },
+    { "text": "Durch dreifach verglaste Fenster sinken die Heizkosten deutlich.", "correct": false },
+    { "text": "Marc Weber ist wieder für Turniere zugelassen.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 5, "parts": ["In der Altenpflege gibt es weiterhin große Personalprobleme."] },
+    { "color": 9, "parts": ["Marc Weber ist wieder für Turniere zugelassen."] }
+  ]
+}

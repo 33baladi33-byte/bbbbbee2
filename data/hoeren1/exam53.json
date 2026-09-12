@@ -1,0 +1,15 @@
+{
+  "title": "Hörverstehen Teil 1 - Co-Living",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Co-Living ist inzwischen ein Standardmodell für Familien.", "correct": false },
+    { "text": "KI-Systeme machen Ärzte in Zukunft überflüssig.", "correct": false },
+    { "text": "Der Fast-Fashion-Markt wächst trotz Nachhaltigkeitstrend weiter.", "correct": true },
+    { "text": "Ein Gratis-ÖPNV reicht als Lösung für die Verkehrswende aus.", "correct": false },
+    { "text": "Die Bevölkerung befürwortet Pflegeroboter ohne Vorbehalte.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 5, "parts": ["Der Fast-Fashion-Markt wächst trotz Nachhaltigkeitstrend weiter."] }
+  ]
+}

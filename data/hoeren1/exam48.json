@@ -1,0 +1,17 @@
+{
+  "title": "Hörverstehen Teil 1 - Elbjazz-Festival",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Mehr Jugendliche in der EU wählen eine Ausbildung statt eines Studiums.", "correct": true },
+    { "text": "Das Bundesgesundheitsministerium fördert ausländische Pflegekräfte.", "correct": true },
+    { "text": "Das „Elbjazz-Festival“ findet in diesem Jahr ausschließlich im Freien statt.", "correct": false },
+    { "text": "Archäologen stießen auf ein kaum beschädigtes Grab aus der Keltenzeit.", "correct": true },
+    { "text": "Im Norden Deutschlands wird ruhiges Sommerwetter erwartet.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": ["Mehr Jugendliche in der EU wählen eine Ausbildung statt eines Studiums."] },
+    { "color": 5, "parts": ["Das Bundesgesundheitsministerium fördert ausländische Pflegekräfte."] },
+    { "color": 8, "parts": ["Archäologen stießen auf ein kaum beschädigtes Grab aus der Keltenzeit."] }
+  ]
+}

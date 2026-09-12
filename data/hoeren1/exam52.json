@@ -1,0 +1,17 @@
+{
+  "title": "Hörverstehen Teil 1 - Softdrinks",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Der Konsum von zuckerhaltigen Softdrinks steigt um 10 %.", "correct": true },
+    { "text": "Bei den Lebenshaltungskosten liegt Deutschland im EU-Vergleich nur im Mittelfeld.", "correct": true },
+    { "text": "Das Ende des Pilotenstreiks ist absehbar.", "correct": false },
+    { "text": "Experten befürchten Gewalt bei Sportevents.", "correct": true },
+    { "text": "Die Leopoldina strebt eine stärkere internationale Ausrichtung an.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": ["Der Konsum von zuckerhaltigen Softdrinks steigt um 10 %."] },
+    { "color": 3, "parts": ["Bei den Lebenshaltungskosten liegt Deutschland im EU-Vergleich nur im Mittelfeld."] },
+    { "color": 7, "parts": ["Experten befürchten Gewalt bei Sportevents."] }
+  ]
+}

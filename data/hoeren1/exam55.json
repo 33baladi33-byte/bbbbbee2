@@ -1,0 +1,16 @@
+{
+  "title": "Hörverstehen Teil 1 - Paris",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Paris erlaubt weiterhin Leihscooter ohne Einschränkungen.", "correct": false },
+    { "text": "Durch KI werden Krankheiten zuverlässiger erkannt.", "correct": true },
+    { "text": "Australien will den Zugang zum Great Barrier Reef touristisch ausweiten.", "correct": false },
+    { "text": "Laut Studien entsteht durch Smartphones im Unterricht kein Lernnachteil.", "correct": false },
+    { "text": "Die neue Steuer würde tief in den Energiemarkt der USA eingreifen.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 3, "parts": ["Durch KI werden Krankheiten zuverlässiger erkannt."] },
+    { "color": 8, "parts": ["Die neue Steuer würde tief in den Energiemarkt der USA eingreifen."] }
+  ]
+}

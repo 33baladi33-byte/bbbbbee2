@@ -1,0 +1,16 @@
+{
+  "title": "Hörverstehen Teil 1 - Theaterpremiere",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Die Theaterpremiere fällt wegen Krankheit der Schauspielerin aus.", "correct": false },
+    { "text": "Die Deutsche Bahn plant klimaneutralen Fernverkehr bis 2030.", "correct": false },
+    { "text": "Pflegemangel herrscht sowohl in ländlichen Regionen als auch in Metropolen.", "correct": true },
+    { "text": "Stadtparkbau verzögert sich wegen fehlender Genehmigungen.", "correct": false },
+    { "text": "Die Wohnpauschale gilt unabhängig vom Einkommen der Eltern.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 4, "parts": ["Pflegemangel herrscht sowohl in ländlichen Regionen als auch in Metropolen."] },
+    { "color": 10, "parts": ["Die Wohnpauschale gilt unabhängig vom Einkommen der Eltern."] }
+  ]
+}

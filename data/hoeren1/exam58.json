@@ -1,0 +1,15 @@
+{
+  "title": "Hörverstehen Teil 1 - Lorenzo",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Lorenzo Bianchi sagte sein Konzert wegen Krankheit ab.", "correct": false },
+    { "text": "Die Verkehrswacht fordert neue Maßnahmen im Radverkehr.", "correct": true },
+    { "text": "Der Lehrermangel betrifft vor allem Großstädte.", "correct": false },
+    { "text": "Die Eröffnung des Museums ist für den Herbst geplant.", "correct": false },
+    { "text": "Privatpersonen profitieren vom neuen Steuermodell.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 7, "parts": ["Die Verkehrswacht fordert neue Maßnahmen im Radverkehr."] }
+  ]
+}

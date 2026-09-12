@@ -1,0 +1,16 @@
+{
+  "title": "Hörverstehen Teil 1 - Belegschaftsengpass",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Der Belegschaftsengpass könnte die öffentliche Verwaltung an den Rand des Zusammenbruchs bringen.", "correct": true },
+    { "text": "Das Offshore-Windkraftprojekt wird von Umweltgruppen als uneingeschränkt konfliktfrei betrachtet.", "correct": false },
+    { "text": "Die Ausstellung im Vatikan thematisiert ausschließlich die Restaurierung antiker Stätten.", "correct": false },
+    { "text": "Die Reaktion der Passagiere wurde von Luftfahrtexperten als Beleg für das hervorragende Krisenmanagement der Piloten gewertet.", "correct": false },
+    { "text": "Die genauen Ursachen des Frachterunglücks in der Nordsee sind weiterhin Gegenstand einer Untersuchung.", "correct": true }
+  ],
+  "memoryHighlights": [
+    { "color": 5, "parts": ["Der Belegschaftsengpass könnte die öffentliche Verwaltung an den Rand des Zusammenbruchs bringen."] },
+    { "color": 10, "parts": ["Die genauen Ursachen des Frachterunglücks in der Nordsee sind weiterhin Gegenstand einer Untersuchung."] }
+  ]
+}

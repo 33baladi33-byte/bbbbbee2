@@ -1,0 +1,15 @@
+{
+  "title": "Hörverstehen Teil 1 - Nord-Ostsee",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Die Stadt stoppt den Bau neuer E-Ladestationen.", "correct": false },
+    { "text": "Besucher können das Elefantenbaby ab jetzt sehen.", "correct": false },
+    { "text": "Die Arbeitslosigkeit im Handwerk wird bald abnehmen.", "correct": false },
+    { "text": "Das neue Hochhaus wird aus Denkmalschutzgründen niedriger.", "correct": true },
+    { "text": "Ein Schiff blockiert noch immer den Nord-Ostsee-Kanal.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 4, "parts": ["Das neue Hochhaus wird aus Denkmalschutzgründen niedriger."] }
+  ]
+}

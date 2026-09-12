@@ -1,0 +1,15 @@
+{
+  "title": "Hörverstehen Teil 1 - Homeoffice",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Dauerhaftes Homeoffice verringert die Produktivität in Unternehmen.", "correct": false },
+    { "text": "Der internationale Flugverkehr verzeichnet kein beschleunigtes Wachstum.", "correct": true },
+    { "text": "Online-Weiterbildungen ersetzen zunehmend klassische Präsenzkurse.", "correct": false },
+    { "text": "Der Ausbau der Windenergie wird allgemein befürwortet.", "correct": false },
+    { "text": "Digitale Bezahlsysteme haben Bargeld in Europa verdrängt.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 6, "parts": ["Der internationale Flugverkehr verzeichnet kein beschleunigtes Wachstum."] }
+  ]
+}

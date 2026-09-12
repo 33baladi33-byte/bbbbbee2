@@ -1,0 +1,15 @@
+{
+  "title": "Hörverstehen Teil 1 - EU-Klimapaket",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "EU-Klimapaket betrifft auch Mittelstand.", "correct": false },
+    { "text": "Viele Beschäftigte wollen nur im Büro arbeiten.", "correct": false },
+    { "text": "Die Strecke Berlin–Hamburg bleibt nach Sabotage länger gesperrt.", "correct": false },
+    { "text": "Laut Experten belasten Arzneimittel das Grundwasser.", "correct": true },
+    { "text": "Cannes-Festival wegen Streiks abgebrochen.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 1, "parts": ["Laut Experten belasten Arzneimittel das Grundwasser."] }
+  ]
+}

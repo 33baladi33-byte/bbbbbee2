@@ -1,0 +1,16 @@
+{
+  "title": "Hörverstehen Teil 1 - Japan",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Plastiktüten werden seltener genutzt.", "correct": true },
+    { "text": "Im Homeoffice sinkt die Produktivität der Mitarbeiter.", "correct": false },
+    { "text": "In Kanada soll man wieder Eisbären jagen dürfen.", "correct": false },
+    { "text": "Soziale Netzwerke beeinflussen das Kaufverhalten.", "correct": true },
+    { "text": "Japan will bis 2035 alle Benzinautos verbieten.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 2, "parts": ["Plastiktüten werden seltener genutzt."] },
+    { "color": 9, "parts": ["Soziale Netzwerke beeinflussen das Kaufverhalten."] }
+  ]
+}

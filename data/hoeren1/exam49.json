@@ -1,0 +1,16 @@
+{
+  "title": "Hörverstehen Teil 1 - Bürger",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Bürger suchten nach dem Beben Kontakt zu den Einsatzkräften.", "correct": true },
+    { "text": "Die Erzieher in der Kita beraten die Eltern zum Impfen.", "correct": false },
+    { "text": "Verkehrsbehinderungen werden vor allem für das Wochenende erwartet.", "correct": true },
+    { "text": "Defekte Rohrleitungen sind die Hauptursache für Umweltschäden in SH.", "correct": false },
+    { "text": "Die Schadstoffbelastung der Luft nimmt nächste Woche ab.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 2, "parts": ["Bürger suchten nach dem Beben Kontakt zu den Einsatzkräften."] },
+    { "color": 6, "parts": ["Verkehrsbehinderungen werden vor allem für das Wochenende erwartet."] }
+  ]
+}

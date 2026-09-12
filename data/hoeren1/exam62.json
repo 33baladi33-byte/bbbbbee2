@@ -1,0 +1,16 @@
+{
+  "title": "Hörverstehen Teil 1 - Busfahrer",
+  "type": "truefalse",
+  "note": "هذا الموضوع احتياط ولم يتم ظهوره الى حد الان",
+  "questions": [
+    { "text": "Länder fordern einheitliche Regeln gegen Wohnungsknappheit.", "correct": true },
+    { "text": "Ein geplantes Solarkraftwerk in Spanien stößt auf breite Zustimmung der Anwohner.", "correct": false },
+    { "text": "Die Ausstellung zeigt nur Technik aus dem 21. Jahrhundert.", "correct": false },
+    { "text": "Ein Busfahrer in Wien wurde für sein mutiges Eingreifen bei einem Überfall ausgezeichnet.", "correct": true },
+    { "text": "Die Gründe für den Stromausfall in Prag stehen inzwischen fest.", "correct": false }
+  ],
+  "memoryHighlights": [
+    { "color": 4, "parts": ["Länder fordern einheitliche Regeln gegen Wohnungsknappheit."] },
+    { "color": 9, "parts": ["Ein Busfahrer in Wien wurde für sein mutiges Eingreifen bei einem Überfall ausgezeichnet."] }
+  ]
+}
