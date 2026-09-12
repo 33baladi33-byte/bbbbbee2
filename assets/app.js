@@ -30981,6 +30981,10 @@ var MyApp = (() => {
               memoryToggleBtn.style.display = "";
             }
           }
+          this._matches.clear();
+          this._titleToText.clear();
+          this._selectedText = null;
+          this._selectedTitle = null;
           this.isActive = false;
           console.log(`\u2705 Help Mode deactivated for ${this.modeName}`);
           const helpBtn = document.getElementById("matchingToggleBtn");
@@ -35888,7 +35892,9 @@ var MyApp = (() => {
         { id: 53, title: "Evolution", enabled: true, hasFile: true, versions: [{ id: 53, file: "exam53.json", title: "Evolution" }] },
         { id: 54, title: "Ged\xE4chtnis", enabled: true, hasFile: true, versions: [{ id: 54, file: "exam54.json", title: "Ged\xE4chtnis" }] },
         { id: 55, title: "Wohnen", enabled: true, hasFile: true, versions: [{ id: 55, file: "exam55.json", title: "Wohnen" }] },
-        { id: 56, title: " Lebensmodelle", enabled: true, hasFile: true, versions: [{ id: 56, file: "exam56.json", title: " Lebensmodelle" }] }
+        { id: 56, title: " Lebensmodelle", enabled: true, hasFile: true, versions: [{ id: 56, file: "exam56.json", title: " Lebensmodelle" }] },
+        { id: 57, title: "Gesundheit / Symptomen", enabled: true, hasFile: true, versions: [{ id: 57, file: "exam57.json", title: "Gesundheit / Symptomen" }] },
+        { id: 58, title: "Das alte Leben", enabled: true, hasFile: true, versions: [{ id: 58, file: "exam58.json", title: "Das alte Leben" }] }
       ];
       lesen2Exams = [
         {
@@ -36016,7 +36022,9 @@ var MyApp = (() => {
             { id: 36, file: "exam36.json", title: "Nachtzug (\u0645\u0639\u062F\u0644)" }
           ]
         },
-        { id: 37, title: "Wie zwei US-Teenager Million\xE4re wurden", enabled: true, hasFile: true, versions: [{ id: 37, file: "exam37.json", title: "Wie zwei US-Teenager Million\xE4re wurden" }] }
+        { id: 37, title: "Wie zwei US-Teenager Million\xE4re wurden", enabled: true, hasFile: true, versions: [{ id: 37, file: "exam37.json", title: "Wie zwei US-Teenager Million\xE4re wurden" }] },
+        { id: 38, title: "Kreuzfahrttourismus / Auswirkungen von Massentourismus", enabled: true, hasFile: true, versions: [{ id: 38, file: "exam38.json", title: "Kreuzfahrttourismus / Auswirkungen von Massentourismus" }] },
+        { id: 39, title: "Lebenslanges Lernen", enabled: true, hasFile: true, versions: [{ id: 39, file: "exam39.json", title: "Lebenslanges Lernen" }] }
       ];
       lesen3Exams = [
         {
@@ -36096,8 +36104,8 @@ var MyApp = (() => {
         { id: 16, title: "Eine Bekannte ist schwanger", enabled: true, hasFile: true, versions: [{ id: 16, file: "exam16.json", title: "Eine Bekannte ist schwanger" }] },
         { id: 17, title: "Die Tochter einer Bekannten wird vier Jahre alt", enabled: true, hasFile: true, versions: [{ id: 17, file: "exam17.json", title: "Die Tochter einer Bekannten wird vier Jahre alt" }] },
         { id: 18, title: "Tierdokumentationen", enabled: true, hasFile: true, versions: [{ id: 18, file: "exam18.json", title: "Tierdokumentationen" }] },
-        { id: 19, title: "Aufr\xE4umen", enabled: true, hasFile: true, versions: [{ id: 19, file: "exam19.json", title: "Aufr\xE4umen" }] },
-        { id: 20, title: "Erholung und Reisen", enabled: true, hasFile: true, versions: [{ id: 20, file: "exam20.json", title: "Erholung und Reisen" }] },
+        { id: 19, title: "Ihre Schranke Sind Voll Mit Sachen", enabled: true, hasFile: true, versions: [{ id: 19, file: "exam19.json", title: "Aufr\xE4umen" }] },
+        { id: 20, title: "Freizeit Und Ausfl\xFCge", enabled: true, hasFile: true, versions: [{ id: 20, file: "exam20.json", title: "Erholung und Reisen" }] },
         {
           id: 21,
           title: "Sport",
@@ -36111,12 +36119,12 @@ var MyApp = (() => {
         { id: 23, title: "Wein und Insekten", enabled: true, hasFile: true, versions: [{ id: 23, file: "exam23.json", title: "Wein und Insekten" }] },
         {
           id: 24,
-          title: "Reisef\xFChrer",
+          title: "\u0627\u0644\u0645\u0631\u0634\u062F \u0627\u0644\u0633\u064A\u0627\u062D\u064A",
           enabled: true,
           hasFile: true,
           versions: [
-            { id: 24, file: "exam24.json", title: "Reisef\xFChrer" },
-            { id: 112, file: "exam24b.json", title: "Reisef\xFChrer (\u0645\u0639\u062F\u0644)" }
+            { id: 24, file: "exam24.json", title: "\u0627\u0644\u0645\u0631\u0634\u062F \u0627\u0644\u0633\u064A\u0627\u062D\u064A" },
+            { id: 112, file: "exam24b.json", title: "\u0627\u0644\u0645\u0631\u0634\u062F \u0627\u0644\u0633\u064A\u0627\u062D\u064A (\u0645\u0639\u062F\u0644)" }
           ]
         },
         { id: 25, title: "Gartenbau", enabled: true, hasFile: true, versions: [{ id: 25, file: "exam25.json", title: "Gartenbau" }] },
@@ -36124,12 +36132,12 @@ var MyApp = (() => {
         { id: 27, title: "Einwanderung", enabled: true, hasFile: true, versions: [{ id: 27, file: "exam27.json", title: "Einwanderung" }] },
         {
           id: 28,
-          title: "Musikinstrumente",
+          title: "Auf dem Weg anzeigen",
           enabled: true,
           hasFile: true,
           versions: [
-            { id: 28, file: "exam28.json", title: "Musikinstrumente" },
-            { id: 29, file: "exam29.json", title: "Musikinstrumente (\u0645\u0639\u062F\u0644)" }
+            { id: 28, file: "exam28.json", title: "Auf dem Weg anzeigen" },
+            { id: 29, file: "exam29.json", title: "Auf dem Weg anzeigen (\u0645\u0639\u062F\u0644)" }
           ]
         },
         { id: 30, title: "Arbeitsorganisation", enabled: true, hasFile: true, versions: [{ id: 30, file: "exam30.json", title: "Arbeitsorganisation" }] },
@@ -36147,7 +36155,25 @@ var MyApp = (() => {
         },
         { id: 35, title: "Autos", enabled: true, hasFile: true, versions: [{ id: 35, file: "exam35.json", title: "Autos" }] },
         { id: 36, title: "M\xF6bel f\xFCr die neue Wohnung", enabled: true, hasFile: true, versions: [{ id: 36, file: "exam36.json", title: "M\xF6bel f\xFCr die neue Wohnung" }] },
-        { id: 37, title: "Gesch\xE4ftsreisen - \u0631\u062D\u0644\u0627\u062A \u0627\u0644\u0639\u0645\u0644", enabled: true, hasFile: true, versions: [{ id: 37, file: "exam37.json", title: "Gesch\xE4ftsreisen - \u0631\u062D\u0644\u0627\u062A \u0627\u0644\u0639\u0645\u0644" }] }
+        { id: 37, title: "Gesch\xE4ftsreisen - \u0631\u062D\u0644\u0627\u062A \u0627\u0644\u0639\u0645\u0644", enabled: true, hasFile: true, versions: [{ id: 37, file: "exam37.json", title: "Gesch\xE4ftsreisen - \u0631\u062D\u0644\u0627\u062A \u0627\u0644\u0639\u0645\u0644" }] },
+        {
+          id: 38,
+          title: "Geschenk f\xFCr Ihren zehnj\xE4hrigen",
+          enabled: true,
+          hasFile: true,
+          versions: [
+            { id: 38, file: "exam38.json", title: "Geschenk f\xFCr Ihren zehnj\xE4hrigen" }
+          ]
+        },
+        {
+          id: 39,
+          title: "ein Austauschjahr",
+          enabled: true,
+          hasFile: true,
+          versions: [
+            { id: 39, file: "exam39.json", title: "ein Austauschjahr" }
+          ]
+        }
       ];
       sprach1Exams = [
         {
@@ -36275,7 +36301,8 @@ var MyApp = (() => {
           ]
         },
         { id: 41, title: "Liebe Anna(\u0627\u0644\u062C\u062F\u064A\u062F)", enabled: true, hasFile: true, versions: [{ id: 41, file: "exam41.json", title: "Liebe Anna(\u0627\u0644\u062C\u062F\u064A\u062F)" }] },
-        { id: 42, title: "Hi Jens", enabled: true, hasFile: true, versions: [{ id: 42, file: "exam42.json", title: "Hi Jens" }] }
+        { id: 42, title: "Hi Jens", enabled: true, hasFile: true, versions: [{ id: 42, file: "exam42.json", title: "Hi Jens" }] },
+        { id: 43, title: "Hallo Jakob", enabled: true, hasFile: true, versions: [{ id: 43, file: "exam43.json", title: "Hallo Jakob" }] }
       ];
       sprach2Exams = [
         {
@@ -36449,7 +36476,9 @@ var MyApp = (() => {
             { id: 48, file: "exam48.json", title: "Theaterprojekt f\xFCr Kinder (\u0627\u0644\u0645\u0639\u062F\u0644 1)" },
             { id: 49, file: "exam49.json", title: "Theater f\xFCr Kinder und Jugendliche (\u0627\u0644\u0645\u0639\u062F\u0644 2)" }
           ]
-        }
+        },
+        { id: 50, title: "\xDCber den Zusammenhang", enabled: true, hasFile: true, versions: [{ id: 50, file: "exam50.json", title: "\xDCber den Zusammenhang" }] },
+        { id: 51, title: "Sprachwandel", enabled: true, hasFile: true, versions: [{ id: 51, file: "exam51.json", title: "Sprachwandel" }] }
       ];
       schreibenExams = [
         { id: 1, title: "Fotobuch", enabled: true, hasFile: true },
@@ -36465,7 +36494,7 @@ var MyApp = (() => {
         { id: 11, title: "Autovermietung Neustadt", enabled: true, hasFile: true },
         { id: 12, title: "Freizeitverein", enabled: true, hasFile: true },
         { id: 13, title: "Naturmuseum", enabled: true, hasFile: true },
-        { id: 14, title: "Backstage-Musical-Tour", enabled: true, hasFile: true },
+        { id: 14, title: "Backstage- Musical-Tour", enabled: true, hasFile: true },
         { id: 15, title: "KULTUR UND KULINARIK", enabled: true, hasFile: true },
         { id: 16, title: "Mehr bewegen - aber wie? (Fahrradtour)", enabled: true, hasFile: true },
         { id: 17, title: "Super Clean-Staubsaugroboter", enabled: true, hasFile: true },
@@ -36481,9 +36510,9 @@ var MyApp = (() => {
         { id: 27, title: "Reiseb\xFCro Sonnenschein", enabled: true, hasFile: true },
         { id: 28, title: "Kursbeschreibung (sich vorstellen)", enabled: true, hasFile: true },
         { id: 29, title: "FITWATCH Smartwatch", enabled: true, hasFile: true },
-        { id: 30, title: "Securvia Reisegep\xE4ckversicherung", enabled: true, hasFile: true },
+        { id: 30, title: "Securvia Reisegep\xE4ck- versicherung", enabled: true, hasFile: true },
         { id: 31, title: "DIGIBIKE - Das smarte Hightech-Fahrrad", enabled: true, hasFile: true },
-        { id: 32, title: "SPORTHEINPARKPLATZ F\xDCR KINDER", enabled: true, hasFile: true },
+        { id: 32, title: "SPORTHEINPARK PLATZ F\xDCR KINDER", enabled: true, hasFile: true },
         { id: 33, title: "Online-Training f\xFCr guten Schlaf", enabled: true, hasFile: true },
         { id: 34, title: "Hollandblumen-Onlineshop", enabled: true, hasFile: true },
         { id: 35, title: "In Offenbach zu Hause", enabled: true, hasFile: true },
@@ -36492,8 +36521,9 @@ var MyApp = (() => {
         { id: 38, title: "Fotografieren f\xFCr Fortgeschrittene", enabled: true, hasFile: true },
         { id: 39, title: "Umzugsunternehmen B\xFChler", enabled: true, hasFile: true },
         { id: 40, title: "Schl\xFCsseldienst", enabled: true, hasFile: true },
-        { id: 41, title: "T & W Elektronikversicherung", enabled: true, hasFile: true },
-        { id: 42, title: "Waldschwimmbad Langen", enabled: true, hasFile: true }
+        { id: 41, title: "T & W Elektronik- versicherung", enabled: true, hasFile: true },
+        { id: 42, title: "Waldschwimmbad Langen", enabled: true, hasFile: true },
+        { id: 43, title: "Kochkurs f\xFCr Anf\xE4nger", enabled: true, hasFile: true }
       ];
       m\u00FCndlich1Exams = [
         { id: 1, title: " \u062A\u0642\u062F\u064A\u0645 \u0648\u062A\u0643\u0644\u0645 \u0639\u0646 \u0645\u0648\u0636\u0648\u0639  ", enabled: true, hasFile: true, skillPath: "m\xFCndlich1" }
@@ -36552,8 +36582,26 @@ var MyApp = (() => {
         sprach1: sprach1Exams,
         sprach2: sprach2Exams,
         hoeren1: [
-          { id: 1, title: "Die Deutsche Lufthansa", enabled: true, hasFile: true },
-          { id: 2, title: "Die Piloten der Lufthansa", enabled: true, hasFile: true },
+          {
+            id: 1,
+            title: "Die Deutsche Lufthansa",
+            enabled: true,
+            hasFile: true,
+            versions: [
+              { id: 1, file: "exam1.json", title: "Die Deutsche Lufthansa" },
+              { id: 46, file: "exam46.json", title: "Die Deutsche Lufthansa 2 (\u0645\u0639\u062F\u0644)" }
+            ]
+          },
+          {
+            id: 2,
+            title: "Die Piloten der Lufthansa",
+            enabled: true,
+            hasFile: true,
+            versions: [
+              { id: 2, file: "exam2.json", title: "Die Piloten der Lufthansa" },
+              { id: 47, file: "exam47.json", title: "Die Piloten der Lufthansa 3 (\u0645\u0639\u062F\u0644)" }
+            ]
+          },
           { id: 3, title: "Die Stadt Friedrichsberg", enabled: true, hasFile: true },
           { id: 4, title: "Erdbeben", enabled: true, hasFile: true },
           { id: 5, title: "Bierkonsum", enabled: true, hasFile: true },
@@ -36583,8 +36631,8 @@ var MyApp = (() => {
           { id: 29, title: "BILD AM SONNTAG (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
           { id: 30, title: "Studentenparty in Frankreich (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
           { id: 31, title: "Deutsche Filmmuseum (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 32, title: "Ein Treffen bei der Integrationsbeauftragten (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 33, title: "die Konjunkturentwicklung negativ (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
+          { id: 32, title: "Ein Treffen bei der Integrations- beauftragten (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
+          { id: 33, title: "die Konjunkturent- wicklung negativ (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
           { id: 34, title: "internationalen Konferenz (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
           { id: 35, title: "Um Tickets zu gewinnen (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
           { id: 36, title: "Die tschechische Stadt Pilsen (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
@@ -36593,10 +36641,26 @@ var MyApp = (() => {
           { id: 39, title: "F\xFCr die Polizei in Berlin (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
           { id: 40, title: "Die Sprecherin ist verheiratet (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
           { id: 41, title: "Bei der Sportveranstaltung (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 42, title: "Das Bundesfamilienministerium (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
+          { id: 42, title: "Das Bundesfamilien- ministerium (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
           { id: 43, title: "Meeresk\xFCsten (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
           { id: 44, title: "Bauern warnen (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 45, title: "Nach Ansicht mancher (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true }
+          { id: 45, title: "Nach Ansicht mancher (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
+          { id: 48, title: "Elbjazz-Festival (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 49, title: "B\xFCrger (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 50, title: "Nord-Ostsee (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 51, title: "AirBerlin (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 52, title: "Softdrinks (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 53, title: "Co-Living (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 54, title: "Homeoffice (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 55, title: "Paris (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 56, title: "Japan (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 57, title: "Theaterpremiere (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 58, title: "Lorenzo (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 59, title: "EU-Klimapaket (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 60, title: "Fr\xFChzeitige (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 61, title: "Fahrkarten (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 62, title: "Busfahrer (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 63, title: "Belegschaftsengpass (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true }
         ],
         hoeren2: [
           { id: 1, title: "Herr Gasser und Frau Janke", enabled: true, hasFile: true },
@@ -36653,7 +36717,24 @@ var MyApp = (() => {
           { id: 52, title: "Bio-Essen: Obst, Gem\xFCse und Lieferung", enabled: true, hasFile: true },
           { id: 53, title: "Influencerin - Maria im Interview", enabled: true, hasFile: true },
           { id: 54, title: "Vom Marktstand zum eigenen Gesch\xE4ft", enabled: true, hasFile: true },
-          { id: 55, title: "Interview mit Bauingenieur - Herr B\xF6hm", enabled: true, hasFile: true }
+          { id: 55, title: "Interview mit Bauingenieur - Herr B\xF6hm", enabled: true, hasFile: true },
+          { id: 56, title: "Frau Eichhorn", enabled: true, hasFile: true },
+          { id: 57, title: "Carina (\u0627\u0644\u0645\u0639\u062F\u0644 2)", enabled: true, hasFile: true },
+          { id: 58, title: "Matteo (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 59, title: "Mallorca (Neu) (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 60, title: "Janis (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 61, title: "Journalisten - Weber (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 62, title: "Lukas (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 63, title: "Dr. Lenz (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 64, title: "Frau Seidel (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 65, title: "Jonas (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 66, title: "Laura (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 67, title: "Martin (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 68, title: "Ausl\xF6ser (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 69, title: "David (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 70, title: "Leo Berger (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 71, title: "Nora (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 72, title: "Tarek (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true }
         ],
         hoeren3: [
           { id: 1, title: "Telefon", enabled: true, hasFile: true },
@@ -36703,7 +36784,16 @@ var MyApp = (() => {
           { id: 45, title: "Auf der Viktoriabr\xFCcke (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
           { id: 46, title: "Die Buchpr\xE4sentation (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
           { id: 47, title: "Beim Klassik-Radio (\u062A\u0631\u0643\u064A\u0627)", enabled: true, hasFile: true },
-          { id: 48, title: "Sie H\xF6ren Den Anrufbeantworter-Buchhandlung", enabled: true, hasFile: true }
+          { id: 48, title: "Sie H\xF6ren Den Anrufbeantworter-Buchhandlung", enabled: true, hasFile: true },
+          { id: 49, title: "Konzert ist am 29 Mai", enabled: true, hasFile: true },
+          { id: 50, title: "Autobahn A4 / 50 cent", enabled: true, hasFile: true },
+          { id: 51, title: "Open-Air-Kino (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 52, title: "Aktionstag (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 53, title: "Klavierkonzert (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 54, title: "S\xFCddeutschland (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 55, title: "Zugverkehr (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 56, title: "Musikfest (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true },
+          { id: 57, title: "Akrobatik-Show im Park (\u0627\u062D\u062A\u064A\u0627\u0637)", enabled: true, hasFile: true }
         ],
         schreiben: schreibenExams,
         m\u00FCndlich: m\u00FCndlich2Exams,
